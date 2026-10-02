@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"KhmerSyllable",
+  "type":"object",
+  "required":["raw_text","normalized_text","status","confidence"],
+  "properties":{
+    "raw_text":{"type":"string"},
+    "normalized_text":{"type":"string"},
+    "base_consonant":{"type":["string","null"]},
+    "register":{"type":["string","null"],"enum":["first","second",null]},
+    "subscripts":{"type":"array","items":{"type":"string"}},
+    "vowel_signs":{"type":"array","items":{"type":"string"}},
+    "independent_vowel":{"type":["string","null"]},
+    "inherent_vowel":{"type":["string","null"]},
+    "status":{"type":"string"},
+    "confidence":{"type":"number","minimum":0,"maximum":1}
+  }
+}

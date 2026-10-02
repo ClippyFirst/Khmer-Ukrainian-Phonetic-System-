@@ -1,0 +1,6 @@
+[
+{"id":"unicode17-ch16","type":"authoritative_standard","title":"Unicode Standard 17.0.0, Chapter 16: South and Southeast Asian Scripts — Khmer","url":"https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-16/","scope":"Khmer encoding structure, consonant registers, coeng, vowel signs, independent vowels, signs, visual/logical order","status":"ESTABLISHED"},
+{"id":"chem2020","type":"acoustic_study","title":"The Standard Khmer vowel system: An acoustic study","year":2020,"doi":"10.61945/cjbar.2020.2.2.3","scope":"Phnom Penh/standard Khmer acoustic vowel system","status":"PRIMARY_PHONETIC_SOURCE"},
+{"id":"henderson1952","type":"phonological_description","title":"The Main features of Cambodian Pronunciation","year":1952,"journal":"Bulletin of the School of Oriental and African Studies 14(1):149–174","scope":"historically important description of Khmer register","status":"HISTORICAL_ANALYSIS"},
+{"id":"wayland2014","type":"phonetics","title":"Incipient tonogenesis in Phnom Penh Khmer: Acoustic and perceptual studies","scope":"Phnom Penh Khmer, phonetics and vowel/register development","status":"PHONETIC_ANALYSIS"}
+]

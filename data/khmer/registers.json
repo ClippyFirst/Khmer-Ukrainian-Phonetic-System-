@@ -1,0 +1,11 @@
+{
+  "registers":[
+    {"id":"first","traditional_labels":["first register","a-series"],"nominal_inherent_vowel":"-a","status":"ORTHOGRAPHICALLY_ESTABLISHED","source":"unicode17-ch16"},
+    {"id":"second","traditional_labels":["second register","o-series"],"nominal_inherent_vowel":"-o","status":"ORTHOGRAPHICALLY_ESTABLISHED","source":"unicode17-ch16"}
+  ],
+  "shifters":[
+    {"char":"៉","name":"MUUSIKATOAN","from":"second","to":"first","status":"ESTABLISHED","source":"unicode17-ch16"},
+    {"char":"៊","name":"TRIISAP","from":"first","to":"second","status":"ESTABLISHED","source":"unicode17-ch16"}
+  ],
+  "note":"Register is modelled as a structural property of Khmer orthography and vowel interpretation. Modern phonetic realization is analysis-dependent and dialect-sensitive."
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "rule_id":"R-COENG-UNIT",
+    "domain":"orthography",
+    "input":"U+17D2 + consonant",
+    "output":"subscript_consonant_unit",
+    "status":"ESTABLISHED",
+    "source":"unicode17-ch16"
+  },
+  {
+    "rule_id":"R-NIKAHIT",
+    "domain":"orthography",
+    "input":"U+17C6",
+    "output":"vowel_modifier_or_composite_vowel_component",
+    "status":"ESTABLISHED",
+    "source":"unicode17-ch16"
+  },
+  {
+    "rule_id":"R-TOANDAKHIAT",
+    "domain":"orthography",
+    "input":"U+17CD + base",
+    "output":"base_character_not_pronounced",
+    "status":"ESTABLISHED",
+    "source":"unicode18-names"
+  },
+  {
+    "rule_id":"R-REGISTER-SHIFTER",
+    "domain":"orthography_to_phonology",
+    "input":"MUUSIKATOAN/TRIISAP",
+    "output":"register_change",
+    "status":"ESTABLISHED",
+    "source":"unicode17-ch16"
+  }
+]

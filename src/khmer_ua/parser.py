@@ -9,6 +9,21 @@ INDEPENDENT_VOWELS={x["char"] for x in SIGNS if x.get("kind")=="independent_vowe
 def _lookup(ch):
     return next((x for x in CONSONANTS if x["char"]==ch), None)
 
+def _starts_new_orthographic_syllable(chars, i):
+    if not _lookup(chars[i]):
+        return False
+    if i == 0:
+        return False
+    # A consonant followed by COENG belongs structurally to the current
+    # orthographic syllable (e.g. the coda/onset architecture of សង្គ្រាម).
+    if i + 1 < len(chars) and chars[i+1] == COENG:
+        return False
+    # A consonant immediately following COENG is already consumed as a
+    # subscript and is handled by the main scanner.
+    if chars[i-1] == COENG:
+        return False
+    return True
+
 def segment_syllables(text: str) -> list[str]:
     units=[]; current=[]
     chars=list(text)
@@ -16,14 +31,17 @@ def segment_syllables(text: str) -> list[str]:
     while i < len(chars):
         ch=chars[i]
         if ch.isspace() or unicodedata.category(ch).startswith("P"):
-            if current: units.append("".join(current)); current=[]
+            if current:
+                units.append("".join(current)); current=[]
             units.append(ch); i+=1; continue
-        if current and _lookup(ch) and not (i>0 and chars[i-1]==COENG):
-            units.append("".join(current)); current=[ch]
+        if current and _starts_new_orthographic_syllable(chars, i):
+            units.append("".join(current))
+            current=[ch]
         else:
             current.append(ch)
         i+=1
-    if current: units.append("".join(current))
+    if current:
+        units.append("".join(current))
     return units
 
 def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
@@ -32,14 +50,21 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
     chars=list(n); i=0
     while i<len(chars):
         ch=chars[i]
-        if ch==COENG and i+1<len(chars):
+        if ch==COENG:
+            if i+1>=len(chars) or not _lookup(chars[i+1]):
+                s.status="INVALID_OR_UNSUPPORTED"
+                s.confidence=0.0
+                s.sources=["unicode17-ch16"]
+                return s
             sub=chars[i+1]
             s.subscripts.append(sub)
             s.graphemes.append(KhmerGrapheme(COENG+sub,"subscript",(f"U+{ord(COENG):04X}",f"U+{ord(sub):04X}")))
-            i+=2; continue
+            i+=2
+            continue
         c=_lookup(ch)
         if c:
-            if s.base_consonant is None: s.base_consonant=ch
+            if s.base_consonant is None:
+                s.base_consonant=ch
             s.graphemes.append(KhmerGrapheme(ch,"consonant",(f"U+{ord(ch):04X}",)))
         elif ch in INDEPENDENT_VOWELS:
             s.independent_vowel=ch

@@ -1,0 +1,19 @@
+system,segment,ipa,output,status,notes
+RU,pʰ,pʰ,пх,evidence-supported,aspiration retained
+RU,tʰ,tʰ,тх,evidence-supported,aspiration retained
+RU,kʰ,kʰ,кх,evidence-supported,aspiration retained
+RU,ŋ,ŋ,нг,evidence-supported,velar nasal
+RU,ɲ,ɲ,нь,evidence-supported,palatal nasal
+RU,ʔ,ʔ,к|∅,evidence-supported,position-dependent
+RU,w,w,у,evidence-supported,glide absorbed in some outputs
+SR,all,,NOT_ESTABLISHED,evidence-limited,no separate authoritative Khmer practical standard located
+BG,ŋ|c,ŋ|c,ŋ|c,documented-example,phonetic transcription in Bulgarian academic material; not a Cyrillic standard
+UA,pʰ,pʰ,п,proposed,aspiration retained in IPA only by default
+UA,tʰ,tʰ,т,proposed,aspiration retained in IPA only by default
+UA,kʰ,kʰ,к,proposed,aspiration retained in IPA only by default
+UA,c,c,ч,proposed,phonetic realization and Ukrainian target inventory
+UA,ɲ,ɲ,нь,proposed,palatalized n target
+UA,ŋ,ŋ,нг,proposed,transparent digraph
+UA,ʔ,ʔ,∅,proposed,no dedicated Ukrainian grapheme
+UA,ʋ~w,ʋ~w,в,proposed,Ukrainian /ʋ/ target
+UA,h,h,г,proposed,uses Ukrainian /ɦ/ as broad target

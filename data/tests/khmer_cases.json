@@ -1,0 +1,10 @@
+[
+  {"id":"STRUCT-001","input":"ខ្ញុំ","type":"orthographic_cluster","expected":{"base":"ខ","subscripts":["ញ"],"status":"ESTABLISHED_STRUCTURE"},"evidence":["unicode17-ch16"]},
+  {"id":"STRUCT-002","input":"សង្គ្រាម","type":"orthographic_cluster","expected":{"subscripts":["គ","រ"]},"evidence":["unicode17-ch16"]},
+  {"id":"STRUCT-003","input":"ឥ","type":"independent_vowel","expected":{"independent_vowel":"ឥ"},"evidence":["unicode17-ch16"]},
+  {"id":"STRUCT-004","input":"កគ","type":"register_contrast","expected":{"registers":["first","second"]},"evidence":["unicode17-ch16"]},
+  {"id":"TARGET-001","input_ipa":["kʰ","a"],"type":"practical_target","expected_ukrainian":"ка","status":"PROPOSED"},
+  {"id":"TARGET-002","input_ipa":["ŋ","a"],"type":"practical_target","expected_ukrainian":"нга","status":"PROPOSED"},
+  {"id":"TARGET-003","input_ipa":["ɲ","o"],"type":"practical_target","expected_ukrainian":"ньо","status":"PROPOSED"},
+  {"id":"PROFILE-001","input_ipa":"krɑː","type":"pronunciation_profile","expected":{"careful_standard":"krɑː","phnom_penh_colloquial":"kʰɑː"},"evidence":["kirby2014","wayland2005"]}
+]

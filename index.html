@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-ancestors 'none'">
+<meta name="description" content="Khmer → українська практична транскрипція. Локальний дослідницький сервіс.">
+<title>ខ្មែរ / УКРАЇНСЬКА</title>
+<link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+<main class="shell">
+<header class="header">
+  <div class="topline"><a class="brand" href="./index.html"><span class="mark">ខ</span><span>ខ្មែរ / УКРАЇНСЬКА</span></a><span class="local"><i></i> локальна обробка</span></div>
+  <div class="hero"><p class="eyebrow">Khmer → Ukrainian · practical transcription</p><h1>Кхмерський текст,<br><em>українське читання.</em></h1><p class="lead">Дослідницький інструмент для передачі кхмерського письма українською. Не перекладає значення: аналізує структуру, вимову та українську практичну відповідність.</p></div>
+</header>
+
+<section class="workspace" aria-labelledby="input-title">
+  <div class="bar"><div class="section-title"><span class="num">A</span><div><small>ВХІД</small><h2 id="input-title">Кхмерський текст</h2></div></div><span id="count" class="muted">0 символів</span></div>
+  <label class="sr" for="source">Введіть кхмерський текст</label>
+  <div class="input-frame"><textarea id="source" rows="6" spellcheck="false" lang="km" placeholder="ឧទាហរណ៍៖ ខ្មែរ"></textarea><div class="hint"><span>Unicode Khmer</span><span>без сервера</span></div></div>
+  <div class="controls">
+    <div><small>ПРОФІЛЬ ВИМОВИ</small><select id="profile"><option value="careful_standard">Обережний / стандартний</option><option value="phnom_penh_colloquial">Пномпень · колоквіальний</option><option value="established_form">Встановлена форма</option></select></div>
+    <button id="example" class="button primary">Приклад <b>↗</b></button><button id="clear" class="button">Очистити</button>
+  </div>
+</section>
+
+<section id="empty" class="empty"><span class="empty-mark">ខ</span><div><strong>Тут з’явиться результат</strong><p>Вставте кхмерський текст або відкрийте приклад.</p></div></section>
+
+<section id="results" class="results" hidden aria-labelledby="result-title">
+  <div class="bar"><div class="section-title"><span class="num">B</span><div><small>ВИХІД</small><h2 id="result-title">Результат</h2></div></div><span id="status" class="status"></span></div>
+  <div class="result-grid">
+    <article class="result-card source-card"><div class="meta"><span>01</span><div><h3>Кхмерський текст</h3><p>Оригінальне письмо</p></div><button data-copy="source-result">Копіювати</button></div><div id="source-result" class="value khmer" lang="km"></div></article>
+    <article class="result-card"><div class="meta"><span>02</span><div><h3>IPA</h3><p>Лише коли вимову встановлено для цього запису</p></div><button data-copy="ipa-result">Копіювати</button></div><div id="ipa-result" class="value ipa" lang="und-fonipa"></div></article>
+    <article class="result-card ua-card"><div class="meta"><span>03</span><div><h3>Українська практична форма</h3><p>Запропонована авторська система</p></div><button data-copy="ua-result">Копіювати</button></div><div id="ua-result" class="value ua" lang="uk"></div></article>
+  </div>
+  <div id="details" class="details"></div>
+</section>
+
+<section id="issue" class="issue" hidden aria-live="polite"><b>!</b><div><strong>Результат потребує обережності</strong><p id="issue-text"></p></div></section>
+
+<section class="system-teaser"><div><small>АВТОРСЬКА СИСТЕМА</small><h2>Чому саме так?</h2><p>Система не є офіційним національним стандартом. Вона відокремлює кхмерську орфографію, фонетику та українське графічне рішення й показує межі доказовості.</p></div><a href="./system.html">Пояснення системи <span>↗</span></a></section>
+
+<footer><div><strong>ខ្មែរ / УКРАЇНСЬКА</strong><span>Research-grade practical transcription · 2026</span></div><div><span>ClippyFirst / Khmer-Ukrainian-Phonetic-System-</span><a href="https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-" target="_blank" rel="noreferrer">GitHub ↗</a></div></footer>
+<p id="live" class="sr" aria-live="polite"></p>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body></html>

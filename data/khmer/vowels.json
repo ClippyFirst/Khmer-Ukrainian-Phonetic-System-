@@ -1,0 +1,33 @@
+{
+  "scope":"contemporary Khmer descriptive model; phonetic values are evidence-backed inventories and representative mappings, not a complete deterministic orthography-to-IPA table",
+  "sources":["r12a-orthography","chem2020"],
+  "inherent_vowels":[
+    {"series":"first","ipa":"ɑː","status":"WELL_SUPPORTED","source":"r12a-orthography"},
+    {"series":"second","ipa":"ɔː","status":"WELL_SUPPORTED","source":"r12a-orthography"}
+  ],
+  "plain_vowels":[
+    {"ipa":"i","length":"short"},{"ipa":"iː","length":"long"},{"ipa":"ɨ","length":"short"},{"ipa":"ɨː","length":"long"},
+    {"ipa":"u","length":"short"},{"ipa":"uː","length":"long"},{"ipa":"e","length":"short"},{"ipa":"eː","length":"long"},
+    {"ipa":"ə","length":"short"},{"ipa":"əː","length":"long"},{"ipa":"o","length":"short"},{"ipa":"oː","length":"long"},
+    {"ipa":"ɛː","length":"long"},{"ipa":"ɔː","length":"long"},{"ipa":"a","length":"short"},{"ipa":"aː","length":"long"},
+    {"ipa":"ɑ","length":"short"},{"ipa":"ɑː","length":"long"}
+  ],
+  "complex_vowels":["iə","ɨə","uə","ŭə","ei","ĕə","ou","ŏə","əɨ","ɔə","ae","aə","ao"],
+  "orthographic_principles":[
+    {"rule_id":"V-CLASS-001","statement":"The same dependent vowel sign may have different phonetic realizations after first- and second-series consonants.","status":"WELL_SUPPORTED","source":"r12a-orthography"},
+    {"rule_id":"V-LENGTH-001","statement":"Vowel length is contrastive and is encoded by different vowel signs in many cases; practical Ukrainian output normally neutralizes length unless a dedicated research mode preserves it.","status":"WELL_SUPPORTED","source":"r12a-orthography"},
+    {"rule_id":"V-HARMONY-001","statement":"Vowel harmony can affect the apparent series of a following syllable in relevant lexical environments; exceptions exist.","status":"ANALYSIS_DEPENDENT","source":"r12a-orthography"},
+    {"rule_id":"V-STRESS-001","statement":"Unstressed vowels may reduce, especially in bisyllabic words; this is a pronunciation-profile phenomenon rather than a universal spelling substitution.","status":"DIALECT_DEPENDENT","source":"r12a-orthography"},
+    {"rule_id":"V-NIKAHIT-001","statement":"U+17C6 NIKAHIT participates in vowel/coda patterns and cannot be mapped as a simple independent vowel.","status":"WELL_SUPPORTED","source":"r12a-orthography"},
+    {"rule_id":"V-REAHMUK-001","statement":"U+17C7 REAHMUK represents /h/ as a coda and also affects the preceding nucleus; it is not a generic vowel letter.","status":"WELL_SUPPORTED","source":"r12a-orthography"}
+  ],
+  "representative_series_contrasts":[
+    {"orthography":["ក"],"series":"first","ipa":"kɑː","source":"r12a-orthography"},
+    {"orthography":["គ"],"series":"second","ipa":"kɔː","source":"r12a-orthography"},
+    {"orthography":["ក","ី"],"series":"first","ipa":"kəj","source":"r12a-orthography"},
+    {"orthography":["គ","ី"],"series":"second","ipa":"kiː","source":"r12a-orthography"},
+    {"orthography":["ក","ា"],"series":"first","ipa":"kaː","source":"r12a-orthography"},
+    {"orthography":["គ","ា"],"series":"second","ipa":"kiə","source":"r12a-orthography"}
+  ],
+  "coverage_policy":"Do not infer an exact IPA value for every vowel sign from the sign name alone. The future full matrix must condition on series, syllable openness/coda, stress, harmony, lexical category and pronunciation profile."
+}

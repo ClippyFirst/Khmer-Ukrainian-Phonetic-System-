@@ -2,20 +2,24 @@
 
 ## Scope
 
-This layer reproduces the comparative logic developed for the Thai project without copying Thai-specific rules:
+This layer reproduces the comparative logic developed for the Thai → Ukrainian project without copying Thai-specific rules:
 
 source orthography → source phonology/phonetics → IPA → existing practical traditions → Ukrainian phonological target → Ukrainian practical orthography.
 
 The Russian practical tradition is a comparator, not the Ukrainian target. Serbian and Bulgarian are included only where evidence exists.
 
-## Russian practical tradition
+## Evidence status of the compared systems
 
-The documented Russian system is unusually useful as a comparator because it is positional and explicitly handles aspiration, complex onsets, velar nasal, palatal consonants, vowels and diphthongs. It uses forms such as пх, тх and кх for aspirated onsets, нг for /ŋ/, нь for /ɲ/, and gives special rules for glottal stop and clusters. Its cited basis includes the 1967 instructions for Cambodian geographical names and Serdyuchenko's Russian transcription tradition.
+### Russian
+
+The current Russian source is a secondary web reproduction that cites the 1967 Cambodian geographical-name instructions, Gorgoniyev and Serdyuchenko. It is therefore strong comparative evidence for **what the Russian practical tradition does**, but it is not yet treated as a primary scanned standard in this repository.
+
+The documented convention includes positional treatment of aspiration, complex onsets, /ŋ/, /ɲ/, vowels/diphthongs and glottal stop.
 
 Useful properties:
 - distinguishes onset and coda behavior;
 - exposes /ŋ/ as нг;
-- explicitly represents aspiration;
+- explicitly represents aspiration in many onset contexts;
 - treats clusters rather than blindly substituting letters.
 
 Problems for direct Ukrainian copying:
@@ -25,11 +29,11 @@ Problems for direct Ukrainian copying:
 - Russian vowel choices are approximations, not evidence of Ukrainian equivalence;
 - conventional exonyms must not be confused with a productive algorithm.
 
-## Serbian
+### Serbian
 
-A separate authoritative Serbian Khmer practical-transcription standard was not established in the present evidence search. Serbian therefore has status evidence-limited. Individual Serbian spellings may be collected later from maps, academic works or editorial sources, but they must not be promoted to a Serbian standard without a primary source.
+A separate authoritative Serbian Khmer practical-transcription standard was not established in the present evidence search. Serbian therefore has status **evidence-limited**. Individual Serbian spellings may be collected later from maps, academic works or editorial sources, but they must not be promoted to a Serbian standard without a primary source.
 
-## Bulgarian
+### Bulgarian
 
 A Bulgarian-language International Linguistics Olympiad problem provides explicit Latin phonetic transcription of Khmer material and distinguishes short/long vowels and sounds such as /ŋ/ and /c/. This is useful evidence that Bulgarian academic material can represent Khmer phonetics, but it is not a Bulgarian Cyrillic practical-transcription standard.
 
@@ -47,16 +51,16 @@ The canonical Ukrainian inventory is external and comes from ClippyFirst/Ukraini
 | /d, ɗ/ | д | — | nearest voiced coronal target |
 | /k/ | к | — | direct target |
 | /kʰ/ | к | кх | aspiration kept in IPA, not default spelling |
-| /c/ | ч | — | commonly realized as [t͡ʃ] |
+| /c/ | ч | — | commonly realized as [t͡ʃ] in descriptive sources |
 | /cʰ/ | ч | чх | same practical affricate target |
 | /ɲ/ | нь | — | Ukrainian has /nʲ/ and the orthographic sequence нь |
 | /ŋ/ | нг | — | transparent Ukrainian digraph |
 | /r/ | р | ∅ | careful/standard versus documented Phnom Penh loss |
 | /l/ | л | — | direct target |
-| /ʋ~w/ | в | — | Ukrainian /ʋ/ is the closest target inventory representation |
+| /ʋ~w/ | в | — | Ukrainian /ʋ/ is a practical target approximation |
 | /j/ | й | — | direct target |
 | /s/ | с | — | direct target |
-| /h/ | г | х | Ukrainian /ɦ/ is structurally closer than /x/; this is a target approximation |
+| /h/ | г | х | Ukrainian /ɦ/ is a project target approximation, not IPA identity |
 | /ʔ/ | ∅ | ʼ | no independent Ukrainian glottal-stop grapheme |
 
 ### Why aspiration is not automatically written as х
@@ -79,7 +83,7 @@ Khmer glottal stop is a real source-level segment in the phonological/phonetic a
 
 ## Vowels
 
-Khmer has a much richer vowel system than Ukrainian. Contemporary Phnom Penh acoustic work reports a large inventory and shows that vowel quality is affected by syllable structure and dialect.
+Khmer has a much richer vowel system than Ukrainian. Contemporary Phnom Penh acoustic work reports a large inventory and shows that vowel quality is affected by syllable structure, register and dialect.
 
 Initial practical reduction:
 
@@ -112,9 +116,12 @@ Khmer is not treated as a lexical tone language in the core standard model. The 
 
 ## Status
 
-Russian: evidence-supported comparator.
+Russian: evidence-supported comparator, but current source record is secondary.
+
 Serbian: evidence-limited; no separate normative system established.
+
 Bulgarian: academic phonetic evidence, not a Cyrillic practical standard.
+
 Ukrainian: proposed research layer, not an official standard and not yet empirically validated.
 
 No accuracy percentage is assigned without a versioned adjudicated corpus.

@@ -2,7 +2,7 @@
 
 Research-grade reference implementation for developing a **Ukrainian practical system for transmitting Khmer in Ukrainian Cyrillic**.
 
-> **Status: FOUNDATION / EVIDENCE-LIMITED.** The repository explicitly distinguishes established script facts, linguistic analyses, project decisions and unresolved cases.
+> **Status: RESEARCH FOUNDATION + LOCAL WEB SERVICE.** The repository explicitly distinguishes established script facts, linguistic analyses, project decisions and unresolved cases. The web service is deliberately conservative: it exposes supported phoneticizations and marks uncovered forms instead of silently guessing.
 
 ## What this project is
 
@@ -13,6 +13,24 @@ The active research pipeline is:
 It is **not** a Khmer character-to-character transliterator and it is not primarily a Khmer romanization converter.
 
 The practical Ukrainian layer is a project proposal. It is not an official Ukrainian national standard.
+
+## Web service
+
+The repository now contains the two-page public web layer:
+
+- `index.html` — the Khmer → Ukrainian service.
+- `system.html` — explanation of the author's practical transcription system.
+
+The visual direction is intentionally based on **Cambodia's blue, red and white national palette**, used as controlled accents within an editorial, typographic research-tool design. The structure follows the user's established Chinese service pattern while keeping Khmer-specific linguistic logic independent.
+
+The browser service is:
+
+- static and local-first;
+- free of runtime API dependencies;
+- free of analytics/telemetry;
+- Unicode-safe for Khmer and Ukrainian;
+- explicit about `PROPOSED`, `EVIDENCE_LIMITED` and `NOT_ESTABLISHED` states;
+- backed by the repository's research policy rather than duplicated UI-only correspondence tables.
 
 ## Scope
 
@@ -82,28 +100,41 @@ The complete lexical vowel-sign × context → IPA matrix is still an open resea
 
 ## Repository structure
 
-- data/khmer/ — Khmer orthographic and phonological evidence.
-- data/comparative/ — Russian/Serbian/Bulgarian/Ukrainian comparative material.
-- data/ukrainian/ — proposed Ukrainian target policy.
-- data/tests/ — provenance-bearing validation cases.
-- schemas/ — machine-readable schemas.
-- src/khmer_ua/ — implementation.
-- tests/ — regression tests.
-- docs/ — methodology, system specification, implementation, validation and references.
+- `data/khmer/` — Khmer orthographic and phonological evidence.
+- `data/comparative/` — Russian/Serbian/Bulgarian/Ukrainian comparative material.
+- `data/ukrainian/` — proposed Ukrainian target policy.
+- `data/tests/` — provenance-bearing validation cases.
+- `schemas/` — machine-readable schemas.
+- `src/khmer_ua/` — implementation.
+- `tests/` — regression tests.
+- `docs/` — methodology, system specification, implementation, validation and references.
+- `index.html` / `system.html` — static web service.
 
-## Use
+## Web development
 
-Install the package in a Python 3.11+ environment and run the test suite with pytest.
+The web layer is dependency-light and uses native browser APIs. The included structural check can be run with:
+
+`npm test`
+
+It verifies the presence of the two-page architecture, the real browser engine adapter, explicit unresolved states, and the documented pronunciation profiles.
+
+The web requirements are frozen in:
+
+- `docs/superpowers/specs/2026-10-05-khmer-web-service-requirements.md`
+
+## Python package
+
+Install the package in a Python 3.11+ environment and run the research test suite with pytest.
 
 The public API exposes:
 
-- analyze()
-- render_ipa_profile()
-- map_segment()
-- map_sequence()
-- explain_segment()
+- `analyze()`
+- `render_ipa_profile()`
+- `map_segment()`
+- `map_sequence()`
+- `explain_segment()`
 
-The current parser intentionally returns an explicit NOT ESTABLISHED state instead of inventing IPA where the complete source-language analysis is not implemented.
+The current research parser intentionally returns an explicit NOT ESTABLISHED state instead of inventing IPA where the complete source-language analysis is not implemented.
 
 ## Research status
 
@@ -118,28 +149,35 @@ Implemented:
 - comparative Cyrillic research layer;
 - proposed Ukrainian practical target layer;
 - pronunciation-profile abstraction;
-- evidence registry and provenance-bearing test corpus.
+- evidence registry and provenance-bearing test corpus;
+- two-page static web service;
+- conservative browser adapter with explicit unresolved states;
+- Cambodia-oriented visual design system;
+- structural web tests.
 
-Not yet established:
+Still not established as a complete linguistic engine:
 
 - complete orthography-to-IPA conversion for every Khmer vowel combination;
 - corpus-calibrated Ukrainian candidate ranking;
 - empirical accuracy;
 - a normative Ukrainian Khmer transcription standard.
 
+Accordingly, the web service is **production-structured but linguistically coverage-limited**. It must not be marketed as a complete automatic Khmer transliterator until the full orthography → IPA matrix and adjudicated corpus are completed.
+
 ## Documentation
 
-- docs/methodology.md
-- docs/phonology.md
-- docs/system-specification.md
-- docs/comparative-cyrillic-systems.md
-- docs/ukrainian-practical-transcription.md
-- docs/implementation.md
-- docs/validation.md
-- docs/evidence.md
-- docs/references.md
-- docs/limitations.md
-- docs/repository-audit.md
+- `docs/methodology.md`
+- `docs/phonology.md`
+- `docs/system-specification.md`
+- `docs/comparative-cyrillic-systems.md`
+- `docs/ukrainian-practical-transcription.md`
+- `docs/implementation.md`
+- `docs/validation.md`
+- `docs/evidence.md`
+- `docs/references.md`
+- `docs/limitations.md`
+- `docs/repository-audit.md`
+- `docs/superpowers/specs/2026-10-05-khmer-web-service-requirements.md`
 
 ## Research integrity
 

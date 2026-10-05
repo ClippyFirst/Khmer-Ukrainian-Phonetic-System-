@@ -9,19 +9,19 @@
   },
   {
     "rule_id":"R-NIKAHIT",
-    "domain":"orthography",
+    "domain":"orthography_to_phonology",
     "input":"U+17C6",
-    "output":"vowel_modifier_or_composite_vowel_component",
-    "status":"ESTABLISHED",
-    "source":"unicode17-ch16"
+    "output":"coda_and_nucleus_effect_requires_context",
+    "status":"WELL_SUPPORTED",
+    "source":"r12a-orthography"
   },
   {
-    "rule_id":"R-TOANDAKHIAT",
-    "domain":"orthography",
-    "input":"U+17CD + base",
-    "output":"base_character_not_pronounced",
-    "status":"ESTABLISHED",
-    "source":"unicode18-names"
+    "rule_id":"R-REAHMUK",
+    "domain":"orthography_to_phonology",
+    "input":"U+17C7",
+    "output":"coda_h_and_nucleus_effect_requires_context",
+    "status":"WELL_SUPPORTED",
+    "source":"r12a-orthography"
   },
   {
     "rule_id":"R-REGISTER-SHIFTER",

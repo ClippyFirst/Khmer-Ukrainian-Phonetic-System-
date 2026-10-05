@@ -1,32 +1,47 @@
 # Architecture
 
-unicode normalization
-→ graphemes
-→ orthographic syllables
-→ register / inherent-vowel resolution
-→ vowels / clusters / codas
-→ Khmer phonology
-→ context-sensitive rules
-→ surface phonetics / IPA
-→ features
-→ Ukrainian target adapter
-→ Ukrainian orthography
+The active architecture is:
 
-The implementation is data-driven. Linguistic data belongs under data/; Python orchestrates interpretation and validation.
+Khmer Unicode
+→ normalization
+→ orthographic graphemes
+→ orthographic-syllable structure
+→ consonant class/register + vowel-sign analysis
+→ source phonology
+→ contextual phonetics / IPA
+→ Ukrainian target candidates
+→ Ukrainian practical orthography.
 
-Current foundation:
-- Unicode normalization
-- conservative orthographic segmentation
-- consonant/register metadata
-- coeng/subscript recognition
-- independent/dependent vowel recognition
-- evidence metadata
-- CLI/API foundation
-- negative tests
+## Authoritative layers
+
+- data/khmer/: Khmer linguistic and orthographic data.
+- data/comparative/: external practical-transcription comparisons.
+- data/ukrainian/: project-specific Ukrainian target policy.
+- schemas/: machine-readable structural contracts.
+- src/khmer_ua/: deterministic implementation.
+- tests/: regression and structural validation.
+- docs/: methodology and public specification.
+
+There is deliberately no copied Ukrainian phonetic inventory: the canonical Ukrainian inventory is an external dependency.
+
+## Important boundary
+
+Orthographic parsing can be deterministic even when phonetic realization is not. A parser result such as "second-series consonant + vowel sign" is therefore not equivalent to an IPA claim.
+
+## Current implementation status
+
+Implemented:
+- Unicode normalization;
+- conservative grapheme parsing;
+- coeng/subscript recognition;
+- consonant register metadata;
+- independent/dependent vowel recognition;
+- structural validation;
+- comparative Cyrillic layer;
+- proposed Ukrainian target renderer.
 
 Not yet complete:
-- full phonological rule engine
-- complete IPA realization
-- feature-distance ranking
-- external Ukrainian inventory adapter
-- empirical benchmark
+- full lexical orthography-to-IPA engine;
+- exhaustive vowel-sign matrix;
+- corpus-derived candidate ranking;
+- empirical Ukrainian benchmark.

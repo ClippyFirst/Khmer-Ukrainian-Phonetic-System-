@@ -79,7 +79,7 @@ if (fixtures["ខ្ញុំ"].ipa !== "/kʰɲom/" || fixtures["ខ្ញុំ
 if (fixtures["សង្គ្រាម"].ipa !== "/sɔŋkrɛəm/" || fixtures["សង្គ្រាម"].ua !== "сонгкреам") throw new Error("សង្គ្រាម fixture must resolve to /sɑŋ.kriəm/ → сангкрієм");
 if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "хаеі") throw new Error("ហើយ fixture must resolve to /haəj/ → хаей");
 if (sourceGuard.includes("const SHIFTER_ELIGIBILITY") === false) throw new Error("Khmer shifter eligibility guard missing");
-if (!sourceGuard.includes("base.char not")) throw new Error("Khmer shifter eligibility is not enforced");
+if (!sourceGuard.includes("SHIFTER_ELIGIBILITY[shifter]")) throw new Error("Khmer shifter eligibility is not enforced");
 for (const key of ["ɓ", "ʋ"]) {
   if (js.includes('"onset_ipa":"' + key + '~')) throw new Error("canonical initial onset remains ambiguous: " + key);
 }

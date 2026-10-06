@@ -69,4 +69,15 @@ if (!sourceGuard.includes("if (invalidCount > 0 && invalidCount === items.length
 for (const key of ["ក","គ","កូ","គូ","កេ","គេ","កែ","គែ","កើ","គើ","កៅ","គៅ"]) {
   if (!fixtures[key]) throw new Error("representative series fixture missing: " + key);
 }
+for (const key of ["ɓ", "ʋ"]) {
+  if (js.includes('"onset_ipa":"' + key + '~')) throw new Error("canonical initial onset remains ambiguous: " + key);
+}
+if (!js.includes("function deriveDeterministicIpa")) throw new Error("deterministic inherent-vowel derivation missing");
+if (!js.includes('status: "PROPOSED"') || !js.includes('const inherent = analysis.register === "first" ? "ɑː" : "ɔː"')) {
+  throw new Error("deterministic consonant-unit rendering is incomplete");
+}
+if (!js.includes('mapping_check: { policy_render: mapped.value, lexical_render: null, agrees: true }')) {
+  throw new Error("derived units do not expose policy mapping verification");
+}
 console.log("mixed-input status and series coverage guards: PASS");
+console.log("deterministic consonant-unit guards: PASS");

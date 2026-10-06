@@ -13,6 +13,10 @@ const VOWEL_SIGNS = new Set(
 );
 const COENG = "្";
 const SHIFTERS = new Set(["៉", "៊"]);
+const SHIFTER_ELIGIBILITY = {
+  "៉": new Set(["ង", "ញ", "ន", "ម", "យ", "រ", "ល", "វ", "ឝ"]),
+  "៊": new Set(["ប", "ឞ", "ស", "ហ", "អ"]),
+};
 const PUNCTUATION = /^\s|^[។៕,!?;:()[\]{}"“”«»]$/u;
 const PROFILES = new Set(["careful_standard", "phnom_penh_colloquial", "established_form"]);
 const SEGMENTS = Object.keys(practicalPolicy.segments).sort((a, b) => b.length - a.length);
@@ -90,6 +94,7 @@ function resolveRegister(base, raw) {
   if (positions.length > 1) return { register: base.register, rule: "MULTIPLE_REGISTER_SHIFTERS", status: "EVIDENCE_LIMITED" };
   if (positions[0] !== 1) return { register: base.register, rule: "MISPLACED_REGISTER_SHIFTER", status: "EVIDENCE_LIMITED" };
   const shifter = raw[positions[0]];
+  if (!SHIFTER_ELIGIBILITY[shifter]?.has(base.char)) return { register: base.register, rule: "NON_STANDARD_SHIFTER_USE", status: "EVIDENCE_LIMITED" };
   if (base.char === "ប" && shifter === "៉") return { register: "first", rule: "BA_TO_PA_EXCEPTION", status: "ESTABLISHED_STRUCTURE" };
   if (shifter === "៉" && base.register === "second") return { register: "first", rule: "MUUSIKATOAN", status: "ESTABLISHED_STRUCTURE" };
   if (shifter === "៊" && base.register === "first") return { register: "second", rule: "TRIISAP", status: "ESTABLISHED_STRUCTURE" };

@@ -64,7 +64,7 @@ if (fixtures["ភាសាខ្មែរ"].ua !== "пієса кмае") throw 
 console.log("IPA boundary and phrase guards: PASS");
 
 
-if (!/function combineStatus\(items\)[\s\S]*?if \(statuses\.has\("INVALID_OR_UNSUPPORTED"\)\)[\s\S]*?return "INVALID_OR_UNSUPPORTED"/u.test(sourceGuard)) throw new Error("aggregate status guard missing");
+if (!sourceGuard.includes("const invalidCount = items.filter")) throw new Error("aggregate invalid-count guard missing");
 if (!sourceGuard.includes('if (invalidCount === items.length) return "INVALID_OR_UNSUPPORTED";')) throw new Error("mixed-input invalid isolation guard missing");
 for (const key of ["ក","គ","កូ","គូ","កេ","គេ","កែ","គែ","កើ","គើ","កៅ","គៅ"]) {
   if (!fixtures[key]) throw new Error("representative series fixture missing: " + key);

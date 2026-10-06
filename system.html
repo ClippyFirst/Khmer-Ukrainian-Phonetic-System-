@@ -1,33 +1,143 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-ancestors 'none'">
 <meta name="description" content="Методологія авторської системи Khmer → Ukrainian.">
-<title>Система / ខ្មែរ → УКРАЇНСЬКА</title><link rel="stylesheet" href="./src/styles/main.css">
+<title>Система / ខ្មែរ → УКРАЇНСЬКА</title>
+<link rel="stylesheet" href="./src/styles/main.css">
 </head>
-<body><main class="shell">
-<header class="header compact"><div class="topline"><a class="brand" href="./index.html"><span class="mark">ខ</span><span>ខ្មែរ / УКРАЇНСЬКА</span></a><a class="back" href="./index.html">← сервіс</a></div><div class="hero"><p class="eyebrow">Авторська система · research specification</p><h1>Як кхмерське письмо<br><em>стає українським.</em></h1><p class="lead">Це не таблиця «літера → літера». Система моделює шлях від кхмерської графіки через структуру складу та вимову до практичного українського написання.</p></div></header>
+<body>
+<main class="shell">
+<header class="header compact">
+  <div class="topline"><a class="brand" href="./index.html"><span class="mark">ខ</span><span>ខ្មែរ / УКРАЇНСЬКА</span></a><a class="back" href="./index.html">← сервіс</a></div>
+  <div class="hero">
+    <p class="eyebrow">Авторська система · research specification</p>
+    <h1>Як кхмерське письмо<br><em>стає українським.</em></h1>
+    <p class="lead">Це не таблиця «літера → літера». Система моделює шлях від кхмерської графіки через структуру складу, регістр, фонологію та встановлену вимову до практичного українського написання.</p>
+  </div>
+</header>
 
 <div class="doc">
-<section><span class="docno">01</span><h2>Що це за система</h2><p>Пропонована українська практична система для сучасної кхмерської мови. Її призначення — дати українському читачеві відтворюваний спосіб передавання іншомовної назви або слова, не приписуючи українській формі статусу офіційного стандарту.</p><div class="callout"><b>Ключовий принцип</b><span>кхмерська орфографія → графемна структура → фонологія → поверхнева фонетика / IPA → українська цільова відповідність → український запис</span></div></section>
-<section><span class="docno">02</span><h2>Чому не «символ у символ»</h2><p>Кхмерська система письма використовує дві серії приголосних, залежні голосні, підрядкові приголосні та знаки, значення яких залежить від структури складу. Один і той самий голосний знак може реалізуватися по-різному після першої та другої серії. Тому пряме зіставлення графем створює систематичні помилки.</p></section>
-<section><span class="docno">03</span><h2>Приголосні: українська ціль</h2><table><thead><tr><th>IPA</th><th>Українська</th><th>Статус</th><th>Примітка</th></tr></thead><tbody>
-<tr><td>/p, pʰ/</td><td>п</td><td>PROPOSED</td><td>аспірація нейтралізується в базовому практичному режимі</td></tr>
-<tr><td>/t, tʰ/</td><td>т</td><td>PROPOSED</td><td>альтернатива тх може бути режимом сумісності</td></tr>
-<tr><td>/k, kʰ/</td><td>к</td><td>PROPOSED</td><td>кх — альтернативний спосіб збереження аспірації</td></tr>
-<tr><td>/c, cʰ/</td><td>ч</td><td>PROPOSED</td><td>не ототожнюється з українським фонемним рядом за походженням</td></tr>
-<tr><td>/ɲ/</td><td>нь</td><td>PROPOSED</td><td>практична українська передача</td></tr>
-<tr><td>/ŋ/</td><td>нг</td><td>PROPOSED</td><td>збереження носового місця артикуляції</td></tr>
-<tr><td>/h/</td><td>г</td><td>PROPOSED</td><td>цільова українська апроксимація, не фонетична тотожність</td></tr>
-<tr><td>/ʔ/</td><td>∅</td><td>PROPOSED</td><td>нейтралізація у практичному режимі; не твердження про нульову фонетику</td></tr>
-</tbody></table></section>
-<section><span class="docno">04</span><h2>Голосні: контекст важливіший за знак</h2><p>Базовий інвентар містить /i, ɨ, u, e, ə, o, ɛ, ɔ, a, ɑ/ та довгі відповідники; складні голосні утворюють окрему групу. Цей проєкт не видає просту таблицю «знак → одна IPA-форма». Серія приголосного, відкритість/закритість складу, довжина, гармонійні та лексичні умови можуть змінювати реалізацію.</p><div class="matrix"><div><b>Перша серія</b><strong>ក</strong><span>/kɑː/</span></div><div><b>Друга серія</b><strong>គ</strong><span>/kɔː/</span></div><div><b>Перша серія + ី</b><strong>កី</strong><span>/kəj/</span></div><div><b>Друга серія + ី</b><strong>គី</strong><span>/kiː/</span></div></div></section>
-<section><span class="docno">05</span><h2>Профілі вимови</h2><p>Обережний стандартний профіль зберігає документовану форму. Окремий профіль Пномпеня враховує засвідчену втрату /r/ у частині початкових кластерів із супровідними фонетичними наслідками. Це не означає, що колоквіальна форма замінює стандартну.</p></section>
-<section><span class="docno">06</span><h2>Порівняння з російською практикою</h2><p>Російська практична транскрипція використовується як порівняльний шар, а не як джерело української норми. Вона корисна для виявлення усталених рішень щодо аспірації, /ŋ/, /ɲ/ та кластерів, але її російськомовні графемні й фонетичні компроміси не переносяться автоматично.</p><p class="muted">Джерело порівняння: російська практична транскрипція кхмерської; у репозиторії вона позначена як secondary evidence. Для географічних назв у російському матеріалі згадується інструкція 1967 року.</p></section>
-<section><span class="docno">07</span><h2>Що система не стверджує</h2><ul><li>це не офіційний український державний стандарт;</li><li>це не машинний перекладач;</li><li>це не повний доказ того, що кожна кхмерська графема має одну вимову;</li><li>це не емпірична «точність у відсотках» без gold corpus;</li><li>невстановлена форма не повинна тихо перетворюватися на вигадану IPA.</li></ul></section>
-<section><span class="docno">08</span><h2>Доказовість і статус</h2><p>Структуру письма спираємо на Unicode; опис голосних і орфографічних залежностей — на сучасні описові матеріали та акустичні дослідження; окремі вимовні профілі — на дослідження фонетики Пномпеня. Авторські українські відповідності мають статус PROPOSED.</p><div class="sources"><span>Unicode Khmer · Chapter 16</span><span>Chem & Chem · 2020 · Standard Khmer vowel system</span><span>Kirby · 2014 · Incipient tonogenesis / Phnom Penh Khmer</span><span>UNGEGN · Transliteration of Khmer Writing</span></div></section>
-<section><span class="docno">09</span><h2>Репозиторій і версія</h2><p>Ця сторінка є поясненням веб-сервісу, а не окремим джерелом правил. Джерелом істини залишається дослідницький репозиторій.</p><a class="repo-link" href="https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-" target="_blank" rel="noreferrer">ClippyFirst / Khmer-Ukrainian-Phonetic-System- ↗</a></section>
+<section>
+  <span class="docno">01</span><div><h2>Що це за система</h2>
+  <p>Пропонована українська практична система для сучасної кхмерської мови. Її призначення — дати українському читачеві відтворюваний спосіб передавання іншомовного слова або назви, не приписуючи українській формі статусу офіційного стандарту.</p>
+  <div class="callout"><b>Ключовий принцип</b><span>кхмерська орфографія → графемна структура → орфографічний склад → фонологія → поверхнева фонетика / IPA → українська цільова відповідність → практичний український запис</span></div></div>
+</section>
+
+<section>
+  <span class="docno">02</span><div><h2>Чому не «символ у символ»</h2>
+  <p>Кхмерська графіка використовує дві серії приголосних, підрядкові приголосні, залежні голосні та регістрові шифтери. Один і той самий голосний знак може мати різну вимову залежно від серії базового приголосного та інших умов. Тому пряме зіставлення Unicode-символу з українською літерою систематично втрачає інформацію.</p>
+  <p>Особливо важливі для алгоритму U+17C9 ◌៉ MUUSIKATOAN та U+17CA ◌៊ TRIISAP: перший переводить другу серію в першу, другий — першу в другу. Конструкція ប៉ є окремим винятком, який реалізує /p/.</p></div>
+</section>
+
+<section>
+  <span class="docno">03</span><div><h2>Регістри, шифтери та кластери</h2>
+  <table><thead><tr><th>Конструкція</th><th>Роль</th><th>Статус у рушії</th></tr></thead><tbody>
+  <tr><td>ក / គ</td><td>перша / друга серія; серія впливає на голосний</td><td>ESTABLISHED_STRUCTURE</td></tr>
+  <tr><td>រ៉</td><td>MUUSIKATOAN: друга → перша</td><td>обробляється</td></tr>
+  <tr><td>ហ៊</td><td>TRIISAP: перша → друга</td><td>обробляється</td></tr>
+  <tr><td>ប៉</td><td>виняткова реалізація /p/</td><td>обробляється окремо</td></tr>
+  <tr><td>ខ្ញុំ</td><td>база + coeng-nyo + vowel modifier</td><td>структурно перевіряється</td></tr>
+  <tr><td>សង្គ្រាម</td><td>один складовий кластер: ស + ង + ្ + ក + ្ + រ + ា + ម</td><td>структурно перевіряється</td></tr>
+  </tbody></table>
+  <p class="muted">Структурний парсер не видає автоматично повну IPA для кожного такого запису. Якщо джерельна вимова не встановлена, результат навмисно переходить у NOT_ESTABLISHED / EVIDENCE_LIMITED.</p></div>
+</section>
+
+<section>
+  <span class="docno">04</span><div><h2>Приголосні: українська ціль</h2>
+  <table><thead><tr><th>IPA</th><th>Українська</th><th>Російський comparator</th><th>Рішення</th></tr></thead><tbody>
+  <tr><td>/p, pʰ/</td><td>п</td><td>п / пх</td><td>аспірація зберігається в IPA; базова практична форма її нейтралізує</td></tr>
+  <tr><td>/t, tʰ/</td><td>т</td><td>т / тх</td><td>те саме</td></tr>
+  <tr><td>/k, kʰ/</td><td>к</td><td>к / кх</td><td>те саме</td></tr>
+  <tr><td>/c/</td><td>ть</td><td>ть</td><td>[c] — палатальний проривний, тому ч не є точним описом джерельного сегмента</td></tr>
+  <tr><td>/cʰ/</td><td>ч</td><td>ч / тьх</td><td>практична компромісна форма; аспірація залишається в IPA</td></tr>
+  <tr><td>/ɲ/</td><td>нь</td><td>нь</td><td>прозора українська графіка</td></tr>
+  <tr><td>/ŋ/</td><td>нг</td><td>нг</td><td>збереження місця артикуляції</td></tr>
+  <tr><td>/ʋ/</td><td>в</td><td>в</td><td>практична ціль для ʋ</td></tr>
+  <tr><td>/w/</td><td>у</td><td>у</td><td>не змішувати з /ʋ/; значення залежить від позиції</td></tr>
+  <tr><td>/h/</td><td>х</td><td>х</td><td>не переносити російське/українське г автоматично: [h] ближче до х</td></tr>
+  <tr><td>/ʔ/</td><td>∅</td><td>контекстно</td><td>джерельний сегмент залишається видимим у IPA, але не друкується в базовій практичній формі</td></tr>
+  </tbody></table></div>
+</section>
+
+<section>
+  <span class="docno">05</span><div><h2>Голосні: контекст важливіший за знак</h2>
+  <p>Кхмерська має два регістри приголосних і значно багатший за український вокалізм. Для сучасної мови описуються /i, ɨ, u, e, ə, o, ɛ, ɔ, a, ɑ/ та довгі відповідники, а також складні голосні. Повна автоматична матриця «знак × серія × склад × кода × профіль → IPA» ще не завершена.</p>
+  <div class="matrix">
+    <div><b>Перша серія</b><strong>ក</strong><span>/kɑː/</span></div>
+    <div><b>Друга серія</b><strong>គ</strong><span>/kɔː/</span></div>
+    <div><b>Перша + ី</b><strong>កី</strong><span>/kəj/</span></div>
+    <div><b>Друга + ី</b><strong>គី</strong><span>/kiː/</span></div>
+  </div>
+  <p>Представницькі web-fixtures: <strong>កី → /kəj/ → кей</strong>, <strong>គី → /kiː/ → кі</strong>, <strong>កា → /kaː/ → ка</strong>, <strong>គា → /kiə/ → кіє</strong>. Ці українські форми мають статус PROPOSED, а не статус емпірично встановленої норми.</p></div>
+</section>
+
+<section>
+  <span class="docno">06</span><div><h2>Коди, голосні та кінцеві приголосні</h2>
+  <p>Кхмерські кластери не можна визначати лише за кількістю Unicode-символів. U+17D2 COENG формує підрядковий приголосний, а звичайний приголосний у кінцевій позиції може бути кодою без власного голосного. U+17C6 NIKAHIT та U+17C7 REAHMUK одночасно впливають на ядро складу й можуть реалізувати фінальні /m/ та /h/. U+17CB BANTOC скорочує попередній голосний. Такі знаки не повинні потрапляти в просту таблицю «знак = голосна».</p></div>
+</section>
+
+<section>
+  <span class="docno">07</span><div><h2>Профілі вимови</h2>
+  <p><strong>careful_standard</strong> — базовий профіль для довідкового й редакторського використання.</p>
+  <p><strong>phnom_penh_colloquial</strong> — окремий дослідницький профіль для засвідчених колоквіальних процесів, зокрема втрати /r/ у частині початкових кластерів. Поточний веб-адаптер не має права механічно перетворювати кожен /Cr/ на аспірацію: повні фонетичні наслідки ще не змодельовані. Тому профіль поки що не підміняє стандартний IPA автоматичним «вгадуванням».</p>
+  <p><strong>established_form</strong> — майбутній/окремо версійований лексикон традиційних українських форм. Він не повинен змішуватися з продуктивним правилом.</p></div>
+</section>
+
+<section>
+  <span class="docno">08</span><div><h2>Порівняння з російською практикою</h2>
+  <p>Російська практична транскрипція — comparator, а не джерело української норми. Вона корисна для перевірки практичних рішень щодо /c/ → ть, /cʰ/ → ч, /ɲ/ → нь, /ŋ/ → нг, /h/ → х, /ʋ/ → в та /w/ → у. Але російські форми не переносяться автоматично: українська система має власну цільову орфографічну політику.</p>
+  <p class="muted">Російське джерело в репозиторії позначене як secondary evidence. Це обмежує силу висновків про історичний/нормативний статус окремих російських рішень.</p></div>
+</section>
+
+<section>
+  <span class="docno">09</span><div><h2>Adversarial validation</h2>
+  <table><thead><tr><th>Приклад</th><th>Що ловимо</th><th>Очікуваний рівень</th></tr></thead><tbody>
+  <tr><td>ខ្ញុំ</td><td>coeng + nyo + modifier + aspiration</td><td>структура / IPA засвідчена джерелом</td></tr>
+  <tr><td>សង្គ្រាម</td><td>кластер і межі складу</td><td>структура; не повна автоматична IPA</td></tr>
+  <tr><td>ហើយ</td><td>препозиційний голосний + coeng-y</td><td>fixture з джерельною IPA</td></tr>
+  <tr><td>ស៊ី</td><td>TRIISAP + довгий /iː/</td><td>fixture з джерельною IPA</td></tr>
+  <tr><td>សញ្ញា</td><td>повторний nyo + coeng</td><td>fixture з джерельною IPA</td></tr>
+  <tr><td>ច្រើន</td><td>coeng-r + складний голосний</td><td>fixture з джерельною IPA</td></tr>
+  <tr><td>ប៉ី</td><td>MUUSIKATOAN + виняток BA→PA</td><td>окреме правило</td></tr>
+  <tr><td>ស៊៉ា</td><td>два register shifters</td><td>EVIDENCE_LIMITED</td></tr>
+  </tbody></table></div>
+</section>
+
+<section>
+  <span class="docno">10</span><div><h2>Доказовість і межі</h2>
+  <p>Unicode встановлює структуру кодування, регістри, shifters та компонентний склад; R12A описує сучасну орфографію й фонологічні відповідності; акустичні дослідження підтримують опис вокалізму; дослідження Пномпеня підтримують окремі діалектні процеси. Українські практичні відповідності — авторська PROPOSED-політика.</p>
+  <ul>
+    <li>немає gold corpus для емпіричної оцінки українських виходів;</li>
+    <li>не заявляється accuracy %;</li>
+    <li>повна orthography → IPA матриця ще не завершена;</li>
+    <li>рідкісні, історичні, запозичені та діалектні форми потребують окремого джерела;</li>
+    <li>NOT_ESTABLISHED / EVIDENCE_LIMITED — це коректний результат, а не помилка, якщо доказів недостатньо.</li>
+  </ul></div>
+</section>
+
+<section>
+  <span class="docno">11</span><div><h2>Джерела</h2>
+  <div class="sources">
+    <span>Unicode Standard · Khmer · Chapter 16 · структура письма, регістри, shifters, приклади</span>
+    <span>Richard Ishida · Khmer Orthography Notes · 27 Apr 2026 · сучасна орфографія, фонологія, коди й голосні</span>
+    <span>Chem & Chem · 2020 · The Standard Khmer vowel system · акустичний опис голосних</span>
+    <span>Henderson · 1952 · Main features of Cambodian Pronunciation</span>
+    <span>Wayland et al. · 2005; Kirby · 2014 · Phnom Penh /r/-loss and incipient tonogenesis</span>
+    <span>Khmer–Russian practical transcription · comparative secondary evidence</span>
+  </div></div>
+</section>
+
+<section>
+  <span class="docno">12</span><div><h2>Репозиторій і версія</h2>
+  <p>Ця сторінка пояснює поточний стан веб-сервісу. Джерелом істини для правил залишаються machine-readable дані та Python research engine у репозиторії.</p>
+  <a class="repo-link" href="https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-" target="_blank" rel="noreferrer">ClippyFirst / Khmer-Ukrainian-Phonetic-System- ↗</a></div>
+</section>
 </div>
+
 <footer><div><strong>ខ្មែរ / УКРАЇНСЬКА</strong><span>Research-grade practical transcription · 2026</span></div><div><a href="./index.html">Сервіс</a> · <a href="https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-" target="_blank" rel="noreferrer">GitHub</a></div></footer>
-</main></body></html>
+</main>
+</body>
+</html>

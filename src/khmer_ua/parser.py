@@ -12,14 +12,20 @@ def _lookup(ch):
     return next((x for x in CONSONANTS if x["char"]==ch), None)
 
 def _starts_new_orthographic_syllable(chars, i):
+    """Conservatively split explicit Khmer syllable boundaries."""
     if not _lookup(chars[i]):
         return False
     if i == 0:
         return False
-    if i + 1 < len(chars) and chars[i+1] == COENG:
-        return False
     if chars[i-1] == COENG:
         return False
+    if i + 1 < len(chars) and chars[i+1] == COENG:
+        return False
+    previous_kind = next((x["kind"] for x in SIGNS if x["char"] == chars[i-1]), None)
+    if previous_kind in {"dependent_vowel", "composite_vowel", "vowel_modifier", "sign"}:
+        j = i + 1
+        if j >= len(chars) or chars[j].isspace() or unicodedata.category(chars[j]).startswith("P"):
+            return False
     return True
 
 def segment_syllables(text: str) -> list[str]:
@@ -123,7 +129,16 @@ def analyze(text: str) -> AnalysisResult:
             "independent_vowel":s.independent_vowel,"inherent_vowel":s.inherent_vowel,
             "phonology":s.phonology,
             "status":s.status,"confidence":s.confidence,"sources":s.sources})
+    if not syllables:
+        overall_status = "INVALID_OR_UNSUPPORTED"
+    elif any(s["status"] == "INVALID_OR_UNSUPPORTED" for s in sg):
+        overall_status = "INVALID_OR_UNSUPPORTED"
+    elif any(s["status"] == "EVIDENCE_LIMITED" for s in sg):
+        overall_status = "EVIDENCE_LIMITED"
+    else:
+        overall_status = "ESTABLISHED_STRUCTURE"
+
     return AnalysisResult(text,n,[],sg,{"syllables":sg},{"status":"phoneticization_not_yet_established"},
                           None,[],[],None,[],[],["unicode17-ch16"],
                           min((s.confidence for s in syllables),default=0.0),
-                          "ESTABLISHED_STRUCTURE" if syllables else "INVALID_OR_UNSUPPORTED")
+                          overall_status)

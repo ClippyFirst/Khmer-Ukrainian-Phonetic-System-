@@ -51,12 +51,14 @@ def segment_syllables(text: str) -> list[str]:
 def _resolve_effective_register(base: dict, chars: list[str]) -> tuple[str | None, str | None]:
     """Resolve register after Khmer register-shifters, including ប៉ exception."""
     register=base.get("register")
-    shifters=[ch for ch in chars if ch in {MUUSIKATOAN, TRIISAP}]
-    if not shifters:
+    positions=[i for i,ch in enumerate(chars) if ch in {MUUSIKATOAN, TRIISAP}]
+    if not positions:
         return register, None
-    if len(shifters) > 1:
+    if len(positions) > 1:
         return register, "MULTIPLE_REGISTER_SHIFTERS"
-    shifter=shifters[0]
+    if positions[0] != 1:
+        return register, "MISPLACED_REGISTER_SHIFTER"
+    shifter=chars[positions[0]]
     if base["char"]=="ប" and shifter==MUUSIKATOAN:
         return "first", "BA_TO_PA_EXCEPTION"
     if shifter==MUUSIKATOAN and register=="second":
@@ -104,7 +106,7 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
         if shifter_rule:
             s.phonology["register_shifter"]=shifter_rule
         s.sources=["unicode17-ch16"]
-        s.status="ESTABLISHED_STRUCTURE" if shifter_rule != "MULTIPLE_REGISTER_SHIFTERS" else "EVIDENCE_LIMITED"
+        s.status="ESTABLISHED_STRUCTURE" if shifter_rule not in {"MULTIPLE_REGISTER_SHIFTERS", "MISPLACED_REGISTER_SHIFTER"} else "EVIDENCE_LIMITED"
         s.confidence=0.9 if s.status=="ESTABLISHED_STRUCTURE" else 0.6
     elif s.independent_vowel:
         s.sources=["unicode17-ch16"]

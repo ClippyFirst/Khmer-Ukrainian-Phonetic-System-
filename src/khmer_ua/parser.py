@@ -108,7 +108,7 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
         if shifter_rule:
             s.phonology["register_shifter"]=shifter_rule
         s.sources=["unicode17-ch16"]
-        s.status="ESTABLISHED_STRUCTURE" if shifter_rule not in {"MULTIPLE_REGISTER_SHIFTERS", "MISPLACED_REGISTER_SHIFTER"} else "EVIDENCE_LIMITED"
+        s.status="ESTABLISHED_STRUCTURE" if shifter_rule not in {"MULTIPLE_REGISTER_SHIFTERS", "MISPLACED_REGISTER_SHIFTER", "NON_STANDARD_SHIFTER_USE"} else "EVIDENCE_LIMITED"
         s.confidence=0.9 if s.status=="ESTABLISHED_STRUCTURE" else 0.6
     elif s.independent_vowel:
         s.sources=["unicode17-ch16"]

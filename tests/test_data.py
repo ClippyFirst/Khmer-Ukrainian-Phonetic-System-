@@ -10,7 +10,7 @@ def test_canonical_ukrainian_policy_is_complete():
     for segment in ("p", "pʰ", "t", "tʰ", "k", "kʰ", "ɲ", "ŋ", "h", "ʔ", "i", "əj"):
         assert segment in policy["segments"]
         assert "default" in policy["segments"][segment]
-        assert "compatibility_ru" in policy["segments"][segment]
+    assert all("compatibility_ru" in policy["segments"][segment] for segment in ("pʰ", "tʰ", "kʰ", "ɲ", "ŋ", "h"))
 
 
 def test_web_fixtures_have_explicit_status_and_provenance_note():

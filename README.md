@@ -71,13 +71,14 @@ Examples of the proposed practical target layer:
 | /tʰ/ | т | тх |
 | /k/ | к | — |
 | /kʰ/ | к | кх |
-| /c/ | ч | ть |
+| /c/ | ть | ть |
 | /cʰ/ | ч | ч / тьх |
 | /ɲ/ | нь | нь |
 | /ŋ/ | нг | нг |
 | /r/ | р | — |
-| /ʋ~w/ | в | у / в by source tradition |
-| /h/ | г | х |
+| /ʋ/ | в | — |
+| /w/ | у | — |
+| /h/ | х | х |
 | /ʔ/ | ∅ | context-dependent |
 
 These are **project decisions**, not claims of official Ukrainian usage. Aspiration remains explicit in the research/IPA layer even when it is neutralized in default practical spelling.

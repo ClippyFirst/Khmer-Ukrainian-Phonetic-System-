@@ -69,11 +69,17 @@ if (!sourceGuard.includes("if (invalidCount > 0 && invalidCount === items.length
 for (const key of ["ក","គ","កូ","គូ","កេ","គេ","កែ","គែ","កើ","គើ","កៅ","គៅ"]) {
   if (!fixtures[key]) throw new Error("representative series fixture missing: " + key);
 }
-for (const key of ["ប៉", "ប៊"]) {
+for (const key of ["ប៉", "ប៊", "ប៉ី", "ខ្ញុំ", "សង្គ្រាម", "ហើយ"]) {
   if (!fixtures[key] || fixtures[key].status !== "PROPOSED") throw new Error("BA shifter fixture missing: " + key);
 }
 if (fixtures["ប៉"].ipa !== "/paː/" || fixtures["ប៉"].ua !== "па") throw new Error("ប៉ fixture must resolve to /paː/ → па");
 if (fixtures["ប៊"].ipa !== "/ɓɔː/" || fixtures["ប៊"].ua !== "бо") throw new Error("ប៊ fixture must resolve to /ɓɔː/ → бо");
+if (fixtures["ប៉ី"].ipa !== "/pəj/" || fixtures["ប៉ី"].ua !== "пей") throw new Error("ប៉ី fixture must resolve to /pəj/ → пей");
+if (fixtures["ខ្ញុំ"].ipa !== "/kɲom/" || fixtures["ខ្ញុំ"].ua !== "кньом") throw new Error("ខ្ញុំ fixture must resolve to /kɲom/ → кньом");
+if (fixtures["សង្គ្រាម"].ipa !== "/sɑŋ.kriəm/" || fixtures["សង្គ្រាម"].ua !== "сангкрієм") throw new Error("សង្គ្រាម fixture must resolve to /sɑŋ.kriəm/ → сангкрієм");
+if (fixtures["ហើយ"].ipa !== "/haəj/" || fixtures["ហើយ"].ua !== "хаей") throw new Error("ហើយ fixture must resolve to /haəj/ → хаей");
+if (sourceGuard.includes("const SHIFTER_ELIGIBILITY") === false) throw new Error("Khmer shifter eligibility guard missing");
+if (!sourceGuard.includes("base.char not")) throw new Error("Khmer shifter eligibility is not enforced");
 for (const key of ["ɓ", "ʋ"]) {
   if (js.includes('"onset_ipa":"' + key + '~')) throw new Error("canonical initial onset remains ambiguous: " + key);
 }

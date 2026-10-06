@@ -126,7 +126,7 @@ function convert(text, profile) {
     ipa: "⟦NOT_ESTABLISHED⟧",
     ua: "⟦НЕВСТАНОВЛЕНО⟧",
     status: unresolved ? "EVIDENCE_LIMITED" : "NOT_ESTABLISHED",
-    note: "Структуру кхмерського запису розпізнано, але повна орфографія → IPA матриця для цього запису ще не встановлена. Система навмисно не вгадує вимову.",
+    note: "Структуру кмерського запису розпізнано, але повна орфографія → IPA матриця для цього запису ще не встановлена. Система навмисно не вгадує вимову.",
     profile,
     analyses,
     vowelModel: vowels.coverage_policy

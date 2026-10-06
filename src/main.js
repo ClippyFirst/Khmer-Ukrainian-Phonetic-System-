@@ -9,6 +9,7 @@ const SIGN_BY_CHAR = Object.fromEntries(signs.map((item) => [item.char, item]));
 const VOWEL_SIGNS = new Set(signs.filter((item) => ["dependent_vowel", "composite_vowel", "vowel_modifier"].includes(item.kind)).map((item) => item.char));
 const INDEPENDENT_VOWELS = new Set(signs.filter((item) => item.kind === "independent_vowel").map((item) => item.char));
 const COENG = "្";
+const SHIFTERS = new Set(["៉", "៊"]);
 const PUNCTUATION = /^\s|^[។៕,!?;:()[\]{}"“”«»]$/u;
 const PROFILES = new Set(["careful_standard", "phnom_penh_colloquial", "established_form"]);
 const SEGMENTS = Object.keys(practicalPolicy.segments).sort((a, b) => b.length - a.length);
@@ -36,6 +37,17 @@ function tokenize(text) {
   return units;
 }
 
+function resolveRegister(base, raw) {
+  const shifters = [...raw].filter((char) => SHIFTERS.has(char));
+  if (!shifters.length) return { register: base.register, rule: null, status: "ESTABLISHED_STRUCTURE" };
+  if (shifters.length > 1) return { register: base.register, rule: "MULTIPLE_REGISTER_SHIFTERS", status: "EVIDENCE_LIMITED" };
+  const shifter = shifters[0];
+  if (base.char === "ប" && shifter === "៉") return { register: "first", rule: "BA_TO_PA_EXCEPTION", status: "ESTABLISHED_STRUCTURE" };
+  if (shifter === "៉" && base.register === "second") return { register: "first", rule: "MUUSIKATOAN", status: "ESTABLISHED_STRUCTURE" };
+  if (shifter === "៊" && base.register === "first") return { register: "second", rule: "TRIISAP", status: "ESTABLISHED_STRUCTURE" };
+  return { register: base.register, rule: "NON_STANDARD_SHIFTER_USE", status: "EVIDENCE_LIMITED" };
+}
+
 function parseSyllable(raw) {
   if (!raw || !isKhmerConsonant(raw[0])) return { status: "NOT_ESTABLISHED", raw };
   let index = 1;
@@ -43,52 +55,32 @@ function parseSyllable(raw) {
   const subscripts = [];
   const vowelSigns = [];
   const unknown = [];
+  const graphemes = [{ text: base, kind: "consonant" }];
 
   while (index < raw.length) {
     const char = raw[index];
     if (char === COENG) {
       const sub = raw[index + 1];
-      if (!sub || !isKhmerConsonant(sub)) {
-        return { status: "NOT_ESTABLISHED", raw, reason: "Malformed coeng sequence." };
-      }
+      if (!sub || !isKhmerConsonant(sub)) return { status: "NOT_ESTABLISHED", raw, reason: "Malformed coeng sequence." };
       subscripts.push(sub);
+      graphemes.push({ text: COENG + sub, kind: "subscript" });
       index += 2;
       continue;
     }
     if (VOWEL_SIGNS.has(char)) vowelSigns.push(char);
     else if (!SIGN_BY_CHAR[char]) unknown.push(char);
+    graphemes.push({ text: char, kind: SIGN_BY_CHAR[char]?.kind ?? "unknown" });
     index += 1;
   }
 
+  const register = resolveRegister(base, raw);
   return {
-    status: unknown.length ? "EVIDENCE_LIMITED" : "ESTABLISHED_STRUCTURE",
-    raw,
-    base,
-    register: CONSONANTS[base].register,
-    subscripts,
-    vowelSigns,
-    unknown,
+    status: unknown.length ? "EVIDENCE_LIMITED" : register.status,
+    raw, base, register: register.register, register_rule: register.rule,
+    subscripts, vowelSigns, unknown, graphemes,
+    inherent_vowel: register.register === "first" ? "first-series" : register.register === "second" ? "second-series" : null,
+    onset_ipa: base === "ប" && register.rule === "BA_TO_PA_EXCEPTION" ? "p" : CONSONANTS[base].onset_ipa,
   };
-}
-
-function renderFixture(fixture, profile) {
-  const baseIpa = fixture.ipa.startsWith("/") && fixture.ipa.endsWith("/") ? fixture.ipa.slice(1, -1) : fixture.ipa;
-  const renderedIpa = applyProfile(baseIpa, profile);
-  const mapped = mapIpa(renderedIpa);
-  return {
-    source: fixture.source,
-    ipa: `/${renderedIpa}/`,
-    ua: mapped.value ?? fixture.ua,
-    status: fixture.status,
-    note: fixture.note,
-    profile,
-  };
-}
-
-function applyProfile(ipa, profile) {
-  if (!PROFILES.has(profile)) throw new Error(`Unsupported pronunciation profile: ${profile}`);
-  if (profile !== "phnom_penh_colloquial") return ipa;
-  return ipa.replace(/([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])/g, "$1ʰ");
 }
 
 function mapIpa(ipa) {
@@ -97,12 +89,27 @@ function mapIpa(ipa) {
   while (rest) {
     const segment = SEGMENTS.find((candidate) => rest.startsWith(candidate));
     if (!segment) return { value: null, unsupported: rest };
-    const target = practicalPolicy.segments[segment];
-    if (target === undefined) return { value: null, unsupported: segment };
-    value += target.default;
+    value += practicalPolicy.segments[segment].default;
     rest = rest.slice(segment.length);
   }
   return { value, unsupported: null };
+}
+
+function renderFixture(fixture, profile) {
+  if (!PROFILES.has(profile)) throw new Error("Unsupported pronunciation profile: " + profile);
+  if (!fixture.ipa) {
+    return { source: fixture.source, ipa: "⟦EVIDENCE_LIMITED⟧", ua: "⟦НЕВСТАНОВЛЕНО⟧", status: fixture.status, note: fixture.note, profile };
+  }
+  const ipa = fixture.ipa.replace(/^\//, "").replace(/\/$/, "");
+  const mapped = mapIpa(ipa);
+  return {
+    source: fixture.source,
+    ipa: "/" + ipa + "/",
+    ua: mapped.value ?? "⟦НЕПІДТРИМУЄТЬСЯ⟧",
+    status: fixture.status,
+    note: fixture.note + " Профіль: " + profile + ".",
+    profile
+  };
 }
 
 function convert(text, profile) {
@@ -113,7 +120,6 @@ function convert(text, profile) {
   const units = tokenize(normalized);
   const analyses = units.filter((unit) => !PUNCTUATION.test(unit)).map(parseSyllable);
   const unresolved = analyses.some((item) => item.status !== "ESTABLISHED_STRUCTURE");
-
   return {
     source: normalized,
     ipa: "⟦NOT_ESTABLISHED⟧",
@@ -122,7 +128,7 @@ function convert(text, profile) {
     note: "Структуру кхмерського запису розпізнано, але повна орфографія → IPA матриця для цього запису ще не встановлена. Система навмисно не вгадує вимову.",
     profile,
     analyses,
-    vowelModel: vowels.coverage_policy,
+    vowelModel: vowels.coverage_policy
   };
 }
 
@@ -166,7 +172,6 @@ $("clear").addEventListener("click", () => {
   render();
   source.focus();
 });
-
 document.querySelectorAll("[data-copy]").forEach((button) => {
   button.addEventListener("click", async () => {
     const element = $(button.dataset.copy);
@@ -180,4 +185,3 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
     }
   });
 });
-

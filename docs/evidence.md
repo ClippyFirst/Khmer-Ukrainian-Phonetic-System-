@@ -37,3 +37,12 @@ A lower-level source cannot silently override a higher-level source.
 ## Evidence rule
 
 Every machine-readable phonetic claim should carry a provenance ID. Orthographic facts and phonetic analyses must not share a source label merely because the source mentions both topics.
+
+
+## Verified lexical corpus — 2026-10-06
+
+A first small cross-source lexical corpus has now been added at `data/tests/verified-lexical-corpus.json`. It is intentionally separate from the proposed Ukrainian target layer. The initial entries include `ភាសាខ្មែរ`, `ខ្មែរ`, `ភាសា`, `ខ្ញុំ`, `ភ្នំពេញ` and `កម្ពុជា`.
+
+For `ភាសាខ្មែរ`, independent current references converge on **[pʰiəsaː kʰmae]** / **/pʰiəsaː kʰmae/**. The IPA claim is therefore marked WELL_SUPPORTED, while the Ukrainian form remains PROPOSED. The corpus must not be read as evidence that the Ukrainian form is normative.
+
+The browser fixture for `ភាសាខ្មែរ` now uses this lexical evidence rather than requiring the incomplete general orthography → IPA engine to reconstruct the phrase from scratch. This is an explicit lexical coverage layer, not a bypass that changes the research architecture.

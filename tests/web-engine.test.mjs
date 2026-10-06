@@ -28,7 +28,7 @@ if (!fixtures["ភាសាខ្មែរ"] || fixtures["ភាសាខ្ម�
 }
 if (!Object.hasOwn(policy.segments, "ae")) throw new Error("Khmer /ae/ target mapping missing");
 if (!js.includes("fixture.ua") || !js.includes("mapping_check")) throw new Error("lexical practical-form handling missing");
-const forbiddenTerms = ["кхмер", "Кхмер"];
+const forbiddenTerms = ["\u043a\u0445\u043c\u0435\u0440", "\u041a\u0445\u043c\u0435\u0440"];
 for (const term of forbiddenTerms) {
   if (html.includes(term) || systemHtml.includes(term) || js.includes(term)) throw new Error("obsolete Ukrainian language-name term remains: " + term);
 }

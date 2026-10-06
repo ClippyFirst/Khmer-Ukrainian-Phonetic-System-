@@ -36,3 +36,9 @@ def test_adversarial_corpus_has_explicit_provenance():
         assert "source_basis" in case
         if case.get("ipa") is not None:
             assert case["ipa"].startswith("/") and case["ipa"].endswith("/")
+
+
+def test_misplaced_register_shifter_is_flagged():
+    s = decompose_khmer_syllable("កា៊")
+    assert s.status == "EVIDENCE_LIMITED"
+    assert s.phonology["register_shifter"] == "MISPLACED_REGISTER_SHIFTER"

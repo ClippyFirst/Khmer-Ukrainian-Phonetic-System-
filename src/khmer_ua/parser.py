@@ -1,16 +1,12 @@
 import unicodedata
 from .normalize import normalize_khmer
-from .data import CONSONANTS, SIGNS
+from .data import CONSONANTS, SIGNS, SHIFTER_ELIGIBILITY
 from .model import KhmerGrapheme, KhmerSyllable, AnalysisResult
 
 COENG="្"
 MUUSIKATOAN="៉"
 TRIISAP="៊"
 INDEPENDENT_VOWELS={x["char"] for x in SIGNS if x.get("kind")=="independent_vowel"}
-SHIFTER_ELIGIBILITY={
-    MUUSIKATOAN: {"ង","ញ","ន","ម","យ","រ","ល","វ","ឝ"},
-    TRIISAP: {"ប","ឞ","ស","ហ","អ"},
-}
 
 def _lookup(ch):
     return next((x for x in CONSONANTS if x["char"]==ch), None)

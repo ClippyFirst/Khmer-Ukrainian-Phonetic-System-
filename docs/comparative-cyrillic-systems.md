@@ -51,8 +51,8 @@ The canonical Ukrainian inventory is external and comes from ClippyFirst/Ukraini
 | /d, ɗ/ | д | — | nearest voiced coronal target |
 | /k/ | к | — | direct target |
 | /kʰ/ | к | кх | aspiration kept in IPA, not default spelling |
-| /c/ | ч | — | commonly realized as [t͡ʃ] in descriptive sources |
-| /cʰ/ | ч | чх | same practical affricate target |
+| /c/ | ть | ч | /c/ is a palatal stop [c], so ть is a closer Ukrainian articulatory approximation than ч |
+| /cʰ/ | ч | чх | aspiration is retained in the research layer; ч is the practical default |
 | /ɲ/ | нь | — | Ukrainian has /nʲ/ and the orthographic sequence нь |
 | /ŋ/ | нг | — | transparent Ukrainian digraph |
 | /r/ | р | ∅ | careful/standard versus documented Phnom Penh loss |
@@ -60,7 +60,7 @@ The canonical Ukrainian inventory is external and comes from ClippyFirst/Ukraini
 | /ʋ~w/ | в | — | Ukrainian /ʋ/ is a practical target approximation |
 | /j/ | й | — | direct target |
 | /s/ | с | — | direct target |
-| /h/ | г | х | Ukrainian /ɦ/ is a project target approximation, not IPA identity |
+| /h/ | х | г | /h/ is closer to Ukrainian х than to /ɦ/; г may be retained only as an explicit legacy/comparator candidate |
 | /ʔ/ | ∅ | ʼ | no independent Ukrainian glottal-stop grapheme |
 
 ### Why aspiration is not automatically written as х

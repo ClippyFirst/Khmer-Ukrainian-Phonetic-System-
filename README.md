@@ -185,3 +185,12 @@ Accordingly, the web service is **production-structured but linguistically cover
 No accuracy percentage is reported without an adjudicated gold-standard corpus.
 
 When evidence is insufficient, the system records **EVIDENCE LIMITED**, **ANALYSIS DEPENDENT**, **DIALECT DEPENDENT**, or **NOT ESTABLISHED** rather than fabricating a result.
+
+
+## Latest transcription-audit status — 2026-10-06
+
+The current implementation includes explicit handling for Khmer register shifters (៉ / ៊), the exceptional ប៉ construction, coeng-based clusters and adversarial regression fixtures. The canonical Ukrainian policy currently proposes /c/ → **ть**, /cʰ/ → **ч**, /h/ → **х**, /ʋ/ → **в** and /w/ → **у**. These remain project-specific decisions, not an official Ukrainian standard.
+
+The web explanation and browser adapter have been synchronized with that policy. The browser does not silently invent Phnom Penh /r/-loss phonetics or complete vowel IPA where the research engine has not established them.
+
+GitHub Actions has been triggered by the latest commits, but the current runs report failure without job records. Until that infrastructure/execution issue is resolved, the repository does not claim a green CI result. No empirical accuracy percentage is claimed.

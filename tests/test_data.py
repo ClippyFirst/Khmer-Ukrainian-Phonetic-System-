@@ -75,7 +75,7 @@ def test_web_lexical_ua_overrides_match_canonical_policy():
 
     segments=sorted(policy["segments"], key=len, reverse=True)
     def render(ipa):
-        text=ipa.strip("/").replace(".", "")
+        text=ipa.strip("/").replace("ˈ", "").replace("ˌ", "").replace(".", "")
         out=""
         i=0
         while i < len(text):

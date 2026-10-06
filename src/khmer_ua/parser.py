@@ -7,6 +7,10 @@ COENG="្"
 MUUSIKATOAN="៉"
 TRIISAP="៊"
 INDEPENDENT_VOWELS={x["char"] for x in SIGNS if x.get("kind")=="independent_vowel"}
+SHIFTER_ELIGIBILITY={
+    MUUSIKATOAN: {"ង","ញ","ន","ម","យ","រ","ល","វ","ឝ"},
+    TRIISAP: {"ប","ឞ","ស","ហ","អ"},
+}
 
 def _lookup(ch):
     return next((x for x in CONSONANTS if x["char"]==ch), None)
@@ -59,6 +63,8 @@ def _resolve_effective_register(base: dict, chars: list[str]) -> tuple[str | Non
     if positions[0] != 1:
         return register, "MISPLACED_REGISTER_SHIFTER"
     shifter=chars[positions[0]]
+    if shifter not in SHIFTER_ELIGIBILITY.get(shifter, set()) or base["char"] not in SHIFTER_ELIGIBILITY[shifter]:
+        return register, "NON_STANDARD_SHIFTER_USE"
     if base["char"]=="ប" and shifter==MUUSIKATOAN:
         return "first", "BA_TO_PA_EXCEPTION"
     if shifter==MUUSIKATOAN and register=="second":

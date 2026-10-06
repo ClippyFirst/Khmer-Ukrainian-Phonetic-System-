@@ -229,8 +229,9 @@ function renderUnknownUnit(unit, profile) {
 
 function combineStatus(items) {
   const statuses = new Set(items.map((item) => item.status));
-  if (statuses.has("INVALID_OR_UNSUPPORTED")) return "INVALID_OR_UNSUPPORTED";
-  if (statuses.has("EVIDENCE_LIMITED")) return "EVIDENCE_LIMITED";
+  const invalidCount = items.filter((item) => item.status === "INVALID_OR_UNSUPPORTED").length;
+  if (invalidCount > 0 && invalidCount === items.length) return "INVALID_OR_UNSUPPORTED";
+  if (invalidCount > 0 || statuses.has("EVIDENCE_LIMITED")) return "EVIDENCE_LIMITED";
   if (statuses.has("NOT_ESTABLISHED")) return "NOT_ESTABLISHED";
   if (statuses.has("PROPOSED")) return "PROPOSED";
   return "ESTABLISHED_STRUCTURE";
@@ -252,13 +253,16 @@ function convert(text, profile) {
   const resolved = linguistic.filter((item) => item.status === "PROPOSED");
   const unresolved = linguistic.filter((item) => item.status !== "PROPOSED");
   const unresolvedNames = unresolved.map((item) => item.source).filter(Boolean).slice(0, 12);
+  const evidenceLimited = linguistic.filter((item) => item.status === "EVIDENCE_LIMITED").length;
+  const notEstablished = linguistic.filter((item) => item.status === "NOT_ESTABLISHED").length;
+  const invalid = linguistic.filter((item) => item.status === "INVALID_OR_UNSUPPORTED").length;
 
   return {
     source: normalized,
     ipa: rendered.map((item) => item.ipa).join(""),
     ua: rendered.map((item) => item.ua).join(""),
     status: combineStatus(linguistic),
-    note: `Локальний аналіз: ${resolved.length} одиниць мають зафіксовану IPA та проєктну українську форму; ${unresolved.length} одиниць потребують окремого встановлення або перевірки. Невизначеність однієї одиниці більше не блокує результати інших.${unresolvedNames.length ? ` Невстановлені/проблемні одиниці: ${unresolvedNames.join(" · ")}.` : ""}`,
+    note: `Локальний аналіз: ${resolved.length} одиниць мають зафіксовану IPA та проєктну українську форму; ${unresolved.length} потребують окремого встановлення або перевірки (${notEstablished} не встановлено, ${evidenceLimited} з обмеженою доказовістю, ${invalid} некоректних/непідтримуваних). Некоректна одиниця більше не робить весь змішаний результат INVALID OR UNSUPPORTED; її стан ізольовано на рівні одиниці.${unresolvedNames.length ? ` Невстановлені/проблемні одиниці: ${unresolvedNames.join(" · ")}.` : ""}`,
     profile,
     units: rendered,
     analyses,

@@ -221,7 +221,7 @@ function renderUnknownUnit(unit, profile) {
     return {
       source: unit,
       ipa: "⟦INVALID_OR_UNSUPPORTED⟧",
-      ua: "⟦НЕПІДТРИМУЄТЬСЬЯ⟧",
+      ua: "⟦НЕПІДТРИМУЄТЬСЯ⟧",
       status: "INVALID_OR_UNSUPPORTED",
       note: analysis.reason ?? "Некоректна або непідтримувана Unicode-послідовність.",
       analysis,

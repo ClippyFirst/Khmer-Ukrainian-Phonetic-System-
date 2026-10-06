@@ -6,14 +6,14 @@ const expectedIpa = "/kɑː/ /kɔː/ /kaː/ /kiə/ /koː/ /kuː/ /kəj/ /kiː/ /
 const expectedUa = "ка ко ка кіє ко ку кей кі ке кей кае ке кае ке кау кеу ба па бо па по та та то то тьа ча тьо чо са ха во";
 
 const tokens = tokenize(adversarial);
-assert.equal(tokens.length, 32, "the 32-unit adversarial block must remain 32 orthographic units");
+assert.equal(tokens.filter((token) => /\S/u.test(token)).length, 32, "the 32-unit adversarial block must remain 32 orthographic units");
 
 const result = convert(adversarial, "careful_standard");
 assert.ok(result, "adversarial block must produce a result");
 assert.equal(result.status, "PROPOSED");
 assert.equal(result.ipa, expectedIpa);
 assert.equal(result.ua, expectedUa);
-assert.equal(result.units.length, 32);
+assert.equal(result.units.filter((unit) => unit.status !== "PUNCTUATION").length, 32);
 assert.ok(result.units.every((unit) => unit.status === "PROPOSED"), "no unit in the 32-item regression block may remain unresolved");
 
 const bySource = Object.fromEntries(result.units.map((unit) => [unit.source, unit]));

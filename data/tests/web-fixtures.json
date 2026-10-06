@@ -1,19 +1,162 @@
 {
-  "ភាសាខ្មែរ":{"source":"ភាសាខ្មែរ","ipa":"/pʰiəsaː kʰmae/","ua":"пієса кмае","status":"PROPOSED","note":"Лексично засвідчена вимова: [pʰiəsaː kʰmae]. IPA встановлено з незалежних сучасних джерел; українська форма є проєктною практичною пропозицією.","evidence":["web:khmer-language","wiktionary:khmae","wiktionary:phrase-khnyom-khmae"]},
-  "ខ្មែរ":{"source":"ខ្មែរ","ipa":"/kʰmae/","ua":"кмае","status":"PROPOSED","note":"Стандартну IPA форму /kʰmae/ засвідчено Wiktionary; українська форма є проєктною.","evidence":["wiktionary:khmae"]},
-  "ភាសា":{"source":"ភាសា","ipa":"/pʰiə.saː/","ua":"пієса","status":"PROPOSED","note":"Стандартну IPA форму /pʰiə.saː/ засвідчено Wiktionary; українська форма є проєктною.","evidence":["wiktionary:phiasa"]},
-  "ភ្នំពេញ":{"source":"ភ្នំពេញ","ipa":"/pʰnum ˈpɨɲ/","ua":"пнум пинь","status":"PROPOSED","note":"Стандартну IPA форму /pʰnum ˈpɨɲ/ засвідчено Wiktionary; наголос зберігається в IPA, а українська форма є проєктною.","evidence":["wiktionary:phnom-penh"]},
-  "កម្ពុជា":{"source":"កម្ពុជា","ipa":"/kam.pu.ciə/","ua":"кампутьіє","status":"PROPOSED","note":"Стандартну IPA форму /kam.pu.ciə/ засвідчено Wiktionary; українська форма є проєктною. /c/ передано як ть відповідно до чинної політики.","evidence":["wiktionary:cambodia"]},
-  "កី":{"source":"កី","ipa":"/kəj/","ua":"кей","status":"PROPOSED","note":"Представницький серієвий контраст; українська форма є проєктною практичною пропозицією."},
-  "គី":{"source":"គី","ipa":"/kiː/","ua":"кі","status":"PROPOSED","note":"Представницький серієвий контраст; українська форма є проєктною практичною пропозицією."},
-  "កា":{"source":"កា","ipa":"/kaː/","ua":"ка","status":"PROPOSED","note":"Представницький серієвий контраст; українська форма є проєктною практичною пропозицією."},
-  "គា":{"source":"គា","ipa":"/kiə/","ua":"кіє","status":"PROPOSED","note":"Представницький серієвий контраст; українська форма є проєктною практичною пропозицією; форму уточнено для українського читання /iə/."},
-  "ខ្ញុំ":{"source":"ខ្ញុំ","ipa":"/kʰɲom/","ua":"кньом","status":"PROPOSED","note":"Джерельну IPA форму засвідчено сучасними словниковими даними; українська форма є проєктною.","evidence":["wiktionary:khnyom"]},
-  "សង្គ្រាម":{"source":"សង្គ្រាម","ipa":"/sɔŋkrɛəm/","ua":"сонгкраем","status":"PROPOSED","note":"Структурний adversarial fixture для кластера; українська форма є проєктною і не є gold-standard результатом.","evidence":["unicode17-representative-example"]},
-  "ហើយ":{"source":"ហើយ","ipa":"/haəi/","ua":"хаеі","status":"PROPOSED","note":"Представницький приклад із препозиційним голосним і coeng-y; українська форма є проєктною.","evidence":["unicode17-representative-example"]},
-  "ស៊ី":{"source":"ស៊ី","ipa":"/siː/","ua":"сі","status":"PROPOSED","note":"TRIISAP + довгий /iː/; українська форма є проєктною.","evidence":["unicode17-representative-example"]},
-  "សញ្ញា":{"source":"សញ្ញា","ipa":"/saɲɲaː/","ua":"саньньа","status":"PROPOSED","note":"Повторний nyo + coeng; українська форма є проєктною.","evidence":["unicode17-representative-example"]},
-  "ច្រើន":{"source":"ច្រើន","ipa":"/craən/","ua":"тьраен","status":"PROPOSED","note":"Coeng-r + складний голосний; українська форма є проєктною.","evidence":["unicode17-representative-example"]},
-  "ប៉ី":{"source":"ប៉ី","ipa":"/pei/","ua":"пей","status":"PROPOSED","note":"Виняткова BA + MUUSIKATOAN конструкція /p/; IPA /pei/ наведено Unicode; українська форма є проєктною.","evidence":["unicode17-representative-example"]},
-  "ស៊៉ា":{"source":"ស៊៉ា","ipa":null,"ua":null,"status":"EVIDENCE_LIMITED","note":"Кілька register shifters у межах одного запису: структура виявляється, але автоматичне фонологічне рішення навмисно не робиться.","evidence":["negative-structural-case"]}
+  "ភាសាខ្មែរ": {
+    "source": "ភាសាខ្មែរ",
+    "ipa": "/pʰiəsaː kʰmae/",
+    "ua": "пієса кмае",
+    "status": "PROPOSED",
+    "note": "Лексично засвідчена вимова: [pʰiəsaː kʰmae]. IPA встановлено з незалежних сучасних джерел; українська форма є проєктною практичною пропозицією.",
+    "evidence": [
+      "web:khmer-language",
+      "wiktionary:khmae",
+      "wiktionary:phrase-khnyom-khmae"
+    ]
+  },
+  "ខ្មែរ": {
+    "source": "ខ្មែរ",
+    "ipa": "/kʰmae/",
+    "ua": "кмае",
+    "status": "PROPOSED",
+    "note": "Стандартну IPA форму /kʰmae/ засвідчено Wiktionary; українська форма є проєктною.",
+    "evidence": [
+      "wiktionary:khmae"
+    ]
+  },
+  "ភាសា": {
+    "source": "ភាសា",
+    "ipa": "/pʰiə.saː/",
+    "ua": "пієса",
+    "status": "PROPOSED",
+    "note": "Стандартну IPA форму /pʰiə.saː/ засвідчено Wiktionary; українська форма є проєктною.",
+    "evidence": [
+      "wiktionary:phiasa"
+    ]
+  },
+  "ភ្នំពេញ": {
+    "source": "ភ្នំពេញ",
+    "ipa": "/pʰnum ˈpɨɲ/",
+    "ua": "пнум пинь",
+    "status": "PROPOSED",
+    "note": "Стандартну IPA форму /pʰnum ˈpɨɲ/ засвідчено Wiktionary; наголос зберігається в IPA, а українська форма є проєктною.",
+    "evidence": [
+      "wiktionary:phnom-penh"
+    ]
+  },
+  "កម្ពុជា": {
+    "source": "កម្ពុជា",
+    "ipa": "/kam.pu.ciə/",
+    "ua": "кампутьіє",
+    "status": "PROPOSED",
+    "note": "Стандартну IPA форму /kam.pu.ciə/ засвідчено Wiktionary; українська форма є проєктною. /c/ передано як ть відповідно до чинної політики.",
+    "evidence": [
+      "wiktionary:cambodia"
+    ]
+  },
+  "កី": {
+    "source": "កី",
+    "ipa": "/kəj/",
+    "ua": "кей",
+    "status": "PROPOSED",
+    "note": "Представницький серієвий контраст; українська форма є проєктною практичною пропозицією."
+  },
+  "គី": {
+    "source": "គី",
+    "ipa": "/kiː/",
+    "ua": "кі",
+    "status": "PROPOSED",
+    "note": "Представницький серієвий контраст; українська форма є проєктною практичною пропозицією."
+  },
+  "កា": {
+    "source": "កា",
+    "ipa": "/kaː/",
+    "ua": "ка",
+    "status": "PROPOSED",
+    "note": "Представницький серієвий контраст; українська форма є проєктною практичною пропозицією."
+  },
+  "គា": {
+    "source": "គា",
+    "ipa": "/kiə/",
+    "ua": "кіє",
+    "status": "PROPOSED",
+    "note": "Представницький серієвий контраст; українська форма є проєктною практичною пропозицією; форму уточнено для українського читання /iə/."
+  },
+  "ខ្ញុំ": {
+    "source": "ខ្ញុំ",
+    "ipa": "/kʰɲom/",
+    "ua": "кньом",
+    "status": "PROPOSED",
+    "note": "Джерельну IPA форму засвідчено сучасними словниковими даними; українська форма є проєктною.",
+    "evidence": [
+      "wiktionary:khnyom"
+    ]
+  },
+  "សង្គ្រាម": {
+    "source": "សង្គ្រាម",
+    "ipa": "/sɔŋkrɛəm/",
+    "ua": "сонгкреам",
+    "status": "PROPOSED",
+    "note": "Структурний adversarial fixture для кластера; українська форма є проєктною і не є gold-standard результатом.",
+    "evidence": [
+      "unicode17-representative-example"
+    ]
+  },
+  "ហើយ": {
+    "source": "ហើយ",
+    "ipa": "/haəi/",
+    "ua": "хаеі",
+    "status": "PROPOSED",
+    "note": "Представницький приклад із препозиційним голосним і coeng-y; українська форма є проєктною.",
+    "evidence": [
+      "unicode17-representative-example"
+    ]
+  },
+  "ស៊ី": {
+    "source": "ស៊ី",
+    "ipa": "/siː/",
+    "ua": "сі",
+    "status": "PROPOSED",
+    "note": "TRIISAP + довгий /iː/; українська форма є проєктною.",
+    "evidence": [
+      "unicode17-representative-example"
+    ]
+  },
+  "សញ្ញា": {
+    "source": "សញ្ញា",
+    "ipa": "/saɲɲaː/",
+    "ua": "саньньа",
+    "status": "PROPOSED",
+    "note": "Повторний nyo + coeng; українська форма є проєктною.",
+    "evidence": [
+      "unicode17-representative-example"
+    ]
+  },
+  "ច្រើន": {
+    "source": "ច្រើន",
+    "ipa": "/craən/",
+    "ua": "тьраен",
+    "status": "PROPOSED",
+    "note": "Coeng-r + складний голосний; українська форма є проєктною.",
+    "evidence": [
+      "unicode17-representative-example"
+    ]
+  },
+  "ប៉ី": {
+    "source": "ប៉ី",
+    "ipa": "/pei/",
+    "ua": "пей",
+    "status": "PROPOSED",
+    "note": "Виняткова BA + MUUSIKATOAN конструкція /p/; IPA /pei/ наведено Unicode; українська форма є проєктною.",
+    "evidence": [
+      "unicode17-representative-example"
+    ]
+  },
+  "ស៊៉ា": {
+    "source": "ស៊៉ា",
+    "ipa": null,
+    "ua": null,
+    "status": "EVIDENCE_LIMITED",
+    "note": "Кілька register shifters у межах одного запису: структура виявляється, але автоматичне фонологічне рішення навмисно не робиться; українська форма є проєктною.",
+    "evidence": [
+      "negative-structural-case"
+    ]
+  }
 }

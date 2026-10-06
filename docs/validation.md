@@ -9,3 +9,8 @@ The first lexical coverage gap identified from the public service UI has been re
 ## Long-input adversarial validation — 2026-10-06
 
 The browser adapter must validate mixed Khmer input per orthographic unit. A single unsupported or malformed unit must not suppress evidence-backed IPA and Ukrainian outputs for neighboring units. Regression coverage therefore requires: (1) known fixtures embedded in a long adversarial block remain rendered; (2) unsupported units receive local `NOT_ESTABLISHED`; (3) malformed Unicode receives local `INVALID_OR_UNSUPPORTED`; (4) overall status aggregates the worst local status without replacing local outputs; and (5) lexical Ukrainian overrides are checked against the canonical IPA → Ukrainian policy.
+
+
+## Verified lexical spans
+
+When a verified lexical fixture contains more than one orthographic word, tokenization must preserve the complete fixture span before generic Khmer syllable segmentation. The span is accepted only when followed by whitespace, punctuation, or end-of-input, so a fixture cannot accidentally match the prefix of a longer word. IPA policy mapping preserves whitespace, allowing phrase-level fixtures such as ភាសាខ្មែរ to be checked against their complete canonical Ukrainian rendering.

@@ -281,5 +281,27 @@
     "evidence": [
       "snl:khmerskrift"
     ]
+  },
+  "ប៉": {
+    "source": "ប៉",
+    "ipa": "/paː/",
+    "ua": "па",
+    "status": "PROPOSED",
+    "note": "R12A прямо описує ប៉ як спеціальну комбінацію BA + MUUSIKATOAN для /p/; для ізольованого складу з притаманною голосною це /paː/. Українська форма є проєктною.",
+    "evidence": [
+      "r12a-character-ba",
+      "r12a-block-notes"
+    ]
+  },
+  "ប៊": {
+    "source": "ប៊",
+    "ipa": "/ɓɔː/",
+    "ua": "бо",
+    "status": "PROPOSED",
+    "note": "R12A прямо описує ប៊ як ɔ-series equivalent; для ізольованого складу з притаманною голосною це /ɓɔː/. Українська форма є проєктною.",
+    "evidence": [
+      "r12a-character-ba",
+      "r12a-orthography-registers"
+    ]
   }
 }

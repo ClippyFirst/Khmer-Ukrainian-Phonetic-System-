@@ -11,7 +11,7 @@ const vite = fs.readFileSync("vite.config.js", "utf8");
 for (const x of ["Content-Security-Policy", "src/main.js", 'id="source"', 'id="results"']) {
   if (!html.includes(x)) throw new Error("index missing " + x);
 }
-for (const x of ["Регістри, шифтери та кластери", "Приголосні: українська ціль", "Голосні: контекст важливіший за знак", "/c/","/h/","/ʋ/","/w/","Adversarial validation","ភាសាខ្មែរ","пієса кмае"]) {
+for (const x of ["Регістри, шифтери та кластери", "Приголосні: українська ціль", "Голосні: контекст важливіший за знак", "/c/","/h/","/ʋ/","/w/","Валідація складних випадків","ភាសាខ្មែរ","пієса кмае"]) {
   if (!systemHtml.includes(x)) throw new Error("system missing " + x);
 }
 for (const x of ["NOT_ESTABLISHED", "EVIDENCE_LIMITED", "BA_TO_PA_EXCEPTION", "MULTIPLE_REGISTER_SHIFTERS", "phnom_penh_colloquial", "practical-policy.json", "web-fixtures.json"]) {

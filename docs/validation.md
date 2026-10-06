@@ -4,3 +4,8 @@
 ## Latest lexical-coverage pass — 2026-10-06
 
 The first lexical coverage gap identified from the public service UI has been repaired. `ភាសាខ្មែរ` now resolves to a supported IPA record instead of `NOT_ESTABLISHED`, and the Ukrainian target is explicitly marked as project-proposed. The canonical policy also now contains /ae/ and the browser adapter preserves lexical practical forms when they are corpus-defined rather than mechanically derivable by segment concatenation.
+
+
+## Long-input adversarial validation — 2026-10-06
+
+The browser adapter must validate mixed Khmer input per orthographic unit. A single unsupported or malformed unit must not suppress evidence-backed IPA and Ukrainian outputs for neighboring units. Regression coverage therefore requires: (1) known fixtures embedded in a long adversarial block remain rendered; (2) unsupported units receive local `NOT_ESTABLISHED`; (3) malformed Unicode receives local `INVALID_OR_UNSUPPORTED`; (4) overall status aggregates the worst local status without replacing local outputs; and (5) lexical Ukrainian overrides are checked against the canonical IPA → Ukrainian policy.

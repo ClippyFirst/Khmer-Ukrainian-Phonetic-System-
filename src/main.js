@@ -164,7 +164,7 @@ function render() {
 source.addEventListener("input", render);
 $("profile").addEventListener("change", render);
 $("example").addEventListener("click", () => {
-  source.value = fixtures["កី"] ? "កី" : Object.keys(fixtures)[0];
+  source.value = fixtures["ភាសាខ្មែរ"] ? "ភាសាខ្មែរ" : Object.keys(fixtures)[0];
   render();
   source.focus();
 });

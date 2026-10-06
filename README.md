@@ -114,9 +114,9 @@ The complete lexical vowel-sign × context → IPA matrix is still an open resea
 
 The web layer is dependency-light and uses native browser APIs. The included structural check can be run with:
 
-`npm test`
+`npm install` followed by `npm test` and `npm run build`
 
-It verifies the presence of the two-page architecture, the real browser engine adapter, explicit unresolved states, and the documented pronunciation profiles.
+The structural web test verifies the two-page architecture, canonical research-data imports, explicit unresolved states, and the absence of duplicated linguistic mapping tables in the browser adapter. The production build is generated with Vite.
 
 The web requirements are frozen in:
 

@@ -57,3 +57,8 @@ if (!sourceGuard.includes("fixtureKeys = Object.keys(fixtures).sort")) throw new
 if (!sourceGuard.includes("return next === undefined || isSeparator(next)")) throw new Error("fixture span boundary guard missing");
 if (!sourceGuard.includes("units.push(fixtureKey)")) throw new Error("fixture span is not preserved as a unit");
 console.log("lexical-span tokenization guards: PASS");
+
+if (!sourceGuard.includes('if (/\\s/u.test(rest[0]))')) throw new Error("IPA mapper drops word boundaries");
+if (!sourceGuard.includes('value += rest[0]')) throw new Error("IPA mapper does not preserve whitespace");
+if (fixtures["ភាសាខ្មែរ"].ua !== "пієса кмае") throw new Error("phrase fixture must use canonical kʰ policy");
+console.log("IPA boundary and phrase guards: PASS");

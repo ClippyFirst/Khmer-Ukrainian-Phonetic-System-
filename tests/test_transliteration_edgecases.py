@@ -25,7 +25,7 @@ def test_known_unicode_cluster_segmentation():
 def test_known_unicode_cluster_structure():
     s = decompose_khmer_syllable("សង្គ្រាម")
     assert s.base_consonant == "ស"
-    assert s.subscripts == ["ក", "រ"]
+    assert s.subscripts == ["គ", "រ"]
     assert any(g.text == "ង" and g.kind == "consonant" for g in s.graphemes)
     assert "ា" in s.vowel_signs
 

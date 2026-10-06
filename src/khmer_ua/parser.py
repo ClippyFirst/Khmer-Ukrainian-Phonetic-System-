@@ -4,6 +4,8 @@ from .data import CONSONANTS, SIGNS
 from .model import KhmerGrapheme, KhmerSyllable, AnalysisResult
 
 COENG="្"
+MUUSIKATOAN="៉"
+TRIISAP="៊"
 INDEPENDENT_VOWELS={x["char"] for x in SIGNS if x.get("kind")=="independent_vowel"}
 
 def _lookup(ch):
@@ -14,12 +16,8 @@ def _starts_new_orthographic_syllable(chars, i):
         return False
     if i == 0:
         return False
-    # A consonant followed by COENG belongs structurally to the current
-    # orthographic syllable (e.g. the coda/onset architecture of សង្គ្រាម).
     if i + 1 < len(chars) and chars[i+1] == COENG:
         return False
-    # A consonant immediately following COENG is already consumed as a
-    # subscript and is handled by the main scanner.
     if chars[i-1] == COENG:
         return False
     return True
@@ -43,6 +41,23 @@ def segment_syllables(text: str) -> list[str]:
     if current:
         units.append("".join(current))
     return units
+
+def _resolve_effective_register(base: dict, chars: list[str]) -> tuple[str | None, str | None]:
+    """Resolve register after Khmer register-shifters, including ប៉ exception."""
+    register=base.get("register")
+    shifters=[ch for ch in chars if ch in {MUUSIKATOAN, TRIISAP}]
+    if not shifters:
+        return register, None
+    if len(shifters) > 1:
+        return register, "MULTIPLE_REGISTER_SHIFTERS"
+    shifter=shifters[0]
+    if base["char"]=="ប" and shifter==MUUSIKATOAN:
+        return "first", "BA_TO_PA_EXCEPTION"
+    if shifter==MUUSIKATOAN and register=="second":
+        return "first", "MUUSIKATOAN"
+    if shifter==TRIISAP and register=="first":
+        return "second", "TRIISAP"
+    return register, "NON_STANDARD_SHIFTER_USE"
 
 def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
     n=normalize_khmer(raw)
@@ -77,11 +92,14 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
         i+=1
     if s.base_consonant:
         c=_lookup(s.base_consonant)
-        s.register=c.get("register")
-        s.inherent_vowel=c.get("inherent_vowel")
+        s.register, shifter_rule=_resolve_effective_register(c, chars)
+        s.inherent_vowel=("first-series" if s.register=="first" else "second-series" if s.register=="second" else None)
+        s.phonology["onset_ipa"]=("p" if s.base_consonant=="ប" and shifter_rule=="BA_TO_PA_EXCEPTION" else c.get("onset_ipa"))
+        if shifter_rule:
+            s.phonology["register_shifter"]=shifter_rule
         s.sources=["unicode17-ch16"]
-        s.status="ESTABLISHED_STRUCTURE"
-        s.confidence=0.9
+        s.status="ESTABLISHED_STRUCTURE" if shifter_rule != "MULTIPLE_REGISTER_SHIFTERS" else "EVIDENCE_LIMITED"
+        s.confidence=0.9 if s.status=="ESTABLISHED_STRUCTURE" else 0.6
     elif s.independent_vowel:
         s.sources=["unicode17-ch16"]
         s.status="ESTABLISHED_STRUCTURE"
@@ -103,6 +121,7 @@ def analyze(text: str) -> AnalysisResult:
             "base_consonant":s.base_consonant,"register":s.register,
             "subscripts":s.subscripts,"vowel_signs":s.vowel_signs,
             "independent_vowel":s.independent_vowel,"inherent_vowel":s.inherent_vowel,
+            "phonology":s.phonology,
             "status":s.status,"confidence":s.confidence,"sources":s.sources})
     return AnalysisResult(text,n,[],sg,{"syllables":sg},{"status":"phoneticization_not_yet_established"},
                           None,[],[],None,[],[],["unicode17-ch16"],

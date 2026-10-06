@@ -305,56 +305,61 @@ function convert(text, profile) {
   };
 }
 
-const $ = (id) => document.getElementById(id);
-const source = $("source");
-const results = $("results");
-const empty = $("empty");
-const issue = $("issue");
-const live = $("live");
+export { convert, tokenize, parseSyllable, mapIpa };
 
-function render() {
-  $("count").textContent = `${[...source.value].length} символів`;
-  const data = convert(source.value, $("profile").value);
-  if (!data) {
-    results.hidden = true;
-    issue.hidden = true;
-    empty.hidden = false;
-    return;
-  }
-  empty.hidden = true;
-  results.hidden = false;
-  $("source-result").textContent = data.source;
-  $("ipa-result").textContent = data.ipa;
-  $("ua-result").textContent = data.ua;
-  $("status").textContent = data.status.replaceAll("_", " ");
-  $("details").textContent = data.note;
-  issue.hidden = !["EVIDENCE_LIMITED", "INVALID_OR_UNSUPPORTED", "NOT_ESTABLISHED"].includes(data.status);
-  if (!issue.hidden) $("issue-text").textContent = data.note;
-  live.textContent = "Результат оновлено";
-}
-
-source.addEventListener("input", render);
-$("profile").addEventListener("change", render);
-$("example").addEventListener("click", () => {
-  source.value = fixtures["ភាសាខ្មែរ"] ? "ភាសាខ្មែរ" : Object.keys(fixtures)[0];
-  render();
-  source.focus();
-});
-$("clear").addEventListener("click", () => {
-  source.value = "";
-  render();
-  source.focus();
-});
-document.querySelectorAll("[data-copy]").forEach((button) => {
-  button.addEventListener("click", async () => {
-    const element = $(button.dataset.copy);
-    try {
-      await navigator.clipboard.writeText(element.textContent);
-      const old = button.textContent;
-      button.textContent = "Скопійовано";
-      window.setTimeout(() => { button.textContent = old; }, 900);
-    } catch {
-      live.textContent = "Не вдалося скопіювати автоматично. Виділіть результат і скопіюйте вручну.";
+if (typeof document !== "undefined") {
+  const $ = (id) => document.getElementById(id);
+  const source = $("source");
+  const results = $("results");
+  const empty = $("empty");
+  const issue = $("issue");
+  const live = $("live");
+  
+  function render() {
+    $("count").textContent = `${[...source.value].length} символів`;
+    const data = convert(source.value, $("profile").value);
+    if (!data) {
+      results.hidden = true;
+      issue.hidden = true;
+      empty.hidden = false;
+      return;
     }
+    empty.hidden = true;
+    results.hidden = false;
+    $("source-result").textContent = data.source;
+    $("ipa-result").textContent = data.ipa;
+    $("ua-result").textContent = data.ua;
+    $("status").textContent = data.status.replaceAll("_", " ");
+    $("details").textContent = data.note;
+    issue.hidden = !["EVIDENCE_LIMITED", "INVALID_OR_UNSUPPORTED", "NOT_ESTABLISHED"].includes(data.status);
+    if (!issue.hidden) $("issue-text").textContent = data.note;
+    live.textContent = "Результат оновлено";
+  }
+  
+  source.addEventListener("input", render);
+  $("profile").addEventListener("change", render);
+  $("example").addEventListener("click", () => {
+    source.value = fixtures["ភាសាខ្មែរ"] ? "ភាសាខ្មែរ" : Object.keys(fixtures)[0];
+    render();
+    source.focus();
   });
-});
+  $("clear").addEventListener("click", () => {
+    source.value = "";
+    render();
+    source.focus();
+  });
+  document.querySelectorAll("[data-copy]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const element = $(button.dataset.copy);
+      try {
+        await navigator.clipboard.writeText(element.textContent);
+        const old = button.textContent;
+        button.textContent = "Скопійовано";
+        window.setTimeout(() => { button.textContent = old; }, 900);
+      } catch {
+        live.textContent = "Не вдалося скопіювати автоматично. Виділіть результат і скопіюйте вручну.";
+      }
+    });
+  });
+  
+}

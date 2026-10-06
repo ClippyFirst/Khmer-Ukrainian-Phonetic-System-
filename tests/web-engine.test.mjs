@@ -22,7 +22,12 @@ if (js.includes("const CONSONANTS = {") || js.includes("const UA = {") || js.inc
 }
 if (!vite.includes("index.html") || !vite.includes("system.html")) throw new Error("Vite config does not build both public pages");
 if (Object.keys(policy.segments).length < 40) throw new Error("Ukrainian policy unexpectedly incomplete");
-if (Object.keys(fixtures).length < 10) throw new Error("web fixtures unexpectedly incomplete");
+if (Object.keys(fixtures).length < 16) throw new Error("web fixtures unexpectedly incomplete");
+if (!fixtures["ភាសាខ្មែរ"] || fixtures["ភាសាខ្មែរ"].ipa !== "/pʰiəsaː kʰmae/" || fixtures["ភាសាខ្មែរ"].ua !== "пієса кхмае") {
+  throw new Error("verified Khmer-language fixture missing or inconsistent");
+}
+if (!Object.hasOwn(policy.segments, "ae")) throw new Error("Khmer /ae/ target mapping missing");
+if (!js.includes("fixture.ua") || !js.includes("mapping_check")) throw new Error("lexical practical-form handling missing");
 if (Object.keys(adversarial).length < 8) throw new Error("adversarial corpus unexpectedly incomplete");
 if (system.includes("<td>/c, cʰ/</td><td>ч</td>") || system.includes("<td>/h/</td><td>г</td>")) {
   throw new Error("system page contains stale transcription policy");

@@ -10,8 +10,8 @@ def test_velar_nasal_is_preserved():
 def test_glottal_stop_is_not_fabricated():
     assert map_sequence(['ʔ', 'a']) == 'а'
 
-def test_h_targets_ukrainian_g():
-    assert map_sequence(['h', 'a']) == 'га'
+def test_h_targets_ukrainian_kh():
+    assert map_sequence(['h', 'a']) == 'ха'
 
 def test_palatal_nasal_uses_soft_n():
     assert map_sequence(['ɲ', 'o']) == 'ньо'

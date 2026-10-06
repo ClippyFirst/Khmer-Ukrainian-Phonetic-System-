@@ -22,6 +22,7 @@ def test_independent_vowel():
 def test_malformed_sequence_is_not_confident():
     r=analyze("្")
     assert r.confidence==0.0
+    assert r.syllables[0]["status"]=="INVALID_OR_UNSUPPORTED"
     assert r.status=="INVALID_OR_UNSUPPORTED"
 
 def test_complex_unicode_examples():

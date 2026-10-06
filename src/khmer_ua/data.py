@@ -12,7 +12,10 @@ CONSONANTS = load_json("consonants.json")
 SIGNS = load_json("signs.json")
 EVIDENCE = load_json("sources.json")
 REGISTERS = load_json("registers.json")
-SHIFTER_ELIGIBILITY = {key: set(value) for key, value in REGISTERS["shifter_eligibility"].items()}
+SHIFTER_ELIGIBILITY = {
+    "៉": set(REGISTERS["shifter_eligibility"]["muusikatoan"]),
+    "៊": set(REGISTERS["shifter_eligibility"]["triisap"]),
+}
 
 FIRST_REGISTER = {x["char"] for x in CONSONANTS if x.get("register") == "first"}
 SECOND_REGISTER = {x["char"] for x in CONSONANTS if x.get("register") == "second"}

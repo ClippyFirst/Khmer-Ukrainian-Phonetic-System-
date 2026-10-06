@@ -72,7 +72,7 @@ function parseSyllable(raw) {
 }
 
 function renderFixture(fixture, profile) {
-  const baseIpa = fixture.ipa.replace(/^\\/|\\/$/g, "");
+  const baseIpa = fixture.ipa.startsWith("/") && fixture.ipa.endsWith("/") ? fixture.ipa.slice(1, -1) : fixture.ipa;
   const renderedIpa = applyProfile(baseIpa, profile);
   const mapped = mapIpa(renderedIpa);
   return {

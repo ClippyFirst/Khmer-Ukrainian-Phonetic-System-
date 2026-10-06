@@ -14,6 +14,11 @@ def test_ba_muusikatoan_exception_changes_onset():
     assert s.phonology["register_shifter"] == "BA_TO_PA_EXCEPTION"
     assert s.phonology["onset_ipa"] == "p"
 
+def test_non_eligible_shifters_are_flagged():
+    assert decompose_khmer_syllable("ក៊").status == "EVIDENCE_LIMITED"
+    assert decompose_khmer_syllable("គ៉").status == "EVIDENCE_LIMITED"
+    assert decompose_khmer_syllable("ក៊").phonology["register_shifter"] == "NON_STANDARD_SHIFTER_USE"
+
 def test_multiple_shifters_are_flagged():
     s = decompose_khmer_syllable("ស៊៉ា")
     assert s.status == "EVIDENCE_LIMITED"

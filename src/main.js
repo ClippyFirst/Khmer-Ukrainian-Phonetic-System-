@@ -39,21 +39,48 @@ function tokenize(text) {
   const units = [];
   let current = "";
   const chars = [...normalize(text)];
-  for (let index = 0; index < chars.length; index += 1) {
+  const fixtureKeys = Object.keys(fixtures).sort((a, b) => [...b].length - [...a].length);
+
+  const flush = () => {
+    if (current) {
+      units.push(current);
+      current = "";
+    }
+  };
+
+  for (let index = 0; index < chars.length;) {
     const char = chars[index];
+
     if (PUNCTUATION.test(char)) {
-      if (current) units.push(current), current = "";
+      flush();
       units.push(char);
+      index += 1;
       continue;
     }
+
+    const remainder = chars.slice(index).join("");
+    const fixtureKey = fixtureKeys.find((key) => {
+      if (!remainder.startsWith(key)) return false;
+      const next = chars[index + [...key].length];
+      return next === undefined || isSeparator(next);
+    });
+
+    if (fixtureKey) {
+      flush();
+      units.push(fixtureKey);
+      index += [...fixtureKey].length;
+      continue;
+    }
+
     if (current && startsNewOrthographicSyllable(chars, index)) {
       units.push(current);
       current = char;
     } else {
       current += char;
     }
+    index += 1;
   }
-  if (current) units.push(current);
+  flush();
   return units;
 }
 

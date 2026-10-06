@@ -47,4 +47,4 @@ For `ភាសាខ្មែរ`, independent current references converge on **
 
 The browser fixture for `ភាសាខ្មែរ` now uses this lexical evidence rather than requiring the incomplete general orthography → IPA engine to reconstruct the phrase from scratch. This is an explicit lexical coverage layer, not a bypass that changes the research architecture.
 
-A later evidence audit also corrected several adversarial fixtures against current dictionary/R12A evidence: ខ្ញុំ → /kɲom/, សង្គ្រាម → /sɑŋ.ˈkriəm/, ហើយ → /haəj/, and ប៉ី → /pəj/. These corrections affect the regression corpus and do not change the project-specific Ukrainian target policy.
+The evidence audit distinguishes primary Unicode representative IPA from dictionary alternatives. The current regression fixtures for ខ្ញុំ, សង្គ្រាម, ហើយ and ប៉ី follow Unicode 17 representative forms (/kʰɲom/, /sɔŋkrɛəm/, /haəi/, /pei/). Other lexical sources may provide alternative phonetic analyses; such disagreement must not be silently collapsed into the structural fixture layer.

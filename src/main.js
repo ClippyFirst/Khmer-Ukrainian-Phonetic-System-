@@ -17,16 +17,33 @@ const SEGMENTS = Object.keys(practicalPolicy.segments).sort((a, b) => b.length -
 const normalize = (text) => text.normalize("NFC");
 const isKhmerConsonant = (char) => Object.hasOwn(CONSONANTS, char);
 
+function isSeparator(char) {
+  return !char || /\s/u.test(char) || PUNCTUATION.test(char);
+}
+
+function startsNewOrthographicSyllable(chars, index) {
+  if (!isKhmerConsonant(chars[index]) || index === 0) return false;
+  if (chars[index - 1] === COENG) return false;
+  if (chars[index + 1] === COENG) return false;
+  const previousKind = SIGN_BY_CHAR[chars[index - 1]]?.kind;
+  if (["dependent_vowel", "composite_vowel", "vowel_modifier", "sign"].includes(previousKind)) {
+    return isSeparator(chars[index + 1]);
+  }
+  return true;
+}
+
 function tokenize(text) {
   const units = [];
   let current = "";
-  for (const char of normalize(text)) {
+  const chars = [...normalize(text)];
+  for (let index = 0; index < chars.length; index += 1) {
+    const char = chars[index];
     if (PUNCTUATION.test(char)) {
       if (current) units.push(current), current = "";
       units.push(char);
       continue;
     }
-    if (current && isKhmerConsonant(char) && !current.endsWith(COENG)) {
+    if (current && startsNewOrthographicSyllable(chars, index)) {
       units.push(current);
       current = char;
     } else {

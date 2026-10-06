@@ -40,7 +40,6 @@ assert.equal(parseSyllable("ក៊").register_rule, "NON_STANDARD_SHIFTER_USE");
 
 const mixed = convert("ក ࿔ គ", "careful_standard");
 assert.equal(mixed.status, "EVIDENCE_LIMITED");
-assert.equal(mixed.units.find((x) => x.source === "က")?.status, undefined);
 const unresolved = mixed.units.find((x) => x.status === "NOT_ESTABLISHED" || x.status === "INVALID_OR_UNSUPPORTED");
 assert.ok(unresolved, "mixed input must isolate an unresolved unit rather than hiding neighboring evidence-backed units");
 assert.equal(mixed.units.find((x) => x.source === "ក")?.ua, "ка");

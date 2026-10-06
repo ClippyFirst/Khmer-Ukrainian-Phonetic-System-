@@ -1,17 +1,1 @@
-# Validation
-
-## What is validated
-
-Structural tests cover NFC normalization, coeng/subscript decomposition, first/second register metadata, independent vowels, malformed coeng, complex Unicode examples, practical target mappings, and pronunciation-profile behavior.
-
-## What is not yet validated
-
-There is no adjudicated lexical gold corpus. Therefore the repository does not report accuracy, precision, recall, or percentage correctness for Khmer → Ukrainian output.
-
-## Validation status
-
-The repository has no CI workflow. A local test run is therefore required before any release claim.
-
-## Required future corpus
-
-Each case should record Khmer orthography, authoritative pronunciation/IPA, dialect/profile, expected Ukrainian form, Russian comparator where relevant, source/provenance, and adjudication status.
+# Validation\n\n## What is validated\n\nThe repository validates the structural research layer and the static web layer separately.\n\n### Python research layer\n\nTests cover:\n- NFC normalization;\n- coeng/subscript decomposition;\n- first/second register metadata;\n- independent vowels;\n- malformed coeng;\n- complex Unicode examples;\n- proposed practical target mappings;\n- pronunciation-profile behavior;\n- canonical Ukrainian policy integrity.\n\n### Web layer\n\nThe web test verifies:\n- both public pages and required security/interaction hooks;\n- the presence of canonical data imports;\n- explicit unresolved-state handling;\n- the absence of duplicated consonant/vowel/Ukrainian mapping tables in the browser adapter;\n- provenance-bearing web fixtures.\n\nThe production build is run with Vite in CI before GitHub Pages deployment.\n\n## What is not yet validated\n\nThere is no adjudicated lexical gold corpus. Therefore the repository does not report accuracy, precision, recall, or percentage correctness for Khmer → Ukrainian output.\n\nThe web fixtures are representative research examples, not a lexical benchmark. They carry PROPOSED status and must not be interpreted as empirical accuracy evidence.\n\n## Required future corpus\n\nEach case should record Khmer orthography, authoritative pronunciation/IPA, dialect/profile, expected Ukrainian form, Russian comparator where relevant, source/provenance, and adjudication status.

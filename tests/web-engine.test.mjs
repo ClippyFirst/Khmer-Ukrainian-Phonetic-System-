@@ -65,7 +65,7 @@ console.log("IPA boundary and phrase guards: PASS");
 
 
 if (!sourceGuard.includes("const invalidCount = items.filter")) throw new Error("aggregate invalid-count guard missing");
-if (!sourceGuard.includes('if (invalidCount === items.length) return "INVALID_OR_UNSUPPORTED";')) throw new Error("mixed-input invalid isolation guard missing");
+if (!sourceGuard.includes("if (invalidCount > 0 && invalidCount === items.length) return \"INVALID_OR_UNSUPPORTED\";")) throw new Error("mixed-input invalid isolation guard missing");
 for (const key of ["ក","គ","កូ","គូ","កេ","គេ","កែ","គែ","កើ","គើ","កៅ","គៅ"]) {
   if (!fixtures[key]) throw new Error("representative series fixture missing: " + key);
 }

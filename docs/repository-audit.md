@@ -31,3 +31,19 @@ The previous consonant table attached IPA evidence directly to the Unicode sourc
 ## No destructive cleanup
 
 No unique research dataset or historical analysis was deleted. The repository was small enough that archiving large historical trees would have added complexity without improving the active research workflow.
+
+
+## Transcription edge-case audit — 2026-10-06
+
+A focused adversarial review found several practical-layer weaknesses that were too easy to miss in ordinary examples:
+
+- register shifters ៉ / ៊ were parsed as generic signs instead of changing the effective register;
+- the exceptional ប៉ construction was not represented as the /p/ realization it encodes;
+- /c/ had been mapped to Ukrainian ч even though the source phoneme is conventionally represented as [c], making ть a closer Ukrainian practical approximation;
+- /h/ had been mapped to г, which is weaker phonetically than х for the source [h];
+- /w/ and /ʋ/ were unnecessarily collapsed in the practical policy;
+- the representative /kiə/ example was written as «кіа», which was corrected to «кіє» as a more transparent Ukrainian sequence.
+
+The new adversarial corpus includes ខ្ញុំ, សង្គ្រាម, ហើយ, ស៊ី, សញ្ញា, ច្រើន, ប៉ី and a negative multiple-shifter case. These are regression fixtures, not a claim of complete lexical coverage. The parser now explicitly records register-shifter decisions and flags multiple-shifter structures as EVIDENCE_LIMITED.
+
+External evidence used for this review: Unicode Khmer encoding/register documentation; R12A Khmer orthography notes; and the documented Khmer-Russian practical transcription tradition as a comparator. The Ukrainian layer remains a project proposal and still requires an adjudicated Ukrainian corpus before empirical accuracy can be claimed.

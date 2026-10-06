@@ -194,3 +194,10 @@ The current implementation includes explicit handling for Khmer register shifter
 The web explanation and browser adapter have been synchronized with that policy. The browser does not silently invent Phnom Penh /r/-loss phonetics or complete vowel IPA where the research engine has not established them.
 
 GitHub Actions has been triggered by the latest commits, but the current runs report failure without job records. Until that infrastructure/execution issue is resolved, the repository does not claim a green CI result. No empirical accuracy percentage is claimed.
+
+
+## Latest lexical-coverage pass — 2026-10-06
+
+The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Current independent references give the phrase as **[pʰiəsaː kʰmae]**. The repository now contains a small provenance-bearing lexical corpus and a dedicated fixture for this common form. The IPA evidence is marked WELL_SUPPORTED; the Ukrainian practical form **пієса кхмае** remains explicitly PROPOSED.
+
+The Ukrainian policy was also extended for /ae/, and the browser adapter now distinguishes a corpus-defined lexical Ukrainian form from a mechanical segment-by-segment rendering. This prevents the UI from silently presenting a different practical spelling merely because a phrase contains context-dependent or complex Khmer vowels.

@@ -41,16 +41,17 @@ No probability is assigned without a calibrated corpus.
 | /d, ɗ/ | д |
 | /k/ | к |
 | /kʰ/ | к |
-| /c/ | ч |
+| /c/ | ть |
 | /cʰ/ | ч |
 | /ɲ/ | нь |
 | /ŋ/ | нг |
 | /r/ | р |
 | /l/ | л |
-| /ʋ~w/ | в |
+| /ʋ/ | в |
+| /w/ | у |
 | /j/ | й |
 | /s/ | с |
-| /h/ | г |
+| /h/ | х |
 | /ʔ/ | ∅ |
 
 ## Vowel reduction

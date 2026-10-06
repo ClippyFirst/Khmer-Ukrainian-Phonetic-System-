@@ -149,6 +149,11 @@ function mapIpa(ipa) {
   let rest = ipa.replace(/[ˈˌ.]/gu, "");
   let value = "";
   while (rest) {
+    if (/\s/u.test(rest[0])) {
+      value += rest[0];
+      rest = rest.slice(1);
+      continue;
+    }
     const segment = SEGMENTS.find((candidate) => rest.startsWith(candidate));
     if (!segment) return { value: null, unsupported: rest };
     value += practicalPolicy.segments[segment].default;

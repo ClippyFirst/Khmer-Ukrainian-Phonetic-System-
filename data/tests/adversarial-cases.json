@@ -1,10 +1,10 @@
 {
   "khnyom":{"source":"ខ្ញុំ","ipa":"/kʰɲom/","source_basis":"Wiktionary standard IPA","checks":["coeng-subscript","vowel-modifier","aspiration","palatal-nasal"]},
-  "sangkreem":{"source":"សង្គ្រាម","ipa":"/sɑŋ.ˈkriəm/","source_basis":"Wiktionary standard IPA","checks":["multi-consonant-cluster","coeng-chain","series-conditioned-vowel","syllable-segmentation"]},
-  "haeuy":{"source":"ហើយ","ipa":"/haəj/","source_basis":"Wiktionary standard IPA","checks":["preposed-vowel-encoding","final-y","surface-vowel"]},
+  "sangkreem":{"source":"សង្គ្រាម","ipa":"/sɔŋkrɛəm/","source_basis":"Unicode 17 representative example","checks":["multi-consonant-cluster","coeng-chain","series-conditioned-vowel","syllable-segmentation"]},
+  "haeuy":{"source":"ហើយ","ipa":"/haəi/","source_basis":"Unicode 17 representative example","checks":["preposed-vowel-encoding","coeng-y","surface-vowel"]},
   "si":{"source":"ស៊ី","ipa":"/siː/","source_basis":"Unicode 17.0 representative example","checks":["triisap-register-shifter","long-vowel"]},
   "sanyaa":{"source":"សញ្ញា","ipa":"/saɲɲaː/","source_basis":"Unicode 17.0 representative example","checks":["repeated-nyo","coeng","long-vowel"]},
   "chraen":{"source":"ច្រើន","ipa":"/craən/","source_basis":"Unicode 17.0 representative example","checks":["coeng-r","composite-vowel","cluster"]},
-  "pa_exception":{"source":"ប៉ី","ipa":"/pəj/","source_basis":"R12A term list","checks":["muusikatoan-exception","ba-to-pa","vowel-series"]},
+  "pa_exception":{"source":"ប៉ី","ipa":"/pei/","source_basis":"Unicode 17 representative example","checks":["muusikatoan-exception","ba-to-pa","vowel-series"]},
   "multiple_shifters":{"source":"ស៊៉ា","ipa":null,"source_basis":"negative structural case","checks":["multiple-register-shifters"],"expected_status":"EVIDENCE_LIMITED"}
 }

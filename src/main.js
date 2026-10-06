@@ -58,9 +58,10 @@ function tokenize(text) {
 }
 
 function resolveRegister(base, raw) {
-  const shifters = [...raw].filter((char) => SHIFTERS.has(char));
-  if (!shifters.length) return { register: base.register, rule: null, status: "ESTABLISHED_STRUCTURE" };
-  if (shifters.length > 1) return { register: base.register, rule: "MULTIPLE_REGISTER_SHIFTERS", status: "EVIDENCE_LIMITED" };
+  const positions = [...raw].flatMap((char, index) => SHIFTERS.has(char) ? [index] : []);
+  if (!positions.length) return { register: base.register, rule: null, status: "ESTABLISHED_STRUCTURE" };
+  if (positions.length > 1) return { register: base.register, rule: "MULTIPLE_REGISTER_SHIFTERS", status: "EVIDENCE_LIMITED" };
+  if (positions[0] !== 1) return { register: base.register, rule: "MISPLACED_REGISTER_SHIFTER", status: "EVIDENCE_LIMITED" };
   const shifter = shifters[0];
   if (base.char === "ប" && shifter === "៉") return { register: "first", rule: "BA_TO_PA_EXCEPTION", status: "ESTABLISHED_STRUCTURE" };
   if (shifter === "៉" && base.register === "second") return { register: "first", rule: "MUUSIKATOAN", status: "ESTABLISHED_STRUCTURE" };
@@ -210,14 +211,16 @@ function convert(text, profile) {
 
   const linguistic = rendered.filter((item) => item.status !== "PUNCTUATION");
   const analyses = linguistic.map((item) => item.analysis).filter(Boolean);
-  const known = linguistic.filter((item) => item.ipa.startsWith("/") || item.ipa === "⟦EVIDENCE_LIMITED⟧");
+  const resolved = linguistic.filter((item) => item.status === "PROPOSED");
+  const unresolved = linguistic.filter((item) => item.status !== "PROPOSED");
+  const unresolvedNames = unresolved.map((item) => item.source).filter(Boolean).slice(0, 12);
 
   return {
     source: normalized,
     ipa: rendered.map((item) => item.ipa).join(""),
     ua: rendered.map((item) => item.ua).join(""),
     status: combineStatus(linguistic),
-    note: `Локальний аналіз: ${known.length} одиниць мають зафіксовану IPA/лексичну базу; ${linguistic.length - known.length} одиниць потребують окремого встановлення або перевірки. Невизначеність однієї одиниці більше не блокує результати інших.`,
+    note: `Локальний аналіз: ${resolved.length} одиниць мають зафіксовану IPA та проєктну українську форму; ${unresolved.length} одиниць потребують окремого встановлення або перевірки. Невизначеність однієї одиниці більше не блокує результати інших.${unresolvedNames.length ? ` Невстановлені/проблемні одиниці: ${unresolvedNames.join(" · ")}.` : ""}`,
     profile,
     units: rendered,
     analyses,

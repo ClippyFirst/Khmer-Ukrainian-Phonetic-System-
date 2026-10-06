@@ -28,6 +28,11 @@ if (!fixtures["ភាសាខ្មែរ"] || fixtures["ភាសាខ្ម�
 }
 if (!Object.hasOwn(policy.segments, "ae")) throw new Error("Khmer /ae/ target mapping missing");
 if (!js.includes("fixture.ua") || !js.includes("mapping_check")) throw new Error("lexical practical-form handling missing");
+const forbiddenTerms = ["кхмер", "Кхмер"];
+for (const term of forbiddenTerms) {
+  if (html.includes(term) || systemHtml.includes(term) || js.includes(term)) throw new Error("obsolete Ukrainian language-name term remains: " + term);
+}
+
 if (Object.keys(adversarial).length < 8) throw new Error("adversarial corpus unexpectedly incomplete");
 if (system.includes("<td>/c, cʰ/</td><td>ч</td>") || system.includes("<td>/h/</td><td>г</td>")) {
   throw new Error("system page contains stale transcription policy");

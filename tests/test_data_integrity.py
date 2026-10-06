@@ -20,3 +20,10 @@ def test_corpus_cases_are_provenance_bearing():
     for case in cases:
         assert "id" in case
         assert "status" in case or "evidence" in case
+
+
+def test_register_shifter_eligibility_is_explicit():
+    data = json.loads((ROOT / "data/khmer/registers.json").read_text(encoding="utf-8"))
+    eligibility = data["shifter_eligibility"]
+    assert set(eligibility["muusikatoan"]) >= {"ង","ញ","ន","ម","យ","រ","ល","វ"}
+    assert set(eligibility["triisap"]) >= {"ប","ស","ហ","អ"}

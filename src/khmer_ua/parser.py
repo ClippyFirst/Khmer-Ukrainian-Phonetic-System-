@@ -63,7 +63,7 @@ def _resolve_effective_register(base: dict, chars: list[str]) -> tuple[str | Non
     if positions[0] != 1:
         return register, "MISPLACED_REGISTER_SHIFTER"
     shifter=chars[positions[0]]
-    if shifter not in SHIFTER_ELIGIBILITY.get(shifter, set()) or base["char"] not in SHIFTER_ELIGIBILITY[shifter]:
+    if base["char"] not in SHIFTER_ELIGIBILITY.get(shifter, set()):
         return register, "NON_STANDARD_SHIFTER_USE"
     if base["char"]=="ប" and shifter==MUUSIKATOAN:
         return "first", "BA_TO_PA_EXCEPTION"

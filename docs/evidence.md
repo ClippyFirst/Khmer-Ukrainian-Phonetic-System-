@@ -46,3 +46,5 @@ A first small cross-source lexical corpus has now been added at `data/tests/veri
 For `ភាសាខ្មែរ`, independent current references converge on **[pʰiəsaː kʰmae]** / **/pʰiəsaː kʰmae/**. The IPA claim is therefore marked WELL_SUPPORTED, while the Ukrainian form remains PROPOSED. The corpus must not be read as evidence that the Ukrainian form is normative.
 
 The browser fixture for `ភាសាខ្មែរ` now uses this lexical evidence rather than requiring the incomplete general orthography → IPA engine to reconstruct the phrase from scratch. This is an explicit lexical coverage layer, not a bypass that changes the research architecture.
+
+A later evidence audit also corrected several adversarial fixtures against current dictionary/R12A evidence: ខ្ញុំ → /kɲom/, សង្គ្រាម → /sɑŋ.ˈkriəm/, ហើយ → /haəj/, and ប៉ី → /pəj/. These corrections affect the regression corpus and do not change the project-specific Ukrainian target policy.

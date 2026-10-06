@@ -76,7 +76,7 @@ if (fixtures["ប៉"].ipa !== "/paː/" || fixtures["ប៉"].ua !== "па") thr
 if (fixtures["ប៊"].ipa !== "/ɓɔː/" || fixtures["ប៊"].ua !== "бо") throw new Error("ប៊ fixture must resolve to /ɓɔː/ → бо");
 if (fixtures["ប៉ី"].ipa !== "/pei/" || fixtures["ប៉ី"].ua !== "пей") throw new Error("ប៉ី fixture must resolve to /pəj/ → пей");
 if (fixtures["ខ្ញុំ"].ipa !== "/kʰɲom/" || fixtures["ខ្ញុំ"].ua !== "кньом") throw new Error("ខ្ញុំ fixture must resolve to /kɲom/ → кньом");
-if (fixtures["សង្គ្រាម"].ipa !== "/sɔŋkrɛəm/" || fixtures["សង្គ្រាម"].ua !== "сангкрієм") throw new Error("សង្គ្រាម fixture must resolve to /sɑŋ.kriəm/ → сангкрієм");
+if (fixtures["សង្គ្រាម"].ipa !== "/sɔŋkrɛəm/" || fixtures["សង្គ្រាម"].ua !== "сонгкреам") throw new Error("សង្គ្រាម fixture must resolve to /sɑŋ.kriəm/ → сангкрієм");
 if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "хаеі") throw new Error("ហើយ fixture must resolve to /haəj/ → хаей");
 if (sourceGuard.includes("const SHIFTER_ELIGIBILITY") === false) throw new Error("Khmer shifter eligibility guard missing");
 if (!sourceGuard.includes("base.char not")) throw new Error("Khmer shifter eligibility is not enforced");

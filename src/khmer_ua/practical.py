@@ -11,7 +11,10 @@ SEGMENTS = POLICY["segments"]
 def map_segment(ipa: str, mode: str = "default") -> str:
     if mode not in {"default", "compatibility_ru"}:
         raise ValueError(f"unsupported mapping mode: {mode}")
-    value = SEGMENTS.get(ipa, {}).get(mode)
+    entry = SEGMENTS.get(ipa, {})
+    value = entry.get(mode) if mode == "compatibility_ru" else entry.get("default")
+    if mode == "compatibility_ru" and value is None:
+        value = entry.get("default")
     if value is None:
         raise ValueError(f"unsupported IPA segment: {ipa}")
     return value

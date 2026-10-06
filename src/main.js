@@ -1,4 +1,5 @@
 import consonants from "../data/khmer/consonants.json" with { type: "json" };
+import registers from "../data/khmer/registers.json" with { type: "json" };
 import signs from "../data/khmer/signs.json" with { type: "json" };
 import vowels from "../data/khmer/vowels.json" with { type: "json" };
 import practicalPolicy from "../data/ukrainian/practical-policy.json" with { type: "json" };
@@ -13,10 +14,7 @@ const VOWEL_SIGNS = new Set(
 );
 const COENG = "្";
 const SHIFTERS = new Set(["៉", "៊"]);
-const SHIFTER_ELIGIBILITY = {
-  "៉": new Set(["ង", "ញ", "ន", "ម", "យ", "រ", "ល", "វ", "ឝ"]),
-  "៊": new Set(["ប", "ឞ", "ស", "ហ", "អ"]),
-};
+const SHIFTER_ELIGIBILITY = Object.fromEntries(Object.entries(registers.shifter_eligibility).map(([key, values]) => [key === "muusikatoan" ? "៉" : "៊", new Set(values)]));
 const PUNCTUATION = /^\s|^[។៕,!?;:()[\]{}"“”«»]$/u;
 const PROFILES = new Set(["careful_standard", "phnom_penh_colloquial", "established_form"]);
 const SEGMENTS = Object.keys(practicalPolicy.segments).sort((a, b) => b.length - a.length);

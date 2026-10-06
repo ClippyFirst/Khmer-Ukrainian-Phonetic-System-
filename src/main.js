@@ -6,8 +6,11 @@ import fixtures from "../data/tests/web-fixtures.json" with { type: "json" };
 
 const CONSONANTS = Object.fromEntries(consonants.map((item) => [item.char, item]));
 const SIGN_BY_CHAR = Object.fromEntries(signs.map((item) => [item.char, item]));
-const VOWEL_SIGNS = new Set(signs.filter((item) => ["dependent_vowel", "composite_vowel", "vowel_modifier"].includes(item.kind)).map((item) => item.char));
-const INDEPENDENT_VOWELS = new Set(signs.filter((item) => item.kind === "independent_vowel").map((item) => item.char));
+const VOWEL_SIGNS = new Set(
+  signs
+    .filter((item) => ["dependent_vowel", "composite_vowel", "vowel_modifier"].includes(item.kind))
+    .map((item) => item.char),
+);
 const COENG = "្";
 const SHIFTERS = new Set(["៉", "៊"]);
 const PUNCTUATION = /^\s|^[។៕,!?;:()[\]{}"“”«»]$/u;
@@ -78,7 +81,9 @@ function parseSyllable(raw) {
     const char = raw[index];
     if (char === COENG) {
       const sub = raw[index + 1];
-      if (!sub || !isKhmerConsonant(sub)) return { status: "NOT_ESTABLISHED", raw, reason: "Malformed coeng sequence." };
+      if (!sub || !isKhmerConsonant(sub)) {
+        return { status: "INVALID_OR_UNSUPPORTED", raw, reason: "Malformed coeng sequence." };
+      }
       subscripts.push(sub);
       graphemes.push({ text: COENG + sub, kind: "subscript" });
       index += 2;
@@ -93,15 +98,21 @@ function parseSyllable(raw) {
   const register = resolveRegister(base, raw);
   return {
     status: unknown.length ? "EVIDENCE_LIMITED" : register.status,
-    raw, base, register: register.register, register_rule: register.rule,
-    subscripts, vowelSigns, unknown, graphemes,
+    raw,
+    base,
+    register: register.register,
+    register_rule: register.rule,
+    subscripts,
+    vowelSigns,
+    unknown,
+    graphemes,
     inherent_vowel: register.register === "first" ? "first-series" : register.register === "second" ? "second-series" : null,
     onset_ipa: base === "ប" && register.rule === "BA_TO_PA_EXCEPTION" ? "p" : CONSONANTS[base].onset_ipa,
   };
 }
 
 function mapIpa(ipa) {
-  let rest = ipa;
+  let rest = ipa.replace(/[ˈˌ.]/gu, "");
   let value = "";
   while (rest) {
     const segment = SEGMENTS.find((candidate) => rest.startsWith(candidate));
@@ -115,38 +126,102 @@ function mapIpa(ipa) {
 function renderFixture(fixture, profile) {
   if (!PROFILES.has(profile)) throw new Error("Unsupported pronunciation profile: " + profile);
   if (!fixture.ipa) {
-    return { source: fixture.source, ipa: "⟦EVIDENCE_LIMITED⟧", ua: "⟦НЕВСТАНОВЛЕНО⟧", status: fixture.status, note: fixture.note, profile };
+    return {
+      source: fixture.source,
+      ipa: "⟦EVIDENCE_LIMITED⟧",
+      ua: "⟦НЕВСТАНОВЛЕНО⟧",
+      status: fixture.status,
+      note: fixture.note,
+      profile,
+      mapping_check: null,
+    };
   }
+
   const ipa = fixture.ipa.replace(/^\//, "").replace(/\/$/, "");
   const mapped = mapIpa(ipa);
+  const agrees = mapped.value !== null && mapped.value === fixture.ua;
+
+  if (!agrees) {
+    return {
+      source: fixture.source,
+      ipa: "/" + ipa + "/",
+      ua: mapped.value ?? "⟦НЕВСТАНОВЛЕНО⟧",
+      status: "EVIDENCE_LIMITED",
+      note: "УВАГА: лексична українська форма не збігається з канонічною IPA → українська політикою. Суперечливий override не використовується; показано канонічний результат політики.",
+      profile,
+      mapping_check: { policy_render: mapped.value, lexical_render: fixture.ua ?? null, agrees: false },
+    };
+  }
+
   return {
     source: fixture.source,
     ipa: "/" + ipa + "/",
-    ua: fixture.ua ?? mapped.value ?? "⟦НЕПІДТРИМУЄТЬСЯ⟧",
+    ua: mapped.value,
     status: fixture.status,
-    note: fixture.note + (fixture.ua && mapped.value !== fixture.ua ? " Українська форма береться з лексично зафіксованого проєктного корпусу, а не виводиться механічною посегментною конкатенацією." : "") + " Профіль: " + profile + ".",
+    note: fixture.note + " Профіль: " + profile + ".",
     profile,
-    mapping_check: fixture.ua ? { policy_render: mapped.value, lexical_render: fixture.ua, agrees: mapped.value === fixture.ua } : null
+    mapping_check: fixture.ua ? { policy_render: mapped.value, lexical_render: fixture.ua, agrees: true } : null,
   };
+}
+
+function renderUnknownUnit(unit, profile) {
+  const analysis = parseSyllable(unit);
+  if (analysis.status === "INVALID_OR_UNSUPPORTED") {
+    return {
+      source: unit,
+      ipa: "⟦INVALID_OR_UNSUPPORTED⟧",
+      ua: "⟦НЕПІДТРИМУЄТЬСЯ⟧",
+      status: "INVALID_OR_UNSUPPORTED",
+      note: analysis.reason ?? "Некоректна або непідтримувана Unicode-послідовність.",
+      analysis,
+      profile,
+    };
+  }
+  return {
+    source: unit,
+    ipa: "⟦NOT_ESTABLISHED⟧",
+    ua: "⟦НЕВСТАНОВЛЕНО⟧",
+    status: analysis.status === "EVIDENCE_LIMITED" ? "EVIDENCE_LIMITED" : "NOT_ESTABLISHED",
+    note: "Структуру запису розпізнано, але для цієї одиниці немає достатньо встановленої орфографія → IPA моделі. Система не вгадує вимову.",
+    analysis,
+    profile,
+  };
+}
+
+function combineStatus(items) {
+  const statuses = new Set(items.map((item) => item.status));
+  if (statuses.has("INVALID_OR_UNSUPPORTED")) return "INVALID_OR_UNSUPPORTED";
+  if (statuses.has("EVIDENCE_LIMITED")) return "EVIDENCE_LIMITED";
+  if (statuses.has("NOT_ESTABLISHED")) return "NOT_ESTABLISHED";
+  if (statuses.has("PROPOSED")) return "PROPOSED";
+  return "ESTABLISHED_STRUCTURE";
 }
 
 function convert(text, profile) {
   const normalized = normalize(text);
   if (!normalized.trim()) return null;
-  if (fixtures[normalized]) return renderFixture(fixtures[normalized], profile);
 
   const units = tokenize(normalized);
-  const analyses = units.filter((unit) => !PUNCTUATION.test(unit)).map(parseSyllable);
-  const unresolved = analyses.some((item) => item.status !== "ESTABLISHED_STRUCTURE");
+  const rendered = units.map((unit) => {
+    if (PUNCTUATION.test(unit)) return { source: unit, ipa: unit, ua: unit, status: "PUNCTUATION", note: "", profile };
+    const fixture = fixtures[unit];
+    return fixture ? renderFixture(fixture, profile) : renderUnknownUnit(unit, profile);
+  });
+
+  const linguistic = rendered.filter((item) => item.status !== "PUNCTUATION");
+  const analyses = linguistic.map((item) => item.analysis).filter(Boolean);
+  const known = linguistic.filter((item) => item.ipa.startsWith("/") || item.ipa === "⟦EVIDENCE_LIMITED⟧");
+
   return {
     source: normalized,
-    ipa: "⟦NOT_ESTABLISHED⟧",
-    ua: "⟦НЕВСТАНОВЛЕНО⟧",
-    status: unresolved ? "EVIDENCE_LIMITED" : "NOT_ESTABLISHED",
-    note: "Структуру кмерського запису розпізнано, але повна орфографія → IPA матриця для цього запису ще не встановлена. Система навмисно не вгадує вимову.",
+    ipa: rendered.map((item) => item.ipa).join(""),
+    ua: rendered.map((item) => item.ua).join(""),
+    status: combineStatus(linguistic),
+    note: `Локальний аналіз: ${known.length} одиниць мають зафіксовану IPA/лексичну базу; ${linguistic.length - known.length} одиниць потребують окремого встановлення або перевірки. Невизначеність однієї одиниці більше не блокує результати інших.`,
     profile,
+    units: rendered,
     analyses,
-    vowelModel: vowels.coverage_policy
+    vowelModel: vowels.coverage_policy,
   };
 }
 
@@ -173,7 +248,7 @@ function render() {
   $("ua-result").textContent = data.ua;
   $("status").textContent = data.status.replaceAll("_", " ");
   $("details").textContent = data.note;
-  issue.hidden = data.status === "PROPOSED";
+  issue.hidden = !["EVIDENCE_LIMITED", "INVALID_OR_UNSUPPORTED", "NOT_ESTABLISHED"].includes(data.status);
   if (!issue.hidden) $("issue-text").textContent = data.note;
   live.textContent = "Результат оновлено";
 }

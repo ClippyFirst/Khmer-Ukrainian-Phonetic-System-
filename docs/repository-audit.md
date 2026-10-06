@@ -47,3 +47,14 @@ A focused adversarial review found several practical-layer weaknesses that were 
 The new adversarial corpus includes ខ្ញុំ, សង្គ្រាម, ហើយ, ស៊ី, សញ្ញា, ច្រើន, ប៉ី and a negative multiple-shifter case. These are regression fixtures, not a claim of complete lexical coverage. The parser now explicitly records register-shifter decisions and flags multiple-shifter structures as EVIDENCE_LIMITED.
 
 External evidence used for this review: Unicode Khmer encoding/register documentation; R12A Khmer orthography notes; and the documented Khmer-Russian practical transcription tradition as a comparator. The Ukrainian layer remains a project proposal and still requires an adjudicated Ukrainian corpus before empirical accuracy can be claimed.
+
+
+## Final consistency pass — 2026-10-06
+
+The web-facing explanation was re-audited against the canonical Ukrainian policy and the adversarial parser work. A stale system-page table was found and removed: the page now agrees with the policy for /c/ → ть, /cʰ/ → ч, /h/ → х, /ʋ/ → в and /w/ → у. The browser adapter's previous Phnom Penh /r/-loss transformation was also removed because it converted a documented dialect phenomenon into an over-broad automatic rule without modelling its full phonetic consequences.
+
+The web fixture corpus now includes Unicode/R12A representative cases for register shifters, coeng clusters, pre-base vowels, long vowels, repeated nyo, coeng-r and the ប៉ exception, plus a negative multiple-shifter case. The Unicode example ប៉ី is represented as /pei/ rather than the earlier /pəj/ claim.
+
+The system page and web structural tests now explicitly guard against stale transcription mappings. Academic paragraph-logic review of the updated system page returned no issues.
+
+GitHub Actions runs triggered by the new commits currently report failure with zero job records. This is recorded as an execution/infrastructure verification gap, not as evidence that the Python or Node tests themselves failed. Local test execution is likewise unavailable in this environment.

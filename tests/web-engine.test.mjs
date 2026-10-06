@@ -1,7 +1,7 @@
 import fs from "node:fs";
 
 const html = fs.readFileSync("index.html", "utf8");
-const system = fs.readFileSync("system.html", "utf8");
+const systemHtml = fs.readFileSync("system.html", "utf8");
 const js = fs.readFileSync("src/main.js", "utf8");
 const policy = JSON.parse(fs.readFileSync("data/ukrainian/practical-policy.json", "utf8"));
 const fixtures = JSON.parse(fs.readFileSync("data/tests/web-fixtures.json", "utf8"));

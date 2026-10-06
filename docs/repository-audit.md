@@ -53,7 +53,7 @@ External evidence used for this review: Unicode Khmer encoding/register document
 
 The web-facing explanation was re-audited against the canonical Ukrainian policy and the adversarial parser work. A stale system-page table was found and removed: the page now agrees with the policy for /c/ → ть, /cʰ/ → ч, /h/ → х, /ʋ/ → в and /w/ → у. The browser adapter's previous Phnom Penh /r/-loss transformation was also removed because it converted a documented dialect phenomenon into an over-broad automatic rule without modelling its full phonetic consequences.
 
-The web fixture corpus now includes Unicode/R12A representative cases for register shifters, coeng clusters, pre-base vowels, long vowels, repeated nyo, coeng-r and the ប៉ exception, plus a negative multiple-shifter case. The lexical fixture ប៉ី is represented as /pəj/, matching the current R12A term data. The corpus also corrects the previously overstated IPA for ខ្ញុំ, សង្គ្រាម and ហើយ.
+The web fixture corpus includes Unicode/R12A representative cases for register shifters, coeng clusters, pre-base vowels, long vowels, repeated nyo, coeng-r and the ប៉ exception, plus a negative multiple-shifter case. For representative Unicode examples, the corpus keeps the Unicode 17 IPA forms even where lexical dictionaries provide alternative phonetic analyses.
 
 The system page and web structural tests now explicitly guard against stale transcription mappings. Academic paragraph-logic review of the updated system page returned no issues.
 

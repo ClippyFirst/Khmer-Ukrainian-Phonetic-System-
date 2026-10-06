@@ -70,7 +70,13 @@ function resolveRegister(base, raw) {
 }
 
 function parseSyllable(raw) {
-  if (!raw || !isKhmerConsonant(raw[0])) return { status: "NOT_ESTABLISHED", raw };
+  if (!raw) return { status: "NOT_ESTABLISHED", raw };
+  if (!isKhmerConsonant(raw[0])) {
+    if (raw[0] === COENG || SHIFTERS.has(raw[0])) {
+      return { status: "INVALID_OR_UNSUPPORTED", raw, reason: "Khmer combining structure cannot begin a standalone orthographic unit." };
+    }
+    return { status: "NOT_ESTABLISHED", raw };
+  }
   let index = 1;
   const base = raw[0];
   const subscripts = [];

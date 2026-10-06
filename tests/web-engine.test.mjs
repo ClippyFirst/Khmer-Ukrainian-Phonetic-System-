@@ -5,15 +5,16 @@ const system = fs.readFileSync("system.html", "utf8");
 const js = fs.readFileSync("src/main.js", "utf8");
 const policy = JSON.parse(fs.readFileSync("data/ukrainian/practical-policy.json", "utf8"));
 const fixtures = JSON.parse(fs.readFileSync("data/tests/web-fixtures.json", "utf8"));
+const adversarial = JSON.parse(fs.readFileSync("data/tests/adversarial-cases.json", "utf8"));
 const vite = fs.readFileSync("vite.config.js", "utf8");
 
 for (const x of ["Content-Security-Policy", "src/main.js", 'id="source"', 'id="results"']) {
   if (!html.includes(x)) throw new Error("index missing " + x);
 }
-for (const x of ["Авторська система", "Приголосні: українська ціль", "Голосні: контекст важливіший за знак", "Порівняння з російською практикою"]) {
+for (const x of ["Регістри, шифтери та кластери", "Приголосні: українська ціль", "Голосні: контекст важливіший за знак", "/c/","/h/","/ʋ/","/w/","Adversarial validation"]) {
   if (!system.includes(x)) throw new Error("system missing " + x);
 }
-for (const x of ["NOT_ESTABLISHED", "phnom_penh_colloquial", "practical-policy.json", "web-fixtures.json"]) {
+for (const x of ["NOT_ESTABLISHED", "EVIDENCE_LIMITED", "BA_TO_PA_EXCEPTION", "MULTIPLE_REGISTER_SHIFTERS", "phnom_penh_colloquial", "practical-policy.json", "web-fixtures.json"]) {
   if (!js.includes(x)) throw new Error("web adapter missing " + x);
 }
 if (js.includes("const CONSONANTS = {") || js.includes("const UA = {") || js.includes("const VOWELS = {")) {
@@ -21,6 +22,9 @@ if (js.includes("const CONSONANTS = {") || js.includes("const UA = {") || js.inc
 }
 if (!vite.includes("index.html") || !vite.includes("system.html")) throw new Error("Vite config does not build both public pages");
 if (Object.keys(policy.segments).length < 40) throw new Error("Ukrainian policy unexpectedly incomplete");
-if (Object.keys(fixtures).length < 4) throw new Error("web fixtures unexpectedly incomplete");
-
+if (Object.keys(fixtures).length < 10) throw new Error("web fixtures unexpectedly incomplete");
+if (Object.keys(adversarial).length < 8) throw new Error("adversarial corpus unexpectedly incomplete");
+if (system.includes("<td>/c, cʰ/</td><td>ч</td>") || system.includes("<td>/h/</td><td>г</td>")) {
+  throw new Error("system page contains stale transcription policy");
+}
 console.log("web-engine structural tests: PASS");

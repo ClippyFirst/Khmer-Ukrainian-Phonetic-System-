@@ -72,10 +72,13 @@ function parseSyllable(raw) {
 }
 
 function renderFixture(fixture, profile) {
+  const baseIpa = fixture.ipa.replace(/^\\/|\\/$/g, "");
+  const renderedIpa = applyProfile(baseIpa, profile);
+  const mapped = mapIpa(renderedIpa);
   return {
     source: fixture.source,
-    ipa: fixture.ipa,
-    ua: fixture.ua,
+    ipa: `/${renderedIpa}/`,
+    ua: mapped.value ?? fixture.ua,
     status: fixture.status,
     note: fixture.note,
     profile,
@@ -178,5 +181,3 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
   });
 });
 
-void applyProfile;
-void mapIpa;

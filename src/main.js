@@ -105,10 +105,11 @@ function renderFixture(fixture, profile) {
   return {
     source: fixture.source,
     ipa: "/" + ipa + "/",
-    ua: mapped.value ?? "⟦НЕПІДТРИМУЄТЬСЯ⟧",
+    ua: fixture.ua ?? mapped.value ?? "⟦НЕПІДТРИМУЄТЬСЯ⟧",
     status: fixture.status,
-    note: fixture.note + " Профіль: " + profile + ".",
-    profile
+    note: fixture.note + (fixture.ua && mapped.value !== fixture.ua ? " Українська форма береться з лексично зафіксованого проєктного корпусу, а не виводиться механічною посегментною конкатенацією." : "") + " Профіль: " + profile + ".",
+    profile,
+    mapping_check: fixture.ua ? { policy_render: mapped.value, lexical_render: fixture.ua, agrees: mapped.value === fixture.ua } : null
   };
 }
 

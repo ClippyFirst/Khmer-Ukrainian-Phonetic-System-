@@ -5,6 +5,7 @@ const system = fs.readFileSync("system.html", "utf8");
 const js = fs.readFileSync("src/main.js", "utf8");
 const policy = JSON.parse(fs.readFileSync("data/ukrainian/practical-policy.json", "utf8"));
 const fixtures = JSON.parse(fs.readFileSync("data/tests/web-fixtures.json", "utf8"));
+const vite = fs.readFileSync("vite.config.js", "utf8");
 
 for (const x of ["Content-Security-Policy", "src/main.js", 'id="source"', 'id="results"']) {
   if (!html.includes(x)) throw new Error("index missing " + x);
@@ -18,6 +19,7 @@ for (const x of ["NOT_ESTABLISHED", "phnom_penh_colloquial", "practical-policy.j
 if (js.includes("const CONSONANTS = {") || js.includes("const UA = {") || js.includes("const VOWELS = {")) {
   throw new Error("web adapter still contains duplicated linguistic mapping tables");
 }
+if (!vite.includes("index.html") || !vite.includes("system.html")) throw new Error("Vite config does not build both public pages");
 if (Object.keys(policy.segments).length < 40) throw new Error("Ukrainian policy unexpectedly incomplete");
 if (Object.keys(fixtures).length < 4) throw new Error("web fixtures unexpectedly incomplete");
 

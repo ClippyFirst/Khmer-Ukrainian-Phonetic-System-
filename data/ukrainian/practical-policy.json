@@ -1,0 +1,19 @@
+{
+  "version":"2026-10-06",
+  "status":"PROPOSED",
+  "scope":"Project-specific Ukrainian practical target policy; not an official Ukrainian standard.",
+  "segments":{
+    "p":{"default":"п","compatibility_ru":"п"},"pʰ":{"default":"п","compatibility_ru":"пх"},"b":{"default":"б","compatibility_ru":"б"},"ɓ":{"default":"б","compatibility_ru":"б"},
+    "t":{"default":"т","compatibility_ru":"т"},"tʰ":{"default":"т","compatibility_ru":"тх"},"d":{"default":"д","compatibility_ru":"д"},"ɗ":{"default":"д","compatibility_ru":"д"},
+    "k":{"default":"к","compatibility_ru":"к"},"kʰ":{"default":"к","compatibility_ru":"кх"},"c":{"default":"ч","compatibility_ru":"ч"},"cʰ":{"default":"ч","compatibility_ru":"ч"},
+    "ɲ":{"default":"нь","compatibility_ru":"нь"},"ŋ":{"default":"нг","compatibility_ru":"нг"},"r":{"default":"р","compatibility_ru":"р"},"l":{"default":"л","compatibility_ru":"л"},
+    "ʋ":{"default":"в","compatibility_ru":"в"},"w":{"default":"в","compatibility_ru":"в"},"j":{"default":"й","compatibility_ru":"й"},"s":{"default":"с","compatibility_ru":"с"},
+    "h":{"default":"г","compatibility_ru":"г"},"ʔ":{"default":"","compatibility_ru":""},"m":{"default":"м","compatibility_ru":"м"},"n":{"default":"н","compatibility_ru":"н"},
+    "i":{"default":"і","compatibility_ru":"і"},"iː":{"default":"і","compatibility_ru":"і"},"e":{"default":"е","compatibility_ru":"е"},"eː":{"default":"е","compatibility_ru":"е"},
+    "ɛ":{"default":"е","compatibility_ru":"е"},"ɛː":{"default":"е","compatibility_ru":"е"},"ɨ":{"default":"и","compatibility_ru":"и"},"ɨː":{"default":"и","compatibility_ru":"и"},
+    "a":{"default":"а","compatibility_ru":"а"},"aː":{"default":"а","compatibility_ru":"а"},"ɑ":{"default":"а","compatibility_ru":"а"},"ɑː":{"default":"а","compatibility_ru":"а"},
+    "o":{"default":"о","compatibility_ru":"о"},"oː":{"default":"о","compatibility_ru":"о"},"ɔ":{"default":"о","compatibility_ru":"о"},"ɔː":{"default":"о","compatibility_ru":"о"},
+    "u":{"default":"у","compatibility_ru":"у"},"uː":{"default":"у","compatibility_ru":"у"},"ə":{"default":"е","compatibility_ru":"е"},"əː":{"default":"е","compatibility_ru":"е"},"ɤ":{"default":"е","compatibility_ru":"е"},
+    "əj":{"default":"ей","compatibility_ru":"ей"},"iə":{"default":"іа","compatibility_ru":"іа"},"uə":{"default":"уа","compatibility_ru":"уа"},"ɨə":{"default":"ие","compatibility_ru":"ие"},"ao":{"default":"ау","compatibility_ru":"ау"},"aw":{"default":"ау","compatibility_ru":"ау"}
+  }
+}

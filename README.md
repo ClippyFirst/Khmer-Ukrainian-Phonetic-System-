@@ -193,7 +193,7 @@ The current implementation includes explicit handling for Khmer register shifter
 
 The web explanation and browser adapter have been synchronized with that policy. The browser does not silently invent Phnom Penh /r/-loss phonetics or complete vowel IPA where the research engine has not established them.
 
-GitHub Actions has been triggered by the latest commits, but the current runs report failure without job records. Until that infrastructure/execution issue is resolved, the repository does not claim a green CI result. No empirical accuracy percentage is claimed.
+The latest GitHub Actions quality and Pages deployment runs for the current main commit completed successfully. This verifies the repository checks and static build/deployment pipeline; it does not constitute linguistic accuracy evidence. No empirical accuracy percentage is claimed.
 
 
 ## Latest lexical-coverage pass — 2026-10-06

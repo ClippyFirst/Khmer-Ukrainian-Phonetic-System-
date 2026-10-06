@@ -198,6 +198,20 @@ GitHub Actions has been triggered by the latest commits, but the current runs re
 
 ## Latest lexical-coverage pass — 2026-10-06
 
-The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Current independent references give the phrase as **[pʰiəsaː kʰmae]**. The repository now contains a small provenance-bearing lexical corpus and a dedicated fixture for this common form. The IPA evidence is marked WELL_SUPPORTED; the Ukrainian practical form **пієса кхмае** remains explicitly PROPOSED.
+The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Current independent references give the phrase as **[pʰiəsaː kʰmae]**. The repository now contains a small provenance-bearing lexical corpus and a dedicated fixture for this common form. The IPA evidence is marked WELL_SUPPORTED; the Ukrainian practical form **пієса кмае** remains explicitly PROPOSED.
 
 The Ukrainian policy was also extended for /ae/, and the browser adapter now distinguishes a corpus-defined lexical Ukrainian form from a mechanical segment-by-segment rendering. This prevents the UI from silently presenting a different practical spelling merely because a phrase contains context-dependent or complex Khmer vowels.
+
+
+## Adversarial long-input handling — 2026-10-06
+
+The browser adapter evaluates long Khmer inputs **per orthographic unit** rather than assigning one global fallback to the entire input.
+
+- established lexical fixtures remain visible inside mixed/adversarial text;
+- unsupported units are marked locally as `NOT_ESTABLISHED`;
+- malformed Unicode sequences are marked locally as `INVALID_OR_UNSUPPORTED`;
+- `EVIDENCE_LIMITED` is propagated to the overall status without suppressing valid neighboring results;
+- lexical Ukrainian overrides are checked against the canonical IPA → Ukrainian policy and cannot silently contradict it;
+- misplaced Khmer register shifters are explicitly flagged rather than treated as ordinary vowel/consonant data.
+
+This behavior is a deliberate research-integrity requirement: one unresolved case must not hide evidence-backed results elsewhere in the same test input.

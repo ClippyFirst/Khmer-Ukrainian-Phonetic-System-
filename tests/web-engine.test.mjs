@@ -12,7 +12,7 @@ for (const x of ["Content-Security-Policy", "src/main.js", 'id="source"', 'id="r
   if (!html.includes(x)) throw new Error("index missing " + x);
 }
 for (const x of ["Регістри, шифтери та кластери", "Приголосні: українська ціль", "Голосні: контекст важливіший за знак", "/c/","/h/","/ʋ/","/w/","Adversarial validation","ភាសាខ្មែរ","пієса кхмае"]) {
-  if (!system.includes(x)) throw new Error("system missing " + x);
+  if (!systemHtml.includes(x)) throw new Error("system missing " + x);
 }
 for (const x of ["NOT_ESTABLISHED", "EVIDENCE_LIMITED", "BA_TO_PA_EXCEPTION", "MULTIPLE_REGISTER_SHIFTERS", "phnom_penh_colloquial", "practical-policy.json", "web-fixtures.json"]) {
   if (!js.includes(x)) throw new Error("web adapter missing " + x);
@@ -34,7 +34,7 @@ for (const term of forbiddenTerms) {
 }
 
 if (Object.keys(adversarial).length < 8) throw new Error("adversarial corpus unexpectedly incomplete");
-if (system.includes("<td>/c, cʰ/</td><td>ч</td>") || system.includes("<td>/h/</td><td>г</td>")) {
+if (systemHtml.includes("<td>/c, cʰ/</td><td>ч</td>") || systemHtml.includes("<td>/h/</td><td>г</td>")) {
   throw new Error("system page contains stale transcription policy");
 }
 console.log("web-engine structural tests: PASS");

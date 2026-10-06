@@ -203,19 +203,49 @@ function renderFixture(fixture, profile) {
   };
 }
 
+function deriveDeterministicIpa(analysis) {
+  if (analysis.status === "INVALID_OR_UNSUPPORTED") return null;
+  if (analysis.subscripts.length || analysis.vowelSigns.length || analysis.unknown.length) return null;
+  if (analysis.register_rule === "MULTIPLE_REGISTER_SHIFTERS" || analysis.register_rule === "MISPLACED_REGISTER_SHIFTER" || analysis.register_rule === "NON_STANDARD_SHIFTER_USE") return null;
+
+  const onset = analysis.onset_ipa;
+  if (!onset || onset.includes("~")) return null;
+
+  const inherent = analysis.register === "first" ? "ɑː" : "ɔː";
+  return onset + inherent;
+}
+
 function renderUnknownUnit(unit, profile) {
   const analysis = parseSyllable(unit);
   if (analysis.status === "INVALID_OR_UNSUPPORTED") {
     return {
       source: unit,
       ipa: "⟦INVALID_OR_UNSUPPORTED⟧",
-      ua: "⟦НЕПІДТРИМУЄТЬСЯ⟧",
+      ua: "⟦НЕПІДТРИМУЄТЬСЬЯ⟧",
       status: "INVALID_OR_UNSUPPORTED",
       note: analysis.reason ?? "Некоректна або непідтримувана Unicode-послідовність.",
       analysis,
       profile,
     };
   }
+
+  const derivedIpa = deriveDeterministicIpa(analysis);
+  if (derivedIpa) {
+    const mapped = mapIpa(derivedIpa);
+    if (mapped.value !== null) {
+      return {
+        source: unit,
+        ipa: "/" + derivedIpa + "/",
+        ua: mapped.value,
+        status: "PROPOSED",
+        note: "Вимову виведено з документованої структури: базовий приголосний + встановлений регістр/шифтер + притаманна голосна серії. Українська форма є проєктною; результат не є лексичним винятком.",
+        analysis,
+        profile,
+        mapping_check: { policy_render: mapped.value, lexical_render: null, agrees: true },
+      };
+    }
+  }
+
   return {
     source: unit,
     ipa: "⟦NOT_ESTABLISHED⟧",

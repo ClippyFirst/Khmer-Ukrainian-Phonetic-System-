@@ -69,6 +69,11 @@ if (!sourceGuard.includes("if (invalidCount > 0 && invalidCount === items.length
 for (const key of ["ក","គ","កូ","គូ","កេ","គេ","កែ","គែ","កើ","គើ","កៅ","គៅ"]) {
   if (!fixtures[key]) throw new Error("representative series fixture missing: " + key);
 }
+for (const key of ["ប៉", "ប៊"]) {
+  if (!fixtures[key] || fixtures[key].status !== "PROPOSED") throw new Error("BA shifter fixture missing: " + key);
+}
+if (fixtures["ប៉"].ipa !== "/paː/" || fixtures["ប៉"].ua !== "па") throw new Error("ប៉ fixture must resolve to /paː/ → па");
+if (fixtures["ប៊"].ipa !== "/ɓɔː/" || fixtures["ប៊"].ua !== "бо") throw new Error("ប៊ fixture must resolve to /ɓɔː/ → бо");
 for (const key of ["ɓ", "ʋ"]) {
   if (js.includes('"onset_ipa":"' + key + '~')) throw new Error("canonical initial onset remains ambiguous: " + key);
 }

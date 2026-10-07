@@ -6,6 +6,7 @@ from .model import KhmerGrapheme, KhmerSyllable, AnalysisResult
 COENG="្"
 MUUSIKATOAN="៉"
 TRIISAP="៊"
+ZWNJ="\u200C"
 INDEPENDENT_VOWELS={x["char"] for x in SIGNS if x.get("kind")=="independent_vowel"}
 
 def _lookup(ch):
@@ -51,14 +52,15 @@ def segment_syllables(text: str) -> list[str]:
 def _resolve_effective_register(base: dict, chars: list[str]) -> tuple[str | None, str | None]:
     """Resolve register after Khmer register-shifters, including ប៉ exception."""
     register=base.get("register")
-    positions=[i for i,ch in enumerate(chars) if ch in {MUUSIKATOAN, TRIISAP}]
+    structural=[ch for ch in chars if ch != ZWNJ]
+    positions=[i for i,ch in enumerate(structural) if ch in {MUUSIKATOAN, TRIISAP}]
     if not positions:
         return register, None
     if len(positions) > 1:
         return register, "MULTIPLE_REGISTER_SHIFTERS"
     if positions[0] != 1:
         return register, "MISPLACED_REGISTER_SHIFTER"
-    shifter=chars[positions[0]]
+    shifter=structural[positions[0]]
     if base["char"] not in SHIFTER_ELIGIBILITY.get(shifter, set()):
         return register, "NON_STANDARD_SHIFTER_USE"
     if base["char"]=="ប" and shifter==MUUSIKATOAN:
@@ -75,6 +77,10 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
     chars=list(n); i=0
     while i<len(chars):
         ch=chars[i]
+        if ch==ZWNJ:
+            s.graphemes.append(KhmerGrapheme(ch,"format_control",(f"U+{ord(ch):04X}",)))
+            i+=1
+            continue
         if ch==COENG:
             if i+1>=len(chars) or not _lookup(chars[i+1]):
                 s.status="INVALID_OR_UNSUPPORTED"

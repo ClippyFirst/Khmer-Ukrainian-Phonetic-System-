@@ -17,7 +17,7 @@ A lower-level source cannot silently override a higher-level source.
 ## Current core sources
 
 - Unicode 17.0 Chapter 16 — script and encoding structure: consonant inventory, coeng, register classes, vowel signs and independent vowels.
-- Ishida (2026) — modern orthography, register-conditioned vowel behavior, syllable structure and IPA-oriented descriptive inventory.
+- Ishida (2026) — modern orthography, register-conditioned vowel behaviour, syllable structure and IPA-oriented descriptive inventory.
 - Chem & Chem (2020) — acoustic evidence for the Phnom Penh/standard Khmer vowel system.
 - Henderson (1952) — historically important description of register/pronunciation.
 - Wayland et al. (2005) and Kirby (2014) — contemporary evidence on /r/-loss and associated phonetic changes.

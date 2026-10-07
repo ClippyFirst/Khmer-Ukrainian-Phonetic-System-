@@ -21,18 +21,18 @@
   <div class="input-frame"><textarea id="source" rows="6" spellcheck="false" lang="km" placeholder="ឧទាហរណ៍៖ ខ្មែរ"></textarea><div class="hint"><span>Unicode Khmer</span><span>без сервера</span></div></div>
   <div class="controls">
     <div><small>ПРОФІЛЬ ВИМОВИ</small><select id="profile"><option value="careful_standard">Обережний / стандартний</option><option value="phnom_penh_colloquial">Пномпень · колоквіальний</option><option value="established_form">Встановлена форма</option></select></div>
-    <button id="example" class="button primary">Приклад <b>↗</b></button><button id="clear" class="button">Очистити</button>
+    <button type="button" id="example" class="button primary">Приклад <b>↗</b></button><button type="button" id="clear" class="button">Очистити</button>
   </div>
 </section>
 
 <section id="empty" class="empty"><span class="empty-mark">ខ</span><div><strong>Тут з’явиться результат</strong><p>Вставте кмерський текст або відкрийте приклад.</p></div></section>
 
 <section id="results" class="results" hidden aria-labelledby="result-title">
-  <div class="bar"><div class="section-title"><span class="num">B</span><div><small>ВИХІД</small><h2 id="result-title">Результат</h2></div></div><span id="status" class="status"></span></div>
+  <div class="bar"><div class="section-title"><span class="num">B</span><div><small>ВИХІД</small><h2 id="result-title">Результат</h2></div></div><span id="status" class="status" role="status" aria-live="polite"></span></div>
   <div class="result-grid">
-    <article class="result-card source-card"><div class="meta"><span>01</span><div><h3>Кмерський текст</h3><p>Оригінальне письмо</p></div><button data-copy="source-result">Копіювати</button></div><div id="source-result" class="value khmer" lang="km"></div></article>
-    <article class="result-card"><div class="meta"><span>02</span><div><h3>IPA</h3><p>Лише коли вимову встановлено для цього запису</p></div><button data-copy="ipa-result">Копіювати</button></div><div id="ipa-result" class="value ipa" lang="und-fonipa"></div></article>
-    <article class="result-card ua-card"><div class="meta"><span>03</span><div><h3>Українська практична форма</h3><p>Запропонована авторська система</p></div><button data-copy="ua-result">Копіювати</button></div><div id="ua-result" class="value ua" lang="uk"></div></article>
+    <article class="result-card source-card"><div class="meta"><span>01</span><div><h3>Кмерський текст</h3><p>Оригінальне письмо</p></div><button type="button" data-copy="source-result" aria-label="Копіювати кмерський текст">Копіювати</button></div><div id="source-result" class="value khmer" lang="km"></div></article>
+    <article class="result-card"><div class="meta"><span>02</span><div><h3>IPA</h3><p>Лише коли вимову встановлено для цього запису</p></div><button type="button" data-copy="ipa-result" aria-label="Копіювати IPA">Копіювати</button></div><div id="ipa-result" class="value ipa" lang="und-fonipa"></div></article>
+    <article class="result-card ua-card"><div class="meta"><span>03</span><div><h3>Українська практична форма</h3><p>Запропонована авторська система</p></div><button type="button" data-copy="ua-result" aria-label="Копіювати українську практичну форму">Копіювати</button></div><div id="ua-result" class="value ua" lang="uk"></div></article>
   </div>
   <div id="details" class="details"></div>
 </section>

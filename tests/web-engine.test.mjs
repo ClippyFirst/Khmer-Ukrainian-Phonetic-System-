@@ -74,12 +74,18 @@ for (const key of ["ប៉", "ប៊", "ប៉ី", "ខ្ញុំ", "សង�
 }
 if (fixtures["ប៉"].ipa !== "/paː/" || fixtures["ប៉"].ua !== "па") throw new Error("ប៉ fixture must resolve to /paː/ → па");
 if (fixtures["ប៊"].ipa !== "/ɓɔː/" || fixtures["ប៊"].ua !== "бо") throw new Error("ប៊ fixture must resolve to /ɓɔː/ → бо");
-if (fixtures["ប៉ី"].ipa !== "/pei/" || fixtures["ប៉ី"].ua !== "пей") throw new Error("ប៉ី fixture must resolve to /pəj/ → пей");
-if (fixtures["ខ្ញុំ"].ipa !== "/kʰɲom/" || fixtures["ខ្ញុំ"].ua !== "кньом") throw new Error("ខ្ញុំ fixture must resolve to /kɲom/ → кньом");
-if (fixtures["សង្គ្រាម"].ipa !== "/sɔŋkrɛəm/" || fixtures["សង្គ្រាម"].ua !== "сонгкреам") throw new Error("សង្គ្រាម fixture must resolve to /sɑŋ.kriəm/ → сангкрієм");
-if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "хаеі") throw new Error("ហើយ fixture must resolve to /haəj/ → хаей");
+if (fixtures["ប៉ី"].ipa !== "/pei/" || fixtures["ប៉ី"].ua !== "пей") throw new Error("ប៉ី fixture must resolve to /pei/ → пей");
+if (fixtures["ខ្ញុំ"].ipa !== "/kʰɲom/" || fixtures["ខ្ញុំ"].ua !== "кньом") throw new Error("ខ្ញុំ fixture must resolve to /kʰɲom/ → кньом");
+if (fixtures["សង្គ្រាម"].ipa !== "/sɔŋkrɛəm/" || fixtures["សង្គ្រាម"].ua !== "сонгкреам") throw new Error("សង្គ្រាម fixture must resolve to /sɔŋkrɛəm/ → сонгкреам");
+if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "хаеі") throw new Error("ហើយ fixture must resolve to /haəi/ → хаеі");
 if (sourceGuard.includes("const SHIFTER_ELIGIBILITY") === false) throw new Error("Khmer shifter eligibility guard missing");
 if (!sourceGuard.includes("SHIFTER_ELIGIBILITY[shifter]")) throw new Error("Khmer shifter eligibility is not enforced");
+if (!sourceGuard.includes("function renderIpaProfile")) throw new Error("web pronunciation-profile transformation is missing");
+if (!sourceGuard.includes("([ptkbdɡc])r")) throw new Error("web Phnom Penh /r/-loss rule is missing");
+if (!html.includes('role="status" aria-live="polite"')) throw new Error("result status is not announced to assistive technology");
+for (const label of ["Копіювати кмерський текст","Копіювати IPA","Копіювати українську практичну форму"]) {
+  if (!html.includes(`aria-label="${label}"`)) throw new Error("copy control lacks accessible label: " + label);
+}
 for (const key of ["ɓ", "ʋ"]) {
   if (js.includes('"onset_ipa":"' + key + '~')) throw new Error("canonical initial onset remains ambiguous: " + key);
 }

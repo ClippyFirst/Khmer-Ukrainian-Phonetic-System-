@@ -48,7 +48,7 @@ console.log("web-engine structural tests: PASS");
 
 const sourceGuard = fs.readFileSync("src/main.js", "utf8");
 if (/const\s+shifter\s*=\s*shifters\[0\]/u.test(sourceGuard)) throw new Error("register-shifter resolver uses an undefined shifters variable");
-if (!/const\s+shifter\s*=\s*raw\[positions\[0\]\]/u.test(sourceGuard)) throw new Error("register-shifter resolver is not reading the detected shifter");
+if (!sourceGuard.includes("const shifter = structural[positions[0]]")) throw new Error("register-shifter resolver is not reading the structurally detected shifter");
 if (!sourceGuard.includes("Khmer combining structure cannot begin a standalone orthographic unit.")) throw new Error("malformed leading Khmer combining marks are not rejected");
 if (sourceGuard.includes("if (!raw || !isKhmerConsonant(raw[0])) return { status: \"NOT_ESTABLISHED\", raw };")) throw new Error("malformed-leading-unit guard is too permissive");
 console.log("adversarial source guards: PASS");

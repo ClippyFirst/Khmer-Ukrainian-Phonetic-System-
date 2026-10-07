@@ -133,7 +133,8 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
 def analyze(text: str) -> AnalysisResult:
     n=normalize_khmer(text)
     units=segment_syllables(n)
-    syllables=[decompose_khmer_syllable(x) for x in units if x.strip()]
+    linguistic_units=[x for x in units if x.strip() and x != ZWSP and not unicodedata.category(x[0]).startswith("P")]
+    syllables=[decompose_khmer_syllable(x) for x in linguistic_units]
     sg=[]
     for s in syllables:
         sg.append({
@@ -144,11 +145,12 @@ def analyze(text: str) -> AnalysisResult:
             "independent_vowel":s.independent_vowel,"inherent_vowel":s.inherent_vowel,
             "phonology":s.phonology,
             "status":s.status,"confidence":s.confidence,"sources":s.sources})
+    invalid_count=sum(1 for s in sg if s["status"]=="INVALID_OR_UNSUPPORTED")
     if not syllables:
         overall_status = "INVALID_OR_UNSUPPORTED"
-    elif any(s["status"] == "INVALID_OR_UNSUPPORTED" for s in sg):
+    elif invalid_count == len(sg):
         overall_status = "INVALID_OR_UNSUPPORTED"
-    elif any(s["status"] == "EVIDENCE_LIMITED" for s in sg):
+    elif invalid_count or any(s["status"] == "EVIDENCE_LIMITED" for s in sg):
         overall_status = "EVIDENCE_LIMITED"
     else:
         overall_status = "ESTABLISHED_STRUCTURE"

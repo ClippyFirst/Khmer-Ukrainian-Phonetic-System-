@@ -7,6 +7,7 @@ COENG="្"
 MUUSIKATOAN="៉"
 TRIISAP="៊"
 ZWNJ="\u200C"
+ZWSP="\u200B"
 INDEPENDENT_VOWELS={x["char"] for x in SIGNS if x.get("kind")=="independent_vowel"}
 
 def _lookup(ch):
@@ -35,6 +36,10 @@ def segment_syllables(text: str) -> list[str]:
     i=0
     while i < len(chars):
         ch=chars[i]
+        if ch==ZWSP:
+            if current:
+                units.append("".join(current)); current=[]
+            units.append(ch); i+=1; continue
         if ch.isspace() or unicodedata.category(ch).startswith("P"):
             if current:
                 units.append("".join(current)); current=[]

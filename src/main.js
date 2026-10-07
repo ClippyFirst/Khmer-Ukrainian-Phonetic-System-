@@ -14,6 +14,7 @@ const VOWEL_SIGNS = new Set(
 );
 const COENG = "្";
 const ZWNJ = "\u200C";
+const ZWSP = "\u200B";
 const SHIFTERS = new Set(["៉", "៊"]);
 const SHIFTER_ELIGIBILITY = Object.fromEntries(Object.entries(registers.shifter_eligibility).map(([key, values]) => [key === "muusikatoan" ? "៉" : "៊", new Set(values)]));
 const PUNCTUATION = /^\s|^[។៕,!?;:()[\]{}"“”«»]$/u;
@@ -53,6 +54,13 @@ function tokenize(text) {
 
   for (let index = 0; index < chars.length;) {
     const char = chars[index];
+
+    if (char === ZWSP) {
+      flush();
+      units.push(ZWSP);
+      index += 1;
+      continue;
+    }
 
     if (PUNCTUATION.test(char)) {
       flush();
@@ -291,6 +299,7 @@ function convert(text, profile) {
 
   const units = tokenize(normalized);
   const rendered = units.map((unit) => {
+    if (unit === ZWSP) return { source: unit, ipa: " ", ua: " ", status: "PUNCTUATION", note: "U+200B ZERO WIDTH SPACE трактовано як невидиму межу слова.", profile };
     if (PUNCTUATION.test(unit)) return { source: unit, ipa: unit, ua: unit, status: "PUNCTUATION", note: "", profile };
     const fixture = fixtures[unit];
     return fixture ? renderFixture(fixture, profile) : renderUnknownUnit(unit, profile);

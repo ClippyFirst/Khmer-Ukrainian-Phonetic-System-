@@ -13,6 +13,7 @@ const VOWEL_SIGNS = new Set(
     .map((item) => item.char),
 );
 const COENG = "្";
+const ZWNJ = "\u200C";
 const SHIFTERS = new Set(["៉", "៊"]);
 const SHIFTER_ELIGIBILITY = Object.fromEntries(Object.entries(registers.shifter_eligibility).map(([key, values]) => [key === "muusikatoan" ? "៉" : "៊", new Set(values)]));
 const PUNCTUATION = /^\s|^[។៕,!?;:()[\]{}"“”«»]$/u;
@@ -87,11 +88,12 @@ function tokenize(text) {
 }
 
 function resolveRegister(base, raw) {
-  const positions = [...raw].flatMap((char, index) => SHIFTERS.has(char) ? [index] : []);
+  const structural = [...raw].filter((char) => char !== ZWNJ);
+  const positions = structural.flatMap((char, index) => SHIFTERS.has(char) ? [index] : []);
   if (!positions.length) return { register: base.register, rule: null, status: "ESTABLISHED_STRUCTURE" };
   if (positions.length > 1) return { register: base.register, rule: "MULTIPLE_REGISTER_SHIFTERS", status: "EVIDENCE_LIMITED" };
   if (positions[0] !== 1) return { register: base.register, rule: "MISPLACED_REGISTER_SHIFTER", status: "EVIDENCE_LIMITED" };
-  const shifter = raw[positions[0]];
+  const shifter = structural[positions[0]];
   if (!SHIFTER_ELIGIBILITY[shifter]?.has(base.char)) return { register: base.register, rule: "NON_STANDARD_SHIFTER_USE", status: "EVIDENCE_LIMITED" };
   if (base.char === "ប" && shifter === "៉") return { register: "first", rule: "BA_TO_PA_EXCEPTION", status: "ESTABLISHED_STRUCTURE" };
   if (shifter === "៉" && base.register === "second") return { register: "first", rule: "MUUSIKATOAN", status: "ESTABLISHED_STRUCTURE" };
@@ -116,6 +118,11 @@ function parseSyllable(raw) {
 
   while (index < raw.length) {
     const char = raw[index];
+    if (char === ZWNJ) {
+      graphemes.push({ text: char, kind: "format_control" });
+      index += 1;
+      continue;
+    }
     if (char === COENG) {
       const sub = raw[index + 1];
       if (!sub || !isKhmerConsonant(sub)) {

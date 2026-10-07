@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from khmer_ua import analyze
 from khmer_ua.parser import decompose_khmer_syllable, segment_syllables
 
 ROOT = Path(__file__).resolve().parents[1]

@@ -165,6 +165,12 @@ function mapIpa(ipa) {
   return { value, unsupported: null };
 }
 
+function renderIpaProfile(ipa, profile) {
+  if (!PROFILES.has(profile)) throw new Error("Unsupported pronunciation profile: " + profile);
+  if (profile === "careful_standard" || profile === "established_form") return ipa;
+  return ipa.replace(/([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])/gu, "$1ʰ");
+}
+
 function renderFixture(fixture, profile) {
   if (!PROFILES.has(profile)) throw new Error("Unsupported pronunciation profile: " + profile);
   if (!fixture.ipa) {
@@ -179,7 +185,8 @@ function renderFixture(fixture, profile) {
     };
   }
 
-  const ipa = fixture.ipa.replace(/^\//, "").replace(/\/$/, "");
+  const sourceIpa = fixture.ipa.replace(/^\//, "").replace(/\/$/, "");
+  const ipa = renderIpaProfile(sourceIpa, profile);
   const mapped = mapIpa(ipa);
   const agrees = mapped.value !== null && mapped.value === fixture.ua;
 
@@ -234,11 +241,12 @@ function renderUnknownUnit(unit, profile) {
 
   const derivedIpa = deriveDeterministicIpa(analysis);
   if (derivedIpa) {
-    const mapped = mapIpa(derivedIpa);
+    const profiledIpa = renderIpaProfile(derivedIpa, profile);
+    const mapped = mapIpa(profiledIpa);
     if (mapped.value !== null) {
       return {
         source: unit,
-        ipa: "/" + derivedIpa + "/",
+        ipa: "/" + profiledIpa + "/",
         ua: mapped.value,
         status: "PROPOSED",
         note: "Вимову виведено з документованої структури: базовий приголосний + встановлений регістр/шифтер + притаманна голосна серії. Українська форма є проєктною; результат не є лексичним винятком.",

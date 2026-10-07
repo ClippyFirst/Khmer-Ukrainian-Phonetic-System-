@@ -8,8 +8,8 @@
     {"char":"៊","name":"TRIISAP","from":"first","to":"second","status":"ESTABLISHED","source":"unicode17-ch16"}
   ],
   "shifter_eligibility":{
-    "muusikatoan":["ប","ង","ញ","ន","ម","យ","រ","ល","វ","ឝ"],
-    "triisap":["ប","ឞ","ស","ហ","អ"]
+    "muusikatoan":["ប","ង","ញ","ន","ម","យ","រ","ល","វ"],
+    "triisap":["ប","ស","ហ","អ"]
   },
   "note":"Register is modelled as a structural property of Khmer orthography and vowel interpretation. Modern phonetic realization is analysis-dependent and dialect-sensitive."
 }

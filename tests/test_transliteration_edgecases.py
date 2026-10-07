@@ -19,6 +19,12 @@ def test_non_eligible_shifters_are_flagged():
     assert decompose_khmer_syllable("គ៉").status == "EVIDENCE_LIMITED"
     assert decompose_khmer_syllable("ក៊").phonology["register_shifter"] == "NON_STANDARD_SHIFTER_USE"
 
+def test_zwnj_before_shifter_is_format_control():
+    result = decompose_khmer_syllable("ប\u200C៊")
+    assert result.status == "ESTABLISHED_STRUCTURE"
+    assert result.register == "second"
+    assert result.phonology["register_shifter"] == "TRIISAP"
+
 def test_multiple_shifters_are_flagged():
     s = decompose_khmer_syllable("ស៊៉ា")
     assert s.status == "EVIDENCE_LIMITED"

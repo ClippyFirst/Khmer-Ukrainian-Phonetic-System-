@@ -27,3 +27,12 @@ def test_register_shifter_eligibility_is_explicit():
     eligibility = data["shifter_eligibility"]
     assert set(eligibility["muusikatoan"]) >= {"ង","ញ","ន","ម","យ","រ","ល","វ"}
     assert set(eligibility["triisap"]) >= {"ប","ស","ហ","អ"}
+
+
+def test_shifter_eligibility_references_known_consonants():
+    consonants = json.loads((ROOT / "data/khmer/consonants.json").read_text(encoding="utf-8"))
+    known = {row["char"] for row in consonants}
+    data = json.loads((ROOT / "data/khmer/registers.json").read_text(encoding="utf-8"))
+    for shifter, chars in data["shifter_eligibility"].items():
+        unknown = set(chars) - known
+        assert not unknown, f"{shifter} references consonants absent from canonical inventory: {sorted(unknown)}"

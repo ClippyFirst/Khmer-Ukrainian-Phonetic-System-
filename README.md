@@ -214,4 +214,4 @@ The browser adapter evaluates long Khmer inputs **per orthographic unit** rather
 - lexical Ukrainian overrides are checked against the canonical IPA → Ukrainian policy and cannot silently contradict it;
 - misplaced Khmer register shifters are explicitly flagged rather than treated as ordinary vowel/consonant data.
 
-This behavior is a deliberate research-integrity requirement: one unresolved case must not hide evidence-backed results elsewhere in the same test input.
+This behaviour is a deliberate research-integrity requirement: one unresolved case must not hide evidence-backed results elsewhere in the same test input.

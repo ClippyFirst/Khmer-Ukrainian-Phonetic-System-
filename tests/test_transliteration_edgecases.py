@@ -25,6 +25,16 @@ def test_zwnj_before_shifter_is_format_control():
     assert result.register == "second"
     assert result.phonology["register_shifter"] == "TRIISAP"
 
+def test_zws_is_a_word_boundary_not_an_unknown_sign():
+    result = analyze("ក\u200Bគ")
+    assert result.status == "ESTABLISHED_STRUCTURE"
+    assert [x["raw_text"] for x in result.syllables] == ["ក", "គ"]
+
+def test_mixed_invalid_status_is_isolated():
+    result = analyze("ក ࿔ គ")
+    assert result.status == "EVIDENCE_LIMITED"
+    assert [x["status"] for x in result.syllables] == ["ESTABLISHED_STRUCTURE", "INVALID_OR_UNSUPPORTED", "ESTABLISHED_STRUCTURE"]
+
 def test_multiple_shifters_are_flagged():
     s = decompose_khmer_syllable("ស៊៉ា")
     assert s.status == "EVIDENCE_LIMITED"

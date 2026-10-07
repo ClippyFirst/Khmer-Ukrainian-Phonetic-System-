@@ -32,7 +32,7 @@ def test_zws_is_a_word_boundary_not_an_unknown_sign():
     assert [x["raw_text"] for x in result.syllables] == ["ក", "គ"]
 
 def test_mixed_invalid_status_is_isolated():
-    result = analyze("ក ࿔ គ")
+    result = analyze("ក ☃ គ")
     assert result.status == "EVIDENCE_LIMITED"
     assert [x["status"] for x in result.syllables] == ["ESTABLISHED_STRUCTURE", "INVALID_OR_UNSUPPORTED", "ESTABLISHED_STRUCTURE"]
 

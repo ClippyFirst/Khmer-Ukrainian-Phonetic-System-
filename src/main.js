@@ -115,7 +115,8 @@ function parseSyllable(raw) {
     if (raw[0] === COENG || SHIFTERS.has(raw[0])) {
       return { status: "INVALID_OR_UNSUPPORTED", raw, reason: "Khmer combining structure cannot begin a standalone orthographic unit." };
     }
-    return { status: "NOT_ESTABLISHED", raw };
+    if (SIGN_BY_CHAR[raw[0]]) return { status: "NOT_ESTABLISHED", raw, reason: "Відомий знак без базового приголосного; його вимову окремо не встановлено." };
+    return { status: "INVALID_OR_UNSUPPORTED", raw, reason: "Немає підтримуваного кмерського базового приголосного або відомого знака." };
   }
   let index = 1;
   const base = raw[0];

@@ -1,14 +1,18 @@
 {
-  "name":"khmer-ukrainian-phonetic-web",
-  "private":true,
-  "version":"0.2.0",
-  "type":"module",
-  "scripts":{
-    "test":"node tests/web-engine.test.mjs",
-    "check":"node tests/web-engine.test.mjs",
-    "build":"vite build",
-    "preview":"vite preview"
+  "name": "khmer-ukrainian-phonetic-web",
+  "private": true,
+  "version": "0.2.1",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs",
+    "check": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "engines":{"node":">=20"},
-  "devDependencies":{"vite":"^7.1.7"}
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7"
+  }
 }

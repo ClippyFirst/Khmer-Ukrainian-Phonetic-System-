@@ -14,7 +14,7 @@ assert.equal(result.status, "PROPOSED");
 assert.equal(result.ipa, expectedIpa);
 assert.equal(result.ua, expectedUa);
 assert.equal(result.units.filter((unit) => unit.status !== "PUNCTUATION").length, 32);
-assert.ok(result.units.every((unit) => unit.status === "PROPOSED"), "no unit in the 32-item regression block may remain unresolved");
+assert.ok(result.units.filter((unit) => unit.status !== "PUNCTUATION").every((unit) => unit.status === "PROPOSED"), "no linguistic unit in the 32-item regression block may remain unresolved");
 
 const bySource = Object.fromEntries(result.units.map((unit) => [unit.source, unit]));
 assert.deepEqual(

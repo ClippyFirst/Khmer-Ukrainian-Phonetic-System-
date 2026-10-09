@@ -147,7 +147,7 @@ function parseSyllable(raw) {
     index += 1;
   }
 
-  const register = resolveRegister(base, raw);
+  const register = resolveRegister(CONSONANTS[base], raw);
   return {
     status: unknown.length ? "EVIDENCE_LIMITED" : register.status,
     raw,

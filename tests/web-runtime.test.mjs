@@ -46,3 +46,30 @@ assert.equal(mixed.units.find((x) => x.source === "ក")?.ua, "ка");
 assert.equal(mixed.units.find((x) => x.source === "គ")?.ua, "ко");
 
 console.log("web-runtime regression tests: PASS");
+
+
+// Cross-profile and Unicode-format regression coverage.
+const careful = convert("ច្រើន", "careful_standard");
+const colloquial = convert("ច្រើន", "phnom_penh_colloquial");
+const established = convert("ច្រើន", "established_form");
+assert.equal(careful.ipa, "/craən/");
+assert.equal(careful.ua, "тьраен");
+assert.equal(colloquial.ipa, "/cʰaən/");
+assert.equal(colloquial.ua, "чаен");
+assert.equal(established.ipa, "/craən/");
+
+const zwnj = parseSyllable("ប\u200C៊");
+assert.equal(zwnj.register, "second", "ZWNJ must not disrupt register-shifter resolution");
+assert.equal(zwnj.register_rule, "TRIISAP");
+assert.equal(zwnj.status, "ESTABLISHED_STRUCTURE");
+
+const zeroWidthBoundary = convert("ក\u200Bគ", "careful_standard");
+assert.equal(zeroWidthBoundary.ipa, "/kɑː/ /kɔː/");
+assert.equal(zeroWidthBoundary.ua, "ка ко");
+assert.equal(zeroWidthBoundary.status, "PROPOSED");
+
+const mixedZeroWidth = tokenize("ក\u200Bគ");
+assert.deepEqual(mixedZeroWidth, ["ក", "\u200B", "គ"]);
+
+assert.throws(() => convert("ក", "unsupported_profile"), /Unsupported pronunciation profile/);
+assert.equal(convert("   ", "careful_standard"), null);

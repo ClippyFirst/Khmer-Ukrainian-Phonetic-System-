@@ -230,7 +230,7 @@ function renderFixture(fixture, profile) {
 
 function deriveDeterministicIpa(analysis) {
   if (analysis.status === "INVALID_OR_UNSUPPORTED") return null;
-  if (analysis.subscripts.length || analysis.vowelSigns.length || analysis.unknown.length) return null;
+  if (analysis.subscripts?.length || analysis.vowelSigns?.length || analysis.unknown?.length) return null;
   if (analysis.register_rule === "MULTIPLE_REGISTER_SHIFTERS" || analysis.register_rule === "MISPLACED_REGISTER_SHIFTER" || analysis.register_rule === "NON_STANDARD_SHIFTER_USE") return null;
 
   const onset = analysis.onset_ipa;

@@ -193,12 +193,12 @@ The current implementation includes explicit handling for Khmer register shifter
 
 The web explanation and browser adapter have been synchronized with that policy. The browser does not silently invent Phnom Penh /r/-loss phonetics or complete vowel IPA where the research engine has not established them.
 
-The latest GitHub Actions quality and Pages deployment runs for the current main commit completed successfully. This verifies the repository checks and static build/deployment pipeline; it does not constitute linguistic accuracy evidence. No empirical accuracy percentage is claimed.
+Quality checks and static deployment are continuously checked by GitHub Actions; consult the latest run for the exact revision before relying on pipeline status. A green build does not constitute linguistic accuracy evidence. No empirical accuracy percentage is claimed.
 
 
 ## Latest lexical-coverage pass — 2026-10-06
 
-The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Current independent references give the phrase as **[pʰiəsaː kʰmae]**. The repository now contains a small provenance-bearing lexical corpus and a dedicated fixture for this common form. The IPA evidence is marked WELL_SUPPORTED; the Ukrainian practical form **пієса кмае** remains explicitly PROPOSED.
+The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Cited lexical references report the phrase as **[pʰiəsaː kʰmae]**. The repository stores this as source-attested evidence, not an independently adjudicated gold label: no audio-based or independent multi-source adjudication is recorded. The Ukrainian practical form **пієса кмае** remains explicitly PROPOSED.
 
 The Ukrainian policy was also extended for /ae/, and the browser adapter now distinguishes a corpus-defined lexical Ukrainian form from a mechanical segment-by-segment rendering. This prevents the UI from silently presenting a different practical spelling merely because a phrase contains context-dependent or complex Khmer vowels.
 

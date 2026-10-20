@@ -59,3 +59,11 @@ This is a potentially valuable **external comparison source**, but it is not a t
 - No lexicon copied into this repository.
 - The machine-readable `data/khmer/vowel-context-register.json` stores source-attested examples and preserves source disagreement; it deliberately leaves word-level Ukrainian adaptations unset.
 - Next acceptance gate: run a pinned tool against a held-out, independently adjudicated corpus and publish the exact manifest, license audit, commands, raw outputs, and score calculations.
+
+## Repository licensing and citation metadata
+
+- `pyproject.toml` declares the project license as MIT, but the repository tree inspected for this audit did not contain a root `LICENSE` or `CITATION.cff`. This is a release-readiness inconsistency, not proof that the source has no copyright owner.
+- Do not create a copyright notice or author list by inference. Before release, confirm the intended rights holder/contributor wording, add the full license text consistent with the chosen terms, and add a `CITATION.cff` containing only verified author/title/version/repository metadata.
+- Keep code, reference transcriptions, dictionaries, model weights, and research examples as separate provenance/licensing classes. A permissive code license does not automatically relicense upstream text or lexicons.
+- The current audit did not verify all source/data licenses (including Unicode materials, R12A content, Wiktionary-derived transcriptions, or the Chem (2020) paper's reuse terms). Record each actual license/terms URL before redistributing substantial extracted datasets.
+

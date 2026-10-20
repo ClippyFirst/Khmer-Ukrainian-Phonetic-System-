@@ -21,7 +21,7 @@ def test_phnom_penh_profile_does_not_rewrite_unsegmented_medial_match():
 
 
 def test_phnom_penh_profile_does_not_rewrite_coda_r():
-    assert render_ipa_profile("ar.kɑː", "phnom_penh_colloquial") == "ar.kʰɑː"
+    assert render_ipa_profile("ar.krɑː", "phnom_penh_colloquial") == "ar.kʰɑː"
     assert render_ipa_profile("kɑːr", "phnom_penh_colloquial") == "kɑːr"
 
 

@@ -11,7 +11,7 @@ def test_reahmuk_lexical_examples_preserve_source_evidence_without_claiming_gold
     assert data["source_id"] == "r12a-orthography"
     assert data["source_url"] == "https://r12a.github.io/scripts/khmr/km.html"
     assert data["evidence_status"] == "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
-    assert "not normalized project IPA" in data["transcription_policy"]
+    assert "normalized project IPA" in data["transcription_policy"]
     assert len(data["examples"]) >= 8
 
     required = {

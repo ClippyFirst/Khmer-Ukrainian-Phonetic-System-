@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "purpose": "Lexical examples explicitly shown in Richard Ishida's Khmer orthography notes under REAHMUK and coda-diacritic explanations. The source forms and source pronunciation notation are preserved without conversion into project IPA. These are source-attested examples, not independently adjudicated gold items.",
+  "source_id": "r12a-orthography",
+  "source_url": "https://r12a.github.io/scripts/khmr/km.html",
+  "source_updated": "2026-04-27",
+  "transcription_policy": "Preserve the source's displayed pronunciation/transliteration string verbatim. It may mix IPA-like symbols with the page's practical transliteration conventions; do not treat it as normalized project IPA.",
+  "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
+  "examples": [
+    {
+      "id": "RHM-LEX-001",
+      "orthography": "ខ្លះ",
+      "gloss": "some",
+      "source_transcription": "kʰlah",
+      "source_description": "REAHMUK after an inherent vowel in an a-class syllable; source describes the rhyme as ah.",
+      "base_series": "first",
+      "rhyme_pattern": "inherent vowel + REAHMUK",
+      "source_outcome_label": "ah"
+    },
+    {
+      "id": "RHM-LEX-002",
+      "orthography": "ផ្ទះ",
+      "gloss": "house; home",
+      "source_transcription": "pʰtĕəh",
+      "source_description": "REAHMUK after a second-series inherent vowel or AA-sign context; source describes the rhyme as eə̆h.",
+      "base_series": "second",
+      "rhyme_pattern": "inherent vowel + REAHMUK",
+      "source_outcome_label": "eə̆h"
+    },
+    {
+      "id": "RHM-LEX-003",
+      "orthography": "ជិះ",
+      "gloss": "to ride",
+      "source_transcription": "cih",
+      "source_description": "Short vowel sign I + REAHMUK; the source describes h after the short vowel.",
+      "base_series": null,
+      "rhyme_pattern": "I-sign + REAHMUK",
+      "source_outcome_label": "ih"
+    },
+    {
+      "id": "RHM-LEX-004",
+      "orthography": "កឹះ",
+      "gloss": "to tap on the shoulder",
+      "source_transcription": "kəh",
+      "source_description": "Short vowel sign Y + REAHMUK; source gives this as an example of h after the short vowel.",
+      "base_series": null,
+      "rhyme_pattern": "Y-sign + REAHMUK",
+      "source_outcome_label": "əh"
+    },
+    {
+      "id": "RHM-LEX-005",
+      "orthography": "ពុះ",
+      "gloss": "to boil; to split wood",
+      "source_transcription": "puh",
+      "source_description": "Short vowel sign U + REAHMUK; source gives this as an example of h after the short vowel.",
+      "base_series": null,
+      "rhyme_pattern": "U-sign + REAHMUK",
+      "source_outcome_label": "uh"
+    },
+    {
+      "id": "RHM-LEX-006",
+      "orthography": "សេះ",
+      "gloss": "horse",
+      "source_transcription": "seh",
+      "source_description": "E-sign + REAHMUK after a first-series consonant; source describes this combination as eh.",
+      "base_series": "first",
+      "rhyme_pattern": "E-sign + REAHMUK",
+      "source_outcome_label": "eh"
+    },
+    {
+      "id": "RHM-LEX-007",
+      "orthography": "នេះ",
+      "gloss": "this; here",
+      "source_transcription": "nih",
+      "source_description": "E-sign + REAHMUK after a second-series consonant; source describes this combination as ih.",
+      "base_series": "second",
+      "rhyme_pattern": "E-sign + REAHMUK",
+      "source_outcome_label": "ih"
+    },
+    {
+      "id": "RHM-LEX-008",
+      "orthography": "កែះ",
+      "gloss": "wild goat",
+      "source_transcription": "keh",
+      "source_description": "AE-sign + REAHMUK; source describes this combination as eh in an a-class context.",
+      "base_series": "first",
+      "rhyme_pattern": "AE-sign + REAHMUK",
+      "source_outcome_label": "eh"
+    },
+    {
+      "id": "RHM-LEX-009",
+      "orthography": "ចង្កើះ",
+      "gloss": "chopsticks",
+      "source_transcription": "cɑŋ.ˈkaəh",
+      "source_description": "OE-sign + REAHMUK example; source notes the normal spelling ចង្កឹះ and gives the pronunciation string shown here.",
+      "base_series": "first",
+      "rhyme_pattern": "OE-sign + REAHMUK",
+      "source_outcome_label": "əh"
+    },
+    {
+      "id": "RHM-LEX-010",
+      "orthography": "កោះ",
+      "gloss": "island",
+      "source_transcription": "kɑh",
+      "source_description": "OO-sign + REAHMUK after a first-series consonant; source describes the rhyme as ah.",
+      "base_series": "first",
+      "rhyme_pattern": "OO-sign + REAHMUK",
+      "source_outcome_label": "ah"
+    },
+    {
+      "id": "RHM-LEX-011",
+      "orthography": "គោះ",
+      "gloss": "to strike",
+      "source_transcription": "kuə̆h",
+      "source_description": "OO-sign + REAHMUK after a second-series consonant; source gives uə̆h (and elsewhere also mentions uh as a possible value for this class).",
+      "base_series": "second",
+      "rhyme_pattern": "OO-sign + REAHMUK",
+      "source_outcome_label": "uə̆h"
+    }
+  ],
+  "limitations": [
+    "No independent audio or second lexical source has been adjudicated for these entries.",
+    "The source transcription strings are retained verbatim and are not guaranteed to use the same conventions as project IPA.",
+    "The examples do not establish a deterministic rule for every spelling, dialect, stress condition, or register context.",
+    "Do not feed these rows directly to a gold-corpus accuracy metric or promote them to deterministic engine output without adjudication."
+  ]
+}

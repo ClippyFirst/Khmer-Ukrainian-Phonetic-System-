@@ -4,7 +4,7 @@
 **Repository:** https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-  
 **Default branch:** main  
 **Last audited base revision:** 6cc30bb48bedb83d86534a5fbff92839e26673dd  
-**Recent audit commits:** 9b7936c24b7ec584797d9e47aeb835afd670d091 (source-indexed matrix expansion), 65c474768ef3db9f95573dfe443ee6fc9bcc41d7 (initial matrix), 03e94ced1a2c319c462d53b681a3d61d348e1525 (handoff), b045495275b367c69a8e4c4ed8107faeb4724eb2 (plan links). Recheck latest main SHA and Actions runs before further work.
+**Recent audit commits:** d5686e6a1e4a8e5edbbf212ae7966305bdc6f1f8 (acoustic evidence added to matrix), 9b7936c24b7ec584797d9e47aeb835afd670d091 (source-indexed matrix expansion), 1d7d338b7ce243e3ef7af452c79b6936a36decce (handoff update), 65c474768ef3db9f95573dfe443ee6fc9bcc41d7 (initial matrix). Recheck latest main SHA and Actions runs before further work.
 
 ## Mandatory instructions for the next session
 
@@ -22,7 +22,7 @@
 - The commit status API returned no individual statuses and state pending; prefer the actual Actions workflow runs when reporting workflow results.
 - docs/audits/2026-10-20-vowel-coverage-matrix.md was initially added in commit 65c474768ef3db9f95573dfe443ee6fc9bcc41d7 and expanded in commit 9b7936c24b7ec584797d9e47aeb835afd670d091. It now indexes representative vowel, register, coda, NIKAHIT/REAHMUK, independent-vowel and orthographic-layout evidence from Unicode 17.0 Chapter 16 and R12A notes updated 2026-04-27. It remains intentionally non-exhaustive and is not an adjudicated IPA corpus.
 - Source review confirms R12A's representative register-conditioned examples (ក vs គ; កី vs គី; កា vs គា), coda-sensitive contrasts (លង vs ល្ង), and that NIKAHIT/REAHMUK can affect both coda and nucleus. Unicode 17 is used as orthographic/illustrative evidence, not acoustic validation. Explicit NIKAHIT minimal contrasts currently found in the retrieved text came from Unicode 16; they are marked blocked pending verification against current sources before being promoted to gold fixtures.
-- Firecrawl research search was unavailable because the connected Firecrawl account reported insufficient credits; do not retry that connector this session. R12A links to Chem & Chem (2020) acoustic study DOI 10.61945/cjbar.2020.2.2.3; the primary study still needs a targeted review before acoustic claims are strengthened.
+- Firecrawl research search was unavailable because the connected Firecrawl account reported insufficient credits; do not retry that connector this session. The publisher-hosted Chem (2020) PDF was subsequently reviewed: 21 speakers were screened, then 4 Phnom Penh speakers were selected; 61 lexical items were read three times, with formant and duration measurements. The paper explicitly discusses coda effects on vowel quality and length. This is useful acoustic evidence for prioritizing context, not a complete grapheme-to-IPA mapping.
 - The previous plan at docs/superpowers/plans/2026-10-05-khmer-repository-finalization.md still has unchecked tasks, including phonological coverage, corpus, and final audit. Do not infer completion from files existing.
 - No file named handoff, CITATION.cff, or LICENSE was found in the audited tree. Recheck before release work; this is an inventory observation, not a recommendation to add a license without deciding terms.
 - The working web service is explicitly described by README as production-structured but linguistically coverage-limited.
@@ -63,9 +63,9 @@
 
 ## Next concrete action
 
-1. Review Chem & Chem (2020) directly and extract the actual sample/dialect, vowel categories, acoustic measurements and conclusions; record which claims it supports rather than relying on the title or secondary summary.
-2. Compare R12A's coda-mark pages (especially NIKAHIT/REAHMUK) with Unicode 17.0 and a specialist lexical source. Resolve the Unicode 16 vs 17 provenance of explicit NIKAHIT contrast examples before they become gold fixtures.
-3. Inspect the current tests for existing coverage of the newly indexed examples. Add tests only where expected outputs are sourced and unambiguous; otherwise add explicit unresolved/unsupported expectations.
+1. Compare R12A's coda-mark pages (especially NIKAHIT/REAHMUK) with Unicode 17.0 and a specialist lexical source. Resolve the Unicode 16 vs 17 provenance of explicit NIKAHIT contrast examples before they become gold fixtures.
+2. Inspect the current tests for existing coverage of the newly indexed examples. Add tests only where expected outputs are sourced and unambiguous; otherwise add explicit unresolved/unsupported expectations.
+3. Review current source citations in docs/phonology.md and data/khmer/vowels.json against the more precise Chem (2020) scope; avoid stating that the paper independently proves all register-conditioned contrasts.
 4. Then continue KH-IPA-001 API-boundary review and KH-REG-001 usage search. Do not add deterministic vowel mappings merely to make the matrix look full.
 
 ## Work log
@@ -75,5 +75,6 @@
 - Confirmed base revision's Quality checks run 177 and Pages deployment run 187 were successful on 2026-10-09; these are historical and do not validate newer documentation commits.
 - Created initial matrix (commit 65c474768ef3db9f95573dfe443ee6fc9bcc41d7), handoff (commit 03e94ced1a2c319c462d53b681a3d61d348e1525), and plan links (commit b045495275b367c69a8e4c4ed8107faeb4724eb2).
 - Expanded the evidence matrix with R12A/Unicode 17 source-indexed examples, coda-sensitive patterns, independent-vowel caveats, and source-version limitations (commit 9b7936c24b7ec584797d9e47aeb835afd670d091).
+- Reviewed the publisher-hosted Chem (2020) PDF methods/results and added explicit study-design and coda-effect limitations to the matrix (commit d5686e6a1e4a8e5edbbf212ae7966305bdc6f1f8).
 - Opened R12A notes updated 2026-04-27, especially sections on registers, vowels, codas, NIKAHIT/REAHMUK, and independent vowels; reviewed Unicode 17 Chapter 16 for script examples and register shifters. Unicode 16 was used only to identify explicit NIKAHIT contrast examples, which remain blocked pending verification against current sources.
 - Firecrawl research search could not run because its connected account reported insufficient credits; no retries were made. No local Python/npm tests were run. Check current Actions/Pages runs for commit 9b7936c before claiming the documentation pipeline is green.

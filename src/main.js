@@ -368,6 +368,34 @@ if (typeof document !== "undefined") {
     $("ua-result").textContent = data.ua;
     $("status").textContent = data.status.replaceAll("_", " ");
     $("details").textContent = data.note;
+    const unitDetails = $("unit-details");
+    unitDetails.replaceChildren();
+    const unitHeading = document.createElement("h3");
+    unitHeading.textContent = "Одиничний аналіз";
+    unitDetails.append(unitHeading);
+    data.units.filter((unit) => unit.status !== "PUNCTUATION").forEach((unit) => {
+      const card = document.createElement("article");
+      card.className = "unit-detail";
+      const heading = document.createElement("div");
+      heading.className = "unit-detail-heading";
+      const sourceLabel = document.createElement("strong");
+      sourceLabel.className = "unit-source";
+      sourceLabel.lang = "km";
+      sourceLabel.textContent = unit.source;
+      const statusLabel = document.createElement("span");
+      statusLabel.className = "unit-status";
+      statusLabel.textContent = unit.status.replaceAll("_", " ");
+      heading.append(sourceLabel, statusLabel);
+      const values = document.createElement("p");
+      values.className = "unit-values";
+      values.textContent = "IPA: " + unit.ipa + " · Українська: " + unit.ua;
+      const note = document.createElement("p");
+      note.className = "unit-note";
+      note.textContent = unit.note || "Окремого пояснення для цієї одиниці немає.";
+      card.append(heading, values, note);
+      unitDetails.append(card);
+    });
+    unitDetails.hidden = data.units.every((unit) => unit.status === "PUNCTUATION");
     const notice = getStatusNotice(data);
     issue.hidden = !notice;
     if (!issue.hidden) {

@@ -294,6 +294,20 @@ function combineStatus(items) {
   return "ESTABLISHED_STRUCTURE";
 }
 
+function getStatusNotice(data) {
+  if (!data) return "";
+  if (data.status === "PROPOSED") {
+    return "Результат має статус PROPOSED: IPA та українське читання є дослідницькими пропозиціями для цих записів, а не підтвердженою універсальною моделлю. Перевіряйте джерела й лексичний контекст перед використанням.";
+  }
+  if (data.status === "EVIDENCE_LIMITED" || data.status === "NOT_ESTABLISHED") {
+    return data.note;
+  }
+  if (data.status === "INVALID_OR_UNSUPPORTED") {
+    return "Ввід не підтримується повністю. Перегляньте статус кожної одиниці та не використовуйте маркери непідтвердженого результату як вимову.";
+  }
+  return "";
+}
+
 function convert(text, profile) {
   const normalized = normalize(text);
   if (!normalized.trim()) return null;
@@ -328,7 +342,7 @@ function convert(text, profile) {
   };
 }
 
-export { convert, tokenize, parseSyllable, mapIpa };
+export { convert, tokenize, parseSyllable, mapIpa, getStatusNotice };
 
 if (typeof document !== "undefined") {
   const $ = (id) => document.getElementById(id);
@@ -354,8 +368,13 @@ if (typeof document !== "undefined") {
     $("ua-result").textContent = data.ua;
     $("status").textContent = data.status.replaceAll("_", " ");
     $("details").textContent = data.note;
-    issue.hidden = !["EVIDENCE_LIMITED", "INVALID_OR_UNSUPPORTED", "NOT_ESTABLISHED"].includes(data.status);
-    if (!issue.hidden) $("issue-text").textContent = data.note;
+    const notice = getStatusNotice(data);
+    issue.hidden = !notice;
+    if (!issue.hidden) {
+      $("issue-text").textContent = notice;
+      $("issue").querySelector("strong").textContent =
+        data.status === "PROPOSED" ? "Результат попередній" : "Результат потребує обережності";
+    }
     live.textContent = "Результат оновлено";
   }
   

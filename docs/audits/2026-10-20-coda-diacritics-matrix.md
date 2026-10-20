@@ -23,10 +23,10 @@ R12A explains that U+17C6 NIKAHIT (ំ, approximately coda /m/) and U+17C7 REAHM
 | RM-A06 | ើះ (U+17BE + U+17C7) | əh | SOURCE-INDEXED | Same listed rhyme transcription as RM-A05; no broad rule implied |
 | RM-A07 | ះ (U+17C7) | ah | SOURCE-INDEXED | REAHMUK-only rhyme listed for first series |
 | RM-A08 | ោះ (U+17C4 + U+17C7) | ah | SOURCE-INDEXED | Do not generalize from this row to other classes |
-| RM-A09 | ាំ (U+17B6 + U+17C6) | am | COMPARATOR | NIKAHIT control row, included to compare coda marks |
-| RM-A10 | ំ (U+17C6) | am | COMPARATOR | NIKAHIT control row; source lists first-series rhyme |
-| RM-A11 | ាំង (U+17B6 + U+17C6 + ង) | aŋ | COMPARATOR | Complex sequence; not a REAHMUK form |
-| RM-A12 | ាំ (U+17B6 + U+17C6) | am | DUPLICATE-NAMED-SEQUENCE | R12A separately notes named sequences ាំ / ំ with class-conditioned values; see note below |
+| RM-A09 | ុំ (U+17BB + U+17C6) | om | COMPARATOR | NIKAHIT after U sign; source lists a first-series rhyme |
+| RM-A10 | ាំ (U+17B6 + U+17C6) | am | COMPARATOR | NIKAHIT after AA sign; not a REAHMUK form |
+| RM-A11 | ំ (U+17C6) | am | COMPARATOR | NIKAHIT alone; source lists a first-series rhyme |
+| RM-A12 | ាំង (U+17B6 + U+17C6 + ង) | aŋ | COMPARATOR | NIKAHIT sequence with final NGO; not a REAHMUK form |
 
 ## REAHMUK: 9 second-series rows
 
@@ -42,7 +42,7 @@ R12A explains that U+17C6 NIKAHIT (ំ, approximately coda /m/) and U+17C7 REAHM
 | RM-O08 | ាំ (U+17B6 + U+17C6) | oə̆m | COMPARATOR | NIKAHIT named sequence; differs from first-series table |
 | RM-O09 | ុំ (U+17BB + U+17C6) | um | COMPARATOR | NIKAHIT sequence; source also notes it as a named sequence |
 
-**Important correction to inventory interpretation:** the R12A panel is titled as a list of rhymes following ɑ-class and ɔ-class consonants, respectively, but it includes both REAHMUK and NIKAHIT combinations. Therefore, the panel's total counts (12 and 9) must not be reported as “12 and 9 REAHMUK rules”. The tables above preserve the source's visible inventory while marking NIKAHIT comparator rows separately. Some forms occur in named-sequence notes and should be deduplicated by orthographic sequence plus series, not by surface transcription alone.
+**Important correction to inventory interpretation:** the R12A panel is titled as a list of rhymes following ɑ-class and ɔ-class consonants, respectively, but it includes both REAHMUK and NIKAHIT combinations. Therefore, the panel's total counts (12 and 9) must not be reported as “12 and 9 REAHMUK rules”. The tables above preserve the source's visible inventory while marking NIKAHIT comparator rows separately. The first-series panel contains eight REAHMUK spellings and four NIKAHIT spellings; the second-series panel contains five REAHMUK spellings and four NIKAHIT spellings. Some forms also occur in named-sequence notes and should be deduplicated by orthographic sequence plus series, not by surface transcription alone.
 
 ## NIKAHIT lexical contrasts explicitly illustrated by R12A
 

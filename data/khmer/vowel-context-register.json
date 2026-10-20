@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.0.0",
+  "purpose": "Source-indexed vowel/register/coda evidence register. Rows document cited examples; they are not an adjudicated gold corpus and must not be used as a universal deterministic grapheme-to-IPA table.",
+  "status_vocabulary": {
+    "SOURCE_ATTESTED_NOT_GOLD": "A source explicitly provides the form and/or transcription; not independently adjudicated against recordings or multiple lexical sources.",
+    "CONFLICTING_SOURCE_ANALYSES": "Sources provide non-equivalent examples or transcription analyses; preserve alternatives and do not collapse into one universal rule.",
+    "NOT_ESTABLISHED": "No deterministic IPA or Ukrainian output is justified by the current evidence."
+  },
+  "sources": {
+    "r12a-orthography": {
+      "url": "https://r12a.github.io/scripts/khmr/km.html",
+      "role": "Specialist orthography/phonology synthesis; updated 2026-04-27"
+    },
+    "unicode17-ch16": {
+      "url": "https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-16/",
+      "role": "Authoritative encoding/orthographic reference with illustrative pronunciations; not an acoustic experiment"
+    },
+    "chem2020": {
+      "url": "https://doi.org/10.61945/cjbar.2020.2.2.3",
+      "role": "Acoustic study of a small Phnom Penh speaker sample; supports contextual dimensions, not individual rows unless directly studied"
+    }
+  },
+  "cases": [
+    {
+      "id": "KHV-001",
+      "orthography": "ក",
+      "grapheme_structure": {
+        "base": "ក",
+        "dependent_vowels": [],
+        "subscripts": [],
+        "register_shifter": null,
+        "coda": null
+      },
+      "base_consonant_class": "first",
+      "register_condition": "first series; source's illustrative inherent-vowel example",
+      "phonological_interpretation": "R12A's representative inherent-vowel contrast for first-series ក.",
+      "ipa": "/kɑː/",
+      "ipa_source": "r12a-orthography",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "limitations": [
+        "Do not generalize to every coda, lexical environment, or dialect.",
+        "Unicode 17 Table 16-7 gives a different illustrative lexical item/transcription for ក; see KHV-008."
+      ]
+    },
+    {
+      "id": "KHV-002",
+      "orthography": "គ",
+      "grapheme_structure": {
+        "base": "គ",
+        "dependent_vowels": [],
+        "subscripts": [],
+        "register_shifter": null,
+        "coda": null
+      },
+      "base_consonant_class": "second",
+      "register_condition": "second series; source's illustrative inherent-vowel example",
+      "phonological_interpretation": "R12A's representative inherent-vowel contrast for second-series គ.",
+      "ipa": "/kɔː/",
+      "ipa_source": "r12a-orthography",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "limitations": [
+        "Do not generalize to every coda, lexical environment, or dialect.",
+        "Unicode 17 Table 16-7 gives a different illustrative lexical item/transcription for គ; see KHV-008."
+      ]
+    },
+    {
+      "id": "KHV-003",
+      "orthography": "កី",
+      "grapheme_structure": {
+        "base": "ក",
+        "dependent_vowels": [
+          "ី"
+        ],
+        "subscripts": [],
+        "register_shifter": null,
+        "coda": null
+      },
+      "base_consonant_class": "first",
+      "register_condition": "first series; dependent vowel U+17B8",
+      "phonological_interpretation": "R12A's example of a series-conditioned realization of the same dependent vowel sign.",
+      "ipa": "/kəj/",
+      "ipa_source": "r12a-orthography",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "limitations": [
+        "One representative form; not a full sign-by-series matrix."
+      ]
+    },
+    {
+      "id": "KHV-004",
+      "orthography": "គី",
+      "grapheme_structure": {
+        "base": "គ",
+        "dependent_vowels": [
+          "ី"
+        ],
+        "subscripts": [],
+        "register_shifter": null,
+        "coda": null
+      },
+      "base_consonant_class": "second",
+      "register_condition": "second series; dependent vowel U+17B8",
+      "phonological_interpretation": "R12A's contrast with កី; demonstrates that the dependent sign does not have one invariant vowel value.",
+      "ipa": "/kiː/",
+      "ipa_source": "r12a-orthography",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "limitations": [
+        "One representative form; not a full sign-by-series matrix."
+      ]
+    },
+    {
+      "id": "KHV-005",
+      "orthography": "កា",
+      "grapheme_structure": {
+        "base": "ក",
+        "dependent_vowels": [
+          "ា"
+        ],
+        "subscripts": [],
+        "register_shifter": null,
+        "coda": null
+      },
+      "base_consonant_class": "first",
+      "register_condition": "first series; dependent vowel U+17B6",
+      "phonological_interpretation": "R12A's example of dependent vowel ា after a first-series consonant.",
+      "ipa": "/kaː/",
+      "ipa_source": "r12a-orthography",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "limitations": [
+        "Not sufficient to infer the value in closed syllables or other profiles."
+      ]
+    },
+    {
+      "id": "KHV-006",
+      "orthography": "គា",
+      "grapheme_structure": {
+        "base": "គ",
+        "dependent_vowels": [
+          "ា"
+        ],
+        "subscripts": [],
+        "register_shifter": null,
+        "coda": null
+      },
+      "base_consonant_class": "second",
+      "register_condition": "second series; dependent vowel U+17B6",
+      "phonological_interpretation": "R12A's contrast with កា; illustrates series-conditioned vowel interpretation.",
+      "ipa": "/kiə/",
+      "ipa_source": "r12a-orthography",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "limitations": [
+        "Not sufficient to infer the value in closed syllables or other profiles."
+      ]
+    },
+    {
+      "id": "KHV-007",
+      "orthography": "ដំ",
+      "grapheme_structure": {
+        "base": "ដ",
+        "dependent_vowels": [],
+        "subscripts": [],
+        "register_shifter": null,
+        "coda": "NIKAHIT U+17C6"
+      },
+      "base_consonant_class": "first",
+      "register_condition": "NIKAHIT coda/nucleus context; Unicode 17 lexical illustration",
+      "phonological_interpretation": "Unicode 17 contrasts this NIKAHIT spelling with ដម; source gives the lexical gloss 'to pound'.",
+      "ipa": "/dɔm/",
+      "ipa_source": "unicode17-ch16",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "limitations": [
+        "Encoding-standard illustration, not independent acoustic/lexical adjudication.",
+        "Do not generalize to all NIKAHIT spellings."
+      ]
+    },
+    {
+      "id": "KHV-008",
+      "orthography": "ក / គ (Unicode 17 Table 16-7 illustrative lexical examples)",
+      "grapheme_structure": {
+        "base": [
+          "ក",
+          "គ"
+        ],
+        "dependent_vowels": [],
+        "subscripts": [],
+        "register_shifter": null,
+        "coda": null
+      },
+      "base_consonant_class": "first vs second",
+      "register_condition": "Unicode 17 Table 16-7; distinct lexical glosses and bracketed transcriptions",
+      "phonological_interpretation": "Unicode 17 gives ក ‘neck’ [kɔː] and គ ‘mute’ [kɔ̀ː], which are not interchangeable with R12A's simplified ក /kɑː/ vs គ /kɔː/ examples.",
+      "ipa": null,
+      "ipa_source": "unicode17-ch16",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "CONFLICTING_SOURCE_ANALYSES",
+      "status": "CONFLICTING_SOURCE_ANALYSES",
+      "alternatives": [
+        {
+          "source": "unicode17-ch16",
+          "forms": "ក ‘neck’; គ ‘mute’",
+          "transcriptions": "[kɔː]; [kɔ̀ː]"
+        },
+        {
+          "source": "r12a-orthography",
+          "forms": "က vs គ representative contrast",
+          "transcriptions": "/kɑː/; /kɔː/"
+        }
+      ],
+      "selection_criterion": "Retain both source-specific examples; do not promote either pair into a universal register-to-vowel mapping until lexical identity, transcription convention, dialect and context are reconciled.",
+      "limitations": [
+        "The sources need not be describing the same lexical items or phonetic context.",
+        "A phonological class contrast is supported; a universal deterministic mapping is not."
+      ]
+    },
+    {
+      "id": "KHV-009",
+      "orthography": "លង vs ល្ង",
+      "grapheme_structure": {
+        "base": [
+          "ល",
+          "ល"
+        ],
+        "dependent_vowels": [],
+        "subscripts": [
+          null,
+          "ង"
+        ],
+        "register_shifter": null,
+        "coda": [
+          "ង",
+          null
+        ]
+      },
+      "base_consonant_class": "first series",
+      "register_condition": "plain coda vs COENG/subscript cluster; syllabification differs",
+      "phonological_interpretation": "Unicode 17's contrast illustrates that changing the orthographic/syllabic structure changes the vowel outcome; not a generic coda substitution rule.",
+      "ipa": null,
+      "ipa_source": "unicode17-ch16",
+      "ukrainian_adaptation": null,
+      "ukrainian_status": "NOT_ESTABLISHED",
+      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "alternatives": [
+        {
+          "form": "លង",
+          "ipa": "/lɔːŋ/"
+        },
+        {
+          "form": "ល្ង",
+          "ipa": "/lŋɔ̀ː/"
+        }
+      ],
+      "limitations": [
+        "The two transcriptions are retained as source-specific contrast examples, not an adjudicated dialect-normalized gold pair."
+      ]
+    }
+  ],
+  "coverage_policy": "Rows with ukrainian_adaptation=null are deliberate: the repository has a proposed segment adapter, but these word-level outputs have not been adjudicated and must not be presented as confident lexical transcriptions."
+}

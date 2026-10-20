@@ -2,6 +2,7 @@ import unicodedata
 from .normalize import normalize_khmer
 from .data import CONSONANTS, SIGNS, SHIFTER_ELIGIBILITY
 from .model import KhmerGrapheme, KhmerSyllable, AnalysisResult
+from .phonology import resolve_effective_register
 
 COENG="្"
 MUUSIKATOAN="៉"
@@ -54,28 +55,6 @@ def segment_syllables(text: str) -> list[str]:
         units.append("".join(current))
     return units
 
-def _resolve_effective_register(base: dict, chars: list[str]) -> tuple[str | None, str | None]:
-    """Resolve register after Khmer register-shifters, including ប៉ exception."""
-    register=base.get("register")
-    structural=[ch for ch in chars if ch != ZWNJ]
-    positions=[i for i,ch in enumerate(structural) if ch in {MUUSIKATOAN, TRIISAP}]
-    if not positions:
-        return register, None
-    if len(positions) > 1:
-        return register, "MULTIPLE_REGISTER_SHIFTERS"
-    if positions[0] != 1:
-        return register, "MISPLACED_REGISTER_SHIFTER"
-    shifter=structural[positions[0]]
-    if base["char"] not in SHIFTER_ELIGIBILITY.get(shifter, set()):
-        return register, "NON_STANDARD_SHIFTER_USE"
-    if base["char"]=="ប" and shifter==MUUSIKATOAN:
-        return "first", "BA_TO_PA_EXCEPTION"
-    if shifter==MUUSIKATOAN and register=="second":
-        return "first", "MUUSIKATOAN"
-    if shifter==TRIISAP and register=="first":
-        return "second", "TRIISAP"
-    return register, "NON_STANDARD_SHIFTER_USE"
-
 def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
     n=normalize_khmer(raw)
     s=KhmerSyllable(raw_text=raw, normalized_text=n)
@@ -113,7 +92,7 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
         i+=1
     if s.base_consonant:
         c=_lookup(s.base_consonant)
-        s.register, shifter_rule=_resolve_effective_register(c, chars)
+        s.register, shifter_rule=resolve_effective_register(c, chars)
         s.inherent_vowel=("first-series" if s.register=="first" else "second-series" if s.register=="second" else None)
         s.phonology["onset_ipa"]=("p" if s.base_consonant=="ប" and shifter_rule=="BA_TO_PA_EXCEPTION" else c.get("onset_ipa"))
         if shifter_rule:

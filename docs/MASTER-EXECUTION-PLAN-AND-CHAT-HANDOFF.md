@@ -150,3 +150,10 @@
 - Root cause was a malformed test fixture, not evidence that the bounded regex was wrong: the assertion used `ar.kɑː` but expected `ar.kʰɑː`. There is no `r` after `k` in that input, so the implementation correctly left it unchanged.
 - Corrected the input to `ar.krɑː` while retaining the expected output `ar.kʰɑː`; this now tests that the coda `r` before the explicit syllable boundary is preserved while the following onset cluster `kr` is transformed. Commit: `64fc5f8a717e91b39f3970ea20bb42c831ed3d46`.
 - The fix is test-only; it does not strengthen the phonetic evidence or change engine behavior. Await CI for this commit before claiming the suite is green.
+
+
+### 2026-10-20 — CI verification after onset-fixture correction
+
+- Quality checks run [#242](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39488865390) completed **successfully** for commit `64fc5f8a717e91b39f3970ea20bb42c831ed3d46`.
+- The job's Python tests, web checks, and site build all completed successfully on that SHA. This resolves the known malformed-fixture failure; it is software-test/build evidence, not independent phonetic validation.
+- GitHub Pages deployment run [#252](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39488865332) was still in progress when checked. Verify its final result separately; do not assume a successful deployment from a successful build.

@@ -181,17 +181,34 @@
       },
       "base_consonant_class": "first",
       "register_condition": "NIKAHIT coda/nucleus context; Unicode 17 lexical illustration",
-      "phonological_interpretation": "Unicode 17 contrasts this NIKAHIT spelling with ដម; source gives the lexical gloss 'to pound'.",
-      "ipa": "/dɔm/",
+      "phonological_interpretation": "Unicode 17.0 and R12A give materially different source transcriptions for this lexical item. Preserve each source's transcription convention rather than normalizing silently.",
+      "ipa": null,
       "ipa_source": "unicode17-ch16",
       "ukrainian_adaptation": null,
       "ukrainian_status": "NOT_ESTABLISHED",
-      "evidence_level": "SOURCE_ATTESTED_NOT_GOLD",
-      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "evidence_level": "CONFLICTING_SOURCE_ANALYSES",
+      "status": "CONFLICTING_SOURCE_ANALYSES",
       "limitations": [
-        "Encoding-standard illustration, not independent acoustic/lexical adjudication.",
+        "The sources report the same written lexical form with non-equivalent transcriptions.",
+        "The difference may involve both onset representation and vowel quality; do not attribute it solely to register or NIKAHIT.",
+        "No independent audio-based or multi-source adjudication has been recorded.",
         "Do not generalize to all NIKAHIT spellings."
-      ]
+      ],
+      "alternatives": [
+        {
+          "source": "unicode17-ch16",
+          "form": "ដំ ‘to pound’",
+          "transcription": "/dɔm/",
+          "note": "Unicode 17.0 Chapter 16 illustrative lexical transcription; encoding/orthographic reference, not acoustic adjudication."
+        },
+        {
+          "source": "r12a-orthography",
+          "form": "ដំ ‘to pound’",
+          "transcription": "/ɗɑm/",
+          "note": "R12A rhyme table transcription; preserve source convention verbatim."
+        }
+      ],
+      "selection_criterion": "Do not choose a universal project IPA from these source forms alone. Verify the lexical identity and transcription conventions, then adjudicate dialect and segment values independently."
     },
     {
       "id": "KHV-008",

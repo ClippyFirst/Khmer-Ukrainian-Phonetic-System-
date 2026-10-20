@@ -63,3 +63,21 @@
 - [ ] Verify tree, references, schema consistency, package imports, CLI behavior, tests, and documentation.
 - [ ] Review git diff/history for accidental artifacts.
 - [ ] Do not claim research-ready if major phonological/empirical gaps remain.
+
+
+## Continuation update — 2026-10-20
+
+The current authoritative continuation handoff is [docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md](../MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md). The initial evidence-bounded vowel matrix and open gap register are in [docs/audits/2026-10-20-vowel-coverage-matrix.md](../audits/2026-10-20-vowel-coverage-matrix.md).
+
+Do not interpret the unchecked tasks above as newly completed. The following remain the first priority:
+- P0: extend the vowel matrix from representative rows to attested orthographic templates, conditioned on consonant series, vowel sign, coda and pronunciation profile.
+- P0: distinguish Unicode orthographic evidence from phonological/phonetic evidence and independently adjudicate lexical IPA.
+- P0: add coda-sensitive cases including NIKAHIT and REAHMUK, with unsupported cases explicitly unresolved.
+- P0: audit the parser-to-IPA boundary and keep the service conservative.
+- P0: expand the independently adjudicated lexical corpus before any accuracy claim.
+
+Audit facts as of 2026-10-20:
+- Base code revision audited: 6cc30bb48bedb83d86534a5fbff92839e26673dd.
+- Matrix commit: 65c474768ef3db9f95573dfe443ee6fc9bcc41d7; its Quality checks run 178 and Pages run 188 completed successfully.
+- Handoff commit: 03e94ced1a2c319c462d53b681a3d61d348e1525; Quality checks run 179 and Pages run 189 were still in progress at the time of writing. Recheck before reporting them as successful.
+- No local test suite was run by this audit. Do not imply otherwise.

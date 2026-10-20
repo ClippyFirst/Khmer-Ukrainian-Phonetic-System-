@@ -48,7 +48,7 @@ R12A explains that U+17C6 NIKAHIT (ំ, approximately coda /m/) and U+17C7 REAHM
 
 | Orthography | Source gloss | Source transcription | What it supports | What it does not support |
 |---|---|---|---|---|
-| ដំ | to pound | /dɑm/ (source's table convention) | A NIKAHIT form can have a short nucleus | General short-vowel rule for all NIKAHIT forms |
+| ដំ | to pound | /ɗɑm/ (source's table convention) | A NIKAHIT form can have a short nucleus | General short-vowel rule for all NIKAHIT forms |
 | ដម | nectar | /ɗɑːm/ (source's table convention) | Similar consonant spelling without NIKAHIT can differ in nucleus length/quality | An exhaustive minimal-pair analysis or acoustic measurement |
 | ពាំ | carry in the beak | /pɔ̀əm/ | AA + NIKAHIT is not simply /aːm/ | One universal realization for all series or lexical contexts |
 | ពាម | mouth of a river | /piəm/ | Related spelling without NIKAHIT differs in the source | Universal mapping of U+17B6 |

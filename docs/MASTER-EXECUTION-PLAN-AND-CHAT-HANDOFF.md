@@ -110,3 +110,14 @@
 - No local Python tests, Node tests, Vite build, browser screenshots, mobile viewport tests, or external package execution were performed in this session. Successful GitHub Actions checks are the only execution evidence available here.
 - Next priority: inspect the final SHA's workflow results. If CI passes, continue the P1 /r/-loss environment audit and then the P2 license/citation decisions. The P0 lexical gold corpus remains incomplete: source-attested rows are not independently adjudicated and must not be used for accuracy scoring.
 
+### 2026-10-20 — bounded /r/-loss profile audit
+- Checked current main workflow state before this cycle: Quality #227 and Pages #237 passed for handoff commit `f28c18a0`. This is the pre-change revision only.
+- Found a concrete implementation risk in `src/khmer_ua/ipa.py`: the regex rewrote any matching `CrV` substring, even without a word/syllable boundary. An arbitrary string such as `akra` could therefore be changed although the function has no syllabification context.
+- Changed the transformation to operate only at the beginning of the supplied IPA string or after an explicit space, syllable dot, or stress mark; unsegmented medial matches are preserved. Commit: `8949667a4ce91d71558b4896a12effe64ef1d3c1`.
+- Expanded `tests/test_ipa.py` with word-initial, explicit-boundary, unsegmented-medial, coda-/r/, profile-preservation, and unknown-profile cases. Commit: `3d5aed8179134f74bbf23229cf153a6ebfb13d70`.
+- Updated `docs/phonology.md` to explicitly label the transform a provisional string-level approximation that does not model full F0, phonation, vowel effects, or lexical conditioning. Commit: `c97c9f56a84cf1876930ddf37b7627a8e4ce8cec`.
+- Latest workflow check: Quality #228 (fix commit) and #229 (test commit) were queued; Quality #230 for docs commit was queued. Pages #238 was in progress for the fix commit; #239 pending for tests; #240 queued for docs. Do not claim the latest changes passed until runs for the exact current SHA complete.
+- No local Python/Node/browser tests were run. New tests are committed but not yet independently executed in this session.
+- Interpretation limit: these tests verify conservative implementation boundaries, not the phonetic truth of any lexical /r/-loss example. The exact conditioning environments and full acoustic consequences still need review against primary phonetic studies and a dialect-labelled corpus.
+- Next: re-check CI for current SHA, then continue P0 coda/REAHMUK source-indexing and IPA/status API/UI audit. Keep the independently adjudicated lexical corpus as an open P0; do not claim phonetic accuracy from source-cited fixtures.
+

@@ -8,7 +8,7 @@
 
 ## Mandatory instructions for the next session
 
-1. Read this document first, then docs/audits/2026-10-20-vowel-coverage-matrix.md, docs/repository-audit.md, docs/superpowers/plans/2026-10-05-khmer-repository-finalization.md, docs/validation.md, docs/phonology.md, data/khmer/vowels.json, data/khmer/registers.json, data/khmer/sources.json, src/khmer_ua/parser.py, src/khmer_ua/phonology.py, src/khmer_ua/ipa.py and the related tests.
+1. Read this document first, then docs/audits/2026-10-20-vowel-coverage-matrix.md and docs/audits/2026-10-20-coda-diacritics-matrix.md, docs/repository-audit.md, docs/superpowers/plans/2026-10-05-khmer-repository-finalization.md, docs/validation.md, docs/phonology.md, data/khmer/vowels.json, data/khmer/registers.json, data/khmer/sources.json, src/khmer_ua/parser.py, src/khmer_ua/phonology.py, src/khmer_ua/ipa.py and the related tests.
 2. Check current main SHA, recent commits, CI, Pages workflow, and working tree before editing. This handoff's CI evidence refers to the earlier base revision, not necessarily the newest commit.
 3. Continue from the first unresolved P0 below. Do not restart the entire audit unless the repository has materially changed.
 4. Do not describe this as a complete IPA engine or claim full IPA verification while the vowel/coda/context matrix and adjudicated lexical corpus are incomplete.
@@ -63,10 +63,10 @@
 
 ## Next concrete action
 
-1. Confirm Quality run 197 and Pages deployment for commit fe38b188 complete; Quality run 195 for e4ff446 passed successfully, including the API contract tests.
-2. Continue KH-IPA-001: review whether the browser's fixture-based PROPOSED outputs are labelled distinctly from the conservative Python structural API and ensure all UI status paths explain unresolved results.
-3. Compare R12A's coda-mark pages with Unicode 17.0 and a specialist lexical source. Review R12A's coda-sign inventory for REAHMUK contexts and add evidence-indexed rows without extrapolating beyond the source.
-4. Review current source citations in docs/phonology.md and data/khmer/vowels.json against the scope of Chem (2020); avoid implying that the study proves every register-conditioned contrast. Do not add deterministic vowel mappings merely to make the matrix look full.
+1. Verify Quality/Pages workflows for the latest coda evidence document commits 343e2ef and 84eb28c; the UI baseline Quality run 210 and Pages run 220 both succeeded for commit 66c6a20.
+2. Continue KH-CODA-001: independently verify the R12A rhyme table transcription and build lexical examples for REAHMUK contexts, recording variety, gloss, source transcription, and any normalization to project IPA. Keep source-indexed examples distinct from gold adjudication.
+3. Continue KH-IPA-001/KH-UI-001: test the per-unit view with long/mixed input, ensure output remains readable on mobile and accessible to screen readers, and confirm no status is lost in aggregate display. Do not treat browser fixture IPA as an independently adjudicated gold corpus.
+4. Review docs/phonology.md and data/khmer/vowels.json against the scope of Chem (2020); preserve source-specific discrepancies. Do not add deterministic vowel mappings merely to make the matrix look full.
 
 ## Work log
 

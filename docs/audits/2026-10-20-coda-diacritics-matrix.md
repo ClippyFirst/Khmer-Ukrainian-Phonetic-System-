@@ -55,6 +55,8 @@ R12A explains that U+17C6 NIKAHIT (ំ, approximately coda /m/) and U+17C7 REAHM
 
 R12A's displayed transcription conventions should be retained verbatim in source notes. If converting them to the project's IPA conventions, record that normalization as a separate, reviewable step rather than silently changing the source value.
 
+**Cross-source discrepancy requiring adjudication:** for the same displayed form ដំ ‘to pound’, this R12A table gives `/ɗɑm/`, while Unicode 17.0 Chapter 16 gives `/dɔm/`. The onset and vowel notation both differ. Keep both transcriptions source-indexed; do not choose one or use this example as a deterministic NIKAHIT rule until lexical identity, dialect, and transcription conventions are reconciled. The machine-readable register records both alternatives in `data/khmer/vowel-context-register.json` (KHV-007).
+
 ## Status and next actions
 
 - **Orthographic evidence:** source-indexed and useful for building a context inventory.

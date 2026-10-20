@@ -142,3 +142,11 @@
 - CI audit found Quality runs `39488178399` (commit `4f7891a`) and earlier runs `39488143676` / `39488125778` failing at “Run Python tests”; downstream Node/build steps were skipped. The API response exposed the failed step but not its traceback, so the precise failing assertion remains unverified. Do not claim tests pass. Inspect the current run/log or reproduce the workflow locally before more implementation changes.
 - No local Python/Node test run or browser test was performed in this cycle.
 - **Next:** first retrieve the Python failure traceback or run `python -m pytest` locally and fix the earliest failing assertion; then verify all Python tests, Node checks and build on the same commit. After CI is green, adjudicate a small REAHMUK subset against an independent lexical/audio source; keep the remaining source-indexed forms non-gold.
+
+
+### 2026-10-20 — Python CI failure diagnosed and fixture corrected
+
+- Retrieved the actual GitHub Actions job log for Quality checks run `39488650161`. Result: **54 passed, 1 failed**. The failure was `tests/test_ipa.py::test_phnom_penh_profile_does_not_rewrite_coda_r`.
+- Root cause was a malformed test fixture, not evidence that the bounded regex was wrong: the assertion used `ar.kɑː` but expected `ar.kʰɑː`. There is no `r` after `k` in that input, so the implementation correctly left it unchanged.
+- Corrected the input to `ar.krɑː` while retaining the expected output `ar.kʰɑː`; this now tests that the coda `r` before the explicit syllable boundary is preserved while the following onset cluster `kr` is transformed. Commit: `64fc5f8a717e91b39f3970ea20bb42c831ed3d46`.
+- The fix is test-only; it does not strengthen the phonetic evidence or change engine behavior. Await CI for this commit before claiming the suite is green.

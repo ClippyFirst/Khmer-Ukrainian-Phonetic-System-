@@ -4,7 +4,7 @@
 **Repository:** https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-  
 **Default branch:** main  
 **Last audited base revision:** 6cc30bb48bedb83d86534a5fbff92839e26673dd  
-**Latest main revision at handoff update:** b45ecbd2a3567727db6c47ffbd56be5b75b4b556. Recent implementation commits: 37d8e5dfb17144ed7c673841d2643fb38a9be9a6 (centralize effective register resolver), 7d3abf49720f05ed3f9f832fad22a105932e74bc (parser uses shared resolver), b45ecbd2a3567727db6c47ffbd56be5b75b4b556 (register regression tests). Earlier matrix commits: d5686e6a1e4a8e5edbbf212ae7966305bdc6f1f8 and 9b7936c24b7ec584797d9e47aeb835afd670d091. Recheck latest main SHA and Actions runs before further work.
+**Latest main revision at handoff update:** e4ff44656166d82d9dbb2554cf0d471612e37b4c. Recent implementation commits: 37d8e5dfb17144ed7c673841d2643fb38a9be9a6 (centralize effective register resolver), 7d3abf49720f05ed3f9f832fad22a105932e74bc (parser uses shared resolver), b45ecbd2a3567727db6c47ffbd56be5b75b4b556 (register regression tests), e4ff44656166d82d9dbb2554cf0d471612e37b4c (API status contract tests). Earlier matrix commits: d5686e6a1e4a8e5edbbf212ae7966305bdc6f1f8 and 9b7936c24b7ec584797d9e47aeb835afd670d091. Recheck latest main SHA and Actions runs before further work.
 
 ## Mandatory instructions for the next session
 
@@ -53,7 +53,7 @@
 | KH-VOW-001 | Expand vowel matrix using attested orthographic patterns, register, vowel sign, coda and profile | P0 | IN_PROGRESS | authoritative source extraction | Every row has source, confidence, IPA status, and test or explicit unresolved status; no arbitrary Cartesian product. Initial source-indexed rows are in matrix commit 9b7936c. |
 | KH-VOW-002 | Verify vowel-sign inventories and contextual effects against Unicode + specialist phonology + acoustic literature | P0 | IN_PROGRESS | KH-VOW-001 | Orthographic inventory and R12A contextual descriptions reviewed; acoustic study and unresolved source/version differences still need review. Distinguish orthographic evidence from phonetic evidence. |
 | KH-CODA-001 | Add coda-conditioned and syllable-structure cases, including NIKAHIT and REAHMUK | P0 | IN_PROGRESS | KH-VOW-001 | Source-indexed contrasts identified; conservative parser tests now assert that NIKAHIT/REAHMUK preserve structure without fabricating IPA (commit 262cffd). Unicode 16 NIKAHIT pairs remain blocked pending current-source verification. |
-| KH-IPA-001 | Audit parser-to-IPA API boundary and status semantics | P0 | TODO | matrix + model review | No false deterministic IPA; status accurately distinguishes structure from phoneticization |
+| KH-IPA-001 | Audit parser-to-IPA API boundary and status semantics | P0 | IN_PROGRESS | matrix + model review | Python API contract tests added in e4ff446: structural success is not phonetic success; unsupported and mixed inputs retain per-unit status and no IPA. Review web fixture-based PROPOSED paths and UI status semantics next. Quality run 195 is pending. |
 | KH-TEST-001 | Expand independently adjudicated lexical corpus | P0 | TODO | source review | Multiple vowel series, complex vowels, codas, coeng clusters, shifters, loans/proper names; each item with source/profile/adjudication |
 | KH-REG-001 | Check helper register resolver against shifter-aware parser | P1 | IN_PROGRESS | code-path review | Shared resolver implemented and parser/helper regression tests added in commits 37d8e5d, 7d3abf4, b45ecbd2. Python test step passed in Quality run 193; finish checking web/build steps and inspect any remaining call sites before marking complete. |
 | KH-PROFILE-001 | Validate colloquial /r/-loss transform scope | P1 | TODO | primary phonetic sources | Explicitly supported environments only, with profile tests; unresolved cases remain unchanged |
@@ -63,8 +63,8 @@
 
 ## Next concrete action
 
-1. Confirm Quality run 193 and Pages run 203 complete successfully for commit b45ecbd2, especially web checks/build after the refactor.
-2. Continue KH-IPA-001: inspect the result model, CLI, web adapter and tests to ensure structural status is not conflated with phonetic/IPA status; add regression tests for the public API contract.
+1. Confirm Quality run 195 and Pages run 205 complete successfully for commit e4ff446; the previous Quality run 193 passed all checks for b45ecbd2, including Python, Node/web checks and build.
+2. Continue KH-IPA-001: review whether the browser's fixture-based PROPOSED outputs are labelled distinctly from the conservative Python structural API and ensure all UI status paths explain unresolved results.
 3. Compare R12A's coda-mark pages with Unicode 17.0 and a specialist lexical source. Keep the Unicode 16 NIKAHIT contrasts blocked until current-source verification.
 4. Review current source citations in docs/phonology.md and data/khmer/vowels.json against the scope of Chem (2020); avoid implying that the study proves every register-conditioned contrast. Do not add deterministic vowel mappings merely to make the matrix look full.
 
@@ -78,6 +78,7 @@
 - Reviewed the publisher-hosted Chem (2020) PDF methods/results and added explicit study-design and coda-effect limitations to the matrix (commit d5686e6a1e4a8e5edbbf212ae7966305bdc6f1f8).
 - Added tests/test_coda_marks.py (commit 262cffd76064cbb91c4fbeb83a04d38699e8353a) to guard against presenting deterministic IPA for NIKAHIT/REAHMUK before the coda/nucleus analysis is established.
 - Updated the matrix to link GAP-004 to the conservative tests (commit bbf23f33263e17bc53264728cb058ee032589e12).
-- Centralized effective register resolution in src/khmer_ua/phonology.py and made parser.py use the same helper (commits 37d8e5d and 7d3abf4). Added tests/test_register_resolution.py for a valid MUUSIKATOAN shift, the ប៉ exception, and an ineligible shifter (commit b45ecbd2). The Python test step passed in Quality run 193; complete workflow result was pending at last check.
+- Centralized effective register resolution in src/khmer_ua/phonology.py and made parser.py use the same helper (commits 37d8e5d and 7d3abf4). Added tests/test_register_resolution.py for a valid MUUSIKATOAN shift, the ប៉ exception, and an ineligible shifter (commit b45ecbd2). Quality run 193 completed successfully.
+- Added tests/test_api_contract.py (commit e4ff446) to assert that structural success does not imply IPA success, and that unsupported/mixed input preserves status and never returns fabricated IPA. Quality run 195 / Pages run 205 were queued at last check.
 - Opened R12A notes updated 2026-04-27, especially sections on registers, vowels, codas, NIKAHIT/REAHMUK, and independent vowels; reviewed Unicode 17 Chapter 16 for script examples and register shifters. Unicode 16 was used only to identify explicit NIKAHIT contrast examples, which remain blocked pending verification against current sources.
 - Firecrawl research search could not run because its connected account reported insufficient credits; no retries were made. No local Python/npm tests were run. Check current Actions/Pages runs for commit 9b7936c before claiming the documentation pipeline is green.

@@ -4,7 +4,7 @@
 **Repository:** https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-  
 **Default branch:** main  
 **Last audited base revision:** 6cc30bb48bedb83d86534a5fbff92839e26673dd  
-**Current work commit:** 65c474768ef3db9f95573dfe443ee6fc9bcc41d7 (adds the vowel coverage matrix)
+**Recent audit commits:** 65c474768ef3db9f95573dfe443ee6fc9bcc41d7 (matrix), 03e94ced1a2c319c462d53b681a3d61d348e1525 (handoff), b045495275b367c69a8e4c4ed8107faeb4724eb2 (links handoff/matrix from the original implementation plan). Recheck latest main SHA before further work.
 
 ## Mandatory instructions for the next session
 
@@ -69,4 +69,6 @@ Continue with KH-VOW-001 / KH-VOW-002: inspect the full sign and consonant inven
 - Reviewed repository tree and metadata, latest commits, existing implementation plan, repository audit, vowel/register/source data, parser, phonology helper, IPA profile helper, validation documentation, lexical corpus, adversarial corpus, package scripts, and CI workflow.
 - Confirmed base revision's Quality checks run 177 and Pages deployment run 187 were successful on 2026-10-09.
 - Created docs/audits/2026-10-20-vowel-coverage-matrix.md (commit 65c474768ef3db9f95573dfe443ee6fc9bcc41d7).
-- No local Python/npm test command was run in this work cycle; the GitHub Actions run for the new commit must be checked before marking its checks verified.
+- Created docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md (commit 03e94ced1a2c319c462d53b681a3d61d348e1525).
+- Updated docs/superpowers/plans/2026-10-05-khmer-repository-finalization.md to link the new handoff and matrix and make remaining P0 work explicit (commit b045495275b367c69a8e4c4ed8107faeb4724eb2).
+- No local Python/npm test command was run in this work cycle; the GitHub Actions runs for the current main commit must be checked before marking its checks verified.

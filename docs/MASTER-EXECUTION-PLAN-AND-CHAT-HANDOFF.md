@@ -131,3 +131,14 @@
 - No local Python/Node/build/browser execution is available in this pass. This new conflict guard is committed but not yet independently executed.
 - Next: check whether Actions actually runs for the latest SHA; if still blocked/queued, inspect workflow reasons before making more rapid pushes. Then continue the REAHMUK lexical evidence inventory and verify the source-specific transcriptions; do not promote these source examples to gold or runtime mappings.
 
+
+
+### 2026-10-20 — REAHMUK lexical source inventory continuation
+
+- Reviewed R12A's published character-detail examples for U+17C7 REAHMUK. The page supplies explicit lexical examples for the short-vowel combinations and for series-conditioned forms such as `សេះ` / `នេះ` and `កោះ` / `គោះ`. This is useful source evidence, but it is not independent audio adjudication.
+- Added `data/tests/reahmuk-lexical-examples.json` (commit `f576eedf6145134434757c005982cfe5cbd62987`) with 11 source-indexed forms, glosses, verbatim source transcription strings, rhyme patterns, and limitations. The file explicitly warns that the strings are not normalized to project IPA and must not be used as gold labels.
+- Added `tests/test_reahmuk_lexical_examples.py` (initial commit `c3b3bf871b333609b3f1277e66853012562bc90e`, assertion correction `74df5fdfad95313940e08ada2f8077f991bd2809`) to check the schema, provenance status, and a few series-sensitive examples.
+- Expanded `docs/audits/2026-10-20-coda-diacritics-matrix.md` with the new inventory and its interpretation limits (commit `1f4755080bf10d1f4b820d52abae699e67b1d29f`).
+- CI audit found Quality runs `39488178399` (commit `4f7891a`) and earlier runs `39488143676` / `39488125778` failing at “Run Python tests”; downstream Node/build steps were skipped. The API response exposed the failed step but not its traceback, so the precise failing assertion remains unverified. Do not claim tests pass. Inspect the current run/log or reproduce the workflow locally before more implementation changes.
+- No local Python/Node test run or browser test was performed in this cycle.
+- **Next:** first retrieve the Python failure traceback or run `python -m pytest` locally and fix the earliest failing assertion; then verify all Python tests, Node checks and build on the same commit. After CI is green, adjudicate a small REAHMUK subset against an independent lexical/audio source; keep the remaining source-indexed forms non-gold.

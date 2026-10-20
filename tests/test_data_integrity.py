@@ -64,6 +64,10 @@ def test_vowel_context_registry_is_provenance_bearing_and_conservative():
     assert len(conflict["alternatives"]) >= 2
     nikahit = next(row for row in registry["cases"] if row["id"] == "KHV-007")
     assert "NIKAHIT" in nikahit["grapheme_structure"]["coda"]
+    assert nikahit["status"] == "CONFLICTING_SOURCE_ANALYSES"
+    assert nikahit["ipa"] is None
+    assert {item["source"] for item in nikahit["alternatives"]} == {"unicode17-ch16", "r12a-orthography"}
+    assert {item["transcription"] for item in nikahit["alternatives"]} == {"/dɔm/", "/ɗɑm/"}
 
 def test_lexical_examples_do_not_claim_gold_status_without_adjudication():
     corpus = json.loads((ROOT / "data/tests/verified-lexical-corpus.json").read_text(encoding="utf-8"))

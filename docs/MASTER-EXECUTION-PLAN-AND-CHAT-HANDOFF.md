@@ -63,9 +63,9 @@
 
 ## Next concrete action
 
-1. Confirm Quality run 195 and Pages run 205 complete successfully for commit e4ff446; the previous Quality run 193 passed all checks for b45ecbd2, including Python, Node/web checks and build.
+1. Confirm Quality run 197 and Pages deployment for commit fe38b188 complete; Quality run 195 for e4ff446 passed successfully, including the API contract tests.
 2. Continue KH-IPA-001: review whether the browser's fixture-based PROPOSED outputs are labelled distinctly from the conservative Python structural API and ensure all UI status paths explain unresolved results.
-3. Compare R12A's coda-mark pages with Unicode 17.0 and a specialist lexical source. Keep the Unicode 16 NIKAHIT contrasts blocked until current-source verification.
+3. Compare R12A's coda-mark pages with Unicode 17.0 and a specialist lexical source. Review R12A's coda-sign inventory for REAHMUK contexts and add evidence-indexed rows without extrapolating beyond the source.
 4. Review current source citations in docs/phonology.md and data/khmer/vowels.json against the scope of Chem (2020); avoid implying that the study proves every register-conditioned contrast. Do not add deterministic vowel mappings merely to make the matrix look full.
 
 ## Work log

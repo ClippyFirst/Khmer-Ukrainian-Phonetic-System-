@@ -1,7 +1,8 @@
 # Khmer vowel coverage matrix and gap register
 
 **Audit date:** 2026-10-20  
-**Audited revision:** 6cc30bb48bedb83d86534a5fbff92839e26673dd  
+**Audited revision at matrix creation:** 6cc30bb48bedb83d86534a5fbff92839e26673dd  
+**Evidence pass:** 2026-10-20; source-indexed examples added from Unicode 17.0 Chapter 16 and Richard Ishida's Khmer orthography notes updated 27-Apr-2026  
 **Scope:** evidence and coverage audit, not a claim of complete IPA verification.
 
 ## Interpretation and status rules
@@ -13,35 +14,64 @@ This is a deliberately conservative matrix of evidenced examples and explicit ga
 - TODO: not yet demonstrated in the current corpus.
 - BLOCKED: a reliable source/adjudication is needed before assigning a deterministic result.
 
+## Source-indexed evidence added in this pass
+
+The following source claims are grounded in the two cited references, with an important distinction: Unicode is authoritative for encoding and orthographic structure and includes representative pronunciation examples; it is not an acoustic experiment. R12A is a specialist orthography/phonology synthesis, not a substitute for a lexical gold corpus or primary acoustic measurements.
+
+| Evidence ID | Pattern / example | Source statement or IPA shown by source | What this establishes | What it does not establish | Status |
+|---|---|---|---|---|---|
+| SRC-001 | ក vs គ | R12A: ក /kɑː/ vs គ /kɔː/ | Two inherent-vowel values associated with the two consonant classes | Complete contextual realization of inherent vowels in all lexical items | IN_PROGRESS |
+| SRC-002 | កី vs គី | R12A: /kəj/ vs /kiː/ | Same dependent sign U+17B8 may correspond to different vowel outcomes by class | Full vowel-sign × class matrix or dialect-independent surface IPA | IN_PROGRESS |
+| SRC-003 | កា vs គា | R12A: /kaː/ vs /kiə/ | U+17B6 has class-conditioned realizations in the cited examples | Generalization to every coda, stress pattern, or lexical environment | IN_PROGRESS |
+| SRC-004 | កូរ vs គូរ | Unicode 17.0 gives /koː/ ‘stir’ vs /kuː/ ‘sketch’ | The same written vowel sign U+17BC has different realizations across class/lexeme | A complete /uː/ mapping rule or broad dialect profile | IN_PROGRESS |
+| SRC-005 | លង vs ល្ង | Unicode 17.0 gives លង /lɔːŋ/ vs ល្ង /lŋɔ̀ː/ | Changing a plain coda to a coeng/subscript structure can change syllabification and vowel realization | A general deterministic coda rule for all clusters | IN_PROGRESS |
+| SRC-006 | ដំ vs ដម | Unicode 16.0 gives ដំ [dɔm] vs ដម [dɔːm] | U+17C6 NIKAHIT can encode a final /m/ pattern with a vowel outcome differing from a similar written consonant-coda pattern | A full phonological analysis for every NIKAHIT combination; recheck the exact pair against current Unicode 17 wording before treating Unicode 16 as current normative citation | IN_PROGRESS |
+| SRC-007 | ពាំ vs ពាម | Unicode 16.0 gives ពាំ [pɔ̀əm] vs ពាម [pèəm] | The AA + NIKAHIT sequence is not simply /aːm/; lexical/coda context matters | A general all-words mapping or evidence that the IPA diacritics are comparable across all sources | IN_PROGRESS |
+| SRC-008 | U+17C6 NIKAHIT and U+17C7 REAHMUK | R12A says both can represent a syllable coda and affect the nucleus | These marks must be modelled as context-sensitive syllabic components, not plain vowel letters | Specific IPA for every combination without consulting the detailed mapping and lexical sources | IN_PROGRESS |
+| SRC-009 | Independent vowels | R12A lists an incomplete set and says independent vowel letters are not interchangeable with QA + vowel-sign spellings word-for-word | Independent-vowel letters require their own inventory and lexical evidence | Automatic equivalence between independent vowels and visually similar spellings | TODO |
+| SRC-010 | Vowel length | R12A describes length as distinctive and illustrates distinct short/long signs | Length is a meaningful feature in the descriptive layer | That the practical Ukrainian layer must always preserve length; that decision is target-policy work | IN_PROGRESS |
+| SRC-011 | Pre-base and circumgraph signs | R12A documents 3 pre-base glyphs and 5 circumgraphs, with visual order distinct from encoded order | Parser must distinguish logical Unicode sequence from rendered placement and phonological order | That visual placement determines the pronunciation by itself | DONE_VERIFIED for structural principle |
+| SRC-012 | Register shifters, including ប៉ | Unicode 17.0 documents U+17C9/U+17CA and the exceptional ប៉ use | Register-shifter interpretation has a documented orthographic basis | That every malformed/multiple-shifter sequence has a supported pronunciation | DONE_VERIFIED for cited orthographic principle |
+
+**Primary source URLs**
+
+- Unicode Consortium, *The Unicode Standard 17.0.0, Chapter 16: South and Southeast Asian Scripts — Khmer*: https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-16/
+- Richard Ishida, *Khmer (Cambodian) Orthography Notes*, updated 27 April 2026: https://r12a.github.io/scripts/khmr/km.html
+- Unicode 16.0 Chapter 16 is retained above only where its retrieved text supplied explicit NIKAHIT contrast examples; use Unicode 17.0 as the current normative encoding reference and re-check those specific lexical examples before promoting them to a gold corpus: https://unicode.org/versions/Unicode16.0.0/core-spec/chapter-16/
+- Chem & Chem, *The Standard Khmer vowel system: An acoustic study* (2020), DOI 10.61945/cjbar.2020.2.2.3: https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36
+
 ## Evidence-bearing representative rows
 
 | ID | Orthography / pattern | Initial / series | Vowel | Coda / context | Current IPA evidence | Ukrainian output | Source / evidence basis | Confidence | Status / test |
 |---|---|---|---|---|---|---|---|---|---|
-| VOW-001 | ក | ក, first series | inherent | no explicit coda in example | /kɑː/ in current vowel model | not adjudicated | R12A orthography notes, data/khmer/vowels.json | Medium; specialist description, not independent acoustic recheck | IN_PROGRESS; no dedicated unit test found in current inventory |
-| VOW-002 | គ | គ, second series | inherent | no explicit coda in example | /kɔː/ in current vowel model | not adjudicated | R12A orthography notes, data/khmer/vowels.json | Medium | IN_PROGRESS; no dedicated unit test found in current inventory |
+| VOW-001 | ក | ក, first series | inherent | no explicit coda in example | /kɑː/ in current vowel model | not adjudicated | R12A orthography notes, data/khmer/vowels.json | Medium; specialist description, not independent acoustic recheck | IN_PROGRESS; test coverage not independently audited in this pass |
+| VOW-002 | គ | គ, second series | inherent | no explicit coda in example | /kɔː/ in current vowel model | not adjudicated | R12A orthography notes, data/khmer/vowels.json | Medium | IN_PROGRESS |
 | VOW-003 | កី | ក, first series | dependent ី | no coda in example | /kəj/ in current vowel model | not adjudicated | R12A orthography notes, data/khmer/vowels.json | Medium | IN_PROGRESS; contrast-pair coverage incomplete |
 | VOW-004 | គី | គ, second series | dependent ី | no coda in example | /kiː/ in current vowel model | not adjudicated | R12A orthography notes, data/khmer/vowels.json | Medium | IN_PROGRESS; contrast-pair coverage incomplete |
 | VOW-005 | កា | ក, first series | dependent ា | no coda in example | /kaː/ in current vowel model | not adjudicated | R12A orthography notes, data/khmer/vowels.json | Medium | IN_PROGRESS |
 | VOW-006 | គា | គ, second series | dependent ា | no coda in example | /kiə/ in current vowel model | not adjudicated | R12A orthography notes, data/khmer/vowels.json | Medium | IN_PROGRESS |
 | VOW-007 | ភាសា | lexical; multi-syllable | mixed | lexical phrase context | /pʰiə.saː/ in lexical corpus | PROPOSED | Wiktionary lexical pages in data/tests/verified-lexical-corpus.json | Medium; lexical reference, not a dedicated acoustic source | IN_PROGRESS; lexical corpus fixture exists |
 | VOW-008 | ខ្មែរ | lexical; series-conditioned complex vowel | mixed | final lexical environment | /kʰmae/ in lexical corpus | PROPOSED | Wiktionary lexical page cited in data/tests/verified-lexical-corpus.json | Medium | IN_PROGRESS; lexical corpus fixture exists |
-| VOW-009 | ស៊ី | TRIISAP/register-sensitive example | second series after shifter | long vowel ៊ី | /siː/ in adversarial fixtures | not adjudicated | Unicode 17 representative example recorded in data/tests/adversarial-cases.json | High for encoded structural example; phonetic status still requires source-layer distinction | IN_PROGRESS; adversarial fixture exists |
-| VOW-010 | សង្គ្រាម | coeng cluster and multiple syllabic structure | series-conditioned | complex cluster / final environment | /sɔŋkrɛəm/ in adversarial fixtures | not adjudicated | Unicode 17 representative example recorded in data/tests/adversarial-cases.json | High for fixture provenance; not an independent lexical gold judgment | IN_PROGRESS; adversarial fixture exists |
-| VOW-011 | សញ្ញា | repeated ញ / coeng structure | long vowel ា in final syllable | multi-consonant context | /saɲɲaː/ in adversarial fixtures | not adjudicated | Unicode 17 representative example recorded in data/tests/adversarial-cases.json | High for structural test role; IPA needs independent lexical corroboration | IN_PROGRESS; adversarial fixture exists |
-| VOW-012 | ខ្ញុំ | subscript cluster + vowel modifier | complex vowel/coda context | final ំ pattern | /kʰɲom/ in lexical and adversarial data | PROPOSED | Wiktionary lexical page and test fixture | Medium | IN_PROGRESS; parser/web fixture exists |
+| VOW-009 | ស៊ី | TRIISAP/register-sensitive example | second series after shifter | long vowel ៊ី | /siː/ in adversarial fixtures | not adjudicated | Unicode 17.0 representative example recorded in data/tests/adversarial-cases.json | High for orthographic example; not an acoustic validation | IN_PROGRESS; adversarial fixture exists |
+| VOW-010 | សង្គ្រាម | coeng cluster and multiple syllabic structure | series-conditioned | complex cluster / final environment | Unicode 17.0 gives /sɔŋkrèəm/; fixture uses /sɔŋkrɛəm/ | not adjudicated | Unicode 17.0 representative example and data/tests/adversarial-cases.json | High for source example; transcription notation differs between source and fixture | IN_PROGRESS; reconcile IPA conventions before gold use |
+| VOW-011 | សញ្ញា | repeated ញ / coeng structure | long vowel ា in final syllable | multi-consonant context | /saɲɲaː/ in adversarial fixtures | not adjudicated | Unicode 17.0 representative example recorded in data/tests/adversarial-cases.json | High for structural test role; not an independent lexical gold judgment | IN_PROGRESS |
+| VOW-012 | ខ្ញុំ | subscript cluster + vowel modifier | complex vowel/coda context | final ំ pattern | /kʰɲom/ in lexical and adversarial data | PROPOSED | Unicode 17.0 representative example and Wiktionary lexical page | Medium | IN_PROGRESS; parser/web fixture exists |
+| VOW-013 | លង vs ល្ង | plain coda vs subscript cluster | inherent / class-conditioned | final /ŋ/ vs initial cluster + nucleus | Unicode 17.0: /lɔːŋ/ vs /lŋɔ̀ː/ | not adjudicated | Unicode 17.0 Chapter 16 | High for cited illustrative contrast; phonetic profile not independently adjudicated | IN_PROGRESS; add paired parser/phonology tests |
+| VOW-014 | ដំ vs ដម | NIKAHIT vs consonant coda | composite / inherent | /m/ final | Unicode 16.0: [dɔm] vs [dɔːm] | not adjudicated | Unicode 16.0 Chapter 16; verify against 17.0 before gold use | Medium; version-specific source caveat | BLOCKED for deterministic runtime mapping pending current-source/lexical verification |
+| VOW-015 | ពាំ vs ពាម | AA + NIKAHIT vs AA + consonant coda | composite / class-conditioned | /m/ final | Unicode 16.0: [pɔ̀əm] vs [pèəm] | not adjudicated | Unicode 16.0 Chapter 16; verify against 17.0 before gold use | Medium; version-specific source caveat | BLOCKED for deterministic runtime mapping pending current-source/lexical verification |
 
 ## Coverage dimensions that remain open
 
 | ID | Dimension / gap | Why it matters | Required evidence / acceptance criterion | Priority | Status |
 |---|---|---|---|---|---|
-| GAP-001 | Full dependent-vowel-sign × consonant-series matrix | A sign cannot be mapped to one fixed vowel value independent of register | Enumerate attested orthographic patterns from authoritative descriptions; each cell includes IPA, source, confidence, and test or explicit unresolved state | P0 | TODO |
+| GAP-001 | Full dependent-vowel-sign × consonant-series matrix | A sign cannot be mapped to one fixed vowel value independent of register | Enumerate attested orthographic patterns from authoritative descriptions; each cell includes IPA, source, confidence, and test or explicit unresolved state | P0 | IN_PROGRESS; source-indexed representative evidence started, not exhaustive |
 | GAP-002 | Independent vowels | They cannot safely inherit rules for dependent signs | Inventory each independent-vowel letter, supported pronunciation/profile, and provenance-bearing fixture | P1 | TODO |
-| GAP-003 | Open vs closed syllables / codas | Coda structure can condition vowel quality, length, and syllable analysis | Contrast attested open/closed patterns and record coda-specific evidence; no extrapolation from onset + sign alone | P0 | TODO |
-| GAP-004 | NIKAHIT U+17C6 and REAHMUK U+17C7 | These marks interact with the nucleus and/or coda and are not plain vowel letters | Explicit context rows with supported phonological analyses and negative/unsupported examples | P0 | TODO |
-| GAP-005 | Vowel length and complex vowels | Current inventory lists categories but does not establish their orthographic distributions | Map attested graphemic patterns to broad IPA with length preserved; document dialect/profile variation | P0 | TODO |
+| GAP-003 | Open vs closed syllables / codas | Coda structure can condition vowel quality, length, and syllable analysis | Contrast attested open/closed patterns and record coda-specific evidence; no extrapolation from onset + sign alone | P0 | IN_PROGRESS; two source examples identified, current Unicode/source validation pending |
+| GAP-004 | NIKAHIT U+17C6 and REAHMUK U+17C7 | These marks interact with the nucleus and/or coda and are not plain vowel letters | Explicit context rows with supported phonological analyses and negative/unsupported examples | P0 | IN_PROGRESS; source confirms nucleus+coda interaction, full context table not built |
+| GAP-005 | Vowel length and complex vowels | Current inventory lists categories but does not establish their orthographic distributions | Map attested graphemic patterns to broad IPA with length preserved; document dialect/profile variation | P0 | IN_PROGRESS; length and composite signs documented, coverage incomplete |
 | GAP-006 | Harmony and following-syllable effects | Register assignment may interact with lexical and cross-syllable context | Distinguish productive rules from lexical exceptions; source each claim and add minimal/near-minimal contrasts where available | P1 | TODO |
 | GAP-007 | Stress and reduction | A careful citation form cannot be assumed to represent colloquial speech | Keep profile-specific variants separate and cite acoustic/phonetic evidence | P1 | TODO |
-| GAP-008 | Final consonants and syllable restrictions | Vowel predictions made before coda analysis may be wrong | Test all attested coda classes relevant to vowel realization; unsupported combinations remain unresolved | P0 | TODO |
+| GAP-008 | Final consonants and syllable restrictions | Vowel predictions made before coda analysis may be wrong | Test all attested coda classes relevant to vowel realization; unsupported combinations remain unresolved | P0 | IN_PROGRESS; first coda-conditioned contrasts recorded |
 | GAP-009 | Ukrainian rendering of vowel contrasts | Current target policy is proposed and may neutralize length/quality | Define explicit practical policy per supported IPA category and record neutralizations as deliberate project decisions | P1 | TODO |
 | GAP-010 | Independent adjudication | Wiktionary and Unicode examples are useful but not a substitute for a gold corpus | Add lexical items checked against specialist dictionaries and/or acoustic/phonological primary literature; record adjudication and profile | P0 | TODO |
 
@@ -53,6 +83,7 @@ This is a deliberately conservative matrix of evidenced examples and explicit ga
 4. Mark a cell BLOCKED if no reliable source establishes the relevant pronunciation. Never fill a missing IPA cell from a sign's name or a neighboring example.
 5. Add a test ID for every deterministic claim. For unresolved cases, add a test asserting that the implementation does not fabricate IPA.
 6. Report coverage as counts of evidenced templates and unresolved templates, not as an accuracy percentage.
+7. Reconcile IPA notation and dialect/profile conventions across Unicode, R12A, lexical dictionaries and acoustic studies before merging source examples into a gold corpus. In particular, don't silently mix Unicode's illustrative transcriptions with a project's broad IPA convention.
 
 ## Audit caveat
 

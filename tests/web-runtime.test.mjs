@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { convert, parseSyllable, tokenize } from "../src/main.js";
+import { convert, parseSyllable, tokenize, getStatusNotice } from "../src/main.js";
 
 const adversarial = "ក គ កា គា កូ គូ កី គី កេ គេ កែ គែ កើ គើ កៅ គៅ ប ប៉ ប៊ ផ ព ត ថ ទ ធ ច ឆ ជ ឈ ស ហ វ";
 const expectedIpa = "/kɑː/ /kɔː/ /kaː/ /kiə/ /koː/ /kuː/ /kəj/ /kiː/ /keː/ /kei/ /kaeː/ /kɛː/ /kɑːə/ /kəː/ /kau/ /kəu/ /ɓɑː/ /paː/ /ɓɔː/ /pʰɑː/ /pɔː/ /tɑː/ /tʰɑː/ /tɔː/ /tʰɔː/ /cɑː/ /cʰɑː/ /cɔː/ /cʰɔː/ /sɑː/ /hɑː/ /ʋɔː/";
@@ -73,3 +73,17 @@ assert.deepEqual(mixedZeroWidth, ["ក", "\u200B", "គ"]);
 
 assert.throws(() => convert("ក", "unsupported_profile"), /Unsupported pronunciation profile/);
 assert.equal(convert("   ", "careful_standard"), null);
+
+
+const proposedNotice = getStatusNotice(convert("ក", "careful_standard"));
+assert.match(proposedNotice, /PROPOSED/u);
+assert.match(proposedNotice, /дослідницькими пропозиціями/u);
+assert.equal(getStatusNotice({ status: "ESTABLISHED_STRUCTURE", note: "structure only" }), "");
+assert.equal(
+  getStatusNotice({ status: "NOT_ESTABLISHED", note: "not enough evidence" }),
+  "not enough evidence",
+);
+assert.match(
+  getStatusNotice({ status: "INVALID_OR_UNSUPPORTED", note: "unsupported" }),
+  /не підтримується повністю/u,
+);

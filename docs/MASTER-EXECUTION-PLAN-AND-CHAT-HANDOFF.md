@@ -121,3 +121,13 @@
 - Interpretation limit: these tests verify conservative implementation boundaries, not the phonetic truth of any lexical /r/-loss example. The exact conditioning environments and full acoustic consequences still need review against primary phonetic studies and a dialect-labelled corpus.
 - Next: re-check CI for current SHA, then continue P0 coda/REAHMUK source-indexing and IPA/status API/UI audit. Keep the independently adjudicated lexical corpus as an open P0; do not claim phonetic accuracy from source-cited fixtures.
 
+### 2026-10-20 — NIKAHIT source conflict captured explicitly
+- While continuing the coda audit, found a concrete cross-document/source mismatch for the same form ដំ ‘to pound’: the coda matrix records R12A `/ɗɑm/`, while the vowel matrix and Unicode 17.0 example record `/dɔm/`. This affects both onset notation and vowel quality; it must not be flattened into one source-neutral IPA.
+- Updated `data/khmer/vowel-context-register.json` row KHV-007 to `CONFLICTING_SOURCE_ANALYSES`, with both verbatim source transcriptions, source IDs, and a no-selection criterion. Project IPA and Ukrainian output remain unset. Commit: `f2e80c41052b029a084e4cc1d4e5f7a1c62c1cf9`.
+- Updated the vowel coverage matrix to flag SRC-006/VOW-014 as conflicting and blocked pending reconciliation; added an explicit discussion of the discrepancy. Commit: `e5fde73d8e4a51c1e3df3594c37809b42b821ca4`.
+- Added a data-integrity assertion that the registry preserves both source alternatives without choosing one. Commit: `7d19e61204072e6d84eb02016fc63557d2b30edb`.
+- Added the same caveat to the coda matrix. Commit: `aba5f13888d5e2a97dcde96ca436d960e28ad92d`.
+- CI at the latest check: Quality #232 (registry conflict) queued; #233 (matrix) queued; #234 (test) queued; #235 (latest coda documentation) queued. Pages runs for intermediate commits were cancelled by newer pushes or remained queued/pending. No claim that the latest data tests have passed. Previously completed Quality #227 / Pages #237 were green only for the pre-implementation handoff revision `f28c18a0`.
+- No local Python/Node/build/browser execution is available in this pass. This new conflict guard is committed but not yet independently executed.
+- Next: check whether Actions actually runs for the latest SHA; if still blocked/queued, inspect workflow reasons before making more rapid pushes. Then continue the REAHMUK lexical evidence inventory and verify the source-specific transcriptions; do not promote these source examples to gold or runtime mappings.
+

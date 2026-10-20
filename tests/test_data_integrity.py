@@ -36,3 +36,32 @@ def test_shifter_eligibility_references_known_consonants():
     for shifter, chars in data["shifter_eligibility"].items():
         unknown = set(chars) - known
         assert not unknown, f"{shifter} references consonants absent from canonical inventory: {sorted(unknown)}"
+
+def test_vowel_context_registry_is_provenance_bearing_and_conservative():
+    registry = json.loads((ROOT / "data/khmer/vowel-context-register.json").read_text(encoding="utf-8"))
+    assert registry["schema_version"]
+    assert registry["cases"]
+    sources = registry["sources"]
+    required = {
+        "id", "orthography", "grapheme_structure", "base_consonant_class",
+        "register_condition", "phonological_interpretation", "ipa",
+        "ipa_source", "ukrainian_adaptation", "ukrainian_status",
+        "evidence_level", "status", "limitations",
+    }
+    ids = set()
+    for row in registry["cases"]:
+        assert required <= set(row), row.get("id")
+        assert row["id"] not in ids
+        ids.add(row["id"])
+        assert row["ipa_source"] in sources, row["id"]
+        assert row["limitations"], row["id"]
+        if row["status"] in {"SOURCE_ATTESTED_NOT_GOLD", "CONFLICTING_SOURCE_ANALYSES"}:
+            assert row["ukrainian_adaptation"] is None, row["id"]
+            assert row["ukrainian_status"] == "NOT_ESTABLISHED", row["id"]
+    conflict = next(row for row in registry["cases"] if row["id"] == "KHV-008")
+    assert conflict["status"] == "CONFLICTING_SOURCE_ANALYSES"
+    assert conflict["ipa"] is None
+    assert len(conflict["alternatives"]) >= 2
+    nikahit = next(row for row in registry["cases"] if row["id"] == "KHV-007")
+    assert "NIKAHIT" in nikahit["grapheme_structure"]["coda"]
+

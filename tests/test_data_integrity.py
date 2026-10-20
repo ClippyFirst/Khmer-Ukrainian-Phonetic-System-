@@ -65,3 +65,13 @@ def test_vowel_context_registry_is_provenance_bearing_and_conservative():
     nikahit = next(row for row in registry["cases"] if row["id"] == "KHV-007")
     assert "NIKAHIT" in nikahit["grapheme_structure"]["coda"]
 
+def test_lexical_examples_do_not_claim_gold_status_without_adjudication():
+    corpus = json.loads((ROOT / "data/tests/verified-lexical-corpus.json").read_text(encoding="utf-8"))
+    assert corpus
+    for word, entry in corpus.items():
+        assert entry["ipa_status"] != "WELL_SUPPORTED", word
+        assert entry["ipa_status"] == "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED", word
+        assert entry["evidence_status"] == entry["ipa_status"], word
+        assert entry["evidence_note"], word
+        assert entry["sources"], word
+

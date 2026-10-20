@@ -69,3 +69,17 @@ R12A's displayed transcription conventions should be retained verbatim in source
 1. Ishida, Richard. *Khmer (Cambodian) Orthography Notes*. Updated 27 April 2026. https://r12a.github.io/scripts/khmr/km.html
 2. Unicode Consortium. *Khmer Encoding Structure*, Unicode Technical Note #61. https://www.unicode.org/notes/tn61/utn61-Khmer_Encoding_Structure_V2.pdf
 3. Chem, Vatho & Chem, Vatho. “The Standard Khmer vowel system: An acoustic study.” *Insight: Cambodia Journal of Basic and Applied Research* 2(2), 2020, pp. 57–88. https://doi.org/10.61945/cjbar.2020.2.2.3
+
+
+## Source-indexed REAHMUK lexical examples added
+
+A separate machine-readable inventory now lives at `data/tests/reahmuk-lexical-examples.json`. It records 11 lexical examples explicitly displayed in R12A's character-detail notes, including:
+
+- series contrast: `សេះ` “horse” (`seh`, source outcome `eh`) vs `នេះ` “this/here” (`nih`, source outcome `ih`);
+- OO + REAHMUK contrast: `កោះ` “island” (`kɑh`, `ah`) vs `គោះ` “to strike” (`kuə̆h`, `uə̆h`);
+- short-vowel combinations: `ជិះ`, `កឹះ`, `ពុះ`;
+- further spellings: `ខ្លះ`, `ផ្ទះ`, `កែះ`, `ចង្កើះ`.
+
+The dataset deliberately preserves R12A's displayed pronunciation strings rather than asserting they are normalized project IPA. Each item is source-attested, not independently adjudicated; these are not gold labels and must not be used as a test-accuracy denominator. A schema/status regression test is in `tests/test_reahmuk_lexical_examples.py`.
+
+**Next adjudication step:** choose a small subset and reconcile the exact lexical entry and variety against independent dictionary/audio or primary phonetic evidence before promoting any source transcription into the project IPA convention. Do not infer that all 11 items have equal evidential strength merely because they appear in one reference.

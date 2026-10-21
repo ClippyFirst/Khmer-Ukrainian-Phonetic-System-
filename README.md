@@ -99,6 +99,8 @@ The current evidence-backed vowel model records:
 
 The complete lexical vowel-sign × context → IPA matrix is still an open research task.
 
+A reproducible first-order evidence inventory is available via `python scripts/coverage.py`. It writes `reports/khmer-coverage-audit.json`, enumerating each dependent vowel sign × consonant-series cell and separating source-attested examples from conflicting or not-established cells. This report is deliberately conservative: an attested example is **not gold data**, and the report does not infer IPA from Unicode structure. It is a sign × series audit, not yet the full sign × series × length × coda × syllable/profile matrix. Run it after changing the canonical evidence register and review the generated diff.
+
 ## Repository structure
 
 - `data/khmer/` — Khmer orthographic and phonological evidence.

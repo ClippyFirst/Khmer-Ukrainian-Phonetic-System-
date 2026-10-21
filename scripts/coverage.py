@@ -169,13 +169,12 @@ def main(argv=None):
         return 2
 
     if args.check:
-        if not OUT.exists():
-            for path in (OUT, PUBLIC_OUT):
+        for path in (OUT, PUBLIC_OUT):
             if not path.exists():
                 print(f"coverage report missing: {path.relative_to(ROOT)}", file=sys.stderr)
                 return 1
             if path.read_text(encoding="utf-8") != rendered:
-                print(f"coverage report is stale: run python scripts/coverage.py and review the diff", file=sys.stderr)
+                print("coverage report is stale: run python scripts/coverage.py and review the diff", file=sys.stderr)
                 return 1
         print(f"coverage reports current: {OUT.relative_to(ROOT)} and {PUBLIC_OUT.relative_to(ROOT)}")
         return 0

@@ -157,3 +157,46 @@
 - Quality checks run [#242](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39488865390) completed **successfully** for commit `64fc5f8a717e91b39f3970ea20bb42c831ed3d46`.
 - The job's Python tests, web checks, and site build all completed successfully on that SHA. This resolves the known malformed-fixture failure; it is software-test/build evidence, not independent phonetic validation.
 - GitHub Pages deployment run [#252](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39488865332) was still in progress when checked. Verify its final result separately; do not assume a successful deployment from a successful build.
+
+
+## Continuation update — 2026-10-21 (coverage audit tooling)
+
+**Branch:** `feat/evidence-gated-coverage-audit-2026-10-21`  
+**Starting default-branch commit:** `d06a5da7967032cecb0865ca86e5897d32fb90f7`  
+**Latest implementation:** see the branch head and CI run; this section is updated as evidence arrives.
+
+### Task ledger
+
+- **DONE_VERIFIED — repository inspection:** Confirmed the default branch head, current source-indexed evidence registry, sign/consonant/register inventories, vowel and coda matrices, README, Python package, web tests, and CI workflow. Existing data and explicit source conflicts were preserved.
+- **DONE_VERIFIED — deterministic inventory and generated artifact:** `scripts/coverage.py` builds `reports/khmer-coverage-audit.json` from canonical data, supports `--check` drift validation, validates required input shapes, counts register records correctly, and gives conflicts precedence over non-conflicting rows. The committed report currently contains 32 dependent-sign × series cells (16 dependent signs × two series), 4 source-attested-not-gold cells, 28 not-established cells, and no conflicts inside this narrow matrix. The source registry separately preserves conflicts KHV-007 and KHV-008. These counts describe evidence coverage, not pronunciation accuracy.
+- **DONE_VERIFIED — regression coverage added:** `tests/test_coverage_report.py` checks reproducibility, matrix dimensions/status arithmetic, source conflict preservation, and that unresolved cells do not fabricate IPA. GitHub Actions Quality checks run [39570181898](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39570181898) passed on implementation/doc commit `d279c60cb89e6d0bca9e0c38eaf747fdb1143d10`: **58 Python tests passed**, web engine/runtime checks passed, and Vite production build passed. The handoff-only follow-up commit is checked again by CI separately.
+- **PARTIAL — phonological evidence coverage:** Source-attested examples remain examples, not gold. The report covers only dependent sign × consonant series; inherent vowels and sign combinations with codas, length, syllabification, register shifters, lexical context, and pronunciation profiles remain separate open dimensions.
+- **BLOCKED / evidence-limited:** Do not fill missing cells from Unicode names or structural patterns. KHV-007 and KHV-008 preserve non-equivalent source transcriptions and must not be normalized into one project IPA without source-convention, lexical, and profile reconciliation.
+- **TODO — linguistic acceptance:** Build a versioned independently adjudicated corpus and complete the full context matrix; acceptance requires each deterministic output to have scoped provenance and regression coverage, while unsupported contexts must remain explicit.
+- **TODO — cross-runtime parity:** Verify Python/browser/shared-data behavior for supported and unresolved cases, including malformed input and source-to-IPA-to-Ukrainian boundaries.
+- **TODO — /r/ profile:** Expand positive and negative Phnom Penh /r/-loss environments only with validated lexical and phonological evidence; the current string-level transformation remains provisional.
+- **PARTIAL — full verification:** Python tests (including report drift check), browser checks, and production build passed in GitHub Actions. The Pages workflow is restricted to pushes to `main`, so this feature branch has not been deployed; no production deployment is claimed. The local container could not resolve `github.com`, so all execution evidence comes from the repository's CI runner, not local commands.
+
+### Evidence and limitations
+
+The inventory script is not a pronunciation engine. It generates no IPA or Ukrainian output, and it does not promote source-indexed evidence to gold. The generated artifact is committed so CI can detect drift. A green software pipeline validates code/data invariants only; it does not prove phonological completeness or empirical accuracy.
+
+### Branch / PR reconciliation
+
+The repository-scoped open-PR query returned no open PRs at the start of this pass. Work remains on the dedicated continuation branch; no PR was merged, no user branch was deleted, and no release was published.
+
+
+### Current continuation checkpoint
+
+- **Implementation/code verification commit:** `d279c60cb89e6d0bca9e0c38eaf747fdb1143d10`.
+- **Handoff/documentation commit:** this section's latest commit on `feat/evidence-gated-coverage-audit-2026-10-21`; consult the branch head for its exact SHA and CI result.
+- **Release classification:** research prototype / evidence-limited preview, not release-ready as a complete Khmer-to-Ukrainian transcription engine. Software tests passing do not close GAP-001–GAP-010 or resolve source conflicts.
+
+
+## Continuation update — 2026-10-21 (coverage dashboard on site)
+
+- **DONE_VERIFIED — site integration:** `system.html` now contains a responsive evidence-coverage dashboard. `src/coverage.js` imports the committed report as a build-time JSON module, renders all 32 dependent-vowel × series cells, shows the four summary counts, preserves source-conflict IDs, and links to the complete machine-readable report. It uses DOM `textContent` rather than inserting report values as HTML. The existing local-first CSP remains unchanged; the dashboard requires no network requests or analytics.
+- **DONE_VERIFIED — site regression guard:** `tests/web-engine.test.mjs` asserts the dashboard mount, adapter, status vocabulary, report dimensions, and report link.
+- **DONE_VERIFIED — CI on dashboard commit:** Quality checks [run 39598081311](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598081311) passed on `976cc5a40c633fee9a43868be980784539172a74`: 58 Python tests, web engine/runtime checks, and Vite production build. An earlier run on intermediate commit `a2c904bee6ef22cd62256e5dd281cdc4fab2b23f` failed because the HTML reference was committed just before the adapter file; the complete subsequent commit passed CI. No unresolved build failure remains at the verified head.
+- **PARTIAL — public deployment:** The Pages workflow deploys only from `main`; this feature branch is not publicly deployed yet. Create and review a PR, require green CI, merge only if GitHub reports no conflict and the exact head SHA is unchanged, then verify the Pages deployment workflow and the live page.
+- **TODO — linguistics:** Dashboard displays existing evidence only; it does not close the vowel/coda/context matrix, establish a gold corpus, or adjudicate KHV-007/KHV-008. Keep release classification as evidence-limited research preview until those acceptance criteria are met.

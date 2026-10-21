@@ -16,6 +16,8 @@ The practical Ukrainian layer is a project proposal. It is not an official Ukrai
 
 ## Web service
 
+The system page now includes an evidence coverage dashboard generated from `reports/khmer-coverage-audit.json`. It exposes the dependent-vowel × consonant-series inventory and clearly distinguishes source-attested examples from unresolved cells and source conflicts. The dashboard is an evidence-status view, not a pronunciation-accuracy score.
+
 The repository now contains the two-page public web layer:
 
 - `index.html` — the Khmer → Ukrainian service.
@@ -98,6 +100,8 @@ The current evidence-backed vowel model records:
 - coda effects such as NIKAHIT and REAHMUK.
 
 The complete lexical vowel-sign × context → IPA matrix is still an open research task.
+
+A reproducible first-order evidence inventory is available via `python scripts/coverage.py`. It writes `reports/khmer-coverage-audit.json`, enumerating each dependent vowel sign × consonant-series cell and separating source-attested examples from conflicting or not-established cells. This report is deliberately conservative: an attested example is **not gold data**, and the report does not infer IPA from Unicode structure. It is a sign × series audit, not yet the full sign × series × length × coda × syllable/profile matrix. Run `python scripts/coverage.py` after changing the canonical evidence register and review the generated diff. CI checks that the committed report is reproducible via `python scripts/coverage.py --check` and `tests/test_coverage_report.py`.
 
 ## Repository structure
 

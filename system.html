@@ -124,6 +124,23 @@
   </ul></div>
 </section>
 
+<section id="coverage-audit" aria-labelledby="coverage-title">
+  <span class="docno">10A</span><div><h2 id="coverage-title">Аудит доказового покриття</h2>
+  <p>Ця таблиця показує, для яких комбінацій залежного голосного знака та серії приголосного вже є приклади в реєстрі джерел. Вона не оцінює точність транскрипції та не замінює повну матрицю «знак × серія × довгота × кода × склад × профіль».</p>
+  <div id="coverage-summary" class="coverage-summary" role="status" aria-live="polite"><p>Завантаження локального звіту покриття…</p></div>
+  <div class="coverage-table-wrap">
+    <table id="coverage-table">
+      <caption class="sr">Залежні голосні знаки за серіями приголосних та статус доказів</caption>
+      <thead><tr><th>Знак</th><th>Код Unicode</th><th>Серія</th><th>Статус доказів</th><th>IPA з джерела</th><th>Ідентифікатори</th></tr></thead>
+      <tbody id="coverage-rows"><tr><td colspan="6">Звіт ще завантажується.</td></tr></tbody>
+    </table>
+  </div>
+  <p class="muted">«Є приклад з джерела» не означає еталонну вимову. «Не встановлено» означає, що система не має достатнього доказу для цієї точної комбінації. Конфлікти джерел не зводяться до одного значення.</p>
+  <div id="coverage-conflicts" class="callout"><b>Конфлікти та обмеження</b><span>Дивіться джерельний реєстр і повний машинозчитуваний звіт.</span></div>
+  <a class="repo-link" href="./reports/khmer-coverage-audit.json">Відкрити повний JSON-звіт ↗</a>
+  </div>
+</section>
+
 <section>
   <span class="docno">11</span><div><h2>Джерела</h2>
   <div class="sources">
@@ -144,6 +161,7 @@
 </div>
 
 <footer><div><strong>ខ្មែរ / УКРАЇНСЬКА</strong><span>Research-grade practical transcription · 2026</span></div><div><a href="./index.html">Сервіс</a> · <a href="https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-" target="_blank" rel="noreferrer">GitHub</a></div></footer>
+<script type="module" src="./src/coverage.js"></script>
 </main>
 </body>
 </html>

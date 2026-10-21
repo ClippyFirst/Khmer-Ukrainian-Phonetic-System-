@@ -16,6 +16,8 @@ The practical Ukrainian layer is a project proposal. It is not an official Ukrai
 
 ## Web service
 
+The system page now includes an evidence coverage dashboard generated from `reports/khmer-coverage-audit.json`. It exposes the dependent-vowel × consonant-series inventory and clearly distinguishes source-attested examples from unresolved cells and source conflicts. The dashboard is an evidence-status view, not a pronunciation-accuracy score.
+
 The repository now contains the two-page public web layer:
 
 - `index.html` — the Khmer → Ukrainian service.

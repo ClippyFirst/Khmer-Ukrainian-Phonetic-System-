@@ -70,3 +70,10 @@ def test_coverage_matrix_never_fabricates_ipa_for_unestablished_cells():
     for cell in report["dependent_vowel_by_series"].values():
         if cell["status"] == "NOT_ESTABLISHED":
             assert cell["ipa_values"] == []
+
+
+
+def test_public_report_is_identical_to_canonical_generated_report():
+    public_report = ROOT / "public" / "reports" / "khmer-coverage-audit.json"
+    assert public_report.exists()
+    assert public_report.read_bytes() == REPORT.read_bytes()

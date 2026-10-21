@@ -163,22 +163,24 @@
 
 **Branch:** `feat/evidence-gated-coverage-audit-2026-10-21`  
 **Starting default-branch commit:** `d06a5da7967032cecb0865ca86e5897d32fb90f7`  
-**Implementation commit:** `7c9a67f881ffd8461a3340a954bfe5a362bd4ae6` (README update; see following commit for generator)
+**Latest implementation:** see the branch head and CI run; this section is updated as evidence arrives.
 
-### Ledger
+### Task ledger
 
-- **DONE_VERIFIED (repository inspection):** Confirmed latest default-branch head and inspected the existing evidence register, sign inventory, phonology notes, vowel coverage audit, README, Python/package scripts, and master handoff. Existing data already contains source-indexed examples and explicit conflicts; these are preserved.
-- **PARTIAL:** `scripts/coverage.py` now generates a JSON inventory for every dependent vowel sign × first/second consonant series. Exact-match IPA examples are classified `SOURCE_ATTESTED_NOT_GOLD`; conflicting evidence is surfaced; absent cells remain `NOT_ESTABLISHED`. The report explicitly identifies coda, length, coeng, register-shifter, NIKAHIT/REAHMUK and profile-conditioned dimensions as still requiring separate audit.
-- **TODO:** Execute the generator in a clean checkout, review and commit its generated JSON, add a test that asserts matrix dimensions/status invariants, and wire generator-drift validation into CI.
-- **BLOCKED / evidence-limited:** Do not fill missing vowel cells from Unicode names or a broad phonetic inventory. Each cell needs direct lexical/phonological evidence and context scope. The existing evidence register itself warns that KHV-007/KHV-008 contain non-equivalent source transcriptions; those conflicts remain unresolved rather than normalized by guess.
-- **TODO:** Complete a versioned gold/adjudication corpus and end-to-end shared-data parity across Python/browser/schemas. Existing source-attested fixtures are not independent gold labels.
-- **TODO:** Expand /r/-loss positive/negative environments only with validated lexical and acoustic/phonological evidence; current string-level transformation remains provisional.
-- **TODO:** Run Python, browser, schema, malformed-input, generator-drift, and production-build checks on this branch. The GitHub connector can inspect and commit repository files but did not provide a local checkout/runtime in this run, so these checks are **not claimed as run**.
+- **DONE_VERIFIED — repository inspection:** Confirmed the default branch head, current source-indexed evidence registry, sign/consonant/register inventories, vowel and coda matrices, README, Python package, web tests, and CI workflow. Existing data and explicit source conflicts were preserved.
+- **DONE_VERIFIED — deterministic inventory and generated artifact:** `scripts/coverage.py` builds `reports/khmer-coverage-audit.json` from canonical data, supports `--check` drift validation, validates required input shapes, counts register records correctly, and gives conflicts precedence over non-conflicting rows. The committed report currently contains 32 dependent-sign × series cells (16 dependent signs × two series), 4 source-attested-not-gold cells, 28 not-established cells, and no conflicts inside this narrow matrix. The source registry separately preserves conflicts KHV-007 and KHV-008. These counts describe evidence coverage, not pronunciation accuracy.
+- **DONE_VERIFIED — regression coverage added:** `tests/test_coverage_report.py` checks reproducibility, matrix dimensions/status arithmetic, source conflict preservation, and that unresolved cells do not fabricate IPA. The existing CI workflow runs pytest, web checks, and the Vite build. See the latest Quality checks run for the current branch SHA before treating this as CI-verified.
+- **PARTIAL — phonological evidence coverage:** Source-attested examples remain examples, not gold. The report covers only dependent sign × consonant series; inherent vowels and sign combinations with codas, length, syllabification, register shifters, lexical context, and pronunciation profiles remain separate open dimensions.
+- **BLOCKED / evidence-limited:** Do not fill missing cells from Unicode names or structural patterns. KHV-007 and KHV-008 preserve non-equivalent source transcriptions and must not be normalized into one project IPA without source-convention, lexical, and profile reconciliation.
+- **TODO — linguistic acceptance:** Build a versioned independently adjudicated corpus and complete the full context matrix; acceptance requires each deterministic output to have scoped provenance and regression coverage, while unsupported contexts must remain explicit.
+- **TODO — cross-runtime parity:** Verify Python/browser/shared-data behavior for supported and unresolved cases, including malformed input and source-to-IPA-to-Ukrainian boundaries.
+- **TODO — /r/ profile:** Expand positive and negative Phnom Penh /r/-loss environments only with validated lexical and phonological evidence; the current string-level transformation remains provisional.
+- **TODO — full verification:** Run/inspect Python tests, browser checks, schemas, generator drift, production build, and deployment for the latest commit. The GitHub Actions workflow is the available execution environment because this session's local container cannot resolve `github.com`; a failed local clone is not a test result.
 
 ### Evidence and limitations
 
-The coverage script is a reproducible inventory tool, not a pronunciation engine. It uses `data/khmer/signs.json`, `consonants.json`, `registers.json`, and `vowel-context-register.json`; it does not add guessed IPA, target spellings, or corpus entries. README now documents the command and the explicit scope limitation. The generated report remains uncommitted until it can be executed and reviewed in a real checkout.
+The inventory script is not a pronunciation engine. It generates no IPA or Ukrainian output, and it does not promote source-indexed evidence to gold. The generated artifact is committed so CI can detect drift. A green software pipeline validates code/data invariants only; it does not prove phonological completeness or empirical accuracy.
 
 ### Branch / PR reconciliation
 
-No open PRs were returned by the repository-scoped PR query. The only branch reported by the branch search before this run was `main`; the dedicated continuation branch was created for these changes. No branches were deleted and no PR was merged.
+The repository-scoped open-PR query returned no open PRs at the start of this pass. Work remains on the dedicated continuation branch; no PR was merged, no user branch was deleted, and no release was published.

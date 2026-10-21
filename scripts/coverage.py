@@ -61,7 +61,7 @@ def build_report(signs, consonants, registers, evidence):
                 "series": series,
                 "status": status,
                 "case_ids": [case.get("id") for case in matches],
-                "ipa_values": sorted({case["ipa"] for case in attested}),
+                "ipa_values": [] if conflicts else sorted({case["ipa"] for case in attested}),
                 "conflicting_case_ids": [case.get("id") for case in conflicts],
                 "limitation": (
                     "Source-attested examples are not gold and do not establish a universal rule."

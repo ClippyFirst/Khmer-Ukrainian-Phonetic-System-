@@ -198,11 +198,23 @@ The repository-scoped open-PR query returned no open PRs at the start of this pa
 - **DONE_VERIFIED — site integration:** `system.html` now contains a responsive evidence-coverage dashboard. `src/coverage.js` imports the committed report as a build-time JSON module, renders all 32 dependent-vowel × series cells, shows the four summary counts, preserves source-conflict IDs, and links to the complete machine-readable report. It uses DOM `textContent` rather than inserting report values as HTML. The existing local-first CSP remains unchanged; the dashboard requires no network requests or analytics.
 - **DONE_VERIFIED — site regression guard:** `tests/web-engine.test.mjs` asserts the dashboard mount, adapter, status vocabulary, report dimensions, and report link.
 - **DONE_VERIFIED — CI on dashboard commit:** Quality checks [run 39598081311](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598081311) passed on `976cc5a40c633fee9a43868be980784539172a74`: 58 Python tests, web engine/runtime checks, and Vite production build. An earlier run on intermediate commit `a2c904bee6ef22cd62256e5dd281cdc4fab2b23f` failed because the HTML reference was committed just before the adapter file; the complete subsequent commit passed CI. No unresolved build failure remains at the verified head.
-- **PARTIAL — public deployment:** The Pages workflow deploys only from `main`; this feature branch is not publicly deployed yet. Create and review a PR, require green CI, merge only if GitHub reports no conflict and the exact head SHA is unchanged, then verify the Pages deployment workflow and the live page.
+- **DONE_VERIFIED — public deployment (subsequently completed):** PR #1 was merged only after exact-head CI passed and GitHub reported mergeable. The Pages deployment for main commit `7f99f46beb290cfb240ded7438e568f0be0cd4d4` succeeded in run [39598303846](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598303846). A follow-up fix then made the linked JSON a public static asset.
 - **TODO — linguistics:** Dashboard displays existing evidence only; it does not close the vowel/coda/context matrix, establish a gold corpus, or adjudicate KHV-007/KHV-008. Keep release classification as evidence-limited research preview until those acceptance criteria are met.
 
 
 ## Continuation update — 2026-10-21 (public report asset fix)
 
 - **DONE_VERIFIED — identified and fixed static-asset gap:** Vite only publishes files in its public directory; the dashboard's JSON hyperlink would otherwise target a report file that exists in the repository but is not copied to `dist`. The generator now writes both the canonical report and a byte-identical `public/reports/khmer-coverage-audit.json`; `--check` validates both copies, and a new pytest checks byte identity.
-- **DONE_VERIFIED — fix branch CI:** Quality checks [run 39598494026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598494026) passed on `7754524b104269cd7b1069549c7c07b84680bbde`: Python tests, browser checks, and Vite build all passed. The public-asset fix is not yet deployed until this follow-up PR is merged and its Pages run succeeds.
+- **DONE_VERIFIED — fix branch CI:** Quality checks [run 39598494026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598494026) passed on `7754524b104269cd7b1069549c7c07b84680bbde`: Python tests, browser checks, and Vite build all passed.
+- **DONE_VERIFIED — public asset merged and deployed:** PR #2 was merged at `48a1e2697ad802c31f21b99a404a10d7ab65b45c`. GitHub Pages run [39598640164](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598640164) completed successfully, with build and deploy jobs green.
+
+
+## Final continuation checkpoint — 2026-10-21
+
+- **Live site:** https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/system.html#coverage-audit
+- **Public JSON asset:** https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/reports/khmer-coverage-audit.json
+- **Last verified deployed main SHA before this documentation-only checkpoint:** `48a1e2697ad802c31f21b99a404a10d7ab65b45c`.
+- **Quality checks:** [run 39598640050](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598640050) passed on the deployed main SHA.
+- **Pages deployment:** [run 39598640164](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598640164) passed on the deployed main SHA.
+- **Task ledger:** Dashboard, generated report, public static report copy, drift checks, regression tests, README, and deployment are `DONE_VERIFIED`. Full phonological/context matrix and independently adjudicated lexical gold corpus remain `TODO/BLOCKED` on evidence; KHV-007 and KHV-008 remain unresolved.
+- **Release assessment:** Public research preview is deployed; the project is not certified as a complete or universally accurate Khmer-to-Ukrainian transcription engine.

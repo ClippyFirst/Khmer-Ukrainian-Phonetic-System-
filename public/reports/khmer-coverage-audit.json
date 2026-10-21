@@ -1,0 +1,388 @@
+{
+  "schema_version": "1.0.0",
+  "generated_by": "scripts/coverage.py",
+  "evidence_source_file": "data/khmer/vowel-context-register.json",
+  "orthographic_inventory": {
+    "consonant_records": 33,
+    "register_records": 2,
+    "register_shifter_records": 2,
+    "dependent_vowel_signs": 16,
+    "independent_vowel_signs": 15,
+    "expected_dependent_vowel_x_series_cells": 32
+  },
+  "dependent_vowel_by_series": {
+    "U+17B6:first": {
+      "sign": "ា",
+      "codepoint": "U+17B6",
+      "series": "first",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "case_ids": [
+        "KHV-005"
+      ],
+      "ipa_values": [
+        "/kaː/"
+      ],
+      "conflicting_case_ids": [],
+      "limitation": "Source-attested examples are not gold and do not establish a universal rule."
+    },
+    "U+17B6:second": {
+      "sign": "ា",
+      "codepoint": "U+17B6",
+      "series": "second",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "case_ids": [
+        "KHV-006"
+      ],
+      "ipa_values": [
+        "/kiə/"
+      ],
+      "conflicting_case_ids": [],
+      "limitation": "Source-attested examples are not gold and do not establish a universal rule."
+    },
+    "U+17B7:first": {
+      "sign": "ិ",
+      "codepoint": "U+17B7",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17B7:second": {
+      "sign": "ិ",
+      "codepoint": "U+17B7",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17B8:first": {
+      "sign": "ី",
+      "codepoint": "U+17B8",
+      "series": "first",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "case_ids": [
+        "KHV-003"
+      ],
+      "ipa_values": [
+        "/kəj/"
+      ],
+      "conflicting_case_ids": [],
+      "limitation": "Source-attested examples are not gold and do not establish a universal rule."
+    },
+    "U+17B8:second": {
+      "sign": "ី",
+      "codepoint": "U+17B8",
+      "series": "second",
+      "status": "SOURCE_ATTESTED_NOT_GOLD",
+      "case_ids": [
+        "KHV-004"
+      ],
+      "ipa_values": [
+        "/kiː/"
+      ],
+      "conflicting_case_ids": [],
+      "limitation": "Source-attested examples are not gold and do not establish a universal rule."
+    },
+    "U+17B9:first": {
+      "sign": "ឹ",
+      "codepoint": "U+17B9",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17B9:second": {
+      "sign": "ឹ",
+      "codepoint": "U+17B9",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BA:first": {
+      "sign": "ឺ",
+      "codepoint": "U+17BA",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BA:second": {
+      "sign": "ឺ",
+      "codepoint": "U+17BA",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BB:first": {
+      "sign": "ុ",
+      "codepoint": "U+17BB",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BB:second": {
+      "sign": "ុ",
+      "codepoint": "U+17BB",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BC:first": {
+      "sign": "ូ",
+      "codepoint": "U+17BC",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BC:second": {
+      "sign": "ូ",
+      "codepoint": "U+17BC",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BD:first": {
+      "sign": "ួ",
+      "codepoint": "U+17BD",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BD:second": {
+      "sign": "ួ",
+      "codepoint": "U+17BD",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BE:first": {
+      "sign": "ើ",
+      "codepoint": "U+17BE",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BE:second": {
+      "sign": "ើ",
+      "codepoint": "U+17BE",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BF:first": {
+      "sign": "ឿ",
+      "codepoint": "U+17BF",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17BF:second": {
+      "sign": "ឿ",
+      "codepoint": "U+17BF",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C0:first": {
+      "sign": "ៀ",
+      "codepoint": "U+17C0",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C0:second": {
+      "sign": "ៀ",
+      "codepoint": "U+17C0",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C1:first": {
+      "sign": "េ",
+      "codepoint": "U+17C1",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C1:second": {
+      "sign": "េ",
+      "codepoint": "U+17C1",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C2:first": {
+      "sign": "ែ",
+      "codepoint": "U+17C2",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C2:second": {
+      "sign": "ែ",
+      "codepoint": "U+17C2",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C3:first": {
+      "sign": "ៃ",
+      "codepoint": "U+17C3",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C3:second": {
+      "sign": "ៃ",
+      "codepoint": "U+17C3",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C4:first": {
+      "sign": "ោ",
+      "codepoint": "U+17C4",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C4:second": {
+      "sign": "ោ",
+      "codepoint": "U+17C4",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C5:first": {
+      "sign": "ៅ",
+      "codepoint": "U+17C5",
+      "series": "first",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    },
+    "U+17C5:second": {
+      "sign": "ៅ",
+      "codepoint": "U+17C5",
+      "series": "second",
+      "status": "NOT_ESTABLISHED",
+      "case_ids": [],
+      "ipa_values": [],
+      "conflicting_case_ids": [],
+      "limitation": "No exact sign × series IPA evidence; do not infer from Unicode structure."
+    }
+  },
+  "coverage_summary": {
+    "source_attested_not_gold_cells": 4,
+    "conflicting_cells": 0,
+    "not_established_cells": 28,
+    "coverage_fraction": 0.125,
+    "warning": "First-order sign × series coverage only. This does not certify coda, length, syllable, register-shifter, lexical or pronunciation-profile contexts."
+  },
+  "source_registry_status_counts": {
+    "CONFLICTING_SOURCE_ANALYSES": 2,
+    "SOURCE_ATTESTED_NOT_GOLD": 7
+  },
+  "source_conflict_case_ids": [
+    "KHV-007",
+    "KHV-008"
+  ],
+  "recorded_case_feature_counts": {
+    "cases_conflicting_source_analyses": 2,
+    "cases_mentioning_coeng": 1,
+    "cases_mentioning_nikahit": 1,
+    "cases_source_attested_not_gold": 7,
+    "cases_with_coda": 2,
+    "cases_with_dependent_vowel": 4,
+    "cases_with_subscript": 1,
+    "cases_without_dependent_vowel": 5
+  },
+  "dimensions_requiring_followup": [
+    "inherent vowels × consonant series × lexical context",
+    "each dependent vowel × series × length × open/closed syllable",
+    "coda identity and coda-conditioned vowel quality",
+    "NIKAHIT and REAHMUK, including lexical exceptions/conflicts",
+    "COENG clusters and orthographic versus phonetic syllabification",
+    "MUUSIKATOAN/TRIISAP and exceptional ប៉ construction",
+    "standard versus Phnom Penh /r/-loss profiles with positive and negative examples",
+    "/c/ versus /cʰ/ preserved in IPA before target adaptation",
+    "independent vowels, rare signs, loanwords, malformed input"
+  ],
+  "interpretation": "A cell is source-attested only for an exact sign and series match with an IPA value in the existing evidence register. This is SOURCE_ATTESTED_NOT_GOLD, never gold. Other cells remain NOT_ESTABLISHED; this audit generates no pronunciation. Conflicts elsewhere in the source registry are listed separately and are not misrepresented as dependent-vowel matrix conflicts."
+}

@@ -98,3 +98,28 @@ if (!js.includes('mapping_check: { policy_render: mapped.value, lexical_render: 
 }
 console.log("mixed-input status and series coverage guards: PASS");
 console.log("deterministic consonant-unit guards: PASS");
+
+
+const coverageHtml = fs.readFileSync("system.html", "utf8");
+const coverageAdapter = fs.readFileSync("src/coverage.js", "utf8");
+const coverageReport = JSON.parse(fs.readFileSync("reports/khmer-coverage-audit.json", "utf8"));
+if (!coverageHtml.includes('id="coverage-audit"') || !coverageHtml.includes('src="./src/coverage.js"')) {
+  throw new Error("research page does not mount the evidence coverage dashboard");
+}
+for (const id of ["coverage-summary", "coverage-rows", "coverage-conflicts", "coverage-table"]) {
+  if (!coverageHtml.includes(`id="${id}"`)) throw new Error("coverage dashboard mount is missing: " + id);
+}
+for (const token of ["dependent_vowel_by_series", "source_attested_not_gold_cells", "NOT_ESTABLISHED", "textContent"]) {
+  if (!coverageAdapter.includes(token)) throw new Error("coverage dashboard adapter is missing safe evidence rendering: " + token);
+}
+const coverageCells = Object.values(coverageReport.dependent_vowel_by_series);
+if (coverageCells.length !== coverageReport.orthographic_inventory.expected_dependent_vowel_x_series_cells) {
+  throw new Error("coverage report matrix size disagrees with orthographic inventory");
+}
+if (coverageCells.some((cell) => !["SOURCE_ATTESTED_NOT_GOLD", "CONFLICTING_SOURCE_ANALYSES", "NOT_ESTABLISHED"].includes(cell.status))) {
+  throw new Error("coverage report contains an unsupported status");
+}
+if (!coverageHtml.includes("./reports/khmer-coverage-audit.json")) {
+  throw new Error("full machine-readable coverage report is not linked from the site");
+}
+console.log("evidence coverage dashboard integration: PASS");

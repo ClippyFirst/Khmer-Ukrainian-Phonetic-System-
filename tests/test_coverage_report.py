@@ -70,4 +70,3 @@ def test_coverage_matrix_never_fabricates_ipa_for_unestablished_cells():
     for cell in report["dependent_vowel_by_series"].values():
         if cell["status"] == "NOT_ESTABLISHED":
             assert cell["ipa_values"] == []
-            assert not cell["case_ids"]

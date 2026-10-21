@@ -157,3 +157,28 @@
 - Quality checks run [#242](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39488865390) completed **successfully** for commit `64fc5f8a717e91b39f3970ea20bb42c831ed3d46`.
 - The job's Python tests, web checks, and site build all completed successfully on that SHA. This resolves the known malformed-fixture failure; it is software-test/build evidence, not independent phonetic validation.
 - GitHub Pages deployment run [#252](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39488865332) was still in progress when checked. Verify its final result separately; do not assume a successful deployment from a successful build.
+
+
+## Continuation update — 2026-10-21 (coverage audit tooling)
+
+**Branch:** `feat/evidence-gated-coverage-audit-2026-10-21`  
+**Starting default-branch commit:** `d06a5da7967032cecb0865ca86e5897d32fb90f7`  
+**Implementation commit:** `7c9a67f881ffd8461a3340a954bfe5a362bd4ae6` (README update; see following commit for generator)
+
+### Ledger
+
+- **DONE_VERIFIED (repository inspection):** Confirmed latest default-branch head and inspected the existing evidence register, sign inventory, phonology notes, vowel coverage audit, README, Python/package scripts, and master handoff. Existing data already contains source-indexed examples and explicit conflicts; these are preserved.
+- **PARTIAL:** `scripts/coverage.py` now generates a JSON inventory for every dependent vowel sign × first/second consonant series. Exact-match IPA examples are classified `SOURCE_ATTESTED_NOT_GOLD`; conflicting evidence is surfaced; absent cells remain `NOT_ESTABLISHED`. The report explicitly identifies coda, length, coeng, register-shifter, NIKAHIT/REAHMUK and profile-conditioned dimensions as still requiring separate audit.
+- **TODO:** Execute the generator in a clean checkout, review and commit its generated JSON, add a test that asserts matrix dimensions/status invariants, and wire generator-drift validation into CI.
+- **BLOCKED / evidence-limited:** Do not fill missing vowel cells from Unicode names or a broad phonetic inventory. Each cell needs direct lexical/phonological evidence and context scope. The existing evidence register itself warns that KHV-007/KHV-008 contain non-equivalent source transcriptions; those conflicts remain unresolved rather than normalized by guess.
+- **TODO:** Complete a versioned gold/adjudication corpus and end-to-end shared-data parity across Python/browser/schemas. Existing source-attested fixtures are not independent gold labels.
+- **TODO:** Expand /r/-loss positive/negative environments only with validated lexical and acoustic/phonological evidence; current string-level transformation remains provisional.
+- **TODO:** Run Python, browser, schema, malformed-input, generator-drift, and production-build checks on this branch. The GitHub connector can inspect and commit repository files but did not provide a local checkout/runtime in this run, so these checks are **not claimed as run**.
+
+### Evidence and limitations
+
+The coverage script is a reproducible inventory tool, not a pronunciation engine. It uses `data/khmer/signs.json`, `consonants.json`, `registers.json`, and `vowel-context-register.json`; it does not add guessed IPA, target spellings, or corpus entries. README now documents the command and the explicit scope limitation. The generated report remains uncommitted until it can be executed and reviewed in a real checkout.
+
+### Branch / PR reconciliation
+
+No open PRs were returned by the repository-scoped PR query. The only branch reported by the branch search before this run was `main`; the dedicated continuation branch was created for these changes. No branches were deleted and no PR was merged.

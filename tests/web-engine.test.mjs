@@ -81,7 +81,8 @@ if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "х�
 if (sourceGuard.includes("const SHIFTER_ELIGIBILITY") === false) throw new Error("Khmer shifter eligibility guard missing");
 if (!sourceGuard.includes("SHIFTER_ELIGIBILITY[shifter]")) throw new Error("Khmer shifter eligibility is not enforced");
 if (!sourceGuard.includes("function renderIpaProfile")) throw new Error("web pronunciation-profile transformation is missing");
-if (!sourceGuard.includes("([ptkbdɡc])r")) throw new Error("web Phnom Penh /r/-loss rule is missing");
+if (!sourceGuard.includes("(^|[ .ˈˌ])([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])")) throw new Error("web Phnom Penh /r/-loss rule must require an explicit word/syllable boundary");
+if (!sourceGuard.includes('"$1$2ʰ"')) throw new Error("web Phnom Penh /r/-loss rule must preserve the boundary and onset segment");
 if (!html.includes('role="status" aria-live="polite"')) throw new Error("result status is not announced to assistive technology");
 for (const label of ["Копіювати кмерський текст","Копіювати IPA","Копіювати українську практичну форму"]) {
   if (!html.includes(`aria-label="${label}"`)) throw new Error("copy control lacks accessible label: " + label);

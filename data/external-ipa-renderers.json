@@ -37,17 +37,18 @@
       "execution_status": "SMOKE_VERIFIED_SOURCE_ATTESTED_DIAGNOSTIC_NOT_ACCURACY",
       "smoke_evidence": {
         "id": "khmerphonemizer",
-        "latest_run_id": 40121359605,
-        "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605",
-        "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605/artifacts/12571551161",
-        "artifact_zip_sha256": "3cd5ad913909cd1ff692c192614f354b707f705c1b6a2f1dc7ad971a4baf63a5",
+        "latest_run_id": 40127648027,
+        "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027",
+        "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027/artifacts/12573689148",
+        "artifact_zip_sha256": "3ba1d9408904146e3d95a6e9ee481e6aa2418bbfb69b04a0d71665296b096385",
         "engine_version": "0.0.3",
         "input_count": 6,
         "successful_outputs": 6,
         "runtime_errors": 0,
         "independent_gold_count": 0,
         "accuracy": null,
-        "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD"
+        "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD",
+        "latest_run_note": "Synced with latest run; 6/6 raw outputs, 0 runtime errors, 2 strict and 6 limited-notation source-attested matches; independent gold remains 0."
       },
       "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027",
       "latest_artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027/artifacts/12573689148",
@@ -59,7 +60,8 @@
         "source_attested_strict_matches": 2,
         "source_attested_limited_notation_matches": 6,
         "independent_gold_count": 0,
-        "accuracy": null
+        "accuracy": null,
+        "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD"
       }
     },
     {

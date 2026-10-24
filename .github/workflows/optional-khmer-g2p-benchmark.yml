@@ -1,0 +1,37 @@
+name: Optional Khmer G2P smoke benchmark
+
+on:
+  push:
+    paths:
+      - "scripts/benchmark_g2p.py"
+      - "data/tests/verified-lexical-corpus.json"
+      - ".github/workflows/optional-khmer-g2p-benchmark.yml"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/benchmark_g2p.py"
+      - "data/tests/verified-lexical-corpus.json"
+      - ".github/workflows/optional-khmer-g2p-benchmark.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  optional-g2p-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the optional benchmark engine
+        run: python -m pip install khmerphonemizer
+      - name: Run raw-output benchmark (not an accuracy score)
+        run: python scripts/benchmark_g2p.py --output artifacts/external-g2p/khmer-phonemizer.json
+      - name: Upload diagnostic output
+        uses: actions/upload-artifact@v4
+        with:
+          name: khmer-phonemizer-raw-output
+          path: artifacts/external-g2p/khmer-phonemizer.json
+          if-no-files-found: error

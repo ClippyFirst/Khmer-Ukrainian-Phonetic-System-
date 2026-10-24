@@ -53,3 +53,11 @@ def test_corpus_loader_requires_a_nonempty_object(tmp_path):
         pass
     else:
         raise AssertionError("empty corpus should be rejected")
+
+
+def test_khnhom_source_ipa_is_not_confused_with_orthographic_transcription():
+    corpus = load_module().load_corpus(ROOT / "data" / "tests" / "verified-lexical-corpus.json")
+    entry = corpus["ខ្ញុំ"]
+    assert entry["ipa"] == "/kɲom/"
+    assert entry["orthographic_transcription"] == "k̥ʰñuṃ"
+    assert "not independently adjudicated" in entry["source_convention_note"].lower()

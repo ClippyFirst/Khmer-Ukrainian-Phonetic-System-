@@ -161,6 +161,20 @@
       "accuracy": null,
       "status": "SMOKE_VERIFIED_NOT_ACCURACY",
       "interpretation": "The source-attested entries are explicitly not independently adjudicated gold; output symbols must be checked against this project's IPA convention."
+    },
+    {
+      "engine": "khmerphonemizer",
+      "version": "0.0.3",
+      "run_id": 40119620311,
+      "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40119620311/artifacts/12570930058",
+      "artifact_zip_sha256": "df7815f1a5891ed0e3ce947abf7669a47a872ca90027955ef4ac51fce06398b6",
+      "input_count": 6,
+      "successful_outputs": 6,
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "source_status": "SMOKE_VERIFIED_NOT_ACCURACY",
+      "notes": "6 raw outputs. Output is a list of phone tokens. Source-attested IPA comparison is not scored; e.g. stress/syllable separators in `ភ្នំពេញ` are not represented in token output, but this is a convention difference to review, not automatically a phonological error."
     }
   ],
   "upstream_evidence": [

@@ -73,3 +73,8 @@ These resources are relevant to the UI's display of the source writing system; t
 ## Optional raw-output benchmark runner
 
 `scripts/benchmark_g2p.py` can call the upstream [Khmer Phonemizer](https://github.com/seanghay/khmerphonemizer) API after a separate installation of `khmerphonemizer`. It records raw phone tokens, timing, package version, corpus hash, source-reported IPA, and per-record errors. The repository's lexical corpus is source-attested but not independently adjudicated, so the report hard-codes `independent_gold_count: 0` and `accuracy: null`. It is a diagnostic comparison tool, not an accuracy benchmark. The package remains optional and is not imported by the production runtime.
+
+
+### First optional smoke run (2026-10-24)
+
+The isolated workflow installed `khmerphonemizer==0.0.3` and produced outputs for **6/6** corpus entries with **0 runtime errors**. The report explicitly recorded `independent_gold_count: 0` and `accuracy: null`; this verifies API execution only, not phonetic accuracy. [Run and downloadable artifact](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40091599475). The next run pins the package version and records a repository-relative corpus path for better reproducibility.

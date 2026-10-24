@@ -1,7 +1,7 @@
 # External Khmer phonemizer and IPA-data audit
 
 **Audit date:** 2026-10-20  
-**Scope:** suitability as a comparator for the conservative Khmer→Ukrainian analysis pipeline; this is a source/repository inspection, not an executed benchmark.
+**Scope:** suitability as a comparator for the conservative Khmer→Ukrainian analysis pipeline, including a pinned raw-output smoke run; this is not an independent accuracy benchmark.
 
 ## Decision
 
@@ -79,3 +79,8 @@ Two output differences were reviewed against the exact source locators:
 - **ភ្នំពេញ:** the cited [Wiktionary entry](https://en.wiktionary.org/wiki/ភ្នំពេញ) reports standard IPA `/pʰnum ˈpɨɲ/`. The external output token list `pʰ n u m p ɨ ɲ` does not encode the explicit word/syllable boundary and stress marker. This is a representational difference that the current token-only harness cannot adjudicate; do not score it as a phonological error or silently synthesize missing marks.
 
 The [Khmer phonology paper](https://aclanthology.org/Y16-1.pdf) documents a plain/aspirated stop contrast, and Kirby's [Phnom Penh Khmer study](https://doi.org/10.1016/j.wocn.2014.02.001) documents dialect-conditioned aspiration and pitch/voice-quality effects around historical /r/-clusters. These establish why dialect and transcription level matter; neither source adjudicates these two lexical outputs by itself. The benchmark remains diagnostic-only and production integration remains disabled.
+
+
+## Post-reconciliation smoke result — 2026-10-24
+
+The latest run after reconciling the source IPA and web fixture is [40093054099](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093054099), using `khmerphonemizer==0.0.3`. It processed 6/6 inputs with 0 runtime errors. Corpus SHA-256: `4b0fafa4a178c0a3e769ddb168f2115cd1fda0c98919c3bc2d731c13cbe6a7f4`; artifact ZIP SHA-256: `89eb762a46da84941bf47c7b26d7b18134270bcdede29bc7f1be8bcd60653f89`. The updated `ខ្ញុំ` source-reported IPA is `/kɲom/`, not the prior unsupported `/kʰɲom/`. The `ភ្នំពេញ` output still omits source-stated stress/boundary marks. Report fields remain `independent_gold_count: 0`, `accuracy: null`. The engine remains disabled in production.

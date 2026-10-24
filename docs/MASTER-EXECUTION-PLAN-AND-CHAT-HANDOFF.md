@@ -324,3 +324,10 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 - Inspected current-main smoke [40129500995](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129500995), artifact [12574167928](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129500995/artifacts/12574167928), SHA-256 `da53268c5d66ba3e2e5682029deb4bd6c2566466fbd920d72a6e3d9cab322f33`. The artifact contains one valid JSON report: khmerphonemizer 0.0.3, 6/6 outputs, 0 runtime errors, corpus SHA-256 `4b0fafa4a178c0a3e769ddb168f2115cd1fda0c98919c3bc2d731c13cbe6a7f4`.
 - Source-attested notation diagnostic: 2/6 strict matches, 6/6 after limited normalization of slash wrappers, whitespace, syllable dots and stress only. Do not call this accuracy or gold agreement. Independent gold remains 0; accuracy remains null.
 - The external-system registry and benchmarking documentation now reference this latest inspected artifact; earlier run records are retained for provenance.
+
+## Final smoke and trigger-loop checkpoint — 2026-10-25
+
+- After PR #32 narrowed the optional smoke workflow's automatic path filters, current-main smoke [40133705156](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156) passed; inspected artifact [12575459926](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156/artifacts/12575459926), ZIP SHA-256 `ff588e5d6a0e533aa4de7427e4786672f03999c3f7131abb1c89cb828936a677`.
+- Report: 6/6 outputs, 0 runtime errors, corpus SHA-256 `4b0fafa4a178c0a3e769ddb168f2115cd1fda0c98919c3bc2d731c13cbe6a7f4`; 2/6 strict source-attested string matches and 6/6 limited notation matches. Independent gold 0, accuracy null.
+- Registry and benchmark documentation now point to this final inspected run. Evidence-only updates no longer trigger optional smoke, avoiding a self-referential sequence of new run IDs and registry edits.
+- Remaining research blockers unchanged: independently adjudicated Khmer IPA gold, unresolved source/profile conflicts KHV-007/KHV-008, and complete vowel/coda/context evidence. No engine promoted to production.

@@ -28,11 +28,12 @@
       "name": "Khmer Phonemizer",
       "url": "https://github.com/seanghay/khmerphonemizer",
       "kind": "G2P phonemizer",
-      "status": "candidate",
-      "output": "Open-source MIT project; validate whether output is standard IPA or internal phoneme labels and verify vowel-series/length/coda behavior",
+      "status": "RAW_OUTPUT_SMOKE_VERIFIED; IPA_CONVENTION_REVIEW_PENDING; GOLD_ACCURACY_UNMEASURED",
+      "output": "Pinned 0.0.3 smoke captured 6 outputs, 0 runtime errors, 0 independent gold. Returns phone-token arrays; syllable boundaries/stress may differ from reference notation.",
       "license": "MIT reported upstream; preserve notices if used",
-      "verified_in_repo": false,
-      "enabled_by_default": false
+      "verified_in_repo": true,
+      "enabled_by_default": false,
+      "latest_run_id": 40119620311
     },
     {
       "id": "ipa-dict",
@@ -50,8 +51,8 @@
       "name": "Goruut",
       "url": "https://github.com/neurlang/goruut",
       "kind": "multilingual IPA phonemizer",
-      "status": "candidate",
-      "output": "Khmer support is claimed; validate consonant series, vowel quality/length and dialect conventions",
+      "status": "UPSTREAM_SUPPORT_CLAIM_CONFIRMED; EXECUTION_NOT_RUN",
+      "output": "Upstream README lists Khmer Central and says phone set is IPA; dialect equivalence and project-local execution remain unverified.",
       "license": "Verify current upstream license and model/data terms",
       "verified_in_repo": false,
       "enabled_by_default": false
@@ -130,6 +131,17 @@
       "status": "display-only",
       "output": "Khmer-script display font only; not an IPA transcription engine",
       "license": "SIL Open Font License; verify current release metadata",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
+      "id": "khmer-acoustic-model-dictionary",
+      "name": "Khmer acoustic model IPA dictionary",
+      "url": "https://github.com/chemvatho/Khmer-acoustic-model",
+      "kind": "word-level IPA reference resource",
+      "status": "UPSTREAM_DICTIONARY_CLAIM; LICENSE_REVIEW_REQUIRED",
+      "output": "Upstream advertises 29,204 IPA entries validated by native linguists. README states dictionary data CC BY-SA 4.0 separately from MIT code/model.",
+      "license": "Dictionary CC BY-SA 4.0 as stated upstream; verify exact files/revision and attribution before use",
       "verified_in_repo": false,
       "enabled_by_default": false
     }

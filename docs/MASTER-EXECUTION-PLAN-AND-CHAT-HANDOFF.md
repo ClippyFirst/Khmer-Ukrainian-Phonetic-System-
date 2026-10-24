@@ -1,6 +1,6 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
-**Last updated:** 2026-10-20  
+**Last updated:** 2026-10-24  
 **Repository:** https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-  
 **Default branch:** main  
 **Last audited base revision:** 6cc30bb48bedb83d86534a5fbff92839e26673dd  
@@ -234,3 +234,12 @@ The repository-scoped open-PR query returned no open PRs at the start of this pa
 - The first quality run on this evidence correction failed exactly where expected after changing the canonical corpus: `tests/test_data.py::test_verified_corpus_and_web_fixtures_agree_on_ipa` found the web fixture still held `/kʰɲom/` while the source-reconciled corpus now holds `/kɲom/`. The run had 67 passing tests and 1 failing test; this was fixture drift, not a runtime/adapter failure.
 - Updated `data/tests/web-fixtures.json` to `/kɲom/`, added the separate orthographic transcription field, and clarified the note. The next quality and optional-G2P workflows are queued on head `a1ffffa821e809b638db328b1f23bc6b6a27bef4`; re-check their final conclusions before merge.
 - Acceptance remains: full quality suite green, optional smoke successful, corpus and web fixture IPA aligned, accuracy still null / no independent gold.
+
+
+## Final checkpoint — G2P source IPA reconciliation merged (2026-10-24)
+
+- **Merged PR:** [#11](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/11), merge commit `35ce7142bf71f7e4cdb1acbb44d94d45ef71693a`.
+- **Quality verification:** [run 40093054206](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093054206) passed after the fixture correction, including Python tests, web-engine/runtime checks and site build. The earlier failures are recorded above: the canonical corpus correction first exposed stale JSON and JavaScript fixture expectations; both were aligned with the cited source.
+- **Latest raw-output smoke:** [run 40093054099](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093054099) passed. `khmerphonemizer==0.0.3`, 6/6 outputs, 0 errors; corpus SHA-256 `4b0fafa4a178c0a3e769ddb168f2115cd1fda0c98919c3bc2d731c13cbe6a7f4`; artifact SHA-256 `89eb762a46da84941bf47c7b26d7b18134270bcdede29bc7f1be8bcd60653f89`.
+- **Source correction:** current cited Wiktionary standard IPA for `ខ្ញុំ` is `/kɲom/`; `k̥ʰñuṃ` is kept as separate orthographic/phonemic notation. For `ភ្នំពេញ`, source IPA `/pʰnum ˈpɨɲ/` includes stress/boundary information absent from the external phone-token output. No independent gold corpus exists; report still has `independent_gold_count: 0`, `accuracy: null`.
+- **Release status:** research preview / partial prototype, not a complete or empirically accuracy-certified Khmer→Ukrainian engine. External engine remains diagnostic-only.

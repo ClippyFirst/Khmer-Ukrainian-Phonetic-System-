@@ -29,10 +29,12 @@
       "url": "https://github.com/seanghay/khmerphonemizer",
       "kind": "G2P phonemizer",
       "status": "candidate",
-      "output": "Open-source MIT project; validate whether output is standard IPA or internal phoneme labels and verify vowel-series/length/coda behavior",
+      "output": "Pinned 0.0.3 smoke captured 6 outputs, 0 runtime errors, 0 independent gold. Returns phone-token arrays; syllable boundaries/stress may differ from reference notation.",
       "license": "MIT reported upstream; preserve notices if used",
       "verified_in_repo": false,
-      "enabled_by_default": false
+      "enabled_by_default": false,
+      "latest_run_id": 40119620311,
+      "execution_status": "SMOKE_VERIFIED_NOT_ACCURACY"
     },
     {
       "id": "ipa-dict",
@@ -51,10 +53,11 @@
       "url": "https://github.com/neurlang/goruut",
       "kind": "multilingual IPA phonemizer",
       "status": "candidate",
-      "output": "Khmer support is claimed; validate consonant series, vowel quality/length and dialect conventions",
+      "output": "Upstream README lists Khmer Central and says phone set is IPA; dialect equivalence and project-local execution remain unverified.",
       "license": "Verify current upstream license and model/data terms",
       "verified_in_repo": false,
-      "enabled_by_default": false
+      "enabled_by_default": false,
+      "execution_status": "UPSTREAM_SUPPORT_CLAIM_EXECUTION_NOT_RUN"
     },
     {
       "id": "charis-sil",
@@ -132,6 +135,18 @@
       "license": "SIL Open Font License; verify current release metadata",
       "verified_in_repo": false,
       "enabled_by_default": false
+    },
+    {
+      "id": "khmer-acoustic-model-dictionary",
+      "name": "Khmer acoustic model IPA dictionary",
+      "url": "https://github.com/chemvatho/Khmer-acoustic-model",
+      "kind": "word-level IPA reference resource",
+      "status": "benchmark-resource",
+      "output": "Upstream advertises 29,204 IPA entries validated by native linguists. README states dictionary data CC BY-SA 4.0 separately from MIT code/model.",
+      "license": "Dictionary CC BY-SA 4.0 as stated upstream; verify exact files/revision and attribution before use",
+      "verified_in_repo": false,
+      "enabled_by_default": false,
+      "execution_status": "UPSTREAM_RESOURCE_CLAIM_LICENSE_REVIEW_REQUIRED"
     }
   ],
   "benchmark_protocol": {
@@ -149,5 +164,55 @@
     "external_engines_enabled_by_default": false,
     "notes": "Registry membership does not establish language support, IPA output semantics, reproducibility, accuracy, or license compatibility. Preserve raw output and record exact versions and model/data licenses."
   },
-  "last_reviewed": "2026-10-24"
+  "last_reviewed": "2026-10-24",
+  "observed_experiments": [
+    {
+      "engine": "khmerphonemizer",
+      "version": "0.0.3",
+      "run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093213224",
+      "corpus": "6 source-attested lexical probes",
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "status": "SMOKE_VERIFIED_NOT_ACCURACY",
+      "interpretation": "The source-attested entries are explicitly not independently adjudicated gold; output symbols must be checked against this project's IPA convention."
+    },
+    {
+      "engine": "khmerphonemizer",
+      "version": "0.0.3",
+      "run_id": 40119620311,
+      "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40119620311/artifacts/12570930058",
+      "artifact_zip_sha256": "df7815f1a5891ed0e3ce947abf7669a47a872ca90027955ef4ac51fce06398b6",
+      "input_count": 6,
+      "successful_outputs": 6,
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "source_status": "SMOKE_VERIFIED_NOT_ACCURACY",
+      "notes": "6 raw outputs. Output is a list of phone tokens. Source-attested IPA comparison is not scored; e.g. stress/syllable separators in `ភ្នំពេញ` are not represented in token output, but this is a convention difference to review, not automatically a phonological error."
+    }
+  ],
+  "upstream_evidence": [
+    {
+      "engine": "Khmer Phonemizer",
+      "url": "https://github.com/seanghay/khmerphonemizer",
+      "fact": "Upstream describes MIT-licensed standalone Khmer G2P and returns word tokens plus phoneme tokens.",
+      "status": "SMOKE_VERIFIED_OUTPUT_CONVENTION_REVIEW_PENDING",
+      "caveat": "Some phone sequences may be IPA-like; do not assume full convention parity or lexical accuracy."
+    },
+    {
+      "engine": "Khmer acoustic model dictionary",
+      "url": "https://github.com/chemvatho/Khmer-acoustic-model",
+      "fact": "Upstream describes a 29,204-entry IPA pronunciation dictionary validated by native linguists; README says dictionary data is CC BY-SA 4.0, distinct from MIT code/model.",
+      "status": "PROMISING_REFERENCE_RESOURCE_LICENSE_REVIEW_REQUIRED",
+      "caveat": "Not integrated or redistributed. Need inspect exact release/files, dialect/annotation convention and licensing before use."
+    },
+    {
+      "engine": "Goruut",
+      "url": "https://github.com/neurlang/goruut",
+      "fact": "README lists Khmer Central among supported languages and claims IPA phone set.",
+      "status": "UPSTREAM_CLAIM_ONLY_NOT_EXECUTED",
+      "caveat": "Khmer Central may not match project's exact target profile; validate dialect and IPA conventions."
+    }
+  ]
 }

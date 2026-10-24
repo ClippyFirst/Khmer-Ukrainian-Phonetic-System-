@@ -70,3 +70,8 @@ The six existing source examples remain unadjudicated and are not gold. Zero ind
 - `exact_match_rate` is strict string equality after the declared Unicode normalization and is comparable only when the same IPA profile/conventions are used. Tone, length, stress, syllable boundaries, tie bars and other IPA distinctions are not silently removed.
 - `character_error_rate` is Levenshtein distance over Unicode code points, not a phoneme/segment error rate. IPA affricates, combining diacritics, length marks and tone symbols can occupy multiple code points; interpret this field as a string-distance diagnostic only.
 - A valid score still requires a non-empty independently adjudicated gold set with source locator and profile. Smoke output, engineering fixtures, source-attested but unadjudicated entries, and inter-engine agreement are not accuracy.
+
+
+## Source-attested notation diagnostic (not accuracy)
+
+The optional Khmer G2P report now retains raw phoneme tokens and adds a separate source-attested notation diagnostic. It compares concatenated tokens against the cited IPA after removing only outer `/.../` wrappers, whitespace, syllable dots, and primary/secondary stress marks (`ˈ`, `ˌ`). Aspiration, length, diacritics, tie bars, and phone symbols remain significant. The report exposes strict and limited-notation counts but always leaves `independent_gold_count = 0` and `accuracy = null`. These comparisons diagnose transcription/segmentation conventions only; cited IPA is not independently adjudicated and is never treated as gold.

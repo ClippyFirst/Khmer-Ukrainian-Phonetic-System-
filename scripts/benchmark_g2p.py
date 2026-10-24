@@ -49,6 +49,29 @@ def package_version(name: str) -> str | None:
         return None
 
 
+def unwrap_source_ipa(value: str) -> str:
+    """Remove only outer IPA slash delimiters; preserve internal notation."""
+    value = value.strip()
+    if len(value) >= 2 and value.startswith("/") and value.endswith("/"):
+        return value[1:-1]
+    return value
+
+
+def source_ipa_comparison_key(value: str) -> str:
+    """Remove only notation wrappers/separators for a source-attested diagnostic.
+
+    This is not an IPA normalization or an accuracy metric. It preserves phone
+    symbols, aspiration, length, diacritics and tie bars. Only outer /.../
+    delimiters, whitespace, syllable dots, and primary/secondary stress marks
+    are ignored to diagnose notation-only disagreement.
+    """
+    value = unwrap_source_ipa(value)
+    return "".join(
+        char for char in value
+        if not char.isspace() and char not in {".", "ˈ", "ˌ"}
+    )
+
+
 def phoneme_tokens(value: Any) -> list[str] | None:
     """Extract phone tokens without inventing separators or rewriting IPA."""
     if isinstance(value, str):
@@ -73,8 +96,39 @@ def build_report(
 ) -> dict[str, Any]:
     if len(outputs) != len(corpus):
         raise ValueError("One output record is required for each corpus entry")
+    diagnostic_rows = []
+    for row in outputs:
+        source_ipa = row.get("source_reported_ipa")
+        tokens = row.get("phone_tokens")
+        raw_joined = "".join(tokens) if isinstance(tokens, list) and all(isinstance(x, str) for x in tokens) else None
+        if not isinstance(source_ipa, str) or not source_ipa.strip() or raw_joined is None:
+            row["source_ipa_diagnostic"] = {
+                "status": "NOT_COMPARABLE_MISSING_SOURCE_IPA_OR_PHONE_TOKENS",
+                "strict_match": None,
+                "notation_normalized_match": None,
+            }
+            continue
+        strict_reference = unwrap_source_ipa(source_ipa)
+        strict_match = raw_joined == strict_reference
+        normalized_match = source_ipa_comparison_key(raw_joined) == source_ipa_comparison_key(source_ipa)
+        status = (
+            "STRICT_STRING_MATCH_SOURCE_ATTESTED_NOT_GOLD" if strict_match
+            else "MATCH_AFTER_LIMITED_NOTATION_REMOVAL_NOT_GOLD" if normalized_match
+            else "MISMATCH_AFTER_LIMITED_NOTATION_REMOVAL_REVIEW"
+        )
+        row["source_ipa_diagnostic"] = {
+            "status": status,
+            "raw_phone_tokens_joined_for_diagnostic_only": raw_joined,
+            "source_reported_ipa": source_ipa,
+            "strict_match": strict_match,
+            "notation_normalized_match": normalized_match,
+        }
+        diagnostic_rows.append(row["source_ipa_diagnostic"])
+
+    strict_matches = sum(row["strict_match"] for row in diagnostic_rows)
+    notation_matches = sum(row["notation_normalized_match"] for row in diagnostic_rows)
     return {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "engine": package,
         "engine_version": version,
@@ -86,9 +140,16 @@ def build_report(
         "failed_outputs": sum(row.get("error") is not None for row in outputs),
         "independent_gold_count": 0,
         "accuracy": None,
+        "source_attested_diagnostic": {
+            "comparable_rows": len(diagnostic_rows),
+            "strict_string_matches": strict_matches,
+            "limited_notation_normalized_matches": notation_matches,
+            "normalization": "remove outer /.../ wrappers, whitespace, syllable dots, and ˈ/ˌ only; preserve all phone symbols, aspiration, length, diacritics and tie bars",
+            "interpretation": "Concordance with source-reported IPA only. Sources are not independently adjudicated, so these counts are not accuracy and must not be called gold agreement.",
+        },
         "interpretation": (
             "Raw external output only. Corpus IPA is source-attested but not independently adjudicated; "
-            "it is not gold. No accuracy metric is computed."
+            "it is not gold. Source-attested concordance is a notation diagnostic only. No accuracy metric is computed."
         ),
         "records": outputs,
     }

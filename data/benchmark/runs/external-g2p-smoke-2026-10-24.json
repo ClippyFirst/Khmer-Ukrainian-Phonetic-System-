@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "language": "Khmer",
-  "run_id": 40127648027,
+  "run_id": 40128165807,
   "engine": "khmerphonemizer",
   "engine_version": "0.0.3",
-  "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027/artifacts/12573689148",
-  "artifact_zip_sha256": "3ba1d9408904146e3d95a6e9ee481e6aa2418bbfb69b04a0d71665296b096385",
+  "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40128165807/artifacts/12573895499",
+  "artifact_zip_sha256": "2cbc7b00d35325e2e97fc98e80efeb9fdfecd477bf5ae5be24c43b6726c33299",
   "input_count": 6,
   "successful_outputs": 6,
   "runtime_errors": 0,
@@ -93,8 +93,8 @@
       "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
     }
   ],
-  "interpretation": "Six inputs processed, 0 runtime errors. Raw token outputs are preserved. In a separate notation-only diagnostic, 2/6 match source IPA after removing only outer slash wrappers; 6/6 match after additionally ignoring spaces, syllable dots and stress marks. This is source-attested concordance, not accuracy; independent gold count is zero.",
-  "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027",
+  "interpretation": "Latest main-branch run processed six inputs with six successful outputs and zero failures. Source-attested notation diagnostic: 2/6 strict matches after removing only outer slash wrappers; 6/6 after additionally ignoring whitespace, syllable dots, and stress marks. This is not accuracy; independent gold count is zero.",
+  "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40128165807",
   "latest_smoke_summary": {
     "input_count": 6,
     "successful_outputs": 6,

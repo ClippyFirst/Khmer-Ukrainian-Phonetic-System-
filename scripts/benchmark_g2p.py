@@ -135,7 +135,7 @@ def main() -> int:
         records,
         package="khmerphonemizer",
         version=package_version("khmerphonemizer"),
-        corpus_path=(str(args.corpus.resolve().relative_to(ROOT.resolve()))\n                     if args.corpus.resolve().is_relative_to(ROOT.resolve())\n                     else str(args.corpus)),
+        corpus_path=(str(args.corpus.resolve().relative_to(ROOT.resolve())) if args.corpus.resolve().is_relative_to(ROOT.resolve()) else str(args.corpus)),
         corpus_sha256=sha256_file(args.corpus),
     )
     rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"

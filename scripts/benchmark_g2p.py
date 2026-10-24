@@ -202,10 +202,13 @@ def main() -> int:
     rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(rendered, encoding="utf-8")
-    print(json.dumps({key: report[key] for key in (
-        "engine", "engine_version", "input_count", "successful_outputs",
-        "failed_outputs", "independent_gold_count", "accuracy"
-    )}, ensure_ascii=False, indent=2))
+    print(json.dumps({
+        **{key: report[key] for key in (
+            "engine", "engine_version", "input_count", "successful_outputs",
+            "failed_outputs", "independent_gold_count", "accuracy"
+        )},
+        "source_attested_diagnostic": report["source_attested_diagnostic"],
+    }, ensure_ascii=False, indent=2))
     print(f"Raw-output report: {args.output}")
     return 0 if report["successful_outputs"] > 0 else 2
 

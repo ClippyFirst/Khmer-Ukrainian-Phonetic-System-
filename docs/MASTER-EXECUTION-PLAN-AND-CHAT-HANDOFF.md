@@ -218,3 +218,12 @@ The repository-scoped open-PR query returned no open PRs at the start of this pa
 - **Pages deployment:** [run 39598640164](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/39598640164) passed on the deployed main SHA.
 - **Task ledger:** Dashboard, generated report, public static report copy, drift checks, regression tests, README, and deployment are `DONE_VERIFIED`. Full phonological/context matrix and independently adjudicated lexical gold corpus remain `TODO/BLOCKED` on evidence; KHV-007 and KHV-008 remain unresolved.
 - **Release assessment:** Public research preview is deployed; the project is not certified as a complete or universally accurate Khmer-to-Ukrainian transcription engine.
+
+
+## Continuation update — external Khmer G2P evidence reconciliation (2026-10-24)
+
+- The optional Khmer Phonemizer 0.0.3 smoke run [40091745346](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40091745346) produced 6/6 outputs with 0 runtime errors. Its report records `independent_gold_count: 0` and `accuracy: null`; do not describe this as a 100% benchmark.
+- Corrected the source-attested `ខ្ញុំ` entry: the cited Wiktionary page's standard IPA is `/kɲom/`; `k̥ʰñuṃ` is its separate orthographic/phonemic transcription. The previous `/kʰɲom/` value was not supported by that locator. A regression test now guards this distinction. Source: https://en.wiktionary.org/wiki/ខ្ញុំ
+- For `ភ្នំពេញ`, the source gives `/pʰnum ˈpɨɲ/`, including a boundary/space and stress marker. The engine's token output omits those marks. This is an unresolved output-convention/representation difference, not an adjudicated phonological error. Source: https://en.wiktionary.org/wiki/ភ្នំពេញ
+- Broader phonetic context: Khmer contrasts plain and aspirated stops (https://aclanthology.org/Y16-1.pdf); colloquial Phnom Penh /CrV/ realizations may differ through aspiration, f0 and phonation (https://doi.org/10.1016/j.wocn.2014.02.001). These papers do not independently adjudicate the candidate outputs for these lexical items.
+- Dedicated branch: `fix/khmer-g2p-source-ipa-reconciliation-2026-10-24`. Pending CI. Keep external engine disabled in production and retain the evidence status SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED.

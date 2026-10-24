@@ -49,7 +49,7 @@ These are research leads, not verified availability claims. Before executing a c
 
 ## Existing external run evidence (reconciled 2026-10-24)
 
-- [Khmer Phonemizer smoke workflow 40093213224](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093213224): package `khmerphonemizer==0.0.3`, 6 source-attested probes, 0 runtime errors, independent gold count 0, accuracy null. These inputs are not independent gold; output-convention parity remains to be reviewed.
+- Latest Khmer Phonemizer smoke: [workflow 40119620311](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40119620311), `khmerphonemizer==0.0.3`, 6 outputs, 0 runtime errors, independent gold count 0, accuracy null. Artifact ZIP SHA-256 `df7815f1a5891ed0e3ce947abf7669a47a872ca90027955ef4ac51fce06398b6`. Output is phone-token arrays; word stress and syllable separators in the source-attested IPA are not always represented, so convention mapping must be reviewed before exact-match scoring.
 - The [Khmer acoustic model project](https://github.com/chemvatho/Khmer-acoustic-model) advertises a 29,204-entry pronunciation dictionary validated by native linguists; its README distinguishes MIT code/model from CC BY-SA 4.0 dictionary data. This is a promising reference lead, not an integrated or redistributed corpus. Check exact revision, file access, dialect, annotation conventions, source terms and source overlap before adopting it.
 - [Goruut](https://github.com/neurlang/goruut) lists Khmer Central; this may not match the target dialect profile, and no run is recorded here.
 - Next: independently adjudicate KHV-007/KHV-008 and the vowel-series/coda matrix; do not use source-attested entries as accuracy labels.

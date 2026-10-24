@@ -67,3 +67,15 @@ This is a potentially valuable **external comparison source**, but it is not a t
 - Keep code, reference transcriptions, dictionaries, model weights, and research examples as separate provenance/licensing classes. A permissive code license does not automatically relicense upstream text or lexicons.
 - The current audit did not verify all source/data licenses (including Unicode materials, R12A content, Wiktionary-derived transcriptions, or the Chem (2020) paper's reuse terms). Record each actual license/terms URL before redistributing substantial extracted datasets.
 
+
+
+## Raw-output smoke-run review — 2026-10-24
+
+The optional CI smoke run (package `khmerphonemizer==0.0.3`, run [40091745346](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40091745346)) returned outputs for all six source-attested probes with zero runtime errors. This is **not** an accuracy score: the report correctly states `independent_gold_count: 0` and `accuracy: null`.
+
+Two output differences were reviewed against the exact source locators:
+
+- **ខ្ញុំ:** the corpus had recorded `/kʰɲom/`, but the currently cited [Wiktionary entry](https://en.wiktionary.org/wiki/ខ្ញុំ) distinguishes its orthographic/phonemic transcription `k̥ʰñuṃ` from its separately stated standard IPA `/kɲom/`. The former is not itself the standard IPA field. The corpus entry is corrected to `/kɲom/` and stores `k̥ʰñuṃ` separately with a convention note. The raw external tokens `k ɲ o m` therefore do **not** establish an aspiration error against the current standard IPA citation. Independent adjudication is still absent.
+- **ភ្នំពេញ:** the cited [Wiktionary entry](https://en.wiktionary.org/wiki/ភ្នំពេញ) reports standard IPA `/pʰnum ˈpɨɲ/`. The external output token list `pʰ n u m p ɨ ɲ` does not encode the explicit word/syllable boundary and stress marker. This is a representational difference that the current token-only harness cannot adjudicate; do not score it as a phonological error or silently synthesize missing marks.
+
+The [Khmer phonology paper](https://aclanthology.org/Y16-1.pdf) documents a plain/aspirated stop contrast, and Kirby's [Phnom Penh Khmer study](https://doi.org/10.1016/j.wocn.2014.02.001) documents dialect-conditioned aspiration and pitch/voice-quality effects around historical /r/-clusters. These establish why dialect and transcription level matter; neither source adjudicates these two lexical outputs by itself. The benchmark remains diagnostic-only and production integration remains disabled.

@@ -35,7 +35,7 @@
     "evidence_note": "IPA transcription is reported by the cited lexical reference(s); no independent adjudication against audio or multiple phonetic sources has been recorded. Do not treat as gold."
   },
   "ខ្ញុំ": {
-    "ipa": "/kʰɲom/",
+    "ipa": "/kɲom/",
     "profile": "careful_standard",
     "ipa_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
     "ua_status": "PROPOSED",
@@ -43,7 +43,9 @@
       "https://en.wiktionary.org/wiki/ខ្ញុំ"
     ],
     "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
-    "evidence_note": "IPA transcription is reported by the cited lexical reference(s); no independent adjudication against audio or multiple phonetic sources has been recorded. Do not treat as gold."
+    "evidence_note": "IPA transcription is reported by the cited lexical reference(s); no independent adjudication against audio or multiple phonetic sources has been recorded. Do not treat as gold.",
+    "orthographic_transcription": "k̥ʰñuṃ",
+    "source_convention_note": "The cited Wiktionary entry separately labels k̥ʰñuṃ as its orthographic/phonemic transcription and gives standard IPA /kɲom/. Do not convert the orthographic notation into /kʰɲom/; that earlier value is not supported by this source locator. This remains source-attested, not independently adjudicated."
   },
   "ភ្នំពេញ": {
     "ipa": "/pʰnum ˈpɨɲ/",

@@ -243,3 +243,13 @@ The repository-scoped open-PR query returned no open PRs at the start of this pa
 - **Latest raw-output smoke:** [run 40093054099](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093054099) passed. `khmerphonemizer==0.0.3`, 6/6 outputs, 0 errors; corpus SHA-256 `4b0fafa4a178c0a3e769ddb168f2115cd1fda0c98919c3bc2d731c13cbe6a7f4`; artifact SHA-256 `89eb762a46da84941bf47c7b26d7b18134270bcdede29bc7f1be8bcd60653f89`.
 - **Source correction:** current cited Wiktionary standard IPA for `ខ្ញុំ` is `/kɲom/`; `k̥ʰñuṃ` is kept as separate orthographic/phonemic notation. For `ភ្នំពេញ`, source IPA `/pʰnum ˈpɨɲ/` includes stress/boundary information absent from the external phone-token output. No independent gold corpus exists; report still has `independent_gold_count: 0`, `accuracy: null`.
 - **Release status:** research preview / partial prototype, not a complete or empirically accuracy-certified Khmer→Ukrainian engine. External engine remains diagnostic-only.
+
+
+Authoritative readiness checkpoint — 2026-10-24 12:38 UTC
+
+- Current main HEAD: 8e7209df4ec6c05767a8870368b112774681a151.
+- Current-main quality checks: DONE_VERIFIED. Run 40093541363 passed; Pages deployment 40093541446 passed.
+- Optional G2P smoke: DONE_VERIFIED as raw-output execution only. Run 40093213224 passed with six outputs, zero runtime errors, no independent gold; artifact SHA-256 89eb762a46da84941bf47c7b26d7b18134270bcdede29bc7f1be8bcd60653f89.
+- The cited standard IPA for ខ្ញុំ is /kɲom/; k̥ʰñuṃ remains separately labeled as orthographic/phonemic notation. ភ្នំពេញ still requires an explicit convention for stress and syllable boundaries.
+- Remaining TODO/BLOCKED: complete vowel/coda/context matrix, adjudicated lexical IPA corpus, source review for unresolved context-sensitive cases KHV-007/KHV-008. Unicode and external G2P output are not substitutes for acoustic or expert-adjudicated phonetic evidence.
+- Readiness: research preview is build/test/deploy verified, not a complete or empirically accuracy-certified transcription engine.

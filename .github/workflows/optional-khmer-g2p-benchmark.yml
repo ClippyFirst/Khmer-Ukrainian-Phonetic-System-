@@ -1,6 +1,11 @@
 name: Optional Khmer G2P smoke benchmark
 
 on:
+  push:
+    paths:
+      - "scripts/benchmark_g2p.py"
+      - "data/tests/verified-lexical-corpus.json"
+      - ".github/workflows/optional-khmer-g2p-benchmark.yml"
   workflow_dispatch:
   pull_request:
     paths:

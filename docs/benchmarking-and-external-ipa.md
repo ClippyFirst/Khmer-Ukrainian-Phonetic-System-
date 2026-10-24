@@ -53,3 +53,13 @@ These are research leads, not verified availability claims. Before executing a c
 - The [Khmer acoustic model project](https://github.com/chemvatho/Khmer-acoustic-model) advertises a 29,204-entry pronunciation dictionary validated by native linguists; its README distinguishes MIT code/model from CC BY-SA 4.0 dictionary data. This is a promising reference lead, not an integrated or redistributed corpus. Check exact revision, file access, dialect, annotation conventions, source terms and source overlap before adopting it.
 - [Goruut](https://github.com/neurlang/goruut) lists Khmer Central; this may not match the target dialect profile, and no run is recorded here.
 - Next: independently adjudicate KHV-007/KHV-008 and the vowel-series/coda matrix; do not use source-attested entries as accuracy labels.
+
+
+## Upstream provenance and output interpretation (checked 2026-10-24)
+
+| Candidate | Verified upstream fact | Evidence boundary / next step |
+|---|---|---|
+| [khmerphonemizer 0.0.3](https://pypi.org/project/khmerphonemizer/0.0.3/) | PyPI declares MIT and describes a Khmer grapheme-to-phoneme tool; the project cites wikipron, gruut, OpenFst and Phonetisaurus among its references. | Our smoke returned six outputs with zero runtime errors. Preserve the raw phone-token arrays: they are not directly comparable as full strings to a source IPA transcription until token boundaries, syllabification, stress and IPA conventions are reconciled. Review dependency and lexical-data provenance separately. |
+| [Goruut](https://github.com/neurlang/goruut) | Upstream README advertises an IPA phone set and Khmer Central support. | Support claim only; no successful Khmer run recorded here. Pin the commit and inspect raw output before adding any accuracy claim. |
+
+The six existing source examples remain unadjudicated and are not gold. Zero independent gold rows means no accuracy percentage is permitted. A MIT code license does not automatically license all upstream lexicon/model material.

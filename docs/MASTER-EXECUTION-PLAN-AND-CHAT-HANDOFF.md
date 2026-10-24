@@ -269,3 +269,13 @@ The Python profile adapter in `src/khmer_ua/ipa.py` correctly restricts the Phno
 - Change is on PR [#14](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/14), based on main `1977822694cb5ce31fc9cb54ab79446605907738`.
 - The browser test is a source-guard test; the existing Python tests are the behavioral reference. Quality workflow [40112562271](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40112562271) passed on the exact PR head `6fcd4442746f091159136e0b2b5ec126224c6e1b`: Python tests, web checks, and site build all succeeded. PR #14 merged as `d5245c0d7ab94de9c1774a705da1a3a7a14617f5`; post-merge quality [40113051028](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40113051028) and GitHub Pages deployment [40113051034](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40113051034) both passed on the merged HEAD.
 - This fixes implementation parity; it does not validate the underlying linguistic hypothesis or expand the evidence-backed contexts in which the colloquial rule may apply.
+
+
+## IPA benchmark harness and external engine protocol — 2026-10-24
+
+- Added `scripts/benchmark_ipa.py`, a standard-library-only harness with strict Unicode NFC exact match, code-point Levenshtein CER (diagnostic only), and explicit missing-prediction accounting. Every independently adjudicated gold row remains in each engine's denominator; omitted outputs cannot inflate accuracy.
+- Added `data/benchmark/gold.tsv` and `data/benchmark/predictions.tsv` header templates plus `tests/test_benchmark_ipa.py` covering no-gold behavior, adjudication gating, diacritic preservation, missing rows, and mismatches.
+- Added `docs/benchmarking-and-external-ipa.md`; linked the existing `data/external-ipa-renderers.json` inventory to the benchmark protocol. External candidates remain optional and disabled by default.
+- PR is open; current CI is queued / not yet verified. Do not merge until hosted tests pass. Local GitHub access is unavailable from the current container due network/DNS failure.
+- No adjudicated gold corpus was added and no accuracy score is claimed. Candidate engine language support, actual IPA semantics, exact versions, and model/data licensing still require verification. Registry presence and smoke execution are not evidence of accuracy.
+- Required next acceptance: run the repository test suite including the new harness tests; inspect all generated-artifact checks; then populate the gold set only with source-located, independently adjudicated pronunciations and rerun all engines against the same held-out set.

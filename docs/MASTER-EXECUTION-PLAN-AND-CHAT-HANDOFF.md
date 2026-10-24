@@ -286,6 +286,11 @@ The Python profile adapter in `src/khmer_ua/ipa.py` correctly restricts the Phno
 - Registry and per-language evidence notes: `data/external-ipa-renderers.json` and `docs/benchmarking-and-external-ipa.md`.
 - External outputs are diagnostics only unless compared against a versioned, independently adjudicated gold set. Engineering fixtures and source-attested dictionary entries are not automatically gold.
 - Shared harness: `scripts/benchmark_ipa.py`; empty templates at `data/benchmark/gold.tsv` and `data/benchmark/predictions.tsv`; tests at `tests/test_benchmark_ipa.py`.
-- New research branch: `research/third-party-ipa-systems-20261024`. PR and workflow outcomes must be checked before this work is considered integrated.
+
+
+### Verified status as of 2026-10-24
+
+PR #17 merged as `edf625847029bbc3a043a0c01a09115e263164fb`. Latest quality checks and external smoke passed; 72 tests and 22 subtests passed. Khmer Phonemizer 0.0.3: 6 outputs, 0 runtime errors, independent gold=0, accuracy=null. Durable report: `data/benchmark/runs/external-g2p-smoke-2026-10-24.json`; artifact: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40120003193/artifacts/12569269396.
+
 - Keep IPA adaptation boundary: source spelling → structural parse → source phonology → typed IPA → Ukrainian adapter. Third-party candidates remain optional and disabled in production.
 - Current true blocker: a source-located, independently adjudicated language-specific gold corpus with a documented dialect and IPA convention. Do not report accuracy until it exists.

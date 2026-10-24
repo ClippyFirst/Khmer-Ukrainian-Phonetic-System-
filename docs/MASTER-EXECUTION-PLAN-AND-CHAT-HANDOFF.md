@@ -309,3 +309,12 @@ PR #17 merged as `edf625847029bbc3a043a0c01a09115e263164fb`. Latest quality chec
 ### Khmer external IPA notation diagnostic — 2026-10-24
 
 - Pinned `khmerphonemizer==0.0.3` run [40128165807](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40128165807) passed with 6/6 outputs and 0 runtime errors. Strict token-join vs source IPA content matches 2/6; a separate notation-only comparison ignoring only slash wrappers, whitespace, syllable dots and stress marks matches 6/6. Aspiration, length, diacritics, tie bars and phone symbols remain significant. These are source-attested comparisons, not accuracy; independent gold count is 0. Artifact ZIP SHA-256: `2cbc7b00d35325e2e97fc98e80efeb9fdfecd477bf5ae5be24c43b6726c33299`.
+
+## Authoritative current-head checkpoint — 2026-10-25
+
+This checkpoint supersedes earlier readiness notes with stale main SHAs or queued-workflow status.
+
+- Current `main`: `cb5331d2b587733180d9a585631dee26d0c370d9`.
+- Quality checks [40129501080](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129501080): `success`; Pages deployment [40129501022](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129501022): `success`; optional Khmer G2P smoke [40129500995](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129500995): `success`.
+- The evidence registry is synchronized with the latest inspected smoke evidence from run [40128165807](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40128165807): 6 outputs, 0 runtime errors, 0 independent gold, accuracy null. Smoke outputs and notation-normalization agreement remain diagnostics, not adjudicated accuracy.
+- Generated report, public report copy, drift checks and software CI are verified. The complete vowel/coda/context matrix, unresolved KHV-007/KHV-008 source-profile reconciliation and independent expert-adjudicated Khmer IPA gold remain PARTIAL/BLOCKED. Do not fill missing evidence from Unicode names or external G2P agreement.

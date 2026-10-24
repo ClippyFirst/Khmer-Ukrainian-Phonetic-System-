@@ -299,8 +299,8 @@ PR #17 merged as `edf625847029bbc3a043a0c01a09115e263164fb`. Latest quality chec
 - Current true blocker: a source-located, independently adjudicated language-specific gold corpus with a documented dialect and IPA convention. Do not report accuracy until it exists.
 
 
-## IPA gold provenance gate — 2026-10-24
+## IPA gold provenance gate — merged 2026-10-24
 
-- Branch `research/khmer-gold-provenance-gate-rebased-20261024` adds fail-closed validation: any row marked `ADJUDICATED` must have non-empty `gold_ipa`, `source_id`, and `profile`.
-- Regression tests cover each missing field. This validates metadata completeness only; source locator, source registry, dialect/profile, IPA convention, reviewer/adjudication and uncertainty must still be checked.
-- Acceptance: current-head unit tests and optional Khmer G2P smoke. No gold IPA labels are invented by this change.
+- PR #21 merged; benchmark scoring now fails closed when an ADJUDICATED row lacks non-empty `gold_ipa`, `source_id`, or `profile`. Regression tests and optional Khmer G2P smoke passed on the merged head. This validates metadata completeness only; it does not validate the phonetic truth of a label.
+- Latest successful Khmer Phonemizer 0.0.3 run [40121359605](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605): 6 outputs, 0 runtime errors, 0 independent gold rows, accuracy null. Raw phone-token arrays remain unadjudicated and not directly string-comparable to source IPA without a declared convention.
+- Artifact ZIP SHA-256: `3cd5ad913909cd1ff692c192614f354b707f705c1b6a2f1dc7ad971a4baf63a5`.

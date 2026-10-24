@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "language": "Khmer",
-  "run_id": 40120003193,
+  "run_id": 40121359605,
   "engine": "khmerphonemizer",
   "engine_version": "0.0.3",
-  "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40120003193/artifacts/12569269396",
-  "artifact_zip_sha256": "d9bb81efd66e58825c4391ca495f304da2852ce4f065f8601d60bb6eba0609bf",
+  "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605/artifacts/12571551161",
+  "artifact_zip_sha256": "3cd5ad913909cd1ff692c192614f354b707f705c1b6a2f1dc7ad971a4baf63a5",
   "input_count": 6,
   "successful_outputs": 6,
   "runtime_errors": 0,
@@ -93,5 +93,13 @@
       "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
     }
   ],
-  "interpretation": "Raw token outputs are preserved. They are not directly string-comparable to source IPA because syllable boundaries/stress and possibly segment conventions differ. All source IPA entries remain unadjudicated; no accuracy score is permitted."
+  "interpretation": "Raw token outputs are preserved. They are not directly string-comparable to source IPA because syllable boundaries/stress and possibly segment conventions differ. All source IPA entries remain unadjudicated; no accuracy score is permitted.",
+  "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605",
+  "latest_smoke_summary": {
+    "input_count": 6,
+    "successful_outputs": 6,
+    "runtime_errors": 0,
+    "independent_gold_count": 0,
+    "accuracy": null
+  }
 }

@@ -227,3 +227,10 @@ The repository-scoped open-PR query returned no open PRs at the start of this pa
 - For `ភ្នំពេញ`, the source gives `/pʰnum ˈpɨɲ/`, including a boundary/space and stress marker. The engine's token output omits those marks. This is an unresolved output-convention/representation difference, not an adjudicated phonological error. Source: https://en.wiktionary.org/wiki/ភ្នំពេញ
 - Broader phonetic context: Khmer contrasts plain and aspirated stops (https://aclanthology.org/Y16-1.pdf); colloquial Phnom Penh /CrV/ realizations may differ through aspiration, f0 and phonation (https://doi.org/10.1016/j.wocn.2014.02.001). These papers do not independently adjudicate the candidate outputs for these lexical items.
 - Dedicated branch: `fix/khmer-g2p-source-ipa-reconciliation-2026-10-24`. Pending CI. Keep external engine disabled in production and retain the evidence status SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED.
+
+
+## CI reconciliation note — Khmer source IPA fixture (2026-10-24)
+
+- The first quality run on this evidence correction failed exactly where expected after changing the canonical corpus: `tests/test_data.py::test_verified_corpus_and_web_fixtures_agree_on_ipa` found the web fixture still held `/kʰɲom/` while the source-reconciled corpus now holds `/kɲom/`. The run had 67 passing tests and 1 failing test; this was fixture drift, not a runtime/adapter failure.
+- Updated `data/tests/web-fixtures.json` to `/kɲom/`, added the separate orthographic transcription field, and clarified the note. The next quality and optional-G2P workflows are queued on head `a1ffffa821e809b638db328b1f23bc6b6a27bef4`; re-check their final conclusions before merge.
+- Acceptance remains: full quality suite green, optional smoke successful, corpus and web fixture IPA aligned, accuracy still null / no independent gold.

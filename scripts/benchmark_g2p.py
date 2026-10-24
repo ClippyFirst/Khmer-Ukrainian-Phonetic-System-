@@ -49,6 +49,14 @@ def package_version(name: str) -> str | None:
         return None
 
 
+def unwrap_source_ipa(value: str) -> str:
+    """Remove only outer IPA slash delimiters; preserve internal notation."""
+    value = value.strip()
+    if len(value) >= 2 and value.startswith("/") and value.endswith("/"):
+        return value[1:-1]
+    return value
+
+
 def source_ipa_comparison_key(value: str) -> str:
     """Remove only notation wrappers/separators for a source-attested diagnostic.
 
@@ -57,9 +65,7 @@ def source_ipa_comparison_key(value: str) -> str:
     delimiters, whitespace, syllable dots, and primary/secondary stress marks
     are ignored to diagnose notation-only disagreement.
     """
-    value = value.strip()
-    if len(value) >= 2 and value.startswith("/") and value.endswith("/"):
-        value = value[1:-1]
+    value = unwrap_source_ipa(value)
     return "".join(
         char for char in value
         if not char.isspace() and char not in {".", "ˈ", "ˌ"}
@@ -102,7 +108,7 @@ def build_report(
                 "notation_normalized_match": None,
             }
             continue
-        strict_reference = source_ipa.strip()
+        strict_reference = unwrap_source_ipa(source_ipa)
         strict_match = raw_joined == strict_reference
         normalized_match = source_ipa_comparison_key(raw_joined) == source_ipa_comparison_key(source_ipa)
         status = (

@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "language": "Khmer",
+  "run_id": 40120003193,
+  "engine": "khmerphonemizer",
+  "engine_version": "0.0.3",
+  "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40119620311/artifacts/12570930058",
+  "artifact_zip_sha256": "df7815f1a5891ed0e3ce947abf7669a47a872ca90027955ef4ac51fce06398b6",
+  "input_count": 6,
+  "successful_outputs": 6,
+  "runtime_errors": 0,
+  "independent_gold_count": 0,
+  "accuracy": null,
+  "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD",
+  "representative_cases": [
+    {
+      "input": "ភាសាខ្មែរ",
+      "raw_phone_tokens": [
+        "pʰ",
+        "i",
+        "ə",
+        "s",
+        "aː",
+        "kʰ",
+        "m",
+        "a",
+        "e"
+      ],
+      "source_ipa": "/pʰiəsaː kʰmae/",
+      "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "input": "ខ្មែរ",
+      "raw_phone_tokens": [
+        "kʰ",
+        "m",
+        "a",
+        "e"
+      ],
+      "source_ipa": "/kʰmae/",
+      "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "input": "ភាសា",
+      "raw_phone_tokens": [
+        "pʰ",
+        "i",
+        "ə",
+        "s",
+        "aː"
+      ],
+      "source_ipa": "/pʰiə.saː/",
+      "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "input": "ខ្ញុំ",
+      "raw_phone_tokens": [
+        "k",
+        "ɲ",
+        "o",
+        "m"
+      ],
+      "source_ipa": "/kɲom/",
+      "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "input": "ភ្នំពេញ",
+      "raw_phone_tokens": [
+        "pʰ",
+        "n",
+        "u",
+        "m",
+        "p",
+        "ɨ",
+        "ɲ"
+      ],
+      "source_ipa": "/pʰnum ˈpɨɲ/",
+      "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "input": "កម្ពុជា",
+      "raw_phone_tokens": [
+        "k",
+        "a",
+        "m",
+        "p",
+        "u",
+        "c",
+        "i",
+        "ə"
+      ],
+      "source_ipa": "/kam.pu.ciə/",
+      "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    }
+  ],
+  "interpretation": "Raw token outputs are preserved. They are not directly string-comparable to source IPA because syllable boundaries/stress and possibly segment conventions differ. All source IPA entries remain unadjudicated; no accuracy score is permitted."
+}

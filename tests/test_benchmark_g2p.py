@@ -61,3 +61,35 @@ def test_khnhom_source_ipa_is_not_confused_with_orthographic_transcription():
     assert entry["ipa"] == "/kɲom/"
     assert entry["orthographic_transcription"] == "k̥ʰñuṃ"
     assert "not independently adjudicated" in entry["source_convention_note"].lower()
+
+def test_source_ipa_notation_diagnostic_preserves_phonetic_distinctions():
+    module = load_module()
+    corpus = {
+        "word": {
+            "ipa": "/pʰiə.saː/",
+            "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
+            "sources": ["https://example.invalid/source"],
+        }
+    }
+    report = module.build_report(
+        corpus,
+        [{
+            "input": "word",
+            "raw_output": ["pʰ", "i", "ə", "s", "aː"],
+            "phone_tokens": ["pʰ", "i", "ə", "s", "aː"],
+            "source_reported_ipa": "/pʰiə.saː/",
+            "error": None,
+        }],
+        package="khmerphonemizer",
+        version="test",
+        corpus_path="fixture.json",
+        corpus_sha256="abc",
+    )
+    assert report["source_attested_diagnostic"]["strict_string_matches"] == 0
+    assert report["source_attested_diagnostic"]["limited_notation_normalized_matches"] == 1
+    assert report["independent_gold_count"] == 0
+    assert report["accuracy"] is None
+    assert report["records"][0]["source_ipa_diagnostic"]["status"] == "MATCH_AFTER_LIMITED_NOTATION_REMOVAL_NOT_GOLD"
+    # Length and aspiration must remain contrastive in this diagnostic.
+    assert module.source_ipa_comparison_key("/pʰaː/") != module.source_ipa_comparison_key("/pa/")
+    assert module.source_ipa_comparison_key("/ta/") != module.source_ipa_comparison_key("/tʰa/")

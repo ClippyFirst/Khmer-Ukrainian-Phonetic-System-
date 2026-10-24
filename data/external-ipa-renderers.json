@@ -29,18 +29,18 @@
       "url": "https://github.com/seanghay/khmerphonemizer",
       "kind": "G2P phonemizer",
       "status": "candidate",
-      "output": "Latest pinned khmerphonemizer 0.0.3 smoke run 40129500995: 6/6 raw outputs, 0 runtime errors. Source-attested diagnostic: 2/6 strict string matches, 6/6 after limited removal of wrappers, whitespace, syllable dots and stress marks. This is notation concordance only; independent gold remains 0 and accuracy null.",
+      "output": "Latest pinned khmerphonemizer 0.0.3 smoke run 40133705156: 6/6 raw outputs, 0 runtime errors. Source-attested diagnostic: 2/6 strict string matches, 6/6 after limited removal of wrappers, whitespace, syllable dots and stress marks. This is notation concordance only; independent gold remains 0 and accuracy null.",
       "license": "MIT reported upstream; preserve notices if used",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 40129500995,
+      "latest_run_id": 40133705156,
       "execution_status": "SMOKE_VERIFIED_SOURCE_ATTESTED_DIAGNOSTIC_NOT_ACCURACY",
       "smoke_evidence": {
         "id": "khmerphonemizer",
-        "latest_run_id": 40129500995,
-        "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129500995",
-        "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129500995/artifacts/12574167928",
-        "artifact_zip_sha256": "da53268c5d66ba3e2e5682029deb4bd6c2566466fbd920d72a6e3d9cab322f33",
+        "latest_run_id": 40133705156,
+        "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156",
+        "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156/artifacts/12575459926",
+        "artifact_zip_sha256": "ff588e5d6a0e533aa4de7427e4786672f03999c3f7131abb1c89cb828936a677",
         "engine_version": "0.0.3",
         "input_count": 6,
         "successful_outputs": 6,
@@ -52,9 +52,9 @@
         "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD",
         "corpus_sha256": "4b0fafa4a178c0a3e769ddb168f2115cd1fda0c98919c3bc2d731c13cbe6a7f4"
       },
-      "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129500995",
-      "latest_artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40129500995/artifacts/12574167928",
-      "latest_artifact_zip_sha256": "da53268c5d66ba3e2e5682029deb4bd6c2566466fbd920d72a6e3d9cab322f33",
+      "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156",
+      "latest_artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156/artifacts/12575459926",
+      "latest_artifact_zip_sha256": "ff588e5d6a0e533aa4de7427e4786672f03999c3f7131abb1c89cb828936a677",
       "latest_smoke_summary": {
         "input_count": 6,
         "successful_outputs": 6,
@@ -64,7 +64,7 @@
         "strict_string_matches": 2,
         "limited_notation_normalized_matches": 6,
         "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD",
-        "interpretation": "Raw output only. Six source-attested comparisons; 2 strict string matches and 6 matches after removing only outer IPA slashes, whitespace, syllable dots and stress marks. Not accuracy: no independently adjudicated gold. Phone symbols, aspiration, length, diacritics and tie bars remain significant."
+        "interpretation": "Raw output only. Six source-attested comparisons; 2 strict string matches and 6 matches after limited removal of slash wrappers, whitespace, syllable dots and stress marks. Not accuracy: no independently adjudicated gold. Phone symbols, aspiration, length, diacritics and tie bars remain significant."
       }
     },
     {
@@ -240,6 +240,25 @@
       "limited_notation_normalized_matches": 6,
       "source_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
       "interpretation": "Raw output only. Six source-attested comparisons; 2 strict string matches and 6 matches after removing only outer IPA slashes, whitespace, syllable dots and stress marks. Not accuracy: no independently adjudicated gold. Phone symbols, aspiration, length, diacritics and tie bars remain significant."
+    },
+    {
+      "engine": "khmerphonemizer",
+      "version": "0.0.3",
+      "run_id": 40133705156,
+      "run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156",
+      "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156/artifacts/12575459926",
+      "artifact_zip_sha256": "ff588e5d6a0e533aa4de7427e4786672f03999c3f7131abb1c89cb828936a677",
+      "corpus_path": "data/tests/verified-lexical-corpus.json",
+      "corpus_sha256": "4b0fafa4a178c0a3e769ddb168f2115cd1fda0c98919c3bc2d731c13cbe6a7f4",
+      "input_count": 6,
+      "successful_outputs": 6,
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "strict_string_matches": 2,
+      "limited_notation_normalized_matches": 6,
+      "source_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
+      "interpretation": "Raw output only. Six source-attested comparisons; 2 strict string matches and 6 matches after limited removal of slash wrappers, whitespace, syllable dots and stress marks. Not accuracy: no independently adjudicated gold. Phone symbols, aspiration, length, diacritics and tie bars remain significant."
     }
   ],
   "upstream_evidence": [

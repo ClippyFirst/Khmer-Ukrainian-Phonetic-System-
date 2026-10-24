@@ -28,12 +28,13 @@
       "name": "Khmer Phonemizer",
       "url": "https://github.com/seanghay/khmerphonemizer",
       "kind": "G2P phonemizer",
-      "status": "RAW_OUTPUT_SMOKE_VERIFIED; IPA_CONVENTION_REVIEW_PENDING; GOLD_ACCURACY_UNMEASURED",
+      "status": "candidate",
       "output": "Pinned 0.0.3 smoke captured 6 outputs, 0 runtime errors, 0 independent gold. Returns phone-token arrays; syllable boundaries/stress may differ from reference notation.",
       "license": "MIT reported upstream; preserve notices if used",
-      "verified_in_repo": true,
+      "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 40119620311
+      "latest_run_id": 40119620311,
+      "execution_status": "SMOKE_VERIFIED_NOT_ACCURACY"
     },
     {
       "id": "ipa-dict",
@@ -51,11 +52,12 @@
       "name": "Goruut",
       "url": "https://github.com/neurlang/goruut",
       "kind": "multilingual IPA phonemizer",
-      "status": "UPSTREAM_SUPPORT_CLAIM_CONFIRMED; EXECUTION_NOT_RUN",
+      "status": "candidate",
       "output": "Upstream README lists Khmer Central and says phone set is IPA; dialect equivalence and project-local execution remain unverified.",
       "license": "Verify current upstream license and model/data terms",
       "verified_in_repo": false,
-      "enabled_by_default": false
+      "enabled_by_default": false,
+      "execution_status": "UPSTREAM_SUPPORT_CLAIM_EXECUTION_NOT_RUN"
     },
     {
       "id": "charis-sil",
@@ -139,11 +141,12 @@
       "name": "Khmer acoustic model IPA dictionary",
       "url": "https://github.com/chemvatho/Khmer-acoustic-model",
       "kind": "word-level IPA reference resource",
-      "status": "UPSTREAM_DICTIONARY_CLAIM; LICENSE_REVIEW_REQUIRED",
+      "status": "benchmark-resource",
       "output": "Upstream advertises 29,204 IPA entries validated by native linguists. README states dictionary data CC BY-SA 4.0 separately from MIT code/model.",
       "license": "Dictionary CC BY-SA 4.0 as stated upstream; verify exact files/revision and attribution before use",
       "verified_in_repo": false,
-      "enabled_by_default": false
+      "enabled_by_default": false,
+      "execution_status": "UPSTREAM_RESOURCE_CLAIM_LICENSE_REVIEW_REQUIRED"
     }
   ],
   "benchmark_protocol": {

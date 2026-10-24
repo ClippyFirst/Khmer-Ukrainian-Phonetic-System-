@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "language": "Khmer",
-  "run_id": 40121359605,
+  "run_id": 40127648027,
   "engine": "khmerphonemizer",
   "engine_version": "0.0.3",
-  "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605/artifacts/12571551161",
-  "artifact_zip_sha256": "3cd5ad913909cd1ff692c192614f354b707f705c1b6a2f1dc7ad971a4baf63a5",
+  "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027/artifacts/12573689148",
+  "artifact_zip_sha256": "3ba1d9408904146e3d95a6e9ee481e6aa2418bbfb69b04a0d71665296b096385",
   "input_count": 6,
   "successful_outputs": 6,
   "runtime_errors": 0,
@@ -93,13 +93,20 @@
       "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED"
     }
   ],
-  "interpretation": "Raw token outputs are preserved. They are not directly string-comparable to source IPA because syllable boundaries/stress and possibly segment conventions differ. All source IPA entries remain unadjudicated; no accuracy score is permitted.",
-  "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605",
+  "interpretation": "Six inputs processed, 0 runtime errors. Raw token outputs are preserved. In a separate notation-only diagnostic, 2/6 match source IPA after removing only outer slash wrappers; 6/6 match after additionally ignoring spaces, syllable dots and stress marks. This is source-attested concordance, not accuracy; independent gold count is zero.",
+  "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027",
   "latest_smoke_summary": {
     "input_count": 6,
     "successful_outputs": 6,
     "runtime_errors": 0,
     "independent_gold_count": 0,
     "accuracy": null
+  },
+  "source_attested_diagnostic": {
+    "comparable_rows": 6,
+    "strict_string_matches": 2,
+    "limited_notation_normalized_matches": 6,
+    "normalization": "remove outer /.../ wrappers, whitespace, syllable dots, and ˈ/ˌ only; preserve all phone symbols, aspiration, length, diacritics and tie bars",
+    "interpretation": "Concordance with source-reported IPA only. Sources are not independently adjudicated, so these counts are not accuracy and must not be called gold agreement."
   }
 }

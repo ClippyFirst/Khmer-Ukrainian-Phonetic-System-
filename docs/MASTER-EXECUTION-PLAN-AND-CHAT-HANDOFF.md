@@ -304,3 +304,8 @@ PR #17 merged as `edf625847029bbc3a043a0c01a09115e263164fb`. Latest quality chec
 - PR #21 merged; benchmark scoring now fails closed when an ADJUDICATED row lacks non-empty `gold_ipa`, `source_id`, or `profile`. Regression tests and optional Khmer G2P smoke passed on the merged head. This validates metadata completeness only; it does not validate the phonetic truth of a label.
 - Latest successful Khmer Phonemizer 0.0.3 run [40121359605](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605): 6 outputs, 0 runtime errors, 0 independent gold rows, accuracy null. Raw phone-token arrays remain unadjudicated and not directly string-comparable to source IPA without a declared convention.
 - Artifact ZIP SHA-256: `3cd5ad913909cd1ff692c192614f354b707f705c1b6a2f1dc7ad971a4baf63a5`.
+
+
+### Khmer external IPA notation diagnostic — 2026-10-24
+
+- Pinned `khmerphonemizer==0.0.3` run [40127648027](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027) passed with 6/6 outputs and 0 runtime errors. Strict token-join vs source IPA content matches 2/6; a separate notation-only comparison ignoring only slash wrappers, whitespace, syllable dots and stress marks matches 6/6. Aspiration, length, diacritics, tie bars and phone symbols remain significant. These are source-attested comparisons, not accuracy; independent gold count is 0. Artifact ZIP SHA-256: `3ba1d9408904146e3d95a6e9ee481e6aa2418bbfb69b04a0d71665296b096385`.

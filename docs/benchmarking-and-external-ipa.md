@@ -75,3 +75,8 @@ The six existing source examples remain unadjudicated and are not gold. Zero ind
 ## Source-attested notation diagnostic (not accuracy)
 
 The optional Khmer G2P report now retains raw phoneme tokens and adds a separate source-attested notation diagnostic. It compares concatenated tokens against the cited IPA after removing only outer `/.../` wrappers, whitespace, syllable dots, and primary/secondary stress marks (`ˈ`, `ˌ`). Aspiration, length, diacritics, tie bars, and phone symbols remain significant. The report exposes strict and limited-notation counts but always leaves `independent_gold_count = 0` and `accuracy = null`. These comparisons diagnose transcription/segmentation conventions only; cited IPA is not independently adjudicated and is never treated as gold.
+
+
+## Latest external smoke and source-attested comparison
+
+The latest pinned `khmerphonemizer==0.0.3` run is [40127648027](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027): 6/6 outputs, 0 runtime errors. The source-attested notation diagnostic finds 2/6 strict matches after removing only outer slash wrappers, and 6/6 after additionally ignoring whitespace, syllable dots, and stress marks. This does not establish accuracy or validate the source transcriptions; independent adjudicated gold remains absent. Artifact ZIP SHA-256: `3ba1d9408904146e3d95a6e9ee481e6aa2418bbfb69b04a0d71665296b096385`.

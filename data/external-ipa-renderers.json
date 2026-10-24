@@ -33,8 +33,8 @@
       "license": "MIT reported upstream; preserve notices if used",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 40121359605,
-      "execution_status": "SMOKE_VERIFIED_NOT_ACCURACY",
+      "latest_run_id": 40127648027,
+      "execution_status": "SMOKE_VERIFIED_SOURCE_ATTESTED_DIAGNOSTIC_NOT_ACCURACY",
       "smoke_evidence": {
         "id": "khmerphonemizer",
         "latest_run_id": 40121359605,
@@ -49,13 +49,15 @@
         "accuracy": null,
         "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD"
       },
-      "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605",
-      "latest_artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40121359605/artifacts/12571551161",
-      "latest_artifact_zip_sha256": "3cd5ad913909cd1ff692c192614f354b707f705c1b6a2f1dc7ad971a4baf63a5",
+      "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027",
+      "latest_artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027/artifacts/12573689148",
+      "latest_artifact_zip_sha256": "3ba1d9408904146e3d95a6e9ee481e6aa2418bbfb69b04a0d71665296b096385",
       "latest_smoke_summary": {
         "input_count": 6,
         "successful_outputs": 6,
         "runtime_errors": 0,
+        "source_attested_strict_matches": 2,
+        "source_attested_limited_notation_matches": 6,
         "independent_gold_count": 0,
         "accuracy": null
       }

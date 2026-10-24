@@ -149,5 +149,41 @@
     "external_engines_enabled_by_default": false,
     "notes": "Registry membership does not establish language support, IPA output semantics, reproducibility, accuracy, or license compatibility. Preserve raw output and record exact versions and model/data licenses."
   },
-  "last_reviewed": "2026-10-24"
+  "last_reviewed": "2026-10-24",
+  "observed_experiments": [
+    {
+      "engine": "khmerphonemizer",
+      "version": "0.0.3",
+      "run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093213224",
+      "corpus": "6 source-attested lexical probes",
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "status": "SMOKE_VERIFIED_NOT_ACCURACY",
+      "interpretation": "The source-attested entries are explicitly not independently adjudicated gold; output symbols must be checked against this project's IPA convention."
+    }
+  ],
+  "upstream_evidence": [
+    {
+      "engine": "Khmer Phonemizer",
+      "url": "https://github.com/seanghay/khmerphonemizer",
+      "fact": "Upstream describes MIT-licensed standalone Khmer G2P and returns word tokens plus phoneme tokens.",
+      "status": "SMOKE_VERIFIED_OUTPUT_CONVENTION_REVIEW_PENDING",
+      "caveat": "Some phone sequences may be IPA-like; do not assume full convention parity or lexical accuracy."
+    },
+    {
+      "engine": "Khmer acoustic model dictionary",
+      "url": "https://github.com/chemvatho/Khmer-acoustic-model",
+      "fact": "Upstream describes a 29,204-entry IPA pronunciation dictionary validated by native linguists; README says dictionary data is CC BY-SA 4.0, distinct from MIT code/model.",
+      "status": "PROMISING_REFERENCE_RESOURCE_LICENSE_REVIEW_REQUIRED",
+      "caveat": "Not integrated or redistributed. Need inspect exact release/files, dialect/annotation convention and licensing before use."
+    },
+    {
+      "engine": "Goruut",
+      "url": "https://github.com/neurlang/goruut",
+      "fact": "README lists Khmer Central among supported languages and claims IPA phone set.",
+      "status": "UPSTREAM_CLAIM_ONLY_NOT_EXECUTED",
+      "caveat": "Khmer Central may not match project's exact target profile; validate dialect and IPA conventions."
+    }
+  ]
 }

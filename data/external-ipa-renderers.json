@@ -47,8 +47,7 @@
         "runtime_errors": 0,
         "independent_gold_count": 0,
         "accuracy": null,
-        "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD",
-        "latest_run_note": "Synced with latest run; 6/6 raw outputs, 0 runtime errors, 2 strict and 6 limited-notation source-attested matches; independent gold remains 0."
+        "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD"
       },
       "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027",
       "latest_artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40127648027/artifacts/12573689148",
@@ -60,8 +59,7 @@
         "source_attested_strict_matches": 2,
         "source_attested_limited_notation_matches": 6,
         "independent_gold_count": 0,
-        "accuracy": null,
-        "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD"
+        "accuracy": null
       }
     },
     {

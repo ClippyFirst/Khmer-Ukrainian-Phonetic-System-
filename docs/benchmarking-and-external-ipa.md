@@ -63,3 +63,10 @@ These are research leads, not verified availability claims. Before executing a c
 | [Goruut](https://github.com/neurlang/goruut) | Upstream README advertises an IPA phone set and Khmer Central support. | Support claim only; no successful Khmer run recorded here. Pin the commit and inspect raw output before adding any accuracy claim. |
 
 The six existing source examples remain unadjudicated and are not gold. Zero independent gold rows means no accuracy percentage is permitted. A MIT code license does not automatically license all upstream lexicon/model material.
+
+
+## Benchmark metric semantics — 2026-10-24
+
+- `exact_match_rate` is strict string equality after the declared Unicode normalization and is comparable only when the same IPA profile/conventions are used. Tone, length, stress, syllable boundaries, tie bars and other IPA distinctions are not silently removed.
+- `character_error_rate` is Levenshtein distance over Unicode code points, not a phoneme/segment error rate. IPA affricates, combining diacritics, length marks and tone symbols can occupy multiple code points; interpret this field as a string-distance diagnostic only.
+- A valid score still requires a non-empty independently adjudicated gold set with source locator and profile. Smoke output, engineering fixtures, source-attested but unadjudicated entries, and inter-engine agreement are not accuracy.

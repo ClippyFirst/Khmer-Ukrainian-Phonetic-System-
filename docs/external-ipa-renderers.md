@@ -68,3 +68,8 @@ These resources are relevant to the UI's display of the source writing system; t
 - [Padauk](https://software.sil.org/padauk/) — Useful for Myanmar-script text shaping and coverage; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
 - [Busra](https://software.sil.org/busra/) — Khmer-script display font only; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
 - [Mondulkiri](https://software.sil.org/mondulkiri/) — Khmer-script display font only; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
+
+
+## Optional raw-output benchmark runner
+
+`scripts/benchmark_g2p.py` can call the upstream [Khmer Phonemizer](https://github.com/seanghay/khmerphonemizer) API after a separate installation of `khmerphonemizer`. It records raw phone tokens, timing, package version, corpus hash, source-reported IPA, and per-record errors. The repository's lexical corpus is source-attested but not independently adjudicated, so the report hard-codes `independent_gold_count: 0` and `accuracy: null`. It is a diagnostic comparison tool, not an accuracy benchmark. The package remains optional and is not imported by the production runtime.

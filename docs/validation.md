@@ -14,3 +14,8 @@ The browser adapter must validate mixed Khmer input per orthographic unit. A sin
 ## Verified lexical spans
 
 When a verified lexical fixture contains more than one orthographic word, tokenization must preserve the complete fixture span before generic Khmer syllable segmentation. The span is accepted only when followed by whitespace, punctuation, or end-of-input, so a fixture cannot accidentally match the prefix of a longer word. IPA policy mapping preserves whitespace, allowing phrase-level fixtures such as ភាសាខ្មែរ to be checked against their complete canonical Ukrainian rendering.
+
+
+## External G2P evidence checkpoint (2026-10-24)
+
+The source-IPA reconciliation is merged at `35ce7142bf71f7e4cdb1acbb44d94d45ef71693a`. Quality run [40093054206](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093054206) passed. Optional `khmerphonemizer==0.0.3` run [40093054099](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093054099) returned 6/6 outputs, 0 errors; its artifact was inspected. The source-attested corpus still is not independent gold, so `accuracy` remains null. This is verified diagnostic infrastructure, not phonological accuracy verification.

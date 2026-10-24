@@ -184,7 +184,7 @@ function mapIpa(ipa) {
 function renderIpaProfile(ipa, profile) {
   if (!PROFILES.has(profile)) throw new Error("Unsupported pronunciation profile: " + profile);
   if (profile === "careful_standard" || profile === "established_form") return ipa;
-  return ipa.replace(/([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])/gu, "$1ʰ");
+  return ipa.replace(/(^|[ .ˈˌ])([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])/gu, "$1$2ʰ");
 }
 
 function renderFixture(fixture, profile) {

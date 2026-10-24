@@ -253,3 +253,19 @@ Authoritative readiness checkpoint — 2026-10-24 12:38 UTC
 - The cited standard IPA for ខ្ញុំ is /kɲom/; k̥ʰñuṃ remains separately labeled as orthographic/phonemic notation. ភ្នំពេញ still requires an explicit convention for stress and syllable boundaries.
 - Remaining TODO/BLOCKED: complete vowel/coda/context matrix, adjudicated lexical IPA corpus, source review for unresolved context-sensitive cases KHV-007/KHV-008. Unicode and external G2P output are not substitutes for acoustic or expert-adjudicated phonetic evidence.
 - Readiness: research preview is build/test/deploy verified, not a complete or empirically accuracy-certified transcription engine.
+
+
+## Browser/Python IPA profile parity correction — 2026-10-24
+
+### Finding
+The Python profile adapter in `src/khmer_ua/ipa.py` correctly restricts the Phnom Penh colloquial /r/-loss approximation to an explicit word/syllable boundary (`^|[ .ˈˌ]`). The browser adapter in `src/main.js` instead rewrote every matching `CrV` substring, including an unsegmented medial match. That violated the documented conservative boundary rule and made Python/browser behavior diverge.
+
+### Change prepared
+- Updated the browser regex to require the same explicit boundary as the Python implementation and preserve the captured boundary and onset.
+- Strengthened `tests/web-engine.test.mjs` to require the boundary-aware pattern and replacement.
+- Existing Python behavioral tests cover word-initial and explicitly segmented onset clusters, unsegmented medial matches, and coda /r/.
+
+### Verification boundary
+- Change is on PR [#14](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/14), based on main `1977822694cb5ce31fc9cb54ab79446605907738`.
+- The browser test is a source-guard test; the existing Python tests are the behavioral reference. Quality workflow [40112562271](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40112562271) passed on the exact PR head `6fcd4442746f091159136e0b2b5ec126224c6e1b`: Python tests, web checks, and site build all succeeded. Pages deployment after merge remains a separate acceptance check.
+- This fixes implementation parity; it does not validate the underlying linguistic hypothesis or expand the evidence-backed contexts in which the colloquial rule may apply.

@@ -298,3 +298,9 @@ PR #17 merged as `edf625847029bbc3a043a0c01a09115e263164fb`. Latest quality chec
 - Keep IPA adaptation boundary: source spelling → structural parse → source phonology → typed IPA → Ukrainian adapter. Third-party candidates remain optional and disabled in production.
 - Current true blocker: a source-located, independently adjudicated language-specific gold corpus with a documented dialect and IPA convention. Do not report accuracy until it exists.
 
+
+## IPA gold provenance gate — 2026-10-24
+
+- Branch `research/khmer-gold-provenance-gate-rebased-20261024` adds fail-closed validation: any row marked `ADJUDICATED` must have non-empty `gold_ipa`, `source_id`, and `profile`.
+- Regression tests cover each missing field. This validates metadata completeness only; source locator, source registry, dialect/profile, IPA convention, reviewer/adjudication and uncertainty must still be checked.
+- Acceptance: current-head unit tests and optional Khmer G2P smoke. No gold IPA labels are invented by this change.

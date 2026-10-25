@@ -339,3 +339,13 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 - Added a runtime test asserting that a syllable with multiple register shifters returns `EVIDENCE_LIMITED` / `MULTIPLE_REGISTER_SHIFTERS`; wired it into both `npm test` and `npm run check`.
 - Verification: Quality checks [40192533827](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40192533827) completed successfully on commit `78ec839322ca3211469ff7c0d46639c0d55eb78c`.
 - This verifies conservative parser behavior only. The external G2P diagnostic remains 6/6 outputs with 0 runtime errors, but independent gold remains 0 and accuracy remains null. Complete vowel/coda/context evidence and unresolved source/profile conflicts remain open.
+
+
+## Unknown-character fail-closed correction — 2026-10-25
+
+- Branch: `fix/khmer-reject-unknown-grapheme-material-20261025`; PR [#35](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/35).
+- Defect: `decompose_khmer_syllable` recorded an unknown character as `sign_or_unknown` but continued; if the same unit contained a recognized Khmer base consonant, final status could be `ESTABLISHED_STRUCTURE`. Example: mixed-script input `កx`.
+- Test-first evidence: [run 40195870960](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40195870960) failed as expected because `analyze("កx")` returned `ESTABLISHED_STRUCTURE`.
+- Fix: the parser now returns `INVALID_OR_UNSUPPORTED`, confidence `0.0`, and source-labeled grapheme diagnostics immediately when a character is not in the known Khmer sign registry. This is a structural rejection, not an IPA rule.
+- Verification: post-fix exact-head run [40195885161](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40195885161) **passed** Python tests, web checks and site build.
+- Linguistic gate remains open: the general orthography-to-IPA pipeline still intentionally withholds IPA; representative register/vowel examples and acoustic literature are not a complete context-conditioned mapping or independent adjudicated lexical gold. Independent gold count remains 0.

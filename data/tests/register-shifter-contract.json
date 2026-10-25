@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "purpose": "Shared Python/browser contract for orthographic register-shifter resolution. These are structural regression cases, not independent phonetic gold.",
+  "cases": [
+    {
+      "id": "muusikatoan-second-series-nga",
+      "surface": "ង៉",
+      "register": "first",
+      "rule": "MUUSIKATOAN",
+      "status": "ESTABLISHED_STRUCTURE"
+    },
+    {
+      "id": "ba-to-pa-exception",
+      "surface": "ប៉",
+      "register": "first",
+      "rule": "BA_TO_PA_EXCEPTION",
+      "status": "ESTABLISHED_STRUCTURE"
+    },
+    {
+      "id": "triisap-first-series-sa",
+      "surface": "ស៊",
+      "register": "second",
+      "rule": "TRIISAP",
+      "status": "ESTABLISHED_STRUCTURE"
+    },
+    {
+      "id": "ineligible-muusikatoan-ka",
+      "surface": "ក៉",
+      "register": "first",
+      "rule": "NON_STANDARD_SHIFTER_USE",
+      "status": "EVIDENCE_LIMITED"
+    },
+    {
+      "id": "ineligible-triisap-nga",
+      "surface": "ង៊",
+      "register": "second",
+      "rule": "NON_STANDARD_SHIFTER_USE",
+      "status": "EVIDENCE_LIMITED"
+    },
+    {
+      "id": "multiple-shifters-ba",
+      "surface": "ប៉៊",
+      "register": "first",
+      "rule": "MULTIPLE_REGISTER_SHIFTERS",
+      "status": "EVIDENCE_LIMITED"
+    }
+  ]
+}

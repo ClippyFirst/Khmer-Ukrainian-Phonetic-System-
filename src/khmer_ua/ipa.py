@@ -10,9 +10,11 @@ import re
 
 PROFILES = {"careful_standard", "phnom_penh_colloquial", "established_form"}
 
-# Detect a possible onset /CrV/ at the start of the input or after an explicit
-# word/syllable boundary. This is a trigger for uncertainty, not a rewrite rule.
-_R_LOSS_ONSET_CANDIDATE = re.compile(r"(^|[ .ˈˌ])([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])")
+# Detect a possible stop-/r/ onset at the start of the input or after an
+# explicit word/syllable boundary. The optional aspiration marker matters:
+# IPA forms such as /pʰrV/, /tʰrV/ and /kʰrV/ must hit the same uncertainty
+# boundary as /prV/, /trV/ and /krV/. This is a trigger, not a rewrite rule.
+_R_LOSS_ONSET_CANDIDATE = re.compile(r"(^|[ .ˈˌ])([ptkbdɡc])(?:ʰ)?r(?=[aeiouəɛɔɑɨɤ])")
 
 
 def render_ipa_profile(ipa: str, profile: str = "careful_standard") -> str:

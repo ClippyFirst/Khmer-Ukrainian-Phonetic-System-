@@ -1,34 +1,38 @@
 [
   {
-    "rule_id":"R-COENG-UNIT",
-    "domain":"orthography",
-    "input":"U+17D2 + consonant",
-    "output":"subscript_consonant_unit",
-    "status":"ESTABLISHED",
-    "source":"unicode17-ch16"
+    "rule_id": "R-COENG-UNIT",
+    "domain": "orthography",
+    "input": "U+17D2 + consonant",
+    "output": "subscript_consonant_unit",
+    "status": "ESTABLISHED",
+    "source": "unicode17-ch16",
+    "source_locator": "Unicode 17.0.0 Chapter 16 §16.4 Khmer, “Subscript Consonants” and “Ordering of Syllable Components”"
   },
   {
-    "rule_id":"R-NIKAHIT",
-    "domain":"orthography_to_phonology",
-    "input":"U+17C6",
-    "output":"coda_and_nucleus_effect_requires_context",
-    "status":"WELL_SUPPORTED",
-    "source":"r12a-orthography"
+    "rule_id": "R-NIKAHIT",
+    "domain": "orthography_to_phonology",
+    "input": "U+17C6",
+    "output": "coda_and_nucleus_effect_requires_context",
+    "status": "WELL_SUPPORTED",
+    "source": "r12a-orthography",
+    "source_locator": "Richard Ishida, Khmer (Cambodian) Orthography Notes, section “NIKAHIT” (context-dependent coda/nucleus effect)"
   },
   {
-    "rule_id":"R-REAHMUK",
-    "domain":"orthography_to_phonology",
-    "input":"U+17C7",
-    "output":"coda_h_and_nucleus_effect_requires_context",
-    "status":"WELL_SUPPORTED",
-    "source":"r12a-orthography"
+    "rule_id": "R-REAHMUK",
+    "domain": "orthography_to_phonology",
+    "input": "U+17C7",
+    "output": "coda_h_and_nucleus_effect_requires_context",
+    "status": "WELL_SUPPORTED",
+    "source": "r12a-orthography",
+    "source_locator": "Richard Ishida, Khmer (Cambodian) Orthography Notes, section “REAHMUK” (context-dependent coda/nucleus effect)"
   },
   {
-    "rule_id":"R-REGISTER-SHIFTER",
-    "domain":"orthography_to_phonology",
-    "input":"MUUSIKATOAN/TRIISAP",
-    "output":"register_change",
-    "status":"ESTABLISHED",
-    "source":"unicode17-ch16"
+    "rule_id": "R-REGISTER-SHIFTER",
+    "domain": "orthography_to_phonology",
+    "input": "MUUSIKATOAN/TRIISAP",
+    "output": "register_change",
+    "status": "ESTABLISHED",
+    "source": "unicode17-ch16",
+    "source_locator": "Unicode 17.0.0 Chapter 16 §16.4 Khmer, “Consonant Shifters” and Table 16-6"
   }
 ]

@@ -98,3 +98,8 @@ The current parser decomposes orthographic structure and identifies register-shi
 
 The source-indexed NIKAHIT register now preserves a direct discrepancy for the same displayed form **ដំ** ‘to pound’: Unicode 17.0 Chapter 16 gives `/dɔm/`, while R12A's rhyme table gives `/ɗɑm/`. This is not just a stylistic difference in punctuation; the onset and vowel notation both differ. The project does not currently establish whether this reflects transcription convention, dialect/lexical analysis, or a source error. Both forms remain recorded verbatim, and no deterministic project IPA or Ukrainian adaptation is selected until the lexical identity and conventions are reconciled.
 
+
+
+## Rule registry source locators — 2026-10-25
+
+The canonical rule registry now includes explicit section-level locators for all four existing rules. Unicode 17.0 Chapter 16 §16.4 supports the structural coeng and register-shifter claims; Richard Ishida’s Khmer Orthography Notes are cited for the context-sensitive NIKAHIT and REAHMUK descriptions. Tests verify source IDs, unique rule IDs and non-pending locators. These metadata improvements do not resolve the source-conflict cases or promote the existing vowel-context rows to independent phonetic gold.

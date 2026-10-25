@@ -37,6 +37,12 @@ assert.deepEqual(
 assert.equal(parseSyllable("កx").status, "INVALID_OR_UNSUPPORTED");
 assert.deepEqual(parseSyllable("កx").unknown, ["x"]);
 assert.equal(parseSyllable("កx").ipa, undefined);
+const mixedScriptUnit = convert("កx", "careful_standard");
+assert.equal(mixedScriptUnit.status, "INVALID_OR_UNSUPPORTED");
+assert.equal(mixedScriptUnit.units.length, 1);
+assert.equal(mixedScriptUnit.units[0].status, "INVALID_OR_UNSUPPORTED");
+assert.equal(mixedScriptUnit.units[0].ipa, "⟦INVALID_OR_UNSUPPORTED⟧");
+
 assert.equal(parseSyllable("ក៊").status, "EVIDENCE_LIMITED");
 assert.equal(parseSyllable("គ៉").status, "EVIDENCE_LIMITED");
 assert.equal(parseSyllable("ក៊").register_rule, "NON_STANDARD_SHIFTER_USE");

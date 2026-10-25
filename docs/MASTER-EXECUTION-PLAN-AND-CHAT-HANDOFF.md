@@ -405,3 +405,10 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 
 
 - Next profile task: `TODO` — design an alternatives-aware result contract that can represent multiple colloquial realizations with lexical/profile metadata. Do not re-enable a single deterministic aspiration-only output from a broad IPA string.
+
+
+## Post-merge current-head checkpoint — 2026-10-25
+
+- Current `main` after the colloquial /r/-loss fail-closed correction is `33778677a776fe8bbd51d8789368daac2cda74d9`.
+- Current-main Quality checks [40215767648](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40215767648) and Pages deployment [40215767572](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40215767572) passed. The colloquial profile no longer collapses source-attested variable /r/-loss outcomes into an unsupported single aspiration-only rendering.
+- Remaining P0 blockers are still substantive: contextual vowel × register × coda derivation, complete phonological IPA generation, and a source-located independently adjudicated lexical/audio gold set. This checkpoint does not raise measured accuracy; gold accuracy remains unmeasured.

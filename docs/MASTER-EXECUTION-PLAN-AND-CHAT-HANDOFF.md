@@ -412,3 +412,10 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 - Current `main` after the colloquial /r/-loss fail-closed correction is `33778677a776fe8bbd51d8789368daac2cda74d9`.
 - Current-main Quality checks [40215767648](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40215767648) and Pages deployment [40215767572](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40215767572) passed. The colloquial profile no longer collapses source-attested variable /r/-loss outcomes into an unsupported single aspiration-only rendering.
 - Remaining P0 blockers are still substantive: contextual vowel × register × coda derivation, complete phonological IPA generation, and a source-located independently adjudicated lexical/audio gold set. This checkpoint does not raise measured accuracy; gold accuracy remains unmeasured.
+
+
+## Khmer target-comparator evidence gate — 2026-10-25
+
+- Target-layer review found that `map_segment(..., mode="compatibility_ru")` silently fell back to the Ukrainian default when a segment lacked a Russian comparator entry. For example, Khmer IPA `i` was returned as Russian compatibility `і`, which is a Ukrainian target choice and not an established Russian comparator mapping.
+- Removed the fallback. Missing Russian comparator entries now raise from the strict mapper; `explain_segment` exposes `ru_compatibility: null` and `ru_compatibility_status: NOT_ESTABLISHED` while retaining the Ukrainian candidate separately. Added regression coverage.
+- This makes target-policy provenance more honest; it does not establish a new IPA mapping or official Ukrainian/Russian standard. Exact-head Quality checks and site build must pass before merge.

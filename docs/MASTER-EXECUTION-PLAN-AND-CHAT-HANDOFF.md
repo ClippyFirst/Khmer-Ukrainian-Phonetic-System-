@@ -356,3 +356,10 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 - Default branch now contains merge commit `a4912d520077f3e0df4e7236ae8784d8245354ff` for the unknown-character structural guard.
 - Exact-main workflow [40196341065](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40196341065) passed Python tests, web checks and site build.
 - This closes the specific mixed-script false-positive, not the overall KH-IPA-001 task. IPA mapping, source/profile conflicts, vowel/coda context, and independent gold remain unresolved.
+
+
+## Browser parity: unknown Khmer material — 2026-10-25
+
+- Follow-up inspection after the Python guard merged found the browser parser still downgraded unknown characters to `EVIDENCE_LIMITED`, allowing a recognized base consonant to lend false structural confidence to mixed-script input.
+- The browser now returns `INVALID_OR_UNSUPPORTED` with the unknown characters preserved in diagnostics, matching Python's contract. Runtime regression tests cover `parseSyllable("កx")` and ensure the unknown fragment is not treated as established structure.
+- Exact-head CI must pass Python tests, web-engine/runtime tests and build checks before this follow-up is merged. The guard is structural only; the broader IPA mapping and independent gold corpus remain open.

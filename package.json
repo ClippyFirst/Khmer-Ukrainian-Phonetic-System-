@@ -4,8 +4,8 @@
   "version": "0.2.1",
   "type": "module",
   "scripts": {
-    "test": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs",
-    "check": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs",
+    "test": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs && node tests/register-shifter-contract.test.mjs",
+    "check": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs && node tests/register-shifter-contract.test.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

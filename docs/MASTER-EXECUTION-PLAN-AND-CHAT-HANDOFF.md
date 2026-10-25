@@ -384,3 +384,10 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 - Reviewed the Python parser, `resolve_effective_register`, `resolve_register`, browser `resolveRegister`, and all direct tests/call sites. Both implementations remove ZWNJ for shifter-position calculation and preserve the same eligibility, exception, and fail-closed rules.
 - PR #39 merged as `a0f5f6a272f10d79d5c383bf717363b5e18b053f`. Exact-head CI [40209903755](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40209903755) passed pytest, web checks and site build; the browser contract test is wired into `npm run check`.
 - KH-REG-001 is DONE_VERIFIED for orthographic register resolution only. This does not validate inherent-vowel IPA or phonetic realization.
+
+
+## Khmer vowel evidence-registry validation — 2026-10-25
+
+- Added a test for `data/khmer/vowel-context-register.json` that checks unique case IDs, known evidence statuses, registered source IDs, and the rule that source-attested/non-gold rows cannot emit Ukrainian output.
+- Conflicting source analyses must keep `ipa=null`, retain at least two source-specific alternatives, and state a selection criterion. This prevents incompatible Unicode/R12A examples from silently becoming one project-wide IPA.
+- This validates provenance and withholding contracts, not the correctness of any IPA row. Exact-head CI must pass before merge.

@@ -86,6 +86,14 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
             s.graphemes.append(KhmerGrapheme(ch,"independent_vowel",(f"U+{ord(ch):04X}",)))
         else:
             kind=next((x["kind"] for x in SIGNS if x["char"]==ch),"sign_or_unknown")
+            if kind == "sign_or_unknown":
+                # Do not let an unrecognized script character or mixed-script
+                # fragment inherit ESTABLISHED_STRUCTURE from a valid Khmer base.
+                s.graphemes.append(KhmerGrapheme(ch,kind,(f"U+{ord(ch):04X}",)))
+                s.sources=["unicode17-ch16"]
+                s.status="INVALID_OR_UNSUPPORTED"
+                s.confidence=0.0
+                return s
             if kind in {"dependent_vowel","composite_vowel","vowel_modifier"}:
                 s.vowel_signs.append(ch)
             s.graphemes.append(KhmerGrapheme(ch,kind,(f"U+{ord(ch):04X}",)))

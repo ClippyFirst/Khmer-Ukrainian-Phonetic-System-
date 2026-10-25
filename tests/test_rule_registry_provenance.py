@@ -45,8 +45,13 @@ def test_rule_registry_has_unique_ids_valid_sources_and_specific_locators():
 
 def test_register_rule_does_not_claim_a_complete_contextual_ipa_mapping():
     rules = json.loads((DATA / "rules.json").read_text(encoding="utf-8"))
-    for rule in rules:
-        if rule["rule_id"] in {"R-NIKAHIT", "R-REAHMUK", "R-REGISTER-SHIFTER"}:
-            assert rule["status"] != "ESTABLISHED" or rule["domain"] == "orthography"
-            if rule["domain"] == "orthography_to_phonology":
-                assert any(word in rule["output"] for word in ("requires_context", "register_change"))
+    by_id = {rule["rule_id"]: rule for rule in rules}
+    for rule_id in ("R-NIKAHIT", "R-REAHMUK"):
+        rule = by_id[rule_id]
+        assert rule["status"] != "ESTABLISHED"
+        assert "requires_context" in rule["output"]
+    # The register-shifter row documents a script/register distinction, not a
+    # deterministic vowel/IPA realization for every lexical environment.
+    shifter = by_id["R-REGISTER-SHIFTER"]
+    assert shifter["output"] == "register_change"
+    assert shifter["source_locator"].endswith("Table 16-6")

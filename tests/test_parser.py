@@ -28,3 +28,11 @@ def test_malformed_sequence_is_not_confident():
 def test_complex_unicode_examples():
     r=analyze("សង្គ្រាម")
     assert r.syllables[0]["subscripts"] == ["គ","រ"]
+
+
+def test_unknown_non_khmer_material_does_not_pass_as_established_structure():
+    r = analyze("កx")
+
+    assert r.syllables[0]["status"] == "INVALID_OR_UNSUPPORTED"
+    assert r.status == "INVALID_OR_UNSUPPORTED"
+    assert r.confidence == 0.0

@@ -79,3 +79,17 @@ def test_lexical_examples_do_not_claim_gold_status_without_adjudication():
         assert entry["evidence_note"], word
         assert entry["sources"], word
 
+
+
+def test_rule_registry_has_unique_ids_and_source_locators():
+    rules = json.loads((ROOT / "data/khmer/rules.json").read_text(encoding="utf-8"))
+    sources = json.loads((ROOT / "data/khmer/sources.json").read_text(encoding="utf-8"))
+    source_ids = {source["id"] for source in sources}
+    rule_ids = set()
+    assert rules
+    for rule in rules:
+        assert rule["rule_id"] not in rule_ids, rule["rule_id"]
+        rule_ids.add(rule["rule_id"])
+        assert rule["source"] in source_ids, rule["rule_id"]
+        assert rule.get("source_locator", "").strip(), rule["rule_id"]
+        assert "pending" not in rule["source_locator"].lower(), rule["rule_id"]

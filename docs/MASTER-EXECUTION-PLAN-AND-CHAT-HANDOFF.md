@@ -405,3 +405,10 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 
 
 - Next profile task: `TODO` — design an alternatives-aware result contract that can represent multiple colloquial realizations with lexical/profile metadata. Do not re-enable a single deterministic aspiration-only output from a broad IPA string.
+
+
+## Khmer target-comparator evidence gate — 2026-10-25
+
+- Target-layer review found that `map_segment(..., mode="compatibility_ru")` silently fell back to the Ukrainian default when a segment lacked a Russian comparator entry. For example, Khmer IPA `i` was returned as Russian compatibility `і`, which is a Ukrainian target choice and not an established Russian comparator mapping.
+- Removed the fallback. Missing Russian comparator entries now raise from the strict mapper; `explain_segment` exposes `ru_compatibility: null` and `ru_compatibility_status: NOT_ESTABLISHED` while retaining the Ukrainian candidate separately. Added regression coverage.
+- This makes target-policy provenance more honest; it does not establish a new IPA mapping or official Ukrainian/Russian standard. Exact-head Quality checks and site build must pass before merge.

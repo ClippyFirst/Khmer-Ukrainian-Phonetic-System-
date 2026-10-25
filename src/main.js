@@ -148,9 +148,18 @@ function parseSyllable(raw) {
     index += 1;
   }
 
+  // Unknown characters must not inherit a supported structural status from
+  // the recognized base consonant. Match the Python parser's fail-closed rule.
+  if (unknown.length) {
+    return {
+      status: "INVALID_OR_UNSUPPORTED", raw, base, subscripts, vowelSigns,
+      unknown, graphemes,
+      reason: "Unknown character(s) inside Khmer orthographic unit.",
+    };
+  }
   const register = resolveRegister(CONSONANTS[base], raw);
   return {
-    status: unknown.length ? "EVIDENCE_LIMITED" : register.status,
+    status: register.status,
     raw,
     base,
     register: register.register,

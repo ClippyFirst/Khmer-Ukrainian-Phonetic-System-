@@ -43,6 +43,20 @@
       "register": "first",
       "rule": "MULTIPLE_REGISTER_SHIFTERS",
       "status": "EVIDENCE_LIMITED"
+    },
+    {
+      "id": "muusikatoan-before-prebase-vowel-in-encoded-order",
+      "surface": "ង៉េ",
+      "register": "first",
+      "rule": "MUUSIKATOAN",
+      "status": "ESTABLISHED_STRUCTURE"
+    },
+    {
+      "id": "shifter-after-vowel-is-not-in-encoded-order",
+      "surface": "ងេ៉",
+      "register": "second",
+      "rule": "MISPLACED_REGISTER_SHIFTER",
+      "status": "EVIDENCE_LIMITED"
     }
   ]
 }

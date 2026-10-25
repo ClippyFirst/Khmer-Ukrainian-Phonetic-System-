@@ -15,6 +15,14 @@ def test_phnom_penh_profile_withholds_ambiguous_r_loss_realization():
             render_ipa_profile(ipa, "phnom_penh_colloquial")
 
 
+def test_phnom_penh_profile_withholds_aspirated_stop_r_onsets():
+    # Aspiration is part of the IPA segment and must not bypass the profile's
+    # ambiguity gate simply because ʰ occurs between the stop and /r/.
+    for ipa in ("pʰrɑː", "tʰrɑː", "kʰrɑː", "cʰrɑː"):
+        with pytest.raises(ValueError, match="multiple source-attested realizations"):
+            render_ipa_profile(ipa, "phnom_penh_colloquial")
+
+
 def test_phnom_penh_profile_does_not_flag_unsegmented_medial_match():
     # Without an explicit boundary, "kr" may be a substring rather than an onset.
     assert render_ipa_profile("akra", "phnom_penh_colloquial") == "akra"

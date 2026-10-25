@@ -15,3 +15,16 @@ def test_h_targets_ukrainian_kh():
 
 def test_palatal_nasal_uses_soft_n():
     assert map_sequence(['ɲ', 'o']) == 'ньо'
+
+
+def test_missing_russian_comparator_does_not_fall_back_to_ukrainian():
+    import pytest
+    from khmer_ua.practical import map_segment
+
+    with pytest.raises(ValueError, match="unsupported IPA segment"):
+        map_segment("i", mode="compatibility_ru")
+
+    explanation = explain_segment("i")
+    assert explanation["ua_practical"] == "і"
+    assert explanation["ru_compatibility"] is None
+    assert explanation["ru_compatibility_status"] == "NOT_ESTABLISHED"

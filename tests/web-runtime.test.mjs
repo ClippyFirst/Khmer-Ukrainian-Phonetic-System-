@@ -34,6 +34,9 @@ assert.deepEqual(
   { ipa: "/pʰɑː/", ua: "па" },
 );
 
+assert.equal(parseSyllable("កx").status, "INVALID_OR_UNSUPPORTED");
+assert.deepEqual(parseSyllable("កx").unknown, ["x"]);
+assert.equal(parseSyllable("កx").ipa, undefined);
 assert.equal(parseSyllable("ក៊").status, "EVIDENCE_LIMITED");
 assert.equal(parseSyllable("គ៉").status, "EVIDENCE_LIMITED");
 assert.equal(parseSyllable("ក៊").register_rule, "NON_STANDARD_SHIFTER_USE");

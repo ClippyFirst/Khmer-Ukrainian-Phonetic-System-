@@ -1,3 +1,5 @@
+import pytest
+
 from khmer_ua.ipa import render_ipa_profile
 
 
@@ -5,23 +7,20 @@ def test_careful_profile_preserves_r():
     assert render_ipa_profile("krɑː", "careful_standard") == "krɑː"
 
 
-def test_phnom_penh_profile_rewrites_word_initial_cluster():
-    assert render_ipa_profile("krɑː", "phnom_penh_colloquial") == "kʰɑː"
+def test_phnom_penh_profile_withholds_ambiguous_r_loss_realization():
+    # Kirby (2014) reports several correlates/realizations, not one universal
+    # aspiration-only output. Do not collapse that variation to a single IPA.
+    for ipa in ("krɑː", "pʰnum.krɑː", "ˈtrəː", "ar.krɑː"):
+        with pytest.raises(ValueError, match="multiple source-attested realizations"):
+            render_ipa_profile(ipa, "phnom_penh_colloquial")
 
 
-def test_phnom_penh_profile_rewrites_only_after_explicit_syllable_boundary():
-    assert render_ipa_profile("pʰnum.krɑː", "phnom_penh_colloquial") == "pʰnum.kʰɑː"
-    assert render_ipa_profile("ˈtrəː", "phnom_penh_colloquial") == "ˈtʰəː"
-
-
-def test_phnom_penh_profile_does_not_rewrite_unsegmented_medial_match():
-    # Without syllable boundaries, the function cannot know that "kr" begins
-    # an onset; avoid corrupting an arbitrary IPA substring.
+def test_phnom_penh_profile_does_not_flag_unsegmented_medial_match():
+    # Without an explicit boundary, "kr" may be a substring rather than an onset.
     assert render_ipa_profile("akra", "phnom_penh_colloquial") == "akra"
 
 
-def test_phnom_penh_profile_does_not_rewrite_coda_r():
-    assert render_ipa_profile("ar.krɑː", "phnom_penh_colloquial") == "ar.kʰɑː"
+def test_phnom_penh_profile_does_not_flag_coda_r():
     assert render_ipa_profile("kɑːr", "phnom_penh_colloquial") == "kɑːr"
 
 
@@ -30,9 +29,5 @@ def test_non_colloquial_profiles_preserve_input():
 
 
 def test_unknown_profile_is_rejected():
-    try:
+    with pytest.raises(ValueError, match="unsupported pronunciation profile"):
         render_ipa_profile("krɑː", "unknown")
-    except ValueError:
-        pass
-    else:
-        raise AssertionError("unknown profile must raise ValueError")

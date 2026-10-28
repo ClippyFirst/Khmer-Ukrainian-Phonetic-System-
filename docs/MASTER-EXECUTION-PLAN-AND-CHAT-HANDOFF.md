@@ -464,3 +464,12 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 - The test explicitly protects the context-dependent status for NIKAHIT and REAHMUK and ensures the register-shifter record remains a script/register claim rather than a complete contextual IPA mapping.
 - Exact-head Quality checks [40225032146](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40225032146) and [40225019704](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40225019704) passed. No local tests are claimed.
 - First unresolved P0 tasks remain the full vowel × register × coda/profile matrix, source conflict reconciliation, and independently adjudicated lexical/audio gold. This metadata test does not close those tasks.
+
+
+## Romanization → IPA → Ukrainian result order — 2026-10-29
+
+- Open draft PR [#57](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/57) adds a separate Khmer romanization card before the existing IPA and Ukrainian candidate cards. The original Khmer text remains available as a later source card.
+- Romanization engine: `@gmana/km-translit@0.1.2`, MIT, BGN/PCGN-derived ASCII profile. The package explicitly says it drops diacritics and is **not** a fully conformant BGN/PCGN implementation; UI labels it accordingly. This is a separate orthographic romanization output and does not feed IPA or Ukrainian conversion.
+- Exact-head CI for `aed14ec04b123d1aff81a5cd11b59eda35c3b961`: [Quality checks run 40780984225](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40780984225) **passed**. Python tests, Node checks, build, and generated-page checks passed. The added romanization test is included in `npm run check`; there is no dedicated browser automation in this repository.
+- Status: UI/engine integration **PARTIAL / CI-PASS**. Independent Khmer pronunciation gold remains unavailable; do not treat the Latin output or the existing research IPA/Ukrainian candidate as normative.
+- Next acceptance gates: independently inspect mixed-script/punctuation behavior in a browser; expand source-backed romanization fixtures; retain the profile/license notice; keep this PR draft until the owner approves the intended profile and the remaining language-engine evidence gates are reviewed.

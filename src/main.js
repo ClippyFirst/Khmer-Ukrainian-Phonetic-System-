@@ -4,6 +4,7 @@ import signs from "../data/khmer/signs.json" with { type: "json" };
 import vowels from "../data/khmer/vowels.json" with { type: "json" };
 import practicalPolicy from "../data/ukrainian/practical-policy.json" with { type: "json" };
 import fixtures from "../data/tests/web-fixtures.json" with { type: "json" };
+import { khmerToLatin } from "@gmana/km-translit";
 
 const CONSONANTS = Object.fromEntries(consonants.map((item) => [item.char, item]));
 const SIGN_BY_CHAR = Object.fromEntries(signs.map((item) => [item.char, item]));
@@ -356,6 +357,7 @@ export { convert, tokenize, parseSyllable, mapIpa, getStatusNotice };
 if (typeof document !== "undefined") {
   const $ = (id) => document.getElementById(id);
   const source = $("source");
+  const romanizationResult = $("romanization-result");
   const results = $("results");
   const empty = $("empty");
   const issue = $("issue");
@@ -373,6 +375,7 @@ if (typeof document !== "undefined") {
     empty.hidden = true;
     results.hidden = false;
     $("source-result").textContent = data.source;
+    romanizationResult.textContent = data.source.split(/(\s+)/u).map((part) => /[\u1780-\u17ff]/u.test(part) ? khmerToLatin(part) : part).join("");
     $("ipa-result").textContent = data.ipa;
     $("ua-result").textContent = data.ua;
     $("status").textContent = data.status.replaceAll("_", " ");

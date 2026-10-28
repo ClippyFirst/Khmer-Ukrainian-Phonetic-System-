@@ -4,8 +4,8 @@
   "version": "0.2.1",
   "type": "module",
   "scripts": {
-    "test": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs && node tests/register-shifter-contract.test.mjs",
-    "check": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs && node tests/register-shifter-contract.test.mjs",
+    "test": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs && node tests/register-shifter-contract.test.mjs && node tests/romanization.test.mjs",
+    "check": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs && node tests/register-shifter-contract.test.mjs && node tests/romanization.test.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -14,5 +14,8 @@
   },
   "devDependencies": {
     "vite": "^7.1.7"
+  },
+  "dependencies": {
+    "@gmana/km-translit": "0.1.2"
   }
 }

@@ -375,7 +375,7 @@ if (typeof document !== "undefined") {
     empty.hidden = true;
     results.hidden = false;
     $("source-result").textContent = data.source;
-    romanizationResult.textContent = data.source.split(/([\\s។៕,!?;:()[\\]{}“”«»]+)/u).map((part) => /[\\u1780-\\u17ff]/u.test(part) ? khmerToLatin(part) : part).join("");
+    romanizationResult.textContent = data.source.split(/([\s។៕,!?;:()[\\]{}“”«»]+)/u).map((part) => /[\u1780-\u17ff]/u.test(part) ? khmerToLatin(part) : part).join("");
     $("ipa-result").textContent = data.ipa;
     $("ua-result").textContent = data.ua;
     $("status").textContent = data.status.replaceAll("_", " ");

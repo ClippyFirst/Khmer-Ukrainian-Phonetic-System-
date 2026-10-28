@@ -473,3 +473,14 @@ This checkpoint supersedes earlier readiness notes with stale main SHAs or queue
 - Exact-head CI for `aed14ec04b123d1aff81a5cd11b59eda35c3b961`: [Quality checks run 40780984225](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40780984225) **passed**. Python tests, Node checks, build, and generated-page checks passed. The added romanization test is included in `npm run check`; there is no dedicated browser automation in this repository.
 - Status: UI/engine integration **PARTIAL / CI-PASS**. Independent Khmer pronunciation gold remains unavailable; do not treat the Latin output or the existing research IPA/Ukrainian candidate as normative.
 - Next acceptance gates: independently inspect mixed-script/punctuation behavior in a browser; expand source-backed romanization fixtures; retain the profile/license notice; keep this PR draft until the owner approves the intended profile and the remaining language-engine evidence gates are reviewed.
+
+
+## Publication checkpoint — 2026-10-29
+
+This checkpoint supersedes earlier notes in this handoff saying the romanization PR was open/draft.
+
+- PR #57 was merged to main as 875054f3ff31a2cebabd2d23672843791b746142.
+- Exact post-merge Quality checks [40782813125](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40782813125) passed.
+- Exact post-merge GitHub Pages deployment [40782813148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40782813148) passed and reported URL: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/
+- Published output order: Khmer romanization → IPA → Ukrainian candidate; the romanization is independent and its upstream profile limitations remain as documented above.
+- Remaining linguistic/UI acceptance gates are unchanged: independent Khmer pronunciation gold, broader source-backed romanization fixtures, and manual browser/mobile/accessibility QA. Publication does not mean linguistic completeness.

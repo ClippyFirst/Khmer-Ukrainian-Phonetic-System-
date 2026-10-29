@@ -338,11 +338,19 @@ function convert(text, profile) {
   const evidenceLimited = linguistic.filter((item) => item.status === "EVIDENCE_LIMITED").length;
   const notEstablished = linguistic.filter((item) => item.status === "NOT_ESTABLISHED").length;
   const invalid = linguistic.filter((item) => item.status === "INVALID_OR_UNSUPPORTED").length;
+  // A mixed aggregate containing an unresolved unit must not look like a
+  // complete transcription made of concatenated debug markers and guesses.
+  // Unit-level diagnostics remain available below for inspectable evidence.
+  const aggregateUnresolved = linguistic.some((item) =>
+    !["PROPOSED", "ESTABLISHED_STRUCTURE"].includes(item.status)
+    || /⟦/.test(item.ipa)
+    || /⟦/.test(item.ua)
+  );
 
   return {
     source: normalized,
-    ipa: rendered.map((item) => item.ipa).join(""),
-    ua: rendered.map((item) => item.ua).join(""),
+    ipa: aggregateUnresolved ? "⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧" : rendered.map((item) => item.ipa).join(""),
+    ua: aggregateUnresolved ? "⟦ТРАНСКРИПЦІЮ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧" : rendered.map((item) => item.ua).join(""),
     status: combineStatus(linguistic),
     note: `Локальний аналіз: ${resolved.length} одиниць мають зафіксовану IPA та проєктну українську форму; ${unresolved.length} потребують окремого встановлення або перевірки (${notEstablished} не встановлено, ${evidenceLimited} з обмеженою доказовістю, ${invalid} некоректних/непідтримуваних). Некоректна одиниця більше не робить весь змішаний результат INVALID OR UNSUPPORTED; її стан ізольовано на рівні одиниці.${unresolvedNames.length ? ` Невстановлені/проблемні одиниці: ${unresolvedNames.join(" · ")}.` : ""}`,
     profile,
@@ -374,7 +382,6 @@ if (typeof document !== "undefined") {
     }
     empty.hidden = true;
     results.hidden = false;
-    $("source-result").textContent = data.source;
     romanizationResult.textContent = data.source.split(/(\s+)/u).map((part) => /[\u1780-\u17ff]/u.test(part) ? khmerToLatin(part) : part).join("");
     $("ipa-result").textContent = data.ipa;
     $("ua-result").textContent = data.ua;

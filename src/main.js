@@ -441,7 +441,8 @@ if (typeof document !== "undefined") {
     button.addEventListener("click", async () => {
       const element = $(button.dataset.copy);
       try {
-        await navigator.clipboard.writeText(element.textContent);
+        const copyText = "value" in element ? element.value : element.textContent;
+        await navigator.clipboard.writeText(copyText);
         const old = button.textContent;
         button.textContent = "Скопійовано";
         window.setTimeout(() => { button.textContent = old; }, 900);

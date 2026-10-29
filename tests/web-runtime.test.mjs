@@ -73,7 +73,8 @@ assert.equal(careful.ua, "тьраен");
 assert.equal(colloquial.ipa, "⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
 assert.equal(colloquial.units.find((unit) => unit.source === "ច្រើន")?.ipa, "/cʰaən/", "unit-level IPA remains inspectable while aggregate output fails closed");
 assert.equal(colloquial.status, "EVIDENCE_LIMITED");
-assert.equal(colloquial.ua, "чаен");
+assert.equal(colloquial.ua, "⟦ТРАНСКРИПЦІЮ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
+assert.equal(colloquial.units.find((unit) => unit.source === "ច្រើន")?.ua, "чаен", "unit-level candidate remains inspectable while aggregate output fails closed");
 assert.equal(established.ipa, "/craən/");
 
 const zwnj = parseSyllable("ប\u200C៊");

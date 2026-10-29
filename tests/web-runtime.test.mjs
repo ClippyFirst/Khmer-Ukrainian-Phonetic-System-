@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { convert, parseSyllable, tokenize, getStatusNotice } from "../src/main.js";
 
 const adversarial = "ក គ កា គា កូ គូ កី គី កេ គេ កែ គែ កើ គើ កៅ គៅ ប ប៉ ប៊ ផ ព ត ថ ទ ធ ច ឆ ជ ឈ ស ហ វ";
@@ -55,6 +56,10 @@ const unresolved = mixed.units.find((x) => x.status === "NOT_ESTABLISHED" || x.s
 assert.ok(unresolved, "mixed input must isolate an unresolved unit rather than hiding neighboring evidence-backed units");
 assert.equal(mixed.units.find((x) => x.source === "ក")?.ua, "ка");
 assert.equal(mixed.units.find((x) => x.source === "គ")?.ua, "ко");
+
+
+const serviceHtml = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+assert.doesNotMatch(serviceHtml, /source-result|source-card/u, "the original Khmer input must not be duplicated as a fourth output card");
 
 console.log("web-runtime regression tests: PASS");
 

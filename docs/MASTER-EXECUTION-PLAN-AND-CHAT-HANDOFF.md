@@ -507,3 +507,11 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Updated `.github/workflows/ci.yml` so feature-branch pushes no longer launch a duplicate run alongside the PR workflow; pushes to `main` still run tests.
 - Added a per-PR concurrency group with `cancel-in-progress: true` to avoid retaining superseded checks once this workflow revision is active.
 - This is queue hygiene, not proof that the underlying runner issue is fixed. The latest exact-head run must execute Python tests, `npm run check`, and production build before merge; no green status is inferred from queued or cancelled jobs.
+
+
+## Shared Actions queue investigation — 2026-10-29 08:38 UTC
+
+- Cross-repository inspection found the Korean benchmark PR's latest 100 workflow runs included 36 queued and 9 in progress, with repeated model/benchmark jobs across earlier commits. A queue-hygiene commit (`a10e2bb7ea9b636a816f13c972589fd0d8e505ec`) adds per-PR concurrency cancellation to eight relevant Korean workflows and restricts its general verification workflow's push trigger to `main`.
+- GitHub Status reported Actions operational at this checkpoint; account/repository concurrency limits or runner provisioning/permission issues remain possible. The exact Khmer PR-head run [40842031767](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40842031767) is still queued without initialized steps. No Python tests, `npm run check`, production build, or browser test has run on this exact head.
+- Local `git ls-remote` failed because this execution environment could not resolve `github.com`; no local test execution is claimed. The queue pattern supports shared runner saturation as a hypothesis but does not prove the root cause. Do not merge until exact-head tests, production build, and browser verification pass.
+- The UI fix deliberately withholds aggregate IPA and Ukrainian transcription when any input unit is unresolved, while retaining per-unit diagnostics; it also removes the duplicate source-result card and makes the Ukrainian result full width. Static source inspection confirmed the intended regression assertions; runtime acceptance remains pending.

@@ -500,3 +500,10 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Corrective commits add a copy-input control to the input controls (not to the output cards) and make the shared copy handler read `HTMLTextAreaElement.value` for input fields while retaining `textContent` for rendered output elements.
 - Exact-head verification for these corrective commits is still pending. The run above is evidence of the earlier failure and passing Python tests only; it does **not** verify the corrected head.
 - Acceptance criteria remain: `npm run check`, `npm run build`, browser/mobile/accessibility QA, and verified deployment before claiming release readiness. No linguistic gold evidence was added or implied.
+
+
+## CI queue hygiene follow-up — 2026-10-29
+
+- Updated `.github/workflows/ci.yml` so feature-branch pushes no longer launch a duplicate run alongside the PR workflow; pushes to `main` still run tests.
+- Added a per-PR concurrency group with `cancel-in-progress: true` to avoid retaining superseded checks once this workflow revision is active.
+- This is queue hygiene, not proof that the underlying runner issue is fixed. The latest exact-head run must execute Python tests, `npm run check`, and production build before merge; no green status is inferred from queued or cancelled jobs.

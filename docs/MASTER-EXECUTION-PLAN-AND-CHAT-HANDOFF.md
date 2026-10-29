@@ -491,3 +491,12 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - PR #58 (fix/khmer-output-evidence-2026-10-29) removes the duplicate original-input result card. The source remains in the editor and per-unit diagnostics continue to show each unit for traceability.
 - Aggregate IPA and Ukrainian output now fail closed to one clear “not established for part of input” message whenever any linguistic unit is unresolved, rather than concatenating several INVALID_OR_UNSUPPORTED / NOT_ESTABLISHED markers with fragments that resemble a full result. Unit-level evidence is preserved for debugging and research.
 - Regression coverage was added to tests/web-runtime.test.mjs. Exact-head Quality checks are queued at https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40835775956; do not mark verified until they execute and pass.
+
+
+## Follow-up verification and copy-control correction — 2026-10-29
+
+- PR #58 current head: `6e73cccf95ca7d4942f31c7ee0c726239bbfa416`.
+- Quality run [40835855186](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40835855186) executed the Python suite successfully: **81 passed, 25 subtests passed**. Its Node/web check failed on the existing structural contract requiring an accessible “Копіювати кмерський текст” control. This was a real regression from removing the duplicate source-result card, not a runner initialization issue.
+- Corrective commits add a copy-input control to the input controls (not to the output cards) and make the shared copy handler read `HTMLTextAreaElement.value` for input fields while retaining `textContent` for rendered output elements.
+- Exact-head verification for these corrective commits is still pending. The run above is evidence of the earlier failure and passing Python tests only; it does **not** verify the corrected head.
+- Acceptance criteria remain: `npm run check`, `npm run build`, browser/mobile/accessibility QA, and verified deployment before claiming release readiness. No linguistic gold evidence was added or implied.

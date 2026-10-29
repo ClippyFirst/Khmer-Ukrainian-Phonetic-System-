@@ -484,3 +484,10 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Exact post-merge GitHub Pages deployment [40782813148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40782813148) passed and reported URL: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/
 - Published output order: Khmer romanization → IPA → Ukrainian candidate; the romanization is independent and its upstream profile limitations remain as documented above.
 - Remaining linguistic/UI acceptance gates are unchanged: independent Khmer pronunciation gold, broader source-backed romanization fixtures, and manual browser/mobile/accessibility QA. Publication does not mean linguistic completeness.
+
+
+## User-reported output UI follow-up — 2026-10-29
+
+- PR #58 (fix/khmer-output-evidence-2026-10-29) removes the duplicate original-input result card. The source remains in the editor and per-unit diagnostics continue to show each unit for traceability.
+- Aggregate IPA and Ukrainian output now fail closed to one clear “not established for part of input” message whenever any linguistic unit is unresolved, rather than concatenating several INVALID_OR_UNSUPPORTED / NOT_ESTABLISHED markers with fragments that resemble a full result. Unit-level evidence is preserved for debugging and research.
+- Regression coverage was added to tests/web-runtime.test.mjs. Exact-head Quality checks are queued at https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40835775956; do not mark verified until they execute and pass.

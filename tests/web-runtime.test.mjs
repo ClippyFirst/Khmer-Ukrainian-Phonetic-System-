@@ -70,7 +70,9 @@ const colloquial = convert("ច្រើន", "phnom_penh_colloquial");
 const established = convert("ច្រើន", "established_form");
 assert.equal(careful.ipa, "/craən/");
 assert.equal(careful.ua, "тьраен");
-assert.equal(colloquial.ipa, "/cʰaən/");
+assert.equal(colloquial.ipa, "⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
+assert.equal(colloquial.units.find((unit) => unit.source === "ច្រើន")?.ipa, "/cʰaən/", "unit-level IPA remains inspectable while aggregate output fails closed");
+assert.equal(colloquial.status, "EVIDENCE_LIMITED");
 assert.equal(colloquial.ua, "чаен");
 assert.equal(established.ipa, "/craən/");
 

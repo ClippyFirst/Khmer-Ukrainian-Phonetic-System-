@@ -515,3 +515,10 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - GitHub Status reported Actions operational at this checkpoint; account/repository concurrency limits or runner provisioning/permission issues remain possible. The exact Khmer PR-head run [40842031767](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40842031767) is still queued without initialized steps. No Python tests, `npm run check`, production build, or browser test has run on this exact head.
 - Local `git ls-remote` failed because this execution environment could not resolve `github.com`; no local test execution is claimed. The queue pattern supports shared runner saturation as a hypothesis but does not prove the root cause. Do not merge until exact-head tests, production build, and browser verification pass.
 - The UI fix deliberately withholds aggregate IPA and Ukrainian transcription when any input unit is unresolved, while retaining per-unit diagnostics; it also removes the duplicate source-result card and makes the Ukrainian result full width. Static source inspection confirmed the intended regression assertions; runtime acceptance remains pending.
+
+## Handoff checkpoint — 2026-10-29
+
+- Latest verified code revision at this checkpoint: `8d2c3570458c616c6d021e7769291b3fe71ca817` on `fix/khmer-output-evidence-2026-10-29`.
+- Exact-head CI [40848339585](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40848339585) passed the Python suite, `npm run check`, and `npm run build`.
+- The first runner-enabled attempt exposed stale cross-profile assertions in `tests/web-runtime.test.mjs`: the aggregate result is required to fail closed when the profile's Ukrainian candidate conflicts with the lexical override. Tests now assert the withheld aggregate while retaining inspectable unit-level IPA and Ukrainian candidates.
+- Remaining acceptance: verify current Pages deployment and live browser behavior if required; continue full vowel/context IPA coverage and independently adjudicated gold corpus. The passing CI is not a linguistic accuracy claim.

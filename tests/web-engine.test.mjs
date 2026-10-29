@@ -84,6 +84,7 @@ if (!sourceGuard.includes("function renderIpaProfile")) throw new Error("web pro
 if (!sourceGuard.includes("(^|[ .ˈˌ])([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])")) throw new Error("web Phnom Penh /r/-loss rule must require an explicit word/syllable boundary");
 if (!sourceGuard.includes('"$1$2ʰ"')) throw new Error("web Phnom Penh /r/-loss rule must preserve the boundary and onset segment");
 if (!html.includes('role="status" aria-live="polite"')) throw new Error("result status is not announced to assistive technology");
+if (!js.includes('const copyText = "value" in element ? element.value : element.textContent;')) throw new Error("copy control must copy textarea.value for source input and textContent for rendered output");
 for (const label of ["Копіювати кмерський текст","Копіювати IPA","Копіювати українську практичну форму"]) {
   if (!html.includes(`aria-label="${label}"`)) throw new Error("copy control lacks accessible label: " + label);
 }

@@ -100,6 +100,54 @@
       "default": "н",
       "compatibility_ru": "н"
     },
+    "ɡ": {
+      "default": "ґ"
+    },
+    "g": {
+      "default": "ґ"
+    },
+    "x": {
+      "default": "х"
+    },
+    "ɦ": {
+      "default": "г"
+    },
+    "t͡s": {
+      "default": "ц"
+    },
+    "d͡z": {
+      "default": "дз"
+    },
+    "d͡zʲ": {
+      "default": "дзь"
+    },
+    "t͡ʃ": {
+      "default": "ч"
+    },
+    "d͡ʒ": {
+      "default": "дж"
+    },
+    "ʃ": {
+      "default": "ш"
+    },
+    "ʒ": {
+      "default": "ж"
+    },
+    "tʲ": {
+      "default": "ть"
+    },
+    "dʲ": {
+      "default": "дь"
+    },
+    "nʲ": {
+      "default": "нь"
+    },
+    "lʲ": {
+      "default": "ль"
+    },
+    "rʲ": {
+      "default": "рь"
+    },
     "i": {
       "default": "і"
     },

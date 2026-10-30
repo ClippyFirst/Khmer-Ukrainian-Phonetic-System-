@@ -60,6 +60,7 @@ No probability is assigned without a calibrated corpus.
 - hard /ɡ/ → ґ;
 - genuine /x/ → х;
 - /t͡s/ → ц, /d͡z/ → дз, /t͡ʃ/ → ч, /d͡ʒ/ → дж;
+- alveolo-palatal /tɕ/ (also /t͡ɕ/) → ч and voiced /dʑ/ (also /d͡ʑ/) → дж as explicit Ukrainian approximations;
 - /ʃ/ → ш and /ʒ/ → ж;
 - preserve contrastive palatalization with Ukrainian soft-sign sequences only when supported by the source analysis;
 - do not collapse adjacent consonants into an affricate unless the source phonology identifies an affricate.

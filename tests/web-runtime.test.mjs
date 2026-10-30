@@ -31,7 +31,7 @@ assert.deepEqual(
 );
 assert.deepEqual(
   { ipa: bySource["ផ"].ipa, ua: bySource["ផ"].ua },
-  { ipa: "/pʰɑː/", ua: "па" },
+  { ipa: "/pʰɑː/", ua: "п'а" },
 );
 
 assert.equal(parseSyllable("កx").status, "INVALID_OR_UNSUPPORTED");

@@ -204,7 +204,7 @@ Quality checks and static deployment are continuously checked by GitHub Actions;
 
 ## Latest lexical-coverage pass — 2026-10-06
 
-The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Cited lexical references report the phrase as **[pʰiəsaː kʰmae]**. The repository stores this as source-attested evidence, not an independently adjudicated gold label: no audio-based or independent multi-source adjudication is recorded. The Ukrainian practical form **пієса кмае** remains explicitly PROPOSED.
+The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Cited lexical references report the phrase as **[pʰiəsaː kʰmae]**. The repository stores this as source-attested evidence, not an independently adjudicated gold label: no audio-based or independent multi-source adjudication is recorded. The Ukrainian practical form **п'ієса к'мае** remains explicitly PROPOSED.
 
 The Ukrainian policy was also extended for /ae/, and the browser adapter now distinguishes a corpus-defined lexical Ukrainian form from a mechanical segment-by-segment rendering. This prevents the UI from silently presenting a different practical spelling merely because a phrase contains context-dependent or complex Khmer vowels.
 

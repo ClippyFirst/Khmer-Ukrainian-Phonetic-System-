@@ -11,7 +11,7 @@ const vite = fs.readFileSync("vite.config.js", "utf8");
 for (const x of ["Content-Security-Policy", "src/main.js", 'id="source"', 'id="results"']) {
   if (!html.includes(x)) throw new Error("index missing " + x);
 }
-for (const x of ["Регістри, шифтери та кластери", "Приголосні: українська ціль", "Голосні: контекст важливіший за знак", "/c/","/h/","/ʋ/","/w/","Валідація складних випадків","ភាសាខ្មែរ","пієса кмае"]) {
+for (const x of ["Регістри, шифтери та кластери", "Приголосні: українська ціль", "Голосні: контекст важливіший за знак", "/c/","/h/","/ʋ/","/w/","Валідація складних випадків","ភាសាខ្មែរ","п\u0027ієса к\u0027мае"]) {
   if (!systemHtml.includes(x)) throw new Error("system missing " + x);
 }
 for (const x of ["NOT_ESTABLISHED", "EVIDENCE_LIMITED", "BA_TO_PA_EXCEPTION", "MULTIPLE_REGISTER_SHIFTERS", "phnom_penh_colloquial", "practical-policy.json", "web-fixtures.json"]) {
@@ -23,12 +23,12 @@ if (js.includes("const CONSONANTS = {") || js.includes("const UA = {") || js.inc
 if (!vite.includes("index.html") || !vite.includes("system.html")) throw new Error("Vite config does not build both public pages");
 if (Object.keys(policy.segments).length < 40) throw new Error("Ukrainian policy unexpectedly incomplete");
 if (Object.keys(fixtures).length < 16) throw new Error("web fixtures unexpectedly incomplete");
-if (!fixtures["ភាសាខ្មែរ"] || fixtures["ភាសាខ្មែរ"].ipa !== "/pʰiəsaː kʰmae/" || fixtures["ភាសាខ្មែរ"].ua !== "пієса кмае") {
+if (!fixtures["ភាសាខ្មែរ"] || fixtures["ភាសាខ្មែរ"].ipa !== "/pʰiəsaː kʰmae/" || fixtures["ភាសាខ្មែរ"].ua !== "п\u0027ієса к\u0027мае") {
   throw new Error("verified Khmer-language fixture missing or inconsistent");
 }
 if (!Object.hasOwn(policy.segments, "ae")) throw new Error("Khmer /ae/ target mapping missing");
-if (policy.segments["kʰ"].default !== "к") throw new Error("canonical /kʰ/ target must be к");
-if (fixtures["ខ្មែរ"].ua !== "кмае") throw new Error("lexical /kʰmae/ fixture contradicts canonical /kʰ/ policy");
+if (policy.segments["kʰ"].default !== "к\u0027") throw new Error("canonical /kʰ/ target must be к apostrophe");
+if (fixtures["ខ្មែរ"].ua !== "к\u0027мае") throw new Error("lexical /kʰmae/ fixture contradicts canonical /kʰ/ policy");
 if (!js.includes("fixture.ua") || !js.includes("mapping_check")) throw new Error("lexical practical-form handling missing");
 if (!js.includes("rendered.map") || !js.includes("renderUnknownUnit")) throw new Error("per-unit rendering is missing");
 if (!js.includes("Некоректна одиниця більше не робить весь змішаний результат INVALID OR UNSUPPORTED")) throw new Error("mixed-input isolation guard missing");
@@ -40,7 +40,7 @@ for (const term of forbiddenTerms) {
 }
 
 if (Object.keys(adversarial).length < 8) throw new Error("adversarial corpus unexpectedly incomplete");
-if (systemHtml.includes("<td>/c, cʰ/</td><td>ч</td>") || systemHtml.includes("<td>/h/</td><td>г</td>")) {
+if (systemHtml.includes("<td>/c, cʰ/</td><td>ч</td>") || systemHtml.includes("<td>/h/</td><td>х</td>")) {
   throw new Error("system page contains stale transcription policy");
 }
 console.log("web-engine structural tests: PASS");
@@ -60,7 +60,7 @@ console.log("lexical-span tokenization guards: PASS");
 
 if (!sourceGuard.includes('if (/\\s/u.test(rest[0]))')) throw new Error("IPA mapper drops word boundaries");
 if (!sourceGuard.includes('value += rest[0]')) throw new Error("IPA mapper does not preserve whitespace");
-if (fixtures["ភាសាខ្មែរ"].ua !== "пієса кмае") throw new Error("phrase fixture must use canonical kʰ policy");
+if (fixtures["ភាសាខ្មែរ"].ua !== "п\u0027ієса к\u0027мае") throw new Error("phrase fixture must use canonical aspirated policy");
 console.log("IPA boundary and phrase guards: PASS");
 
 
@@ -77,7 +77,7 @@ if (fixtures["ប៊"].ipa !== "/ɓɔː/" || fixtures["ប៊"].ua !== "бо") t
 if (fixtures["ប៉ី"].ipa !== "/pei/" || fixtures["ប៉ី"].ua !== "пей") throw new Error("ប៉ី fixture must resolve to /pei/ → пей");
 if (fixtures["ខ្ញុំ"].ipa !== "/kɲom/" || fixtures["ខ្ញុំ"].ua !== "кньом") throw new Error("ខ្ញុំ fixture must resolve to cited standard IPA /kɲom/ → кньом");
 if (fixtures["សង្គ្រាម"].ipa !== "/sɔŋkrɛəm/" || fixtures["សង្គ្រាម"].ua !== "сонгкреам") throw new Error("សង្គ្រាម fixture must resolve to /sɔŋkrɛəm/ → сонгкреам");
-if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "хаеі") throw new Error("ហើយ fixture must resolve to /haəi/ → хаеі");
+if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "гаеі") throw new Error("ហើយ fixture must resolve to /haəi/ → гаеі");
 if (sourceGuard.includes("const SHIFTER_ELIGIBILITY") === false) throw new Error("Khmer shifter eligibility guard missing");
 if (!sourceGuard.includes("SHIFTER_ELIGIBILITY[shifter]")) throw new Error("Khmer shifter eligibility is not enforced");
 if (!sourceGuard.includes("function renderIpaProfile")) throw new Error("web pronunciation-profile transformation is missing");

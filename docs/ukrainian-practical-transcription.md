@@ -12,7 +12,7 @@ The output is not produced by Khmer-character substitution.
 Default for academic, editorial and reference use.
 
 ### phnom_penh_colloquial
-Optional pronunciation profile. It may model documented /r/-loss and its associated aspiration, pitch and vowel effects. It must never overwrite the careful analysis.
+Optional pronunciation profile. It may model documented /r/-loss and its associated aspiration, pitch and vowel effects. When its actual IPA result contains /cʰ/, Ukrainian output marks that aspiration as ч'. It must never overwrite the careful analysis or infer aspiration for every /Cr/ cluster.
 
 ### established_form
 A separately versioned lexicon can override the generic algorithm for conventional Ukrainian exonyms and historically established names.
@@ -34,15 +34,15 @@ No probability is assigned without a calibrated corpus.
 | Khmer | Ukrainian |
 |---|---|
 | /p/ | п |
-| /pʰ/ | п |
+| /pʰ/ | п' |
 | /b, ɓ/ | б |
 | /t/ | т |
-| /tʰ/ | т |
+| /tʰ/ | т' |
 | /d, ɗ/ | д |
 | /k/ | к |
-| /kʰ/ | к |
+| /kʰ/ | к' |
 | /c/ | ть |
-| /cʰ/ | ч |
+| /cʰ/ | ть' |
 | /ɲ/ | нь |
 | /ŋ/ | нг |
 | /r/ | р |
@@ -51,8 +51,21 @@ No probability is assigned without a calibrated corpus.
 | /w/ | у |
 | /j/ | й |
 | /s/ | с |
-| /h/ | х |
-| /ʔ/ | ∅ |
+| /h/ | г |
+| /ʔ/ | ∅ (not aspiration) |
+
+## Shared Ukrainian consonant conventions
+
+- foreign /h/ → г (target approximation, not phonetic identity);
+- hard /ɡ/ → ґ;
+- genuine /x/ → х;
+- /t͡s/ → ц, /d͡z/ → дз, /t͡ʃ/ → ч, /d͡ʒ/ → дж;
+- alveolo-palatal /tɕ/ (also /t͡ɕ/) → ч and voiced /dʑ/ (also /d͡ʑ/) → дж as explicit Ukrainian approximations;
+- /ʃ/ → ш and /ʒ/ → ж;
+- preserve contrastive palatalization with Ukrainian soft-sign sequences only when supported by the source analysis;
+- do not collapse adjacent consonants into an affricate unless the source phonology identifies an affricate.
+
+The canonical shared policy is maintained in [Ukrainian Phonetic Inventory](https://github.com/ClippyFirst/Ukrainian-Phonetic-Inventory/blob/main/docs/foreign-target-adaptation.md).
 
 ## Vowel reduction
 
@@ -67,7 +80,7 @@ No probability is assigned without a calibrated corpus.
 | /ə, ɤ/ | е/и by context |
 | complex vowels | Ukrainian vowel sequences when supported |
 
-Length remains available in the research layer and is not normally doubled in practical Ukrainian spelling.
+Length remains available in the research layer and is not normally doubled in practical Ukrainian spelling. Aspiration remains explicit in IPA and is marked with an ASCII apostrophe after the Ukrainian consonant.
 
 ## Research versus practical output
 
@@ -76,8 +89,8 @@ Example:
 Khmer /kʰaː/
 
 research IPA: /kʰaː/
-UA phonological target: /ka/
-practical: ка
+UA phonological target: /kʰaː/
+practical: к'а
 Russian compatibility candidate: кха
 
 The Russian candidate is not silently promoted to the Ukrainian default.
@@ -98,7 +111,7 @@ research IPA: /ʔa/
 UA target: /a/
 practical: а
 
-The glottal stop remains inspectable even though it is not printed.
+The glottal stop remains inspectable even though it is not printed; it does not trigger the aspiration apostrophe.
 
 ## Established forms
 

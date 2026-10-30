@@ -3,7 +3,7 @@ import { convert, parseSyllable, tokenize, getStatusNotice } from "../src/main.j
 
 const adversarial = "ក គ កា គា កូ គូ កី គី កេ គេ កែ គែ កើ គើ កៅ គៅ ប ប៉ ប៊ ផ ព ត ថ ទ ធ ច ឆ ជ ឈ ស ហ វ";
 const expectedIpa = "/kɑː/ /kɔː/ /kaː/ /kiə/ /koː/ /kuː/ /kəj/ /kiː/ /keː/ /kei/ /kaeː/ /kɛː/ /kɑːə/ /kəː/ /kau/ /kəu/ /ɓɑː/ /paː/ /ɓɔː/ /pʰɑː/ /pɔː/ /tɑː/ /tʰɑː/ /tɔː/ /tʰɔː/ /cɑː/ /cʰɑː/ /cɔː/ /cʰɔː/ /sɑː/ /hɑː/ /ʋɔː/";
-const expectedUa = "ка ко ка кіє ко ку кей кі ке кей кае ке кае ке кау кеу ба па бо па по та та то то тьа ча тьо чо са ха во";
+const expectedUa = "ка ко ка кіє ко ку кей кі ке кей кае ке кае ке кау кеу ба па бо п'а по та т'а то т'о тьа ть'а тьо ть'о са га во";
 
 const tokens = tokenize(adversarial);
 assert.equal(tokens.filter((token) => /\S/u.test(token)).length, 32, "the 32-unit adversarial block must remain 32 orthographic units");
@@ -31,7 +31,7 @@ assert.deepEqual(
 );
 assert.deepEqual(
   { ipa: bySource["ផ"].ipa, ua: bySource["ផ"].ua },
-  { ipa: "/pʰɑː/", ua: "па" },
+  { ipa: "/pʰɑː/", ua: "п'а" },
 );
 
 assert.equal(parseSyllable("កx").status, "INVALID_OR_UNSUPPORTED");
@@ -64,7 +64,7 @@ const established = convert("ច្រើន", "established_form");
 assert.equal(careful.ipa, "/craən/");
 assert.equal(careful.ua, "тьраен");
 assert.equal(colloquial.ipa, "/cʰaən/");
-assert.equal(colloquial.ua, "чаен");
+assert.equal(colloquial.ua, "ть'аен");
 assert.equal(established.ipa, "/craən/");
 
 const zwnj = parseSyllable("ប\u200C៊");

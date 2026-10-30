@@ -14,6 +14,8 @@ It is **not** a Khmer character-to-character transliterator and it is not primar
 
 The practical Ukrainian layer is a project proposal. It is not an official Ukrainian national standard.
 
+The shared Ukrainian target conventions are maintained in the canonical [foreign IPA → Ukrainian adaptation policy](https://github.com/ClippyFirst/Ukrainian-Phonetic-Inventory/blob/main/docs/foreign-target-adaptation.md). This Khmer adapter applies the aspiration apostrophe and distinguishes /h/ → г, /ɡ/ → ґ and /x/ → х; it also preserves Ukrainian affricate and palatalization sequences where the source IPA supports them.
+
 ## Web service
 
 The system page now includes an evidence coverage dashboard generated from `reports/khmer-coverage-audit.json`. It exposes the dependent-vowel × consonant-series inventory and clearly distinguishes source-attested examples from unresolved cells and source conflicts. The dashboard is an evidence-status view, not a pronunciation-accuracy score.
@@ -68,22 +70,22 @@ Examples of the proposed practical target layer:
 | Khmer IPA | Ukrainian default | Russian-compatible alternative |
 |---|---|---|
 | /p/ | п | — |
-| /pʰ/ | п | пх |
+| /pʰ/ | п' | пх |
 | /t/ | т | — |
-| /tʰ/ | т | тх |
+| /tʰ/ | т' | тх |
 | /k/ | к | — |
-| /kʰ/ | к | кх |
+| /kʰ/ | к' | кх |
 | /c/ | ть | ть |
-| /cʰ/ | ч | ч / тьх |
+| /cʰ/ | ч' | ч / тьх |
 | /ɲ/ | нь | нь |
 | /ŋ/ | нг | нг |
 | /r/ | р | — |
 | /ʋ/ | в | — |
 | /w/ | у | — |
-| /h/ | х | х |
+| /h/ | г | х |
 | /ʔ/ | ∅ | context-dependent |
 
-These are **project decisions**, not claims of official Ukrainian usage. Aspiration remains explicit in the research/IPA layer even when it is neutralized in default practical spelling.
+These are **project decisions**, not claims of official Ukrainian usage. Aspiration is retained in the research/IPA layer and marked in practical Ukrainian output with an apostrophe (e.g. к', т', п').
 
 ## Vowels
 
@@ -193,7 +195,7 @@ When evidence is insufficient, the system records **EVIDENCE LIMITED**, **ANALYS
 
 ## Latest transcription-audit status — 2026-10-06
 
-The current implementation includes explicit handling for Khmer register shifters (៉ / ៊), the exceptional ប៉ construction, coeng-based clusters and adversarial regression fixtures. The canonical Ukrainian policy currently proposes /c/ → **ть**, /cʰ/ → **ч**, /h/ → **х**, /ʋ/ → **в** and /w/ → **у**. These remain project-specific decisions, not an official Ukrainian standard.
+The current implementation includes explicit handling for Khmer register shifters (៉ / ៊), the exceptional ប៉ construction, coeng-based clusters and adversarial regression fixtures. The canonical Ukrainian policy currently proposes /c/ → **ть**, /cʰ/ → **ч'**, /h/ → **г**, /ɡ/ → **ґ**, /x/ → **х**, /ʋ/ → **в** and /w/ → **у**. Aspiration is marked with an apostrophe; /ʔ/ does not trigger this marker. These remain project-specific decisions, not an official Ukrainian standard.
 
 The web explanation and browser adapter have been synchronized with that policy. The browser does not silently invent Phnom Penh /r/-loss phonetics or complete vowel IPA where the research engine has not established them.
 
@@ -202,7 +204,7 @@ Quality checks and static deployment are continuously checked by GitHub Actions;
 
 ## Latest lexical-coverage pass — 2026-10-06
 
-The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Cited lexical references report the phrase as **[pʰiəsaː kʰmae]**. The repository stores this as source-attested evidence, not an independently adjudicated gold label: no audio-based or independent multi-source adjudication is recorded. The Ukrainian practical form **пієса кмае** remains explicitly PROPOSED.
+The public service's previous `ភាសាខ្មែរ` → `NOT_ESTABLISHED` result was a **coverage gap**, not evidence that the pronunciation was unknown. Cited lexical references report the phrase as **[pʰiəsaː kʰmae]**. The repository stores this as source-attested evidence, not an independently adjudicated gold label: no audio-based or independent multi-source adjudication is recorded. The Ukrainian practical form **п'ієса к'мае** remains explicitly PROPOSED.
 
 The Ukrainian policy was also extended for /ae/, and the browser adapter now distinguishes a corpus-defined lexical Ukrainian form from a mechanical segment-by-segment rendering. This prevents the UI from silently presenting a different practical spelling merely because a phrase contains context-dependent or complex Khmer vowels.
 

@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-06.5",
+  "version": "2026-10-30.1",
   "status": "PROPOSED",
   "scope": "Project-specific Ukrainian practical target policy; not an official Ukrainian standard.",
   "evidence_note": "The consonant layer follows the documented Khmer phonetic inventory and uses the existing Khmer-Russian practical transcription as a comparator where useful. Ukrainian choices are independent project decisions.",
@@ -9,7 +9,7 @@
       "compatibility_ru": "п"
     },
     "pʰ": {
-      "default": "п",
+      "default": "п\u0027",
       "compatibility_ru": "пх"
     },
     "b": {
@@ -25,7 +25,7 @@
       "compatibility_ru": "т"
     },
     "tʰ": {
-      "default": "т",
+      "default": "т\u0027",
       "compatibility_ru": "тх"
     },
     "d": {
@@ -41,7 +41,7 @@
       "compatibility_ru": "к"
     },
     "kʰ": {
-      "default": "к",
+      "default": "к\u0027",
       "compatibility_ru": "кх"
     },
     "c": {
@@ -49,7 +49,7 @@
       "compatibility_ru": "ть"
     },
     "cʰ": {
-      "default": "ч",
+      "default": "ть\u0027",
       "compatibility_ru": "ч"
     },
     "ɲ": {
@@ -85,7 +85,7 @@
       "compatibility_ru": "с"
     },
     "h": {
-      "default": "х",
+      "default": "г",
       "compatibility_ru": "х"
     },
     "ʔ": {
@@ -99,6 +99,60 @@
     "n": {
       "default": "н",
       "compatibility_ru": "н"
+    },
+    "ɡ": {
+      "default": "ґ"
+    },
+    "g": {
+      "default": "ґ"
+    },
+    "x": {
+      "default": "х"
+    },
+    "ɦ": {
+      "default": "г"
+    },
+    "t͡s": {
+      "default": "ц"
+    },
+    "d͡z": {
+      "default": "дз"
+    },
+    "d͡zʲ": {
+      "default": "дзь"
+    },
+    "tɕ": {
+      "default": "ч"
+    },
+    "dʑ": {
+      "default": "дж"
+    },
+    "t͡ʃ": {
+      "default": "ч"
+    },
+    "d͡ʒ": {
+      "default": "дж"
+    },
+    "ʃ": {
+      "default": "ш"
+    },
+    "ʒ": {
+      "default": "ж"
+    },
+    "tʲ": {
+      "default": "ть"
+    },
+    "dʲ": {
+      "default": "дь"
+    },
+    "nʲ": {
+      "default": "нь"
+    },
+    "lʲ": {
+      "default": "ль"
+    },
+    "rʲ": {
+      "default": "рь"
     },
     "i": {
       "default": "і"

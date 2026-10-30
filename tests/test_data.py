@@ -11,7 +11,7 @@ def test_canonical_ukrainian_policy_is_complete():
         assert segment in policy["segments"]
         assert "default" in policy["segments"][segment]
     assert policy["segments"]["c"]["default"] == "ть"
-    assert policy["segments"]["cʰ"]["default"] == "ч\u0027"
+    assert policy["segments"]["cʰ"]["default"] == "ть\u0027"
     assert policy["segments"]["h"]["default"] == "г"
     assert policy["segments"]["ɡ"]["default"] == "ґ"
     assert policy["segments"]["x"]["default"] == "х"

@@ -124,3 +124,7 @@ if (!coverageHtml.includes("./reports/khmer-coverage-audit.json")) {
   throw new Error("full machine-readable coverage report is not linked from the site");
 }
 console.log("evidence coverage dashboard integration: PASS");
+
+for (const x of ['<nav class="site-nav" aria-label="Основна навігація">','href="./index.html" aria-current="page"','href="./system.html"']) {
+  if (!html.includes(x)) throw new Error("primary navigation is missing " + x);
+}

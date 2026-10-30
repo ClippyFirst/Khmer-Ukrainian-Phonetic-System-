@@ -14,6 +14,8 @@ It is **not** a Khmer character-to-character transliterator and it is not primar
 
 The practical Ukrainian layer is a project proposal. It is not an official Ukrainian national standard.
 
+The shared Ukrainian target conventions are maintained in the canonical [foreign IPA → Ukrainian adaptation policy](https://github.com/ClippyFirst/Ukrainian-Phonetic-Inventory/blob/main/docs/foreign-target-adaptation.md). This Khmer adapter applies the aspiration apostrophe and distinguishes /h/ → г, /ɡ/ → ґ and /x/ → х; it also preserves Ukrainian affricate and palatalization sequences where the source IPA supports them.
+
 ## Web service
 
 The system page now includes an evidence coverage dashboard generated from `reports/khmer-coverage-audit.json`. It exposes the dependent-vowel × consonant-series inventory and clearly distinguishes source-attested examples from unresolved cells and source conflicts. The dashboard is an evidence-status view, not a pronunciation-accuracy score.

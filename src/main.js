@@ -338,11 +338,19 @@ function convert(text, profile) {
   const evidenceLimited = linguistic.filter((item) => item.status === "EVIDENCE_LIMITED").length;
   const notEstablished = linguistic.filter((item) => item.status === "NOT_ESTABLISHED").length;
   const invalid = linguistic.filter((item) => item.status === "INVALID_OR_UNSUPPORTED").length;
+  // Keep aggregate output honest: unresolved units must not be concatenated
+  // with partial candidates in a way that resembles a complete transcription.
+  // Per-unit diagnostics remain available for research and inspection.
+  const aggregateUnresolved = linguistic.some((item) =>
+    !["PROPOSED", "ESTABLISHED_STRUCTURE"].includes(item.status)
+    || /⟦/.test(item.ipa)
+    || /⟦/.test(item.ua)
+  );
 
   return {
     source: normalized,
-    ipa: rendered.map((item) => item.ipa).join(""),
-    ua: rendered.map((item) => item.ua).join(""),
+    ipa: aggregateUnresolved ? "⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧" : rendered.map((item) => item.ipa).join(""),
+    ua: aggregateUnresolved ? "⟦ТРАНСКРИПЦІЮ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧" : rendered.map((item) => item.ua).join(""),
     status: combineStatus(linguistic),
     note: `Локальний аналіз: ${resolved.length} одиниць мають зафіксовану IPA та проєктну українську форму; ${unresolved.length} потребують окремого встановлення або перевірки (${notEstablished} не встановлено, ${evidenceLimited} з обмеженою доказовістю, ${invalid} некоректних/непідтримуваних). Некоректна одиниця більше не робить весь змішаний результат INVALID OR UNSUPPORTED; її стан ізольовано на рівні одиниці.${unresolvedNames.length ? ` Невстановлені/проблемні одиниці: ${unresolvedNames.join(" · ")}.` : ""}`,
     profile,
@@ -434,7 +442,8 @@ if (typeof document !== "undefined") {
     button.addEventListener("click", async () => {
       const element = $(button.dataset.copy);
       try {
-        await navigator.clipboard.writeText(element.textContent);
+        const copyText = "value" in element ? element.value : element.textContent;
+        await navigator.clipboard.writeText(copyText);
         const old = button.textContent;
         button.textContent = "Скопійовано";
         window.setTimeout(() => { button.textContent = old; }, 900);

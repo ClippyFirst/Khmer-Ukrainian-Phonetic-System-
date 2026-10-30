@@ -12,7 +12,7 @@ The output is not produced by Khmer-character substitution.
 Default for academic, editorial and reference use.
 
 ### phnom_penh_colloquial
-Optional pronunciation profile. It may model documented /r/-loss and its associated aspiration, pitch and vowel effects. It must never overwrite the careful analysis.
+Optional pronunciation profile. It may model documented /r/-loss and its associated aspiration, pitch and vowel effects. When its actual IPA result contains /cʰ/, Ukrainian output marks that aspiration as ч'. It must never overwrite the careful analysis or infer aspiration for every /Cr/ cluster.
 
 ### established_form
 A separately versioned lexicon can override the generic algorithm for conventional Ukrainian exonyms and historically established names.

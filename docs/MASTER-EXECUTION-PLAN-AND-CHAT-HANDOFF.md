@@ -484,3 +484,15 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Exact post-merge GitHub Pages deployment [40782813148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40782813148) passed and reported URL: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/
 - Published output order: Khmer romanization → IPA → Ukrainian candidate; the romanization is independent and its upstream profile limitations remain as documented above.
 - Remaining linguistic/UI acceptance gates are unchanged: independent Khmer pronunciation gold, broader source-backed romanization fixtures, and manual browser/mobile/accessibility QA. Publication does not mean linguistic completeness.
+
+
+## Shared Ukrainian target adaptation checkpoint — 2026-10-30
+
+- PR #59 (draft), branch `fix/shared-ukrainian-phonetics-2026-10-30`, applies the common target policy after Khmer IPA: /pʰ tʰ kʰ cʰ/ → п' т' к' ч'; foreign /h/ → г; hard /ɡ/ → ґ; genuine /x/ → х.
+- Added explicit target mappings for /t͡s/ → ц, /d͡z/ → дз, /t͡ʃ/ and alveolo-palatal /tɕ/ → ч, /d͡ʒ/ and /dʑ/ → дж, /ʃ/ → ш, /ʒ/ → ж, plus supported palatalized sequences.
+- The apostrophe marks aspiration only. It is not an output for /ʔ/ and is not the Ukrainian orthographic apostrophe. Adjacent consonants are not fused into an affricate without a source phonological affricate analysis.
+- Updated source-attested lexical practical proposals: `ភាសាខ្មែរ` → `п'ієса к'мае`; `ហើយ` with /h/ → `гаеі`. The Phnom Penh colloquial profile's attested /cʰ/ candidate now outputs ч' rather than neutralizing aspiration.
+- Exact-head CI [41076121018](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41076121018) passed Python (82 tests, 25 subtests) and all web checks, including runtime, register-shifter and romanization contracts. Branch head at verification: `677a9191e0614a7c9d9a55a259920689e0d04ec3`.
+- Existing PR #58 was left untouched. This PR is still draft and is not merged.
+
+These changes implement project-approved target conventions; they are not a new official Ukrainian standard and do not create new Khmer pronunciation evidence. Existing research blockers remain: contextual vowel/register/coda derivation, complete phonological IPA coverage and independent lexical/audio adjudication. Accuracy remains unmeasured.

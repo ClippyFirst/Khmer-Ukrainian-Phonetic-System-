@@ -64,7 +64,7 @@ const established = convert("ច្រើន", "established_form");
 assert.equal(careful.ipa, "/craən/");
 assert.equal(careful.ua, "тьраен");
 assert.equal(colloquial.ipa, "/cʰaən/");
-assert.equal(colloquial.ua, "чаен");
+assert.equal(colloquial.ua, "ч'аен");
 assert.equal(established.ipa, "/craən/");
 
 const zwnj = parseSyllable("ប\u200C៊");

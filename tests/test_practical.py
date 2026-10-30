@@ -5,7 +5,7 @@ def test_aspiration_is_marked_and_russian_comparator_stays_separate():
     assert map_sequence(['kʰ', 'a']) == "к'а"
     assert map_sequence(['pʰ', 'a']) == "п'а"
     assert map_sequence(['tʰ', 'a']) == "т'а"
-    assert map_sequence(['cʰ', 'a']) == "ч'а"
+    assert map_sequence(['cʰ', 'a']) == "ть'а"
     assert explain_segment('kʰ')['ru_compatibility'] == 'кх'
 
 

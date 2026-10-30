@@ -77,7 +77,7 @@ if (fixtures["ប៊"].ipa !== "/ɓɔː/" || fixtures["ប៊"].ua !== "бо") t
 if (fixtures["ប៉ី"].ipa !== "/pei/" || fixtures["ប៉ី"].ua !== "пей") throw new Error("ប៉ី fixture must resolve to /pei/ → пей");
 if (fixtures["ខ្ញុំ"].ipa !== "/kɲom/" || fixtures["ខ្ញុំ"].ua !== "кньом") throw new Error("ខ្ញុំ fixture must resolve to cited standard IPA /kɲom/ → кньом");
 if (fixtures["សង្គ្រាម"].ipa !== "/sɔŋkrɛəm/" || fixtures["សង្គ្រាម"].ua !== "сонгкреам") throw new Error("សង្គ្រាម fixture must resolve to /sɔŋkrɛəm/ → сонгкреам");
-if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "хаеі") throw new Error("ហើយ fixture must resolve to /haəi/ → гаеі");
+if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "гаеі") throw new Error("ហើយ fixture must resolve to /haəi/ → гаеі");
 if (sourceGuard.includes("const SHIFTER_ELIGIBILITY") === false) throw new Error("Khmer shifter eligibility guard missing");
 if (!sourceGuard.includes("SHIFTER_ELIGIBILITY[shifter]")) throw new Error("Khmer shifter eligibility is not enforced");
 if (!sourceGuard.includes("function renderIpaProfile")) throw new Error("web pronunciation-profile transformation is missing");

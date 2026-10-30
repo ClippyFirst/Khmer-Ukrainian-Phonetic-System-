@@ -76,6 +76,6 @@ Pipeline status is revision-specific. Check the latest Quality and Pages workflo
 - /h/ maps to г, /ɡ/ to ґ, and genuine /x/ to х. The policy does not equate foreign /h/ phonetically with Ukrainian /ɦ/.
 - Ukrainian affricate mappings include /t͡s/ → ц, /d͡z/ → дз, /t͡ʃ/ and /tɕ/ → ч, /d͡ʒ/ and /dʑ/ → дж. Supported palatalization is kept explicit; sequences are not automatically fused.
 - /ʔ/ is not aspiration and does not generate the marker.
-- Python tests passed (82 tests, 25 subtests); the complete web check workflow passed in [41076121018](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41076121018).
+- Python tests passed (82 tests, 25 subtests); the complete web check workflow passed in [41077123856](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41077123856) on branch head `6212527ffcab3d5e8ae77a7d85d654b582eaac3a`.
 - Draft PR #59 carries the changes; PR #58 is not modified. No merge or deployment was performed.
 - No new pronunciation source or gold label was fabricated. Existing independent lexical/audio adjudication remains absent; this target-policy change does not increase accuracy evidence.

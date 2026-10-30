@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-06.5",
+  "version": "2026-10-30.1",
   "status": "PROPOSED",
   "scope": "Project-specific Ukrainian practical target policy; not an official Ukrainian standard.",
   "evidence_note": "The consonant layer follows the documented Khmer phonetic inventory and uses the existing Khmer-Russian practical transcription as a comparator where useful. Ukrainian choices are independent project decisions.",
@@ -85,7 +85,7 @@
       "compatibility_ru": "с"
     },
     "h": {
-      "default": "х",
+      "default": "г",
       "compatibility_ru": "х"
     },
     "ʔ": {

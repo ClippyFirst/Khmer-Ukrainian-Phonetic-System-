@@ -11,3 +11,14 @@
   unicode-bidi: isolate;
   overflow-wrap: anywhere;
 }
+
+/* Navigation and responsive type polish — 2026-10-30. */
+.site-nav{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px}
+.site-nav a{display:inline-flex;align-items:center;min-height:44px;padding:9px 0;border-bottom:2px solid transparent;color:var(--muted);font-size:.78rem;font-weight:750;text-decoration:none}
+.site-nav a:hover,.site-nav a[aria-current=page]{color:var(--ink);border-color:var(--red)}
+.hero h1{font-size:clamp(2.75rem,6.2vw,5.25rem);line-height:1.02}
+@media(max-width:760px){
+  .topline{flex-wrap:wrap;gap:10px 14px}
+  .site-nav{order:3;width:100%;gap:8px 18px}
+  .hero h1{font-size:clamp(2.5rem,11vw,3.6rem);line-height:1.06}
+}

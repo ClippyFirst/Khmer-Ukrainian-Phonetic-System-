@@ -68,6 +68,7 @@ select{display:block;width:100%;min-height:44px;padding:9px 12px;border:1px soli
 .value{min-height:1.7em;margin:18px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:1.45rem;line-height:1.7}
 .khmer,.unit-source{font-family:"Noto Sans Khmer","Khmer OS",system-ui,sans-serif}
 .khmer{font-size:2rem}
+[lang="und-fonipa"]{font-family:"Charis SIL","Doulos SIL","DejaVu Sans","Noto Sans",sans-serif;font-feature-settings:"ccmp" 1,"mark" 1,"mkmk" 1;font-synthesis:none;unicode-bidi:isolate;overflow-wrap:anywhere}
 .ipa,.ua{font-family:"Charis SIL","Doulos SIL","DejaVu Sans","Noto Sans",sans-serif;font-feature-settings:"ccmp" 1,"mark" 1,"mkmk" 1;font-synthesis:none;unicode-bidi:isolate}
 .ipa,.ua{font-size:clamp(1.35rem,2.4vw,1.8rem)}
 .ua{font-weight:650;color:#8f202c}

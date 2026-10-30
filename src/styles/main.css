@@ -22,3 +22,11 @@
   .site-nav{order:3;width:100%;gap:8px 18px}
   .hero h1{font-size:clamp(2.5rem,11vw,3.6rem);line-height:1.06}
 }
+
+
+/* Readability baseline: supporting copy and evidence labels remain legible at normal zoom. */
+.brand,.local,.back,.muted,.hint,.section-title small,.controls small,.meta p,.meta button,.details,.unit-status,.unit-values,.unit-note,.status,.issue p,.system-teaser p,.coverage-stat span,.coverage-warning,.coverage-code,.coverage-ipa,.coverage-cases,.coverage-status,footer{font-size:.75rem;line-height:1.55}
+.doc p,.doc li{font-size:.9rem;line-height:1.7}
+.doc table{font-size:.78rem}
+.doc th{font-size:.7rem}
+.button{font-size:.78rem;min-height:44px}

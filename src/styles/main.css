@@ -30,3 +30,6 @@
 .doc table{font-size:.78rem}
 .doc th{font-size:.7rem}
 .button{font-size:.78rem;min-height:44px}
+
+/* Give the primary Ukrainian result a clear full-width reading lane. */
+.ua-card{grid-column:1/-1}

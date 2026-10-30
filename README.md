@@ -68,11 +68,11 @@ Examples of the proposed practical target layer:
 | Khmer IPA | Ukrainian default | Russian-compatible alternative |
 |---|---|---|
 | /p/ | п | — |
-| /pʰ/ | п | пх |
+| /pʰ/ | п' | пх |
 | /t/ | т | — |
-| /tʰ/ | т | тх |
+| /tʰ/ | т' | тх |
 | /k/ | к | — |
-| /kʰ/ | к | кх |
+| /kʰ/ | к' | кх |
 | /c/ | ть | ть |
 | /cʰ/ | ч | ч / тьх |
 | /ɲ/ | нь | нь |
@@ -80,10 +80,10 @@ Examples of the proposed practical target layer:
 | /r/ | р | — |
 | /ʋ/ | в | — |
 | /w/ | у | — |
-| /h/ | х | х |
+| /h/ | г | х |
 | /ʔ/ | ∅ | context-dependent |
 
-These are **project decisions**, not claims of official Ukrainian usage. Aspiration remains explicit in the research/IPA layer even when it is neutralized in default practical spelling.
+These are **project decisions**, not claims of official Ukrainian usage. Aspiration is retained in the research/IPA layer and marked in practical Ukrainian output with an apostrophe (e.g. к', т', п').
 
 ## Vowels
 
@@ -193,7 +193,7 @@ When evidence is insufficient, the system records **EVIDENCE LIMITED**, **ANALYS
 
 ## Latest transcription-audit status — 2026-10-06
 
-The current implementation includes explicit handling for Khmer register shifters (៉ / ៊), the exceptional ប៉ construction, coeng-based clusters and adversarial regression fixtures. The canonical Ukrainian policy currently proposes /c/ → **ть**, /cʰ/ → **ч**, /h/ → **х**, /ʋ/ → **в** and /w/ → **у**. These remain project-specific decisions, not an official Ukrainian standard.
+The current implementation includes explicit handling for Khmer register shifters (៉ / ៊), the exceptional ប៉ construction, coeng-based clusters and adversarial regression fixtures. The canonical Ukrainian policy currently proposes /c/ → **ть**, /cʰ/ → **ч'**, /h/ → **г**, /ɡ/ → **ґ**, /x/ → **х**, /ʋ/ → **в** and /w/ → **у**. Aspiration is marked with an apostrophe; /ʔ/ does not trigger this marker. These remain project-specific decisions, not an official Ukrainian standard.
 
 The web explanation and browser adapter have been synchronized with that policy. The browser does not silently invent Phnom Penh /r/-loss phonetics or complete vowel IPA where the research engine has not established them.
 

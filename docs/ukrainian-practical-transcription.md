@@ -42,7 +42,7 @@ No probability is assigned without a calibrated corpus.
 | /k/ | к |
 | /kʰ/ | к' |
 | /c/ | ть |
-| /cʰ/ | ч' |
+| /cʰ/ | ть' |
 | /ɲ/ | нь |
 | /ŋ/ | нг |
 | /r/ | р |

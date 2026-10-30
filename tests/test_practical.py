@@ -27,7 +27,9 @@ def test_affricates_and_fricatives_use_ukrainian_sequences():
     assert map_sequence(['t͡s', 'a']) == 'ца'
     assert map_sequence(['d͡z', 'a']) == 'дза'
     assert map_sequence(['t͡ʃ', 'a']) == 'ча'
+    assert map_sequence(['tɕ', 'a']) == 'ча'
     assert map_sequence(['d͡ʒ', 'a']) == 'джа'
+    assert map_sequence(['dʑ', 'a']) == 'джа'
     assert map_sequence(['ʃ', 'a']) == 'ша'
     assert map_sequence(['ʒ', 'a']) == 'жа'
 

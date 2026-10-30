@@ -76,7 +76,7 @@ Examples of the proposed practical target layer:
 | /k/ | к | — |
 | /kʰ/ | к' | кх |
 | /c/ | ть | ть |
-| /cʰ/ | ч | ч / тьх |
+| /cʰ/ | ч' | ч / тьх |
 | /ɲ/ | нь | нь |
 | /ŋ/ | нг | нг |
 | /r/ | р | — |

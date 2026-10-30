@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { convert, parseSyllable, tokenize, getStatusNotice } from "../src/main.js";
 
 const adversarial = "ក គ កា គា កូ គូ កី គី កេ គេ កែ គែ កើ គើ កៅ គៅ ប ប៉ ប៊ ផ ព ត ថ ទ ធ ច ឆ ជ ឈ ស ហ វ";
+
+const serviceHtml = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+assert.doesNotMatch(serviceHtml, /source-result|source-card/u, "the original Khmer input must not be duplicated as a fourth output card");
 const expectedIpa = "/kɑː/ /kɔː/ /kaː/ /kiə/ /koː/ /kuː/ /kəj/ /kiː/ /keː/ /kei/ /kaeː/ /kɛː/ /kɑːə/ /kəː/ /kau/ /kəu/ /ɓɑː/ /paː/ /ɓɔː/ /pʰɑː/ /pɔː/ /tɑː/ /tʰɑː/ /tɔː/ /tʰɔː/ /cɑː/ /cʰɑː/ /cɔː/ /cʰɔː/ /sɑː/ /hɑː/ /ʋɔː/";
 const expectedUa = "ка ко ка кіє ко ку кей кі ке кей кае ке кае ке кау кеу ба па бо п'а по та т'а то т'о тьа ть'а тьо ть'о са га во";
 
@@ -49,6 +53,8 @@ assert.equal(parseSyllable("ក៊").register_rule, "NON_STANDARD_SHIFTER_USE");
 
 const mixed = convert("ក ☃ គ", "careful_standard");
 assert.equal(mixed.status, "EVIDENCE_LIMITED");
+assert.equal(mixed.ipa, "⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
+assert.equal(mixed.ua, "⟦ТРАНСКРИПЦІЮ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
 const unresolved = mixed.units.find((x) => x.status === "NOT_ESTABLISHED" || x.status === "INVALID_OR_UNSUPPORTED");
 assert.ok(unresolved, "mixed input must isolate an unresolved unit rather than hiding neighboring evidence-backed units");
 assert.equal(mixed.units.find((x) => x.source === "ក")?.ua, "ка");
@@ -63,8 +69,11 @@ const colloquial = convert("ច្រើន", "phnom_penh_colloquial");
 const established = convert("ច្រើន", "established_form");
 assert.equal(careful.ipa, "/craən/");
 assert.equal(careful.ua, "тьраен");
-assert.equal(colloquial.ipa, "/cʰaən/");
-assert.equal(colloquial.ua, "ть'аен");
+assert.equal(colloquial.ipa, "⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
+assert.equal(colloquial.units.find((unit) => unit.source === "ច្រើន")?.ipa, "/cʰaən/", "unit-level IPA remains inspectable while aggregate output fails closed");
+assert.equal(colloquial.status, "EVIDENCE_LIMITED");
+assert.equal(colloquial.ua, "⟦ТРАНСКРИПЦІЮ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
+assert.equal(colloquial.units.find((unit) => unit.source === "ច្រើន")?.ua, "ть'аен", "unit-level candidate remains inspectable while aggregate output fails closed");
 assert.equal(established.ipa, "/craən/");
 
 const zwnj = parseSyllable("ប\u200C៊");

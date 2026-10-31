@@ -11,11 +11,9 @@ test("Khmer romanization returns Latin output for a documented sample", () => {
 
 test("the full user greeting sentence keeps spaces and punctuation in Khmer-to-Latin romanization", () => {
   const sentence = "សួស្តី! ខ្ញុំឈ្មោះ សុភា។ ខ្ញុំមកពីប្រទេសកម្ពុជា ហើយខ្ញុំចូលចិត្តរៀនភាសាថ្មីៗ និងអានសៀវភៅ។";
-  const romanized = sentence.split(/(\s+)/u).map((part) =>
-    /[\u1780-\u17ff]/u.test(part) ? khmerToLatin(part) : part,
-  ).join("");
+  const romanized = khmerToLatin(sentence);
   assert.match(romanized, /[A-Za-z]/u);
-  assert.doesNotMatch(romanized, /[\u1780-\u17ff]/u, "the supported greeting must be fully converted out of Khmer script");
+  assert.doesNotMatch(romanized, /[\u1780-\u17d3\u17d6-\u17ff]/u, "Khmer letters and signs must be converted; Khmer punctuation is intentionally preserved");
   assert.equal((romanized.match(/។/gu) ?? []).length, 2, "both Khmer sentence stops must be preserved");
   assert.ok(romanized.includes(" "));
   assert.ok(romanized.includes("!"));

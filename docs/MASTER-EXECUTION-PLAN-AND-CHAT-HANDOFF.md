@@ -535,3 +535,13 @@ These changes implement project-approved target conventions; they are not a new 
 - GitHub Pages deployment [41230505474](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41230505474) succeeded: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/ .
 - Final statuses: KHM-ROM-STD-001 DONE_VERIFIED; KHM-ROM-ONSET-001 DONE_VERIFIED; KHM-ROM-ENGINE-001 PARTIAL; KHM-ROM-MATRIX-001 PARTIAL; KHM-ROM-UA-001 TODO; KHM-ROM-TEST-001 PARTIAL; phonetic independent lexical gold BLOCKED (none supplied/adjudicated).
 - The website exposes two separate methods, but the romanization route's Ukrainian result is intentionally PARTIAL. Do not call the romanization mode complete until the full context-sensitive source → BGN/PCGN → Ukrainian syllable matrix and adapter are implemented and tested.
+
+
+## Romanization evidence inventory continuation — 2026-10-31
+
+- User confirmed the two-method contract: orthographic BGN/PCGN romanization → Ukrainian table adapter is independent from phonetic IPA → Ukrainian adaptation; romanization mode is intended to cover the supported orthographic inventory, while phonetic output may be partial/unsupported.
+- Added `data/khmer/romanization_vowels_ukrainian.csv` with **38 source-located PCGN table entries**: 13 independent vowels, 17 dependent-vowel rows, and 8 vowel + anusvara/visarga combinations. The data preserves PCGN alternatives, consonant-series/shortening context, candidate Ukrainian values, and explicit `PROPOSED`, `ANALYSIS_DEPENDENT`, or `EVIDENCE_LIMITED` statuses. Rows without an adjudicated target have an empty candidate; no missing value was guessed.
+- Added `tests/test_romanization_vowel_matrix.py` to verify row counts, unique section/row identifiers, official source URL/locators, allowed evidence statuses, and the no-candidate invariant for `EVIDENCE_LIMITED`.
+- Existing 22-row consonant/subscript matrix and its tests are preserved. This expands machine-readable evidence; it does **not** implement the PCGN romanization engine or the BGN/PCGN syllable → Ukrainian runtime adapter.
+- Status: KHM-ROM-VOWEL-INVENTORY-001 = implementation added, CI verification pending; KHM-ROM-ENGINE-001 remains PARTIAL; KHM-ROM-UA-001 remains TODO; full context-sensitive vowel coverage and independent Khmer IPA gold remain PARTIAL/BLOCKED.
+- Branch: `work/romanization-evidence-completion-20261031`. Changes are isolated from `main`; do not mark the new tests DONE_VERIFIED until the exact PR-head workflow passes.

@@ -128,3 +128,8 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 | KHM-ROM-MATRIX-001 | PARTIAL | Full vowel/context/diacritic/numeral table in canonical data with provenance; consonant slice alone is not full coverage |
 | KHM-ROM-TEST-001 | TODO | Source-backed tests for all table rows, mixed scripts, punctuation, diacritics, malformed units and ambiguity |
 | KHM-IPA-001 | PARTIAL | Existing contextual vowel/register/coda IPA model and independent gold remain incomplete |
+
+
+## Machine-readable vowel inventory
+
+[data/khmer/romanization_vowels_ukrainian.csv](../data/khmer/romanization_vowels_ukrainian.csv) contains 38 source-located PCGN table entries: 13 independent-vowel rows, 17 dependent-vowel rows, and 8 vowel-plus-anusvara/visarga rows. It preserves the standard's alternatives and contextual conditions; `EVIDENCE_LIMITED` rows intentionally have no Ukrainian candidate. This is a source-table inventory, not a claim that the contextual vowel matrix or runtime adapter is complete.

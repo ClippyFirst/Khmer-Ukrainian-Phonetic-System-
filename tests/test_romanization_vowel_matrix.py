@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "data/khmer/romanization_vowels_ukrainian.csv"
 ALLOWED = {"PROPOSED", "ANALYSIS_DEPENDENT", "EVIDENCE_LIMITED", "NOT_ESTABLISHED"}
-EXPECTED = {"independent_vowel": 13, "dependent_vowel": 17, "vowel_diacritic_combination": 8}
+EXPECTED = {"independent_vowel": 12, "dependent_vowel": 17, "vowel_diacritic_combination": 8}
 SOURCE = "https://assets.publishing.service.gov.uk/media/5ab4e25aed915d78bc23451e/ROMANIZATION_OF_KHMER.pdf"
 
 

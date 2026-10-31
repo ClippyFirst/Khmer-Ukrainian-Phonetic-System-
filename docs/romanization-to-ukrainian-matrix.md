@@ -133,7 +133,7 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 | KHM-ROM-VOWEL-INVENTORY-001 | PARTIAL | 37 source rows now match the PCGN glyphs/romanization values; exact-head automated verification is blocked by the queued Actions runner |
 | KHM-ROM-MARKS-NUMERALS-001 | PARTIAL | Six exact PCGN diacritic glyphs and ten numeral glyphs are inventoried; the latest exact-glyph test update awaits CI |
 | KHM-ROM-MATRIX-001 | PARTIAL | Source tables are inventoried; full context-dependent vowel × series × shortening × coda rules and Ukrainian target adjudication remain incomplete |
-| KHM-ROM-TEST-001 | PARTIAL | Exact PCGN vowel-row, diacritic and numeral inventory tests pass; full mixed-script, punctuation, malformed-unit and ambiguity coverage remains TODO |
+| KHM-ROM-TEST-001 | PARTIAL | Earlier row-count/provenance checks passed; exact source-glyph and romanization assertions in PR #75 await a successful exact-head CI run; full mixed-script, punctuation, malformed-unit and ambiguity coverage remains TODO |
 | KHM-IPA-001 | PARTIAL | Existing contextual vowel/register/coda IPA model and independent gold remain incomplete |
 
 

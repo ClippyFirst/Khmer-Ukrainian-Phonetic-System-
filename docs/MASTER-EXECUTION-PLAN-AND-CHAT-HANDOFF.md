@@ -634,7 +634,7 @@ These changes implement project-approved target conventions; they are not a new 
 
 ## Open styling PR reconciliation — 2026-10-31
 
-- Rechecked open PR #64 (`design/khmer-layout-20261030`) against current `main` `b4de6b248660b50d320ab24e8d3348fb1226d178`: branch is diverged, 7 commits ahead and 17 behind; merge base is `20e2e6dc296829986e52672d96b8730687aaa42a`. Its changes touch `index.html`, `system.html`, `src/styles/main.css`, and add `tests/test_layout_contract.py`.
+- Rechecked open PR #64 (`design/khmer-layout-20261030`) against current `main` `b4de6b248660b50d320ab24e8d3348fb1226d178`: branch is diverged, 7 commits ahead and 22 behind; merge base is `20e2e6dc296829986e52672d96b8730687aaa42a`. Its changes touch `index.html`, `system.html`, `src/styles/main.css`, and add `tests/test_layout_contract.py`.
 - PR #64 remains open and untouched. Do not merge blindly: the CSS and layout-contract test need to be ported onto a fresh branch from current `main`, followed by current Python/web/build and visual/mobile verification. No styling changes were cherry-picked in this checkpoint.
 - This is independent from the now-verified PCGN glyph inventory; no new Pages deployment or runtime change is claimed.
 
@@ -656,3 +656,11 @@ These changes implement project-approved target conventions; they are not a new 
 - Exact-head Quality workflow [41238197962](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41238197962) passed Python tests, Node web checks (including the runtime regression), and Vite build.
 - This is a segmentation/source-preservation check, not independent IPA gold or a claim that every word in the sentence has an established pronunciation. The aggregate converter remains deliberately fail-closed when any unit is unresolved.
 - The latest Pages deployment [41237778259](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41237778259) succeeded for main commit `cb48d4c660d3e7f826c677d871654157914ae59c`; PR #80 adds tests only and does not change the deployed runtime.
+
+
+### Reconciliation update — open layout PR #64 — 2026-10-31
+
+- Rechecked PR #64 (`design/khmer-layout-20261030`) against current main `6be7a09bb02824cfba2a50f17fdfd16faa5605e8`: diverged, 7 commits ahead and 22 behind; merge base remains `20e2e6dc296829986e52672d96b8730687aaa42a`.
+- The branch changes `index.html`, `system.html`, and replaces `src/styles/main.css` wholesale; it also adds `tests/test_layout_contract.py` with assertions coupled to the old CSS implementation. Those exact selectors are not a portable contract for the current stylesheet and need redesign before reuse.
+- The responsive layout improvements required for the current interface were already ported in focused PR #78 (`3b6e08177f9c90dddb27e787cc7a6deaa015c33e`) and its exact-head CI passed. No unique engine behavior is present in PR #64.
+- PR #64 remains open and untouched; no wholesale CSS replacement or brittle test was ported. The existing IPA/method-switch styles and newer source-aware behavior are preserved.

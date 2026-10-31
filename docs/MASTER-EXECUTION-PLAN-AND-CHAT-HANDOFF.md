@@ -562,3 +562,11 @@ These changes implement project-approved target conventions; they are not a new 
 - `KHM-ROM-VOWEL-INVENTORY-001` is `DONE_VERIFIED` for the bounded 37-row source inventory; `KHM-ROM-MARKS-NUMERALS-001` is `DONE_VERIFIED` for six diacritic rows and ten numeral rows. `KHM-ROM-MATRIX-001` remains `PARTIAL`; `KHM-ROM-ENGINE-001` remains `PARTIAL`; `KHM-ROM-UA-001` remains `TODO`.
 - This does not establish all contextual BGN/PCGN transformations, nor does it complete the syllable-level BGN/PCGN → Ukrainian adapter. Existing @gmana ASCII output still drops diacritics. No new live Pages deployment was needed for these source-data and test changes; existing Pages site remains https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/.
 - Verification PR: [#71](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/71), branch `verify/romanization-evidence-20261031`. PR #70 contains the earlier attempt and is superseded by #71.
+
+
+## Post-merge main checkpoint — 2026-10-31
+
+- PR #71 merged by squash as `2b8c9d4869c1fa4f179c3a087057e44bf5ef213b`; this is the main-branch implementation merge SHA for the romanization evidence inventory.
+- Exact code-verification workflow [41232468242](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41232468242) passed: 87 Python tests + 25 subtests; web checks and Vite production build passed. The exact code-verification run checked out head `49f595e4ea030c4b4726ed3335c4bf9d22863271`; subsequent changes before merge were documentation-only.
+- The bounded source inventory and its tests are now on `main`. The overall orthographic matrix and runtime adapter remain incomplete; see the PARTIAL/TODO statuses above.
+- No runtime behavior or Pages build inputs changed in this PR; the already deployed GitHub Pages site remains the existing public service. A new Pages deployment was not necessary for these data/documentation-only changes.

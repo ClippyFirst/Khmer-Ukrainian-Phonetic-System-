@@ -145,3 +145,8 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 ## Whole-text regression and remaining adapter gap — 2026-10-31
 
 The current main head `1a6921fc75dd011bc8097f6636b8077fc7c59cff` passed Quality [41243972009](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41243972009) and Pages deployment [41243971788](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41243971788). The romanization integration passes the complete source string to the selected library and has regression cases for a full greeting, short mixed-script text, native Khmer numerals, ASCII digits, Latin text, spaces and punctuation. This is input-integrity evidence only. The independent syllable-level romanization → Ukrainian adapter remains TODO; contextual PCGN coverage and unspaced word segmentation remain incomplete. No IPA or Ukrainian gold is inferred from library output.
+
+
+## Post-merge whole-text verification — 2026-10-31
+
+Current main `28a9bbb909ca57735ceca92f262c2de9eeb43396` passed Quality [41246343908](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41246343908) and Pages [41246343845](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41246343845). The tests confirm the selected romanization library receives the complete input and preserves supported mixed-text boundaries; they do not establish PCGN 1972 conformance or an implemented Ukrainian syllable adapter. The adapter remains TODO.

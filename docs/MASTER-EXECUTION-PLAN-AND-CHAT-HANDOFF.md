@@ -578,3 +578,6 @@ These changes implement project-approved target conventions; they are not a new 
 - The implicit-vowel row now uses the PCGN placeholder `◌`, whose note defines it as any Khmer consonant or consonant + subscript, rather than the non-graphemic label `inherent vowel`.
 - Extended `tests/test_romanization_vowel_matrix.py` to assert exact source glyph sequences for all 17 dependent-vowel and all 8 anusvara/visarga rows, in addition to the full 22-row numbering, source URL, locators and evidence statuses.
 - This is a source-faithfulness correction to the bounded inventory; it does not change the BGN/PCGN romanization values or claim that the context-sensitive engine / Ukrainian adapter is complete. Exact-head CI pending.
+
+- This checkpoint supersedes the earlier 38-row / 13-independent-vowel draft count: the source PDF contains **12** independent-character entries, **17** dependent-vowel entries and **8** anusvara/visarga entries, for **37** machine-readable rows. The full shared PCGN vowel table spans row IDs 1–22 across its independent and dependent columns.
+- The diacritic/numeral test now asserts all six exact PCGN mark glyphs and all ten Khmer numeral glyphs, not just their counts.

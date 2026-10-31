@@ -30,3 +30,16 @@ test("the full user greeting sentence keeps spaces and punctuation in Khmer-to-L
   assert.ok(romanized.includes("!"));
   assert.ok(romanized.includes("។"));
 });
+
+
+test("Khmer romanization preserves Khmer numerals, ASCII numbers, mixed Latin text and punctuation",()=>{
+  const source="២០២៦ ABC-42, សួស្តី។";
+  const romanized=khmerToLatin(source);
+  assert.match(romanized,/[A-Za-z]/u);
+  assert.ok(romanized.includes("២០២៦")||romanized.includes("2026"),"Khmer numerals must remain visible or be rendered as Arabic digits");
+  assert.ok(romanized.includes("ABC-42"),"mixed Latin and ASCII numerals must be preserved");
+  assert.ok(romanized.includes(","));
+  assert.ok(romanized.includes("។"));
+  assert.ok(romanized.includes(" "));
+  assert.doesNotMatch(romanized,/[ក-៓៖-៟៪-៿]/u,"unsupported Khmer letters/signs must not leak into the romanized output");
+});

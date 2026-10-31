@@ -595,3 +595,13 @@ These changes implement project-approved target conventions; they are not a new 
 - The corrected PCGN source glyph inventory and exact-row tests were merged by PR #75 as `5959113931c2e08ac279f4e064fa14a669a96f87`; the subsequent ledger correction PR #76 merged as `799d66f2038053e03b3a1c82d33fec7bbef4bfc8`. This is the main head before this final handoff-only update.
 - PR #75's exact-head workflow [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41233203184) remains queued. The local clone attempt failed with `Could not resolve host: github.com`; no test pass is claimed for the latest exact-glyph assertions. The matrix correctly leaves the bounded vowel and marks/numerals tasks PARTIAL pending CI.
 - Remaining acceptance: exact-head CI green; complete context-dependent BGN/PCGN engine; complete romanization-syllable → Ukrainian table and adapter; broader IPA gold and ambiguity tests. No runtime changes or new Pages deployment were made.
+
+
+## Exact PCGN glyph inventory verification checkpoint — 2026-10-31
+
+- Current main before this documentation checkpoint: `5f3a9184f61d2e6e559cde30767e8c681a995a68`; matrix status update commit: `37990bcaf9550d6d2d45506ae9f56eb7717c2a2f`.
+- Previously queued exact-head workflow [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41233203184) is now completed with conclusion `success`. Job `test` (ID `124631488043`) completed all steps successfully: Python dependency setup and tests, Node dependency setup, web checks, and site build.
+- Updated `docs/romanization-to-ukrainian-matrix.md`: `KHM-ROM-VOWEL-INVENTORY-001` and `KHM-ROM-MARKS-NUMERALS-001` are now `DONE_VERIFIED` as bounded source-table inventories with exact-glyph/romanization assertions; `KHM-ROM-TEST-001` remains `PARTIAL` because broader mixed-script, punctuation, malformed-unit and ambiguity coverage is still outstanding.
+- This CI result verifies the bounded PCGN inventory assertions only. It does **not** establish the complete contextual vowel × consonant-series × shortening × coda matrix, a conformant runtime PCGN engine, a complete Ukrainian syllable adapter, or phonetic IPA coverage.
+- No runtime code or Pages build inputs changed; no new deployment is required for this documentation-only update. Existing live site: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/.
+- Next implementation priority remains the context-dependent Khmer vowel/rime matrix and a source-aware PCGN engine; do not replace evidence gaps with guessed Ukrainian candidates.

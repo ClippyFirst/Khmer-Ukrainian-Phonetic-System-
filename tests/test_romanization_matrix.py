@@ -23,8 +23,7 @@ EXPECTED_ROWS = {
     "19": ("v", "в"),
     "20": ("s", "с"),
     "21": ("h", "г"),
-    "22": ("'", ""),
-    "SPECIAL-1": ("l", "л"),
+    "22": ("’", ""),
 }
 
 
@@ -49,3 +48,4 @@ def test_khmer_romanization_matrix_preserves_provenance_and_uncertainty():
     assert all(row["source_locator"].strip() for row in rows)
     assert all(row["source_units"].strip() for row in rows)
     assert all(row["ukrainian_candidate"] for row in rows if row["ukrainian_status"] == "PROPOSED")
+    assert all(row["table_row"] in {str(i) for i in range(1, 23)} for row in rows)

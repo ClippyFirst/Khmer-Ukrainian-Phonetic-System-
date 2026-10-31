@@ -672,3 +672,13 @@ These changes implement project-approved target conventions; they are not a new 
 - The sentence regression now asserts the exact aggregate markers `⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧` and `⟦ТРАНСКРИПЦІЮ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧` for the supplied greeting. This confirms that the engine preserves the input but does not claim a complete IPA or Ukrainian transcription when lexical units are not established.
 - Exact-head Quality workflow [41239297284](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41239297284) passed Python tests, Node web/runtime tests, and Vite build.
 - This is an explicit expected limitation, not a successful phonetic result. Supporting the sentence requires source-backed contextual phonology and lexical evidence, not weakening the fail-closed rule.
+
+## Full-sentence romanization integration — 2026-10-31
+
+- Main head: \`076ffaa1523afa7cc9ec9b8c2ca8e3a83cea101f\` (PR #89).
+- PR #87 added the supplied full Khmer greeting sentence to the romanization test. Exact-head Quality workflow [41240282424](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41240282424) passed: 87 Python tests + 25 subtests, configured Node web/runtime/romanization checks, and Vite build.
+- PR #89 merged the bounded UI integration fix: \`src/main.js\` now passes the complete input string to \`khmerToLatin(data.source)\`, rather than manually splitting on whitespace and invoking the library token by token. This follows the package's documented whole-text contract for preserving whitespace and punctuation, and its handling of the Khmer repetition mark \`ៗ\` ([package documentation](https://www.npmjs.com/package/@gmana/km-translit)).
+- The exact regression checks that the sample is converted out of Khmer letters/signs while preserving both Khmer sentence stops, spaces, and the exclamation mark. Exact-head Quality workflow [41241149726](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41241149726) passed Python tests, Node web checks, and the Vite production build.
+- This does not solve dictionary-based word segmentation inside unspaced Khmer runs; the library explicitly documents that limitation. Nor does it complete conformant BGN/PCGN 1972 contextual romanization or the independent romanization-to-Ukrainian adapter.
+- PR #88 was closed as superseded; it used a stale pre-main branch and an incorrectly escaped Unicode test assertion. PR #64 remains open and untouched because its branch is diverged and replaces the stylesheet wholesale.
+- No new Pages deployment is claimed. The site remains a research prototype; contextual PCGN coverage, a source-backed Ukrainian syllable adapter, and independently adjudicated phonetic gold remain open.

@@ -16,7 +16,9 @@ def test_pcgn_vowel_and_diacritic_crosswalk_is_complete_for_documented_tables():
     assert len(rows) == sum(EXPECTED.values())
     assert {section: sum(row["table_section"] == section for row in rows) for section in EXPECTED} == EXPECTED
     assert all(row["source_url"] == SOURCE for row in rows)
-    assert all(row["source_locator"].startswith("Independent Vowel") or row["source_locator"].startswith("Dependent Vowel") or row["source_locator"].startswith("Vowels with Anusvara") for row in rows)
+    assert all(row["source_locator"].startswith("Independent/Dependent Vowel") or row["source_locator"].startswith("Vowel Characters with Anusvara") for row in rows)
+    table_rows = {int(row["table_row"]) for row in rows if row["table_section"] in {"independent_vowel", "dependent_vowel"}}
+    assert table_rows == set(range(1, 23))
     assert all(row["ukrainian_status"] in ALLOWED for row in rows)
     assert all(row["bgn_pcgn_romanization"] and row["source_units"] and row["note"] for row in rows)
     assert len({(row["table_section"], row["table_row"]) for row in rows}) == len(rows)

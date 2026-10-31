@@ -78,7 +78,7 @@ PCGN numbers the independent-character column within a shared 22-row table; only
 
 | PCGN row | Khmer sign / structure | BGN/PCGN romanization (â-series / ô-series; normal / shortened as applicable) | Ukrainian candidate | Status |
 |---|---|---|---|---|
-| 1 | inherent vowel | â / ô; shortened á / ó | а / о | PROPOSED |
+| 1 | ◌ (any consonant or consonant + foot) | â / ô; shortened á / ó | а / о | ANALYSIS_DEPENDENT |
 | 2 | ◌ា | a / éa; shortened ă / eă or oă | а / еа | ANALYSIS_DEPENDENT |
 | 3 | ◌ិ | ĕ; shortened ĭ | е | ANALYSIS_DEPENDENT |
 | 4 | ◌ី | ei; shortened i | ей / і | ANALYSIS_DEPENDENT |
@@ -87,14 +87,14 @@ PCGN numbers the independent-character column within a shared 22-row table; only
 | 7 | ◌ុ | ŏ / ŭ | о / у | ANALYSIS_DEPENDENT |
 | 8 | ◌ូ | o / u | о / у | ANALYSIS_DEPENDENT |
 | 9 | ◌ួ | uŏ | уо | PROPOSED |
-| 10 | ◌ើ | aeu / eu | — | EVIDENCE_LIMITED |
-| 11 | ◌ឿ | œă | — | EVIDENCE_LIMITED |
-| 12 | ◌ៀ | iĕ | іє | PROPOSED |
-| 13 | ◌េ | é | е | PROPOSED |
-| 14 | ◌ែ | ê | е | PROPOSED |
-| 15 | ◌ៃ | ai / ey | ай / ей | ANALYSIS_DEPENDENT |
-| 16 | ◌ោ | aô / oŭ | ао / оу | ANALYSIS_DEPENDENT |
-| 17 | ◌ៅ | au / ŏu | ау / оу | ANALYSIS_DEPENDENT |
+| 10 | េ◌ើ | aeu / eu | — | EVIDENCE_LIMITED |
+| 11 | េ◌ឿ | œă | — | EVIDENCE_LIMITED |
+| 12 | េ◌ៀ | iĕ | іє | PROPOSED |
+| 13 | េ◌ | é | е | PROPOSED |
+| 14 | ែ◌ | ê | е | PROPOSED |
+| 15 | ៃ◌ | ai / ey | ай / ей | ANALYSIS_DEPENDENT |
+| 16 | េ◌ា | aô / oŭ | ао / оу | ANALYSIS_DEPENDENT |
+| 17 | េ◌ៅ | au / ŏu | ау / оу | ANALYSIS_DEPENDENT |
 
 **Vowel + anusvara / visarga combinations**
 
@@ -102,12 +102,12 @@ PCGN numbers the independent-character column within a shared 22-row table; only
 |---|---|---|---|---|
 | 1 | ◌ុ◌ំ | om / ŭm | ом / ум | ANALYSIS_DEPENDENT |
 | 2 | ◌ំ | âm / um | ам / ум | ANALYSIS_DEPENDENT |
-| 3 | ◌ំ (shortened pattern) | ăm / ŏâm | — | EVIDENCE_LIMITED |
+| 3 | ◌ំ឵ (PCGN composite glyph) | ăm / ŏâm | — | EVIDENCE_LIMITED |
 | 4 | ◌ះ | ăh / eăh | — | EVIDENCE_LIMITED |
 | 5 | ◌ុ◌ះ | ŏh / ŭh | — | EVIDENCE_LIMITED |
-| 6 | ◌េ◌ះ | éh / éh | — | EVIDENCE_LIMITED |
-| 7 | ◌េ◌ះ (series/context variant) | aôh / ŏăh | — | EVIDENCE_LIMITED |
-| 8 | ◌ំ◌ង | ăng / eăng | — | EVIDENCE_LIMITED |
+| 6 | េ◌◌ះ | éh / éh | — | EVIDENCE_LIMITED |
+| 7 | េ◌឵ះ | aôh / ŏăh | — | EVIDENCE_LIMITED |
+| 8 | ◌ំ឵ង | ăng / eăng | — | EVIDENCE_LIMITED |
 
 These are **research candidates**, not a production vowel adapter. The source standard makes vowel rendering depend on consonant series, subscripts, shortening, codas and diacritics. The canonical data implementation must preserve those fields and test each context; a single-sign replacement is not conformant.
 
@@ -130,11 +130,13 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 | KHM-ROM-ENGINE-001 | PARTIAL | Replace/verify the ASCII simplifier against the full BGN/PCGN table, including diacritics and context |
 | KHM-ROM-UA-001 | TODO | Implement an independent syllable-level romanization → Ukrainian adapter |
 | KHM-ROM-ONSET-001 | DONE_VERIFIED | All 22 PCGN consonant rows plus special ឝ are in data/khmer/romanization_ukrainian.csv; exact row and provenance tests passed in workflow 41229431196 |
-| KHM-ROM-MATRIX-001 | PARTIAL | Full vowel/context/diacritic/numeral table in canonical data with provenance; consonant slice alone is not full coverage |
-| KHM-ROM-TEST-001 | TODO | Source-backed tests for all table rows, mixed scripts, punctuation, diacritics, malformed units and ambiguity |
+| KHM-ROM-VOWEL-INVENTORY-001 | PARTIAL | 37 source rows now match the PCGN glyphs/romanization values; exact-head automated verification is blocked by the queued Actions runner |
+| KHM-ROM-MARKS-NUMERALS-001 | PARTIAL | Six exact PCGN diacritic glyphs and ten numeral glyphs are inventoried; the latest exact-glyph test update awaits CI |
+| KHM-ROM-MATRIX-001 | PARTIAL | Source tables are inventoried; full context-dependent vowel × series × shortening × coda rules and Ukrainian target adjudication remain incomplete |
+| KHM-ROM-TEST-001 | PARTIAL | Exact PCGN vowel-row, diacritic and numeral inventory tests pass; full mixed-script, punctuation, malformed-unit and ambiguity coverage remains TODO |
 | KHM-IPA-001 | PARTIAL | Existing contextual vowel/register/coda IPA model and independent gold remain incomplete |
 
 
 ## Machine-readable vowel inventory
 
-[data/khmer/romanization_vowels_ukrainian.csv](../data/khmer/romanization_vowels_ukrainian.csv) contains 38 source-located PCGN table entries: 13 independent-vowel rows, 17 dependent-vowel rows, and 8 vowel-plus-anusvara/visarga rows. It preserves the standard's alternatives and contextual conditions; `EVIDENCE_LIMITED` rows intentionally have no Ukrainian candidate. This is a source-table inventory, not a claim that the contextual vowel matrix or runtime adapter is complete.
+[data/khmer/romanization_vowels_ukrainian.csv](../data/khmer/romanization_vowels_ukrainian.csv) contains **37 source-located PCGN table entries**: 12 independent-character entries, 17 dependent-vowel entries, and 8 vowel-plus-anusvara/visarga entries. The shared PCGN table has 22 row numbers, with a sparse independent-character column; the independent and dependent columns are recorded separately without inventing extra row numbers. It preserves the standard's alternatives and contextual conditions; `EVIDENCE_LIMITED` rows intentionally have no Ukrainian candidate. This is a source-table inventory, not a claim that the contextual vowel matrix or runtime adapter is complete.

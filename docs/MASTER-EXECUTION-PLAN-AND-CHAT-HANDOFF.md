@@ -570,3 +570,21 @@ These changes implement project-approved target conventions; they are not a new 
 - Exact code-verification workflow [41232468242](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41232468242) passed: 87 Python tests + 25 subtests; web checks and Vite production build passed. The exact code-verification run checked out head `49f595e4ea030c4b4726ed3335c4bf9d22863271`; subsequent changes before merge were documentation-only.
 - The bounded source inventory and its tests are now on `main`. The overall orthographic matrix and runtime adapter remain incomplete; see the PARTIAL/TODO statuses above.
 - No runtime behavior or Pages build inputs changed in this PR; the already deployed GitHub Pages site remains the existing public service. A new Pages deployment was not necessary for these data/documentation-only changes.
+
+
+## PCGN composite vowel glyph correction — 2026-10-31
+
+- A second visual inspection of the official PCGN PDF (especially page 4) found that some dependent-vowel and anusvara/visarga source glyphs had been simplified in the first CSV draft. The data now preserves the actual table forms, including preposed-vowel sequences (`េ◌ើ`, `េ◌ឿ`, `េ◌ៀ`, `េ◌ា`, `េ◌ៅ`) and the PCGN composite patterns in rows 3, 7 and 8 of the anusvara/visarga table.
+- The implicit-vowel row now uses the PCGN placeholder `◌`, whose note defines it as any Khmer consonant or consonant + subscript, rather than the non-graphemic label `inherent vowel`.
+- Extended `tests/test_romanization_vowel_matrix.py` to assert exact source glyph sequences for all 17 dependent-vowel and all 8 anusvara/visarga rows, in addition to the full 22-row numbering, source URL, locators and evidence statuses.
+- This is a source-faithfulness correction to the bounded inventory; it does not change the BGN/PCGN romanization values or claim that the context-sensitive engine / Ukrainian adapter is complete. Exact-head CI pending.
+
+- This checkpoint supersedes the earlier 38-row / 13-independent-vowel draft count: the source PDF contains **12** independent-character entries, **17** dependent-vowel entries and **8** anusvara/visarga entries, for **37** machine-readable rows. The full shared PCGN vowel table spans row IDs 1–22 across its independent and dependent columns.
+- The diacritic/numeral test now asserts all six exact PCGN mark glyphs and all ten Khmer numeral glyphs, not just their counts.
+
+
+## Exact-head verification blocker for final PCGN glyph correction — 2026-10-31
+
+- Programmatic branch-content validation confirms 37 vowel/rime rows, all 37 official source URLs, all 37 exact source-glyph + BGN/PCGN value pairs, 16 diacritic/numeral rows, and no Ukrainian candidate on any `EVIDENCE_LIMITED` row.
+- The latest exact-head Quality checks run [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41233203184) remains `queued` (job 124631488043). A local `git clone`/pytest attempt is blocked by the execution environment's DNS error (`Could not resolve host: github.com`). Therefore the new exact-glyph assertions have **not** been reported as passed.
+- The matrix records `KHM-ROM-VOWEL-INVENTORY-001` and `KHM-ROM-MARKS-NUMERALS-001` as `PARTIAL` pending exact-head CI. PR #75 contains the correction and is mergeable; merge does not imply CI passed. Re-run/confirm CI after the runner becomes available before promoting these rows to `DONE_VERIFIED`.

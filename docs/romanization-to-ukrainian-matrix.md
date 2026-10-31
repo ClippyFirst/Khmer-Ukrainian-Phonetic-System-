@@ -57,21 +57,22 @@ The official PCGN guide has separate tables for independent vowels, dependent vo
 
 **Independent vowel characters**
 
+PCGN numbers the independent-character column within a shared 22-row table; only the following rows contain independent characters. Blank rows in that column are not additional vowel characters.
+
 | PCGN row | Khmer | BGN/PCGN romanization | Ukrainian candidate | Status |
 |---|---|---|---|---|
-| 1 | ឥ | ĕ | — | EVIDENCE_LIMITED |
-| 2 | ឦ | ei | ей | PROPOSED |
-| 3 | ឧ | ŏ / ŭ | о / у | ANALYSIS_DEPENDENT |
-| 4 | ឨ | âu | ау | PROPOSED |
-| 5 | ឩ | rœ̆ | — | EVIDENCE_LIMITED |
-| 6 | ឬ | rœ | — | EVIDENCE_LIMITED |
-| 7 | ឭ | lœ̆ | — | EVIDENCE_LIMITED |
-| 8 | ឮ | lœ | — | EVIDENCE_LIMITED |
-| 9 | ឯ | ê | е | PROPOSED |
-| 10 | ឰ | ai | ай | PROPOSED |
-| 11 | ឱ / ឲ | aô | ао | PROPOSED |
-| 12 | ឳ | au | ау | PROPOSED |
-| 13 | ឪ | âu | ау | PROPOSED |
+| 3 | ឥ | ĕ | — | EVIDENCE_LIMITED |
+| 4 | ឦ | ei | ей | PROPOSED |
+| 7 | ឧ | ŏ / ŭ | о / у | ANALYSIS_DEPENDENT |
+| 14 | ឯ | ê | е | PROPOSED |
+| 15 | ឰ | ai | ай | PROPOSED |
+| 16 | ឱ / ឲ | aô | ао | PROPOSED |
+| 17 | ឳ | au | ау | PROPOSED |
+| 18 | ឪ | âu | ау | PROPOSED |
+| 19 | ឫ | rœ̆ | — | EVIDENCE_LIMITED |
+| 20 | ឬ | rœ | — | EVIDENCE_LIMITED |
+| 21 | ឭ | lœ̆ | — | EVIDENCE_LIMITED |
+| 22 | ឮ | lœ | — | EVIDENCE_LIMITED |
 
 **Dependent vowel characters**
 

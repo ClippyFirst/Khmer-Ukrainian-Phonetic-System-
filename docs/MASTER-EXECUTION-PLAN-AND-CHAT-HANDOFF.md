@@ -525,3 +525,13 @@ These changes implement project-approved target conventions; they are not a new 
 - Test-first RED: workflow [41229998528](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41229998528) failed because the required mode controls/panels did not exist.
 - Exact-head GREEN: workflow [41230217547](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41230217547) passed: pytest 84 passed / 25 subtests passed, npm run check and production build.
 - The UI now separates the methods, but the Khmer Latin output is still the @gmana ASCII simplifier (diacritics omitted), and the independent syllable-level BGN/PCGN → Ukrainian adapter remains TODO. The romanization tab exposes that limitation rather than pretending it is complete.
+
+
+## Final repository and Pages checkpoint — 2026-10-31
+
+- Main commit: a351b0f66a608d7b4372e7c7bd0179808488be70 (PR #68, dual-method tabs).
+- The final audit register records the source-corrected PCGN 2017 consonant matrix and the separate romanization/phonetic UI contract.
+- Main quality workflow [41230505480](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41230505480) passed.
+- GitHub Pages deployment [41230505474](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41230505474) succeeded: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/ .
+- Final statuses: KHM-ROM-STD-001 DONE_VERIFIED; KHM-ROM-ONSET-001 DONE_VERIFIED; KHM-ROM-ENGINE-001 PARTIAL; KHM-ROM-MATRIX-001 PARTIAL; KHM-ROM-UA-001 TODO; KHM-ROM-TEST-001 PARTIAL; phonetic independent lexical gold BLOCKED (none supplied/adjudicated).
+- The website exposes two separate methods, but the romanization route's Ukrainian result is intentionally PARTIAL. Do not call the romanization mode complete until the full context-sensitive source → BGN/PCGN → Ukrainian syllable matrix and adapter are implemented and tested.

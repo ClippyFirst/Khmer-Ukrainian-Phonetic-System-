@@ -110,3 +110,11 @@ Workflow [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-S
 - npm run build: Vite production build passed, emitting the service and methodology pages plus asset bundles.
 - Non-fatal warnings: Node punycode deprecation and npm install-script advisory. No workflow step failed.
 - This is exact-head software verification of the bounded inventory, not evidence of full PCGN contextual coverage or phonetic accuracy.
+
+ 
+### Responsive layout merge — 2026-10-31
+
+- PR #78 merged as `3b6e08177f9c90dddb27e787cc7a6deaa015c33e`; 53 CSS override lines added to `src/styles/main.css`.
+- Exact-head CI [41234615041](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41234615041) passed Python tests, configured web checks and Vite production build.
+- Existing IPA/method-switch styling was preserved. PR #64 remains open and unmerged because its branch is diverged and its stylesheet replacement risks regressing newer UI.
+- This is UI verification only. Contextual PCGN runtime, complete vowel/rime matrix, independent Ukrainian adapter, and adjudicated phonetic gold remain incomplete. No Pages deployment is claimed here.

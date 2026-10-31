@@ -637,3 +637,13 @@ These changes implement project-approved target conventions; they are not a new 
 - Rechecked open PR #64 (`design/khmer-layout-20261030`) against current `main` `b4de6b248660b50d320ab24e8d3348fb1226d178`: branch is diverged, 7 commits ahead and 17 behind; merge base is `20e2e6dc296829986e52672d96b8730687aaa42a`. Its changes touch `index.html`, `system.html`, `src/styles/main.css`, and add `tests/test_layout_contract.py`.
 - PR #64 remains open and untouched. Do not merge blindly: the CSS and layout-contract test need to be ported onto a fresh branch from current `main`, followed by current Python/web/build and visual/mobile verification. No styling changes were cherry-picked in this checkpoint.
 - This is independent from the now-verified PCGN glyph inventory; no new Pages deployment or runtime change is claimed.
+
+ 
+## Responsive layout merge and verification — 2026-10-31
+
+- PR [#78](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/78) was merged by squash as `3b6e08177f9c90dddb27e787cc7a6deaa015c33e`.
+- The PR adds 53 lines of focused responsive CSS overrides in `src/styles/main.css`; existing method-switch, IPA fallback, source-card and status styles were preserved rather than replacing the stylesheet from the diverged PR #64.
+- Exact PR-head Quality workflow [41234615041](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41234615041) completed successfully. The sole job passed setup, checkout, Python dependency installation, `pytest -q`, Node dependency installation, `npm run check`, and `npm run build`.
+- PR #64 remains open and untouched: its branch is substantially diverged; only the responsive behavior needed here was ported. Do not merge its broader CSS wholesale.
+- The merge is UI-only. No Khmer phonological coverage, BGN/PCGN runtime, Ukrainian syllable adapter, or gold IPA corpus is completed by this change. Research prototype status remains unchanged.
+- Pages deployment after this merge has not yet been verified. Check the Pages workflow and deployed site before claiming the live site includes this CSS.

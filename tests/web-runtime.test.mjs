@@ -116,5 +116,6 @@ const greetingResult = convert(greetingSentence, "careful_standard");
 assert.equal(greetingResult.source, greetingSentence.normalize("NFC"));
 assert.equal(greetingResult.units.map((unit) => unit.source).join(""), greetingSentence.normalize("NFC"));
 assert.ok(greetingResult.units.length > 0);
-assert.ok(greetingResult.ua.length > 0, "the sentence must produce an explicit result or fail-closed marker");
+assert.equal(greetingResult.ipa, "⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
+assert.equal(greetingResult.ua, "⟦ТРАНСКРИПЦІЮ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
 console.log("full Khmer sentence integrity: PASS");

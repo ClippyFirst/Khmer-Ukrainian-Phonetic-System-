@@ -23,50 +23,92 @@ The current romanization card is independent from IPA → Ukrainian conversion. 
 
 The machine-readable consonant matrix is [data/khmer/romanization_ukrainian.csv](../data/khmer/romanization_ukrainian.csv). It records all 22 official PCGN consonant-table rows plus the special ឝ row, source code-point sequences, BGN/PCGN forms, Ukrainian candidate, evidence status, URL and row locator. The CSV is authoritative for this consonant slice; it is not a complete vowel/rime matrix.
 
-| Khmer source unit (base / subscript) | BGN/PCGN romanization | Ukrainian candidate | Status / note |
-|---|---|---|---|
-| ក / ្ក | k | к | PROPOSED orthographic target |
-| ខ / ្ខ | kh | к' | PROPOSED; preserve aspirated series marker |
-| ង / ្ង | ng | нг | PROPOSED |
-| ច / ្ច | ch | ч | PROPOSED |
-| ឆ / ្ឆ | chh | ч' | PROPOSED; aspiration distinction retained |
-| ញ / ្ញ | nh | нь | PROPOSED |
-| ដ / ្ដ | d | д | PROPOSED |
-| ថ / ្ថ | th | — | ANALYSIS_DEPENDENT; context and consonant series must be retained |
-| ទ / ្ទ | th | — | ANALYSIS_DEPENDENT; BGN/PCGN table has context-specific historical spellings |
-| ណ / ្ណ; ន / ្ន | n | н | PROPOSED |
-| ត / ្ត | t | т | PROPOSED |
-| ប / ្ប | b, p (contextual) | — | ANALYSIS_DEPENDENT; BGN/PCGN note 3 governs |
-| ត (ô-series foot) / ្ត | p | п | PROPOSED; do not merge with t |
-| ផ / ្ផ; ភ / ្ភ | ph | п' | PROPOSED; preserve aspirated distinction |
-| ម / ្ម | m | м | PROPOSED |
-| យ / ្យ | y | й | PROPOSED |
-| រ / ្រ | r | р | PROPOSED; pronunciation-profile effects remain separate |
-| ល / ្ល | l | л | PROPOSED |
-| វ / ្វ | v | в | PROPOSED |
-| ស / ្ស | s | с | PROPOSED |
-| ហ / ្ហ | h | г | PROPOSED under the project's Ukrainian target policy; not IPA evidence |
-| អ / ្អ | ' | — | EVIDENCE_LIMITED; retain rather than silently delete |
+| PCGN table row | Khmer base / subscript forms | BGN/PCGN romanization | Ukrainian candidate | Status |
+|---|---|---|---|---|
+| 1 | ក / គ; corresponding feet | k | к | PROPOSED |
+| 2 | ខ / ឃ; corresponding feet | kh | к' | PROPOSED |
+| 3 | ង; corresponding foot | ng | нг | PROPOSED |
+| 4 | ច / ជ; corresponding feet | ch | ч | PROPOSED |
+| 5 | ឆ / ឈ; corresponding feet | chh | ч' | PROPOSED |
+| 6 | ញ; corresponding foot | nh | нь | PROPOSED |
+| 7 | ដ / ឌ; corresponding feet | d | д | PROPOSED |
+| 8 | ឋ / ឍ; corresponding feet | th | — | ANALYSIS_DEPENDENT |
+| 9 | ថ / ធ; corresponding feet | th | — | ANALYSIS_DEPENDENT |
+| 10 | ណ / ន; corresponding feet | n | н | PROPOSED |
+| 11 | ត / ទ; corresponding feet | t | т | PROPOSED |
+| 12 | ប; corresponding foot | b, p (contextual) | — | ANALYSIS_DEPENDENT |
+| 13 | ព; corresponding foot | p | п | PROPOSED |
+| 14 | ផ / ភ; corresponding feet | ph | п' | PROPOSED |
+| 15 | ម; corresponding foot | m | м | PROPOSED |
+| 16 | យ (no foot) | y | й | PROPOSED |
+| 17 | រ; corresponding foot | r | р | PROPOSED |
+| 18 | ឡ / ល; foot for ល only | l | л | PROPOSED |
+| 19 | វ; corresponding foot | v | в | PROPOSED |
+| 20 | ស; corresponding foot | s | с | PROPOSED |
+| 21 | ហ; corresponding foot | h | г | PROPOSED |
+| 22 | អ; corresponding foot | ’ | — | EVIDENCE_LIMITED |
+
+The machine-readable matrix [data/khmer/romanization_ukrainian.csv](../data/khmer/romanization_ukrainian.csv) preserves the exact source sequences, the 22 PCGN table row IDs, the Ukrainian candidate/status, the official URL and row-level locator. It intentionally does not invent a Ukrainian output for the contextual b/p row, the th rows or the glottal-onset marker. PCGN explicitly states that there is no subscript form for ឡ; the row-18 record captures this.
+
 
 ## Vowel matrix: contextual source table, not a one-sign substitution table
 
-The BGN/PCGN vowel tables explicitly distinguish independent and dependent signs, â-series and ô-series, normal and shortened nuclei, and shortened forms with anusvara/visarga. The full source table must be transcribed into canonical data without flattening the consonant-series context.
+The official PCGN guide has separate tables for independent vowels, dependent vowel signs (with â-/ô-series and normal/shortened columns), and vowels with anusvara or visarga. The following source inventory reproduces the romanization values and deliberately leaves target values unassigned where a direct Ukrainian orthographic decision has not been reviewed.
 
-| Khmer source vowel structure | BGN/PCGN romanized value | Ukrainian candidate | Status |
-|---|---|---|---|
-| dependent ា after â-series | â | а | PROPOSED |
-| dependent ា after ô-series | ô | о | PROPOSED |
-| េ / ែ | œ (table-specific context) | е / є | ANALYSIS_DEPENDENT |
-| ិ after â-/ô-series | a / éa | а / еа | ANALYSIS_DEPENDENT |
-| ឹ / ឺ | ě / ī | е / і | PROPOSED; length/context review required |
-| ូ | o / u | о / у | ANALYSIS_DEPENDENT |
-| ួ | uŏ | уо | PROPOSED |
-| ៅ | aeu / eu | аеу / еу | ANALYSIS_DEPENDENT |
-| ើ | œă / iĕ / é (table row/context) | не встановлено | EVIDENCE_LIMITED until exact sign identity and context are resolved |
-| ឯ / ឰ / ឱ / ឪ and related independent forms | ê / ai / aô / au | е / ай / ао / ау | PROPOSED; verify source row and lexical scope |
-| NIKAHIT / REAHMUK combinations | BGN/PCGN contextual forms | no global default | EVIDENCE_LIMITED; coda/nucleus context required |
+**Independent vowel characters**
 
-The above is an initial research crosswalk, **not a production mapping table**. Rows with multiple values are not resolved by guessing. The canonical data implementation must preserve the exact Khmer code-point sequence, consonant series, subscript order, vowel category, shortening, coda, diacritics and source locator.
+| PCGN row | Khmer | BGN/PCGN romanization | Ukrainian candidate | Status |
+|---|---|---|---|---|
+| 1 | ឥ | ĕ | — | EVIDENCE_LIMITED |
+| 2 | ឦ | ei | ей | PROPOSED |
+| 3 | ឧ | ŏ / ŭ | о / у | ANALYSIS_DEPENDENT |
+| 4 | ឨ | âu | ау | PROPOSED |
+| 5 | ឩ | rœ̆ | — | EVIDENCE_LIMITED |
+| 6 | ឬ | rœ | — | EVIDENCE_LIMITED |
+| 7 | ឭ | lœ̆ | — | EVIDENCE_LIMITED |
+| 8 | ឮ | lœ | — | EVIDENCE_LIMITED |
+| 9 | ឯ | ê | е | PROPOSED |
+| 10 | ឰ | ai | ай | PROPOSED |
+| 11 | ឱ / ឲ | aô | ао | PROPOSED |
+| 12 | ឳ | au | ау | PROPOSED |
+| 13 | ឪ | âu | ау | PROPOSED |
+
+**Dependent vowel characters**
+
+| PCGN row | Khmer sign / structure | BGN/PCGN romanization (â-series / ô-series; normal / shortened as applicable) | Ukrainian candidate | Status |
+|---|---|---|---|---|
+| 1 | inherent vowel | â / ô; shortened á / ó | а / о | PROPOSED |
+| 2 | ◌ា | a / éa; shortened ă / eă or oă | а / еа | ANALYSIS_DEPENDENT |
+| 3 | ◌ិ | ĕ; shortened ĭ | е | ANALYSIS_DEPENDENT |
+| 4 | ◌ី | ei; shortened i | ей / і | ANALYSIS_DEPENDENT |
+| 5 | ◌ឹ | œ̆ | — | EVIDENCE_LIMITED |
+| 6 | ◌ឺ | œ | — | EVIDENCE_LIMITED |
+| 7 | ◌ុ | ŏ / ŭ | о / у | ANALYSIS_DEPENDENT |
+| 8 | ◌ូ | o / u | о / у | ANALYSIS_DEPENDENT |
+| 9 | ◌ួ | uŏ | уо | PROPOSED |
+| 10 | ◌ើ | aeu / eu | — | EVIDENCE_LIMITED |
+| 11 | ◌ឿ | œă | — | EVIDENCE_LIMITED |
+| 12 | ◌ៀ | iĕ | іє | PROPOSED |
+| 13 | ◌េ | é | е | PROPOSED |
+| 14 | ◌ែ | ê | е | PROPOSED |
+| 15 | ◌ៃ | ai / ey | ай / ей | ANALYSIS_DEPENDENT |
+| 16 | ◌ោ | aô / oŭ | ао / оу | ANALYSIS_DEPENDENT |
+| 17 | ◌ៅ | au / ŏu | ау / оу | ANALYSIS_DEPENDENT |
+
+**Vowel + anusvara / visarga combinations**
+
+| PCGN row | Source pattern | BGN/PCGN romanization (â-series / ô-series) | Ukrainian candidate | Status |
+|---|---|---|---|---|
+| 1 | ◌ុ◌ំ | om / ŭm | ом / ум | ANALYSIS_DEPENDENT |
+| 2 | ◌ំ | âm / um | ам / ум | ANALYSIS_DEPENDENT |
+| 3 | ◌ំ (shortened pattern) | ăm / ŏâm | — | EVIDENCE_LIMITED |
+| 4 | ◌ះ | ăh / eăh | — | EVIDENCE_LIMITED |
+| 5 | ◌ុ◌ះ | ŏh / ŭh | — | EVIDENCE_LIMITED |
+| 6 | ◌េ◌ះ | éh / éh | — | EVIDENCE_LIMITED |
+| 7 | ◌េ◌ះ (series/context variant) | aôh / ŏăh | — | EVIDENCE_LIMITED |
+| 8 | ◌ំ◌ង | ăng / eăng | — | EVIDENCE_LIMITED |
+
+These are **research candidates**, not a production vowel adapter. The source standard makes vowel rendering depend on consonant series, subscripts, shortening, codas and diacritics. The canonical data implementation must preserve those fields and test each context; a single-sign replacement is not conformant.
 
 ## Required machine-readable table contract
 

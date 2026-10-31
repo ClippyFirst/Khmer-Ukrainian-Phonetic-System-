@@ -496,3 +496,13 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Existing PR #58 was left untouched. This PR is still draft and is not merged.
 
 These changes implement project-approved target conventions; they are not a new official Ukrainian standard and do not create new Khmer pronunciation evidence. Existing research blockers remain: contextual vowel/register/coda derivation, complete phonological IPA coverage and independent lexical/audio adjudication. Accuracy remains unmeasured.
+
+
+## Romanization standard and crosswalk checkpoint — 2026-10-31
+
+- Added [romanization-to-ukrainian-matrix.md](romanization-to-ukrainian-matrix.md) with the standard decision, source citations, initial consonant/subscript and vowel crosswalk, and explicit task ledger.
+- Selected BGN/PCGN 1972 as the reference romanization standard. UNGEGN documents its 1972 approval as the UN-recommended Khmer system; the official PCGN guide provides the contextual consonant, subscript, vowel, diacritic and numeral tables.
+- Existing @gmana/km-translit 0.1.2 remains a BGN/PCGN-derived ASCII approximation, not the complete standard: it drops diacritics and does not claim full conformance. The current romanization UI is retained but is not upgraded to a full standard implementation by this documentation change.
+- Important gap: no independent romanization → Ukrainian syllable adapter exists yet. Do not imply that the romanization card already produces a Ukrainian orthographic-mode result. The current IPA → Ukrainian route remains independent.
+- Task statuses: KHM-ROM-STD-001 DONE_VERIFIED (source review); KHM-ROM-ENGINE-001 PARTIAL; KHM-ROM-UA-001 TODO; KHM-ROM-MATRIX-001 PARTIAL; KHM-ROM-TEST-001 TODO; contextual IPA and independent lexical/audio gold remain PARTIAL.
+- Branch: work/romanization-matrix-completion-20261031. No runtime code changed in this checkpoint; no new test result is claimed.

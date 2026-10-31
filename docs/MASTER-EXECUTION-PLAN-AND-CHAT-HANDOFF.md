@@ -614,3 +614,11 @@ These changes implement project-approved target conventions; they are not a new 
 - Matrix, repository audit, and handoff agree that workflow [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41233203184) passed exact PCGN glyph and romanization assertions. The bounded inventory tasks are DONE_VERIFIED; the contextual romanization engine, full matrix, Ukrainian syllable adapter and broader adversarial coverage remain open.
 - No production runtime or Pages build input changed in this cycle; the prior successful Pages deployment remains the live site evidence.
 - Next implementation work must use source-backed contextual PCGN rules and explicit unresolved states. Do not synthesize unsupported Ukrainian candidates or treat the inventory CI as phonetic validation.
+
+
+## Exact CI log detail and current head — 2026-10-31
+
+- The exact-head workflow [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41233203184), job `124631488043`, was inspected at the log level, not only by job conclusion.
+- Exact results: `pytest -q` → **87 passed, 25 subtests passed**; `npm run check` → all configured web-engine, runtime, register-shifter and romanization checks passed (including the sample romanization test); `npm run build` → Vite production build succeeded and emitted `index.html`, `system.html`, and the expected asset bundles.
+- The CI log contains non-fatal Node `punycode` deprecation and npm install-script warnings; no configured step failed.
+- Latest handoff update commit before this section: `27b30e3250c8f8c92899cd50c654b7cca673a32e`. Treat this as a documentation-only checkpoint; no runtime behavior or Pages artifact inputs changed.

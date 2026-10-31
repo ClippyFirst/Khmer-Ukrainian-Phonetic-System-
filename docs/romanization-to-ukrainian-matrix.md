@@ -130,8 +130,8 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 | KHM-ROM-ENGINE-001 | PARTIAL | Replace/verify the ASCII simplifier against the full BGN/PCGN table, including diacritics and context |
 | KHM-ROM-UA-001 | TODO | Implement an independent syllable-level romanization → Ukrainian adapter |
 | KHM-ROM-ONSET-001 | DONE_VERIFIED | All 22 PCGN consonant rows plus special ឝ are in data/khmer/romanization_ukrainian.csv; exact row and provenance tests passed in workflow 41229431196 |
-| KHM-ROM-VOWEL-INVENTORY-001 | DONE_VERIFIED | 12 independent-character, 17 dependent-vowel and 8 anusvara/visarga rows in data/khmer/romanization_vowels_ukrainian.csv; source glyph and row-number tests pass |
-| KHM-ROM-MARKS-NUMERALS-001 | DONE_VERIFIED | Six PCGN diacritic rows and ten numeral rows in data/khmer/romanization_marks_numerals.csv; provenance/status tests pass |
+| KHM-ROM-VOWEL-INVENTORY-001 | PARTIAL | 37 source rows now match the PCGN glyphs/romanization values; exact-head automated verification is blocked by the queued Actions runner |
+| KHM-ROM-MARKS-NUMERALS-001 | PARTIAL | Six exact PCGN diacritic glyphs and ten numeral glyphs are inventoried; the latest exact-glyph test update awaits CI |
 | KHM-ROM-MATRIX-001 | PARTIAL | Source tables are inventoried; full context-dependent vowel × series × shortening × coda rules and Ukrainian target adjudication remain incomplete |
 | KHM-ROM-TEST-001 | PARTIAL | Exact PCGN vowel-row, diacritic and numeral inventory tests pass; full mixed-script, punctuation, malformed-unit and ambiguity coverage remains TODO |
 | KHM-IPA-001 | PARTIAL | Existing contextual vowel/register/coda IPA model and independent gold remain incomplete |

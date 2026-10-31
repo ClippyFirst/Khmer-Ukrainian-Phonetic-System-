@@ -370,7 +370,23 @@ if (typeof document !== "undefined") {
   const empty = $("empty");
   const issue = $("issue");
   const live = $("live");
-  
+  const modePhonetic = $("mode-phonetic");
+  const modeRomanization = $("mode-romanization");
+  const outputMethodNote = $("output-method-note");
+
+  function setOutputMode(mode) {
+    document.querySelectorAll("[data-method-panel]").forEach((panel) => {
+      panel.hidden = panel.dataset.methodPanel !== mode;
+    });
+    modePhonetic.classList.toggle("is-active", mode === "phonetic");
+    modePhonetic.setAttribute("aria-pressed", String(mode === "phonetic"));
+    modeRomanization.classList.toggle("is-active", mode === "romanization");
+    modeRomanization.setAttribute("aria-pressed", String(mode === "romanization"));
+    outputMethodNote.textContent = mode === "phonetic"
+      ? "Фонетичний режим: IPA → українська практична адаптація."
+      : "Романізаційний режим: Khmer → BGN/PCGN-похідний латинський запис → окрема українська матриця. Український результат PARTIAL; фонетичний результат не використовується як fallback.";
+  }
+
   function render() {
     $("count").textContent = `${[...source.value].length} символів`;
     const data = convert(source.value, $("profile").value);
@@ -426,6 +442,9 @@ if (typeof document !== "undefined") {
     live.textContent = "Результат оновлено";
   }
   
+  modePhonetic.addEventListener("click", () => setOutputMode("phonetic"));
+  modeRomanization.addEventListener("click", () => setOutputMode("romanization"));
+  setOutputMode("phonetic");
   source.addEventListener("input", render);
   $("profile").addEventListener("change", render);
   $("example").addEventListener("click", () => {

@@ -6,6 +6,11 @@ const adversarial = "ក គ កា គា កូ គូ កី គី កេ �
 
 const serviceHtml = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 assert.doesNotMatch(serviceHtml, /source-result|source-card/u, "the original Khmer input must not be duplicated as a fourth output card");
+assert.match(serviceHtml, /id="mode-phonetic"/u, "the phonetic mode must be selectable");
+assert.match(serviceHtml, /id="mode-romanization"/u, "the romanization mode must be selectable");
+assert.match(serviceHtml, /data-method-panel="romanization"/u, "romanization output must be isolated from phonetic output");
+assert.match(serviceHtml, /data-method-panel="phonetic"/u, "IPA and phonetic Ukrainian output must be isolated");
+assert.match(serviceHtml, /id="ua-romanization-status"/u, "an incomplete romanization-to-Ukrainian crosswalk must be explicit, not silently replaced with phonetic output");
 const expectedIpa = "/kɑː/ /kɔː/ /kaː/ /kiə/ /koː/ /kuː/ /kəj/ /kiː/ /keː/ /kei/ /kaeː/ /kɛː/ /kɑːə/ /kəː/ /kau/ /kəu/ /ɓɑː/ /paː/ /ɓɔː/ /pʰɑː/ /pɔː/ /tɑː/ /tʰɑː/ /tɔː/ /tʰɔː/ /cɑː/ /cʰɑː/ /cɔː/ /cʰɔː/ /sɑː/ /hɑː/ /ʋɔː/";
 const expectedUa = "ка ко ка кіє ко ку кей кі ке кей кае ке кае ке кау кеу ба па бо п'а по та т'а то т'о тьа ть'а тьо ть'о са га во";
 

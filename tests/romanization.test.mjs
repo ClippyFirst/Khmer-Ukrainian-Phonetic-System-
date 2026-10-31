@@ -15,6 +15,8 @@ test("the full user greeting sentence keeps spaces and punctuation in Khmer-to-L
     /[\u1780-\u17ff]/u.test(part) ? khmerToLatin(part) : part,
   ).join("");
   assert.match(romanized, /[A-Za-z]/u);
+  assert.doesNotMatch(romanized, /[\\u1780-\\u17ff]/u, "the supported greeting must be fully converted out of Khmer script");
+  assert.equal((romanized.match(/។/gu) ?? []).length, 2, "both Khmer sentence stops must be preserved");
   assert.ok(romanized.includes(" "));
   assert.ok(romanized.includes("!"));
   assert.ok(romanized.includes("។"));

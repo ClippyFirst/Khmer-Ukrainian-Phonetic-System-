@@ -588,3 +588,10 @@ These changes implement project-approved target conventions; they are not a new 
 - Programmatic branch-content validation confirms 37 vowel/rime rows, all 37 official source URLs, all 37 exact source-glyph + BGN/PCGN value pairs, 16 diacritic/numeral rows, and no Ukrainian candidate on any `EVIDENCE_LIMITED` row.
 - The latest exact-head Quality checks run [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41233203184) remains `queued` (job 124631488043). A local `git clone`/pytest attempt is blocked by the execution environment's DNS error (`Could not resolve host: github.com`). Therefore the new exact-glyph assertions have **not** been reported as passed.
 - The matrix records `KHM-ROM-VOWEL-INVENTORY-001` and `KHM-ROM-MARKS-NUMERALS-001` as `PARTIAL` pending exact-head CI. PR #75 contains the correction and is mergeable; merge does not imply CI passed. Re-run/confirm CI after the runner becomes available before promoting these rows to `DONE_VERIFIED`.
+
+
+## Final main SHA and merged source correction — 2026-10-31
+
+- The corrected PCGN source glyph inventory and exact-row tests were merged by PR #75 as `5959113931c2e08ac279f4e064fa14a669a96f87`; the subsequent ledger correction PR #76 merged as `799d66f2038053e03b3a1c82d33fec7bbef4bfc8`. This is the main head before this final handoff-only update.
+- PR #75's exact-head workflow [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41233203184) remains queued. The local clone attempt failed with `Could not resolve host: github.com`; no test pass is claimed for the latest exact-glyph assertions. The matrix correctly leaves the bounded vowel and marks/numerals tasks PARTIAL pending CI.
+- Remaining acceptance: exact-head CI green; complete context-dependent BGN/PCGN engine; complete romanization-syllable → Ukrainian table and adapter; broader IPA gold and ambiguity tests. No runtime changes or new Pages deployment were made.

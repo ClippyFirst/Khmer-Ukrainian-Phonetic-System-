@@ -35,3 +35,56 @@
 .ua-card{grid-column:1/-1}
 
 .method-switch{display:flex;gap:8px;margin:12px 0 6px}.method-button{border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 14px;font:inherit;font-size:.7rem;font-weight:700;line-height:1.2;cursor:pointer}.method-button.is-active{background:var(--ink);border-color:var(--ink);color:#fff}.method-button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}.method-note{margin:0 0 12px;color:var(--muted);font-size:.68rem;line-height:1.5}.result-grid [data-method-panel][hidden],.results [data-method-panel][hidden]{display:none!important}.status-line{margin-top:10px;color:var(--muted);font-size:.68rem;line-height:1.5}
+
+
+/* Responsive layout port from design/khmer-layout-20261030.
+   Kept as a focused override so the current method-switch and IPA styles remain intact. */
+.controls{
+  display:flex;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+  padding:14px;
+}
+.controls>div{flex:1 1 250px;min-width:210px}
+.controls>div small{margin-bottom:7px}
+.controls select{min-height:44px}
+.controls .button{min-height:44px;margin:0}
+.status{max-width:100%;overflow-wrap:anywhere}
+.meta button{min-height:40px}
+.ua-card{grid-column:1/-1}
+@media(max-width:760px){
+  .shell{width:calc(100% - 28px);padding-top:18px}
+  .topline{align-items:flex-start;flex-wrap:wrap}
+  .site-nav{order:3;width:100%;gap:4px 18px}
+  .local{display:none}
+  .hero{padding-top:36px}
+  .hero.compact{padding-top:30px}
+  .hero h1{font-size:clamp(2.45rem,10vw,3.6rem);line-height:1.06}
+  .lead{font-size:1rem}
+  .bar{align-items:flex-start;flex-direction:column}
+  .workspace,.results{padding:16px}
+  .controls{align-items:stretch}
+  .controls>div{flex-basis:100%;min-width:0}
+  .controls .button{flex:1 1 calc(50% - 10px);width:auto;margin:0}
+  .result-grid{grid-template-columns:minmax(0,1fr)}
+  .ua-card{grid-column:auto}
+  .meta{grid-template-columns:28px minmax(0,1fr)}
+  .meta button{grid-column:2;justify-self:start}
+  .doc>section{grid-template-columns:34px minmax(0,1fr);column-gap:14px;padding:28px 0}
+  .matrix{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .coverage-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .doc table{display:block;overflow-x:auto}
+  .doc th,.doc td{min-width:110px}
+  .system-teaser{align-items:stretch;flex-direction:column}
+  .system-teaser a{width:100%}
+  footer{grid-template-columns:1fr}
+  footer>div:last-child{text-align:left}
+}
+@media(max-width:420px){
+  .brand{font-size:.76rem}
+  .status{max-width:100%}
+  .coverage-summary{grid-template-columns:1fr}
+  .unit-detail-heading{align-items:flex-start;flex-direction:column}
+}

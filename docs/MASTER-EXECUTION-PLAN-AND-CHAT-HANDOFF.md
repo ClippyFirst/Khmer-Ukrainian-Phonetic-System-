@@ -630,3 +630,10 @@ These changes implement project-approved target conventions; they are not a new 
 - Latest verified documentation head before this handoff update: `c8f9ed80e2ea45f34fa5ac4c86ecf306fc7f0634`.
 - Exact inventory acceptance evidence: 87 pytest tests + 25 subtests, configured npm checks passed, Vite production build passed. No full linguistic coverage claim is made.
 - The master handoff, romanization matrix and repository audit preserve the same remaining acceptance criteria: contextual PCGN rules and engine; independent Ukrainian syllable adapter; wider malformed/mixed-input tests; adjudicated IPA gold. No code or deployment change occurred in this documentation synchronization.
+
+
+## Open styling PR reconciliation — 2026-10-31
+
+- Rechecked open PR #64 (`design/khmer-layout-20261030`) against current `main` `b4de6b248660b50d320ab24e8d3348fb1226d178`: branch is diverged, 7 commits ahead and 17 behind; merge base is `20e2e6dc296829986e52672d96b8730687aaa42a`. Its changes touch `index.html`, `system.html`, `src/styles/main.css`, and add `tests/test_layout_contract.py`.
+- PR #64 remains open and untouched. Do not merge blindly: the CSS and layout-contract test need to be ported onto a fresh branch from current `main`, followed by current Python/web/build and visual/mobile verification. No styling changes were cherry-picked in this checkpoint.
+- This is independent from the now-verified PCGN glyph inventory; no new Pages deployment or runtime change is claimed.

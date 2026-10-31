@@ -622,3 +622,11 @@ These changes implement project-approved target conventions; they are not a new 
 - Exact results: `pytest -q` → **87 passed, 25 subtests passed**; `npm run check` → all configured web-engine, runtime, register-shifter and romanization checks passed (including the sample romanization test); `npm run build` → Vite production build succeeded and emitted `index.html`, `system.html`, and the expected asset bundles.
 - The CI log contains non-fatal Node `punycode` deprecation and npm install-script warnings; no configured step failed.
 - Latest handoff update commit before this section: `27b30e3250c8f8c92899cd50c654b7cca673a32e`. Treat this as a documentation-only checkpoint; no runtime behavior or Pages artifact inputs changed.
+
+
+## Final audit/handoff synchronization — 2026-10-31
+
+- Repository audit now includes exact CI log counts in commit `c8f9ed80e2ea45f34fa5ac4c86ecf306fc7f0634`.
+- Latest verified documentation head before this handoff update: `c8f9ed80e2ea45f34fa5ac4c86ecf306fc7f0634`.
+- Exact inventory acceptance evidence: 87 pytest tests + 25 subtests, configured npm checks passed, Vite production build passed. No full linguistic coverage claim is made.
+- The master handoff, romanization matrix and repository audit preserve the same remaining acceptance criteria: contextual PCGN rules and engine; independent Ukrainian syllable adapter; wider malformed/mixed-input tests; adjudicated IPA gold. No code or deployment change occurred in this documentation synchronization.

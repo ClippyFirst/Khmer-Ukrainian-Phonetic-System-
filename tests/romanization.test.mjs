@@ -9,6 +9,17 @@ test("Khmer romanization returns Latin output for a documented sample", () => {
   assert.doesNotMatch(result, /[\u1780-\u17ff]/u);
 });
 
+test("the short Khmer mixed-text sample preserves ASCII digits and punctuation", () => {
+  const sentence = "សួស្តី 123! ភាសាខ្មែរ។";
+  const romanized = khmerToLatin(sentence);
+  assert.match(romanized, /[A-Za-z]/u);
+  assert.doesNotMatch(romanized, /[\u1780-\u17d3\u17d6-\u17ff]/u);
+  assert.ok(romanized.includes("123"));
+  assert.ok(romanized.includes(" "));
+  assert.ok(romanized.includes("!"));
+  assert.ok(romanized.includes("។"));
+});
+
 test("the full user greeting sentence keeps spaces and punctuation in Khmer-to-Latin romanization", () => {
   const sentence = "សួស្តី! ខ្ញុំឈ្មោះ សុភា។ ខ្ញុំមកពីប្រទេសកម្ពុជា ហើយខ្ញុំចូលចិត្តរៀនភាសាថ្មីៗ និងអានសៀវភៅ។";
   const romanized = khmerToLatin(sentence);

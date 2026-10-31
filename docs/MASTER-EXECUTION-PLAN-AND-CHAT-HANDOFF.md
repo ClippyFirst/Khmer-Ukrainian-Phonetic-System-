@@ -689,3 +689,10 @@ These changes implement project-approved target conventions; they are not a new 
 - The supplied short sample \`សួស្តី 123! ភាសាខ្មែរ។\` now has an explicit whole-text romanization test. It verifies conversion of Khmer letters and preservation of ASCII digits, spaces, exclamation mark and Khmer sentence-stop punctuation.
 - Exact-head Quality workflow [41242382955](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41242382955) passed Python tests, Node web checks and Vite build.
 - This is an input-integrity regression, not BGN/PCGN gold or evidence of complete word segmentation/Ukrainian adaptation. No runtime code changed and no new Pages deployment is claimed.
+
+
+## Native numerals and mixed Latin sentence regression — 2026-10-31
+
+- PR #94 merged as `48e5d6c05d4a6ade8019c853135b7e2f6d655591`. The sample `២០២៦ ABC-42, សួស្តី។` verifies that Khmer numerals remain visible or are rendered as Arabic digits, ASCII digits and Latin text survive, and spaces/comma/Khmer sentence-stop punctuation are preserved while Khmer letters are romanized.
+- Exact PR-head Quality workflows [41242836968](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41242836968) and [41242823462](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41242823462) passed Python tests, Node web checks and Vite build.
+- Combined with PR #92's ASCII-number short sentence and PR #89's full Khmer greeting sentence, the romanization route now has explicit coverage for spaces, punctuation, native and ASCII numerals, and mixed Latin text. This is input-integrity evidence only; it does not establish the correct BGN/PCGN numeral rendering, word segmentation inside unspaced runs, complete contextual PCGN conformance, or a Ukrainian romanization adapter.

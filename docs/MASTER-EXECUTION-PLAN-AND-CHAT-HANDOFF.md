@@ -506,3 +506,12 @@ These changes implement project-approved target conventions; they are not a new 
 - Important gap: no independent romanization → Ukrainian syllable adapter exists yet. Do not imply that the romanization card already produces a Ukrainian orthographic-mode result. The current IPA → Ukrainian route remains independent.
 - Task statuses: KHM-ROM-STD-001 DONE_VERIFIED (source review); KHM-ROM-ENGINE-001 PARTIAL; KHM-ROM-UA-001 TODO; KHM-ROM-MATRIX-001 PARTIAL; KHM-ROM-TEST-001 TODO; contextual IPA and independent lexical/audio gold remain PARTIAL.
 - Branch: work/romanization-matrix-completion-20261031. No runtime code changed in this checkpoint; no new test result is claimed.
+
+
+## BGN/PCGN Khmer consonant crosswalk checkpoint — 2026-10-31
+
+- Added data/khmer/romanization_ukrainian.csv with the 22 official PCGN consonant/subscript table rows and the special ឝ entry. Each row carries the source-unit sequence, BGN/PCGN romanization, Ukrainian candidate/status, official PCGN URL and a row-level locator.
+- Added tests/test_romanization_matrix.py. It checks the exact 22-row-plus-special inventory, source romanization values, provenance, non-empty locators and evidence status. It deliberately does not treat the CSV as a complete vowel/rime inventory.
+- Test-first RED: workflow [41229355504](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41229355504) failed because the test expected the official PCGN ASCII apostrophe marker but the initial fixture used a typographic apostrophe. The test fixture was corrected to match the source table; no production code was changed.
+- Exact-head verification: workflow [41229431196](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41229431196) has passed Python tests; web checks and build are running at the time of this note. Final workflow status must be checked before merging.
+- KHM-ROM-ONSET-001 is DONE_VERIFIED once the complete workflow passes. KHM-ROM-MATRIX-001 remains PARTIAL: contextual vowel signs, shortening, anusvara/visarga, diacritics and numerals still need a source-exact data matrix and Ukrainian adjudication.

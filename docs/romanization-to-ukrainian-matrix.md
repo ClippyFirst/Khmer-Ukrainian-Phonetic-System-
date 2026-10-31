@@ -57,21 +57,22 @@ The official PCGN guide has separate tables for independent vowels, dependent vo
 
 **Independent vowel characters**
 
+PCGN numbers the independent-character column within a shared 22-row table; only the following rows contain independent characters. Blank rows in that column are not additional vowel characters.
+
 | PCGN row | Khmer | BGN/PCGN romanization | Ukrainian candidate | Status |
 |---|---|---|---|---|
-| 1 | ឥ | ĕ | — | EVIDENCE_LIMITED |
-| 2 | ឦ | ei | ей | PROPOSED |
-| 3 | ឧ | ŏ / ŭ | о / у | ANALYSIS_DEPENDENT |
-| 4 | ឨ | âu | ау | PROPOSED |
-| 5 | ឩ | rœ̆ | — | EVIDENCE_LIMITED |
-| 6 | ឬ | rœ | — | EVIDENCE_LIMITED |
-| 7 | ឭ | lœ̆ | — | EVIDENCE_LIMITED |
-| 8 | ឮ | lœ | — | EVIDENCE_LIMITED |
-| 9 | ឯ | ê | е | PROPOSED |
-| 10 | ឰ | ai | ай | PROPOSED |
-| 11 | ឱ / ឲ | aô | ао | PROPOSED |
-| 12 | ឳ | au | ау | PROPOSED |
-| 13 | ឪ | âu | ау | PROPOSED |
+| 3 | ឥ | ĕ | — | EVIDENCE_LIMITED |
+| 4 | ឦ | ei | ей | PROPOSED |
+| 7 | ឧ | ŏ / ŭ | о / у | ANALYSIS_DEPENDENT |
+| 14 | ឯ | ê | е | PROPOSED |
+| 15 | ឰ | ai | ай | PROPOSED |
+| 16 | ឱ / ឲ | aô | ао | PROPOSED |
+| 17 | ឳ | au | ау | PROPOSED |
+| 18 | ឪ | âu | ау | PROPOSED |
+| 19 | ឫ | rœ̆ | — | EVIDENCE_LIMITED |
+| 20 | ឬ | rœ | — | EVIDENCE_LIMITED |
+| 21 | ឭ | lœ̆ | — | EVIDENCE_LIMITED |
+| 22 | ឮ | lœ | — | EVIDENCE_LIMITED |
 
 **Dependent vowel characters**
 
@@ -110,6 +111,10 @@ The official PCGN guide has separate tables for independent vowels, dependent vo
 
 These are **research candidates**, not a production vowel adapter. The source standard makes vowel rendering depend on consonant series, subscripts, shortening, codas and diacritics. The canonical data implementation must preserve those fields and test each context; a single-sign replacement is not conformant.
 
+## Diacritics and numerals
+
+[data/khmer/romanization_marks_numerals.csv](../data/khmer/romanization_marks_numerals.csv) records all six PCGN diacritical-mark rows and all ten Khmer numeral rows. The marks are not treated as independent letters: PCGN notes specify series changes, shortened-vowel behavior, consonant insertion, positional behavior, and a silent mark that is omitted from romanization. The numeral rows map Khmer digits to their Arabic-digit values. The runtime romanizer must apply these rules contextually rather than concatenate character substitutions.
+
 ## Required machine-readable table contract
 
 The next implementation slice should add a canonical registry with at least: source_grapheme, orthographic_unit, consonant_series, subscript_role, romanization, romanization_standard, ukrainian_candidate, ukrainian_status, context, source_id, source_locator, evidence_status and test_id.
@@ -128,3 +133,8 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 | KHM-ROM-MATRIX-001 | PARTIAL | Full vowel/context/diacritic/numeral table in canonical data with provenance; consonant slice alone is not full coverage |
 | KHM-ROM-TEST-001 | TODO | Source-backed tests for all table rows, mixed scripts, punctuation, diacritics, malformed units and ambiguity |
 | KHM-IPA-001 | PARTIAL | Existing contextual vowel/register/coda IPA model and independent gold remain incomplete |
+
+
+## Machine-readable vowel inventory
+
+[data/khmer/romanization_vowels_ukrainian.csv](../data/khmer/romanization_vowels_ukrainian.csv) contains 38 source-located PCGN table entries: 13 independent-vowel rows, 17 dependent-vowel rows, and 8 vowel-plus-anusvara/visarga rows. It preserves the standard's alternatives and contextual conditions; `EVIDENCE_LIMITED` rows intentionally have no Ukrainian candidate. This is a source-table inventory, not a claim that the contextual vowel matrix or runtime adapter is complete.

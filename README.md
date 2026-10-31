@@ -231,3 +231,12 @@ The research registry records external pronunciation engines, IPA dictionaries, 
 ## Two output methods
 
 The service separates the phonetic IPA-first route from the orthographic romanization route. The romanization tab currently exposes a PARTIAL Ukrainian crosswalk and never falls back to phonetic output. See the [romanization → Ukrainian research matrix](docs/romanization-to-ukrainian-matrix.md) for the selected BGN/PCGN 1972 profile, source tables and unresolved rows.
+
+
+## Machine-readable BGN/PCGN orthographic tables
+
+- [`data/khmer/romanization_ukrainian.csv`](data/khmer/romanization_ukrainian.csv) — 22 consonant/subscript rows.
+- [`data/khmer/romanization_vowels_ukrainian.csv`](data/khmer/romanization_vowels_ukrainian.csv) — 37 source-located independent/dependent vowel and anusvara/visarga rows.
+- [`data/khmer/romanization_marks_numerals.csv`](data/khmer/romanization_marks_numerals.csv) — 6 diacritic and 10 numeral rows.
+
+These files separate source romanization from Ukrainian target proposals and preserve explicit evidence statuses. They are research tables, not proof that the runtime BGN/PCGN engine or romanization → Ukrainian syllable adapter is complete.

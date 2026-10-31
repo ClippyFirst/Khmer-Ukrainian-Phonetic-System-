@@ -535,3 +535,30 @@ These changes implement project-approved target conventions; they are not a new 
 - GitHub Pages deployment [41230505474](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41230505474) succeeded: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/ .
 - Final statuses: KHM-ROM-STD-001 DONE_VERIFIED; KHM-ROM-ONSET-001 DONE_VERIFIED; KHM-ROM-ENGINE-001 PARTIAL; KHM-ROM-MATRIX-001 PARTIAL; KHM-ROM-UA-001 TODO; KHM-ROM-TEST-001 PARTIAL; phonetic independent lexical gold BLOCKED (none supplied/adjudicated).
 - The website exposes two separate methods, but the romanization route's Ukrainian result is intentionally PARTIAL. Do not call the romanization mode complete until the full context-sensitive source → BGN/PCGN → Ukrainian syllable matrix and adapter are implemented and tested.
+
+
+## Romanization evidence inventory continuation — 2026-10-31
+
+- User confirmed the two-method contract: orthographic BGN/PCGN romanization → Ukrainian table adapter is independent from phonetic IPA → Ukrainian adaptation; romanization mode is intended to cover the supported orthographic inventory, while phonetic output may be partial/unsupported.
+- Added `data/khmer/romanization_vowels_ukrainian.csv` with **37 source-located PCGN table entries**: 12 independent-character rows, 17 dependent-vowel rows, and 8 vowel + anusvara/visarga combinations. The independent-character column is sparse in the shared 22-row table. The data preserves PCGN alternatives, consonant-series/shortening context, candidate Ukrainian values, and explicit `PROPOSED`, `ANALYSIS_DEPENDENT`, or `EVIDENCE_LIMITED` statuses. Rows without an adjudicated target have an empty candidate; no missing value was guessed.
+- Added `data/khmer/romanization_marks_numerals.csv` with all 6 PCGN diacritic rows and 10 numeral rows, plus `tests/test_romanization_marks_numerals.py`. These preserve series-changing and silent-mark behavior and map Khmer numerals to Arabic digits.
+- Added `tests/test_romanization_vowel_matrix.py` to verify row counts, unique section/row identifiers, official source URL/locators, allowed evidence statuses, and the no-candidate invariant for `EVIDENCE_LIMITED`.
+- Existing 22-row consonant/subscript matrix and its tests are preserved. This expands machine-readable evidence; it does **not** implement the PCGN romanization engine or the BGN/PCGN syllable → Ukrainian runtime adapter.
+- Status: KHM-ROM-VOWEL-INVENTORY-001 = implementation added, CI verification pending; KHM-ROM-ENGINE-001 remains PARTIAL; KHM-ROM-UA-001 remains TODO; full context-sensitive vowel coverage and independent Khmer IPA gold remain PARTIAL/BLOCKED.
+- Branch: `work/romanization-evidence-completion-20261031`. Changes are isolated from `main`; do not mark the new tests DONE_VERIFIED until the exact PR-head workflow passes.
+
+
+## PCGN vowel-table source correction — 2026-10-31
+
+- Direct inspection of the official PCGN 1972 PDF (pp. 2–4) corrected the shared vowel table inventory: 12 independent-character entries occupy rows 3, 4, 7, and 14–22; 17 dependent-vowel entries occupy rows 1–17; together these span the shared 22-row table. The earlier draft's 13-item independent list was inaccurate and has been replaced.
+- Added all six diacritic rows and ten numeral rows in `data/khmer/romanization_marks_numerals.csv`; notes for series-shifting, shortening, `rC`, positional inherent-vowel behavior and silent `◌៍` are retained as contextual rules, not letter substitutions.
+- The first CI attempt [41232327611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41232327611) exposed a missing `source_url` field in the vowel CSV (86 passed, one failed). The source URL has been inserted into all 37 rows; a fresh exact-head run is required before closing this checkpoint.
+
+
+## Verified Khmer PCGN orthographic inventory — 2026-10-31
+
+- Exact PR-head workflow [41232468242](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41232468242) checked out merge commit `a1ce5ff` containing head `49f595e4ea030c4b4726ed3335c4bf9d22863271` and passed: pytest **87 passed / 25 subtests passed**, `npm run check` passed (engine, runtime, register-shifter, and romanization checks), and Vite production build passed.
+- The first failed attempt [41232327611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41232327611) exposed the omitted source URL in the vowel CSV; all 37 rows now carry the official PCGN PDF URL and row locator. The exact-head verification branch was created from the corrected tree.
+- `KHM-ROM-VOWEL-INVENTORY-001` is `DONE_VERIFIED` for the bounded 37-row source inventory; `KHM-ROM-MARKS-NUMERALS-001` is `DONE_VERIFIED` for six diacritic rows and ten numeral rows. `KHM-ROM-MATRIX-001` remains `PARTIAL`; `KHM-ROM-ENGINE-001` remains `PARTIAL`; `KHM-ROM-UA-001` remains `TODO`.
+- This does not establish all contextual BGN/PCGN transformations, nor does it complete the syllable-level BGN/PCGN → Ukrainian adapter. Existing @gmana ASCII output still drops diacritics. No new live Pages deployment was needed for these source-data and test changes; existing Pages site remains https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/.
+- Verification PR: [#71](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/71), branch `verify/romanization-evidence-20261031`. PR #70 contains the earlier attempt and is superseded by #71.

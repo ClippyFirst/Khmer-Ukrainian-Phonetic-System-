@@ -62,9 +62,14 @@ jobs:
           base="${PAGE_URL%/}"
           curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/" -o /tmp/index.html
           curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/system.html" -o /tmp/system.html
-          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/src/main.js" -o /tmp/main.js
-          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/src/styles/main.css" -o /tmp/styles.css
           grep -q 'id="source"' /tmp/index.html
-          grep -q 'src="./src/main.js' /tmp/index.html
+          grep -q 'type="module"' /tmp/index.html
           grep -q '<title>' /tmp/system.html
+          script_src="$(grep -oE 'src="[^"]+\\.js"' /tmp/index.html | head -n1 | cut -d'"' -f2)"
+          css_src="$(grep -oE 'href="[^"]+\\.css"' /tmp/index.html | head -n1 | cut -d'"' -f2)"
+          test -n "$script_src" && test -n "$css_src"
+          case "$script_src" in http*) script_url="$script_src" ;; /*) script_url="$base$script_src" ;; *) script_url="$base/${script_src#./}" ;; esac
+          case "$css_src" in http*) css_url="$css_src" ;; /*) css_url="$base$css_src" ;; *) css_url="$base/${css_src#./}" ;; esac
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$script_url" -o /tmp/main.js
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$css_url" -o /tmp/styles.css
           test -s /tmp/main.js && test -s /tmp/styles.css

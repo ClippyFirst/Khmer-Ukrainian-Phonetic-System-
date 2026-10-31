@@ -546,3 +546,10 @@ These changes implement project-approved target conventions; they are not a new 
 - Existing 22-row consonant/subscript matrix and its tests are preserved. This expands machine-readable evidence; it does **not** implement the PCGN romanization engine or the BGN/PCGN syllable → Ukrainian runtime adapter.
 - Status: KHM-ROM-VOWEL-INVENTORY-001 = implementation added, CI verification pending; KHM-ROM-ENGINE-001 remains PARTIAL; KHM-ROM-UA-001 remains TODO; full context-sensitive vowel coverage and independent Khmer IPA gold remain PARTIAL/BLOCKED.
 - Branch: `work/romanization-evidence-completion-20261031`. Changes are isolated from `main`; do not mark the new tests DONE_VERIFIED until the exact PR-head workflow passes.
+
+
+## PCGN vowel-table source correction — 2026-10-31
+
+- Direct inspection of the official PCGN 1972 PDF (pp. 2–4) corrected the shared vowel table inventory: 12 independent-character entries occupy rows 3, 4, 7, and 14–22; 17 dependent-vowel entries occupy rows 1–17; together these span the shared 22-row table. The earlier draft's 13-item independent list was inaccurate and has been replaced.
+- Added all six diacritic rows and ten numeral rows in `data/khmer/romanization_marks_numerals.csv`; notes for series-shifting, shortening, `rC`, positional inherent-vowel behavior and silent `◌៍` are retained as contextual rules, not letter substitutions.
+- The first CI attempt [41232327611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41232327611) exposed a missing `source_url` field in the vowel CSV (86 passed, one failed). The source URL has been inserted into all 37 rows; a fresh exact-head run is required before closing this checkpoint.

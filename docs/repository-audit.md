@@ -100,3 +100,13 @@ Pipeline status is revision-specific. Check the latest Quality and Pages workflo
 - This run does not change phonetic evidence: independent lexical IPA gold remains 0, the contextual source-to-IPA algorithm is incomplete, and no accuracy metric is justified.
 - No runtime code or Pages build inputs changed in the inventory/documentation checkpoint. The live Pages deployment evidence remains the earlier successful deployment recorded above; this checkpoint did not trigger a new deployment.
 - Next work should prioritize the official PCGN context rules and the source-aware vowel/rime × consonant-series × shortening × coda representation. Ukrainian candidates must remain unassigned where the evidence does not support them.
+
+
+### Exact workflow log verification detail — 2026-10-31
+
+Workflow [41233203184](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41233203184), job 124631488043, was inspected directly:
+- pytest -q: **87 passed, 25 subtests passed**.
+- npm run check: all configured web-engine, runtime, register-shifter and romanization checks passed.
+- npm run build: Vite production build passed, emitting the service and methodology pages plus asset bundles.
+- Non-fatal warnings: Node punycode deprecation and npm install-script advisory. No workflow step failed.
+- This is exact-head software verification of the bounded inventory, not evidence of full PCGN contextual coverage or phonetic accuracy.

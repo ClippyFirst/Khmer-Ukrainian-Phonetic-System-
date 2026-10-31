@@ -647,3 +647,12 @@ These changes implement project-approved target conventions; they are not a new 
 - PR #64 remains open and untouched: its branch is substantially diverged; only the responsive behavior needed here was ported. Do not merge its broader CSS wholesale.
 - The merge is UI-only. No Khmer phonological coverage, BGN/PCGN runtime, Ukrainian syllable adapter, or gold IPA corpus is completed by this change. Research prototype status remains unchanged.
 - Pages deployment after this merge has not yet been verified. Check the Pages workflow and deployed site before claiming the live site includes this CSS.
+
+
+## Sentence-level source-preservation regression — 2026-10-31
+
+- Added and merged PR [#80](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/80) as `14113b5d45bbd36e53510b24a6f48f565a54bcd0`.
+- The runtime regression passes the supplied Khmer greeting sentence through `convert()` and asserts that the normalized source and the concatenated per-unit source spans are identical, preserving whitespace and punctuation. It also requires an explicit aggregate Ukrainian result or fail-closed marker.
+- Exact-head Quality workflow [41238197962](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41238197962) passed Python tests, Node web checks (including the runtime regression), and Vite build.
+- This is a segmentation/source-preservation check, not independent IPA gold or a claim that every word in the sentence has an established pronunciation. The aggregate converter remains deliberately fail-closed when any unit is unresolved.
+- The latest Pages deployment [41237778259](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41237778259) succeeded for main commit `cb48d4c660d3e7f826c677d871654157914ae59c`; PR #80 adds tests only and does not change the deployed runtime.

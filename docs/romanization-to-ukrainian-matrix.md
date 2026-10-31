@@ -140,3 +140,8 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 ## Machine-readable vowel inventory
 
 [data/khmer/romanization_vowels_ukrainian.csv](../data/khmer/romanization_vowels_ukrainian.csv) contains **37 source-located PCGN table entries**: 12 independent-character entries, 17 dependent-vowel entries, and 8 vowel-plus-anusvara/visarga entries. The shared PCGN table has 22 row numbers, with a sparse independent-character column; the independent and dependent columns are recorded separately without inventing extra row numbers. It preserves the standard's alternatives and contextual conditions; `EVIDENCE_LIMITED` rows intentionally have no Ukrainian candidate. This is a source-table inventory, not a claim that the contextual vowel matrix or runtime adapter is complete.
+
+
+## Whole-text regression and remaining adapter gap — 2026-10-31
+
+The current main head `1a6921fc75dd011bc8097f6636b8077fc7c59cff` passed Quality [41243972009](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41243972009) and Pages deployment [41243971788](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41243971788). The romanization integration passes the complete source string to the selected library and has regression cases for a full greeting, short mixed-script text, native Khmer numerals, ASCII digits, Latin text, spaces and punctuation. This is input-integrity evidence only. The independent syllable-level romanization → Ukrainian adapter remains TODO; contextual PCGN coverage and unspaced word segmentation remain incomplete. No IPA or Ukrainian gold is inferred from library output.

@@ -696,3 +696,14 @@ These changes implement project-approved target conventions; they are not a new 
 - PR #94 merged as `48e5d6c05d4a6ade8019c853135b7e2f6d655591`. The sample `២០២៦ ABC-42, សួស្តី។` verifies that Khmer numerals remain visible or are rendered as Arabic digits, ASCII digits and Latin text survive, and spaces/comma/Khmer sentence-stop punctuation are preserved while Khmer letters are romanized.
 - Exact PR-head Quality workflows [41242836968](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41242836968) and [41242823462](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41242823462) passed Python tests, Node web checks and Vite build.
 - Combined with PR #92's ASCII-number short sentence and PR #89's full Khmer greeting sentence, the romanization route now has explicit coverage for spaces, punctuation, native and ASCII numerals, and mixed Latin text. This is input-integrity evidence only; it does not establish the correct BGN/PCGN numeral rendering, word segmentation inside unspaced runs, complete contextual PCGN conformance, or a Ukrainian romanization adapter.
+
+
+## Main-head verification after Khmer mixed-text regressions — 2026-10-31
+
+- Current `main` head: `1a6921fc75dd011bc8097f6636b8077fc7c59cff`.
+- Exact-main Quality workflow [41243972009](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41243972009) completed successfully. Pages workflow [41243971788](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41243971788) also completed successfully; both build and deploy jobs passed, including the deployed-site/runtime smoke test.
+- Main has explicit whole-text romanization regressions for the full Khmer greeting, short mixed-script input, ASCII numbers, native Khmer numerals, Latin text, spaces, commas and Khmer sentence-stop punctuation. The application passes the complete input to the romanization library rather than manually tokenizing by whitespace.
+- The full greeting's phonetic route intentionally remains fail-closed where source-backed contextual phonology is missing. The romanization library's documented inability to segment dictionary words within unspaced Khmer runs is not repaired by these tests.
+- This verifies whole-text input integrity and deployed artifact behavior, not full BGN/PCGN 1972 conformance, Ukrainian romanization adaptation, or independently adjudicated IPA gold.
+- Open PR #64 remains untouched: it is a diverged wholesale layout/CSS rewrite; focused responsive improvements were already ported separately in PR #78. Do not merge #64 without a fresh rebase/port and current browser/visual verification.
+- Remaining blockers: source-backed contextual PCGN rules/engine, independent syllable-level romanization → Ukrainian adapter, unspaced word segmentation, broader malformed-input parity and independently adjudicated phonetic gold. Research prototype status remains unchanged.

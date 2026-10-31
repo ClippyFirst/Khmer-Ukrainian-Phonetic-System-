@@ -110,3 +110,11 @@ assert.match(
   getStatusNotice({ status: "INVALID_OR_UNSUPPORTED", note: "unsupported" }),
   /не підтримується повністю/u,
 );
+
+const greetingSentence = "សួស្តី! ខ្ញុំឈ្មោះ សុភា។ ខ្ញុំមកពីប្រទេសកម្ពុជា ហើយខ្ញុំចូលចិត្តរៀនភាសាថ្មីៗ និងអានសៀវភៅ។";
+const greetingResult = convert(greetingSentence, "careful_standard");
+assert.equal(greetingResult.source, greetingSentence.normalize("NFC"));
+assert.equal(greetingResult.units.map((unit) => unit.source).join(""), greetingSentence.normalize("NFC"));
+assert.ok(greetingResult.units.length > 0);
+assert.ok(greetingResult.ua.length > 0, "the sentence must produce an explicit result or fail-closed marker");
+console.log("full Khmer sentence integrity: PASS");

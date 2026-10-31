@@ -29,13 +29,19 @@
 
 <section id="results" class="results" hidden aria-labelledby="result-title">
   <div class="bar"><div class="section-title"><span class="num">B</span><div><small>ВИХІД</small><h2 id="result-title">Результат</h2></div></div><span id="status" class="status" role="status" aria-live="polite"></span></div>
-    <div class="result-grid">
-    <article class="result-card"><div class="meta"><span>01</span><div><h3>Романізація · BGN/PCGN-derived ASCII</h3><p>Окремий латинський запис; не IPA й не українська транскрипція.</p></div><button type="button" data-copy="romanization-result" aria-label="Копіювати романізацію">Копіювати</button></div><div id="romanization-result" class="value" lang="en"></div><p class="unit-note">Профіль @gmana/km-translit 0.1.2; діакритики офіційної системи спрощено, тому це похідний, не повністю відповідний BGN/PCGN профіль.</p></article>
-    <article class="result-card"><div class="meta"><span>02</span><div><h3>IPA</h3><p>Лише коли вимову встановлено для цього запису</p></div><button type="button" data-copy="ipa-result" aria-label="Копіювати IPA">Копіювати</button></div><div id="ipa-result" class="value ipa" lang="und-fonipa"></div></article>
-    <article class="result-card ua-card"><div class="meta"><span>03</span><div><h3>Українська практична форма</h3><p>Запропонована авторська система</p></div><button type="button" data-copy="ua-result" aria-label="Копіювати українську практичну форму">Копіювати</button></div><div id="ua-result" class="value ua" lang="uk"></div></article>
+  <div class="method-switch" role="group" aria-label="Метод українського запису">
+    <button id="mode-phonetic" class="method-button is-active" type="button" aria-pressed="true">Фонетичний</button>
+    <button id="mode-romanization" class="method-button" type="button" aria-pressed="false">За романізацією</button>
+  </div>
+  <p id="output-method-note" class="method-note" aria-live="polite">Фонетичний режим: IPA → українська практична адаптація.</p>
+  <div class="result-grid">
+    <article id="romanization-panel" class="result-card" data-method-panel="romanization"><div class="meta"><span>01</span><div><h3>Романізація · BGN/PCGN-derived ASCII</h3><p>Окремий латинський запис; не IPA й не українська транскрипція.</p></div><button type="button" data-copy="romanization-result" aria-label="Копіювати романізацію">Копіювати</button></div><div id="romanization-result" class="value" lang="en"></div><p class="unit-note">Профіль @gmana/km-translit 0.1.2; діакритики офіційної системи спрощено, тому це похідний, не повністю відповідний BGN/PCGN профіль.</p></article>
+    <article id="ua-romanization-panel" class="result-card ua-card" data-method-panel="romanization"><div class="meta"><span>02</span><div><h3>Українська за романізацією</h3><p>Окрема орфографічна матриця, не IPA-адаптація.</p></div></div><div id="ua-romanization-result" class="value ua">⟦МАТРИЦЯ НЕ ЗАВЕРШЕНА⟧</div><div id="ua-romanization-status" class="status-line">PARTIAL · повний складовий BGN/PCGN → український кросворк ще не реалізований; фонетичний результат не підставляється.</div><p class="unit-note"><a href="https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/blob/main/docs/romanization-to-ukrainian-matrix.md">Переглянути таблицю відповідників і статуси доказовості ↗</a></p></article>
+    <article class="result-card" data-method-panel="phonetic"><div class="meta"><span>02</span><div><h3>IPA</h3><p>Лише коли вимову встановлено для цього запису</p></div><button type="button" data-copy="ipa-result" aria-label="Копіювати IPA">Копіювати</button></div><div id="ipa-result" class="value ipa" lang="und-fonipa"></div></article>
+    <article class="result-card ua-card" data-method-panel="phonetic"><div class="meta"><span>03</span><div><h3>Українська практична форма</h3><p>Запропонована авторська система</p></div><button type="button" data-copy="ua-result" aria-label="Копіювати українську практичну форму">Копіювати</button></div><div id="ua-result" class="value ua" lang="uk"></div></article>
     
-  </div>  <div id="details" class="details"></div>
-  <section id="unit-details" class="unit-details" aria-label="Статус кожної одиниці"></section>
+  </div>  <div id="details" class="details" data-method-panel="phonetic"></div>
+  <section id="unit-details" class="unit-details" data-method-panel="phonetic" aria-label="Статус кожної одиниці"></section>
 </section>
 
 <section id="issue" class="issue" hidden aria-live="polite"><b>!</b><div><strong>Результат потребує обережності</strong><p id="issue-text"></p></div></section>

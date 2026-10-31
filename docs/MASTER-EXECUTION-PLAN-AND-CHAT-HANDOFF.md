@@ -707,3 +707,11 @@ These changes implement project-approved target conventions; they are not a new 
 - This verifies whole-text input integrity and deployed artifact behavior, not full BGN/PCGN 1972 conformance, Ukrainian romanization adaptation, or independently adjudicated IPA gold.
 - Open PR #64 remains untouched: it is a diverged wholesale layout/CSS rewrite; focused responsive improvements were already ported separately in PR #78. Do not merge #64 without a fresh rebase/port and current browser/visual verification.
 - Remaining blockers: source-backed contextual PCGN rules/engine, independent syllable-level romanization → Ukrainian adapter, unspaced word segmentation, broader malformed-input parity and independently adjudicated phonetic gold. Research prototype status remains unchanged.
+
+
+## Post-merge verification for PR #95 — 2026-10-31
+
+- PR #95 merged as `28a9bbb909ca57735ceca92f262c2de9eeb43396`; it synchronizes current whole-text romanization and deployment evidence without changing application code.
+- Exact post-merge Quality workflow [41246343908](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41246343908) passed. Pages deployment [41246343845](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41246343845) also passed, including the deployed-site/runtime smoke test. This is the current verified main head.
+- The full/short sentence, mixed-script, native/ASCII numeral, whitespace and punctuation tests remain engineering/input-integrity coverage. The phonetic route remains fail-closed for unsupported contexts; this is not full PCGN conformance, word segmentation, Ukrainian adaptation or independently adjudicated IPA gold.
+- PR #64 remains open, diverged by 35 commits behind current main and is not merged. Its 7-commit CSS/layout branch is preserved; focused responsive improvements remain in the merged PR #78.

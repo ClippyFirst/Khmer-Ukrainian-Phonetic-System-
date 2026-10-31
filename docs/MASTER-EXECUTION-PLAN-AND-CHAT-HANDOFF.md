@@ -515,3 +515,13 @@ These changes implement project-approved target conventions; they are not a new 
 - Source reconciliation: the first draft used an incorrect row transcription and an ASCII apostrophe. Inspection of the official PCGN 2017 PDF (page 2 table and notes) showed the apostrophe marker is U+2019 and corrected rows include 8/9 (ឋ/ឍ and ថ/ធ), 12/13 (ប and ព), and 18 (ឡ/ល). The data and test now assert the official source, not the earlier draft.
 - Exact-head verification: workflow [41229686270](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41229686270) completed successfully: pytest 84 passed / 25 subtests passed; npm run check passed; production build passed.
 - KHM-ROM-ONSET-001 is DONE_VERIFIED for the 22-row PCGN consonant/subscript table; this is a bounded consonant-table acceptance, not whole-language romanization coverage. KHM-ROM-MATRIX-001 remains PARTIAL: contextual vowel signs, shortening, anusvara/visarga, diacritics and numerals still need a source-exact data matrix and Ukrainian adjudication.
+
+
+## Two-method result UI checkpoint — 2026-10-31
+
+- Added an accessible two-button method switch to the service: **Фонетичний** and **За романізацією**. The default remains phonetic.
+- The phonetic panel contains IPA, Ukrainian phonetic output, unit-level IPA/UA analysis and phonetic issue notices.
+- The romanization panel contains the current BGN/PCGN-derived Latin output and a clearly labelled PARTIAL Ukrainian crosswalk state linked to the canonical research matrix. It does not reuse IPA or the phonetic Ukrainian output as a fallback.
+- Test-first RED: workflow [41229998528](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41229998528) failed because the required mode controls/panels did not exist.
+- Exact-head GREEN: workflow [41230217547](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41230217547) passed: pytest 84 passed / 25 subtests passed, npm run check and production build.
+- The UI now separates the methods, but the Khmer Latin output is still the @gmana ASCII simplifier (diacritics omitted), and the independent syllable-level BGN/PCGN → Ukrainian adapter remains TODO. The romanization tab exposes that limitation rather than pretending it is complete.

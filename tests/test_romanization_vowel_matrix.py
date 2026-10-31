@@ -55,6 +55,50 @@ def test_pcgn_vowel_and_diacritic_crosswalk_is_complete_for_documented_tables():
         if expected is not None:
             assert row["source_units"] == expected
 
+    expected_romanization = {
+        ("independent_vowel", "3"): ("ឥ", "ĕ"),
+        ("independent_vowel", "4"): ("ឦ", "ei"),
+        ("independent_vowel", "7"): ("ឧ", "ŏ / ŭ"),
+        ("independent_vowel", "14"): ("ឯ", "ê"),
+        ("independent_vowel", "15"): ("ឰ", "ai"),
+        ("independent_vowel", "16"): ("ឱ|ឲ", "aô"),
+        ("independent_vowel", "17"): ("ឳ", "au"),
+        ("independent_vowel", "18"): ("ឪ", "âu"),
+        ("independent_vowel", "19"): ("ឫ", "rœ̆"),
+        ("independent_vowel", "20"): ("ឬ", "rœ"),
+        ("independent_vowel", "21"): ("ឭ", "lœ̆"),
+        ("independent_vowel", "22"): ("ឮ", "lœ"),
+        ("dependent_vowel", "1"): ("◌", "â / ô; shortened á / ó"),
+        ("dependent_vowel", "2"): ("◌ា", "a / éa; shortened ă / eă or oă"),
+        ("dependent_vowel", "3"): ("◌ិ", "ĕ / ĭ"),
+        ("dependent_vowel", "4"): ("◌ី", "ei / i"),
+        ("dependent_vowel", "5"): ("◌ឹ", "œ̆"),
+        ("dependent_vowel", "6"): ("◌ឺ", "œ"),
+        ("dependent_vowel", "7"): ("◌ុ", "ŏ / ŭ"),
+        ("dependent_vowel", "8"): ("◌ូ", "o / u"),
+        ("dependent_vowel", "9"): ("◌ួ", "uŏ"),
+        ("dependent_vowel", "10"): ("េ◌ើ", "aeu / eu"),
+        ("dependent_vowel", "11"): ("េ◌ឿ", "œă"),
+        ("dependent_vowel", "12"): ("េ◌ៀ", "iĕ"),
+        ("dependent_vowel", "13"): ("េ◌", "é"),
+        ("dependent_vowel", "14"): ("ែ◌", "ê"),
+        ("dependent_vowel", "15"): ("ៃ◌", "ai / ey"),
+        ("dependent_vowel", "16"): ("េ◌ា", "aô / oŭ"),
+        ("dependent_vowel", "17"): ("េ◌ៅ", "au / ŏu"),
+        ("vowel_diacritic_combination", "1"): ("◌ុ◌ំ", "om / ŭm"),
+        ("vowel_diacritic_combination", "2"): ("◌ំ", "âm / um"),
+        ("vowel_diacritic_combination", "3"): ("◌ំ឵", "ăm / ŏâm"),
+        ("vowel_diacritic_combination", "4"): ("◌ះ", "ăh / eăh"),
+        ("vowel_diacritic_combination", "5"): ("◌ុ◌ះ", "ŏh / ŭh"),
+        ("vowel_diacritic_combination", "6"): ("េ◌◌ះ", "éh / éh"),
+        ("vowel_diacritic_combination", "7"): ("េ◌឵ះ", "aôh / ŏăh"),
+        ("vowel_diacritic_combination", "8"): ("◌ំ឵ង", "ăng / eăng"),
+    }
+    assert len(expected_romanization) == len(rows)
+    for row in rows:
+        key = (row["table_section"], row["table_row"])
+        assert (row["source_units"], row["bgn_pcgn_romanization"]) == expected_romanization[key]
+
 
 def test_unadjudicated_rows_never_claim_a_ukrainian_candidate():
     with CSV_PATH.open(encoding="utf-8-sig", newline="") as stream:

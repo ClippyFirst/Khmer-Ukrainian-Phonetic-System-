@@ -54,3 +54,17 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+      - name: Smoke-test deployed site and runtime assets
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          base="${PAGE_URL%/}"
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/" -o /tmp/index.html
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/system.html" -o /tmp/system.html
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/src/main.js" -o /tmp/main.js
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/src/styles/main.css" -o /tmp/styles.css
+          grep -q 'id="source"' /tmp/index.html
+          grep -q 'src="./src/main.js' /tmp/index.html
+          grep -q '<title>' /tmp/system.html
+          test -s /tmp/main.js && test -s /tmp/styles.css

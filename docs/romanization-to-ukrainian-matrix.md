@@ -21,6 +21,8 @@ The current romanization card is independent from IPA → Ukrainian conversion. 
 
 ## Consonant and subscript crosswalk (source-backed romanization; Ukrainian target is a project proposal)
 
+The machine-readable consonant matrix is [data/khmer/romanization_ukrainian.csv](../data/khmer/romanization_ukrainian.csv). It records all 22 official PCGN consonant-table rows plus the special ឝ row, source code-point sequences, BGN/PCGN forms, Ukrainian candidate, evidence status, URL and row locator. The CSV is authoritative for this consonant slice; it is not a complete vowel/rime matrix.
+
 | Khmer source unit (base / subscript) | BGN/PCGN romanization | Ukrainian candidate | Status / note |
 |---|---|---|---|
 | ក / ្ក | k | к | PROPOSED orthographic target |
@@ -30,11 +32,11 @@ The current romanization card is independent from IPA → Ukrainian conversion. 
 | ឆ / ្ឆ | chh | ч' | PROPOSED; aspiration distinction retained |
 | ញ / ្ញ | nh | нь | PROPOSED |
 | ដ / ្ដ | d | д | PROPOSED |
-| ថ / ្ថ | th | т' | PROPOSED; context and consonant series must be retained |
-| ទ / ្ទ | th | т' | PROPOSED; BGN/PCGN table has context-specific historical spellings |
+| ថ / ្ថ | th | — | ANALYSIS_DEPENDENT; context and consonant series must be retained |
+| ទ / ្ទ | th | — | ANALYSIS_DEPENDENT; BGN/PCGN table has context-specific historical spellings |
 | ណ / ្ណ; ន / ្ន | n | н | PROPOSED |
 | ត / ្ត | t | т | PROPOSED |
-| ប / ្ប | b, p (contextual) | б / п | ANALYSIS_DEPENDENT; BGN/PCGN note 3 governs |
+| ប / ្ប | b, p (contextual) | — | ANALYSIS_DEPENDENT; BGN/PCGN note 3 governs |
 | ត (ô-series foot) / ្ត | p | п | PROPOSED; do not merge with t |
 | ផ / ្ផ; ភ / ្ភ | ph | п' | PROPOSED; preserve aspirated distinction |
 | ម / ្ម | m | м | PROPOSED |
@@ -44,7 +46,7 @@ The current romanization card is independent from IPA → Ukrainian conversion. 
 | វ / ្វ | v | в | PROPOSED |
 | ស / ្ស | s | с | PROPOSED |
 | ហ / ្ហ | h | г | PROPOSED under the project's Ukrainian target policy; not IPA evidence |
-| អ / ្អ | ’ | ’ / explicit onset marker | ANALYSIS_DEPENDENT; retain rather than silently delete |
+| អ / ្អ | ' | — | EVIDENCE_LIMITED; retain rather than silently delete |
 
 ## Vowel matrix: contextual source table, not a one-sign substitution table
 
@@ -80,6 +82,7 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 | KHM-ROM-STD-001 | DONE_VERIFIED (source review) | BGN/PCGN 1972 selected; UNGEGN approval and PCGN table cited |
 | KHM-ROM-ENGINE-001 | PARTIAL | Replace/verify the ASCII simplifier against the full BGN/PCGN table, including diacritics and context |
 | KHM-ROM-UA-001 | TODO | Implement an independent syllable-level romanization → Ukrainian adapter |
-| KHM-ROM-MATRIX-001 | PARTIAL | Full consonant/subscript/vowel/diacritic/numeral table in canonical data with provenance |
+| KHM-ROM-ONSET-001 | DONE_VERIFIED | All 22 PCGN consonant rows plus special ឝ are in data/khmer/romanization_ukrainian.csv; exact row and provenance tests passed in workflow 41229431196 |
+| KHM-ROM-MATRIX-001 | PARTIAL | Full vowel/context/diacritic/numeral table in canonical data with provenance; consonant slice alone is not full coverage |
 | KHM-ROM-TEST-001 | TODO | Source-backed tests for all table rows, mixed scripts, punctuation, diacritics, malformed units and ambiguity |
 | KHM-IPA-001 | PARTIAL | Existing contextual vowel/register/coda IPA model and independent gold remain incomplete |

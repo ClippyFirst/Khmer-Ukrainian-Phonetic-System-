@@ -1035,3 +1035,12 @@ The Khmer evidence matrix now contains the full Ishida phone-to-grapheme mapping
 ## Controlled IPA acquisition documentation CI — 2026-11-01
 
 The documentation-only playbook, corpus-guide and handoff changes at the preceding branch head were checked by GitHub Actions. Khmer: Quality checks 41343502985 SUCCESS; optional Khmer G2P smoke 41343502939 SUCCESS; optional Goruut 41343502878 SUCCESS. No language-engine runtime or gold data changed. This validates the repository state, not the linguistic correctness of future annotations. Pages deployment and release-gate workflow were not run.
+
+
+## Source acquisition update — 2026-11-01
+
+- **Common Voice v27.0 Khmer:** official catalog lists locale `km`, CC0-1.0, MP3 archive 20.23 MB: https://commonvoice.allizom.org/en/datasets. This is sentence audio/transcript, not IPA. The archive size is not a clip/speaker count; exact manifest and regional coverage need inspection.
+- **OpenSLR 42 (SLR42):** official resource page https://openslr.org/42 lists Khmer multi-speaker TTS audio and transcript index, CC BY-SA 4.0; the currently available archive is male-speaker only (866 MB). Provider warns that manual QC does not eliminate all transcript errors.
+- Both are supplementary contextual audio, not direct citation-form lexical gold. Confirm Phnom Penh profile coverage before use; preserve exact clip/speaker IDs and time intervals, and independently transcribe audio.
+- **Khmer Acoustic Model artifact check:** README claims a 29,204-entry IPA dictionary with native-linguist validation and says dictionary data are CC BY-SA 4.0. However, `dictionary/khmer_ipa.dict` was not found at the documented path in the inspected default branch; only `dictionary/khmer_ipa_sample.dict` (six entries) was available. The sample's space-separated representation and missing item-level provenance/variety convention prevent direct use as project gold. It remains a comparator lead pending a reproducible full artifact and method.
+- `KHM-GOLD-001` remains `BLOCKED`; independent gold 0 and accuracy `null`. Next acceptance step: inspect Common Voice/OpenSLR manifests for profile and lexical coverage, recruit Phnom Penh experts, and choose a controlled citation-form protocol. No data imported.

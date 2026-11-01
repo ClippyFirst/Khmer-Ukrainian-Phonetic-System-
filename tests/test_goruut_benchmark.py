@@ -78,7 +78,7 @@ def test_khmer_source_attested_fixture_is_not_labelled_gold():
 
 def test_source_attested_concordance_is_not_gold_or_accuracy(tmp_path):
     fixture = tmp_path / "source.csv"
-    fixture.write_text("orth,ipa\\nword,kʰaː\\n", encoding="utf-8")
+    fixture.write_text("orth,ipa\nword,kʰaː\n", encoding="utf-8")
     inputs = MODULE.load_inputs(fixture, input_format="csv", text_column="orth", expected_column="ipa")
     records = [{
         "input": "word", "status": "OK", "raw_response": "{}",
@@ -97,9 +97,9 @@ def test_source_attested_concordance_is_not_gold_or_accuracy(tmp_path):
 
 def test_missing_model_assets_are_recorded_from_server_log(tmp_path):
     fixture = tmp_path / "probes.txt"
-    fixture.write_text("word\\n", encoding="utf-8")
+    fixture.write_text("word\n", encoding="utf-8")
     log = tmp_path / "server.log"
-    log.write_text('level=error msg="open weights9.bin.zlib: file does not exist"\\n', encoding="utf-8")
+    log.write_text('level=error msg="open weights9.bin.zlib: file does not exist"\n', encoding="utf-8")
     report = MODULE.build_report(
         ["word"], [{
             "input": "word", "status": "OK", "raw_response": "{}",

@@ -61,3 +61,17 @@ Evidence: [Khmer G2P workflow 41310119616](https://github.com/ClippyFirst/Khmer-
 ## Model-asset warning interpretation
 
 The runtime log warning is not yet causally diagnosed: the pinned Khmer Central language module contains `weights8.bin.zlib`, while the server logs an attempt to open `weights9.bin.zlib`; no such `weights9` asset was found in the pinned repository tree. This may be a shared optional model path, but that has not been proven. The incomplete outputs are independently observed in the raw IPA comparisons.
+
+
+## Exact-head three-repeat runtime evidence — 2026-11-01
+
+The exact current PR #101 head `eeeede50447c41df30f866bcbf77f56824b40190` was executed in GitHub Actions, including a clean pinned-source Go build and three HTTP requests per input.
+
+- Runtime workflow: [41310808284](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310808284); artifact [13085376947](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310808284/artifacts/13085376947); ZIP SHA-256 `34330aac3be84a438a7bdc181d715f12b745cfe6f7e15edcd4be08dcbfeb52da`.
+- Engine `b224bde02151f8f86d0fe260804e4ca743bda620`, Go `1.23.12`, language `KhmerCentral`, effective config SHA-256 `d2f19f923da8ca089ba9133465018903263f681b57a1177152ab07f2a284225e`.
+- Engineering probes: 8/8 usable and reproducible across all three repetitions.
+- Source-attested lexical probes: 6/6 usable and reproducible across all three repetitions. Strict concordance: **1/6 (16.7%)**; limited notation-only diagnostic (removing outer IPA wrappers, whitespace, syllable dots and stress marks while preserving phones, aspiration, length and diacritics): **3/6 (50%)**. Neither measure is accuracy; source rows are not independently adjudicated.
+- Critical incomplete outputs are stable: `ខ្មែរ` → `kʰr` vs source-attested `kʰmae`; `ភ្នំពេញ` → `pʰɲ` vs `pʰnum ˈpɨɲ`; `ភាសាខ្មែរ` → `pʰiəsaːkʰr` vs `pʰiəsaː kʰmae`. These are missing vowel/word material, not merely notation differences.
+- The server logs `weights9.bin.zlib: file does not exist`; the pinned Khmer Central tree contains `weights8.bin.zlib`, not `weights9.bin.zlib`. Causality is unproven; the incomplete strings are directly visible in the raw response.
+
+**Disposition: reject Goruut as a Khmer production phonology provider; retain only as an optional raw-output comparator.** Independent adjudicated Khmer gold remains 0.

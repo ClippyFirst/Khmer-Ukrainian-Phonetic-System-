@@ -124,3 +124,17 @@ The final PR #101 head `1e9cbfdf4f21514e4f39093d51ea3f923133a90a` completed all 
 On the 100-row MekongPhon input, Goruut returned 97 outputs and 3 no-output cases. Coverage was 70 complete, 27 partial and 3 unknown/no-output. There were 96 stable and 1 unstable result; one input carried randomization metadata across three repeats. Strict source-attested concordance was 6/100, with 6/100 on the limited notation diagnostic. The 8 engineering probes yielded 8 outputs, but only 3 had complete source coverage and 5 were partial. The server again logged missing `weights9.bin.zlib`; causality is unproven.
 
 **Disposition:** exact-head runtime and repository verification are DONE_VERIFIED. Goruut is not suitable for production. Khmerphonemizer is an available raw-output comparator, but this 100-word input has no source IPA with which to compare it; obtain a source-located, expert-adjudicated Khmer IPA set before accuracy claims. Gold remains 0 and accuracy remains null.
+
+
+## Source-IPA handoff bug found and corrected — 2026-11-01
+
+A review of the 100-row Khmerphonemizer artifact exposed a comparison-pipeline bug: the workflow correctly wrote MekongPhon's `pron_no_tones` into each corpus entry as `source_reported_ipa`, but `scripts/benchmark_g2p.py` read only `metadata["ipa"]`. The raw engine outputs were validly captured, but the report incorrectly recorded all source IPA labels as null and therefore reported zero comparable rows. This was not a missing-IPA limitation in the source split.
+
+TDD evidence:
+
+- Added a regression test for the workflow's `source_reported_ipa` field first. Exact-head CI on test-only commit `c2c78500333d5dafac73262bda43708f563c2d7d`, run [41325025559](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325025559), failed as expected: **1 failed, 106 passed, 25 subtests passed**. Failure was the missing metadata adapter, not an unrelated setup error.
+- Added `source_ipa_from_metadata`, which accepts both the canonical `ipa` field used by the repository corpus and the explicit `source_reported_ipa` field used by the external workflow. The final tests now pass.
+- Final fixed head `1a0a8190e60d003b2e48ac29da21ce553822130c`: repository checks [41325152300](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325152300) and [41325147911](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325147911) PASS; optional G2P runtime [41325147987](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325147987) PASS.
+- Corrected artifact [13091145662](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325147987/artifacts/13091145662), ZIP SHA-256 `b3e2262c5f72d51c770ec88c3cf880387d1aa03ab5bc4beafc85e0551ec1f2f9`; downloaded hash matches GitHub digest. Khmerphonemizer 0.0.3 returned 100/100 outputs; all 100 rows are now comparable to source-attested labels; 18/100 strict string matches and 19/100 matches after the limited notation-only diagnostic.
+
+These are source-attested concordance counts, not accuracy. MekongPhon labels are not independently adjudicated gold; independent gold remains 0 and accuracy remains null. The corrected adapter repairs the evidence pipeline only; it does not change or validate the engine's phonology.

@@ -23,8 +23,11 @@
     "year": 2020,
     "doi": "10.61945/cjbar.2020.2.2.3",
     "url": "https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36",
-    "scope": "Phnom Penh/standard Khmer acoustic vowel system",
-    "status": "PRIMARY_PHONETIC_SOURCE"
+    "scope": "Phnom Penh acoustic vowel system; 21 source-reported monophthongs and 13 diphthongs; class/register and coda effects",
+    "status": "PRIMARY_PHONETIC_SOURCE",
+    "full_text_url": "https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/download/36/32",
+    "method": "21 speakers screened with 168 items; four speakers (two female) selected for acoustic analysis; 61 lexical items, three formal-reading repetitions",
+    "limitations": "No exhaustive consonant-series × vowel × coda cross-table; paper distinguishes Standard Khmer from Phnom Penh speech; source transcription is not project gold"
   },
   {
     "id": "henderson1952",

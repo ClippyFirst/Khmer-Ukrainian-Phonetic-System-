@@ -865,6 +865,29 @@ Final-head repository checks [41325417322](https://github.com/ClippyFirst/Khmer-
 - No local checkout was available; engineering verification is from exact-head and post-merge GitHub Actions. See runtime audit for full evidence and hashes.
 
 
+## Linguistic completion register — 2026-11-01
+
+- Current verified `main` baseline: `c0a2b33c86791b6546e1158c62043fd23acc1f60`; latest exact-main engineering workflow: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462947 (success). See the linked current audit register for the verified status and next acceptance criteria: [Linguistic completion register](audits/current/LINGUISTIC-COMPLETION-REGISTER-2026-11-01.md).
+- Reconfirmed `data/benchmark/gold.tsv` contains only its header. Independent expert-adjudicated lexical IPA gold remains **0**; empirical accuracy remains **null**. No external source-attested labels or engine outputs are promoted to gold.
+- The register separates implementable repository work from external expert, primary-source and licensing blockers. Preserve existing canonical plans, registries, tests and generated data; do not create parallel corpora or weaken fail-closed behavior.
+- No local checkout was available for this pass. GitHub Actions provide exact-main engineering evidence only; they do not prove linguistic accuracy, manual accessibility QA or legal permissions.
+## Current master-matrix status override — 2026-11-01
+
+The following current statuses supersede older checkpoint rows above where they conflict; historical evidence remains preserved.
+
+| Task | Current status | Current acceptance boundary |
+|---|---|---|
+| KH-TEST-001 | BLOCKED | Gold TSV is header-only; independent expert-adjudicated lexical IPA gold=0; accuracy=null. Requires independent annotation, adjudication, profile and source/audio locators. |
+| KH-VOW-001 / KH-VOW-002 | PARTIAL | Orthographic/register inventory exists; full context-dependent vowel/rime/series matrix and acoustic/phonetic adjudication remain open. |
+| KH-CODA-001 | PARTIAL | Structural cases and fail-closed behavior exist; full coda-conditioned IPA coverage remains open. |
+| KH-IPA-001 | PARTIAL | IPA boundary/status contract exists; complete contextual orthography-to-IPA model and gold remain open. |
+| KH-PROFILE-001 / KH-PROFILE-002 | PARTIAL | Fail-closed guards are verified; complete Phnom Penh /r/-loss environment model and expert validation remain open. |
+| KH-G2P-001 | DONE_VERIFIED (harness only) | Goruut and Khmerphonemizer comparisons are diagnostic; no accuracy claim or production promotion. |
+| KH-ROM-001 | PARTIAL | BGN/PCGN bounded inventory exists; full contextual runtime and independent Ukrainian syllable adapter remain open. |
+| KH-UI-001 | TODO | Manual deployed visual, keyboard, screen-reader and mobile QA not evidenced by CI. |
+| KH-REL-001 | PARTIAL | Release remains blocked by phonological gold and asset-rights review. |
+
+
 ## IPA gold corpus implementation checkpoint — 2026-11-01
 
 ### Current task ledger

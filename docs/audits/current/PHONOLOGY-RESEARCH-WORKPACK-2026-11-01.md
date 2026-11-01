@@ -37,3 +37,20 @@
 - [ ] Only then revise the phonology engine and Ukrainian adaptation rows.
 
 **Current status:** PARTIAL. The current coverage report is a grapheme/series evidence inventory, not a complete phonological matrix or accuracy score. Independent lexical gold remains 0. No new Khmer IPA labels are added in this workpack.
+
+
+## Verified evidence extraction — 2026-11-01
+
+### Independent /r/-loss study: scope and limits
+
+Wayland & Guion (2005), *Mon-Khmer Studies* 35:55–82, [full paper](https://rilca.mahidol.ac.th/documents/PublicationMultimedia/MonKhmer/Vol35/wayland2005sound.pdf), directly compares careful-reading and colloquial Phnom Penh pronunciations. The sample is two male native speakers from Phnom Penh, 20 lexical items beginning with an obstruent + /r/ cluster, and three repetitions of each item in each style. The study measured VOT or affricate frication, F0 at five vowel positions, and F1/F2. It reports colloquial falling–rising F0 contours, increased onset aspiration, and vowel changes including /a, aː/ → [ea] and /ɔː/ → [ɔə] in the examined items. The paper itself cautions that its proposed aerodynamic explanation lacks direct aerodynamic data.
+
+**Implementation boundary:** these findings justify a Phnom Penh colloquial profile with a conditional /Cr/ pathway and separate reading/colloquial outputs. They do not justify deleting every orthographic or underlying /r/, nor a universal Khmer tone rule. The two-speaker, 20-item sample is a research anchor, not sufficient lexical coverage or independent gold for the project.
+
+### Vowel and register evidence
+
+Chem & Chem (2020), “The Standard Khmer vowel system: An acoustic study,” [publisher record](https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36), is an acoustic description focused on Phnom Penh. Its authors note that “standard Khmer” is not sharply defined. Use it to populate source-located vowel measurements only after extracting its actual tables and reconciling short/long vowels, series and coda context; do not convert its abstract into a complete inventory.
+
+Kirby (2014), *Journal of Phonetics* 43:69–85, [DOI](https://doi.org/10.1016/j.wocn.2014.02.001), adds production and perception evidence for f0, aspiration/VOT, voice quality and vowel-quality cues. These are interacting cues, not a licence to encode /r/-loss as a single replacement segment.
+
+**Status update:** /r/-loss evidence is now more precisely scoped and method-documented; independent multi-speaker replication, full vowel × series × length × coda coverage, and IPA adjudication remain PARTIAL/BLOCKED. No Khmer IPA labels or engine rules were added.

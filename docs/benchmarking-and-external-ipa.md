@@ -205,3 +205,19 @@ The updated harness completed on PR branch commit `b9f706473e4e03c6e446254703b7e
 
 This confirms the coverage gate is functioning on a real 100-row run. The current PR head adds an additional empty-phonetic-token guard and associated tests; final exact-head CI remains pending.
 
+
+## Independent IPA gold workflow — 2026-11-01
+
+The repository now has a separate `scripts/ipa_gold_corpus.py` lifecycle and versioned JSON Schemas:
+- `data/benchmark/records.jsonl`, `annotations.jsonl`, `adjudications.jsonl`, and `splits.jsonl`;
+- two distinct annotators plus a third adjudicator for every adjudicated row;
+- explicit `AGREEMENT`, `RESOLVED`, and `UNRESOLVED` outcomes;
+- source citation, exact locator, license and redistribution rights;
+- deterministic, frozen, lexeme-group-safe train/dev/test assignment;
+- export into the existing `gold.tsv` contract only for adjudicated and redistributable IPA.
+
+The benchmark now retains `ipa_kind` (PHONEMIC, PHONETIC_BROAD, PHONETIC_NARROW). A prediction with missing or different IPA kind cannot count as an exact match against typed gold. The existing scorer remains the metric implementation.
+
+Normal CI validates corpus structure while allowing an empty research corpus. The tag/manual `ipa-gold-release-gate.yml` requires at least 100 train, 25 dev and 25 test adjudicated records with redistribution rights. These are project release thresholds, not a universal statistical claim. A separate feature-stratified engine and Ukrainian-adapter quality gate is still required.
+
+**Current status:** the four JSONL files are intentionally empty and the gold TSV remains header-only. Independent adjudicated gold=0; accuracy=null. No phonemizer output or synthetic test fixture has been promoted to gold. Blind annotation must be collected through a controlled channel before the two submissions are merged; a public shared repository cannot enforce blinding.

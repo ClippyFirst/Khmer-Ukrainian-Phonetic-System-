@@ -19,3 +19,8 @@ When a verified lexical fixture contains more than one orthographic word, tokeni
 ## External G2P evidence checkpoint (2026-10-24)
 
 The source-IPA reconciliation is merged at `35ce7142bf71f7e4cdb1acbb44d94d45ef71693a`. Quality run [40093054206](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093054206) passed. Optional `khmerphonemizer==0.0.3` run [40093054099](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40093054099) returned 6/6 outputs, 0 errors; its artifact was inspected. The source-attested corpus still is not independent gold, so `accuracy` remains null. This is verified diagnostic infrastructure, not phonological accuracy verification.
+
+
+## Whole-message source-integrity regression — 2026-11-01
+
+PR [#97](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/97) adds a canonical adversarial fixture containing Khmer, Latin, ASCII and Khmer numerals, punctuation, tab, CRLF, U+200B and an unsupported symbol. The parser segmentation test requires exact reconstruction of the complete source and local unsupported status for the unknown symbol. Exact-head Quality checks [41289845696](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41289845696) passed Python tests, web checks and production build. The fixture has no IPA label and is not phonological gold.

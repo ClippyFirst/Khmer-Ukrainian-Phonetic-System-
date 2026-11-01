@@ -732,3 +732,11 @@ These changes implement project-approved target conventions; they are not a new 
 - Inspected and pinned upstream Goruut commit `b224bde02151f8f86d0fe260804e4ca743bda620`; upstream README advertises Khmer Central, IPA output, word tokens and tone support, but no syllable tokens or tie bars and no number/date normalization. MIT applies to source code; embedded dictionary/model asset licenses remain unaudited.
 - Recorded the candidate and limitations in `docs/benchmarking-and-external-ipa.md`, alongside a triage note for Khmer NLP KCC: its advertised G2P tokens are not established as IPA and its downloaded checkpoint/data need separate license review. PR [#98](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/98); exact PR-head CI [41302072416](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41302072416) passed before this handoff-only follow-up commit.
 - No Goruut/KCC runtime invocation or output artifact was produced. Independent gold remains 0; no accuracy or winner claim. Next acceptance: run pinned Goruut in isolated optional CI, audit asset provenance, review Khmer register/inherent-vowel/coda/syllable conventions, and score only independent expert-adjudicated IPA.
+
+
+## Goruut asset licensing reconciliation — 2026-11-01
+
+- Task `KHMER-CENTRAL-G2P-GORUUT-001` remains `BLOCKED` for runtime execution, not merely PARTIAL: the source-code MIT license does not establish rights for the language-specific lexicon/model assets.
+- The pinned Goruut source tree contains embedded files under `dicts/khmer/central/`; Goruut's own data-preparation documentation states these model assets derive from a `lexicon.tsv`. The corresponding separate `neurlang/dataset/khmer/central/` lexicon is present, but dataset repo metadata declares no license, root tree has no LICENSE/COPYING, and the README does not allocate a license/provenance to this language.
+- No runtime invocation, output artifact, or quality claim is made. Next acceptance: per-language source/provenance and rights for both lexicon and derived weights, then owner-approved usage decision, followed by isolated pinned execution and independent expert IPA adjudication.
+- Detailed evidence and exact upstream paths: `docs/audits/current/GORUUT-ASSET-LICENSE-REVIEW-2026-11-01.md`.

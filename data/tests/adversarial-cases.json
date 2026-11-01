@@ -1,10 +1,98 @@
 {
-  "khnyom":{"source":"ខ្ញុំ","ipa":"/kʰɲom/","source_basis":"Wiktionary standard IPA","checks":["coeng-subscript","vowel-modifier","aspiration","palatal-nasal"]},
-  "sangkreem":{"source":"សង្គ្រាម","ipa":"/sɔŋkrɛəm/","source_basis":"Unicode 17 representative example","checks":["multi-consonant-cluster","coeng-chain","series-conditioned-vowel","syllable-segmentation"]},
-  "haeuy":{"source":"ហើយ","ipa":"/haəi/","source_basis":"Unicode 17 representative example","checks":["preposed-vowel-encoding","coeng-y","surface-vowel"]},
-  "si":{"source":"ស៊ី","ipa":"/siː/","source_basis":"Unicode 17.0 representative example","checks":["triisap-register-shifter","long-vowel"]},
-  "sanyaa":{"source":"សញ្ញា","ipa":"/saɲɲaː/","source_basis":"Unicode 17.0 representative example","checks":["repeated-nyo","coeng","long-vowel"]},
-  "chraen":{"source":"ច្រើន","ipa":"/craən/","source_basis":"Unicode 17.0 representative example","checks":["coeng-r","composite-vowel","cluster"]},
-  "pa_exception":{"source":"ប៉ី","ipa":"/pei/","source_basis":"Unicode 17 representative example","checks":["muusikatoan-exception","ba-to-pa","vowel-series"]},
-  "multiple_shifters":{"source":"ស៊៉ា","ipa":null,"source_basis":"negative structural case","checks":["multiple-register-shifters"],"expected_status":"EVIDENCE_LIMITED"}
+  "khnyom": {
+    "source": "ខ្ញុំ",
+    "ipa": "/kʰɲom/",
+    "source_basis": "Wiktionary standard IPA",
+    "checks": [
+      "coeng-subscript",
+      "vowel-modifier",
+      "aspiration",
+      "palatal-nasal"
+    ]
+  },
+  "sangkreem": {
+    "source": "សង្គ្រាម",
+    "ipa": "/sɔŋkrɛəm/",
+    "source_basis": "Unicode 17 representative example",
+    "checks": [
+      "multi-consonant-cluster",
+      "coeng-chain",
+      "series-conditioned-vowel",
+      "syllable-segmentation"
+    ]
+  },
+  "haeuy": {
+    "source": "ហើយ",
+    "ipa": "/haəi/",
+    "source_basis": "Unicode 17 representative example",
+    "checks": [
+      "preposed-vowel-encoding",
+      "coeng-y",
+      "surface-vowel"
+    ]
+  },
+  "si": {
+    "source": "ស៊ី",
+    "ipa": "/siː/",
+    "source_basis": "Unicode 17.0 representative example",
+    "checks": [
+      "triisap-register-shifter",
+      "long-vowel"
+    ]
+  },
+  "sanyaa": {
+    "source": "សញ្ញា",
+    "ipa": "/saɲɲaː/",
+    "source_basis": "Unicode 17.0 representative example",
+    "checks": [
+      "repeated-nyo",
+      "coeng",
+      "long-vowel"
+    ]
+  },
+  "chraen": {
+    "source": "ច្រើន",
+    "ipa": "/craən/",
+    "source_basis": "Unicode 17.0 representative example",
+    "checks": [
+      "coeng-r",
+      "composite-vowel",
+      "cluster"
+    ]
+  },
+  "pa_exception": {
+    "source": "ប៉ី",
+    "ipa": "/pei/",
+    "source_basis": "Unicode 17 representative example",
+    "checks": [
+      "muusikatoan-exception",
+      "ba-to-pa",
+      "vowel-series"
+    ]
+  },
+  "multiple_shifters": {
+    "source": "ស៊៉ា",
+    "ipa": null,
+    "source_basis": "negative structural case",
+    "checks": [
+      "multiple-register-shifters"
+    ],
+    "expected_status": "EVIDENCE_LIMITED"
+  },
+  "mixed_multiline_source_integrity": {
+    "source": "ខ្ញុំ\\tABC-42\\r\\n២០២៦។\\u200b☃",
+    "ipa": null,
+    "source_basis": "Unicode and parser source-integrity contract; not a lexical pronunciation source",
+    "checks": [
+      "whole-message-segmentation",
+      "tab",
+      "crlf",
+      "khmer-numerals",
+      "khmer-punctuation",
+      "zero-width-space",
+      "mixed-latin",
+      "unsupported-symbol"
+    ],
+    "expected_status": "SOURCE_PRESERVED_WITH_LOCAL_UNCERTAINTY"
+  }
 }

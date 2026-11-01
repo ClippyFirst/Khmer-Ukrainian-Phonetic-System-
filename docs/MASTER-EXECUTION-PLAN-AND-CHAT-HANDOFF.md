@@ -804,3 +804,14 @@ These changes implement project-approved target conventions; they are not a new 
 - - The one unstable input `ជួត` carried `RandomizationWordsCount=1`, `RandomizationWordsChoices=2`; the other 99 did not show that metadata.
 - The benchmark harness now has tests for dropped source characters and source letters in punctuation fields; exact-head CI is still pending. No accuracy score or production promotion is claimed.
 - Full evidence: `docs/audits/current/GORUUT-RUNTIME-EVALUATION-2026-11-01.md`.
+
+
+## Owner scope decision — temporary test-only use — 2026-11-01
+
+The repository owner explicitly directed that external Goruut assets may be used for temporary verification and comparison without blocking these tests on license review. Accordingly:
+
+- **Test-only execution:** authorized for this research task; do not stop runtime probes because the external asset license is unresolved.
+- **No data/model import:** no Goruut dictionary, model weight, or MekongPhon source row is copied into the product runtime or committed as a corpus by this decision.
+- **Production packaging or redistribution:** not authorized by this instruction and remains outside this test-only scope; asset provenance/rights must be revisited before any bundling, redistribution, or production deployment.
+
+This is a project scope decision, not a legal conclusion about the upstream assets.

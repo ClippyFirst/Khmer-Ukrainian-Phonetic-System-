@@ -28,16 +28,48 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: byu-matrix-lab/MekongPhon
+          ref: f80f6c1840c4818b51e05f2e00cded4701a5b662
+          path: mekongphon
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Install the optional benchmark engine
         run: python -m pip install khmerphonemizer==0.0.3
+      - name: Prepare the pinned 100-row MekongPhon source-attested diagnostic set
+        run: |
+          mkdir -p artifacts/external-g2p
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+          source = Path("mekongphon/data/splits/khmer_eval.csv")
+          rows = list(csv.DictReader(source.open(encoding="utf-8", newline="")))
+          if len(rows) != 100 or len({row["orth"] for row in rows}) != 100:
+              raise SystemExit("Expected 100 unique MekongPhon Khmer eval rows")
+          corpus = {
+              row["orth"]: {
+                  "source_reported_ipa": row["pron_no_tones"],
+                  "evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
+                  "sources": [
+                      "https://github.com/byu-matrix-lab/MekongPhon/blob/f80f6c1840c4818b51e05f2e00cded4701a5b662/data/splits/khmer_eval.csv"
+                  ],
+              }
+              for row in rows
+          }
+          Path("artifacts/external-g2p/mekongphon-khmer-eval.json").write_text(
+              json.dumps(corpus, ensure_ascii=False, indent=2) + "\\n",
+              encoding="utf-8",
+          )
+          PY
       - name: Run raw-output benchmark (not an accuracy score)
-        run: python scripts/benchmark_g2p.py --output artifacts/external-g2p/khmer-phonemizer.json
+        run: python scripts/benchmark_g2p.py --corpus artifacts/external-g2p/mekongphon-khmer-eval.json --output artifacts/external-g2p/khmer-phonemizer-mekongphon.json
       - name: Upload diagnostic output
         uses: actions/upload-artifact@v4
         with:
           name: khmer-phonemizer-raw-output
-          path: artifacts/external-g2p/khmer-phonemizer.json
+          path: artifacts/external-g2p/
           if-no-files-found: error

@@ -56,3 +56,8 @@ The existing optional Khmer G2P workflow was run on the same six source-attested
 The Goruut three-repeat run on the same six entries returned 6/6 outputs, all stable; strict match 1/6 and limited notation-normalized match 3/6. Examples: `ខ្មែរ` is `kʰr` from Goruut versus `kʰmae` from khmerphonemizer and source IPA; `ភ្នំពេញ` is `pʰɲ` from Goruut versus `pʰnumpɨɲ` from khmerphonemizer. This makes khmerphonemizer the stronger comparator on this tiny source-attested sample, but not a validated production engine.
 
 Evidence: [Khmer G2P workflow 41310119616](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310119616); [Goruut workflow 41310119556](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310119556). Independent gold remains 0.
+
+
+## Model-asset warning interpretation
+
+The runtime log warning is not yet causally diagnosed: the pinned Khmer Central language module contains `weights8.bin.zlib`, while the server logs an attempt to open `weights9.bin.zlib`; no such `weights9` asset was found in the pinned repository tree. This may be a shared optional model path, but that has not been proven. The incomplete outputs are independently observed in the raw IPA comparisons.

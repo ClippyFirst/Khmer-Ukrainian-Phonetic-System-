@@ -85,3 +85,10 @@ Existing numeric thresholds (100 train / 25 dev / 25 test) are minimum engineeri
 - Chem et al. (2026), Khmer Acoustic Model and dictionary: https://github.com/chemvatho/Khmer-acoustic-model
 - Chem (2020), The Standard Khmer vowel system: https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36
 - Kirby (2014), Incipient tonogenesis in Phnom Penh Khmer: https://www.sciencedirect.com/science/article/pii/S0095447014000163
+
+
+## External IPA resources — repository inspection, 2026-11-01
+
+MekongPhon source repository: https://github.com/byu-matrix-lab/MekongPhon. Its README describes data/ as lexicons, OPUS downloads, sampled sentences and splits. pipeline/README.md describes SEAlang frequency lists → IPA scraping → minor lexicon post-processing → OPUS sentence download → lexicon train/eval split → trie-based lexicon lookup to convert sentences, filtering out-of-lexicon sentences. Therefore its sentence IPA is generated through a word-lexicon lookup pipeline and should not be presumed independent sentence-level phonetic transcription. The root LICENSE path was not present in the inspected repository. No dataset-specific redistribution license was verified. The LREC proceedings CC BY-NC-4.0 notice and the paper's “verified” description do not establish data reuse rights or item-level human adjudication. Do not import/redistribute until exact files, variety, IPA convention, correction/verification process, source terms, split construction and license are verified with the maintainers.
+
+Separate candidate: https://github.com/chemvatho/Khmer-acoustic-model reports a 29,204-entry IPA dictionary and says dictionary data are CC BY-SA 4.0, distinct from the MIT code/model. Its README claims validation by native Khmer linguists, but per-entry source provenance, dialect/profile, transcription conventions and exact release must still be audited. Treat as an external comparator/source-discovery lead, not our gold.

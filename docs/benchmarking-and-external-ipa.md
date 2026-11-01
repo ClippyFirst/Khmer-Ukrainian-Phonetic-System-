@@ -90,3 +90,22 @@ The current-main optional smoke [40129500995](https://github.com/ClippyFirst/Khm
 After merging the workflow trigger-scope fix, current-main optional smoke [40133705156](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156) passed. Inspected artifact [12575459926](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40133705156/artifacts/12575459926), ZIP SHA-256 `ff588e5d6a0e533aa4de7427e4786672f03999c3f7131abb1c89cb828936a677`. Report schema 1.1; khmerphonemizer 0.0.3; Python 3.12.15; corpus SHA-256 `4b0fafa4a178c0a3e769ddb168f2115cd1fda0c98919c3bc2d731c13cbe6a7f4`; 6 inputs, 6 outputs, 0 errors, gold 0, accuracy null. Source-attested notation diagnostic remains 2/6 strict and 6/6 after limited removal of wrappers, whitespace, syllable dots and stress. This is not accuracy.
 
 The optional smoke workflow now excludes evidence-registry and benchmark-document paths from automatic push triggers; manual dispatch and executable input/script/workflow changes still run it. This prevents evidence-only registry updates from retriggering a new smoke run.
+
+
+## Goruut comparator — upstream verified, execution pending (2026-11-01)
+
+**Disposition: ADD AS AN OPTIONAL RAW-OUTPUT COMPARATOR; NOT APPROVED AS A PRODUCTION PHONOLOGY PROVIDER.**
+
+- Upstream repository: https://github.com/neurlang/goruut
+- Pinned upstream source commit inspected: `b224bde02151f8f86d0fe260804e4ca743bda620` (2026-10-02; pin this commit rather than `@latest`).
+- Upstream README explicitly lists **Khmer Central** support and advertises an IPA phone set, word-level tokens, punctuation preservation and tonal phones. It explicitly says syllable tokens are not provided, tie bars are not supported, and numbers/dates are unsupported and should be written as words. Khmer Central must not be assumed to represent every Khmer dialect/register used by this project.
+- The upstream source-code repository contains an MIT license. This verifies the code license only; the license and provenance of each embedded dictionary, model, training corpus and generated language asset have not yet been audited. Do not redistribute those assets or treat the MIT code license as clearing them.
+- Upstream requires Go 1.22 or newer. Advertised Khmer Central support is not evidence of accuracy for Khmer vowel registers, inherent vowels, register shifters, codas, lexical exceptions or the project's target dialect profile.
+
+**Additional Khmer candidate triage:** `khmer-nlp-kcc` advertises a learned Khmer G2P method returning phone-token arrays, but those tokens are not established as IPA; the model checkpoint is downloaded on first use and its weights/data licensing must be audited independently of the MIT code license. Keep it as a research lead, not a directly scoreable IPA engine. The existing `khmerphonemizer==0.0.3` remains the pinned runnable baseline; its token-array output and source-attested IPA comparisons are not accuracy evidence.
+
+**Benchmark treatment:** run Goruut only in a disposable optional CI job; preserve raw response, errors, exact upstream commit, language identifier, Go version, corpus hash and output artifact. Keep raw output separate from any IPA normalization. Do not synthesize syllable boundaries or tie bars, strip tone, or convert output to target Ukrainian without an explicit reviewed mapping. Its lack of syllable tokens/tie-bar support and number/date handling must be reported as representational limitations, not silently repaired.
+
+**Acceptance before promotion:** (1) successful pinned execution on the same source-located Khmer inputs as existing comparators; (2) inspect exact raw output and errors; (3) audit licenses/provenance for Khmer dictionary/model assets; (4) review register, vowel quality, inherent-vowel deletion, coda, syllabification, dialect and IPA conventions against independent expert-adjudicated IPA; (5) score only held-out ADJUDICATED gold. Current independent gold count remains 0, so no accuracy or engine ranking is available.
+
+Upstream evidence: https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/README.md ; https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/LICENSE ; https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/go.mod ; https://github.com/rinabuoy/khmer-nlp-kcc

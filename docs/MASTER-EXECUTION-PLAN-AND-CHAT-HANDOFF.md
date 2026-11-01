@@ -830,3 +830,12 @@ The updated harness completed on PR branch commit `b9f706473e4e03c6e446254703b7e
 
 This confirms the coverage gate is functioning on a real 100-row run. The current PR head adds an additional empty-phonetic-token guard and associated tests; final exact-head CI remains pending.
 
+
+
+## Final Goruut / Khmer G2P PR #101 reconciliation — 2026-11-01
+
+- Final head `1e9cbfdf4f21514e4f39093d51ea3f923133a90a`: repository checks [41313433562](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433562), Khmer G2P [41313433619](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433619) and Goruut [41313433641](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433641) all **PASS**.
+- Khmerphonemizer 0.0.3 returned 100/100 outputs, but 0/100 rows were comparable because the input split provided no source IPA labels. This is an availability result only, not accuracy.
+- Goruut 100-row results: 97 outputs, 3 no-output; source coverage 70 complete / 27 partial / 3 unknown; 96 stable / 1 unstable; one randomized dictionary input; strict source-attested concordance 6/100. The eight engineering probes had 3 complete and 5 partial outputs. Accuracy remains null, independent gold=0.
+- Artifacts: Khmerphonemizer [13086870731](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433619/artifacts/13086870731), SHA-256 `86ef634b67dd60ca121cfe11a8549a42e7ee2e4655447851e91a4eefffb7a1b2`; Goruut [13085864084](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433641/artifacts/13085864084), SHA-256 `469bd4f9fc0baa3e8366724e43dfcb802427eca3d70c916be1e98ff6d779583d`. Both downloaded archive hashes matched GitHub's digest.
+- Runtime-probe code and exact-head CI are **DONE_VERIFIED**. Goruut production use remains rejected. Khmerphonemizer accuracy and production suitability remain **BLOCKED** until an appropriate source IPA set and independent expert adjudication exist. The `weights9.bin.zlib` warning is unresolved; causality is not established.

@@ -1044,3 +1044,10 @@ The documentation-only playbook, corpus-guide and handoff changes at the precedi
 - Both are supplementary contextual audio, not direct citation-form lexical gold. Confirm Phnom Penh profile coverage before use; preserve exact clip/speaker IDs and time intervals, and independently transcribe audio.
 - **Khmer Acoustic Model artifact check:** README claims a 29,204-entry IPA dictionary with native-linguist validation and says dictionary data are CC BY-SA 4.0. However, `dictionary/khmer_ipa.dict` was not found at the documented path in the inspected default branch; only `dictionary/khmer_ipa_sample.dict` (six entries) was available. The sample's space-separated representation and missing item-level provenance/variety convention prevent direct use as project gold. It remains a comparator lead pending a reproducible full artifact and method.
 - `KHM-GOLD-001` remains `BLOCKED`; independent gold 0 and accuracy `null`. Next acceptance step: inspect Common Voice/OpenSLR manifests for profile and lexical coverage, recruit Phnom Penh experts, and choose a controlled citation-form protocol. No data imported.
+
+
+## Common Voice v27.0 exact manifest audit — 2026-11-01
+
+Inspected the official release manifest: https://github.com/common-voice/cv-dataset/blob/main/datasets/scripted-speech/cv-corpus-27.0-2026-09-11.json. Khmer: 739 clips; 213 validated; 15 contributor IDs; 0.28 validated hours (0.98 total). No named accent/variant category; gender metadata is entirely unspecified. Manifest locale checksum: `d1c4bb041744fefb1fa60397217b7cd79bfa2ade4510b11ff9863e9a0dc0392d`.
+
+**Decision:** contextual-audio/process-pilot candidate only. Inspect actual transcripts for the 30 required lexical contrasts and obtain specialist Phnom Penh profile approval before sampling. OpenSLR42 adds male-only contextual audio but does not supply IPA. Neither source substitutes for controlled citation-form elicitation. No data/labels imported; gold 0, accuracy null.

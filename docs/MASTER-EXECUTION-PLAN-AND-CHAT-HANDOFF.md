@@ -715,3 +715,12 @@ These changes implement project-approved target conventions; they are not a new 
 - Exact post-merge Quality workflow [41246343908](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41246343908) passed. Pages deployment [41246343845](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41246343845) also passed, including the deployed-site/runtime smoke test. This is the current verified main head.
 - The full/short sentence, mixed-script, native/ASCII numeral, whitespace and punctuation tests remain engineering/input-integrity coverage. The phonetic route remains fail-closed for unsupported contexts; this is not full PCGN conformance, word segmentation, Ukrainian adaptation or independently adjudicated IPA gold.
 - PR #64 remains open, diverged by 35 commits behind current main and is not merged. Its 7-commit CSS/layout branch is preserved; focused responsive improvements remain in the merged PR #78.
+
+
+## Whole-message mixed-script segmentation regression — 2026-11-01
+
+- PR [#97](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/97) merged as `72e4644204c879f905ebaa20dddd2d00b6583d32`.
+- Added a canonical adversarial case containing Khmer, Latin identifier, ASCII digits, Khmer numerals and punctuation, tab, CRLF, U+200B and an unsupported symbol.
+- The test consumes the canonical fixture, requires exact reconstruction from `segment_syllables()`, confirms a supported Khmer example remains structurally established and confirms the unsupported symbol remains locally invalid/unsupported.
+- Exact PR-head Quality checks [41289845696](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41289845696) passed: Python tests, web checks and production build.
+- The fixture has `ipa: null` and explicit non-phonological provenance; it is structural/source-integrity evidence, not IPA gold or an accuracy benchmark row.

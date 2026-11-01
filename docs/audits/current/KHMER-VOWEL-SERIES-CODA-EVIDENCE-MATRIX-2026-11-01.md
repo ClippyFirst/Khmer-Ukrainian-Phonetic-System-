@@ -98,3 +98,72 @@ The article's conclusion lists the following 21 monophthong categories and 13 di
 - **Diphthongs (13):** /iɜ, ɨɜ, uɜ, aɛ, aɜ, aɔ, oa, ɛe, oʊ, ɜɘ, ĭɜ, ŭɜ, ɛ̆a/.
 
 The author classifies 10 long and 11 short monophthongs, and 10 long and 3 short diphthongs. The article also notes that /i/ is primarily associated with Sanskrit/Pali loan vocabulary and was not represented in the acoustic sample. This inventory is therefore SOURCE_REPORTED, while the actual acoustic sample coverage is narrower. It must not be copied into gold.tsv or treated as a universal Standard Khmer inventory without expert reconciliation.
+
+
+## 8. Expanded Ishida phone-to-grapheme reference table
+
+The following is a structured extraction of Ishida's “Vowel sounds mapped to characters” table (sections “Plain vowels” and “Diphthongs and rhymes,” source lines 501–945). IPA-like values are copied as Ishida's transcription; Unicode code points identify the written sequence. The table is a reference mapping, not a claim that every row is phonemic or acoustically validated in every dialect.
+
+| Ishida transcription | Class | Grapheme sequence / context |
+|---|---|---|
+| /i/ | ɔ-class | U+17B7; followed by glottal stop in stressed syllables, not unstressed |
+| /iː/ | ɔ-class | U+17B8 |
+| /ɨ/ | ɔ-class | U+17B9; also independent-vowel forms; 17B9 has a before-1799 exception |
+| /ɨː/ | ɔ-class | U+17BA |
+| /u/ | ɔ-class | U+17BB; stressed syllables may have following glottal stop |
+| /uː/ | ɔ-class | U+17BC |
+| /e/ | ɑ-class | U+17B7; stressed syllables may have following glottal stop |
+| /eː/ | ɔ-class | U+17C1; stressed syllables may have following glottal stop |
+| /o/ | ɑ-class | U+17BB; stressed syllables may have following glottal stop |
+| /oː/ | ɔ-class | U+17C4; stressed syllables may have following glottal stop |
+| /ə/ | ɑ-class | U+17B7; U+17B9; U+17C1 before palatals |
+| /əː/ | ɑ-class | U+17BE |
+| /ɛː/ | ɔ-class | U+17C2 |
+| /ɔː/ | ɔ-class | inherent vowel |
+| /a/ | ɑ-class | U+17D0; or U+17B6 + U+25CC + U+17CB |
+| /aː/ | ɑ-class | U+17B6 |
+| /ɑ/ | ɑ-class | U+17CB after an inherent a-series vowel |
+| /ɑː/ | ɑ-class | inherent vowel |
+| /iə/ | ɔ-class; also both classes | U+17B6; or U+17C0 in a/ɔ-class environments |
+| /ih/ | ɔ-class | U+17B7 + U+17C7; or U+17C1 + U+17C7 |
+| /ɨə/ | both classes | U+17BF |
+| /ɨj/ | ɔ-class | U+17D0 + U+1799; or U+17C3 |
+| /ɨw/ | ɔ-class | U+17BC + U+179C; or U+17C5 |
+| /uə/ | both classes | U+17BD |
+| /uə̆/ | ɔ-class | U+17CB after inherent series-2 vowel, before a non-labial final |
+| /uə̆h/ | ɔ-class | U+17C4 + U+17C7 |
+| /uh/ | ɔ-class | U+17BB + U+17C7 |
+| /um/ | ɔ-class | U+17BB + U+17C6; or U+17C6 |
+| /ei/ | ɑ-class | U+17C1 |
+| /eə̆/ | ɔ-class | U+17D0 before velar finals; or U+17B6 + U+25CC + U+17CB before velar finals |
+| /eə̆ʔ/ | ɔ-class | U+17C0 |
+| /eh/ | ɑ-class | U+17B7 + U+17C7; U+17C1 + U+17C7; or U+17C2 + U+17C7 |
+| /eə̆h/ | ɔ-class | U+17C7 |
+| /eə̆ŋ/ | ɔ-class | U+17B6 + U+17C6 + U+1784 |
+| /ou/ | ɑ-class | U+17BC |
+| /oə̆/ | ɔ-class | U+17D0 before non-velar finals; or U+17B6 + U+25CC + U+17CB before non-velar finals |
+| /oə̆m/ | ɔ-class | U+17B6 + U+17C6 before non-velar finals |
+| /oh/ | ɑ-class | U+17BB + U+17C7 |
+| /om/ | ɑ-class | U+17BB + U+17C6 |
+| /əɨ/ | ɑ-class | U+17BA |
+| /əj/ | ɑ-class; also ɔ-class | U+17B8; or U+17B7 + U+1799; standalone U+17A5/U+17A6 |
+| /əw/ | ɑ-class | U+17BC + U+179C; standalone U+17AA |
+| /əh/ | ɑ-class | U+17B9 + U+17C7; or U+17BE + U+17C7 |
+| /ɔə/ | ɔ-class | U+17D0 + U+179A |
+| /ae/ | ɑ-class | U+17C2; standalone U+17AF |
+| /aə/ | ɑ-class | U+17BE |
+| /ao/ | ɑ-class | U+17C4; standalone U+17A7/U+17B1/U+17B2 |
+| /aj/ | ɑ-class | U+17D0 + U+1799; U+17C3; standalone U+17B0 |
+| /aw/ | ɑ-class | U+17C5; standalone U+17B3 |
+| /aʔ/ | ɑ-class | U+17C0 |
+| /ah/ | ɑ-class | U+17C4 + U+17C7; or U+17C7 |
+| /am/ | ɑ-class | U+17B6 + U+17C6; or U+17C6 |
+| /ɑm/ | ɑ-class | U+17C6 |
+| /ɑŋ/ | ɑ-class | U+17B6 + U+17C6 + U+1784 |
+
+### Interpretation rules and unresolved cells
+
+- Stress is part of the mapping: Ishida explicitly notes following glottal closure for some vowels in stressed syllables but not unstressed syllables.
+- Coda-conditioned sequences are not interchangeable: the table distinguishes velar vs non-velar finals, labial vs non-labial finals, and U+17C6 /m/ vs U+17C7 /h/.
+- Vowel harmony and register-shifter state can change the expected series; conjunct stacks may cause the following vowel to be determined by the subscript consonant, with listed exceptions.
+- The table is a specialist orthographic mapping. Chem's four-speaker Phnom Penh acoustic sample remains a separate evidence layer. No row is promoted to project gold or a deterministic engine rule until the lexical item, profile, coda, stress and source/audio evidence are independently adjudicated.

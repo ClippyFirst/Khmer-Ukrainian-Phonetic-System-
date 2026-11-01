@@ -775,3 +775,11 @@ These changes implement project-approved target conventions; they are not a new 
 
 - Cross-engine check: khmerphonemizer 0.0.3 returned 6/6 source-attested probes; 2/6 strict IPA strings and 6/6 limited-notation matches. Goruut returned 6/6 stable outputs but only 1/6 strict and 3/6 limited-notation matches. This small source-attested sample favors khmerphonemizer as a comparator, not as proven production phonology. No independent gold exists.
 - No external result is accepted as independent gold. Production selection remains blocked pending expert adjudication and repeatable, dialect-scoped validation.
+
+
+## KHM-GORUUT-RUNTIME-001 — PARTIAL (exact-head evidence recorded)
+
+- Exact PR #101 head `eeeede50447c41df30f866bcbf77f56824b40190` runtime build and HTTP probe passed: [41310808284](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310808284); artifact SHA-256 `34330aac3be84a438a7bdc181d715f12b745cfe6f7e15edcd4be08dcbfeb52da`.
+- Three-repeat results: engineering 8/8 stable; source-attested 6/6 stable; strict concordance 1/6 and limited notation diagnostic 3/6. Stable missing-segment outputs are present; not accuracy, gold=0.
+- Missing `weights9.bin.zlib` warning persists; causal relation unknown. Keep as optional comparator only; production promotion rejected.
+- Full run evidence and config hash: `docs/audits/current/GORUUT-RUNTIME-EVALUATION-2026-11-01.md`.

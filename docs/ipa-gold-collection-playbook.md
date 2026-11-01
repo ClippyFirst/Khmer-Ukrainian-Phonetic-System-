@@ -121,3 +121,14 @@ These are **audio/transcript candidates**, not IPA gold. Sentence-level recordin
 ### Collection decision
 
 For a Phnom Penh lexical G2P benchmark, prioritize controlled citation-form recordings from confirmed Phnom Penh speakers and two blind expert transcriptions. Common Voice and OpenSLR42 can supply supplementary contextual speech and candidate words, but do not combine their contextual realizations with citation-form labels. The Khmer Acoustic Model dictionary remains a comparator candidate until the full artifact, source provenance and IPA convention can be inspected.
+
+
+### Exact v27.0 manifest audit
+
+The official Common Voice release manifest has now been inspected: [`cv-corpus-27.0-2026-09-11.json`](https://github.com/common-voice/cv-dataset/blob/main/datasets/scripted-speech/cv-corpus-27.0-2026-09-11.json).
+
+- Khmer locale entry: **739 clips**, **213 validated clips**, **15 contributor/user IDs**, **0.28 validated hours** (0.98 total hours).
+- The accent dimension contains no named accent category; the variant dimension is empty. Gender metadata is entirely unspecified in this locale entry.
+- Manifest locale checksum field: `d1c4bb041744fefb1fa60397217b7cd79bfa2ade4510b11ff9863e9a0dc0392d`. Manifest file blob SHA: `e401c4a8e923cad5c8baacb6120c095b1e1bd561`.
+
+This is a very small and demographically under-described sample. It may be sufficient to test a 30-token annotation workflow if the validated transcripts contain the required lexical contrasts, but it cannot establish Phnom Penh variety, first/second-series coverage, or speaker-balanced generalization. Specialist profile approval and controlled citation-form recordings remain necessary.

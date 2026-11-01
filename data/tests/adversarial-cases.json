@@ -80,7 +80,7 @@
     "expected_status": "EVIDENCE_LIMITED"
   },
   "mixed_multiline_source_integrity": {
-    "source": "ខ្ញុំ\\tABC-42\\r\\n២០២៦។\\u200b☃",
+    "source": "ខ្ញុំ\tABC-42\r\n២០២៦។​☃",
     "ipa": null,
     "source_basis": "Unicode and parser source-integrity contract; not a lexical pronunciation source",
     "checks": [

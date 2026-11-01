@@ -46,7 +46,7 @@ Inspect generated artifacts and built relative asset paths when changing data or
 Methodological references only; do not add them as runtime dependencies or copy their repositories wholesale:
 
 - [obra/superpowers](https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b) — test-first work, explicit plans, root-cause debugging, review and evidence before completion.
-- [mattpocock/skills](https://github.com/mattpocock/skills/tree/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa) — behavior-focused tests, clear interfaces, test seams and source-backed research.
+- [mattpocock/skills](https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d) — behavior-focused tests, clear interfaces, test seams and source-backed research.
 - [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846) — reuse before invention, smallest complete diff, connected-code review and explicit deferred-work accounting.
 
 When these references conflict with the existing project contract or the user's explicit requirements, follow the project contract and user requirements.

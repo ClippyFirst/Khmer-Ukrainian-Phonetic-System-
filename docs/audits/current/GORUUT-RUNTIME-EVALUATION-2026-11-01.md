@@ -42,3 +42,17 @@ Each input was sent three times to the same server:
 Three-repeat evidence: [workflow 41309092017](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41309092017). Effective config SHA-256 `d2f19f923da8ca089ba9133465018903263f681b57a1177152ab07f2a284225e`; source-attested fixture SHA-256 `506d8d1fef6a7ad3568ddca3c6b4f2d88c3ab0edd7ac328204530edcfe186dc6`.
 
 **Disposition:** deterministic output is a positive runtime property, but low source-attested concordance and clearly incomplete outputs block production integration.
+
+
+## Additional comparator: khmerphonemizer 0.0.3 — 2026-11-01
+
+The existing optional Khmer G2P workflow was run on the same six source-attested lexical entries:
+
+- 6/6 usable outputs; no runtime errors.
+- Strict string match with source-reported IPA: 2/6.
+- Limited notation-normalized match: 6/6. The diagnostic removes only outer IPA slash wrappers, whitespace, syllable dots and stress marks; it preserves phone symbols, aspiration, length, diacritics and tie bars.
+- No independent gold exists, so these are source-attested concordance counts, not accuracy.
+
+The Goruut three-repeat run on the same six entries returned 6/6 outputs, all stable; strict match 1/6 and limited notation-normalized match 3/6. Examples: `ខ្មែរ` is `kʰr` from Goruut versus `kʰmae` from khmerphonemizer and source IPA; `ភ្នំពេញ` is `pʰɲ` from Goruut versus `pʰnumpɨɲ` from khmerphonemizer. This makes khmerphonemizer the stronger comparator on this tiny source-attested sample, but not a validated production engine.
+
+Evidence: [Khmer G2P workflow 41310119616](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310119616); [Goruut workflow 41310119556](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310119556). Independent gold remains 0.

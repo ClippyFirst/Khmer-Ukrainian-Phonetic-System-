@@ -42,6 +42,14 @@ def load_corpus(path: Path) -> dict[str, dict[str, Any]]:
     return value
 
 
+def source_ipa_from_metadata(metadata: dict[str, Any]) -> str | None:
+    """Read the canonical corpus IPA key or the external workflow's explicit key."""
+    value = metadata.get("ipa")
+    if not isinstance(value, str) or not value.strip():
+        value = metadata.get("source_reported_ipa")
+    return value if isinstance(value, str) and value.strip() else None
+
+
 def package_version(name: str) -> str | None:
     try:
         return importlib.metadata.version(name)
@@ -184,7 +192,7 @@ def main() -> int:
             "raw_output": raw,
             "phone_tokens": tokens,
             "elapsed_ms": round((time.perf_counter() - started) * 1000, 3),
-            "source_reported_ipa": metadata.get("ipa"),
+            "source_reported_ipa": source_ipa_from_metadata(metadata),
             "source_evidence_status": metadata.get("evidence_status", "UNSPECIFIED"),
             "source_ids_or_urls": metadata.get("sources", []),
             "comparison_status": "NOT_SCORED_NO_INDEPENDENT_GOLD",

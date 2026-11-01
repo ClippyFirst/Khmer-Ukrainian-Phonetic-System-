@@ -75,3 +75,12 @@ The exact current PR #101 head `eeeede50447c41df30f866bcbf77f56824b40190` was ex
 - The server logs `weights9.bin.zlib: file does not exist`; the pinned Khmer Central tree contains `weights8.bin.zlib`, not `weights9.bin.zlib`. Causality is unproven; the incomplete strings are directly visible in the raw response.
 
 **Disposition: reject Goruut as a Khmer production phonology provider; retain only as an optional raw-output comparator.** Independent adjudicated Khmer gold remains 0.
+
+
+## Upstream cause of nondeterministic dictionary selection — Khmer
+
+Pinned Goruut source explains the instability signal. In [parts_of_speech_selector_service.go](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/repo/services/parts_of_speech_selector_service.go#L168-L205), `SelectE` counts multiple dictionary pronunciations for a word; when more than one exists it increments the escape counters. If the homograph selector has not marked a `preferred` pronunciation, the fallback loop iterates the dictionary mapping and selects a dictionary pronunciation; the upstream source comment explicitly describes this as random selection when no homograph model is available. The [sentence use case](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/usecases/phonemize_usecase.go#L84-L85) exposes those counters as `RandomizationWordsCount` and `RandomizationWordsChoices` in the HTTP response.
+
+The latest artifact had no RandomizationWordsCount / RandomizationWordsChoices metadata on any of the 14 inputs; all 14 were stable across three repetitions. Its problem is different: stable but incomplete dictionary output (e.g. missing vowels), not the homograph-selection instability observed in Lao/Burmese.
+
+This gives a source-level explanation for the observed unstable cases. It does **not** establish that the separate `weights9.bin.zlib` warning causes the selection behavior; that warning remains independently unresolved. The project does not patch Goruut or choose a random pronunciation as acceptable output. Any result carrying these ambiguity counters should remain flagged as non-deterministic/ambiguous for downstream use.

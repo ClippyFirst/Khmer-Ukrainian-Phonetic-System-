@@ -5,7 +5,7 @@
 **Implementation checkpoint before this documentation-only methodology refresh:** `dea80ebefebc6cc4ed006fd204fa3be95f2cc564` on `feat/ipa-gold-corpus-20261101-review`  
 **Open implementation PR:** [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103)  
 **Branch comparison:** 96 commits ahead of main, 0 behind.  
-**Exact-head engineering verification:** [Quality checks PR 41354535561](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354535561) and [push 41354531871](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354531871) both SUCCESS; 146 tests and 44 subtests; optional Goruut and Khmer G2P diagnostics also SUCCESS.
+**Pre-refresh implementation verification:** [Quality checks PR 41354535561](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354535561) and [push 41354531871](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354531871) both SUCCESS; 146 tests and 44 subtests; optional Goruut and Khmer G2P diagnostics also SUCCESS.
 **Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
 
 ## Current task ledger and next blocker
@@ -29,6 +29,8 @@ The adopted engineering references were checked against current upstream revisio
 - Ponytail 5.3.3: `7801d061243d7b753bad0e0b3c057cd250b11755` — codebase/data-flow audit, connected-code review, minimal complete changes, and explicit preservation of security, data integrity, and accessibility.
 
 These references guide the method; project-specific linguistic, provenance, privacy, rights, and fail-closed requirements remain authoritative.
+
+**Methodology refresh commit:** `bf506e2a34e3a2523678487fdc5148ab019bd493` on the active review branch. **Exact-head verification:** [PR Quality checks 41356374055](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374055) and [push Quality checks 41356369054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356369054) SUCCESS; 146 tests + 44 subtests; [Goruut 41356374057](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374057) and [Khmer G2P 41356374080](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374080) SUCCESS.
 
 ## Historical records
 

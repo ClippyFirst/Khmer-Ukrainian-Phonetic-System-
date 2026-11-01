@@ -88,3 +88,13 @@ The article provides concrete examples showing why a Phnom Penh matrix cannot be
 | /i/ | Primarily Sanskrit/Pali loan vocabulary in the author's account | Omitted from the acoustic sample because reliable sample words were unavailable | Mark the cell as source-discussed but not acoustically sampled |
 
 The paper also notes that the 61-item sample did not cover every nucleus/context and that some vowel samples were substituted from other words or sentences where lexical familiarity caused gaps (pp. 104–106). These limitations are material to any future training split or gold selection.
+
+
+## 7. Chem (2020) source-transcribed inventory (verbatim notation)
+
+The article's conclusion lists the following 21 monophthong categories and 13 diphthong categories (pp. 114–115). These are retained in the author's transcription, not normalized to a project IPA convention:
+
+- **Monophthongs (21):** /iː, i, ɨː, ɨ̆, uː, ŭ, eː, e, ɛː, ɛ, aː, a, ɘː, ɘ, oː, o, ɔː, ɔ, ɒː, ɒ, ɜ/.
+- **Diphthongs (13):** /iɜ, ɨɜ, uɜ, aɛ, aɜ, aɔ, oa, ɛe, oʊ, ɜɘ, ĭɜ, ŭɜ, ɛ̆a/.
+
+The author classifies 10 long and 11 short monophthongs, and 10 long and 3 short diphthongs. The article also notes that /i/ is primarily associated with Sanskrit/Pali loan vocabulary and was not represented in the acoustic sample. This inventory is therefore SOURCE_REPORTED, while the actual acoustic sample coverage is narrower. It must not be copied into gold.tsv or treated as a universal Standard Khmer inventory without expert reconciliation.

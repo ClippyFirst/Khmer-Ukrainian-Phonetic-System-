@@ -69,7 +69,7 @@ def test_misplaced_register_shifter_is_flagged():
 def test_multiline_mixed_script_segmentation_preserves_every_source_unit():
     from khmer_ua.parser import segment_syllables
 
-    source = "ខ្ញុំ\\tABC-42\\r\\n២០២៦។\\u200b☃"
+    source = "ខ្ញុំ\tABC-42\r\n២០២៦។\u200b☃"
     units = segment_syllables(source)
 
     # This is a segmentation/source-integrity contract, not IPA gold.

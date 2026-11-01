@@ -29,3 +29,16 @@
 - Optional runtime workflow: [41308068228](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41308068228) (initial completed source-attested comparison); latest exact-head run is tracked by PR #101.
 - Artifact includes engineering probes, source-attested diagnostic, and server log; retention is 30 days.
 - Accuracy remains null; independent gold count remains 0.
+
+
+## Repeatability follow-up — 2026-11-01
+
+Each input was sent three times to the same server:
+
+- Engineering probes: 8/8 had usable outputs; all 8 were identical across all three repetitions.
+- Source-attested IPA probes: 6/6 had outputs; all 6 were stable across repetitions. Strict exact concordance remained 1/6 (16.7%), not accuracy and not gold.
+- The stable but incomplete forms remain: `ខ្មែរ` → `kʰr` vs source `kʰmae`; `ភ្នំពេញ` → `pʰɲ` vs source `pʰnum ˈpɨɲ`; `ភាសាខ្មែរ` → `pʰiəsaːkʰr` vs source `pʰiəsaː kʰmae`.
+
+Three-repeat evidence: [workflow 41309092017](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41309092017). Effective config SHA-256 `d2f19f923da8ca089ba9133465018903263f681b57a1177152ab07f2a284225e`; source-attested fixture SHA-256 `506d8d1fef6a7ad3568ddca3c6b4f2d88c3ab0edd7ac328204530edcfe186dc6`.
+
+**Disposition:** deterministic output is a positive runtime property, but low source-attested concordance and clearly incomplete outputs block production integration.

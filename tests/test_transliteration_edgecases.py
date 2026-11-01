@@ -64,3 +64,18 @@ def test_misplaced_register_shifter_is_flagged():
     s = decompose_khmer_syllable("កា៊")
     assert s.status == "EVIDENCE_LIMITED"
     assert s.phonology["register_shifter"] == "MISPLACED_REGISTER_SHIFTER"
+
+
+def test_multiline_mixed_script_segmentation_preserves_every_source_unit():
+    from khmer_ua.parser import segment_syllables
+
+    case = json.loads((ROOT / "data/tests/adversarial-cases.json").read_text(encoding="utf-8"))["mixed_multiline_source_integrity"]
+    source = case["source"]
+    units = segment_syllables(source)
+
+    # This is a segmentation/source-integrity contract, not IPA gold.
+    assert case["ipa"] is None
+    assert case["source_basis"].endswith("not a lexical pronunciation source")
+    assert "".join(units) == source
+    assert decompose_khmer_syllable("ខ្ញុំ").status == "ESTABLISHED_STRUCTURE"
+    assert decompose_khmer_syllable("☃").status == "INVALID_OR_UNSUPPORTED"

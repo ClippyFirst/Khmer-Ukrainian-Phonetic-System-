@@ -6,5 +6,6 @@
   "sanyaa":{"source":"សញ្ញា","ipa":"/saɲɲaː/","source_basis":"Unicode 17.0 representative example","checks":["repeated-nyo","coeng","long-vowel"]},
   "chraen":{"source":"ច្រើន","ipa":"/craən/","source_basis":"Unicode 17.0 representative example","checks":["coeng-r","composite-vowel","cluster"]},
   "pa_exception":{"source":"ប៉ី","ipa":"/pei/","source_basis":"Unicode 17 representative example","checks":["muusikatoan-exception","ba-to-pa","vowel-series"]},
-  "multiple_shifters":{"source":"ស៊៉ា","ipa":null,"source_basis":"negative structural case","checks":["multiple-register-shifters"],"expected_status":"EVIDENCE_LIMITED"}
+  "multiple_shifters":{"source":"ស៊៉ា","ipa":null,"source_basis":"negative structural case","checks":["multiple-register-shifters"],"expected_status":"EVIDENCE_LIMITED"},
+  "mixed_multiline_source_integrity":{"source":"ខ្ញុំ\tABC-42\r\n២០២៦។\u200b☃","ipa":null,"source_basis":"Unicode and parser source-integrity contract; not a lexical pronunciation source","checks":["whole-message-segmentation","tab","crlf","khmer-numerals","khmer-punctuation","zero-width-space","mixed-latin","unsupported-symbol"],"expected_status":"SOURCE_PRESERVED_WITH_LOCAL_UNCERTAINTY"}
 }

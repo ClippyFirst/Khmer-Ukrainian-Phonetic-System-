@@ -1051,3 +1051,10 @@ The documentation-only playbook, corpus-guide and handoff changes at the precedi
 Inspected the official release manifest: https://github.com/common-voice/cv-dataset/blob/main/datasets/scripted-speech/cv-corpus-27.0-2026-09-11.json. Khmer: 739 clips; 213 validated; 15 contributor IDs; 0.28 validated hours (0.98 total). No named accent/variant category; gender metadata is entirely unspecified. Manifest locale checksum: `d1c4bb041744fefb1fa60397217b7cd79bfa2ade4510b11ff9863e9a0dc0392d`.
 
 **Decision:** contextual-audio/process-pilot candidate only. Inspect actual transcripts for the 30 required lexical contrasts and obtain specialist Phnom Penh profile approval before sampling. OpenSLR42 adds male-only contextual audio but does not supply IPA. Neither source substitutes for controlled citation-form elicitation. No data/labels imported; gold 0, accuracy null.
+
+
+## Final exact-head verification — 2026-11-01
+
+Branch `feat/ipa-gold-corpus-20261101-review`, final handoff commit `9bb02272d9da77126ac80392e840228aef18d18f`. Khmer exact-head CI: Quality checks [41345111255](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345111255) SUCCESS; optional Goruut [41345111267](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345111267) SUCCESS; optional Khmer G2P [41345111293](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345111293) SUCCESS. Core job passed corpus structure validation, Python tests, Node web checks, and production site build.
+
+These checks validate the committed repository and its automated engineering contracts. They do **not** validate the linguistic correctness of future human annotations, create gold labels, or change the release blocker. Gold remains empty and accuracy remains null.

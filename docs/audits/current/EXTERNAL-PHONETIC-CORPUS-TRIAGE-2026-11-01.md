@@ -34,3 +34,10 @@ The source code is MIT, but the corresponding `neurlang/dataset/khmer/central/` 
 5. Import no rows until each row has a stable source locator, profile, adjudication status and provenance; retain original IPA exactly.
 
 Current independent, project-owned, expert-adjudicated Khmer gold remains 0. No MekongPhon/Goruut/Khmer-Acoustic-Model accuracy claim is added to this repository.
+
+
+## Test-only Goruut runtime evaluation
+
+Added an optional, test-only HTTP runtime probe for Goruut at pinned upstream commit `b224bde02151f8f86d0fe260804e4ca743bda620`. It explicitly enables `KhmerCentral` in `BuiltinDictLanguages`, builds the upstream Go binary and records raw JSON responses for source-attested lexical probes plus multiword/punctuation cases. `scripts/benchmark_goruut.py` records commit, language, input SHA-256, raw response, tokens and errors; it does not normalize or score IPA. Existing source-attested IPA remains non-gold. Accuracy=null; independent gold=0. Workflow: `.github/workflows/optional-goruut-runtime.yml`; artifact retention 30 days.
+
+The earlier asset-license blocker applies to copying, redistribution and production integration. The owner has authorized use for testing only; therefore the optional CI probe may check out and execute the pinned upstream source transiently. It does not persist upstream assets, does not bundle them, and does not approve a production dependency. Linguistic gold and accuracy remain unestablished.

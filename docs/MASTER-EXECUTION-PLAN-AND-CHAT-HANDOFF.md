@@ -724,3 +724,11 @@ These changes implement project-approved target conventions; they are not a new 
 - The test consumes the canonical fixture, requires exact reconstruction from `segment_syllables()`, confirms a supported Khmer example remains structurally established and confirms the unsupported symbol remains locally invalid/unsupported.
 - Exact PR-head Quality checks [41289845696](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41289845696) passed: Python tests, web checks and production build.
 - The fixture has `ipa: null` and explicit non-phonological provenance; it is structural/source-integrity evidence, not IPA gold or an accuracy benchmark row.
+
+
+## Goruut comparator research — 2026-11-01
+
+- Task `KHM-G2P-GORUUT-001`: `PARTIAL` (upstream availability/source triage only; runtime execution and quality validation pending).
+- Inspected and pinned upstream Goruut commit `b224bde02151f8f86d0fe260804e4ca743bda620`; upstream README advertises Khmer Central, IPA output, word tokens and tone support, but no syllable tokens or tie bars and no number/date normalization. MIT applies to source code; embedded dictionary/model asset licenses remain unaudited.
+- Recorded the candidate and limitations in `docs/benchmarking-and-external-ipa.md`, alongside a triage note for Khmer NLP KCC: its advertised G2P tokens are not established as IPA and its downloaded checkpoint/data need separate license review. PR [#98](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/98); exact PR-head CI [41302072416](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41302072416) passed before this handoff-only follow-up commit.
+- No Goruut/KCC runtime invocation or output artifact was produced. Independent gold remains 0; no accuracy or winner claim. Next acceptance: run pinned Goruut in isolated optional CI, audit asset provenance, review Khmer register/inherent-vowel/coda/syllable conventions, and score only independent expert-adjudicated IPA.

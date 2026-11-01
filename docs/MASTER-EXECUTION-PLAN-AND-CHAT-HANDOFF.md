@@ -1,5 +1,43 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
+**Current checkpoint:** 2026-11-02  
+**Default branch:** `main` at `c0a2b33c86791b6546e1158c62043fd23acc1f60`  
+**Verified implementation checkpoint before methodology documentation update:** `73e654b5a592cb84ed29b25b03cb95fb5a7e25e0` on `feat/ipa-gold-corpus-20261101-review`
+**Open implementation PR:** [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103)  
+**Branch comparison at this checkpoint:** 102 commits ahead of main, 0 behind.
+**Exact-head methodology verification:** [Quality checks 41358627128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627128) SUCCESS; optional diagnostics [41358627194](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627194) and [41358627130](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627130) SUCCESS.
+**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
+
+## Current task ledger and next blocker
+
+- **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and exact-head automated engineering checks are present on the active branch. This is not linguistic validation.
+- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases.
+- **BLOCKED:** the 30-lexeme blind pilot cannot start until the target variety/profile and IPA convention are approved, two qualified independent annotators and a separate adjudicator are confirmed, rights-cleared source packets are prepared, and the blind intake dry-run passes.
+- **TODO:** manual deployed-site visual, keyboard, assistive-technology, and mobile QA.
+- **Next actionable human milestone:** resolve the recruitment and convention checklist in [issue #104](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/issues/104) and follow [the controlled acquisition protocol](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/blob/feat/ipa-gold-corpus-20261101-review/docs/ipa-gold-collection-playbook.md).
+
+No local checkout was available for this checkpoint; do not interpret hosted CI as local test execution, expert adjudication, visual QA, or release approval. Preserve the fail-closed pipeline and do not create IPA/gold labels from model output or unsupported spelling inference.
+
+
+
+## Methodology source refresh — 2026-11-02
+
+The adopted engineering references were checked against current upstream revisions without importing them as runtime dependencies:
+
+- Superpowers 7.0.1: `obra/superpowers@2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` — explicit plans, true RED/GREEN TDD, systematic debugging, code review, and verification-before-completion. At GREEN, verify the project suite, not only the narrow test that first went red.
+- mattpocock/skills current main: `d1478fcb140db0b93c0c8df17bcfd311844749d0` — composable skills, source-backed research, test-first implementation, and two-axis review (spec compliance separately from repository standards).
+- Ponytail 5.3.3: `7801d061243d7b753bad0e0b3c057cd250b11755` — codebase/data-flow audit, connected-code review, minimal complete changes, and explicit preservation of security, data integrity, and accessibility.
+
+These references guide the method; project-specific linguistic, provenance, privacy, rights, and fail-closed requirements remain authoritative.
+
+**Methodology refresh commit:** `bf506e2a34e3a2523678487fdc5148ab019bd493` on the active review branch. **Exact-head verification:** [PR Quality checks 41356374055](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374055) and [push Quality checks 41356369054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356369054) SUCCESS; 146 tests + 44 subtests; [Goruut 41356374057](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374057) and [Khmer G2P 41356374080](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374080) SUCCESS.
+
+## Historical records
+
+The dated entries below are retained as audit history. When a historical status or SHA conflicts with this current checkpoint, the active branch ref, completion register, and exact-head workflow run above are authoritative.
+
+## Historical master handoff snapshot — 2026-10-25
+
 **Last updated:** 2026-10-25  
 **Repository:** https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-  
 **Default branch:** main  
@@ -863,3 +901,252 @@ Final-head repository checks [41325417322](https://github.com/ClippyFirst/Khmer-
 - Corrected Khmerphonemizer 0.0.3 comparison [41325808089](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325808089) PASS; artifact [13090603852](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325808089/artifacts/13090603852), SHA-256 `668668bb1a6a3aca45145b0894c83000889695e6d25878d794622fef64e5e5d2`: 100/100 outputs, 100 comparable source labels, 18 strict and 19 limited-notation matches. This follows the test-first fix for the dropped `source_reported_ipa` metadata field (red CI: 1 failed, 106 passed, 25 subtests; final CI passed).
 - Goruut test harness and exact-head CI: **DONE_VERIFIED**. Production phonology remains **PARTIAL/BLOCKED**: 27/100 Goruut outputs partial, 3/100 absent; source labels are not independent gold; independent expert Khmer IPA gold remains 0. Khmerphonemizer concordance is diagnostic only. Permanent source-data/model import remains outside the approved test-only scope.
 - No local checkout was available; engineering verification is from exact-head and post-merge GitHub Actions. See runtime audit for full evidence and hashes.
+
+
+## Linguistic completion register — 2026-11-01
+
+- Current verified `main` baseline: `c0a2b33c86791b6546e1158c62043fd23acc1f60`; latest exact-main engineering workflow: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462947 (success). See the linked current audit register for the verified status and next acceptance criteria: [Linguistic completion register](audits/current/LINGUISTIC-COMPLETION-REGISTER-2026-11-01.md).
+- Reconfirmed `data/benchmark/gold.tsv` contains only its header. Independent expert-adjudicated lexical IPA gold remains **0**; empirical accuracy remains **null**. No external source-attested labels or engine outputs are promoted to gold.
+- The register separates implementable repository work from external expert, primary-source and licensing blockers. Preserve existing canonical plans, registries, tests and generated data; do not create parallel corpora or weaken fail-closed behavior.
+- No local checkout was available for this pass. GitHub Actions provide exact-main engineering evidence only; they do not prove linguistic accuracy, manual accessibility QA or legal permissions.
+## Current master-matrix status override — 2026-11-01
+
+The following current statuses supersede older checkpoint rows above where they conflict; historical evidence remains preserved.
+
+| Task | Current status | Current acceptance boundary |
+|---|---|---|
+| KH-TEST-001 | BLOCKED | Gold TSV is header-only; independent expert-adjudicated lexical IPA gold=0; accuracy=null. Requires independent annotation, adjudication, profile and source/audio locators. |
+| KH-VOW-001 / KH-VOW-002 | PARTIAL | Orthographic/register inventory exists; full context-dependent vowel/rime/series matrix and acoustic/phonetic adjudication remain open. |
+| KH-CODA-001 | PARTIAL | Structural cases and fail-closed behavior exist; full coda-conditioned IPA coverage remains open. |
+| KH-IPA-001 | PARTIAL | IPA boundary/status contract exists; complete contextual orthography-to-IPA model and gold remain open. |
+| KH-PROFILE-001 / KH-PROFILE-002 | PARTIAL | Fail-closed guards are verified; complete Phnom Penh /r/-loss environment model and expert validation remain open. |
+| KH-G2P-001 | DONE_VERIFIED (harness only) | Goruut and Khmerphonemizer comparisons are diagnostic; no accuracy claim or production promotion. |
+| KH-ROM-001 | PARTIAL | BGN/PCGN bounded inventory exists; full contextual runtime and independent Ukrainian syllable adapter remain open. |
+| KH-UI-001 | TODO | Manual deployed visual, keyboard, screen-reader and mobile QA not evidenced by CI. |
+| KH-REL-001 | PARTIAL | Release remains blocked by phonological gold and asset-rights review. |
+
+
+## IPA gold corpus implementation checkpoint — 2026-11-01
+
+### Current task ledger
+
+| Task | Status | Evidence / remaining acceptance |
+|---|---|---|
+| IPA-GOLD-SCHEMA-001 | DONE_VERIFIED | Six versioned JSON Schemas; empty JSONL templates; validator and regression tests in exact-head CI |
+| IPA-GOLD-DOUBLE-ANNOTATION-001 | PARTIAL | Enforces two distinct annotators and third independent adjudicator; actual blind collection needs qualified human annotators and controlled intake |
+| IPA-GOLD-ADJUDICATION-001 | PARTIAL | Agreement/resolved/unresolved semantics and rationale validation implemented; no real adjudicated rows exist |
+| IPA-GOLD-SPLIT-001 | DONE_VERIFIED | Deterministic SHA-256 split assignment, preserves frozen assignments, prevents lexeme-group leakage; current manifest empty |
+| IPA-GOLD-EXPORT-001 | DONE_VERIFIED | Exports only adjudicated, redistributable rows into existing benchmark TSV; current export has header only |
+| IPA-TYPED-BENCHMARK-001 | DONE_VERIFIED | PHONEMIC / PHONETIC_BROAD / PHONETIC_NARROW retained; type mismatch cannot count as exact match |
+| IPA-GOLD-RELEASE-GATE-001 | PARTIAL | Tag/manual workflow requires 100/25/25 adjudicated split rows and rights; owner must require the check in release rulesets/procedure |
+| KHMER-VOWEL-CONTEXT-001 | PARTIAL | Research workpack requires sign × series × length × coda × profile matrix and source/audio locators |
+| KHMER-CODA-001 | PARTIAL | Existing structural cases retained; full coda-conditioned surface IPA and acoustic validation remain open |
+| KHMER-R-LOSS-001 | PARTIAL | Wayland & Guion (2005) and Kirby (2014) located; /r/-loss must remain profile/style-conditioned, with matched multi-speaker evidence |
+| KHMER-UA-IPA-ADAPTER-001 | PARTIAL | Existing adapter retained; independent expert target review awaits adjudicated surface IPA |
+
+### Evidence boundary
+
+The four JSONL files are empty templates. `gold.tsv` is header-only; independent expert gold=0 and accuracy=null. Wayland & Guion's study describes two Phnom Penh speakers and a specific colloquial /Cr/ environment; it does not justify universal /r/ deletion. No IPA labels were added.
+
+See [IPA gold protocol](docs/ipa-gold-corpus.md), [Khmer phonology workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md), and [evidence registry](docs/evidence.md).
+
+### Additional rights and export controls
+
+| Task | Status | Acceptance / remaining work |
+|---|---|---|
+| IPA-GOLD-RIGHTS-001 | DONE_VERIFIED (mechanism) | Approved license registry, per-record rights evidence, rejection of unregistered/non-redistributable licenses; legal verification of future source-specific records remains required |
+| IPA-GOLD-PROVENANCE-EXPORT-001 | DONE_VERIFIED | Gold TSV and benchmark rows retain source ID, license ID and rights-evidence locator |
+| IPA-GOLD-BLIND-INTAKE-001 | BLOCKED | Requires external controlled intake; public GitHub history cannot provide blind annotation |
+
+The rights registry does not itself grant permission. Each real source still needs its exact license/permission verified by a responsible curator, and share-alike/attribution terms must be honored in distribution.
+
+
+### 2026-11-01 follow-up — validator and Khmer research evidence
+
+- IPA-GOLD-SCHEMA-001 remains DONE_VERIFIED (mechanism), now with runtime/schema parity checks: closed object properties, mandatory annotation notes, string uncertainty arrays, ISO dates and optional field types.
+- IPA-TYPED-BENCHMARK-001 remains DONE_VERIFIED (mechanism): adjudicated gold requires a valid IPA kind; missing/different prediction kinds cannot score as exact matches or enter CER.
+- Wayland & Guion (2005) is a two-speaker, 20-item, three-repetition-per-style Phnom Penh study; its /r/-loss findings remain profile- and speech-style-conditioned. Kirby (2014) provides complementary production/perception evidence. Chem & Chem (2020) is a Phnom Penh acoustic vowel source, not yet a complete contextual matrix.
+- Independent expert gold remains 0; gold.tsv remains header-only. No IPA entries or universal /r/-loss rule were invented.
+
+
+### Research artifact — Khmer
+
+- [KHMER vowel × series × coda evidence matrix](docs/audits/current/KHMER-VOWEL-SERIES-CODA-EVIDENCE-MATRIX-2026-11-01.md): specialist ɑ/ɔ-class mappings, Chem (2020) sample/method and coda effects, and missing contextual cells.
+- Wayland & Guion's /r/-loss remains restricted to the studied Phnom Penh colloquial profile; no universal deletion rule was introduced.
+
+
+## 2026-11-01 implementation and verification closeout
+
+- Starting main SHA: c0a2b33c86791b6546e1158c62043fd23acc1f60 (main remains unchanged).
+- Implementation branch: feat/ipa-gold-corpus-20261101-review.
+- Comprehensive PR: [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103); PR-head implementation checkpoint SHA: 608d2d92c5e883c095bf0c679b7353bd442ee55c.
+- PR CI: [Quality checks](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41337410745) SUCCESS — 136 Python tests + 27 subtests; Khmer register-shifter browser contract, web checks and Vite build passed.
+- This branch includes the previous documentation-only PR #102 in full; #102 was closed as superseded after its content was verified in #103. No branch was deleted.
+- Legacy PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/64) remains open and untouched: it is a divergent legacy CSS/layout patch and was not blindly merged.
+- Existing feature branch feat/independent-ipa-gold-corpus-20261101 was left untouched because its history is substantially broader; the narrower review branch is the PR source.
+- No local checkout was available; all verification claims above are GitHub Actions evidence, not local command runs.
+
+### Final task ledger
+
+- Corpus schemas/runtime validator, license registry, frozen group-safe splits and typed benchmark: DONE_VERIFIED (implementation and CI only).
+- Actual independent expert annotations and adjudicated gold: BLOCKED — no qualified annotators or adjudicated source dataset supplied; gold.tsv remains header-only, gold count 0, accuracy null.
+- Full vowel × consonant-series × final matrix and independent /r/-loss replication: PARTIAL/BLOCKED — see the Khmer evidence matrix; Chem's four-speaker Phnom Penh sample and Wayland & Guion's two-speaker /r/-loss sample are profile-limited.
+- Release gate: PARTIAL — count, rights, adjudication and split checks exist and fail closed on empty gold; project owner must require the gate in repository rulesets/release procedure, and feature-coverage thresholds require an expert-approved matrix.
+- Manual UI/accessibility review: TODO.
+
+**Readiness:** research infrastructure is substantially improved; the language system remains a research prototype, not production/release-ready.
+
+
+The Khmer evidence matrix now contains the full Ishida phone-to-grapheme mapping table, including stress, coda and final-conditioned variants. Chem's acoustic evidence still does not fill every series × vowel × coda cell, so the language model remains PARTIAL.
+
+
+## 2026-11-01 final IPA-kind consistency verification
+
+- Added fail-closed cross-annotation consistency: both independent annotations for one record must use the same `ipa.kind`, and a `RESOLVED` adjudicated result must preserve that kind. This prevents phonemic-vs-phonetic representation differences from being misclassified as pronunciation disagreements.
+- Regression evidence: both new tests failed against the pre-fix validator on the test-only commit, then passed after the validator change.
+- New task `IPA-GOLD-REPRESENTATION-KIND-001`: **DONE_VERIFIED** (mechanism and exact-head CI). Blindness, annotator qualifications and independent adjudicator competence remain external operational evidence, not properties CI can prove.
+- Final PR head: `f7f2bf9a471f5fea990c0cf9509d382e3371d17b`; CI run [41338461515](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41338461515) SUCCESS — 139 Python tests + 27 subtests; browser register-shifter contract, web checks and Vite build passed.
+- The Khmer matrix remains PARTIAL: full profile × series × stress × coda lexical coverage and an independent broader /r/-loss replication are not available.
+- Gold remains zero; `gold.tsv` remains header-only; empirical accuracy remains null. No IPA labels were generated.
+
+
+## CI action runtime modernization — 2026-11-01
+
+- Status: `DONE_VERIFIED` (CI maintenance only; no Khmer phonology or transcription behavior changed).
+- Updated all five workflow files to current Node.js 24-compatible action majors: `actions/checkout@v7`, `actions/setup-python@v7`, `actions/setup-node@v7`, `actions/setup-go@v7`, and `actions/upload-artifact@v7`. Existing Pages actions remain at `configure-pages@v6`, `upload-pages-artifact@v5`, and `deploy-pages@v5`.
+- Tested code commit: `61d98b1417a6d0200df4722523e8caeae90269fd`.
+- Exact-head verification: [Quality checks 41339636053](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636053) SUCCESS; [optional Goruut 41339636042](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636042) SUCCESS; [optional G2P smoke 41339636117](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636117) SUCCESS.
+- Verified workflow coverage: 139 Python tests + 27 subtests, browser register-shifter contract, web checks and Vite production build passed on the exact code commit.
+- Local checkout was unavailable; verification evidence is GitHub Actions. The gold corpus remains empty and empirical accuracy remains unmeasured.
+
+
+## Frozen split-manifest schema parity — 2026-11-01
+
+- Status: `DONE_VERIFIED`.
+- Review found that `assign-splits` accepted unknown properties in existing split rows even though the split JSON Schema is closed; the generator could silently discard those fields when rewriting the manifest.
+- RED evidence: regression `test_assign_splits_rejects_unknown_properties_in_existing_manifest` failed as expected on test-only commit `3fdfd9559dfc98c43c4c503b9e707f1632ebad07` ([run 41340259859](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340259859)).
+- GREEN implementation: shared `SPLIT_PROPERTIES` is now used by both cross-file validation and `assign-splits`; the generator rejects unknown fields instead of dropping them. Code commit: `64851a4572437d9185b47fcff56bde55e4f092c5`.
+- Exact-head verification: [PR Quality checks 41340405233](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340405233) SUCCESS and [push checks 41340400309](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340400309) SUCCESS — 140 Python tests + 27 subtests; browser register-shifter contract, web checks and Vite production build passed. Optional Goruut and G2P smoke checks also passed on this head.
+- Shared implementation and regression test are byte-identical across Lao, Khmer and Burmese branches. No corpus rows or IPA labels were added; independent gold remains zero and accuracy remains null.
+
+
+## Product-corpus license eligibility — 2026-11-01
+
+- Status: `DONE_VERIFIED` (policy enforcement; no source corpus or license grant was changed).
+- Review found that the license registry accepted `redistributable: true` together with `commercial_use: false/null` or unknown attribution/share-alike terms. That could make a non-commercial or legally incomplete entry eligible for the product corpus if the registry were misconfigured.
+- RED evidence: the new runtime and schema-contract tests failed on test-only commit `83cfdc10716eff99f622f5d0e3c9c035bee3b56e` ([run 41340790159](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340790159)).
+- GREEN implementation: a redistributable license must explicitly set `commercial_use: true` and boolean `attribution_required` + `share_alike`; the JSON Schema now encodes the same conditional rule. Code/schema commit: `b3104d6815edb3950e13457f7e04bcb8f5f90145`.
+- Exact-head verification: [PR Quality checks 41340930079](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340930079) SUCCESS and [push checks 41340925788](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340925788) SUCCESS — 142 Python tests + 31 subtests; browser register-shifter contract, web checks and Vite production build passed. Optional Goruut and G2P smoke diagnostics also passed.
+- This is a conservative product-corpus eligibility rule, not a legal opinion about all uses of these licenses. Each real source still needs human rights review. No IPA gold rows were added; independent gold remains zero and accuracy remains null.
+
+
+## Release-gate threshold validation — 2026-11-01
+
+- Status: `DONE_VERIFIED`.
+- Review found that the CLI accepted zero/negative `--min-train`, `--min-dev` and `--min-test` thresholds. That could let an operator weaken a release gate below a meaningful non-empty split requirement.
+- RED evidence: the six invalid threshold cases (0 and -1 for each split) failed as expected on test-only commit `888ce85258e0c42b44e082e06023dbcd96401b96` ([run 41341526589](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41341526589)).
+- GREEN implementation: all three minimums must be positive integers. Invalid threshold configuration is added to the gate's aggregated findings rather than raised before corpus checks, preserving diagnostics for other blockers. Final code commit: `38aed74299c898461607407b730085e1b70d565d`.
+- Exact-head verification: [PR Quality checks 41341743668](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41341743668) SUCCESS — 143 Python tests + 37 subtests; browser register-shifter contract, web checks and Vite production build passed.
+- The configured release-gate defaults remain train=100, dev=25, test=25. No gold rows or IPA labels were added; independent gold remains zero and accuracy remains null.
+
+
+## Controlled IPA gold acquisition checkpoint — 2026-11-01
+
+- Added `docs/ipa-gold-collection-playbook.md` on `feat/ipa-gold-corpus-20261101-review`. This defines a human-led 30-lexeme process pilot, one predeclared pronunciation profile and IPA convention per corpus version, a curator, two blind independent annotators, and a third independent adjudicator. It sets explicit start/pilot-accepted/benchmark-ready gates and distinguishes pilot data from held-out evaluation.
+- This is a protocol/documentation deliverable, not evidence that annotators have been recruited or that any IPA gold has been collected. The four JSONL corpus inputs remain empty; no gold labels or accuracy claims were added.
+- External source lead: MekongPhon (LREC 2026) reports 367k Lao and 1.3m Khmer orthography–IPA pairs. It is recorded only as a candidate external reference. Its dataset-specific license, variety/profile, IPA convention, provenance, verification method, and overlap with engine development data must be checked before use. The LREC proceedings CC BY-NC-4.0 notice does not establish the dataset license. https://lrec.elra.info/lrec2026-main-129
+- Khmer additional lead: chemvatho/Khmer-acoustic-model reports a 29,204-entry IPA dictionary and states dictionary data are CC BY-SA 4.0, distinct from MIT code/model. Per-entry provenance, dialect, IPA consistency, exact version and actual reuse rights still require inspection before importing. https://github.com/chemvatho/Khmer-acoustic-model
+- Lao sampling guidance distinguishes Vientiane from other profiles and preserves lexical tone separately from contextual F0 effects; sources include Yanagimura (2013) and EURPhon profiles. Khmer guidance distinguishes Phnom Penh vowel/coda effects and variable /r/-loss. Burmese guidance keeps competing tone/prosody analyses explicit and requires source-table transcription to be independently checked before annotation.
+- Current blockers: recruit/confirm two qualified annotators and one independent adjudicator per language; choose and approve target variety/convention; identify rights-cleared pilot lexemes; test a blind intake channel; verify candidate external datasets before use. Burmese additionally needs specialist approval of its prosodic transcription convention and source extraction. These are human/source/rights dependencies, not additional automation tasks.
+- No repository test was run for this documentation-only checkpoint; existing CI evidence belongs to the preceding code head. Re-run exact-head CI after the documentation commits before merge.
+
+
+## External corpus provenance audit — 2026-11-01
+
+- Inspected https://github.com/byu-matrix-lab/MekongPhon. Its pipeline README describes SEAlang frequency lists, IPA scraping, minor lexicon post-processing, OPUS sentence downloads, lexicon train/eval splits, and trie-based sentence conversion from word-level IPA entries. Treat this as a large external orthography–IPA resource and possible comparator, not automatically as independent sentence-level phonetic gold.
+- The upstream repository root LICENSE path was not present in the inspected tree. Dataset-specific redistribution permission, source terms, variety, IPA conventions, human verification/correction process, exact data files and overlap with our engine sources remain unverified. Do not import or redistribute any of it until those are resolved. Proceedings CC BY-NC-4.0 and Apache-2.0 model-card licenses do not license the underlying dataset by implication.
+- Khmer Acoustic Model dictionary remains a candidate external comparator only; its README states dictionary CC BY-SA 4.0 and claims native-linguist validation, but per-entry provenance, variety, IPA convention and exact version require inspection.
+- Burmese audio lead: Oo et al. (LREC 2020) speech corpus is described as 2,528 utterances from 20 female speakers with manual segmentation, plus G2P/normalization grammars. This is not IPA gold; inspect primary source, audio/transcript rights, consent, variety and metadata before considering it as lawful audio material for expert re-transcription.
+- No data files were imported and no IPA labels were added. Corpus remains empty and benchmark accuracy remains null.
+
+
+## Controlled IPA acquisition documentation CI — 2026-11-01
+
+The documentation-only playbook, corpus-guide and handoff changes at the preceding branch head were checked by GitHub Actions. Khmer: Quality checks 41343502985 SUCCESS; optional Khmer G2P smoke 41343502939 SUCCESS; optional Goruut 41343502878 SUCCESS. No language-engine runtime or gold data changed. This validates the repository state, not the linguistic correctness of future annotations. Pages deployment and release-gate workflow were not run.
+
+
+## Source acquisition update — 2026-11-01
+
+- **Common Voice v27.0 Khmer:** official catalog lists locale `km`, CC0-1.0, MP3 archive 20.23 MB: https://commonvoice.allizom.org/en/datasets. This is sentence audio/transcript, not IPA. The archive size is not a clip/speaker count; exact manifest and regional coverage need inspection.
+- **OpenSLR 42 (SLR42):** official resource page https://openslr.org/42 lists Khmer multi-speaker TTS audio and transcript index, CC BY-SA 4.0; the currently available archive is male-speaker only (866 MB). Provider warns that manual QC does not eliminate all transcript errors.
+- Both are supplementary contextual audio, not direct citation-form lexical gold. Confirm Phnom Penh profile coverage before use; preserve exact clip/speaker IDs and time intervals, and independently transcribe audio.
+- **Khmer Acoustic Model artifact check:** README claims a 29,204-entry IPA dictionary with native-linguist validation and says dictionary data are CC BY-SA 4.0. However, `dictionary/khmer_ipa.dict` was not found at the documented path in the inspected default branch; only `dictionary/khmer_ipa_sample.dict` (six entries) was available. The sample's space-separated representation and missing item-level provenance/variety convention prevent direct use as project gold. It remains a comparator lead pending a reproducible full artifact and method.
+- `KHM-GOLD-001` remains `BLOCKED`; independent gold 0 and accuracy `null`. Next acceptance step: inspect Common Voice/OpenSLR manifests for profile and lexical coverage, recruit Phnom Penh experts, and choose a controlled citation-form protocol. No data imported.
+
+
+## Common Voice v27.0 exact manifest audit — 2026-11-01
+
+Inspected the official release manifest: https://github.com/common-voice/cv-dataset/blob/main/datasets/scripted-speech/cv-corpus-27.0-2026-09-11.json. Khmer: 739 clips; 213 validated; 15 contributor IDs; 0.28 validated hours (0.98 total). No named accent/variant category; gender metadata is entirely unspecified. Manifest locale checksum: `d1c4bb041744fefb1fa60397217b7cd79bfa2ade4510b11ff9863e9a0dc0392d`.
+
+**Decision:** contextual-audio/process-pilot candidate only. Inspect actual transcripts for the 30 required lexical contrasts and obtain specialist Phnom Penh profile approval before sampling. OpenSLR42 adds male-only contextual audio but does not supply IPA. Neither source substitutes for controlled citation-form elicitation. No data/labels imported; gold 0, accuracy null.
+
+
+## Final exact-head verification — 2026-11-01
+
+Branch `feat/ipa-gold-corpus-20261101-review`, source-audit content commit `9bb02272d9da77126ac80392e840228aef18d18f`. Khmer exact-head CI: Quality checks [41345111255](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345111255) SUCCESS; optional Goruut [41345111267](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345111267) SUCCESS; optional Khmer G2P [41345111293](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345111293) SUCCESS. Core job passed corpus structure validation, Python tests, Node web checks, and production site build.
+
+These checks validate the committed repository and its automated engineering contracts. They do **not** validate the linguistic correctness of future human annotations, create gold labels, or change the release blocker. Gold remains empty and accuracy remains null.
+
+
+## Follow-up handoff-head CI — 2026-11-01
+
+The subsequent documentation-only handoff/register state at commit `1800ab775ade8e6c2ac1264c4318da69a07a53c1` was also checked on its exact head: Quality checks [41345362797](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345362797) SUCCESS; optional Goruut [41345362827](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345362827) SUCCESS; optional Khmer G2P [41345362791](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41345362791) SUCCESS. These runs validate the updated documentation and existing automated checks, not future IPA annotations. Any later branch update must be checked again on its new exact head.
+
+
+## Open-rights state consistency fix — 2026-11-01
+
+- Code review found that a source could pass corpus validation with `rights_status: OPEN` but `redistributable: false`. The export and release gate would later exclude/reject it, but the canonical record itself was contradictory.
+- Added a test-first regression. Test-only commit `8e328d06fb13130d878859ca2c297fb154fc0533` failed as expected in the language CI because validation incorrectly returned success for that contradictory state.
+- Added the fail-closed Python validation and matching conditional in `schemas/ipa-gold-record.schema.json`; regression also asserts the schema condition. Exact code/schema head: `e624dd59ce7ae1648cf72262e124764769fbc8a2`.
+- Exact-head CI [41347973905](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41347973905) passed: 144 Python tests + 37 subtests; web checks and production build passed; optional Goruut and Khmer G2P smoke benchmark passed.
+- No external corpus, restricted source data, IPA label or benchmark record was imported or created. Gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains null.
+
+## Exact current-head verification and handoff reconciliation — 2026-11-01
+
+- Verified default branch `main` at `c0a2b33c86791b6546e1158c62043fd23acc1f60`; work branch `feat/ipa-gold-corpus-20261101-review` at `508ed94460e210ff9cc07cc0eaa7815246ee37b2`. GitHub compare reports **83/84/82 commits ahead respectively and 0 behind** (see the repository's PR compare; no main commits need porting at this checkpoint).
+- Exact current-head GitHub Actions core run: [41348224247](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41348224247) — SUCCESS. 144 Python tests + 37 subtests; browser register-shifter contract, web checks and Vite production build passed. Optional Goruut KhmerCentral and Khmer G2P diagnostics passed.
+- These are hosted CI results. No local checkout or local test execution is claimed. Optional G2P/Goruut/Epitran checks are diagnostics only and do not establish linguistic correctness.
+- The current branch contains the open-rights invariant: `rights_status=OPEN` requires `redistributable=true` in both the Python validator and `schemas/ipa-gold-record.schema.json`, with a regression test.
+- Independent expert-adjudicated gold remains **0**; `gold.tsv` remains header-only; empirical accuracy remains **null**. Engineering CI does not close human annotation, profile/convention approval, or linguistic validation gates.
+- This entry supersedes earlier handoff statements that described the documentation/code checkpoint as awaiting exact-head CI. The PR description may contain older or superseded SHA references; the branch ref and exact-head run above are authoritative.
+
+
+## IPA gold nested-record contract hardening — 2026-11-01
+
+- Test-first regression run [41352932018](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41352932018) failed as expected: undeclared fields inside orthography, profile, source and rights_evidence passed runtime validation, and the schema left those objects open.
+- Runtime fix and schema closure: unknown properties are now rejected at all four nested boundaries. Exact code/schema head `8d6b2c8184dc27a126dfa11420bc5c821c1afeb6`; exact-head core CI [41353055958](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41353055958) SUCCESS (146 pytest tests + 44 subtests; web checks, register-shifter browser contract and production build passed).
+- Engineering-only change: no linguistic rules, IPA labels, gold records, source data or accuracy claims added. Independent expert gold remains 0; accuracy remains null. Hosted CI only; no local checkout was available.
+
+
+## Cross-repository validator cleanup checkpoint — 2026-11-01
+
+- Methodology review: the repository's pinned references in `AGENTS.md` already capture the relevant practices from Superpowers (test-first changes and evidence-gated verification), mattpocock/skills (clear module seams and behavior-focused tests), and Ponytail (small complete diffs and connected-code review). They remain methodology references, not runtime dependencies; no external skill bundle was copied into the product.
+- Removed four consecutive duplicate nested-object validation calls from `scripts/ipa_gold_corpus.py` (orthography, profile, source, and rights_evidence). This removes redundant work without changing the contract. The resulting file has the same blob SHA across all three repositories: `a072297e320b4b91a36c59fc90328b6ff98d2a5f`.
+- Code commit: `5c5e14d0458f9afd9c154e36975d86d882b67c0f`. - Core PR CI: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354247584 (SUCCESS); core push CI: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354242025 (SUCCESS); optional language diagnostics: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354247560, https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354247608 (SUCCESS).
+- No schema, source data, linguistic rule, IPA label, or gold row changed. Independent expert-adjudicated gold remains 0; accuracy remains null. The next substantive blocker is still qualified target-variety annotation and adjudication, not more validator scaffolding.
+
+
+### Upstream methodology review — follow-up 2026-11-02
+
+- **mattpocock/skills v1.3.2**: `d1478fcb140db0b93c0c8df17bcfd311844749d0` (released 2026-10-29). Applied the relevant improvements: standards review reads repository standards and reports separately; spec compliance and repository standards are separate review axes; bug-diagnosis RED evidence must prove the intended mutation changed relevant source; issue/PR tracker operations follow repository templates and ownership boundaries.
+- **Superpowers 7.0.1** remains pinned at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`; its current workflow guidance reinforces preserving untracked work when worktree cleanup refuses and keeping human-authored report sections genuinely human-authored. The October 20 template changes are included in the reviewed 7.0.1 lineage.
+- **Ponytail 5.3.3** remains pinned at `7801d061243d7b753bad0e0b3c057cd250b11755`. Upstream `main` advances to `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`; the inspected post-pin change only adds a README product/logo mention, not engineering-method guidance, so the method pin remains appropriate.
+- No upstream skill bundle, code, dependency, dataset, or runtime integration was copied. These instructions are a selective adaptation, not a claim that third-party tools are installed.
+
+
+## Exact-head verification — methodology refresh 2026-11-02
+
+- Documentation and agent guidance checkpoint: `73e654b5a592cb84ed29b25b03cb95fb5a7e25e0`.
+- [Quality checks 41358627128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627128) completed SUCCESS on this exact commit; full quality-check workflow.
+- Optional diagnostic runs [41358627194](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627194) and [41358627130](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627130) also completed SUCCESS. These diagnostics are not accuracy evidence.
+- The current branch has one subsequent documentation-only evidence-register commit; its exact-head CI is recorded in the final session report. No engine, linguistic rules, IPA labels, gold records, datasets, or runtime dependencies were changed.

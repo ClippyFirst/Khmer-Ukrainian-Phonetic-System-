@@ -75,3 +75,16 @@ Kirby (2014), [Journal of Phonetics DOI](https://doi.org/10.1016/j.wocn.2014.02.
 | evidence_status | SOURCE_REPORTED, ACOUSTIC_SAMPLE, CONFLICTING, NOT_ESTABLISHED, ADJUDICATED_GOLD |
 
 **Status:** PARTIAL. A class-to-vowel mapping baseline and bounded Phnom Penh acoustic inventory are available. Full contextual cross-table, multi-speaker lexical evidence and independently adjudicated IPA remain outstanding. No gold labels or unverified engine rules were added.
+
+
+## 6. Dialect-sensitive contrast probes from Chem (2020)
+
+The article provides concrete examples showing why a Phnom Penh matrix cannot be silently generalized to Standard Khmer:
+
+| Contrast | Standard Khmer analysis reported by Chem | Phnom Penh realization reported | Consequence |
+|---|---|---|---|
+| /tiɜ/ vs /tiət/ | Two vowel distinctions are maintained | One /tiɜ/ realization in the studied PP variety | Profile-specific diphthong/rime mapping |
+| /eː/ vs /ɛe/ | Distinct in the Standard Khmer analysis | No distinction in the studied PP variety; both realized /eː/ | Do not reuse PP output for every Standard Khmer lexical item |
+| /i/ | Primarily Sanskrit/Pali loan vocabulary in the author's account | Omitted from the acoustic sample because reliable sample words were unavailable | Mark the cell as source-discussed but not acoustically sampled |
+
+The paper also notes that the 61-item sample did not cover every nucleus/context and that some vowel samples were substituted from other words or sentences where lexical familiarity caused gaps (pp. 104–106). These limitations are material to any future training split or gold selection.

@@ -960,3 +960,13 @@ The rights registry does not itself grant permission. Each real source still nee
 
 
 The Khmer evidence matrix now contains the full Ishida phone-to-grapheme mapping table, including stress, coda and final-conditioned variants. Chem's acoustic evidence still does not fill every series × vowel × coda cell, so the language model remains PARTIAL.
+
+
+## 2026-11-01 final IPA-kind consistency verification
+
+- Added fail-closed cross-annotation consistency: both independent annotations for one record must use the same `ipa.kind`, and a `RESOLVED` adjudicated result must preserve that kind. This prevents phonemic-vs-phonetic representation differences from being misclassified as pronunciation disagreements.
+- Regression evidence: both new tests failed against the pre-fix validator on the test-only commit, then passed after the validator change.
+- New task `IPA-GOLD-REPRESENTATION-KIND-001`: **DONE_VERIFIED** (mechanism and exact-head CI). Blindness, annotator qualifications and independent adjudicator competence remain external operational evidence, not properties CI can prove.
+- Final PR head: `f7f2bf9a471f5fea990c0cf9509d382e3371d17b`; CI run [41338461515](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41338461515) SUCCESS — 139 Python tests + 27 subtests; browser register-shifter contract, web checks and Vite build passed.
+- The Khmer matrix remains PARTIAL: full profile × series × stress × coda lexical coverage and an independent broader /r/-loss replication are not available.
+- Gold remains zero; `gold.tsv` remains header-only; empirical accuracy remains null. No IPA labels were generated.

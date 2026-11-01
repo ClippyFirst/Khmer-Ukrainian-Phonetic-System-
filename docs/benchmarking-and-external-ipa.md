@@ -179,3 +179,14 @@ The exact PR #101 head `b47522f46b68ab61432a9010cebf23048cae501b` ran the pinned
 - The one unstable input `ជួត` carried `RandomizationWordsCount=1`, `RandomizationWordsChoices=2`; the other 99 did not show that metadata.
 
 This 100-row result supersedes any implication that the 6-row sample represents general Khmer coverage. Goruut is rejected as a production Khmer provider. The new harness source-coverage gate is being added so such partial responses cannot be counted as fully usable in future reports.
+
+
+## Owner scope decision — temporary test-only use — 2026-11-01
+
+The repository owner explicitly directed that external Goruut assets may be used for temporary verification and comparison without blocking these tests on license review. Accordingly:
+
+- **Test-only execution:** authorized for this research task; do not stop runtime probes because the external asset license is unresolved.
+- **No data/model import:** no Goruut dictionary, model weight, or MekongPhon source row is copied into the product runtime or committed as a corpus by this decision.
+- **Production packaging or redistribution:** not authorized by this instruction and remains outside this test-only scope; asset provenance/rights must be revisited before any bundling, redistribution, or production deployment.
+
+This is a project scope decision, not a legal conclusion about the upstream assets.

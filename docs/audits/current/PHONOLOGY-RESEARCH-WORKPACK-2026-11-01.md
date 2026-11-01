@@ -66,3 +66,6 @@ See the new [Khmer vowel × series × coda evidence matrix](KHMER-VOWEL-SERIES-C
 
 
 Chem (2020) full-text extraction adds two high-value dialect probes: Standard Khmer /tiɜ/ vs /tiət/ is reported as a single /tiɜ/ in the studied Phnom Penh dialect, and Standard Khmer /eː/ vs /ɛe/ is reported as merged to /eː/ in Phnom Penh (pp. 114–115). The /i/ vowel is discussed as primarily Sanskrit/Pali loan material and was omitted from the acoustic sample. These are profile-specific evidence rows, not universal mergers.
+
+
+The Khmer matrix now includes the complete phone-to-grapheme mapping table extracted from Ishida's “Vowel sounds mapped to characters” section (all listed plain-vowel and diphthong/rhyme entries, with series and coda conditions). The acoustic series × vowel × coda cross-table remains PARTIAL because Chem's small Phnom Penh sample does not cover every cell.

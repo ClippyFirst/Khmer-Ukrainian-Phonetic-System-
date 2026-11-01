@@ -61,7 +61,7 @@ jobs:
               for row in rows
           }
           Path("artifacts/external-g2p/mekongphon-khmer-eval.json").write_text(
-              json.dumps(corpus, ensure_ascii=False, indent=2) + "\\n",
+              json.dumps(corpus, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
           )
           PY

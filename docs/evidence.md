@@ -48,3 +48,11 @@ For `ភាសាខ្មែរ`, independent current references converge on **
 The browser fixture for `ភាសាខ្មែរ` now uses this lexical evidence rather than requiring the incomplete general orthography → IPA engine to reconstruct the phrase from scratch. This is an explicit lexical coverage layer, not a bypass that changes the research architecture.
 
 The evidence audit distinguishes primary Unicode representative IPA from dictionary alternatives. The current regression fixtures for ខ្ញុំ, សង្គ្រាម, ហើយ and ប៉ី follow Unicode 17 representative forms (/kʰɲom/, /sɔŋkrɛəm/, /haəi/, /pei/). Other lexical sources may provide alternative phonetic analyses; such disagreement must not be silently collapsed into the structural fixture layer.
+
+## Additional acoustic sources reviewed — 2026-11-01
+
+- Wayland & Guion (2005), *Mon-Khmer Studies* 35, 55–82, DOI [10.15144/MKSJ-35.55](https://doi.org/10.15144/MKSJ-35.55). Their study compares colloquial and careful-reading Phnom Penh forms with /Cr/ clusters and reports /r/-loss, onset aspiration, diphthongization and falling-rising pitch in the observed colloquial data. The sample described in the paper is two speakers; this is evidence for a conditioned phenomenon, not a universal /r/ deletion rule.
+- Kirby (2014), *Journal of Phonetics* 43, 69–85, DOI [10.1016/j.wocn.2014.02.001](https://doi.org/10.1016/j.wocn.2014.02.001). Production and perception results identify multiple acoustic cues associated with colloquial Phnom Penh /r/-loss, including f0, aspiration/VOT, voice quality and vowel quality.
+- Chem & Chem's Standard Khmer vowel acoustic study is catalogued at [Zenodo record 3377387](https://zenodo.org/records/3377387). Its sample and vowel labels must be reconciled with the repository's profile definitions before numeric values are adopted.
+
+These sources are now listed in `docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md`. Do not treat their published IPA transcriptions as the repository's independent adjudicated gold; they remain source-attested evidence with their original scope and limitations.

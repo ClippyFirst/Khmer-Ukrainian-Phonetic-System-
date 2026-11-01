@@ -27,7 +27,7 @@
     "status": "PRIMARY_PHONETIC_SOURCE",
     "full_text_url": "https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/download/36/32",
     "method": "21 speakers screened with 168 items; four speakers (two female) selected for acoustic analysis; 61 lexical items, three formal-reading repetitions",
-    "limitations": "No exhaustive consonant-series × vowel × coda cross-table; paper distinguishes Standard Khmer from Phnom Penh speech; source transcription is not project gold"
+    "limitations": "No exhaustive consonant-series × vowel × coda cross-table; /i/ omitted from acoustic sample; Standard Khmer and Phnom Penh contrasts differ; source transcription is not project gold"
   },
   {
     "id": "henderson1952",

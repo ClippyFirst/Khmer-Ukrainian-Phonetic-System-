@@ -54,3 +54,12 @@ Chem & Chem (2020), “The Standard Khmer vowel system: An acoustic study,” [p
 Kirby (2014), *Journal of Phonetics* 43:69–85, [DOI](https://doi.org/10.1016/j.wocn.2014.02.001), adds production and perception evidence for f0, aspiration/VOT, voice quality and vowel-quality cues. These are interacting cues, not a licence to encode /r/-loss as a single replacement segment.
 
 **Status update:** /r/-loss evidence is now more precisely scoped and method-documented; independent multi-speaker replication, full vowel × series × length × coda coverage, and IPA adjudication remain PARTIAL/BLOCKED. No Khmer IPA labels or engine rules were added.
+
+
+### Additional extraction: Chem (2020) full text
+
+The full article is now linked in the source registry. Its methods report 21 native speakers in initial screening (168 lexical items, two repetitions), then four selected Phnom Penh speakers (two female) for acoustic analysis of 61 lexical items, repeated three times in formal reading (pp. 104–105). It reports 21 monophthong categories (10 long, 11 short) and 13 diphthongs (10 long, 3 short; pp. 103–105). It reports coda effects on vowel quality and duration, with closed syllables generally shorter; short diphthongs occur in sample contexts with /-h, -k, -ʔ/ (pp. 108–112).
+
+This materially improves the vowel evidence baseline, but does not fill the complete consonant-series × vowel-sign × coda cross-table. The article itself notes that Standard Khmer is not sharply defined, and the four-speaker sample is not a universal norm. The published transcription and measured tokens remain source evidence, not adjudicated project gold.
+
+See the new [Khmer vowel × series × coda evidence matrix](KHMER-VOWEL-SERIES-CODA-EVIDENCE-MATRIX-2026-11-01.md), which separates Ishida's specialist orthographic mappings from Chem's bounded acoustic sample.

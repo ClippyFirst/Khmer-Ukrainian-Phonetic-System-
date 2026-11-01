@@ -2,10 +2,10 @@
 
 **Current checkpoint:** 2026-11-02  
 **Default branch:** `main` at `c0a2b33c86791b6546e1158c62043fd23acc1f60`  
-**Implementation checkpoint before this documentation-only methodology refresh:** `5dea7fb3a1a64693bafa03f8802d918ff059223f` on `feat/ipa-gold-corpus-20261101-review`
+**Verified implementation checkpoint before methodology documentation update:** `73e654b5a592cb84ed29b25b03cb95fb5a7e25e0` on `feat/ipa-gold-corpus-20261101-review`
 **Open implementation PR:** [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103)  
-**Branch comparison:** 101 commits ahead of main, 0 behind.
-**Pre-refresh implementation verification:** [core CI](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356910333) SUCCESS; 146 tests + 44 subtests; shared browser register-shifter contract; optional diagnostics: Goruut 41356910417; Khmer G2P 41356910346 (all SUCCESS).
+**Branch comparison at this checkpoint:** 102 commits ahead of main, 0 behind.
+**Exact-head methodology verification:** [Quality checks 41358627128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627128) SUCCESS; optional diagnostics [41358627194](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627194) and [41358627130](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627130) SUCCESS.
 **Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
 
 ## Current task ledger and next blocker
@@ -1142,3 +1142,11 @@ The subsequent documentation-only handoff/register state at commit `1800ab775ade
 - **Superpowers 7.0.1** remains pinned at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`; its current workflow guidance reinforces preserving untracked work when worktree cleanup refuses and keeping human-authored report sections genuinely human-authored. The October 20 template changes are included in the reviewed 7.0.1 lineage.
 - **Ponytail 5.3.3** remains pinned at `7801d061243d7b753bad0e0b3c057cd250b11755`. Upstream `main` advances to `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`; the inspected post-pin change only adds a README product/logo mention, not engineering-method guidance, so the method pin remains appropriate.
 - No upstream skill bundle, code, dependency, dataset, or runtime integration was copied. These instructions are a selective adaptation, not a claim that third-party tools are installed.
+
+
+## Exact-head verification — methodology refresh 2026-11-02
+
+- Documentation and agent guidance checkpoint: `73e654b5a592cb84ed29b25b03cb95fb5a7e25e0`.
+- [Quality checks 41358627128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627128) completed SUCCESS on this exact commit; full quality-check workflow.
+- Optional diagnostic runs [41358627194](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627194) and [41358627130](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627130) also completed SUCCESS. These diagnostics are not accuracy evidence.
+- The current branch has one subsequent documentation-only evidence-register commit; its exact-head CI is recorded in the final session report. No engine, linguistic rules, IPA labels, gold records, datasets, or runtime dependencies were changed.

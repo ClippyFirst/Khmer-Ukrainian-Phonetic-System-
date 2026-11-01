@@ -783,3 +783,10 @@ These changes implement project-approved target conventions; they are not a new 
 - Three-repeat results: engineering 8/8 stable; source-attested 6/6 stable; strict concordance 1/6 and limited notation diagnostic 3/6. Stable missing-segment outputs are present; not accuracy, gold=0.
 - Missing `weights9.bin.zlib` warning persists; causal relation unknown. Keep as optional comparator only; production promotion rejected.
 - Full run evidence and config hash: `docs/audits/current/GORUUT-RUNTIME-EVALUATION-2026-11-01.md`.
+
+
+## Goruut nondeterminism root-cause finding — Khmer
+
+- The latest artifact had no RandomizationWordsCount / RandomizationWordsChoices metadata on any of the 14 inputs; all 14 were stable across three repetitions. Its problem is different: stable but incomplete dictionary output (e.g. missing vowels), not the homograph-selection instability observed in Lao/Burmese.
+- Upstream pinned selector counts homographs and falls back to a random dictionary pronunciation when no preferred entry is selected; response counters are `RandomizationWordsCount` and `RandomizationWordsChoices`. See [selector source](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/repo/services/parts_of_speech_selector_service.go#L168-L205).
+- Missing `weights9.bin.zlib` is a separate warning; causality is not established.

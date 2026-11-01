@@ -206,3 +206,8 @@ Blind annotation cannot be guaranteed in a public Git repository. Two submission
 ## 2026-11-01 closeout
 
 The independent IPA gold-corpus implementation and Khmer evidence matrix are in [PR #103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103). PR CI passed 136 Python tests + 27 subtests, browser register-shifter contract, web checks and Vite build. The source-backed matrices do not establish every vowel × series × coda cell; independent gold remains 0. Main was not changed. Legacy PR #64 remains untouched.
+
+
+## CI action runtime audit — 2026-11-01
+
+All five workflows now use current Node.js 24-compatible action majors. Exact-head checks passed: [Quality checks 41339636053](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636053), [Goruut 41339636042](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636042), and [G2P smoke 41339636117](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636117). CI maintenance does not establish phonological accuracy or expert gold.

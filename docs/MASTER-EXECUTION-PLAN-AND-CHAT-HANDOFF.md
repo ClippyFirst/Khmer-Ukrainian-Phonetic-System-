@@ -863,3 +863,61 @@ Final-head repository checks [41325417322](https://github.com/ClippyFirst/Khmer-
 - Corrected Khmerphonemizer 0.0.3 comparison [41325808089](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325808089) PASS; artifact [13090603852](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325808089/artifacts/13090603852), SHA-256 `668668bb1a6a3aca45145b0894c83000889695e6d25878d794622fef64e5e5d2`: 100/100 outputs, 100 comparable source labels, 18 strict and 19 limited-notation matches. This follows the test-first fix for the dropped `source_reported_ipa` metadata field (red CI: 1 failed, 106 passed, 25 subtests; final CI passed).
 - Goruut test harness and exact-head CI: **DONE_VERIFIED**. Production phonology remains **PARTIAL/BLOCKED**: 27/100 Goruut outputs partial, 3/100 absent; source labels are not independent gold; independent expert Khmer IPA gold remains 0. Khmerphonemizer concordance is diagnostic only. Permanent source-data/model import remains outside the approved test-only scope.
 - No local checkout was available; engineering verification is from exact-head and post-merge GitHub Actions. See runtime audit for full evidence and hashes.
+
+
+## Linguistic completion register — 2026-11-01
+
+- Current verified `main` baseline: `c0a2b33c86791b6546e1158c62043fd23acc1f60`; latest exact-main engineering workflow: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462947 (success). See the linked current audit register for the verified status and next acceptance criteria: [Linguistic completion register](audits/current/LINGUISTIC-COMPLETION-REGISTER-2026-11-01.md).
+- Reconfirmed `data/benchmark/gold.tsv` contains only its header. Independent expert-adjudicated lexical IPA gold remains **0**; empirical accuracy remains **null**. No external source-attested labels or engine outputs are promoted to gold.
+- The register separates implementable repository work from external expert, primary-source and licensing blockers. Preserve existing canonical plans, registries, tests and generated data; do not create parallel corpora or weaken fail-closed behavior.
+- No local checkout was available for this pass. GitHub Actions provide exact-main engineering evidence only; they do not prove linguistic accuracy, manual accessibility QA or legal permissions.
+## Current master-matrix status override — 2026-11-01
+
+The following current statuses supersede older checkpoint rows above where they conflict; historical evidence remains preserved.
+
+| Task | Current status | Current acceptance boundary |
+|---|---|---|
+| KH-TEST-001 | BLOCKED | Gold TSV is header-only; independent expert-adjudicated lexical IPA gold=0; accuracy=null. Requires independent annotation, adjudication, profile and source/audio locators. |
+| KH-VOW-001 / KH-VOW-002 | PARTIAL | Orthographic/register inventory exists; full context-dependent vowel/rime/series matrix and acoustic/phonetic adjudication remain open. |
+| KH-CODA-001 | PARTIAL | Structural cases and fail-closed behavior exist; full coda-conditioned IPA coverage remains open. |
+| KH-IPA-001 | PARTIAL | IPA boundary/status contract exists; complete contextual orthography-to-IPA model and gold remain open. |
+| KH-PROFILE-001 / KH-PROFILE-002 | PARTIAL | Fail-closed guards are verified; complete Phnom Penh /r/-loss environment model and expert validation remain open. |
+| KH-G2P-001 | DONE_VERIFIED (harness only) | Goruut and Khmerphonemizer comparisons are diagnostic; no accuracy claim or production promotion. |
+| KH-ROM-001 | PARTIAL | BGN/PCGN bounded inventory exists; full contextual runtime and independent Ukrainian syllable adapter remain open. |
+| KH-UI-001 | TODO | Manual deployed visual, keyboard, screen-reader and mobile QA not evidenced by CI. |
+| KH-REL-001 | PARTIAL | Release remains blocked by phonological gold and asset-rights review. |
+
+
+## IPA gold corpus implementation checkpoint — 2026-11-01
+
+### Current task ledger
+
+| Task | Status | Evidence / remaining acceptance |
+|---|---|---|
+| IPA-GOLD-SCHEMA-001 | DONE_VERIFIED | Four versioned JSON Schemas; empty JSONL templates; validator and regression tests in exact-head CI |
+| IPA-GOLD-DOUBLE-ANNOTATION-001 | PARTIAL | Enforces two distinct annotators and third independent adjudicator; actual blind collection needs qualified human annotators and controlled intake |
+| IPA-GOLD-ADJUDICATION-001 | PARTIAL | Agreement/resolved/unresolved semantics and rationale validation implemented; no real adjudicated rows exist |
+| IPA-GOLD-SPLIT-001 | DONE_VERIFIED | Deterministic SHA-256 split assignment, preserves frozen assignments, prevents lexeme-group leakage; current manifest empty |
+| IPA-GOLD-EXPORT-001 | DONE_VERIFIED | Exports only adjudicated, redistributable rows into existing benchmark TSV; current export has header only |
+| IPA-TYPED-BENCHMARK-001 | DONE_VERIFIED | PHONEMIC / PHONETIC_BROAD / PHONETIC_NARROW retained; type mismatch cannot count as exact match |
+| IPA-GOLD-RELEASE-GATE-001 | PARTIAL | Tag/manual workflow requires 100/25/25 adjudicated split rows and rights; owner must require the check in release rulesets/procedure |
+| KHMER-VOWEL-CONTEXT-001 | PARTIAL | Research workpack requires sign × series × length × coda × profile matrix and source/audio locators |
+| KHMER-CODA-001 | PARTIAL | Existing structural cases retained; full coda-conditioned surface IPA and acoustic validation remain open |
+| KHMER-R-LOSS-001 | PARTIAL | Wayland & Guion (2005) and Kirby (2014) located; /r/-loss must remain profile/style-conditioned, with matched multi-speaker evidence |
+| KHMER-UA-IPA-ADAPTER-001 | PARTIAL | Existing adapter retained; independent expert target review awaits adjudicated surface IPA |
+
+### Evidence boundary
+
+The four JSONL files are empty templates. `gold.tsv` is header-only; independent expert gold=0 and accuracy=null. Wayland & Guion's study describes two Phnom Penh speakers and a specific colloquial /Cr/ environment; it does not justify universal /r/ deletion. No IPA labels were added.
+
+See [IPA gold protocol](docs/ipa-gold-corpus.md), [Khmer phonology workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md), and [evidence registry](docs/evidence.md).
+
+### Additional rights and export controls
+
+| Task | Status | Acceptance / remaining work |
+|---|---|---|
+| IPA-GOLD-RIGHTS-001 | DONE_VERIFIED (mechanism) | Approved license registry, per-record rights evidence, rejection of unregistered/non-redistributable licenses; legal verification of future source-specific records remains required |
+| IPA-GOLD-PROVENANCE-EXPORT-001 | DONE_VERIFIED | Gold TSV and benchmark rows retain source ID, license ID and rights-evidence locator |
+| IPA-GOLD-BLIND-INTAKE-001 | BLOCKED | Requires external controlled intake; public GitHub history cannot provide blind annotation |
+
+The rights registry does not itself grant permission. Each real source still needs its exact license/permission verified by a responsible curator, and share-alike/attribution terms must be honored in distribution.

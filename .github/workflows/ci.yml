@@ -19,6 +19,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Validate independent IPA gold corpus structure
+        run: python scripts/ipa_gold_corpus.py validate --language khmer
+
       - name: Upgrade pip
         run: python -m pip install --upgrade pip
 

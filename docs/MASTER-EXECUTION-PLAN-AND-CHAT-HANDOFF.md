@@ -957,3 +957,6 @@ The rights registry does not itself grant permission. Each real source still nee
 - Manual UI/accessibility review: TODO.
 
 **Readiness:** research infrastructure is substantially improved; the language system remains a research prototype, not production/release-ready.
+
+
+The Khmer evidence matrix now contains the full Ishida phone-to-grapheme mapping table, including stress, coda and final-conditioned variants. Chem's acoustic evidence still does not fill every series × vowel × coda cell, so the language model remains PARTIAL.

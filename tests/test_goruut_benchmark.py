@@ -65,3 +65,12 @@ def test_empty_words_response_is_preserved_as_a_probe_failure():
         assert "must not be empty" in str(exc)
     else:
         raise AssertionError("empty response must be detected")
+
+
+def test_khmer_source_attested_fixture_is_not_labelled_gold():
+    rows = MODULE.load_inputs(
+        ROOT / "tests" / "fixtures" / "goruut-source-attested.csv",
+        input_format="csv", text_column="orth", expected_column="source_attested_ipa",
+    )
+    assert len(rows) == 6
+    assert rows[1]["source_attested_ipa"] == "kʰmae"

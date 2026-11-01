@@ -1,5 +1,29 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
+**Current checkpoint:** 2026-11-02  
+**Default branch:** `main` at `c0a2b33c86791b6546e1158c62043fd23acc1f60`  
+**Active review branch:** `feat/ipa-gold-corpus-20261101-review` at `dea80ebefebc6cc4ed006fd204fa3be95f2cc564`  
+**Open implementation PR:** [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103)  
+**Branch comparison:** 96 commits ahead of main, 0 behind.  
+**Exact-head engineering verification:** [Quality checks PR 41354535561](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354535561) and [push 41354531871](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41354531871) both SUCCESS; 146 tests and 44 subtests; optional Goruut and Khmer G2P diagnostics also SUCCESS.
+**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
+
+## Current task ledger and next blocker
+
+- **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and exact-head automated engineering checks are present on the active branch. This is not linguistic validation.
+- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases.
+- **BLOCKED:** the 30-lexeme blind pilot cannot start until the target variety/profile and IPA convention are approved, two qualified independent annotators and a separate adjudicator are confirmed, rights-cleared source packets are prepared, and the blind intake dry-run passes.
+- **TODO:** manual deployed-site visual, keyboard, assistive-technology, and mobile QA.
+- **Next actionable human milestone:** resolve the recruitment and convention checklist in [issue #104](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/issues/104) and follow [the controlled acquisition protocol](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/blob/feat/ipa-gold-corpus-20261101-review/docs/ipa-gold-collection-playbook.md).
+
+No local checkout was available for this checkpoint; do not interpret hosted CI as local test execution, expert adjudication, visual QA, or release approval. Preserve the fail-closed pipeline and do not create IPA/gold labels from model output or unsupported spelling inference.
+
+## Historical records
+
+The dated entries below are retained as audit history. When a historical status or SHA conflicts with this current checkpoint, the active branch ref, completion register, and exact-head workflow run above are authoritative.
+
+## Historical master handoff snapshot — 2026-10-25
+
 **Last updated:** 2026-10-25  
 **Repository:** https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-  
 **Default branch:** main  

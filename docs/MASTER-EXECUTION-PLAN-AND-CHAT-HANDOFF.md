@@ -1030,3 +1030,8 @@ The Khmer evidence matrix now contains the full Ishida phone-to-grapheme mapping
 - Khmer Acoustic Model dictionary remains a candidate external comparator only; its README states dictionary CC BY-SA 4.0 and claims native-linguist validation, but per-entry provenance, variety, IPA convention and exact version require inspection.
 - Burmese audio lead: Oo et al. (LREC 2020) speech corpus is described as 2,528 utterances from 20 female speakers with manual segmentation, plus G2P/normalization grammars. This is not IPA gold; inspect primary source, audio/transcript rights, consent, variety and metadata before considering it as lawful audio material for expert re-transcription.
 - No data files were imported and no IPA labels were added. Corpus remains empty and benchmark accuracy remains null.
+
+
+## Controlled IPA acquisition documentation CI — 2026-11-01
+
+The documentation-only playbook, corpus-guide and handoff changes at the preceding branch head were checked by GitHub Actions. Khmer: Quality checks 41343502985 SUCCESS; optional Khmer G2P smoke 41343502939 SUCCESS; optional Goruut 41343502878 SUCCESS. No language-engine runtime or gold data changed. This validates the repository state, not the linguistic correctness of future annotations. Pages deployment and release-gate workflow were not run.

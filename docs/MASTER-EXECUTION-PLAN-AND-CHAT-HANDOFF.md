@@ -888,3 +888,13 @@ Final-head repository checks [41325417322](https://github.com/ClippyFirst/Khmer-
 The four JSONL files are empty templates. `gold.tsv` is header-only; independent expert gold=0 and accuracy=null. Wayland & Guion's study describes two Phnom Penh speakers and a specific colloquial /Cr/ environment; it does not justify universal /r/ deletion. No IPA labels were added.
 
 See [IPA gold protocol](docs/ipa-gold-corpus.md), [Khmer phonology workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md), and [evidence registry](docs/evidence.md).
+
+### Additional rights and export controls
+
+| Task | Status | Acceptance / remaining work |
+|---|---|---|
+| IPA-GOLD-RIGHTS-001 | DONE_VERIFIED (mechanism) | Approved license registry, per-record rights evidence, rejection of unregistered/non-redistributable licenses; legal verification of future source-specific records remains required |
+| IPA-GOLD-PROVENANCE-EXPORT-001 | DONE_VERIFIED | Gold TSV and benchmark rows retain source ID, license ID and rights-evidence locator |
+| IPA-GOLD-BLIND-INTAKE-001 | BLOCKED | Requires external controlled intake; public GitHub history cannot provide blind annotation |
+
+The rights registry does not itself grant permission. Each real source still needs its exact license/permission verified by a responsible curator, and share-alike/attribution terms must be honored in distribution.

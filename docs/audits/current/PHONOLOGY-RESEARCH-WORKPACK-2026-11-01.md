@@ -63,3 +63,6 @@ The full article is now linked in the source registry. Its methods report 21 nat
 This materially improves the vowel evidence baseline, but does not fill the complete consonant-series × vowel-sign × coda cross-table. The article itself notes that Standard Khmer is not sharply defined, and the four-speaker sample is not a universal norm. The published transcription and measured tokens remain source evidence, not adjudicated project gold.
 
 See the new [Khmer vowel × series × coda evidence matrix](KHMER-VOWEL-SERIES-CODA-EVIDENCE-MATRIX-2026-11-01.md), which separates Ishida's specialist orthographic mappings from Chem's bounded acoustic sample.
+
+
+Chem (2020) full-text extraction adds two high-value dialect probes: Standard Khmer /tiɜ/ vs /tiət/ is reported as a single /tiɜ/ in the studied Phnom Penh dialect, and Standard Khmer /eː/ vs /ɛe/ is reported as merged to /eː/ in Phnom Penh (pp. 114–115). The /i/ vowel is discussed as primarily Sanskrit/Pali loan material and was omitted from the acoustic sample. These are profile-specific evidence rows, not universal mergers.

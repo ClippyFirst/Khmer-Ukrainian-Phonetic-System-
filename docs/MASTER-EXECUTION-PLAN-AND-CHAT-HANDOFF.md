@@ -929,3 +929,9 @@ The rights registry does not itself grant permission. Each real source still nee
 - IPA-TYPED-BENCHMARK-001 remains DONE_VERIFIED (mechanism): adjudicated gold requires a valid IPA kind; missing/different prediction kinds cannot score as exact matches or enter CER.
 - Wayland & Guion (2005) is a two-speaker, 20-item, three-repetition-per-style Phnom Penh study; its /r/-loss findings remain profile- and speech-style-conditioned. Kirby (2014) provides complementary production/perception evidence. Chem & Chem (2020) is a Phnom Penh acoustic vowel source, not yet a complete contextual matrix.
 - Independent expert gold remains 0; gold.tsv remains header-only. No IPA entries or universal /r/-loss rule were invented.
+
+
+### Research artifact — Khmer
+
+- [KHMER vowel × series × coda evidence matrix](docs/audits/current/KHMER-VOWEL-SERIES-CODA-EVIDENCE-MATRIX-2026-11-01.md): specialist ɑ/ɔ-class mappings, Chem (2020) sample/method and coda effects, and missing contextual cells.
+- Wayland & Guion's /r/-loss remains restricted to the studied Phnom Penh colloquial profile; no universal deletion rule was introduced.

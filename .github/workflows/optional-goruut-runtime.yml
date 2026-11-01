@@ -67,6 +67,7 @@ jobs:
             --expected-column source_attested_ipa \
             --config-file goruut/configs/config.json \
             --runtime-version "$(go version)" \
+            --server-log artifacts/goruut-server.log \
             --repeat 3 \
             --language KhmerCentral \
             --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \

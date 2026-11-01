@@ -921,3 +921,11 @@ See [IPA gold protocol](docs/ipa-gold-corpus.md), [Khmer phonology workpack](doc
 | IPA-GOLD-BLIND-INTAKE-001 | BLOCKED | Requires external controlled intake; public GitHub history cannot provide blind annotation |
 
 The rights registry does not itself grant permission. Each real source still needs its exact license/permission verified by a responsible curator, and share-alike/attribution terms must be honored in distribution.
+
+
+### 2026-11-01 follow-up — validator and Khmer research evidence
+
+- IPA-GOLD-SCHEMA-001 remains DONE_VERIFIED (mechanism), now with runtime/schema parity checks: closed object properties, mandatory annotation notes, string uncertainty arrays, ISO dates and optional field types.
+- IPA-TYPED-BENCHMARK-001 remains DONE_VERIFIED (mechanism): adjudicated gold requires a valid IPA kind; missing/different prediction kinds cannot score as exact matches or enter CER.
+- Wayland & Guion (2005) is a two-speaker, 20-item, three-repetition-per-style Phnom Penh study; its /r/-loss findings remain profile- and speech-style-conditioned. Kirby (2014) provides complementary production/perception evidence. Chem & Chem (2020) is a Phnom Penh acoustic vowel source, not yet a complete contextual matrix.
+- Independent expert gold remains 0; gold.tsv remains header-only. No IPA entries or universal /r/-loss rule were invented.

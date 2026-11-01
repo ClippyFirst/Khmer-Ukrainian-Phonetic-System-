@@ -7,6 +7,7 @@ on:
       - "scripts/benchmark_goruut.py"
       - "tests/test_goruut_benchmark.py"
       - "tests/fixtures/goruut-probes.txt"
+      - "tests/fixtures/goruut-source-attested.csv"
       - ".github/workflows/optional-goruut-runtime.yml"
 
 permissions:
@@ -56,7 +57,17 @@ jobs:
             --runtime-version "$(go version)" \
             --language KhmerCentral \
             --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \
-            --output artifacts/goruut-khmer-raw-output.json
+            --output artifacts/goruut-khmer-engineering-raw-output.json
+          python scripts/benchmark_goruut.py \
+            --input tests/fixtures/goruut-source-attested.csv \
+            --input-format csv \
+            --text-column orth \
+            --expected-column source_attested_ipa \
+            --config-file goruut/configs/config.json \
+            --runtime-version "$(go version)" \
+            --language KhmerCentral \
+            --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \
+            --output artifacts/goruut-khmer-source-attested-diagnostic.json
       - name: Upload raw output and server log
         if: always()
         uses: actions/upload-artifact@v4

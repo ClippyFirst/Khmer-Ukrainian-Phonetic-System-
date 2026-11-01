@@ -46,12 +46,12 @@ Inspect generated artifacts and built relative asset paths when changing data or
 Methodological references only; do not add them as runtime dependencies or copy their repositories wholesale:
 
 - [obra/superpowers](https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b) — test-first work, explicit plans, root-cause debugging, review and evidence before completion.
-- [mattpocock/skills](https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d) — behavior-focused tests, clear interfaces, test seams and source-backed research.
+- [mattpocock/skills](https://github.com/mattpocock/skills/tree/d1478fcb140db0b93c0c8df17bcfd311844749d0) — behavior-focused tests, clear interfaces, test seams and source-backed research.
 - [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/7801d061243d7b753bad0e0b3c057cd250b11755) — Ponytail 5.3.3: trace the real code path and data flow, map entry points and expected load before repository-level audit, review beyond the diff, preserve trust-boundary validation/data-loss handling/accessibility, test branching/parser/security logic, and report skipped checks and residual risk.
 
 When these references conflict with the existing project contract or the user's explicit requirements, follow the project contract and user requirements.
 
-**Reviewed 2026-11-02:** Superpowers 7.0.1 (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`), mattpocock/skills current main (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`), and Ponytail 5.3.3 (`7801d061243d7b753bad0e0b3c057cd250b11755`) were checked against upstream. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
+**Reviewed 2026-11-02:** Superpowers 7.0.1 (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`), mattpocock/skills current main (`d1478fcb140db0b93c0c8df17bcfd311844749d0`), and Ponytail 5.3.3 (`7801d061243d7b753bad0e0b3c057cd250b11755`) were checked against upstream. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
 
 
 
@@ -68,3 +68,11 @@ Every parser, romanizer, phonetic adapter, CLI and browser change that can affec
 - For external G2P comparisons, pin engine/version/model/profile, retain immutable raw output and errors, record mapping/model/data hashes and license provenance, and score only on held-out independent gold. Inter-engine agreement and successful execution are diagnostics, not correctness.
 
 Before accepting a new adversarial fixture, review whether its expected result is independent of the implementation and whether the test would fail if a source unit were dropped, a boundary changed, or uncertainty were silently converted into a confident output.
+
+
+## Review and evidence refinements
+
+- Separate final review into (1) specification/acceptance compliance and (2) repository standards, conventions, and maintainability. Read applicable `CONTRIBUTING.md`, coding-standards files, and adjacent patterns before judging style; do not let a standards review weaken explicit product or linguistic requirements.
+- A RED result is valid only when the intended assertion fails for the intended reason. If using mutation-based diagnosis, inspect the diff against a pristine baseline and confirm the mutation actually changed the relevant code; a no-op edit is not evidence.
+- Before filing issues or preparing PRs, follow repository templates and identify the filer accurately. Never present agent-generated text as human-authored; leave owner-authored sections for the owner.
+- Do not force-remove a worktree or discard untracked files to make cleanup succeed. Inspect the files and preserve, relocate, commit, or delete them only with explicit owner direction.

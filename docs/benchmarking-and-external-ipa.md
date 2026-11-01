@@ -150,3 +150,8 @@ Cross-engine check: khmerphonemizer 0.0.3 returned 6/6 source-attested probes; 2
 
 
 **Goruut warning caveat:** the pinned language module contains `weights8.bin.zlib`, but the server log attempts `weights9.bin.zlib`; no `weights9` asset exists in the inspected pinned tree. The loader path and causal relation to phonetic failures are unproven. Track this as an unresolved upstream runtime warning, not a confirmed root cause.
+
+
+### Latest pinned Goruut run — exact PR head
+
+PR #101 exact head `eeeede50447c41df30f866bcbf77f56824b40190` built and ran successfully: [runtime workflow](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310808284), artifact SHA-256 `34330aac3be84a438a7bdc181d715f12b745cfe6f7e15edcd4be08dcbfeb52da`. All 8 engineering and 6 source-attested lexical probes were stable across three repeats. Yet strict source-attested concordance was only 1/6 (limited notation diagnostic 3/6), with stable incomplete outputs such as `ខ្មែរ` → `kʰr`. This is not accuracy; gold=0. Missing `weights9.bin.zlib` warning remains unexplained. Do not promote Goruut.

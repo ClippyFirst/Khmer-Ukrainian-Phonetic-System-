@@ -138,3 +138,13 @@ TDD evidence:
 - Corrected artifact [13091145662](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325147987/artifacts/13091145662), ZIP SHA-256 `b3e2262c5f72d51c770ec88c3cf880387d1aa03ab5bc4beafc85e0551ec1f2f9`; downloaded hash matches GitHub digest. Khmerphonemizer 0.0.3 returned 100/100 outputs; all 100 rows are now comparable to source-attested labels; 18/100 strict string matches and 19/100 matches after the limited notation-only diagnostic.
 
 These are source-attested concordance counts, not accuracy. MekongPhon labels are not independently adjudicated gold; independent gold remains 0 and accuracy remains null. The corrected adapter repairs the evidence pipeline only; it does not change or validate the engine's phonology.
+
+
+## Latest final-head Khmer artifacts — 2026-11-01
+
+The final PR #101 head `279967150956db5293d6d29c5fbb9fd0ff720ae8` passed repository verification [41325417322](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325417322) and [41325414211](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325414211), Goruut runtime [41325417330](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325417330), and corrected Khmerphonemizer diagnostic [41325417374](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325417374). All passed.
+
+- Goruut artifact [13090873861](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325417330/artifacts/13090873861), ZIP SHA-256 `31086da465f713e69cdf8cebae10a1b1c5118592ef663a0ed1a9b5a60a3d75fd`: 100 rows yielded 97 outputs / 3 no output; 70 complete / 27 partial / 3 unknown; 96 stable / 1 unstable; one input had randomization metadata in all three repeats; strict and any-repeat source-attested matches 6/100. The 8 engineering probes had 3 complete and 5 partial outputs. The six-row source-attested sample had 3 complete / 3 partial and 1 strict / 3 limited-notation matches.
+- Khmerphonemizer 0.0.3 artifact [13091310659](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41325417374/artifacts/13091310659), ZIP SHA-256 `4463390cb58ff1704b80921f9748b50c51f271440f143ac8d0633adb91a10331`: 100/100 outputs, 100 comparable source-attested rows, 18 strict string matches and 19 limited-notation matches. This result includes the corrected source-IPA metadata adapter. All downloaded ZIP hashes match GitHub artifact digests.
+
+The 18/100 and 19/100 Khmerphonemizer figures are concordance with MekongPhon source labels, not accuracy or gold agreement. Independent expert gold remains 0; accuracy remains null. The G2P adapter fix repairs the comparison report only; it does not alter the engine.

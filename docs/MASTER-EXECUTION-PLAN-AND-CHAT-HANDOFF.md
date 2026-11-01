@@ -1000,3 +1000,13 @@ The Khmer evidence matrix now contains the full Ishida phone-to-grapheme mapping
 - GREEN implementation: a redistributable license must explicitly set `commercial_use: true` and boolean `attribution_required` + `share_alike`; the JSON Schema now encodes the same conditional rule. Code/schema commit: `b3104d6815edb3950e13457f7e04bcb8f5f90145`.
 - Exact-head verification: [PR Quality checks 41340930079](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340930079) SUCCESS and [push checks 41340925788](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340925788) SUCCESS — 142 Python tests + 31 subtests; browser register-shifter contract, web checks and Vite production build passed. Optional Goruut and G2P smoke diagnostics also passed.
 - This is a conservative product-corpus eligibility rule, not a legal opinion about all uses of these licenses. Each real source still needs human rights review. No IPA gold rows were added; independent gold remains zero and accuracy remains null.
+
+
+## Release-gate threshold validation — 2026-11-01
+
+- Status: `DONE_VERIFIED`.
+- Review found that the CLI accepted zero/negative `--min-train`, `--min-dev` and `--min-test` thresholds. That could let an operator weaken a release gate below a meaningful non-empty split requirement.
+- RED evidence: the six invalid threshold cases (0 and -1 for each split) failed as expected on test-only commit `888ce85258e0c42b44e082e06023dbcd96401b96` ([run 41341526589](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41341526589)).
+- GREEN implementation: all three minimums must be positive integers. Invalid threshold configuration is added to the gate's aggregated findings rather than raised before corpus checks, preserving diagnostics for other blockers. Final code commit: `38aed74299c898461607407b730085e1b70d565d`.
+- Exact-head verification: [PR Quality checks 41341743668](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41341743668) SUCCESS — 143 Python tests + 37 subtests; browser register-shifter contract, web checks and Vite production build passed.
+- The configured release-gate defaults remain train=100, dev=25, test=25. No gold rows or IPA labels were added; independent gold remains zero and accuracy remains null.

@@ -93,3 +93,10 @@ def test_source_ipa_notation_diagnostic_preserves_phonetic_distinctions():
     # Length and aspiration must remain contrastive in this diagnostic.
     assert module.source_ipa_comparison_key("/pʰaː/") != module.source_ipa_comparison_key("/pa/")
     assert module.source_ipa_comparison_key("/ta/") != module.source_ipa_comparison_key("/tʰa/")
+
+
+def test_source_ipa_metadata_accepts_the_external_workflow_field():
+    module = load_module()
+    expected = "/pʰiə.saː/"
+    assert module.source_ipa_from_metadata({"source_reported_ipa": expected}) == expected
+    assert module.source_ipa_from_metadata({"ipa": expected}) == expected

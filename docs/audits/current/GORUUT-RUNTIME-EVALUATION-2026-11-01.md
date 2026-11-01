@@ -111,3 +111,16 @@ The updated harness completed on PR branch commit `b9f706473e4e03c6e446254703b7e
 - The six-row source-attested sample is 3 complete / 3 partial; its strict 1/6 and notation-only 3/6 matches are not accuracy.
 
 This confirms the coverage gate is functioning on a real 100-row run. The current PR head adds an additional empty-phonetic-token guard and associated tests; final exact-head CI remains pending.
+
+
+## Final exact-head verification — 2026-11-01
+
+The final PR #101 head `1e9cbfdf4f21514e4f39093d51ea3f923133a90a` completed all three relevant workflows:
+
+- Repository checks [41313433562](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433562): PASS (Python tests, web checks and site build).
+- Optional Khmer G2P diagnostic [41313433619](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433619): PASS; artifact [13086870731](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433619/artifacts/13086870731), ZIP SHA-256 `86ef634b67dd60ca121cfe11a8549a42e7ee2e4655447851e91a4eefffb7a1b2`. Khmerphonemizer 0.0.3 returned outputs for 100/100 words, but the source-attested comparison had 0 comparable rows because the supplied 100-word evaluation input contains no source IPA labels (`source_reported_ipa` is null). Accuracy remains null; independent gold=0. Runtime availability is verified, not phonetic correctness.
+- Pinned Goruut runtime [41313433641](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433641): PASS; artifact [13085864084](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41313433641/artifacts/13085864084), ZIP SHA-256 `469bd4f9fc0baa3e8366724e43dfcb802427eca3d70c916be1e98ff6d779583d`. Downloaded archives were independently hashed and matched GitHub artifact digests.
+
+On the 100-row MekongPhon input, Goruut returned 97 outputs and 3 no-output cases. Coverage was 70 complete, 27 partial and 3 unknown/no-output. There were 96 stable and 1 unstable result; one input carried randomization metadata across three repeats. Strict source-attested concordance was 6/100, with 6/100 on the limited notation diagnostic. The 8 engineering probes yielded 8 outputs, but only 3 had complete source coverage and 5 were partial. The server again logged missing `weights9.bin.zlib`; causality is unproven.
+
+**Disposition:** exact-head runtime and repository verification are DONE_VERIFIED. Goruut is not suitable for production. Khmerphonemizer is an available raw-output comparator, but this 100-word input has no source IPA with which to compare it; obtain a source-located, expert-adjudicated Khmer IPA set before accuracy claims. Gold remains 0 and accuracy remains null.

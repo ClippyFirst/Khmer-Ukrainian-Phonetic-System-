@@ -155,3 +155,10 @@ Cross-engine check: khmerphonemizer 0.0.3 returned 6/6 source-attested probes; 2
 ### Latest pinned Goruut run — exact PR head
 
 PR #101 exact head `eeeede50447c41df30f866bcbf77f56824b40190` built and ran successfully: [runtime workflow](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41310808284), artifact SHA-256 `34330aac3be84a438a7bdc181d715f12b745cfe6f7e15edcd4be08dcbfeb52da`. All 8 engineering and 6 source-attested lexical probes were stable across three repeats. Yet strict source-attested concordance was only 1/6 (limited notation diagnostic 3/6), with stable incomplete outputs such as `ខ្មែរ` → `kʰr`. This is not accuracy; gold=0. Missing `weights9.bin.zlib` warning remains unexplained. Do not promote Goruut.
+
+
+### Goruut dictionary ambiguity and instability
+
+The latest artifact had no RandomizationWordsCount / RandomizationWordsChoices metadata on any of the 14 inputs; all 14 were stable across three repetitions. Its problem is different: stable but incomplete dictionary output (e.g. missing vowels), not the homograph-selection instability observed in Lao/Burmese.
+
+Pinned upstream code counts dictionary homographs and falls back to a random dictionary pronunciation when no preferred entry is selected; it exposes this through `RandomizationWordsCount` / `RandomizationWordsChoices`. See the exact [selector code](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/repo/services/parts_of_speech_selector_service.go#L168-L205) and [response counter propagation](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/usecases/phonemize_usecase.go#L84-L85). Treat flagged outputs as ambiguous; the missing `weights9.bin.zlib` warning is a separate unresolved issue.

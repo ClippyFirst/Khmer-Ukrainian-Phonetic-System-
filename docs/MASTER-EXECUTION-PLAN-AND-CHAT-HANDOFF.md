@@ -980,3 +980,13 @@ The Khmer evidence matrix now contains the full Ishida phone-to-grapheme mapping
 - Exact-head verification: [Quality checks 41339636053](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636053) SUCCESS; [optional Goruut 41339636042](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636042) SUCCESS; [optional G2P smoke 41339636117](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636117) SUCCESS.
 - Verified workflow coverage: 139 Python tests + 27 subtests, browser register-shifter contract, web checks and Vite production build passed on the exact code commit.
 - Local checkout was unavailable; verification evidence is GitHub Actions. The gold corpus remains empty and empirical accuracy remains unmeasured.
+
+
+## Frozen split-manifest schema parity — 2026-11-01
+
+- Status: `DONE_VERIFIED`.
+- Review found that `assign-splits` accepted unknown properties in existing split rows even though the split JSON Schema is closed; the generator could silently discard those fields when rewriting the manifest.
+- RED evidence: regression `test_assign_splits_rejects_unknown_properties_in_existing_manifest` failed as expected on test-only commit `3fdfd9559dfc98c43c4c503b9e707f1632ebad07` ([run 41340259859](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340259859)).
+- GREEN implementation: shared `SPLIT_PROPERTIES` is now used by both cross-file validation and `assign-splits`; the generator rejects unknown fields instead of dropping them. Code commit: `64851a4572437d9185b47fcff56bde55e4f092c5`.
+- Exact-head verification: [PR Quality checks 41340405233](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340405233) SUCCESS and [push checks 41340400309](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41340400309) SUCCESS — 140 Python tests + 27 subtests; browser register-shifter contract, web checks and Vite production build passed. Optional Goruut and G2P smoke checks also passed on this head.
+- Shared implementation and regression test are byte-identical across Lao, Khmer and Burmese branches. No corpus rows or IPA labels were added; independent gold remains zero and accuracy remains null.

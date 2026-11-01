@@ -78,17 +78,17 @@ jobs:
             --language KhmerCentral \
             --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \
             --output artifacts/goruut-khmer-source-attested-diagnostic.json
-          python scripts/benchmark_goruut.py \\
-            --input mekongphon/data/splits/khmer_eval.csv \\
-            --input-format csv \\
-            --text-column orth \\
-            --expected-column pron_no_tones \\
-            --config-file goruut/configs/config.json \\
-            --runtime-version "$(go version)" \\
-            --repeat 3 \\
-            --server-log artifacts/goruut-server.log \\
-            --language KhmerCentral \\
-            --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \\
+          python scripts/benchmark_goruut.py \
+            --input mekongphon/data/splits/khmer_eval.csv \
+            --input-format csv \
+            --text-column orth \
+            --expected-column pron_no_tones \
+            --config-file goruut/configs/config.json \
+            --runtime-version "$(go version)" \
+            --repeat 3 \
+            --server-log artifacts/goruut-server.log \
+            --language KhmerCentral \
+            --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \
             --output artifacts/goruut-khmer-mekongphon-source-attested.json
       - name: Upload raw output and server log
         if: always()

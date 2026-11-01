@@ -92,3 +92,32 @@ Existing numeric thresholds (100 train / 25 dev / 25 test) are minimum engineeri
 MekongPhon source repository: https://github.com/byu-matrix-lab/MekongPhon. Its README describes data/ as lexicons, OPUS downloads, sampled sentences and splits. pipeline/README.md describes SEAlang frequency lists → IPA scraping → minor lexicon post-processing → OPUS sentence download → lexicon train/eval split → trie-based lexicon lookup to convert sentences, filtering out-of-lexicon sentences. Therefore its sentence IPA is generated through a word-lexicon lookup pipeline and should not be presumed independent sentence-level phonetic transcription. The root LICENSE path was not present in the inspected repository. No dataset-specific redistribution license was verified. The LREC proceedings CC BY-NC-4.0 notice and the paper's “verified” description do not establish data reuse rights or item-level human adjudication. Do not import/redistribute until exact files, variety, IPA convention, correction/verification process, source terms, split construction and license are verified with the maintainers.
 
 Separate candidate: https://github.com/chemvatho/Khmer-acoustic-model reports a 29,204-entry IPA dictionary and says dictionary data are CC BY-SA 4.0, distinct from the MIT code/model. Its README claims validation by native Khmer linguists, but per-entry source provenance, dialect/profile, transcription conventions and exact release must still be audited. Treat as an external comparator/source-discovery lead, not our gold.
+
+
+## Audio-source shortlist — reviewed 2026-11-01
+
+These are **audio/transcript candidates**, not IPA gold. Sentence-level recordings provide contextual tokens, not automatically citation-form lexical pronunciations. Keep contextual phonetic evaluation separate from the lexical G2P benchmark.
+
+### Common Voice Scripted Speech 27.0 — Khmer
+
+- Official catalog: https://commonvoice.allizom.org/en/datasets (catalog lists “Common Voice Scripted Speech 27.0 - Khmer”, locale `km`, CC0-1.0, MP3, 20.23 MB).
+- Dataset/version documentation: https://github.com/common-voice/cv-dataset/tree/main/datasets/scripted-speech. Scripted Speech consists of contributors reading pre-written sentences, with community validation; the current v27.0 release history is dated 2026-09-11.
+- The 20.23 MB value is archive size, not a clip/speaker count. Inspect the v27.0 manifest for validated clips, speaker counts, region metadata and transcript coverage before choosing items.
+- No IPA labels are supplied. Do not infer Phnom Penh variety or the first/second-series distribution from the locale label alone.
+
+### OpenSLR 42 — Khmer multi-speaker TTS audio
+
+- Official resource page: https://openslr.org/42 (SLR42; CC BY-SA 4.0).
+- The landing page describes high-quality transcribed Khmer audio, WAV files and a TSV line index with speaker IDs in filenames. It is manually quality-checked but may still contain errors. The currently listed archive is male-speaker audio only (866 MB).
+- This is useful as a supplementary contextual-audio source, but the male-only release is not a balanced speaker sample and the transcripts are not IPA. Preserve speaker IDs as pseudonymous source identifiers; do not treat transcript text or any aligner output as phonetic gold.
+
+### Khmer Acoustic Model dictionary — exact artifact check
+
+- Upstream: https://github.com/chemvatho/Khmer-acoustic-model.
+- Its README claims 29,204 IPA dictionary entries and says native Khmer linguists validated them; it states the dictionary data are CC BY-SA 4.0, distinct from the MIT code/acoustic model.
+- At the inspected default-branch tree, `dictionary/khmer_ipa.dict` returned 404; only `dictionary/khmer_ipa_sample.dict` was retrievable, containing six entries. Therefore the full 29,204-entry artifact is **not reproducibly available at the documented path in the inspected branch**.
+- The six-row sample uses space-separated symbol sequences (for example, `p r a p`), not the project's current typed IPA object contract. The README does not establish the target variety, per-entry source locators, or a complete phonemic/broad/narrow convention. Treat it as a methodology/comparison lead only, not gold.
+
+### Collection decision
+
+For a Phnom Penh lexical G2P benchmark, prioritize controlled citation-form recordings from confirmed Phnom Penh speakers and two blind expert transcriptions. Common Voice and OpenSLR42 can supply supplementary contextual speech and candidate words, but do not combine their contextual realizations with citation-form labels. The Khmer Acoustic Model dictionary remains a comparator candidate until the full artifact, source provenance and IPA convention can be inspected.

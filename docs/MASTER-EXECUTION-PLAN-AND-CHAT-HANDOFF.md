@@ -935,3 +935,25 @@ The rights registry does not itself grant permission. Each real source still nee
 
 - [KHMER vowel × series × coda evidence matrix](docs/audits/current/KHMER-VOWEL-SERIES-CODA-EVIDENCE-MATRIX-2026-11-01.md): specialist ɑ/ɔ-class mappings, Chem (2020) sample/method and coda effects, and missing contextual cells.
 - Wayland & Guion's /r/-loss remains restricted to the studied Phnom Penh colloquial profile; no universal deletion rule was introduced.
+
+
+## 2026-11-01 implementation and verification closeout
+
+- Starting main SHA: c0a2b33c86791b6546e1158c62043fd23acc1f60 (main remains unchanged).
+- Implementation branch: feat/ipa-gold-corpus-20261101-review.
+- Comprehensive PR: [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103); PR-head implementation checkpoint SHA: 608d2d92c5e883c095bf0c679b7353bd442ee55c.
+- PR CI: [Quality checks](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41337410745) SUCCESS — 136 Python tests + 27 subtests; Khmer register-shifter browser contract, web checks and Vite build passed.
+- This branch includes the previous documentation-only PR #102 in full; #102 was closed as superseded after its content was verified in #103. No branch was deleted.
+- Legacy PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/64) remains open and untouched: it is a divergent legacy CSS/layout patch and was not blindly merged.
+- Existing feature branch feat/independent-ipa-gold-corpus-20261101 was left untouched because its history is substantially broader; the narrower review branch is the PR source.
+- No local checkout was available; all verification claims above are GitHub Actions evidence, not local command runs.
+
+### Final task ledger
+
+- Corpus schemas/runtime validator, license registry, frozen group-safe splits and typed benchmark: DONE_VERIFIED (implementation and CI only).
+- Actual independent expert annotations and adjudicated gold: BLOCKED — no qualified annotators or adjudicated source dataset supplied; gold.tsv remains header-only, gold count 0, accuracy null.
+- Full vowel × consonant-series × final matrix and independent /r/-loss replication: PARTIAL/BLOCKED — see the Khmer evidence matrix; Chem's four-speaker Phnom Penh sample and Wayland & Guion's two-speaker /r/-loss sample are profile-limited.
+- Release gate: PARTIAL — count, rights, adjudication and split checks exist and fail closed on empty gold; project owner must require the gate in repository rulesets/release procedure, and feature-coverage thresholds require an expert-approved matrix.
+- Manual UI/accessibility review: TODO.
+
+**Readiness:** research infrastructure is substantially improved; the language system remains a research prototype, not production/release-ready.

@@ -1,7 +1,7 @@
 # Khmer linguistic completion register — 2026-11-01
 
-**Baseline:** `main` `c0a2b33c86791b6546e1158c62043fd23acc1f60`.
-**Latest exact-main engineering evidence:** Quality [41326462947](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462947) and Pages/deployed smoke [41326462993](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462993) succeeded.
+**Baseline:** `main` `7b0a8f8c8661707afd9f0c58a94e2678789adf86`.
+**Latest exact-main engineering evidence:** Quality checks [41424887161](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41424887161) and Pages/deployed smoke [41424887132](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41424887132) succeeded.
 **Scope:** continue the existing master handoff; this register does not replace it.
 
 ## Evidence-based task ledger

@@ -1179,3 +1179,12 @@ Current key findings:
 - The next step is a pinned, same-input, held-out benchmark with independent expert references and feature-specific metrics; exact model/dataset versions and provenance must be recorded before execution.
 
 No runtime engine benchmark was run in this documentation update. Hosted CI verifies repository engineering, not linguistic correctness or benchmark accuracy.
+
+
+## External engine smoke evidence — 2026-11-02
+
+Detailed methods, benchmark context, limitations and per-feature acceptance requirements: [external G2P benchmark and engine coverage audit](research/external-g2p-benchmark-and-engine-coverage-2026-11-02.md).
+
+Khmer: khmerphonemizer 0.0.3, 100 source-attested MekongPhon examples, 100 outputs, 18 strict / 19 limited-normalized matches; Goruut 100 rows, 6/100 exact, 97 outputs, 3 failures, 70 complete/27 partial/3 unknown coverage, 27 unphonemized fragments. No independent gold; accuracy=null. Runs: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092574 and https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092578.
+
+These are raw-output concordance/coverage diagnostics, not accuracy measurements. All independent gold counts remain zero and accuracy remains null. The missing `weights9.bin.zlib` diagnostic in Goruut's logs is recorded for investigation. Declared language support is not accepted as proof of adequate coverage. No gold labels or production rules were changed based on these runs.

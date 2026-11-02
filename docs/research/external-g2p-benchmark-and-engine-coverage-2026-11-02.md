@@ -57,3 +57,12 @@ A meaningful comparator must be evaluated on consonant series and coarticulation
 ## Evidence limitations
 
 The MekongPhon abstract reports aggregate corpus size and CER but does not prove coverage of every Khmer series × vowel × coda × profile interaction required here. Vendor/project language support lists are not independent linguistic evaluations. No new runtime benchmark was executed in this documentation-only audit.
+
+## Hosted raw-output diagnostics on the audit branch — 2026-11-02
+
+Exact branch-head runs:
+- Quality checks: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092577 (job was still running at the first status check).
+- Pinned Khmer phonemizer diagnostic: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092574 — SUCCESS as a raw-output benchmark. On 100 source-attested MekongPhon examples, engine version 0.0.3 returned 100/100 outputs. Strict string matches=18/100; limited notation-normalized matches=19/100. Independent gold=0; accuracy=null.
+- Pinned Goruut KhmerCentral raw-output probe: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092578 — SUCCESS as raw-output collection. On the 100-row source-attested diagnostic, exact matches=6/100 (6%); notation-normalized matches=6/100; successful outputs=97, failed=3, complete source coverage=70, partial=27, unknown=3, and 27 unphonemized source fragments. The run logged missing `weights9.bin.zlib`; investigate before treating the runtime as stable.
+
+All results remain `NOT_SCORED_NO_INDEPENDENT_GOLD`. The source-attested MekongPhon rows are not independent expert adjudication for this project's exact Phnom Penh profile. The 100-row concordance counts are diagnostic only and must not be called accuracy. They do show that declared language support is not enough to establish acceptable coverage or correct IPA output.

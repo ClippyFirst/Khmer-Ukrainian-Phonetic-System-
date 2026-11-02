@@ -190,3 +190,9 @@ The validator now requires the `final_ipa` key to be present for every adjudicat
 ### Unresolved adjudication explicit-null positive-path coverage — 2026-11-02
 
 The regression suite now also proves the valid complementary case: `decision=UNRESOLVED` with an explicitly present `final_ipa: null` is accepted and remains excluded from adjudicated gold. Test commit `8111f28c34b7b3d7118d4f428178e4e90591c336`; exact-head PR CI [41407396214](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41407396214) SUCCESS. 148 pytest tests + 44 subtests; web checks and production build passed. Optional diagnostics: [41407396207](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41407396207), [41407396326](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41407396326) SUCCESS. This does not create IPA labels or change the gold count (still 0) or accuracy (still null).
+
+## External G2P engine coverage audit — 2026-11-02
+
+- **PARTIAL (DONE_VERIFIED diagnostic execution):** Khmer phonemizer 0.0.3 returned 100/100 outputs on a 100-row MekongPhon sample, with 18 strict / 19 limited-normalized matches. Goruut source snapshot `b224bde` achieved 6/100 exact matches, 3 failures, 70 complete / 27 partial / 3 unknown coverage, and 27 unphonemized fragments. See `docs/research/external-g2p-benchmark-and-engine-coverage-2026-11-02.md` and Actions runs 41409092574 / 41409092578.
+- **NOT SCORED:** these are source-attested diagnostic concordance counts, not independent gold or accuracy; independent expert-adjudicated IPA gold remains 0.
+- **TODO:** investigate series × vowel × coda mismatches and Goruut's missing `weights9.bin.zlib`; evaluate MekongPhon model and NCKL-derived Khmer respelling as separate IPA and syllabification baselines.

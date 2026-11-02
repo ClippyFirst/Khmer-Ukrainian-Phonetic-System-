@@ -201,3 +201,11 @@ The regression suite now also proves the valid complementary case: `decision=UNR
 ## Goruut language-bundle asset status correction — 2026-11-02
 
 The previous TODO wording suggesting that this repository can simply recover or fix `weights9.bin.zlib` is superseded. Inspection of the exact upstream Goruut source tree at `b224bde02151f8f86d0fe260804e4ca743bda620` shows no `weights9.bin.zlib` in `dicts/lao/`, `dicts/khmer/central/`, or `dicts/burmese/`; the earlier `weights7` and `weights8` assets are present. This is an upstream language-bundle omission in the pinned snapshot, not a missing project-owned file. Status: **BLOCKED (upstream dependency)**. Acceptance: upstream publishes the asset or documents the expected model-tier fallback, and a controlled same-input comparison plus independent expert IPA gold establishes whether the asset changes relevant language coverage. Do not synthesize weights, download unpinned substitutes, or treat the warning as a failed workflow. See the external-engine research audit and canonical handoff for the evidence.
+
+
+## Additional Khmer transformer and lexical baseline inventory — 2026-11-02
+
+| ID | Priority | Status | Evidence / acceptance |
+|---|---|---|---|
+| KHM-MEKONGPHON-TRANSFORMER-001 | P1 | TODO | [`byumatrixlab/khmer-ipa`](https://huggingface.co/byumatrixlab/khmer-ipa) is a 33.6M-parameter BERT encoder–decoder trained from MekongPhon, with 128-token maximum input. Pin immutable revision/checksum, verify variety and IPA conventions, and compare on identical held-out lexical groups with series/register, vowel, length, coda, stress, /r/-loss and boundary diagnostics. Model output is not gold. |
+| KHM-ACOUSTIC-LEXICON-001 | P2 | TODO | [`chemvatho/Khmer-acoustic-model`](https://github.com/chemvatho/Khmer-acoustic-model) reports 29,204 IPA dictionary entries. Audit the full dictionary's notation and orthographic coverage separately; it is a lexical/forced-alignment resource, not a G2P engine. Do not interpret its phoneme/word alignment F1 as IPA-generation accuracy. |

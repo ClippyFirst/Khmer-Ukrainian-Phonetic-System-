@@ -398,7 +398,6 @@ if (typeof document !== "undefined") {
     }
     empty.hidden = true;
     results.hidden = false;
-    $("source-result").textContent = data.source;
     romanizationResult.textContent = khmerToLatin(data.source);
     $("ipa-result").textContent = data.ipa;
     $("ua-result").textContent = data.ua;

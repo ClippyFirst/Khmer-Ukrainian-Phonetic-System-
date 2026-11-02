@@ -46,7 +46,7 @@ MekongPhon (LREC 2026) reports 1.3 million Khmer and 367,000 Lao orthography–I
 
 ### Khmer Acoustic Model dictionary
 
-https://github.com/chemvatho/Khmer-acoustic-model reports a 29,204-entry IPA dictionary and native-linguist validation; its README states that dictionary data are CC BY-SA 4.0, distinct from the MIT code/model license. This is promising for external comparison and source discovery, not automatically our gold. Inspect actual dictionary, metadata, exact commit, per-entry provenance, variety/profile, transcription consistency, and rights before using any entry. Do not copy entries just because the repository is public.
+https://github.com/chemvatho/Khmer-acoustic-model is a candidate MFA forced-alignment/acoustic resource and dictionary source, not a standalone text G2P model. Its main README claims 29,204 dictionary entries and CC BY-SA 4.0 data; dictionary/README instead reports 33,091 entries and CC BY 4.0. The tracked LICENSE is MIT for software, and the full dictionary is not in the tracked Git tree. Treat dictionary rights and exact version as unresolved until the maintainer clarifies the artifact/license and supplies a checksum. Do not copy entries or treat them as gold merely because the repository is public.
 
 ## Controlled workflow
 

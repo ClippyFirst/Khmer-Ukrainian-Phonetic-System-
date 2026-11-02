@@ -284,3 +284,15 @@ Khmer: DONE_VERIFIED — current-main Pages build/deploy smoke passed (run 41424
 ## Exact-head browser test result — 2026-11-02
 
 - Exact final browser gate: [41532854000](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41532854000) SUCCESS. All five Chromium browser tests passed: `ក` result, known lexical phrase, unsupported mixed input, romanization separation and clear/reset. The preceding deterministic quality workflow [41532853923](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41532853923) completed all substantive validation, Python tests, web checks and Vite build successfully; only runner cleanup was still in progress when inspected.
+
+
+## New source-level evidence — Phnom Penh Khmer profile and G2P comparators (2026-11-03)
+
+| ID | Status | New evidence | Acceptance / limitation |
+|---|---|---|---|
+| KHM-PROFILE-SOURCE-001 | PARTIAL | Chem Vatho (2020), DOI [10.61945/cjbar.2020.2.2.3](https://doi.org/10.61945/cjbar.2020.2.2.3), one-page poster; 21 initially recruited, but acoustic results are from four Phnom Penh speakers (2 men, 2 women; 20–50), with reading tasks. F1/F2 and duration reported; normalization/method details and some measurements are internally unclear. | Supports limited vowel-profile context only. Not a representative dialect sample or evidence for consonants, tone, codas, or a complete G2P. Seek stronger multi-speaker primary studies. |
+| KHM-PP-DIALECT-SOURCE-001 | PARTIAL | Sakamoto (1968), DOI [10.20495/tak.6.2_290](https://doi.org/10.20495/tak.6.2_290), principally one Phnom Penh informant; records style-sensitive weak syllable behavior and proposed ST/PP correspondences. | Treat as single-informant descriptive analysis; compare with modern multi-speaker evidence before generalizing. Keep the selected careful-citation profile explicit. |
+| KHM-G2P-2019-EVIDENCE-001 | PARTIAL | Sar & Tan (2019), DOI [10.1016/j.procs.2019.11.140](https://doi.org/10.1016/j.procs.2019.11.140), reports PER 23.2% → 11.1% after vowel-tag features. | Comparator only until primary-paper split, profile, lexicon provenance, phoneme convention and rights are inspected. Published PER is not this repository's accuracy. |
+| KHM-GOLD-PILOT-001 | BLOCKED | No gold labels or adjudications created by this source audit. | Requires profile-specific lexical sampling, frozen IPA convention, two independent qualified annotators, separate adjudicator, source locators and rights-cleared packets. Gold remains 0; accuracy null. |
+
+No source in this audit licenses deterministic colloquial /r/-loss for the careful-citation profile. No IPA values or production phonology changed.

@@ -254,3 +254,6 @@ Comparator concordance is not accuracy. See the dated benchmark review in the ca
 
 
 | BENCH-BYU-KHM-001 | PARTIAL | Inspected MekongPhon at `f80f6c1840c4818b51e05f2e00cded4701a5b662`: lexical split 7,940 train / 100 eval, 0 orthographic overlap; SEAlang `headley77` source path verified. BYU model card declares Apache-2.0 weights, while MekongPhon repository license metadata is null. NCKL-derived 38,629-row Khmer-script G2P lead is not IPA and has commercial-use terms to verify. | Pin exact model/tokenizer revisions and hashes; establish dataset/NCKL rights; confirm Phnom Penh careful-citation compatibility; run 100 lexical OOV cases as external diagnostics only; expert-adjudicate discrepancies. Not gold and not accuracy. |
+
+
+**Clarification to BENCH-BYU-KHM-001:** the included `data/splits/khmer_train.csv` / `khmer_eval.csv` files are lexicon partitions, not demonstrated model-training manifests. MekongPhon `data/README.md` misdescribes the inspected files as OPUS sentence splits; `pipeline/convert_khmer.py` references different train/full-lexicon paths, and the split script's Khmer invocation is commented out. Exact checkpoint-to-split linkage is unverified. Keep the 100 items as a candidate diagnostic, not a validated model holdout.

@@ -1366,3 +1366,14 @@ The 2026 literature search surfaced Woźnica (2013), [Procesy fonetyczno-fonolog
 The same literature review reinforces that colloquial Phnom Penh /r/-loss involves multiple cues (F0, breathiness, VOT and sometimes vowel quality), and is style- and speaker-sensitive. It does not justify deterministic /Cr/ → aspiration in careful citation speech; the removed regex stays removed.
 
 For the 30-lexeme expert pilot, report exact normalized agreement and alignment-aware feature-weighted transcription agreement, not raw symbol percent alone. Cucchiarini (1996), [Assessing transcription agreement](https://doi.org/10.3109/02699209608985167), details limitations of raw percentage agreement; Oller & Ramsdell (2006), [A weighted reliability measure for phonetic transcription](https://doi.org/10.1044/1092-4388(2006/100)), motivates feature-weighted assessment. Keep segment, series/inherent-vowel, vowel-quality/length, coda, cluster-boundary and profile-specific variation disagreements separate. No IPA labels or runtime rules changed.
+
+
+## MekongPhon artifact-level audit — 2026-11-03
+
+MekongPhon is now confirmed as a high-priority external baseline candidate, not an unavailable lead. The LREC 2026 paper [MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer](https://doi.org/10.63317/4bb9rvdshu4z) reports 1.3 million Khmer and 367,000 Lao orthography–IPA pairs and under 2% CER on held-out sets. The official proceedings page states the paper/proceedings are CC BY-NC 4.0; that does not by itself establish the separate data/model artifact licenses.
+
+The public [BYU MATRIX Lab repository](https://github.com/byu-matrix-lab/MekongPhon), main tree SHA f80f6c1840c4818b51e05f2e00cded4701a5b662, has no tracked LICENSE file and no recognized GitHub license. Its current Khmer lexicon is 8,040 rows, split into 7,940 train + 100 eval, with zero orthographic overlap. The scraper uses SEAlang source headley77 and takes the first matching entry. These entries are not independently adjudicated IPA gold.
+
+The checked-in split helper writes *_train_cleaned.csv / *_eval_cleaned.csv, while the sentence conversion script refers to different absent file paths and uses the full lexicon as its evaluation mapping. The public repo therefore does not, by itself, demonstrate that the 100-word holdout underlies the reported held-out CER. OPUS NLLB, ParaCrawl Bonus and OpenSubtitles sentence data are downloaded externally and not present in the tracked tree. Treat the paper's CER as an external paper-reported result, not project accuracy.
+
+The [Khmer IPA model](https://huggingface.co/byumatrixlab/khmer-ipa) HF model card declares Apache-2.0 for the model artifact. Training-data rights, source lexicon rights, profile compatibility and exact evaluation provenance remain unverified. Do not import data or promote model outputs until these checks are resolved. No code, lexicon, IPA gold or runtime rule changed.

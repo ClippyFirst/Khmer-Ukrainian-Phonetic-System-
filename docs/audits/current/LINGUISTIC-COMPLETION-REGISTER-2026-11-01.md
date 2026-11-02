@@ -296,3 +296,14 @@ Khmer: DONE_VERIFIED — current-main Pages build/deploy smoke passed (run 41424
 | KHM-GOLD-PILOT-001 | BLOCKED | No gold labels or adjudications created by this source audit. | Requires profile-specific lexical sampling, frozen IPA convention, two independent qualified annotators, separate adjudicator, source locators and rights-cleared packets. Gold remains 0; accuracy null. |
 
 No source in this audit licenses deterministic colloquial /r/-loss for the careful-citation profile. No IPA values or production phonology changed.
+
+
+## Follow-up source lead and annotation acceptance — 2026-11-03
+
+| ID | Status | Evidence update | Acceptance / limitation |
+|---|---|---|---|
+| KHM-STANDARD-VARIETY-REVIEW-001 | TODO | Woźnica (2013), [Procesy fonetyczno-fonologiczne w nieregionalnej odmianie języka khmerskiego](https://www.semanticscholar.org/paper/f6245812599bb5f8ccc9751e780e7ec70facc8ba), surfaced as an 80-speaker study arguing for a country-wide nonregional standard; full text unavailable in this pass. | Retrieve/inspect full paper; verify speaker distribution, elicitation, phonological scope and criteria before revising any profile decision. Current Khmer careful-citation profile remains an explicit project profile, not a universal standard claim. |
+| KHM-R-LOSS-STYLE-001 | PARTIAL | Kirby (2014) research summaries describe colloquial Phnom Penh /r/-loss with multiple cues including F0, breathiness and VOT. | No deterministic /Cr/ rewrite in careful citation profile; retain style/speaker-specific evidence separately. |
+| KHM-GOLD-AGREEMENT-001 | TODO | Cucchiarini (1996), DOI [10.3109/02699209608985167](https://doi.org/10.3109/02699209608985167); Oller & Ramsdell (2006), DOI [10.1044/1092-4388(2006/100)]. | Pilot reports exact normalized and alignment-aware feature-weighted agreement, separate vowel/length/coda/cluster/profile diagnostics, unresolved alternatives and adjudication rate. Raw percent agreement is supplementary. |
+
+No phonology rule or IPA label changed. Independent expert gold remains 0; accuracy null.

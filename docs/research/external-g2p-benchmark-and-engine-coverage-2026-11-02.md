@@ -14,7 +14,13 @@ The paper abstract reports 1.3 million Khmer orthographic–IPA pairs and a Tran
 
 Reference: https://aclanthology.org/2026.lrec-1.129/
 
-### Khmer G2P research benchmark (2019)\n\n“Applying Linguistic G2P Knowledge on a Statistical Grapheme-to-phoneme Conversion in Khmer” (Procedia Computer Science, 2019, DOI 10.1016/j.procs.2019.11.140) reports that adding linguistic vowel tags reduced PER from 23.2% to 11.1% and WER from 69.6% to 51.4% in its experiment. This is a direct language-specific benchmark showing the value of explicit linguistic structure. Its dataset, normalization, split, phone inventory and dialect must be recovered before comparing those numbers with modern engines or this repository.\n\nReference: https://www.sciencedirect.com/science/article/pii/S1877050919318502\n\n### Khmer G2P / NCKL Dictionary 2022-derived dataset
+### Khmer G2P research benchmark (2019)
+
+“Applying Linguistic G2P Knowledge on a Statistical Grapheme-to-phoneme Conversion in Khmer” (Procedia Computer Science, 2019, DOI 10.1016/j.procs.2019.11.140) reports that adding linguistic vowel tags reduced PER from 23.2% to 11.1% and WER from 69.6% to 51.4% in its experiment. This is a direct language-specific benchmark showing the value of explicit linguistic structure. Its dataset, normalization, split, phone inventory and dialect must be recovered before comparing those numbers with modern engines or this repository.
+
+Reference: https://www.sciencedirect.com/science/article/pii/S1877050919318502
+
+### Khmer G2P / NCKL Dictionary 2022-derived dataset
 
 The public `phonsobon/khmer-G2P` dataset reports 38,629 word-to-pronunciation pairs (37,755 unique words), split by word into train/validation/test. Pronunciation is Khmer-script respelling with syllable separators, not IPA. It preserves multiple accepted readings for some words and documents a standard/NCKL dictionary scope.
 

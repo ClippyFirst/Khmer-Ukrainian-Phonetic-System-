@@ -1253,3 +1253,23 @@ Main `7b0a8f8c8661707afd9f0c58a94e2678789adf86` has exact-main Quality checks 41
 - Next genuine blockers: independent expert-adjudicated IPA gold (0 rows); approved IPA convention, two qualified annotators, separate adjudicator, curator/blind intake and rights-cleared 30-lexeme source packets; full vowel × series × length × coda/context adjudication and manual accessibility QA.
 - PR remains open and mergeable. Issue [#104](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/issues/104) now marks the single-profile decision complete; the gold pilot remains open.
 
+
+
+## Engineering-method application — 2026-11-02
+
+**Status: DONE_VERIFIED (repository-context integration and exact-head engineering CI only).** Applied the three requested engineering references in this repository without importing external runtime dependencies or duplicating their skill trees.
+
+- **Superpowers:** scoped the task, checked the relevant entry points and acceptance constraints, and used evidence-gated verification. No production behavior was changed in this batch, so no artificial test-only change or TDD cycle was introduced.
+- **Matt Pocock Skills:** added the repository-specific domain glossary and GitHub issue-tracker configuration so downstream research, interface design and code-review work has stable project vocabulary and tracker instructions.
+- **Ponytail:** added a source-verified codebase map that follows the real execution/data flow, identifies high-risk seams and lists the actual verification commands. No speculative abstraction or dependency was added.
+- **Agent entry point:** AGENTS.md links all three context documents and refreshes upstream method pins to Superpowers 2ce8aa1, mattpocock/skills 4ae2317, and Ponytail 96608e0.
+
+**Files:** GLOSSARY.md; docs/agents/issue-tracker.md; docs/agents/codebase-map.md; AGENTS.md.
+
+**Context-file commits:** glossary 36a35f06f4cf340e609cd7fe29d7045caa76cbb5; issue tracker 8ce9112408c1cc468b11ee8f6353d45e7613a233; codebase map 30a9f69d5993781406a37a886bf3aa2e2ec2570e; AGENTS 839761da96bd7ffc9829a9b1190ae341f32194ee.
+
+**Exact-head verification for the context-file head:** [workflow 41468962341](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41468962341) — SUCCESS. This verifies repository CI, not linguistic accuracy, independent IPA gold, expert review or manual accessibility.
+
+The map distinguishes orthographic structural analysis, register resolution, an IPA-string profile validator and target mapping; it does not misstate this as a complete Khmer orthography-to-IPA engine.
+
+**Scope note:** this batch changes agent navigation and engineering workflow only. It does not add IPA labels, import external corpora, alter runtime behavior, or change the current empirical accuracy status. Continue from the existing language-specific blockers in the completion register.

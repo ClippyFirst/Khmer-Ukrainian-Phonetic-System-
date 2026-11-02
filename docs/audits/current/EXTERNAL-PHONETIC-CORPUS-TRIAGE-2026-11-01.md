@@ -60,3 +60,16 @@ The three-repeat raw outputs are preserved in workflow artifacts and summarized 
 ## Cross-engine comparison update
 
 Cross-engine check: khmerphonemizer 0.0.3 returned 6/6 source-attested probes; 2/6 strict IPA strings and 6/6 limited-notation matches. Goruut returned 6/6 stable outputs but only 1/6 strict and 3/6 limited-notation matches. This small source-attested sample favors khmerphonemizer as a comparator, not as proven production phonology. No independent gold exists.
+
+
+## MekongPhon and Khmer Acoustic Model primary-artifact audit — 2026-11-03
+
+### MekongPhon
+
+Shurtz et al. (2026), [MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer](https://doi.org/10.63317/4bb9rvdshu4z), reports 1.3m Khmer and 367k Lao orthography–IPA pairs and under 2% held-out CER. LREC proceedings are CC BY-NC 4.0; that does not prove the separately hosted corpus license. The public [BYU MATRIX Lab repository](https://github.com/byu-matrix-lab/MekongPhon), tree SHA f80f6c1840c4818b51e05f2e00cded4701a5b662, has no tracked LICENSE. Khmer word lexicon: 8,040 rows; split 7,940 train + 100 eval, no orthographic overlap. Scraper uses SEAlang source headley77 and first matching entry. The splitter output names do not match converter input paths; evaluation mapping points to the full lexicon, not the 100-item holdout; OPUS sentence data is downloaded externally. The public tree therefore does not demonstrate that the 100-word lexeme holdout produced the published held-out CER. The [Khmer IPA model card](https://huggingface.co/byumatrixlab/khmer-ipa) declares Apache-2.0 for the model artifact, but not for the training data or scraped source dictionaries. Candidate external baseline only, not gold.
+
+### Khmer Acoustic Model / dictionary
+
+[chemvatho/Khmer-acoustic-model](https://github.com/chemvatho/Khmer-acoustic-model), tree SHA 2714994b41ccf875c5b6f6182b48a72f13632dbf, is an MFA forced-alignment acoustic resource, not a standalone text G2P. README claims 137.01h / 149,566 audio files and a 29,204-entry native-linguist-validated IPA dictionary; alignment MAE/RMSE/F1 measure boundary accuracy, not G2P. Main README says dictionary CC BY-SA 4.0 / 29,204 entries; dictionary/README says CC BY 4.0 / 33,091 entries. Tracked LICENSE is MIT for software; full dictionary and model zip are absent from tracked tree (only six-entry sample). No item-level provenance, dialect/speaker distribution, annotation manual, double-annotation/adjudication protocol or reproducible split found. Treat dictionary rights and exact artifact/version as BLOCKED pending maintainer clarification. The cited Interspeech 2026 paper title was not located in the official ISCA Archive search in this pass.
+
+No data or model imported. Neither resource is project IPA gold; accuracy remains null.

@@ -1195,3 +1195,12 @@ These are raw-output concordance/coverage diagnostics, not accuracy measurements
 Goruut was fetched from upstream source snapshot `b224bde`, not a release tag. The Khmer phonemizer was version 0.0.3. Added the 2019 Khmer G2P paper benchmark (PER 23.2% → 11.1%; WER 69.6% → 51.4%) as separate historical research evidence.
 
 The detailed research audit is authoritative for engine versions, benchmark limitations, and measured diagnostic values. Do not describe the Goruut run as release-pinned; it used the captured upstream source revision stated above.
+
+
+## Verification checkpoint for the 2026-11-02 external-engine audit
+
+Research audit and completion register are now updated. Last register commit before this handoff update: `85f7537cfa59fe839fad11076f692a70770f1709`.
+
+Quality checks, Khmer G2P diagnostic and Goruut raw-output workflows passed on the same code state before the final register-only documentation commit: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409309736, 41409309726, 41409309834.
+
+The commits after those workflow runs changed only research-audit / handoff / completion-register documentation, not executable code. Do not treat hosted diagnostic jobs as gold evaluation: all independent gold counts remain zero. The current review branch remains ahead of `main` and has not been merged.

@@ -1,6 +1,6 @@
 name: Deploy site to GitHub Pages
 
-"on":
+on:
   push:
     branches:
       - main
@@ -35,6 +35,12 @@ jobs:
 
       - name: Build site
         run: npm run build
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Exercise production site in Chromium
+        run: npm run test:browser
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6

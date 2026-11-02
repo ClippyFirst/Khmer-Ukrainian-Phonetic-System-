@@ -27,14 +27,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           repository: byu-matrix-lab/MekongPhon
           ref: f80f6c1840c4818b51e05f2e00cded4701a5b662
           path: mekongphon
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install the optional benchmark engine
@@ -68,7 +68,7 @@ jobs:
       - name: Run raw-output benchmark (not an accuracy score)
         run: python scripts/benchmark_g2p.py --corpus artifacts/external-g2p/mekongphon-khmer-eval.json --output artifacts/external-g2p/khmer-phonemizer-mekongphon.json
       - name: Upload diagnostic output
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: khmer-phonemizer-raw-output
           path: artifacts/external-g2p/

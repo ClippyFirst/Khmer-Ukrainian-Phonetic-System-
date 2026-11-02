@@ -240,3 +240,7 @@ The service separates the phonetic IPA-first route from the orthographic romaniz
 - [`data/khmer/romanization_marks_numerals.csv`](data/khmer/romanization_marks_numerals.csv) — 6 diacritic and 10 numeral rows.
 
 These files separate source romanization from Ukrainian target proposals and preserve explicit evidence statuses. They are research tables, not proof that the runtime BGN/PCGN engine or romanization → Ukrainian syllable adapter is complete.
+
+## Independent IPA gold corpus
+
+The project uses a provenance-backed, double-annotated IPA gold workflow. See [the corpus protocol](docs/ipa-gold-corpus.md) and [the language-specific phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md). The corpus is currently empty by design; no phonetic accuracy claim is available until expert adjudication is complete.

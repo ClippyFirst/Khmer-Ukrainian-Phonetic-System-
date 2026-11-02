@@ -251,3 +251,6 @@ The three references are used as methods, not runtime dependencies: Superpowers 
 | BENCH-REVIEW-001 | PARTIAL (existing diagnostic evidence reviewed) | Reviewed fixtures, corpus files, gold lifecycle files, benchmark harnesses and external raw-output reports. Exact-head engineering CI: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41469248955 SUCCESS. | Independent expert gold remains 0; resolve profile/convention, rights, held-out split and double-annotation/adjudication blockers before accuracy scoring. |
 
 Comparator concordance is not accuracy. See the dated benchmark review in the canonical master handoff for language-specific results and acceptance criteria.
+
+
+| BENCH-BYU-KHM-001 | PARTIAL | Inspected MekongPhon at `f80f6c1840c4818b51e05f2e00cded4701a5b662`: lexical split 7,940 train / 100 eval, 0 orthographic overlap; SEAlang `headley77` source path verified. BYU model card declares Apache-2.0 weights, while MekongPhon repository license metadata is null. NCKL-derived 38,629-row Khmer-script G2P lead is not IPA and has commercial-use terms to verify. | Pin exact model/tokenizer revisions and hashes; establish dataset/NCKL rights; confirm Phnom Penh careful-citation compatibility; run 100 lexical OOV cases as external diagnostics only; expert-adjudicate discrepancies. Not gold and not accuracy. |

@@ -211,3 +211,11 @@ The independent IPA gold-corpus implementation and Khmer evidence matrix are in 
 ## CI action runtime audit — 2026-11-01
 
 All five workflows now use current Node.js 24-compatible action majors. Exact-head checks passed: [Quality checks 41339636053](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636053), [Goruut 41339636042](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636042), and [G2P smoke 41339636117](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636117). CI maintenance does not establish phonological accuracy or expert gold.
+
+
+## Pull-request and branch reconciliation — 2026-11-03
+
+- Legacy layout PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/64) is **closed without merge**. Its responsive intent was ported to current main by merged PR [#105](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/105), followed by merged Pages cache-buster fix [#106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/106). Do not revive the old wholesale CSS snapshot or brittle layout test.
+- Legacy documentation-only PR [#102](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/102) is **closed as superseded**; its register content was reconciled into merged PR [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103) and the current continuation branch. Its branch remains preserved.
+- Current profile/research PR [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107) and browser hotfix PR [#108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/108) remain open and mergeable, zero commits behind current main. The main branch still contains the stale source-result DOM write; #108 removes it without changing phonology. No deployment fix is claimed until merge and Pages verification.
+- No PR was merged or release published during this pass.

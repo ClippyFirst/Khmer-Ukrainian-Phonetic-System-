@@ -318,3 +318,14 @@ No phonology rule or IPA label changed. Independent expert gold remains 0; accur
 | KHM-MEKONGPHON-MODEL-001 | PARTIAL | [Khmer IPA](https://huggingface.co/byumatrixlab/khmer-ipa) HF model card declares Apache-2.0 model license. | Model artifact license does not clear training corpus or SEAlang source rights. Candidate external baseline only; verify profile and IPA convention, pin immutable model revision, then compare against independent gold. |
 
 Accuracy remains null; independent adjudicated gold remains 0. The paper's reported CER is not ClippyFirst accuracy.
+
+
+## Khmer Acoustic Model / dictionary candidate audit — 2026-11-03
+
+| ID | Status | Evidence | Acceptance / limitation |
+|---|---|---|---|
+| KHM-ACOUSTIC-MODEL-001 | PARTIAL | [chemvatho/Khmer-acoustic-model](https://github.com/chemvatho/Khmer-acoustic-model), tree SHA 2714994b41ccf875c5b6f6182b48a72f13632dbf. README claims 137.01h / 149,566 audio files and a 29,204-entry native-linguist-validated IPA dictionary; alignment MAE/RMSE/F1 are boundary metrics. | Useful acoustic-alignment/dictionary candidate, not text G2P. No independent IPA gold protocol or profile metadata documented in public files. |
+| KHM-ACOUSTIC-DICTIONARY-RIGHTS-001 | BLOCKED | README says dictionary CC BY-SA 4.0 / 29,204 entries; dictionary/README says CC BY 4.0 / 33,091 entries. Tracked LICENSE is MIT for software. Full dictionary is absent from tracked tree (only six-entry sample). | Get maintainer confirmation of exact dictionary license and version/checksum; verify source provenance and per-entry rights before any import. |
+| KHM-ACOUSTIC-MODEL-REPRO-001 | TODO | Public repo does not expose the full dictionary/model artifacts, speaker/dialect distribution, annotation manual, double-annotation/adjudication protocol or reproducible evaluation split. | Obtain exact release files, speaker/profile metadata, annotation evidence and reproducible evaluation artifacts. Do not use alignment metrics as G2P accuracy. |
+
+No dictionary rows or IPA labels imported. Independent expert gold remains 0; accuracy null.

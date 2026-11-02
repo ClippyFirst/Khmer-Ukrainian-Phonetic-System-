@@ -1204,3 +1204,12 @@ Research audit and completion register are now updated. Last register commit bef
 Quality checks, Khmer G2P diagnostic and Goruut raw-output workflows passed on the same code state before the final register-only documentation commit: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409309736, 41409309726, 41409309834.
 
 The commits after those workflow runs changed only research-audit / handoff / completion-register documentation, not executable code. Do not treat hosted diagnostic jobs as gold evaluation: all independent gold counts remain zero. The current review branch remains ahead of `main` and has not been merged.
+
+
+## Final exact-head CI reconciliation — 2026-11-02
+
+The previously pending final-head hosted workflows have now completed successfully on this repository's recorded review-branch head `86980925a7dc9eda745268b2bd1fb081d1a82713`. Runs: [Quality 41409583877](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409583877); [Khmer G2P 41409583886](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409583886); [Goruut 41409583865](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409583865). All listed jobs and steps report SUCCESS. This closes the CI-status uncertainty from the preceding checkpoint; it does not close linguistic validation or gold-data acceptance.
+
+A follow-up inspection of the pinned Goruut source tree at `b224bde02151f8f86d0fe260804e4ca743bda620` confirms that the language-specific dictionary directories for Lao, Khmer Central and Burmese do not contain `weights9.bin.zlib`; the available language assets include the earlier weight files. Therefore the recurring log warning is consistent with an absent upstream language asset in that snapshot, not evidence that our checkout step failed to fetch an existing file. The server still starts and returns outputs, but the precise model-quality impact of the missing file is not established by this probe. Keep it recorded as an upstream model-bundle coverage limitation; do not patch or synthesize model weights locally.
+
+The current review branch remains ahead of `main` and 0 commits behind; no PR was merged and no release was published. Independent expert-adjudicated gold remains 0; empirical accuracy remains null. All external-engine scores remain diagnostic concordance only.

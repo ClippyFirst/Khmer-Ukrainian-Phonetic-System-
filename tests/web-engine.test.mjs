@@ -14,7 +14,7 @@ for (const x of ["Content-Security-Policy", "src/main.js", 'id="source"', 'id="r
 for (const x of ["Регістри, шифтери та кластери", "Приголосні: українська ціль", "Голосні: контекст важливіший за знак", "/c/","/h/","/ʋ/","/w/","Валідація складних випадків","ភាសាខ្មែរ","п\u0027ієса к\u0027мае"]) {
   if (!systemHtml.includes(x)) throw new Error("system missing " + x);
 }
-for (const x of ["NOT_ESTABLISHED", "EVIDENCE_LIMITED", "BA_TO_PA_EXCEPTION", "MULTIPLE_REGISTER_SHIFTERS", "phnom_penh_colloquial", "practical-policy.json", "web-fixtures.json"]) {
+for (const x of ["NOT_ESTABLISHED", "EVIDENCE_LIMITED", "BA_TO_PA_EXCEPTION", "MULTIPLE_REGISTER_SHIFTERS", "khmer-pph-careful-citation-v1", "practical-policy.json", "web-fixtures.json"]) {
   if (!js.includes(x)) throw new Error("web adapter missing " + x);
 }
 if (js.includes("const CONSONANTS = {") || js.includes("const UA = {") || js.includes("const VOWELS = {")) {

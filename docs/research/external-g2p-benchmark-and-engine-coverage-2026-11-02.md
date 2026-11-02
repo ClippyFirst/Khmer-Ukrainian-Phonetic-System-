@@ -14,7 +14,7 @@ The paper abstract reports 1.3 million Khmer orthographic–IPA pairs and a Tran
 
 Reference: https://aclanthology.org/2026.lrec-1.129/
 
-### Khmer G2P / NCKL Dictionary 2022-derived dataset
+### Khmer G2P research benchmark (2019)\n\n“Applying Linguistic G2P Knowledge on a Statistical Grapheme-to-phoneme Conversion in Khmer” (Procedia Computer Science, 2019, DOI 10.1016/j.procs.2019.11.140) reports that adding linguistic vowel tags reduced PER from 23.2% to 11.1% and WER from 69.6% to 51.4% in its experiment. This is a direct language-specific benchmark showing the value of explicit linguistic structure. Its dataset, normalization, split, phone inventory and dialect must be recovered before comparing those numbers with modern engines or this repository.\n\nReference: https://www.sciencedirect.com/science/article/pii/S1877050919318502\n\n### Khmer G2P / NCKL Dictionary 2022-derived dataset
 
 The public `phonsobon/khmer-G2P` dataset reports 38,629 word-to-pronunciation pairs (37,755 unique words), split by word into train/validation/test. Pronunciation is Khmer-script respelling with syllable separators, not IPA. It preserves multiple accepted readings for some words and documents a standard/NCKL dictionary scope.
 
@@ -62,7 +62,7 @@ The MekongPhon abstract reports aggregate corpus size and CER but does not prove
 
 Exact branch-head runs:
 - Quality checks: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092577 (job was still running at the first status check).
-- Pinned Khmer phonemizer diagnostic: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092574 — SUCCESS as a raw-output benchmark. On 100 source-attested MekongPhon examples, engine version 0.0.3 returned 100/100 outputs. Strict string matches=18/100; limited notation-normalized matches=19/100. Independent gold=0; accuracy=null.
-- Pinned Goruut KhmerCentral raw-output probe: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092578 — SUCCESS as raw-output collection. On the 100-row source-attested diagnostic, exact matches=6/100 (6%); notation-normalized matches=6/100; successful outputs=97, failed=3, complete source coverage=70, partial=27, unknown=3, and 27 unphonemized source fragments. The run logged missing `weights9.bin.zlib`; investigate before treating the runtime as stable.
+- Khmer phonemizer 0.0.3 diagnostic: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092574 — SUCCESS as a raw-output benchmark. On 100 source-attested MekongPhon examples, engine version 0.0.3 returned 100/100 outputs. Strict string matches=18/100; limited notation-normalized matches=19/100. Independent gold=0; accuracy=null.
+- Goruut source snapshot `b224bde` KhmerCentral raw-output probe: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409092578 — SUCCESS as raw-output collection. On the 100-row source-attested diagnostic, exact matches=6/100 (6%); notation-normalized matches=6/100; successful outputs=97, failed=3, complete source coverage=70, partial=27, unknown=3, and 27 unphonemized source fragments. The run logged missing `weights9.bin.zlib`; investigate before treating the runtime as stable.
 
 All results remain `NOT_SCORED_NO_INDEPENDENT_GOLD`. The source-attested MekongPhon rows are not independent expert adjudication for this project's exact Phnom Penh profile. The 100-row concordance counts are diagnostic only and must not be called accuracy. They do show that declared language support is not enough to establish acceptable coverage or correct IPA output.

@@ -71,3 +71,16 @@ All results remain `NOT_SCORED_NO_INDEPENDENT_GOLD`. The source-attested MekongP
 ## Upstream Goruut asset inventory follow-up — 2026-11-02
 
 The warning for `weights9.bin.zlib` was checked against the exact Goruut source snapshot used in the optional probes (`b224bde02151f8f86d0fe260804e4ca743bda620`). The upstream Git tree has no such file in the language-specific dictionary directories: `dicts/lao/`, `dicts/khmer/central/`, and `dicts/burmese/`. Each directory does contain earlier model assets (including the `weights7` and `weights8` files). The warning therefore reflects an asset absent from this pinned upstream snapshot, not a failed checkout of a file that exists in the repository. The probe still completed and returned raw outputs. The impact of this absent asset on ranking, coverage, or accuracy is not quantified; treat it as a model-bundle limitation and do not create substitute weights or infer a quality delta without upstream implementation evidence and a valid gold set.
+
+
+## Additional Khmer transformer and lexical resources — 2026-11-02
+
+### BYU MATRIX Lab Khmer-to-IPA checkpoint
+
+The [`byumatrixlab/khmer-ipa`](https://huggingface.co/byumatrixlab/khmer-ipa) model card describes a 33.6M-parameter BERT encoder–decoder with separate character-level Khmer and IPA tokenizers, maximum sequence length 128, and best evaluation loss 0.1736 at checkpoint 26000 (approximately 11 epochs). The model card links its training code/data pipeline to MekongPhon. It is a priority neural G2P baseline alongside the existing `khmerphonemizer` smoke comparator, not an adjudicated reference. The card does not establish that its output convention, variety, treatment of consonant series/register, vowel length, diphthongs, coda, stress, /r/-loss, or long-input behavior matches this project's target profile. Pin the model revision and checksum before a repeatable run; report raw output and feature-specific diagnostics, not only character error.
+
+### Khmer acoustic-model pronunciation dictionary
+
+[chemvatho/Khmer-acoustic-model](https://github.com/chemvatho/Khmer-acoustic-model) reports a 29,204-entry IPA pronunciation dictionary and a 137.01-hour speech corpus. This is a lexical-resource/forced-alignment asset, not a grapheme-to-phoneme engine. Its README reports phoneme-level alignment F1 0.360 and word-level alignment F1 0.120; these are alignment metrics, not IPA generation accuracy. The published inventory and sample dictionary require notation/profile review before use as a comparator: the README lists forms such as `-c`, `tɕh`, and parenthesized `(f)`, which need explicit interpretation rather than automatic normalization to project IPA. A next diagnostic may measure orthographic lexicon coverage and preserve dictionary IPA verbatim; it must not treat dictionary presence or forced-alignment scores as G2P correctness.
+
+**Assessment:** Khmer neural checkpoint = PRIORITY BASELINE / NOT YET PROFILE-VERIFIED; acoustic-model dictionary = useful coverage resource / NOT A G2P ENGINE. Neither changes independent gold (0) or empirical accuracy (null).

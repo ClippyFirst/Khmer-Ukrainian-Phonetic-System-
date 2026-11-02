@@ -195,4 +195,9 @@ The regression suite now also proves the valid complementary case: `decision=UNR
 
 - **PARTIAL (DONE_VERIFIED diagnostic execution):** Khmer phonemizer 0.0.3 returned 100/100 outputs on a 100-row MekongPhon sample, with 18 strict / 19 limited-normalized matches. Goruut source snapshot `b224bde` achieved 6/100 exact matches, 3 failures, 70 complete / 27 partial / 3 unknown coverage, and 27 unphonemized fragments. See `docs/research/external-g2p-benchmark-and-engine-coverage-2026-11-02.md` and Actions runs 41409092574 / 41409092578.
 - **NOT SCORED:** these are source-attested diagnostic concordance counts, not independent gold or accuracy; independent expert-adjudicated IPA gold remains 0.
-- **TODO:** investigate series × vowel × coda mismatches and Goruut's missing `weights9.bin.zlib`; evaluate MekongPhon model and NCKL-derived Khmer respelling as separate IPA and syllabification baselines.
+- **TODO:** investigate series × vowel × coda mismatches and the absent upstream Goruut `weights9.bin.zlib` asset; evaluate MekongPhon model and NCKL-derived Khmer respelling as separate IPA and syllabification baselines.
+
+
+## Goruut language-bundle asset status correction — 2026-11-02
+
+The previous TODO wording suggesting that this repository can simply recover or fix `weights9.bin.zlib` is superseded. Inspection of the exact upstream Goruut source tree at `b224bde02151f8f86d0fe260804e4ca743bda620` shows no `weights9.bin.zlib` in `dicts/lao/`, `dicts/khmer/central/`, or `dicts/burmese/`; the earlier `weights7` and `weights8` assets are present. This is an upstream language-bundle omission in the pinned snapshot, not a missing project-owned file. Status: **BLOCKED (upstream dependency)**. Acceptance: upstream publishes the asset or documents the expected model-tier fallback, and a controlled same-input comparison plus independent expert IPA gold establishes whether the asset changes relevant language coverage. Do not synthesize weights, download unpinned substitutes, or treat the warning as a failed workflow. See the external-engine research audit and canonical handoff for the evidence.

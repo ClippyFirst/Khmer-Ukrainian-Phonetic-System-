@@ -149,6 +149,8 @@ function parseSyllable(raw) {
     index += 1;
   }
 
+  // Unknown characters must not inherit a supported structural status from
+  // the recognized base consonant. Match the Python parser's fail-closed rule.
   if (unknown.length) {
     return {
       status: "INVALID_OR_UNSUPPORTED", raw, base, subscripts, vowelSigns,
@@ -191,6 +193,9 @@ function mapIpa(ipa) {
 
 function renderIpaProfile(ipa, profile) {
   if (!PROFILES.has(profile)) throw new Error("Unsupported pronunciation profile: " + profile);
+  // The selected profile is contemporary Phnom Penh careful citation speech.
+  // Colloquial /r/-loss is variable and must never be synthesized by a
+  // deterministic spelling/IPA regex in this single-profile workflow.
   return ipa;
 }
 
@@ -240,8 +245,10 @@ function deriveDeterministicIpa(analysis) {
   if (analysis.status === "INVALID_OR_UNSUPPORTED") return null;
   if (analysis.subscripts?.length || analysis.vowelSigns?.length || analysis.unknown?.length) return null;
   if (analysis.register_rule === "MULTIPLE_REGISTER_SHIFTERS" || analysis.register_rule === "MISPLACED_REGISTER_SHIFTER" || analysis.register_rule === "NON_STANDARD_SHIFTER_USE") return null;
+
   const onset = analysis.onset_ipa;
   if (!onset || onset.includes("~")) return null;
+
   const inherent = analysis.register === "first" ? "ɑː" : "ɔː";
   return onset + inherent;
 }
@@ -283,26 +290,30 @@ function renderUnknownUnit(unit, profile) {
     ipa: "⟦NOT_ESTABLISHED⟧",
     ua: "⟦НЕВСТАНОВЛЕНО⟧",
     status: analysis.status === "EVIDENCE_LIMITED" ? "EVIDENCE_LIMITED" : "NOT_ESTABLISHED",
-    note: analysis.reason ?? "Вимову цього кмерського запису не встановлено; система не виводить голосний або склад лише з неповної структури.",
+    note: "Структуру запису розпізнано, але для цієї одиниці немає достатньо встановленої орфографія → IPA моделі. Система не вгадує вимову.",
     analysis,
     profile,
   };
 }
 
 function combineStatus(items) {
-  if (!items.length) return "NOT_ESTABLISHED";
-  if (items.every((item) => item.status === "INVALID_OR_UNSUPPORTED")) return "INVALID_OR_UNSUPPORTED";
-  if (items.some((item) => item.status === "INVALID_OR_UNSUPPORTED")) return "EVIDENCE_LIMITED";
-  if (items.some((item) => item.status === "EVIDENCE_LIMITED")) return "EVIDENCE_LIMITED";
-  if (items.some((item) => item.status === "NOT_ESTABLISHED")) return "NOT_ESTABLISHED";
-  return "PROPOSED";
+  const statuses = new Set(items.map((item) => item.status));
+  const invalidCount = items.filter((item) => item.status === "INVALID_OR_UNSUPPORTED").length;
+  if (invalidCount > 0 && invalidCount === items.length) return "INVALID_OR_UNSUPPORTED";
+  if (invalidCount > 0 || statuses.has("EVIDENCE_LIMITED")) return "EVIDENCE_LIMITED";
+  if (statuses.has("NOT_ESTABLISHED")) return "NOT_ESTABLISHED";
+  if (statuses.has("PROPOSED")) return "PROPOSED";
+  return "ESTABLISHED_STRUCTURE";
 }
 
 function getStatusNotice(data) {
+  if (!data) return "";
   if (data.status === "PROPOSED") {
-    return "IPA та українське читання є дослідницькими пропозиціями для цих записів, а не підтвердженою універсальною моделлю. Перевіряйте джерела й лексичний контекст перед використанням.";
+    return "Результат має статус PROPOSED: IPA та українське читання є дослідницькими пропозиціями для цих записів, а не підтвердженою універсальною моделлю. Перевіряйте джерела й лексичний контекст перед використанням.";
   }
-  if (data.status === "EVIDENCE_LIMITED" || data.status === "NOT_ESTABLISHED") return data.note;
+  if (data.status === "EVIDENCE_LIMITED" || data.status === "NOT_ESTABLISHED") {
+    return data.note;
+  }
   if (data.status === "INVALID_OR_UNSUPPORTED") {
     return "Ввід не підтримується повністю. Перегляньте статус кожної одиниці та не використовуйте маркери непідтвердженого результату як вимову.";
   }
@@ -312,6 +323,7 @@ function getStatusNotice(data) {
 function convert(text, profile) {
   const normalized = normalize(text);
   if (!normalized.trim()) return null;
+
   const units = tokenize(normalized);
   const rendered = units.map((unit) => {
     if (unit === ZWSP) return { source: unit, ipa: " ", ua: " ", status: "PUNCTUATION", note: "U+200B ZERO WIDTH SPACE трактовано як невидиму межу слова.", profile };
@@ -321,12 +333,16 @@ function convert(text, profile) {
   });
 
   const linguistic = rendered.filter((item) => item.status !== "PUNCTUATION");
+  const analyses = linguistic.map((item) => item.analysis).filter(Boolean);
   const resolved = linguistic.filter((item) => item.status === "PROPOSED");
   const unresolved = linguistic.filter((item) => item.status !== "PROPOSED");
   const unresolvedNames = unresolved.map((item) => item.source).filter(Boolean).slice(0, 12);
   const evidenceLimited = linguistic.filter((item) => item.status === "EVIDENCE_LIMITED").length;
   const notEstablished = linguistic.filter((item) => item.status === "NOT_ESTABLISHED").length;
   const invalid = linguistic.filter((item) => item.status === "INVALID_OR_UNSUPPORTED").length;
+  // Keep aggregate output honest: unresolved units must not be concatenated
+  // with partial candidates in a way that resembles a complete transcription.
+  // Per-unit diagnostics remain available for research and inspection.
   const aggregateUnresolved = linguistic.some((item) =>
     !["PROPOSED", "ESTABLISHED_STRUCTURE"].includes(item.status)
     || /⟦/.test(item.ipa)
@@ -341,6 +357,8 @@ function convert(text, profile) {
     note: `Локальний аналіз: ${resolved.length} одиниць мають зафіксовану IPA та проєктну українську форму; ${unresolved.length} потребують окремого встановлення або перевірки (${notEstablished} не встановлено, ${evidenceLimited} з обмеженою доказовістю, ${invalid} некоректних/непідтримуваних). Некоректна одиниця більше не робить весь змішаний результат INVALID OR UNSUPPORTED; її стан ізольовано на рівні одиниці.${unresolvedNames.length ? ` Невстановлені/проблемні одиниці: ${unresolvedNames.join(" · ")}.` : ""}`,
     profile,
     units: rendered,
+    analyses,
+    vowelModel: vowels.coverage_policy,
   };
 }
 
@@ -424,7 +442,7 @@ if (typeof document !== "undefined") {
     }
     live.textContent = "Результат оновлено";
   }
-
+  
   modePhonetic.addEventListener("click", () => setOutputMode("phonetic"));
   modeRomanization.addEventListener("click", () => setOutputMode("romanization"));
   setOutputMode("phonetic");
@@ -454,4 +472,5 @@ if (typeof document !== "undefined") {
       }
     });
   });
+  
 }

@@ -13,7 +13,7 @@
 | KHM-RLOSS-001 | PARTIAL | Phnom Penh /r/-loss transformation remains profile-dependent and incompletely validated. | Define exact environment/dialect, test positive and negative minimal pairs against source-located expert labels; otherwise withhold. |
 | KHM-ROM-001 | PARTIAL | BGN/PCGN 1972 inventories are bounded, but the @gmana ASCII simplifier is not fully conformant; contextual vowel/rime rules and Ukrainian syllable adapter remain incomplete. | Full primary-source context matrix, explicit deviations, independent syllable-level Ukrainian adapter, mixed-text and ambiguity tests. |
 | KHM-G2P-001 | DONE_VERIFIED (diagnostic harness only) | Goruut has substantial partial coverage; Khmerphonemizer source concordance is not independent accuracy. | No production promotion absent gold and full source coverage; preserve raw outputs and comparator provenance. |
-| KHM-UI-001 | TODO | Manual visual, keyboard, assistive-technology and mobile QA is not established by CI. | Recorded test matrix and deployed-site results. |
+| KHM-UI-001 | PARTIAL | PR #108 adds exact-head Chromium coverage for visible IPA/Ukrainian output, unsupported-input withholding and clear/reset, plus a Pages browser gate. Production `main` remains affected until merge/redeploy; manual visual, keyboard, assistive-technology and mobile QA remain open. | Merge the hotfix; verify the Pages deployment and browser interaction on the published URL; record human keyboard, screen-reader and mobile results. |
 | KHM-REL-001 | PARTIAL | Production readiness blocked by lexical gold, contextual phonology and rights for external assets. | All release gates met; no restricted external model/data bundled. |
 
 ## Current diagnostic evidence
@@ -223,3 +223,12 @@ The older design PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phoneti
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/106), merge `7ee049aae9cc7ff571b21eabe18e962627f192a3`; the extractor now accepts an optional query string. PR CI passed (41424681328). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## Khmer production browser-output hotfix — 2026-11-03
+
+| ID | Status | Evidence | Remaining acceptance |
+|---|---|---|---|
+| KHM-WEB-RESULT-RENDER-001 | PARTIAL | On current `main` (`7b0a8f8c8661707afd9f0c58a94e2678789adf86`), `src/main.js` dereferences `#source-result` although `index.html` intentionally has no such element; every non-empty render therefore throws before result panels update. PR [#108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/108) removes only this stale write and adds three Chromium tests. Exact pre-documentation head `aad9ce32378594c0da6651e7fba757ce0dfe40f0`: Quality checks [41533500652](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41533500652) SUCCESS; browser smoke [41533500956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41533500956) SUCCESS, 3/3. | Fresh CI must pass on the documentation-updated PR head; merge #108; confirm Pages deployment; exercise non-empty input on the published URL and verify no uncaught browser errors. No production fix is claimed before merge/deploy. |
+
+The automated regression verifies: (1) `ក` visibly renders IPA `/kɑː/` and Ukrainian `ка` with no uncaught page error; (2) mixed unsupported input remains visibly withheld; (3) clear returns to the empty state. This is UI engineering evidence only; it does not alter phonology, IPA labels, gold data, or linguistic accuracy. Independent adjudicated gold remains 0 and accuracy remains null.

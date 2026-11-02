@@ -1273,3 +1273,19 @@ Main `7b0a8f8c8661707afd9f0c58a94e2678789adf86` has exact-main Quality checks 41
 The map distinguishes orthographic structural analysis, register resolution, an IPA-string profile validator and target mapping; it does not misstate this as a complete Khmer orthography-to-IPA engine.
 
 **Scope note:** this batch changes agent navigation and engineering workflow only. It does not add IPA labels, import external corpora, alter runtime behavior, or change the current empirical accuracy status. Continue from the existing language-specific blockers in the completion register.
+
+
+## Benchmark and corpus review — 2026-11-02
+
+**Status: PARTIAL / evidence reviewed; independent accuracy remains NOT_MEASURED.**
+
+- verified-lexical-corpus.json has six source-attested IPA examples, all explicitly not independently adjudicated. Web/adversarial/register-shifter fixtures are structural tests, not pronunciation gold.
+- Gold lifecycle JSONL files are empty; gold.tsv is header-only. Independent adjudicated gold = 0.
+- Current Python ipa.render_ipa_profile validates/preserves an IPA string supplied by caller. It is not a Khmer orthography-to-IPA generator. Current engine is structural parser/register analyzer + IPA profile validator + Ukrainian IPA mapper, not a complete G2P pipeline.
+- khmerphonemizer 0.0.3 on 100 source-attested MekongPhon rows: 100/100 outputs; strict concordance 18/100; limited notation concordance 19/100. Goruut b224bde: 97 outputs, 3 missing; complete source coverage 70, partial 27, no output 3; strict concordance 6/100; 27 unphonemized fragments.
+- Six-item sample: khmerphonemizer strict 2/6 and limited notation 6/6; Goruut strict 1/6 and limited notation 3/6. These are source-attested diagnostics, not accuracy. Stable output does not compensate for missing phonetic material.
+- MekongPhon and BYU khmer-ipa are priority baselines but need profile, split, revision, provenance and license verification. NCKL G2P is Khmer-script respelling, not IPA. Khmer Acoustic Model's claimed 29,204-entry dictionary is unavailable at advertised path; only six sample entries were inspectable, and CC BY 4.0 vs CC BY-SA 4.0 declarations conflict.
+
+**Interpretation:** no Khmer source-orthography-to-IPA layer is established. The main implementation task is conservative, evidence-backed series × vowel × coda/context phonology with unknown states, not a cosmetic expansion of the current adapter.
+
+**Next acceptance:** implement that layer test-first from scoped primary evidence; verify MekongPhon/BYU revisions, split and license; resolve dictionary access/license; commission independent double annotation and adjudication; keep all current lexical concordance outside gold. Exact-head CI https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41469248955 SUCCESS; engineering verification only.

@@ -1,36 +1,10 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
-**Current checkpoint:** 2026-11-02  
-**Default branch:** `main` at `c0a2b33c86791b6546e1158c62043fd23acc1f60`  
-**Verified implementation checkpoint before methodology documentation update:** `73e654b5a592cb84ed29b25b03cb95fb5a7e25e0` on `feat/ipa-gold-corpus-20261101-review`
-**Open implementation PR:** [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103)  
-**Branch comparison at this checkpoint:** 102 commits ahead of main, 0 behind.
-**Exact-head methodology verification:** [Quality checks 41358627128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627128) SUCCESS; optional diagnostics [41358627194](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627194) and [41358627130](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627130) SUCCESS.
-**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
+**Current checkpoint:** 2026-11-02 (reconciled after latest main publication)  
+**Default branch:** `main` at `7b0a8f8c8661707afd9f0c58a94e2678789adf86`  
+**Current main verification:** [Quality checks 41424887161](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41424887161) SUCCESS; Pages deployment [41424887132](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41424887132) SUCCESS.  
+**Previous checkpoint:** `c0a2b33c86791b6546e1158c62043fd23acc1f60` and branch/PR details below are historical and superseded by the merged main state.
 
-## Current task ledger and next blocker
-
-- **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and exact-head automated engineering checks are present on the active branch. This is not linguistic validation.
-- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases.
-- **BLOCKED:** the 30-lexeme blind pilot cannot start until the target variety/profile and IPA convention are approved, two qualified independent annotators and a separate adjudicator are confirmed, rights-cleared source packets are prepared, and the blind intake dry-run passes.
-- **TODO:** manual deployed-site visual, keyboard, assistive-technology, and mobile QA.
-- **Next actionable human milestone:** resolve the recruitment and convention checklist in [issue #104](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/issues/104) and follow [the controlled acquisition protocol](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/blob/feat/ipa-gold-corpus-20261101-review/docs/ipa-gold-collection-playbook.md).
-
-No local checkout was available for this checkpoint; do not interpret hosted CI as local test execution, expert adjudication, visual QA, or release approval. Preserve the fail-closed pipeline and do not create IPA/gold labels from model output or unsupported spelling inference.
-
-
-
-## Methodology source refresh — 2026-11-02
-
-The adopted engineering references were checked against current upstream revisions without importing them as runtime dependencies:
-
-- Superpowers 7.0.1: `obra/superpowers@2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` — explicit plans, true RED/GREEN TDD, systematic debugging, code review, and verification-before-completion. At GREEN, verify the project suite, not only the narrow test that first went red.
-- mattpocock/skills current main: `d1478fcb140db0b93c0c8df17bcfd311844749d0` — composable skills, source-backed research, test-first implementation, and two-axis review (spec compliance separately from repository standards).
-- Ponytail 5.3.3: `7801d061243d7b753bad0e0b3c057cd250b11755` — codebase/data-flow audit, connected-code review, minimal complete changes, and explicit preservation of security, data integrity, and accessibility.
-
-These references guide the method; project-specific linguistic, provenance, privacy, rights, and fail-closed requirements remain authoritative.
-
-**Methodology refresh commit:** `bf506e2a34e3a2523678487fdc5148ab019bd493` on the active review branch. **Exact-head verification:** [PR Quality checks 41356374055](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374055) and [push Quality checks 41356369054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356369054) SUCCESS; 146 tests + 44 subtests; [Goruut 41356374057](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374057) and [Khmer G2P 41356374080](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374080) SUCCESS.
 
 ## Historical records
 
@@ -1239,3 +1213,21 @@ The older design PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phoneti
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/106), merge `7ee049aae9cc7ff571b21eabe18e962627f192a3`; the extractor now accepts an optional query string. PR CI passed (41424681328). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## Target pronunciation profile decision — 2026-11-02
+
+**Selected single operational profile:** contemporary Phnom Penh Khmer, careful citation-form speech. Project profile key: `khmer-pph-careful-citation-v1` (a local project identifier, not an external standard).
+
+**Why this profile:** Chem (2020) provides the most directly useful acoustic baseline currently documented in this repository: four selected Phnom Penh speakers (two female), 61 lexical items, three formal-reading repetitions, with vowel formant and duration analysis. This matches careful citation-form elicitation more closely than a broad colloquial profile. Wayland & Guion (2005) and Kirby (2014) document important Phnom Penh colloquial /r/-loss-associated cues, but those cues vary across style/speakers and must not be folded into the careful citation profile as universal deterministic rules.
+
+**Operational boundary:**
+- Use this one profile for the initial annotation pilot, IPA convention work, and first quality comparisons.
+- Do not expose or mix a second colloquial profile in the first-pass target workflow.
+- Do not infer colloquial /r/-loss, aspiration, breathiness, falling-rising F0 or diphthongization from spelling. Keep these out of careful-form output unless the selected profile has source-attested and expert-adjudicated evidence for the particular item.
+- Preserve register/series, vowel length/quality, coda, stress and uncertainty as separate dimensions. The profile choice does not fill missing vowel × series × coda cells.
+- Keep the runtime fail-closed: this decision selects the research/annotation target; it does not authorize new IPA rules or imply the current engine already implements the profile.
+
+**Evidence and status:** KHM-PROFILE-001 is now **DONE_VERIFIED (project decision)**. The 30-lexeme pilot remains **BLOCKED** until the IPA convention is frozen, two qualified annotators and a separate adjudicator are recruited, a curator and blind channel are confirmed, and 30 rights-cleared lexical groups with locators are selected. Independent gold remains 0; accuracy remains null.
+
+Main `7b0a8f8c8661707afd9f0c58a94e2678789adf86` has exact-main Quality checks 41424887161 and Pages/deployed smoke 41424887132 SUCCESS. This update is documentation-only; local tests were not run because outbound GitHub access from the execution container was unavailable.

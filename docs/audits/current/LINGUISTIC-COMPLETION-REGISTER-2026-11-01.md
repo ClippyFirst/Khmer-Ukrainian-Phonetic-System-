@@ -307,3 +307,14 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 | KHM-GOLD-AGREEMENT-001 | TODO | Cucchiarini (1996), DOI [10.3109/02699209608985167](https://doi.org/10.3109/02699209608985167); Oller & Ramsdell (2006), DOI [10.1044/1092-4388(2006/100)]. | Pilot reports exact normalized and alignment-aware feature-weighted agreement, separate vowel/length/coda/cluster/profile diagnostics, unresolved alternatives and adjudication rate. Raw percent agreement is supplementary. |
 
 No phonology rule or IPA label changed. Independent expert gold remains 0; accuracy null.
+
+
+## MekongPhon artifact-level evidence — 2026-11-03
+
+| ID | Status | Evidence update | Acceptance / limitation |
+|---|---|---|---|
+| KHM-MEKONGPHON-2026-001 | PARTIAL | Shurtz et al. (2026), DOI [10.63317/4bb9rvdshu4z](https://doi.org/10.63317/4bb9rvdshu4z): paper reports 1.3m Khmer orthography–IPA pairs and under 2% held-out CER. Public repo [byu-matrix-lab/MekongPhon](https://github.com/byu-matrix-lab/MekongPhon), tree SHA f80f6c1840c4818b51e05f2e00cded4701a5b662, has no LICENSE file; scraper uses SEAlang headley77; tracked lexicon 8,040 rows, 7,940 train + 100 eval. | External baseline candidate only. Paper proceedings CC BY-NC 4.0; separate corpus license/source rights remain unverified. Verify actual model-card commit, dialect/IPA convention and evaluation manifest before use. No import as gold. |
+| KHM-MEKONGPHON-REPRO-001 | BLOCKED | Checked-in splitter emits *_train_cleaned.csv / *_eval_cleaned.csv; conversion script references different absent paths and points evaluation mapping at full lexicon. OPUS sentence corpora are downloaded externally and not tracked. | Obtain author run manifest and reproduce exact sentence/lexeme split; verify held-out lexeme disjointness before interpreting paper CER as OOV evidence. |
+| KHM-MEKONGPHON-MODEL-001 | PARTIAL | [Khmer IPA](https://huggingface.co/byumatrixlab/khmer-ipa) HF model card declares Apache-2.0 model license. | Model artifact license does not clear training corpus or SEAlang source rights. Candidate external baseline only; verify profile and IPA convention, pin immutable model revision, then compare against independent gold. |
+
+Accuracy remains null; independent adjudicated gold remains 0. The paper's reported CER is not ClippyFirst accuracy.

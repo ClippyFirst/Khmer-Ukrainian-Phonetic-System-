@@ -223,3 +223,13 @@ The older design PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phoneti
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/106), merge `7ee049aae9cc7ff571b21eabe18e962627f192a3`; the extractor now accepts an optional query string. PR CI passed (41424681328). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## Quality/profile review update — 2026-11-02
+
+- Current main: `7b0a8f8c8661707afd9f0c58a94e2678789adf86`; exact-main Quality [41424887161](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41424887161) and Pages/deployed smoke [41424887132](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41424887132) SUCCESS.
+- **KHM-PROFILE-001: DONE_VERIFIED (project decision):** select contemporary Phnom Penh Khmer, careful citation-form speech, project key `khmer-pph-careful-citation-v1`. This is a project-defined annotation profile, not an external standard.
+- The selection is supported by the available Chem (2020) careful/formal-reading acoustic sample; colloquial /r/-loss evidence from Wayland & Guion (2005) and Kirby (2014) is kept separate and is not generalized to the chosen careful profile.
+- **KHM-GOLD-001 remains BLOCKED:** gold=0, accuracy=null. Recruitment, IPA convention, blind intake, rights-cleared 30-item sample and adjudication remain external requirements.
+- Phonology and Ukrainian adaptation remain PARTIAL; the profile decision does not create missing vowel × series × coda rules or gold.
+

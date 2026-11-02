@@ -264,3 +264,8 @@ Comparator concordance is not accuracy. See the dated benchmark review in the ca
 | ID | Status | Evidence | Acceptance / limitation |
 |---|---|---|---|
 | ENG-METHOD-PIN-002 | DONE_VERIFIED (documentation provenance correction) | Corrected `AGENTS.md` and the canonical handoff to distinguish `mattpocock/skills` release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`) from the latest inspected `main` snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`, 2026-10-31). The newer main commit adds the `software-factory` glossary/design skill; no unrelated factory workflow was imported. | Methodology metadata only. No runtime, linguistic rules, corpus, license grants or accuracy metrics changed. Recheck upstream pins when methodology sources are intentionally refreshed. |
+
+
+## Late-session continuation audit — 2026-11-02
+
+The canonical handoff records the exact PR/base comparison, review-thread state, hosted verification evidence and local-checkout network blocker for this continuation. No new phonological rules, IPA labels, gold records or license claims were introduced. The independent adjudicated IPA gold remains 0 and empirical accuracy remains null. The new handoff-only commit has triggered a fresh exact-head Quality checks workflow; do not treat the prior-head success as verification of the new commit. All expert annotation, source-rights, held-out split and manual accessibility acceptance criteria remain open.

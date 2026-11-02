@@ -6,6 +6,16 @@
 **Previous checkpoint:** `c0a2b33c86791b6546e1158c62043fd23acc1f60` and branch/PR details below are historical and superseded by the merged main state.
 
 
+## Current task ledger and next blocker
+
+- **DONE_VERIFIED (project decision):** one operational profile selected — contemporary Phnom Penh Khmer, careful citation-form speech (`khmer-pph-careful-citation-v1`). See the decision section below.
+- **PARTIAL:** phonological realization remains incomplete; the vowel × series × length × coda/context matrix and IPA → Ukrainian mapping are not fully source-adjudicated.
+- **BLOCKED:** independent expert-adjudicated Khmer IPA gold remains 0; accuracy is null. The first 30-lexeme pilot requires a frozen IPA convention, two qualified annotators, a separate adjudicator, curator/blind channel and rights-cleared source packets.
+- **TODO:** manual deployed-site keyboard, screen-reader, mobile and touch QA.
+- **Next blocker:** human expert recruitment, convention approval and blind acquisition; no G2P output may be promoted to gold.
+
+
+
 ## Historical records
 
 The dated entries below are retained as audit history. When a historical status or SHA conflicts with this current checkpoint, the active branch ref, completion register, and exact-head workflow run above are authoritative.

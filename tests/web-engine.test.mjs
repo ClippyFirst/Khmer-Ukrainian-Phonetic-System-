@@ -80,9 +80,11 @@ if (fixtures["សង្គ្រាម"].ipa !== "/sɔŋkrɛəm/" || fixtures["�
 if (fixtures["ហើយ"].ipa !== "/haəi/" || fixtures["ហើយ"].ua !== "гаеі") throw new Error("ហើយ fixture must resolve to /haəi/ → гаеі");
 if (sourceGuard.includes("const SHIFTER_ELIGIBILITY") === false) throw new Error("Khmer shifter eligibility guard missing");
 if (!sourceGuard.includes("SHIFTER_ELIGIBILITY[shifter]")) throw new Error("Khmer shifter eligibility is not enforced");
-if (!sourceGuard.includes("function renderIpaProfile")) throw new Error("web pronunciation-profile transformation is missing");
-if (!sourceGuard.includes("(^|[ .ˈˌ])([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])")) throw new Error("web Phnom Penh /r/-loss rule must require an explicit word/syllable boundary");
-if (!sourceGuard.includes('"$1$2ʰ"')) throw new Error("web Phnom Penh /r/-loss rule must preserve the boundary and onset segment");
+if (!sourceGuard.includes('const PROFILES = new Set(["khmer-pph-careful-citation-v1"])')) throw new Error("web adapter must expose exactly the selected pronunciation profile");
+if (!sourceGuard.includes("function renderIpaProfile")) throw new Error("web pronunciation-profile validation boundary is missing");
+if (sourceGuard.includes("phnom_penh_colloquial") || sourceGuard.includes("established_form") || sourceGuard.includes("careful_standard")) throw new Error("unselected pronunciation profiles remain in the web runtime");
+if (sourceGuard.includes("return ipa.replace(")) throw new Error("colloquial /r/-loss must not be synthesized by a deterministic IPA rewrite");
+if (!html.includes('<select id="profile" aria-label="Профіль вимови"><option value="khmer-pph-careful-citation-v1" selected>')) throw new Error("the single selected Khmer profile is not the UI default");
 if (!html.includes('role="status" aria-live="polite"')) throw new Error("result status is not announced to assistive technology");
 if (!js.includes('const copyText = "value" in element ? element.value : element.textContent;')) throw new Error("copy control must copy textarea.value for source input and textContent for rendered output");
 if (html.includes("source-card") || html.includes("source-result")) throw new Error("original Khmer input must not be duplicated as an output card");

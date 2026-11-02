@@ -269,3 +269,8 @@ Comparator concordance is not accuracy. See the dated benchmark review in the ca
 ## Late-session continuation audit — 2026-11-02
 
 The canonical handoff records the exact PR/base comparison, review-thread state, hosted verification evidence and local-checkout network blocker for this continuation. No new phonological rules, IPA labels, gold records or license claims were introduced. The independent adjudicated IPA gold remains 0 and empirical accuracy remains null. The new handoff-only commit has triggered a fresh exact-head Quality checks workflow; do not treat the prior-head success as verification of the new commit. All expert annotation, source-rights, held-out split and manual accessibility acceptance criteria remain open.
+
+
+## Public website verification — 2026-11-02
+
+Khmer: DONE_VERIFIED — current-main Pages build/deploy smoke passed (run 41424887132); exact review-head engineering CI is running as 41531158714 at this checkpoint. PARTIAL — pure web-runtime and structural UI tests pass, but no browser-driven input/result assertion or post-deploy interaction test exists. IMPORTANT — selected single-profile runtime/UI correction is in open PR #107 and is not deployed on main yet. BLOCKED — direct live-site access from this runner failed at DNS resolution; this is not evidence of a site outage. TODO — add Chromium tests for visible IPA/UA results, unresolved-unit withholding, mode switching and clear, then add a post-deploy smoke and manual accessibility/mobile QA. See master handoff for evidence and acceptance criteria.

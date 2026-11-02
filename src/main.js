@@ -19,7 +19,7 @@ const ZWSP = "\u200B";
 const SHIFTERS = new Set(["៉", "៊"]);
 const SHIFTER_ELIGIBILITY = Object.fromEntries(Object.entries(registers.shifter_eligibility).map(([key, values]) => [key === "muusikatoan" ? "៉" : "៊", new Set(values)]));
 const PUNCTUATION = /^\s|^[។៕,!?;:()[\]{}"“”«»]$/u;
-const PROFILES = new Set(["careful_standard", "phnom_penh_colloquial", "established_form"]);
+const PROFILES = new Set(["khmer-pph-careful-citation-v1"]);
 const SEGMENTS = Object.keys(practicalPolicy.segments).sort((a, b) => b.length - a.length);
 
 const normalize = (text) => text.normalize("NFC");
@@ -193,8 +193,10 @@ function mapIpa(ipa) {
 
 function renderIpaProfile(ipa, profile) {
   if (!PROFILES.has(profile)) throw new Error("Unsupported pronunciation profile: " + profile);
-  if (profile === "careful_standard" || profile === "established_form") return ipa;
-  return ipa.replace(/(^|[ .ˈˌ])([ptkbdɡc])r(?=[aeiouəɛɔɑɨɤ])/gu, "$1$2ʰ");
+  // The selected profile is contemporary Phnom Penh careful citation speech.
+  // Colloquial /r/-loss is variable and must never be synthesized by a
+  // deterministic spelling/IPA regex in this single-profile workflow.
+  return ipa;
 }
 
 function renderFixture(fixture, profile) {

@@ -1241,3 +1241,15 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 **Evidence and status:** KHM-PROFILE-001 is now **DONE_VERIFIED (project decision)**. The 30-lexeme pilot remains **BLOCKED** until the IPA convention is frozen, two qualified annotators and a separate adjudicator are recruited, a curator and blind channel are confirmed, and 30 rights-cleared lexical groups with locators are selected. Independent gold remains 0; accuracy remains null.
 
 Main `7b0a8f8c8661707afd9f0c58a94e2678789adf86` has exact-main Quality checks 41424887161 and Pages/deployed smoke 41424887132 SUCCESS. This update is documentation-only; local tests were not run because outbound GitHub access from the execution container was unavailable.
+
+
+## Execution handoff — 2026-11-02
+
+- Review PR: [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107), branch `research/khmer-profile-decision-20261102`, based on main `7b0a8f8c8661707afd9f0c58a94e2678789adf86`.
+- Implementation/documentation checkpoint before this handoff note: `f42241bf7630635617ee424a711163d87a6f25f2`.
+- Exact-head CI at that checkpoint: [41458364629](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41458364629) SUCCESS — 148 Python tests + 44 subtests; web structural/adversarial/runtime/register-shifter checks and Vite production build passed. Current-main Quality and Pages evidence: 41424887161 / 41424887132, both SUCCESS.
+- Implemented: the browser selector, JavaScript profile validator and Python IPA adapter now expose only `khmer-pph-careful-citation-v1`; colloquial /r/-loss is not inferred by regex; old profile IDs are rejected. Public service and methodology page describe the one selected profile.
+- Commands/limitations: attempted `git clone --depth 1` in the execution container; DNS resolution for github.com failed. No local tests were run. Hosted GitHub Actions on the exact branch head provide the verification evidence above.
+- Next genuine blockers: independent expert-adjudicated IPA gold (0 rows); approved IPA convention, two qualified annotators, separate adjudicator, curator/blind intake and rights-cleared 30-lexeme source packets; full vowel × series × length × coda/context adjudication and manual accessibility QA.
+- PR remains open and mergeable. Issue [#104](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/issues/104) now marks the single-profile decision complete; the gold pilot remains open.
+

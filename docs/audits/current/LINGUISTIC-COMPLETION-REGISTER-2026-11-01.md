@@ -258,3 +258,8 @@ The existing validator enforces exact equality of the full typed IPA object for 
 - Four supplied BibTeX records passed offline structural validation with 0 issues; the toolkit returned no online metadata checks, so metadata verification is recorded separately against primary sources.
 - British-English check: 0 issues. Citation-audit parser flags the two-author Sar & Tan form despite a matching source note; metadata and disputed benchmark figures were checked against the publisher page and article text.
 - No external pronunciation labels were added; gold remains 0 and empirical accuracy remains `null`.
+
+
+### CJBAR 2020 author metadata reconciliation — 2026-11-03
+
+The publisher landing page duplicates CHEM Vatho in the author list because it displays two affiliations and auto-generates “Chem, V. & Chem, V.”; the article PDF identifies one author and its own suggested citation is singular (“Chem, V. (2020)”). The references file now records the singular author while documenting both primary-source representations. No second person has been inferred. The Khmer references bibliography still passes the Academic Writing Toolkit British-English check (0 issues).

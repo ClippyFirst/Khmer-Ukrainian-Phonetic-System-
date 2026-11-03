@@ -2,7 +2,7 @@
 
 ## Current repository state — 2026-11-03
 
-- **Default branch:** `main` at `1a2df2fd7fe512b327a5293165e0ff4052d7f954`.
+- **Default branch:** [`main`](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/tree/main) (live repository ref; use the linked branch for the current head SHA).
 - **Open pull requests:** none at the time of this checkpoint; all relevant integration PRs are merged or explicitly superseded/closed.
 - **Integrated engineering and research changes:** browser result hotfix; manifest-wide split identity; MekongPhon/Kirby/Chem/Woźnica source audit; single careful citation profile with no inferred colloquial /r/-loss; glossary/codebase map and agent guidance.
 - **Exact-main verification:** Quality [41649424148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424148) SUCCESS; Chromium [41649424074](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424074) SUCCESS; Pages/deployed smoke [41649424091](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424091) SUCCESS.

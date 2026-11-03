@@ -53,6 +53,12 @@ An adjudicated record requires:
 
 Annotator IDs should be stable pseudonyms; keep the identity mapping outside this public repository. Annotations should cite evidence and mark uncertainty rather than silently resolving disputed pronunciations.
 
+### Agreement metric boundary
+
+The runtime's `AGREEMENT` decision is exact equality of the complete typed IPA object after required NFC validation; it includes IPA kind and any present syllable-boundary, tone, vowel-length and phonation fields. This is a record-level adjudication decision, not a reliability coefficient. The current validator does not calculate alignment-aware or feature-weighted inter-annotator agreement.
+
+For the initial 30-item process pilot, report exact-object agreement with numerator and denominator, `RESOLVED`/`UNRESOLVED` counts, and a descriptive disagreement taxonomy. A project-defined feature-weighted score is not implemented. Before implementation, experts must pre-register the segment/feature inventory, alignment algorithm, feature and suprasegmental weights, insertion/deletion/substitution costs, syllable-boundary treatment, and uncertainty/alternative handling; then validate it against independently adjudicated data. Cucchiarini (1996) and Oller and Ramsdell (2006) motivate alignment-aware and weighted approaches, but the current code does not reproduce either published algorithm.
+
 ## Splits and leakage
 
 Run:

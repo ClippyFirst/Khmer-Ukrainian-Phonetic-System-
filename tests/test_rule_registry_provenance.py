@@ -87,3 +87,14 @@ def test_transcription_agreement_method_sources_are_not_misrepresented_as_khmer_
     assert oller["doi"] == "10.1044/1092-4388(2006/100)"
     assert "eight coders" in oller["scope"].lower()
     assert "not the project's implemented metric" in oller["limitations"].lower()
+
+
+def test_woznica_thesis_is_scoped_as_multi_region_evidence_not_phnom_penh_gold():
+    sources = json.loads((DATA / "sources.json").read_text(encoding="utf-8"))
+    by_id = {source["id"]: source for source in sources}
+    thesis = by_id["woznica2013"]
+    assert thesis["year"] == 2013
+    assert thesis["url"] == "https://repozytorium.amu.edu.pl/items/07609606-333b-4603-95f3-3cb14c1eb083"
+    assert "80" in thesis["scope"] and "speakers" in thesis["scope"]
+    assert "not statistically representative" in thesis["limitations"].lower()
+    assert "not a Phnom Penh-only" in thesis["limitations"]

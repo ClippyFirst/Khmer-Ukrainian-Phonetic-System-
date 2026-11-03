@@ -48,6 +48,14 @@ MekongPhon (LREC 2026) reports 1.3 million Khmer and 367,000 Lao orthography–I
 
 https://github.com/chemvatho/Khmer-acoustic-model reports a 29,204-entry IPA dictionary and native-linguist validation; its README states that dictionary data are CC BY-SA 4.0, distinct from the MIT code/model license. This is promising for external comparison and source discovery, not automatically our gold. Inspect actual dictionary, metadata, exact commit, per-entry provenance, variety/profile, transcription consistency, and rights before using any entry. Do not copy entries just because the repository is public.
 
+## Agreement and reliability reporting
+
+The validator's `AGREEMENT` decision means exact equality of the complete typed IPA object under the corpus's canonical NFC representation, including IPA kind and any supplied syllable-boundary, tone, vowel-length and phonation metadata. It is a strict record-level gate, **not** an inter-annotator reliability coefficient. The current implementation does not calculate an alignment-aware or feature-weighted agreement score.
+
+For the 30-lexeme process pilot, report the exact-object agreement numerator/denominator, counts of `RESOLVED` and `UNRESOLVED` decisions, and a descriptive breakdown of disagreements (segment identity, feature/series, vowel quality/length, coda, syllable boundary, tone, phonation and profile/style). Do not present this small process sample as a stable population reliability estimate.
+
+Cucchiarini (1996) explains why raw percentage agreement is limited for phonetic transcription: it treats symbol matches as all-or-none, is affected by chance agreement, and does not itself specify transcription alignment. Oller and Ramsdell (2006) describe a weighted reliability measure intended to distinguish degrees of phonetic difference. These works motivate careful alignment and feature-sensitive reporting, but the repository does **not** implement either published algorithm. A future project-defined weighted metric remains PARTIAL until experts pre-register the segment/feature inventory, alignment procedure, substitution/deletion/insertion costs, suprasegmental weights (tone, length, phonation), syllable-boundary treatment, uncertainty/alternative policy, and validation against independently adjudicated data. Do not call a future score the Cucchiarini or Oller–Ramsdell measure unless their exact method is reproduced.
+
 ## Controlled workflow
 
 1. Curator freezes the pilot list and records source provenance and rights before annotation.
@@ -82,7 +90,7 @@ Existing numeric thresholds (100 train / 25 dev / 25 test) are minimum engineeri
 ## References
 
 - Shurtz, Richardson & Richardson (2026), MekongPhon, LREC 2026: https://lrec.elra.info/lrec2026-main-129
-- Chem et al. (2026), Khmer Acoustic Model and dictionary: https://github.com/chemvatho/Khmer-acoustic-model
+- Khmer Acoustic Model upstream technical repository (not a scholarly 2026 article): https://github.com/chemvatho/Khmer-acoustic-model
 - Chem (2020), The Standard Khmer vowel system: https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36
 - Kirby (2014), Incipient tonogenesis in Phnom Penh Khmer: https://www.sciencedirect.com/science/article/pii/S0095447014000163
 

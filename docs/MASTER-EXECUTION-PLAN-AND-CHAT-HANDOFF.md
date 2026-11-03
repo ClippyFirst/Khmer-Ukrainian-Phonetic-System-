@@ -1,20 +1,19 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
-**Current checkpoint:** 2026-11-03 (browser-output hotfix review)  
-**Default branch:** `main` at `7b0a8f8c8661707afd9f0c58a94e2678789adf86`  
-**Open follow-up PRs:** [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107) (single careful-citation profile) and [#108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/108) (isolated browser-output hotfix).  
-**Hotfix branch:** `hotfix/khmer-browser-output-20261102`, pre-documentation head `aad9ce32378594c0da6651e7fba757ce0dfe40f0`.  
-**Exact-head hotfix CI:** Quality checks [41533500652](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41533500652) SUCCESS; Chromium smoke [41533500956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41533500956) SUCCESS (3/3 browser tests). Documentation update on this branch requires a fresh exact-head CI run.  
+**Current checkpoint:** 2026-11-03 (post-hotfix merge and deployment verification)  
+**Default branch:** `main` at `e9894e5726f5f6aa2510d7d3beed69b2d03fb666`  
+**Open follow-up PR:** [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107) (careful-citation profile; 95 commits ahead / 1 behind after the hotfix merge; currently non-mergeable and requiring reconciliation). PR #108 was merged as `e9894e5726f5f6aa2510d7d3beed69b2d03fb666`.  
+**Merged hotfix verification:** PR-head Quality [41536753767](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41536753767) and Chromium [41536753931](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41536753931) SUCCESS; post-merge `main` Quality [41641496598](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496598), browser smoke [41641496582](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496582), and Pages deployment plus deployed-site smoke [41641496680](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496680) all SUCCESS.  
 **Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; empirical accuracy = **null**.
 
 ## Current task ledger and next blocker
 
 - **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and the exact-head automated engineering checks recorded in the historical entries below. This is not linguistic validation.
-- **PARTIAL (web output):** current `main` contains a stale `source-result` DOM write in `src/main.js`, but `index.html` has no matching element. Non-empty input therefore throws before IPA/Ukrainian results render. PR #108 removes only that invalid write and adds a Chromium regression suite plus a Pages browser gate; its exact-head tests pass, but the production site remains affected until the PR is merged and Pages redeploys.
+- **DONE_VERIFIED (web output hotfix):** PR #108 removed the stale `source-result` DOM write; current `main` no longer dereferences the absent element. Exact-main Quality, Chromium browser smoke, Pages deployment, and deployed-site asset smoke all passed on merge commit `e9894e5726f5f6aa2510d7d3beed69b2d03fb666`. This verifies the UI regression fix and deployment, not pronunciation accuracy. Manual visual, keyboard, screen-reader and mobile QA remain open.
 - **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases. PR #107 separately narrows the runtime to the selected Phnom Penh careful-citation profile; it must not be conflated with the isolated UI hotfix.
 - **BLOCKED:** the 30-lexeme blind pilot cannot start until the IPA convention is approved, two qualified independent annotators and a separate adjudicator are confirmed, rights-cleared source packets are prepared, and blind intake is arranged. See [issue #104](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/issues/104).
 - **TODO:** manual visual, keyboard, assistive-technology and mobile QA on the deployed site; automated Chromium tests do not replace this human QA.
-- **Next actionable engineering step:** review and merge PR #108, then verify the Pages deployment and run browser interaction tests against the published URL. No merge or publication was performed in this session.
+- **Next actionable engineering step:** reconcile PR #107 against post-hotfix `main` without reintroducing the removed DOM write; re-run exact-head tests and inspect the full profile diff before any merge. Separately complete manual keyboard, screen-reader and mobile QA. PR #108 is already merged; no release was published.
 
 No local checkout was available; hosted CI is not local test execution, expert adjudication, manual accessibility QA, or proof that the current public URL has redeployed. Preserve fail-closed behavior and do not create IPA/gold labels from model output or unsupported spelling inference.
 
@@ -1238,3 +1237,14 @@ A targeted full-text review in the Undermind workspace and a parallel Consensus 
 - Consensus identified Khmer G2P studies including Sar & Tan (2019), DOI [10.1016/j.procs.2019.11.140], reporting PER reduction from 23.2% to 11.1% after vowel-tag linguistic features. This is a published system result, not independent gold for this repository; its split, lexicon provenance, profile and rights must be checked in the primary paper before any benchmark reuse. Sok & Adams (2016) describes Thrax-based word transcription, but is not itself evidence that the current project has an adjudicated benchmark.
 
 Independent expert-adjudicated gold remains 0; accuracy remains null. The source audit changes no IPA label or phonology rule. The Khmer browser hotfix is still separate from linguistic research and must be merged/deployed independently before production repair is claimed.
+
+
+## Post-hotfix integration checkpoint — 2026-11-03
+
+- PR [#108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/108) merged by squash as `e9894e5726f5f6aa2510d7d3beed69b2d03fb666`.
+- The merged change removes exactly one invalid DOM dereference from `src/main.js`; `index.html` intentionally has no `#source-result` element. A post-merge source inspection confirms the render path no longer writes to that absent element.
+- Exact `main` push workflows all completed successfully: Quality checks [41641496598](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496598), Chromium browser smoke [41641496582](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496582), and GitHub Pages build/deploy plus deployed-site smoke [41641496680](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496680). The Pages run's build, Chromium production-preview test, deploy and deployed runtime-asset smoke steps all succeeded.
+- The PR's exact pre-merge head `e8ef5ea727758c3339d016fb2636c1108e1549f4` also passed Quality [41536753767](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41536753767) and browser [41536753931](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41536753931); all steps in both job summaries succeeded.
+- The browser regression covers visible IPA/Ukrainian output for `ក`, withholding mixed unsupported input, and clear/reset. This is UI behavior only; no phonology rule, IPA label, or gold row was introduced.
+- PR [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107) is now 95 commits ahead / 1 behind and reports non-mergeable after the isolated hotfix landed. It contains the same one-line DOM correction plus a broad profile change; do not merge wholesale. Reconcile against new `main`, retain the already-merged hotfix, and re-run all relevant checks.
+- Independent adjudicated IPA gold remains 0; empirical accuracy remains `null`. The repository remains a research prototype, not a linguistically validated release.

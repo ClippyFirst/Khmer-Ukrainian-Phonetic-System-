@@ -1259,3 +1259,11 @@ The older design PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phoneti
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/106), merge `7ee049aae9cc7ff571b21eabe18e962627f192a3`; the extractor now accepts an optional query string. PR CI passed (41424681328). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## Academic Writing Toolkit verification scope — 2026-11-03
+
+- Offline BibTeX validator: 4 entries, 0 structural issues. Its response contained empty `verified`, `metadata_checks`, and `online_sources` arrays; therefore this is a structural check only, not independent online metadata verification.
+- British-English check: 0 issues. Citation audit has one parser limitation on the two-author Sar & Tan citation; the primary publisher record and article full text were checked directly.
+- Primary bibliographic metadata was separately checked against the ACL Anthology/LREC proceedings and publisher or institutional records. Tool citation parsing is not treated as an authority over compound surnames, two-letter surnames, or full reference-list entries; no unsupported citation-clean claim is made.
+- No pronunciation labels, external corpus rows, or model artifacts were imported as gold.

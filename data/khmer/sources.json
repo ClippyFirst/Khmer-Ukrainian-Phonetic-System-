@@ -92,5 +92,36 @@
     "year": 2006,
     "scope": "Bulgarian-language academic material containing Latin phonetic transcription of Khmer data",
     "status": "DOCUMENTED_EXAMPLE"
+  },
+  {
+    "id": "mekongphon-2026",
+    "type": "peer_reviewed_ipa_corpus_and_g2p_benchmark",
+    "title": "MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer",
+    "authors": [
+      "Ammon Shurtz",
+      "Christian Richardson",
+      "Stephen D. Richardson"
+    ],
+    "year": 2026,
+    "doi": "10.63317/4bb9rvdshu4z",
+    "url": "https://aclanthology.org/2026.lrec-1.129/",
+    "scope": "1.3 million Khmer and 367,000 Lao orthography–IPA pairs; abstract reports under 2% held-out CER; external baseline only, profile/IPA compatibility and separate corpus rights need verification",
+    "status": "EXTERNAL_BASELINE_CANDIDATE"
+  },
+  {
+    "id": "sar-tan-2019-khmer-g2p",
+    "type": "peer_reviewed_g2p_benchmark",
+    "title": "Applying Linguistic G2P Knowledge on a Statistical Grapheme-to-phoneme Conversion in Khmer",
+    "authors": [
+      "Vathnak Sar",
+      "Tien-Ping Tan"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.procs.2019.11.140",
+    "url": "https://doi.org/10.1016/j.procs.2019.11.140",
+    "journal": "Procedia Computer Science 161:415–423",
+    "scope": "1,350 training pairs and 350 test pairs; vowel tags and syllable-boundary information improve PER/WER in reported experiment; abstract WER baseline 69.6% conflicts with Table 10/conclusion 69.9%; dataset/normalization/profile need recovery before comparison",
+    "article_license": "CC BY-NC-ND 4.0 (article only; not a statement of source-dictionary or derived-data rights)",
+    "status": "EXTERNAL_G2P_COMPARATOR"
   }
 ]

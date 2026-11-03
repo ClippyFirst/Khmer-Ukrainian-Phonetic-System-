@@ -148,3 +148,33 @@ The official Common Voice release manifest has now been inspected: [`cv-corpus-2
 - Manifest locale checksum field: `d1c4bb041744fefb1fa60397217b7cd79bfa2ade4510b11ff9863e9a0dc0392d`. Manifest file blob SHA: `e401c4a8e923cad5c8baacb6120c095b1e1bd561`.
 
 This is a very small and demographically under-described sample. It may be sufficient to test a 30-token annotation workflow if the validated transcripts contain the required lexical contrasts, but it cannot establish Phnom Penh variety, first/second-series coverage, or speaker-balanced generalization. Specialist profile approval and controlled citation-form recordings remain necessary.
+
+
+
+## Recruitment and source leads — reviewed 2026-11-03
+
+These are prospective leads only. No person has been contacted, consented, recruited, or approved as annotator/adjudicator. Publication authorship does not establish availability, independence, or suitability for every annotation role.
+
+### Prospective linguistic reviewer
+
+- Vatho Chem (Royal University of Phnom Penh / Institute of Foreign Languages): the 2020 Phnom Penh Khmer vowel-system acoustic study identifies the author as a lecturer at the Institute of Foreign Languages, Royal University of Phnom Penh, and provides a research contact. The 2026 Khmer acoustic-model project also identifies the author as its maintainer and reports a native-linguist validation process. This is a strong prospective reviewer/source-maintainer lead for the vowel and acoustic evidence, not proof that the full dictionary is independently adjudicated IPA gold or that the author is available to participate. Study: https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36 ; acoustic-model repository: https://github.com/chemvatho/Khmer-acoustic-model
+
+### Newly identified pronunciation resource — restricted candidate, not IPA gold
+
+- The Hugging Face phonsobon/khmer-G2P card describes 38,629 Khmer word-to-pronunciation pairs (37,755 unique words), derived from the National Council of Khmer Language (NCKL) Khmer Dictionary 2022. The pronunciations are Khmer-script respellings with syllable boundaries, not IPA. The card explicitly limits the profile to prescribed Standard/Phnom Penh dictionary pronunciations, lists known source/extraction errors, and says to credit NCKL and check NCKL terms before commercial use. It is useful as a candidate lexeme/source locator and orthographic-pronunciation comparator only, not as IPA gold, not as proof of spontaneous/citation phonetic realization, and not automatically redistributable for this project. https://huggingface.co/datasets/phonsobon/khmer-G2P
+- The related dictionary card states that rights in the dictionary content remain with NCKL and asks users to check NCKL terms before commercial use or redistribution. Do not assume the Hugging Face card's metadata label grants a project-wide redistribution right: https://huggingface.co/datasets/phonsobon/khmer-dictionary
+- kheng.info reports an online Khmer audio dictionary with over 3,000 recordings, but the reviewed about page does not establish dataset licensing, item-level source rights, target speaker profile, or permission to download/reuse audio. Treat it as a discovery/elicitation lead only: https://kheng.info/about/
+
+### Existing stronger audio lead retained
+
+Kirby's Edinburgh DataShare items (DOIs 10.7488/ds/321 and 10.7488/ds/319) remain the strongest rights-declared Phnom Penh acoustic-study materials identified in this playbook. The CC BY 4.0 item metadata does not turn Praat TextGrids or measurements into IPA labels; use only the reading/citation condition relevant to the target profile and retain source task metadata.
+
+### Immediate unblock sequence
+
+1. Invite a prospective reviewer to review a draft versioned convention sheet covering series/register, vowel quality/length, diphthongs, coda, stress, /r/-loss variants and uncertainty.
+2. Ask the reviewer to nominate two independent annotators and a separate adjudicator; confirm role independence and target-variety competence.
+3. Use NCKL-derived entries only as candidate lexeme discovery pending written clarification of item-level rights and redistribution; do not copy its respellings into IPA fields.
+4. Prefer rights-cleared Kirby reading-condition audio or controlled consented citation-form recordings; prepare 30 candidate groups only after rights/profile review.
+5. Test private blind intake before annotation begins.
+
+Status remains BLOCKED for pilot execution: the leads improve recruitment and source discovery but do not constitute recruitment, NCKL permission, adjudicated IPA, or a gold corpus.

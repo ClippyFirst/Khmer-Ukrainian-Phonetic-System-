@@ -278,3 +278,11 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 
 - The map explicitly distinguishes the IPA-first phonetic path from the separate orthographic route and calls out high-risk seams, generated artifacts and fail-closed contracts.
 - Documentation/process change only; no linguistic labels or code behavior changed. Independent gold remains 0; accuracy remains `null`.
+
+
+## KHM-METHOD-REFRESH-001 — methodology upstream snapshots — 2026-11-03
+
+**Status: DONE_VERIFIED (reference audit).** Rechecked upstream default branches and release pins: Superpowers v7.0.1 at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`; mattpocock/skills release v1.3.2 at `d1478fcb140db0b93c0c8df17bcfd311844749d0` and current main snapshot `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; Ponytail v5.3.3 at `7801d061243d7b753bad0e0b3c057cd250b11755`, with current main `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` adding only a README product/logo note after the method pin.
+
+- These are methodology references, not runtime dependencies. No upstream skill files copied into the application.
+- Remaining linguistic evidence and rights gates are unchanged; gold 0, accuracy null.

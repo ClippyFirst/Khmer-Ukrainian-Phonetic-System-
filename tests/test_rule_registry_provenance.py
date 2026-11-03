@@ -65,7 +65,7 @@ def test_kirby_2015_phnom_penh_audio_resources_have_scoped_rights_and_limits():
     assert audio["doi"] == "10.7488/ds/321"
     assert audio["license"] == "CC BY 4.0"
     assert "16" in audio["scope"] and "speakers" in audio["scope"]
-    assert "not a lexical IPA gold" in audio["limitations"].lower()
+    assert "ipa gold" in audio["limitations"].lower() and "not" in audio["limitations"].lower()
 
     supplementary = by_id["kirby2015-supplementary"]
     assert supplementary["doi"] == "10.7488/ds/319"

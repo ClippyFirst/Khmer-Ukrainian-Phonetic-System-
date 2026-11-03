@@ -296,3 +296,11 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 
 - These are methodology references, not runtime dependencies. No upstream skill files were copied into the application.
 - Remaining linguistic evidence and rights gates are unchanged; gold 0, accuracy null.
+
+## 2026-11-03 — held-out benchmark split enforcement
+
+| Task | Status | Evidence / remaining acceptance |
+|---|---|---|
+| IPA-BENCH-SPLIT-001 | DONE_VERIFIED (engineering contract) | Export preserves the frozen group-safe split; scorer defaults to test and requires explicit selection for train/dev/all. Exact-head Quality [41651903776](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41651903776) SUCCESS on `ca53d628ae9a9ea4696fc85f42cdf59bcedfa2d1`. This fixes the evaluation boundary, not linguistic gold. |
+
+Independent gold remains 0 and accuracy remains null. No data labels were fabricated. The split-aware benchmark documentation is in `docs/benchmarking-and-external-ipa.md`.

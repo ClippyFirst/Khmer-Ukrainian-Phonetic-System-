@@ -6,6 +6,14 @@
 **Research boundary:** Independent expert-adjudicated Khmer IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null.
 **Scope:** continue the existing master handoff; this register does not replace it.
 
+## Unicode/parser contract correction — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| UNICODE-TOKEN-BOUNDARY-001 | DONE_VERIFIED | PR [#126](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/126), merge `2a2f1c55282e076d6c4e0640d80af1053783bd6b`; exact-head Quality checks [41710399396](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41710399396) SUCCESS and browser smoke [41710399684](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41710399684) SUCCESS. | Browser punctuation segmentation now uses Unicode general category `P`, matching Python; regression covers U+3002 between two valid Khmer units and verifies exact source preservation plus neighbor status/output. This does not establish Khmer pronunciation or gold accuracy. |
+
+**Research boundary unchanged:** no IPA gold labels were added; independent adjudicated gold remains 0 and empirical accuracy remains null.
+
 ## Held-out IPA benchmark integrity — 2026-11-03
 
 | ID | Status | Evidence | Acceptance boundary |

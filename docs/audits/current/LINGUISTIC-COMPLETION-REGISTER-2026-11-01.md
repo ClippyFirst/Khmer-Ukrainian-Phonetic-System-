@@ -286,3 +286,11 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 - PRs #107 and #114 were closed without merge because their profile/runtime/test changes are byte-identical to main; #108 and #111 were merged. Stale documentation PR #117 was closed after main advanced; this replacement branch is based on current main.
 - Engineering improvements are verified; manual accessibility QA remains partial.
 - IPA gold remains 0; empirical accuracy remains null. Annotation staffing, convention approval, rights clearance, blind intake and adjudication remain blocked on external human/evidence dependencies.
+
+
+## KHM-METHOD-REFRESH-001 — methodology upstream snapshots — 2026-11-03
+
+**Status: DONE_VERIFIED (reference audit).** Rechecked upstream default branches and release pins: Superpowers v7.0.1 at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`; mattpocock/skills release v1.3.2 at `d1478fcb140db0b93c0c8df17bcfd311844749d0` and current main snapshot `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; Ponytail v5.3.3 at `7801d061243d7b753bad0e0b3c057cd250b11755`, with current main `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` adding only a README/product-list note after the method pin.
+
+- These are methodology references, not runtime dependencies. No upstream skill files were copied into the application.
+- Remaining linguistic evidence and rights gates are unchanged; gold 0, accuracy null.

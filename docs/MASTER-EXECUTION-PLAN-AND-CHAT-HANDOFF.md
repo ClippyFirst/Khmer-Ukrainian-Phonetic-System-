@@ -1253,7 +1253,7 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 
 ## Split-manifest continuation update — 2026-11-03
 
-- Final PR [#109](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/109) documentation head: `0e6755feb4a00911b140242f948e2039e923b333`; 18 commits ahead / 0 behind current main; GitHub reports mergeable. The last code/test checkpoint was `1cf4909435a9eeface2fb96efa829b903461ed98`; the three commits after it change only documentation. No merge performed.
+- PR [#109](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/109) remains open and mergeable, 18 commits ahead / 0 behind current main. The last verified code/test checkpoint was `1cf4909435a9eeface2fb96efa829b903461ed98`; all commits after that checkpoint change only documentation. Read the PR page for its live documentation head; no merge performed.
 - Added a regression test for creating a new, independent split manifest using a new empty JSONL `--splits` input and explicit new seed/version. Updated `docs/ipa-gold-corpus.md` to state that a new `--output` alone does not reset the existing input manifest.
 - Exact-head CI [41638554878](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41638554878) SUCCESS — 156 pytest tests + 44 subtests; shared register-shifter browser contract passed.
 - Linguistic gold remains 0; gold export remains header-only; empirical accuracy remains `null`. This is split lifecycle/reproducibility engineering, not phonetic validation.

@@ -1,12 +1,23 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
-**Current checkpoint:** 2026-11-03 (post-hotfix merge and deployment verification)  
-**Default branch:** `main` at `e9894e5726f5f6aa2510d7d3beed69b2d03fb666`  
-**Open follow-up PR:** [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107) (careful-citation profile; 95 commits ahead / 1 behind after the hotfix merge; currently non-mergeable and requiring reconciliation). PR #108 was merged as `e9894e5726f5f6aa2510d7d3beed69b2d03fb666`.  
-**Merged hotfix verification:** PR-head Quality [41536753767](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41536753767) and Chromium [41536753931](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41536753931) SUCCESS; post-merge `main` Quality [41641496598](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496598), browser smoke [41641496582](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496582), and Pages deployment plus deployed-site smoke [41641496680](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496680) all SUCCESS.  
-**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; empirical accuracy = **null**.
+## Current repository state — 2026-11-03
 
-## Current task ledger and next blocker
+- **Default branch:** `main` at `1a2df2fd7fe512b327a5293165e0ff4052d7f954`.
+- **Open pull requests:** none at the time of this checkpoint; all relevant integration PRs are merged or explicitly superseded/closed.
+- **Integrated engineering and research changes:** browser result hotfix; manifest-wide split identity; MekongPhon/Kirby/Chem/Woźnica source audit; single careful citation profile with no inferred colloquial /r/-loss; glossary/codebase map and agent guidance.
+- **Exact-main verification:** Quality [41649424148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424148) SUCCESS; Chromium [41649424074](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424074) SUCCESS; Pages/deployed smoke [41649424091](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424091) SUCCESS.
+- **Research boundary:** independent expert-adjudicated IPA gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. Passing engineering/browser/deployment checks is not evidence of phonetic accuracy.
+
+## Current task ledger and blockers
+
+- **DONE_VERIFIED:** manifest-wide split identity is enforced; the default branch has current CI evidence; source citations and evidence scope have been reconciled; project agent guidance is in place.
+- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by language-specific evidence and unresolved cases. Any external benchmark remains diagnostic until rights, profile and IPA conventions are independently validated.
+- **BLOCKED:** independent gold collection requires an approved profile and IPA convention, two qualified independent annotators, a separate adjudicator, blinded intake and source-specific rights clearance.
+- **TODO:** complete manual visual, keyboard, screen-reader, responsive and mobile QA on the deployed site; automated browser smoke is not a substitute.
+
+## Historical checkpoints (retained for audit; superseded by the current state above)
+
+
 
 - **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and the exact-head automated engineering checks recorded in the historical entries below. This is not linguistic validation.
 - **DONE_VERIFIED (web output hotfix):** PR #108 removed the stale `source-result` DOM write; current `main` no longer dereferences the absent element. Exact-main Quality, Chromium browser smoke, Pages deployment, and deployed-site asset smoke all passed on merge commit `e9894e5726f5f6aa2510d7d3beed69b2d03fb666`. This verifies the UI regression fix and deployment, not pronunciation accuracy. Manual visual, keyboard, screen-reader and mobile QA remain open.

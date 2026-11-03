@@ -270,3 +270,11 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 
 - The profile is a bounded project decision, not a universal standard. Chem (2020) supports the careful formal-reading elicitation style but not full lexical coverage.
 - Original #114 tests passed; the rebased branch needs fresh exact-head CI. Independent gold remains 0 and empirical accuracy remains `null`.
+
+
+## KHM-AGENT-CONTEXT-001 — glossary and codebase navigation — 2026-11-03
+
+**Status: PARTIAL pending exact-head CI.** Added `GLOSSARY.md`, `docs/agents/codebase-map.md`, `docs/agents/issue-tracker.md` and updated `AGENTS.md` with current code/data-flow and issue-management guidance.
+
+- The map explicitly distinguishes the IPA-first phonetic path from the separate orthographic route and calls out high-risk seams, generated artifacts and fail-closed contracts.
+- Documentation/process change only; no linguistic labels or code behavior changed. Independent gold remains 0; accuracy remains `null`.

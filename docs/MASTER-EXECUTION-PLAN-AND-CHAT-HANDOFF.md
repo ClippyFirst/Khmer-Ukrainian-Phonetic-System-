@@ -1256,3 +1256,13 @@ Independent expert-adjudicated gold remains 0; accuracy remains null. The source
 - Enforces one manifest-wide `(seed, version)` identity across all lexeme groups, preserves the identity when extending an existing manifest, rejects conflicting and empty explicit CLI overrides, and adds an acceptance test for creating a new versioned manifest from a separate empty `--splits` input.
 - Prior exact-head CI [41639679611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41639679611) succeeded on the original PR head, but this rebased port requires its own exact-head tests before merge.
 - No linguistic gold rows or phonological labels are added. Independent adjudicated gold remains 0; accuracy remains `null`.
+
+
+## Single careful-citation profile integration — 2026-11-03
+
+- Ported the narrow profile/runtime change from PR #107 onto current `main`, excluding its already-merged browser hotfix and unrelated documentation/research changes.
+- The service now accepts one explicit project profile key, `khmer-pph-careful-citation-v1`, representing contemporary Phnom Penh careful citation-form speech. This is a bounded project decision, not an external standard and not a claim that every Khmer variety shares this profile.
+- Removed the deterministic colloquial `/Cr/ → aspirated onset` rewrite. Such a rewrite cannot represent the source-attested variability in aspiration, phonation, F0 and vowel effects; colloquial /r/-loss is not inferred from spelling. The adapter preserves supplied IPA and rejects unselected profile identifiers.
+- Chem (2020)'s selected Phnom Penh speakers and formal-reading repetitions support this pilot's careful citation-form elicitation choice; the small sample does not establish complete lexical coverage or universal standard status. The profile decision does not create IPA labels or fill the incomplete vowel × series × coda matrix.
+- Original PR #107 code-head Quality [41631420458](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41631420458) and browser [41631420500](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41631420500) succeeded, but this narrow rebased port requires fresh exact-head CI.
+- Independent adjudicated IPA gold remains 0; empirical accuracy remains `null`. Manual accessibility/mobile QA remains open.

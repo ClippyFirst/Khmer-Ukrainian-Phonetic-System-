@@ -13,7 +13,7 @@
 | KHM-RLOSS-001 | PARTIAL | Phnom Penh /r/-loss transformation remains profile-dependent and incompletely validated. | Define exact environment/dialect, test positive and negative minimal pairs against source-located expert labels; otherwise withhold. |
 | KHM-ROM-001 | PARTIAL | BGN/PCGN 1972 inventories are bounded, but the @gmana ASCII simplifier is not fully conformant; contextual vowel/rime rules and Ukrainian syllable adapter remain incomplete. | Full primary-source context matrix, explicit deviations, independent syllable-level Ukrainian adapter, mixed-text and ambiguity tests. |
 | KHM-G2P-001 | DONE_VERIFIED (diagnostic harness only) | Goruut has substantial partial coverage; Khmerphonemizer source concordance is not independent accuracy. | No production promotion absent gold and full source coverage; preserve raw outputs and comparator provenance. |
-| KHM-UI-001 | TODO | Manual visual, keyboard, assistive-technology and mobile QA is not established by CI. | Recorded test matrix and deployed-site results. |
+| KHM-UI-001 | PARTIAL | PR #107 now has 5/5 production-build Chromium interaction tests (input/result, known phrase, unsupported mixed input, phonetic-vs-romanization separation, clear/reset); PR #108 isolates 3 additional hotfix browser tests. Manual visual, keyboard, assistive-technology, mobile/touch and public deployed-URL interaction QA remain open. | Run against the deployed Pages URL after #108 merges; record human keyboard, screen-reader and mobile results. |
 | KHM-REL-001 | PARTIAL | Production readiness blocked by lexical gold, contextual phonology and rights for external assets. | All release gates met; no restricted external model/data bundled. |
 
 ## Current diagnostic evidence
@@ -329,3 +329,9 @@ Accuracy remains null; independent adjudicated gold remains 0. The paper's repor
 | KHM-ACOUSTIC-MODEL-REPRO-001 | TODO | Public repo does not expose the full dictionary/model artifacts, speaker/dialect distribution, annotation manual, double-annotation/adjudication protocol or reproducible evaluation split. | Obtain exact release files, speaker/profile metadata, annotation evidence and reproducible evaluation artifacts. Do not use alignment metrics as G2P accuracy. |
 
 No dictionary rows or IPA labels imported. Independent expert gold remains 0; accuracy null.
+
+## UI evidence reconciliation — 2026-11-03
+
+- `KHM-UI-001` is `PARTIAL` rather than `TODO`: exact PR #107 merge-head browser workflow [41540157395](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41540157395) passed 5/5 Chromium tests against the production build. The job log explicitly shows all five test names and zero failures.
+- PR #108 remains separate because the main-branch `source-result` DOM exception blocks non-empty rendering until the hotfix is merged and deployed. The PR #107 browser suite validates its merge context, not the published main site.
+- Manual visual, keyboard, screen-reader, mobile/touch and deployed Pages URL interaction checks remain unverified. CI does not close those acceptance criteria.

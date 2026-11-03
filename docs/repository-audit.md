@@ -225,3 +225,9 @@ All five workflows now use current Node.js 24-compatible action majors. Exact-he
 - PR #107 code head `87ffc67d4f4f182aab26ac384e17e7a038e3294e` passed Quality [41605489135](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41605489135) and Chromium [41605489128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41605489128). Later commits in #107 are documentation-only.
 - PR #108 code was last verified at the previously recorded hotfix CI heads; its current branch head `e8ef5ea727758c3339d016fb2636c1108e1549f4` is two documentation-only commits beyond `bf8347d089d3ab09af98fdf1e88b7039710df654`. It has the same `src/main.js` deletion as #107. Keep both PRs open pending owner review; do not merge both without reconciling their overlapping browser workflow/test changes.
 - No PR merged and no Pages deployment from either PR is claimed in this checkpoint.
+
+
+## Parallel PR reconciliation — 2026-11-03 (split and source registry)
+
+- PR #109 is the separate, verified implementation of the manifest-wide split seed/version invariant (exact-head Quality checks 41615861613); PR #110 adds MekongPhon and Sar & Tan (2019) source-registry/G2P metadata (exact-head Quality checks 41615311896). Both are open, mergeable and zero commits behind main. They are complementary to #107/#108; no code or data was cherry-picked because the PRs already contain the work and have independent CI evidence.
+- Sar & Tan (2019) reports 1,350 training and 350 test pairs; the abstract's baseline WER 69.6% conflicts with Table 10/conclusion's 69.9%. The article is CC BY-NC-ND 4.0; this does not establish rights for source dictionaries or derived data. Treat as a comparator, not IPA gold. No PR merged.

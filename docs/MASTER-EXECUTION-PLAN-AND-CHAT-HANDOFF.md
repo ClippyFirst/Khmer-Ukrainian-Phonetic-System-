@@ -2,7 +2,7 @@
 
 ## Current continuation checkpoint — 2026-11-03
 
-- Dedicated fix branch: `fix/ipa-gold-split-manifest-coherence-20261103`; current code/test head `6d2c3a67ae0eb8d812a3edc77a4dc0a94dfb0a3d` (documentation updates follow on this branch).
+- Dedicated fix branch: `fix/ipa-gold-split-manifest-coherence-20261103`; final documented branch head before this handoff refresh `86de5741e87a26be2fddbaad3cf80b2c65d9ba72`; PR [#109](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/109) is open against `main`, 8 commits ahead / 0 behind, mergeable.
 - Fixed a reproducibility gap in the IPA gold split lifecycle: all rows in one manifest now share one frozen seed/version, and extending an existing manifest preserves that identity. Conflicting explicit overrides are rejected; redesigns require a separate versioned manifest.
 - RED evidence (tests-only change): [41612978304](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41612978304) failed on the three intended regression behaviors. GREEN evidence: [41613364915](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41613364915) SUCCESS — 153 Python tests + 44 subtests plus the repository workflow's remaining checks.
 - Linguistic gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. This fix improves split reproducibility only.

@@ -223,3 +223,11 @@ The older design PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phoneti
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/106), merge `7ee049aae9cc7ff571b21eabe18e962627f192a3`; the extractor now accepts an optional query string. PR CI passed (41424681328). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## External G2P bibliography reconciliation — 2026-11-03
+
+**Status: DONE_VERIFIED (bibliographic/source-registry correction; not linguistic validation).** Added MekongPhon and Sar & Tan (2019) to the Khmer source registry. Corrected authors, volume/pages, dataset size (1,350 train / 350 test), and preserved the paper's internal baseline WER discrepancy (abstract 69.6% vs Table 10/conclusion 69.9%). CC BY-NC-ND 4.0 is stated only for the article, not its source dictionaries or derived data. Corrected US 'behavior' to British 'behaviour'.
+
+- Four benchmark BibTeX records (MekongPhon 2026, Myanmar dictionary G2P 2016, Burmese LREC 2020, Khmer G2P 2019) passed the Academic Writing Toolkit's structural BibTeX check with 0 issues. Primary metadata was checked against ACL Anthology / LREC Proceedings; the Khmer 2019 paper's title/authors/volume/pages/DOI and conflicting WER values were cross-checked against the available full text.
+- No external corpus, dictionary, pronunciation label or model was imported. Rights clearance remains source-specific; independent gold remains 0 and empirical accuracy remains `null`.

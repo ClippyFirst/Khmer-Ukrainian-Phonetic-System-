@@ -270,3 +270,11 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 
 - The profile is a bounded project decision, not a universal standard. Chem (2020) supports the careful formal-reading elicitation style but not full lexical coverage.
 - Original #114 tests passed; the rebased branch needs fresh exact-head CI. Independent gold remains 0 and empirical accuracy remains `null`.
+
+
+## Continuation status sync — 2026-11-03
+
+- Current main: `1dc07f9c43972f547ac7a56adb9ed949155bacf1`; exact-main Quality 41646838970, Chromium 41646838756 and Pages/deployed smoke 41646838884 all succeeded.
+- PRs #107 and #114 were closed without merge because their profile/runtime changes are byte-identical to main; #108 and #111 were merged. No open PRs remain.
+- Engineering improvements are verified; manual accessibility QA remains partial.
+- IPA gold remains 0; empirical accuracy remains null. Annotation staffing, convention approval, rights clearance, blind intake and adjudication remain blocked on external human/evidence dependencies.

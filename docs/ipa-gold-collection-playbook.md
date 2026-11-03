@@ -81,10 +81,11 @@ Existing numeric thresholds (100 train / 25 dev / 25 test) are minimum engineeri
 
 ## References
 
-- Shurtz, Richardson & Richardson (2026), MekongPhon, LREC 2026: https://lrec.elra.info/lrec2026-main-129
-- Chem et al. (2026), Khmer Acoustic Model and dictionary: https://github.com/chemvatho/Khmer-acoustic-model
-- Chem (2020), The Standard Khmer vowel system: https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36
-- Kirby (2014), Incipient tonogenesis in Phnom Penh Khmer: https://www.sciencedirect.com/science/article/pii/S0095447014000163
+- Shurtz et al. (2026). “MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer.” *Proceedings of the Fifteenth Language Resources and Evaluation Conference*, 1650–1658. DOI: https://doi.org/10.63317/4bb9rvdshu4z.
+- chemvatho/Khmer-acoustic-model (upstream technical repository; inspected 2026-11-03): https://github.com/chemvatho/Khmer-acoustic-model. This is a forced-alignment/acoustic resource and dictionary candidate, not a scholarly G2P paper.
+- Chem, Vatho (2020). “The Standard Khmer vowel system: An acoustic study.” *Insight: Cambodia Journal of Basic and Applied Research* 2(2): 57–88. DOI: https://doi.org/10.61945/cjbar.2020.2.2.3.
+- Woźnica, Piotr (2013). *Procesy fonetyczno-fonologiczne w nieregionalnej odmianie języka khmerskiego* [*Phonetic-phonological processes in non-regional Khmer*]. Doctoral thesis, Adam Mickiewicz University. http://hdl.handle.net/10593/8122.
+- Kirby, James (2014). “Incipient tonogenesis in Phnom Penh Khmer: Acoustic and perceptual studies.” *Journal of Phonetics* 43: 69–85. DOI: https://doi.org/10.1016/j.wocn.2014.02.001.
 
 
 ## External IPA resources — repository inspection, 2026-11-01

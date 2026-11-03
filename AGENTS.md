@@ -46,12 +46,12 @@ Inspect generated artifacts and built relative asset paths when changing data or
 Methodological references only; do not add them as runtime dependencies or copy their repositories wholesale:
 
 - [obra/superpowers](https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b) — test-first work, explicit plans, root-cause debugging, review and evidence before completion.
-- [mattpocock/skills](https://github.com/mattpocock/skills/tree/d1478fcb140db0b93c0c8df17bcfd311844749d0) — behavior-focused tests, clear interfaces, test seams and source-backed research.
-- [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/7801d061243d7b753bad0e0b3c057cd250b11755) — Ponytail 5.3.3: trace the real code path and data flow, map entry points and expected load before repository-level audit, review beyond the diff, preserve trust-boundary validation/data-loss handling/accessibility, test branching/parser/security logic, and report skipped checks and residual risk.
+- [mattpocock/skills](https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d) — behavior-focused tests, clear interfaces, test seams and source-backed research.
+- [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846) — Ponytail current main: trace the real code path and data flow, map entry points and expected load before repository-level audit, review beyond the diff, preserve trust-boundary validation/data-loss handling/accessibility, test branching/parser/security logic, and report skipped checks and residual risk.
 
 When these references conflict with the existing project contract or the user's explicit requirements, follow the project contract and user requirements.
 
-**Reviewed 2026-11-02:** Superpowers 7.0.1 (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`), mattpocock/skills current main (`d1478fcb140db0b93c0c8df17bcfd311844749d0`), and Ponytail 5.3.3 (`7801d061243d7b753bad0e0b3c057cd250b11755`) were checked against upstream. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
+**Reviewed 2026-11-02:** Superpowers 7.0.1 (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`), mattpocock/skills release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`); current main snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`), and Ponytail 5.3.3 (`7801d061243d7b753bad0e0b3c057cd250b11755`) were checked against upstream. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
 
 
 
@@ -76,3 +76,8 @@ Before accepting a new adversarial fixture, review whether its expected result i
 - A RED result is valid only when the intended assertion fails for the intended reason. If using mutation-based diagnosis, inspect the diff against a pristine baseline and confirm the mutation actually changed the relevant code; a no-op edit is not evidence.
 - Before filing issues or preparing PRs, follow repository templates and identify the filer accurately. Never present agent-generated text as human-authored; leave owner-authored sections for the owner.
 - Do not force-remove a worktree or discard untracked files to make cleanup succeed. Inspect the files and preserve, relocate, commit, or delete them only with explicit owner direction.
+
+
+## Methodology application — 2026-11-02
+
+The repository now keeps its own domain glossary, GitHub issue-tracker instructions and source-verified codebase map under version control. Use these as context for the composable engineering skills; do not install external repositories as runtime dependencies or duplicate their whole skill trees. Apply Superpowers for scoped plans, RED/GREEN TDD and verification; apply Matt Pocock's codebase-design, research and two-axis review principles; apply Ponytail's real-flow audit, minimal complete change and residual-risk reporting. Linguistic evidence, corpus rights and fail-closed contracts always take precedence.

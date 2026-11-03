@@ -1271,3 +1271,10 @@ Independent expert-adjudicated gold remains 0; accuracy remains null. The source
 - The service exposes only `khmer-pph-careful-citation-v1`, a bounded project profile for contemporary Phnom Penh careful citation-form speech. The adapter preserves supplied IPA; it does not synthesize colloquial /r/-loss or rewrite /Cr/ clusters.
 - The project profile decision is supported as an elicitation target by Chem (2020)'s small formal-reading sample, but it is not a national standard or a claim of full lexical coverage. Independent adjudicated gold remains 0 and accuracy remains `null`.
 - Original #114 exact-head Quality and Chromium workflows succeeded, but this rebase requires fresh exact-head checks.
+
+
+## Khmer agent context and glossary — 2026-11-03
+
+- Added the project glossary, current codebase/data-flow map and issue-tracker instructions, and updated `AGENTS.md` to route future work through the canonical handoff and verified maps.
+- The codebase map reflects the current main after the browser hotfix, manifest-wide split fix, source-evidence reconciliation and single careful-citation profile. It distinguishes parser structure, source-language phonology, typed IPA, Ukrainian adaptation, generated browser data and the separate romanization path.
+- These are navigation and process aids, not linguistic evidence or a replacement for expert review. No runtime rules or gold labels changed. Exact-head CI required.

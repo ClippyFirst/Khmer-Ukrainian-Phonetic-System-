@@ -59,7 +59,7 @@ The three-repeat raw outputs are preserved in workflow artifacts and summarized 
 
 ## Cross-engine comparison update
 
-Cross-engine check: khmerphonemizer 0.0.3 returned 6/6 source-attested probes; 2/6 strict IPA strings and 6/6 limited-notation matches. Goruut returned 6/6 stable outputs but only 1/6 strict and 3/6 limited-notation matches. This small source-attested sample favors khmerphonemizer as a comparator, not as proven production phonology. No independent gold exists.
+Cross-engine check: khmerphonemizer 0.0.3 returned 6/6 source-attested probes; 2/6 strict IPA strings and 6/6 limited-notation matches. Goruut returned 6/6 stable outputs but only 1/6 strict and 3/6 limited-notation matches. This small source-attested sample favours khmerphonemizer as a comparator, not as proven production phonology. No independent gold exists.
 
 
 ## Candidate: Kirby 2015 Phnom Penh acoustic recordings and supplementary data

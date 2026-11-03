@@ -3,7 +3,7 @@
 ## Core Khmer sources
 
 1. Unicode Consortium. Unicode Standard 17.0.0, Chapter 16: South and Southeast Asian Scripts — Khmer. Script/encoding structure.
-2. Richard Ishida (2026). Khmer (Cambodian) Orthography Notes. Modern orthography, consonant classes, vowel behavior and descriptive phonology.
+2. Richard Ishida (2026). Khmer (Cambodian) Orthography Notes. Modern orthography, consonant classes, vowel behaviour and descriptive phonology.
 3. Chem, Vatho (2020). The Standard Khmer vowel system: An acoustic study. *Insight: Cambodia Journal of Basic and Applied Research*, 2(2), 57–88. DOI: 10.61945/cjbar.2020.2.2.3. The publisher metadata repeats the same author for two affiliations; it does not identify two distinct authors.
 4. Henderson, E. J. A. (1952). The Main features of Cambodian Pronunciation. Bulletin of the School of Oriental and African Studies 14(1): 149–174.
 5. Wayland, Ratree P., & Guion, Susan G. (2005). Sound changes following the loss of /r/ in Khmer: a new tonogenetic mechanism? *Mon-Khmer Studies*, 35, 55–82. DOI: 10.15144/MKSJ-35.55.

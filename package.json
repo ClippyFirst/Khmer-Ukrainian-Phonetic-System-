@@ -7,13 +7,15 @@
     "test": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs && node tests/register-shifter-contract.test.mjs && node tests/romanization.test.mjs",
     "check": "node tests/web-engine.test.mjs && node tests/web-runtime.test.mjs && node tests/multiple-register-shifters.test.mjs && node tests/register-shifter-contract.test.mjs && node tests/romanization.test.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:browser": "playwright test"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "@playwright/test": "1.63.0"
   },
   "dependencies": {
     "@gmana/km-translit": "0.1.2"

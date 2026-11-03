@@ -1,36 +1,23 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
-**Current checkpoint:** 2026-11-02  
-**Default branch:** `main` at `c0a2b33c86791b6546e1158c62043fd23acc1f60`  
-**Verified implementation checkpoint before methodology documentation update:** `73e654b5a592cb84ed29b25b03cb95fb5a7e25e0` on `feat/ipa-gold-corpus-20261101-review`
-**Open implementation PR:** [#103](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/103)  
-**Branch comparison at this checkpoint:** 102 commits ahead of main, 0 behind.
-**Exact-head methodology verification:** [Quality checks 41358627128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627128) SUCCESS; optional diagnostics [41358627194](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627194) and [41358627130](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41358627130) SUCCESS.
-**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
+**Current checkpoint:** 2026-11-03 (browser-output hotfix review)  
+**Default branch:** `main` at `7b0a8f8c8661707afd9f0c58a94e2678789adf86`  
+**Open follow-up PRs:** [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107) (single careful-citation profile) and [#108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/108) (isolated browser-output hotfix).  
+**Hotfix branch:** `hotfix/khmer-browser-output-20261102`, pre-documentation head `aad9ce32378594c0da6651e7fba757ce0dfe40f0`.  
+**Exact-head hotfix CI:** Quality checks [41533500652](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41533500652) SUCCESS; Chromium smoke [41533500956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41533500956) SUCCESS (3/3 browser tests). Documentation update on this branch requires a fresh exact-head CI run.  
+**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; empirical accuracy = **null**.
 
 ## Current task ledger and next blocker
 
-- **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and exact-head automated engineering checks are present on the active branch. This is not linguistic validation.
-- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases.
-- **BLOCKED:** the 30-lexeme blind pilot cannot start until the target variety/profile and IPA convention are approved, two qualified independent annotators and a separate adjudicator are confirmed, rights-cleared source packets are prepared, and the blind intake dry-run passes.
-- **TODO:** manual deployed-site visual, keyboard, assistive-technology, and mobile QA.
-- **Next actionable human milestone:** resolve the recruitment and convention checklist in [issue #104](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/issues/104) and follow [the controlled acquisition protocol](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/blob/feat/ipa-gold-corpus-20261101-review/docs/ipa-gold-collection-playbook.md).
+- **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and the exact-head automated engineering checks recorded in the historical entries below. This is not linguistic validation.
+- **PARTIAL (web output):** current `main` contains a stale `source-result` DOM write in `src/main.js`, but `index.html` has no matching element. Non-empty input therefore throws before IPA/Ukrainian results render. PR #108 removes only that invalid write and adds a Chromium regression suite plus a Pages browser gate; its exact-head tests pass, but the production site remains affected until the PR is merged and Pages redeploys.
+- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases. PR #107 separately narrows the runtime to the selected Phnom Penh careful-citation profile; it must not be conflated with the isolated UI hotfix.
+- **BLOCKED:** the 30-lexeme blind pilot cannot start until the IPA convention is approved, two qualified independent annotators and a separate adjudicator are confirmed, rights-cleared source packets are prepared, and blind intake is arranged. See [issue #104](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/issues/104).
+- **TODO:** manual visual, keyboard, assistive-technology and mobile QA on the deployed site; automated Chromium tests do not replace this human QA.
+- **Next actionable engineering step:** review and merge PR #108, then verify the Pages deployment and run browser interaction tests against the published URL. No merge or publication was performed in this session.
 
-No local checkout was available for this checkpoint; do not interpret hosted CI as local test execution, expert adjudication, visual QA, or release approval. Preserve the fail-closed pipeline and do not create IPA/gold labels from model output or unsupported spelling inference.
+No local checkout was available; hosted CI is not local test execution, expert adjudication, manual accessibility QA, or proof that the current public URL has redeployed. Preserve fail-closed behavior and do not create IPA/gold labels from model output or unsupported spelling inference.
 
-
-
-## Methodology source refresh — 2026-11-02
-
-The adopted engineering references were checked against current upstream revisions without importing them as runtime dependencies:
-
-- Superpowers 7.0.1: `obra/superpowers@2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` — explicit plans, true RED/GREEN TDD, systematic debugging, code review, and verification-before-completion. At GREEN, verify the project suite, not only the narrow test that first went red.
-- mattpocock/skills current main: `d1478fcb140db0b93c0c8df17bcfd311844749d0` — composable skills, source-backed research, test-first implementation, and two-axis review (spec compliance separately from repository standards).
-- Ponytail 5.3.3: `7801d061243d7b753bad0e0b3c057cd250b11755` — codebase/data-flow audit, connected-code review, minimal complete changes, and explicit preservation of security, data integrity, and accessibility.
-
-These references guide the method; project-specific linguistic, provenance, privacy, rights, and fail-closed requirements remain authoritative.
-
-**Methodology refresh commit:** `bf506e2a34e3a2523678487fdc5148ab019bd493` on the active review branch. **Exact-head verification:** [PR Quality checks 41356374055](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374055) and [push Quality checks 41356369054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356369054) SUCCESS; 146 tests + 44 subtests; [Goruut 41356374057](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374057) and [Khmer G2P 41356374080](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41356374080) SUCCESS.
 
 ## Historical records
 
@@ -1239,3 +1226,15 @@ The older design PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phoneti
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/106), merge `7ee049aae9cc7ff571b21eabe18e962627f192a3`; the extractor now accepts an optional query string. PR CI passed (41424681328). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## Focused scholarly source audit — 2026-11-03
+
+A targeted full-text review in the Undermind workspace and a parallel Consensus synthesis were added to the research evidence base. See the durable [cross-language research note](https://app.undermind.ai/projects/4f071406-bdb4-4fd1-b93f-71b9d5ec661d?path=/Research%20brief%20for%20three%20active%20engineering-research%20repositories%20that%20convert%20L.md) and the [Khmer practical transcription comparison](https://app.undermind.ai/projects/4f071406-bdb4-4fd1-b93f-71b9d5ec661d?path=/Khmer%20Cyrillic%20practical%20transcription%20comparison).
+
+- Chem Vatho (2020), [Standard Khmer vowel system: An acoustic study](https://doi.org/10.61945/cjbar.2020.2.2.3), is a one-page poster. Although 21 speakers were initially recruited, the reported acoustic results concern four Phnom Penh speakers (2 men, 2 women; ages 20–50) reading lexical items. It reports F1/F2 and duration but has unclear/inconsistent timing details, no stated formant normalization, and reported token/measurement gaps. It does not establish a representative standard, consonant system, tone inventory or coda inventory.
+- Sakamoto (1968), [The standard Khmer language and its Phnom Penh dialect](https://doi.org/10.20495/tak.6.2_290), relies principally on one Phnom Penh informant born in 1945. It records style-sensitive weak-syllable realization and proposes specific PP/ST correspondences, but these remain largely single-speaker analyses, not population-level rules.
+- This reinforces the project's careful-citation profile as a bounded project decision rather than a universally established standard. The four-speaker vowel study does not validate every consonant, register, coda or colloquial process. Keep the removed deterministic colloquial /r/-loss rule removed; do not reintroduce it from general descriptions.
+- Consensus identified Khmer G2P studies including Sar & Tan (2019), DOI [10.1016/j.procs.2019.11.140], reporting PER reduction from 23.2% to 11.1% after vowel-tag linguistic features. This is a published system result, not independent gold for this repository; its split, lexicon provenance, profile and rights must be checked in the primary paper before any benchmark reuse. Sok & Adams (2016) describes Thrax-based word transcription, but is not itself evidence that the current project has an adjudicated benchmark.
+
+Independent expert-adjudicated gold remains 0; accuracy remains null. The source audit changes no IPA label or phonology rule. The Khmer browser hotfix is still separate from linguistic research and must be merged/deployed independently before production repair is claimed.

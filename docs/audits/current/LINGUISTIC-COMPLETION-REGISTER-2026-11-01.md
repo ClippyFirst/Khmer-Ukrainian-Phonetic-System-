@@ -315,3 +315,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | Task | Status | Evidence / remaining acceptance |
 |---|---|---|
 | IPA-BENCH-EMPTY-PREDICTIONS-001 | DONE_VERIFIED (engineering guard) | Header-only prediction TSV previously exited 0 and produced an empty `engines` object. Test-first regression failed on all three language repositories; the scorer now rejects an empty prediction dataset after checking gold and frozen split provenance. Missing individual predictions within a named engine remain denominator-counted. RED: [41655188132](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41655188132). Final exact-head quality checks: [41655492141](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41655492141) SUCCESS; browser smoke: [41655491334](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41655491334) SUCCESS. |
+
+
+## 2026-11-03 — benchmark identifier validation
+
+| Task | Status | Evidence / acceptance |
+|---|---|---|
+| IPA-BENCH-IDENTIFIERS-001 | DONE_VERIFIED (engineering guard) | Reject whitespace-only gold IDs, prediction IDs and engine names while preserving non-empty identifiers exactly. Test-first RED: gold-ID run 41660794382; prediction-ID/engine run 41662096875. Final exact-code-head CI: 41662242906 SUCCESS (164 Python tests + 50 subtests; 3 browser smoke tests passed). Browser smoke 41662242611 SUCCESS. No linguistic labels or accuracy claims were added. |

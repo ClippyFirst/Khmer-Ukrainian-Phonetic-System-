@@ -2,8 +2,8 @@
 
 ## Current repository state — 2026-11-03
 
-- **Default branch:** `main` at `1a2df2fd7fe512b327a5293165e0ff4052d7f954`.
-- **Open pull requests:** none at the time of this checkpoint; all relevant integration PRs are merged or explicitly superseded/closed.
+- **Default branch:** [`main`](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/tree/main); PR base snapshot: `3809f0de9b77253a08985bb90e18e7308bdda412` (the live branch may advance independently).
+- **Open pull requests at this checkpoint:** #123 (`fix/heldout-ipa-benchmark-20261103`) carries the benchmark integrity correction; documentation-only PR #122 was subsequently superseded by the handoff/register reconciliation on this branch.
 - **Integrated engineering and research changes:** browser result hotfix; manifest-wide split identity; MekongPhon/Kirby/Chem/Woźnica source audit; single careful citation profile with no inferred colloquial /r/-loss; glossary/codebase map and agent guidance.
 - **Exact-main verification:** Quality [41649424148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424148) SUCCESS; Chromium [41649424074](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424074) SUCCESS; Pages/deployed smoke [41649424091](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424091) SUCCESS.
 - **Research boundary:** independent expert-adjudicated IPA gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. Passing engineering/browser/deployment checks is not evidence of phonetic accuracy.

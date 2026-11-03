@@ -12,8 +12,9 @@ External engines are comparators or optional upstream IPA providers only. Preser
 
 The standard-library-only harness is scripts/benchmark_ipa.py. It reads tab-separated files:
 
-- Gold columns: id, text, gold_ipa, gold_status, profile, source_id.
-- Prediction columns: id, engine, raw_output, ipa, status, version.
+- Gold required columns: id, text, gold_ipa, gold_status, profile, source_id, ipa_kind, split, split_seed, split_version (source-rights metadata columns may also be present).
+- Prediction required columns: id, engine, raw_output, ipa, status, version, ipa_kind.
+- The TSV reader rejects duplicate or blank header names and rejects any nonblank data row whose field count differs from its header; physically blank lines are ignored.
 
 Run from the repository root:
 

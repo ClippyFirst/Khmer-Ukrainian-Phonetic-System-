@@ -254,3 +254,13 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 - One frozen `(seed, version)` pair is enforced across the entire manifest; new groups inherit it; explicit conflicting/empty overrides fail; a new identity requires a separate empty input manifest.
 - Original PR-head CI [41639679611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41639679611) succeeded, but does not verify this rebased branch.
 - No IPA gold rows were added; adjudicated gold remains 0 and empirical accuracy remains `null`.
+
+
+## KHM-PROFILE-001 — single careful-citation profile — 2026-11-03
+
+**Status: PARTIAL pending exact-head verification and specialist approval.** Runtime and UI now use only `khmer-pph-careful-citation-v1`; the deterministic colloquial /r/-loss regex rewrite is removed. The profile is a project decision for a bounded careful citation-form pilot, not an external standard or complete phonological model.
+
+- Chem (2020) supplies a small Phnom Penh formal-reading acoustic sample; this supports the elicitation style but not full lexical coverage or universal standard claims.
+- Colloquial /r/-loss, aspiration, phonation, F0 and vowel effects remain outside the selected profile and must not be inferred from spelling.
+- Original PR #107 code-head workflows [41631420458](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41631420458) and [41631420500](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41631420500) passed; clean port requires fresh exact-head CI.
+- Independent gold remains 0 and accuracy remains `null`; specialist confirmation of the profile and IPA convention is still required.

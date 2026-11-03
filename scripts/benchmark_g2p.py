@@ -237,9 +237,7 @@ def main() -> int:
         corpus_path=(str(args.corpus.resolve().relative_to(ROOT.resolve())) if args.corpus.resolve().is_relative_to(ROOT.resolve()) else str(args.corpus)),
         corpus_sha256=sha256_file(args.corpus),
     )
-    rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(rendered, encoding="utf-8")
+    report_sha256 = write_report(args.output, report)
     print(json.dumps({
         **{key: report[key] for key in (
             "engine", "engine_version", "input_count", "successful_outputs",

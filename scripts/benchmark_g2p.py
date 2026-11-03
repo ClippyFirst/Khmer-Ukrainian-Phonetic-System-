@@ -78,11 +78,11 @@ def build_provenance(
 
 def write_report(path: Path, report: dict[str, Any]) -> str:
     """Write stable JSON plus an adjacent SHA-256 integrity sidecar."""
-    rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\\n"
+    rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(rendered, encoding="utf-8")
     digest = sha256_file(path)
-    path.with_suffix(path.suffix + ".sha256").write_text(digest + "\\n", encoding="ascii")
+    path.with_suffix(path.suffix + ".sha256").write_text(digest + "\n", encoding="ascii")
     return digest
 
 

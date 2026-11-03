@@ -92,5 +92,106 @@
     "year": 2006,
     "scope": "Bulgarian-language academic material containing Latin phonetic transcription of Khmer data",
     "status": "DOCUMENTED_EXAMPLE"
+  },
+  {
+    "id": "mekongphon-2026",
+    "type": "peer_reviewed_ipa_corpus_and_g2p_benchmark",
+    "title": "MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer",
+    "authors": [
+      "Ammon Shurtz",
+      "Christian Richardson",
+      "Stephen D. Richardson"
+    ],
+    "year": 2026,
+    "doi": "10.63317/4bb9rvdshu4z",
+    "url": "https://aclanthology.org/2026.lrec-1.129/",
+    "scope": "1.3 million Khmer and 367,000 Lao orthography–IPA pairs; abstract reports under 2% held-out CER; external baseline only, profile/IPA compatibility and separate corpus rights need verification",
+    "status": "EXTERNAL_BASELINE_CANDIDATE"
+  },
+  {
+    "id": "sar-tan-2019-khmer-g2p",
+    "type": "peer_reviewed_g2p_benchmark",
+    "title": "Applying Linguistic G2P Knowledge on a Statistical Grapheme-to-phoneme Conversion in Khmer",
+    "authors": [
+      "Vathnak Sar",
+      "Tien-Ping Tan"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.procs.2019.11.140",
+    "url": "https://doi.org/10.1016/j.procs.2019.11.140",
+    "journal": "Procedia Computer Science 161:415–423",
+    "scope": "prose reports 1,350 training pairs and 350 test pairs, but Table 10 test-corpus bins sum to 356 (112+97+98+49); abstract baseline WER 69.6% conflicts with Table 10/conclusion 69.9%; preserve discrepancies pending author clarification; dataset/normalization/profile need recovery before comparison",
+    "article_license": "CC BY-NC-ND 4.0 (article only; not a statement of source-dictionary or derived-data rights)",
+    "status": "EXTERNAL_G2P_COMPARATOR"
+  },
+  {
+    "id": "kirby2015-audio",
+    "type": "phonetic_audio_dataset",
+    "title": "Incipient tonogenesis in Phnom Penh Khmer: audio recordings, 2011",
+    "author": "James Kirby",
+    "year": 2015,
+    "doi": "10.7488/ds/321",
+    "url": "https://datashare.ed.ac.uk/items/fe218489-ad49-4986-b175-721cb9959500",
+    "scope": "24-bit, 44.1 kHz audio of 16 Phnom Penh Khmer speakers recorded in July 2011, with segmented Praat TextGrids; the associated study contrasts reading and colloquial /CrV/ productions",
+    "status": "SUPPORTING_AUDIO_SOURCE",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "limitations": "Not a lexical-wide IPA gold corpus; TextGrids provide segmentation rather than independent IPA labels; the study targets /CrV/ contexts and a historical speaker sample, not the complete contemporary citation-form lexicon. Keep reading and colloquial conditions separate."
+  },
+  {
+    "id": "kirby2015-supplementary",
+    "type": "phonetic_study_supplementary_data",
+    "title": "Incipient tonogenesis in Phnom Penh Khmer: supplementary materials, 2011",
+    "author": "James Kirby",
+    "year": 2015,
+    "doi": "10.7488/ds/319",
+    "url": "https://datashare.ed.ac.uk/items/9a9fa51d-ce4f-4685-9e39-af3fd0a436d3",
+    "scope": "Anonymised production and perception CSVs, KlattGrid stimulus files, Praat-related measurements and R analysis code accompanying the Phnom Penh /r/-loss study",
+    "status": "SUPPORTING_RESEARCH_DATA",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "limitations": "Not a lexical IPA gold corpus and not a complete phonetic transcription dataset; CSVs are study measurements/response data, not independently double-annotated IPA. Interpret only within the source study's task and speaker scope."
+  },
+  {
+    "id": "cucchiarini1996-agreement",
+    "type": "phonetic_transcription_reliability_method",
+    "title": "Assessing transcription agreement: Methodological aspects",
+    "author": "Catia Cucchiarini",
+    "year": 1996,
+    "journal": "Clinical Linguistics & Phonetics 10(2):131–155",
+    "doi": "10.3109/02699209608985167",
+    "url": "https://doi.org/10.3109/02699209608985167",
+    "scope": "Critique of percentage agreement for phonetic transcription: all-or-none symbol matching, chance agreement and missing alignment criteria; proposes alignment and average distance using experimentally derived phonetic feature matrices",
+    "status": "METHODOLOGICAL_REFERENCE",
+    "limitations": "Not a Khmer-specific annotation standard or universal weight matrix; informs reporting and metric design but does not supply validated Khmer feature weights."
+  },
+  {
+    "id": "oller-ramsdell2006-weighted-reliability",
+    "type": "phonetic_transcription_reliability_method",
+    "title": "A Weighted Reliability Measure for Phonetic Transcription",
+    "authors": [
+      "D. Kimbrough Oller",
+      "Heather L. Ramsdell"
+    ],
+    "year": 2006,
+    "journal": "Journal of Speech, Language, and Hearing Research 49(6):1391–1411",
+    "doi": "10.1044/1092-4388(2006/100)",
+    "url": "https://pubs.asha.org/doi/10.1044/1092-4388%282006/100%29",
+    "scope": "Weighted reliability measure for phonetic transcription, designed to distinguish degrees of phonetic difference using principles from phonological theory; evaluated with eight coders on speech and vocalisation samples, including three adult languages",
+    "status": "METHODOLOGICAL_REFERENCE",
+    "limitations": "Not a language-specific Khmer feature matrix; the project's current validator does not implement this published measure. A future project metric must not be attributed to Oller and Ramsdell unless their exact algorithm is reproduced."
+  },
+  {
+    "id": "woznica2013",
+    "type": "doctoral_thesis_acoustic_phonetics",
+    "title": "Procesy fonetyczno-fonologiczne w nieregionalnej odmianie języka khmerskiego",
+    "title_alternative": "Phonetic-phonological processes in non-regional Khmer",
+    "author": "Piotr Woźnica",
+    "year": 2013,
+    "url": "https://repozytorium.amu.edu.pl/items/07609606-333b-4603-95f3-3cb14c1eb083",
+    "full_text_url": "https://repozytorium.amu.edu.pl/bitstream/10593/8122/1/ROZPRAWA.PDF",
+    "scope": "Acoustic study of 80 native Khmer speakers from multiple Cambodian regions; examines regional phonetic/phonological variation and argues for a country-wide standard variety",
+    "status": "ACADEMIC_THESIS_SOURCE",
+    "limitations": "The thesis warns that the sample is not statistically representative; regional coverage is uneven and the materials are selective/read-text based. It is not a Phnom Penh-only sample or a lexical IPA gold corpus."
   }
 ]

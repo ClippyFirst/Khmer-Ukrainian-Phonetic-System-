@@ -223,3 +223,14 @@ The older design PR [#64](https://github.com/ClippyFirst/Khmer-Ukrainian-Phoneti
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/106), merge `7ee049aae9cc7ff571b21eabe18e962627f192a3`; the extractor now accepts an optional query string. PR CI passed (41424681328). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## IPA-GOLD-SPLIT-MANIFEST-IDENTITY-001 — 2026-11-03
+
+**Status: DONE_VERIFIED (runtime validator and split generator).** Root cause: the previous cross-file validator checked seed/version consistency only within each `lexeme_group_id`, allowing distinct groups in one corpus manifest to carry different seeds or versions. The split generator could also add a new group under a newly supplied seed while preserving older groups, silently creating a mixed manifest.
+
+- Added regression coverage for mixed seeds and mixed versions across distinct groups, plus conflicting seed override when extending an existing manifest.
+- The tests-only commits failed for the intended three behaviors: 41612978304. The implementation and assertion correction are on branch head `6d2c3a67ae0e`.
+- Exact-head CI: [41613364915](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41613364915) SUCCESS — 153 Python tests + 44 subtests; the full repository workflow also completed successfully.
+- New invariant: a single manifest has one `(seed, version)` pair globally; existing manifests retain that identity when extended; explicit conflicting overrides fail closed. A new corpus split design requires a separate versioned manifest.
+- This is an engineering reproducibility fix only. It creates no linguistic labels and does not change gold count (0) or accuracy (`null`).

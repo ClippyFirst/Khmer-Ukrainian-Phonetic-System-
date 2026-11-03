@@ -235,3 +235,12 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 ## Full-text G2P benchmark discrepancy follow-up — 2026-11-03
 
 **Status: DONE_VERIFIED (source audit only).** Rechecked Sar & Tan (2019) against the available full text. It contains two internal discrepancies: prose states 1,350 training / 350 test pairs, while Table 10's test-corpus bins sum to 356 (112 + 97 + 98 + 49); the abstract gives baseline WER 69.6%, while Table 10 and the conclusion give 69.9%. The research audit, source registry and handoff now preserve both discrepancies without selecting a preferred value. This does not affect the project's gold count (0) or accuracy (null).
+
+
+## Kirby DataShare source acquisition lead — 2026-11-03
+
+| ID | Status | Evidence / remaining acceptance |
+|---|---|---|
+| KHM-KIRBY-DATA-001 | PARTIAL | Official DataShare item records for Kirby's 2011 Phnom Penh audio (16 speakers, Praat TextGrids) and supplementary data were inspected; both item pages declare CC BY 4.0. These are targeted /CrV/ acoustic research materials, not a lexical IPA gold set. Archive download/checksum, file-to-task mapping, citation-style token selection and independent IPA annotation remain outstanding. |
+
+The new source records and references distinguish the two dataset-item licences from the article, source dictionaries and derived data. No audio, CSV, TextGrid, IPA label or model output was imported. Acceptance requires an item manifest and checksum, mapping of reading versus colloquial conditions, two independent expert IPA annotations, and separate adjudication. Independent gold remains 0; accuracy remains null.

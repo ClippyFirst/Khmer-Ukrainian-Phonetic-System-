@@ -60,3 +60,24 @@ The three-repeat raw outputs are preserved in workflow artifacts and summarized 
 ## Cross-engine comparison update
 
 Cross-engine check: khmerphonemizer 0.0.3 returned 6/6 source-attested probes; 2/6 strict IPA strings and 6/6 limited-notation matches. Goruut returned 6/6 stable outputs but only 1/6 strict and 3/6 limited-notation matches. This small source-attested sample favors khmerphonemizer as a comparator, not as proven production phonology. No independent gold exists.
+
+
+## Candidate: Kirby 2015 Phnom Penh acoustic recordings and supplementary data
+
+**Disposition: high-value, rights-documented acoustic research source; NOT imported as lexical IPA gold.**
+
+- Audio item: https://datashare.ed.ac.uk/items/fe218489-ad49-4986-b175-721cb9959500; DOI 10.7488/ds/321. The DataShare full-item metadata declares CC BY 4.0. It contains 24-bit/44.1 kHz audio from 16 Phnom Penh Khmer speakers recorded in July 2011, with segmented Praat TextGrids. The provider lists a 461.93 MB ZIP and MD5 `8688e68e76e8269b8bbf5d19020a230b`; this checksum has not been independently recomputed because the archive was not downloaded.
+- Supplementary item: https://datashare.ed.ac.uk/items/9a9fa51d-ce4f-4685-9e39-af3fd0a436d3; DOI 10.7488/ds/319. Its DataShare full-item metadata also declares CC BY 4.0 and lists anonymised production/perception CSVs, KlattGrid files, Praat-related measurements and R analysis code.
+- The linked article (Kirby 2014, *Journal of Phonetics* 43:69–85) compares reading and colloquial Phnom Penh /CrV/ forms and examines VOT, f0, voice quality, vowel quality and /r/ realisation. It is a targeted study, not a full lexical pronunciation dictionary.
+- Use reading-condition tokens only for a carefully scoped citation-style acoustic comparison; keep colloquial productions in a separate contextual set. Preserve speaker IDs, task, token, style, recording and TextGrid locators.
+- TextGrids provide segmentation, not independent IPA; supplementary CSVs are measurements/response data, not an adjudicated IPA transcription. Do not promote them to gold without two independent IPA annotations and a separate adjudicator.
+- The CC BY 4.0 statement is specific to the two DataShare dataset items. It does not license other third-party materials or source dictionaries cited by the article. Attribute Kirby and the University of Edinburgh when reusing the licensed items.
+
+## Acceptance before any pilot use
+
+1. Download only through the official DataShare item; verify the provider MD5 against the downloaded archive and retain the item DOI and file manifest.
+2. Inspect the complete file inventory and map each audio/TextGrid to the paper's participant, lexical item, and reading/colloquial condition.
+3. Confirm which tokens are suitable for the selected careful-citation profile; exclude colloquial repetitions from the citation-form benchmark.
+4. Obtain two blind IPA annotations from qualified Khmer phoneticians and adjudicate disagreements independently. Preserve uncertainty and acoustic cues rather than inferring a single deterministic /r/-loss rewrite.
+5. Keep this targeted /CrV/ acoustic subset separate from the full lexical G2P benchmark and from project gold until the normal rights/provenance gates pass.
+

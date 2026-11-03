@@ -1,5 +1,17 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
+## Active continuation checkpoint — 2026-11-03 (Kirby source audit)
+
+- Default branch `main`: `7b0a8f8c8661707afd9f0c58a94e2678789adf86`.
+- Source-audit branch: `docs/source-citation-audit-20261103`; PR [#110](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/110) remains open, mergeable and zero commits behind main. The new source registry, bibliography and corpus-triage updates are documentation/evidence only; no external audio or labels are imported.
+- Current complementary PRs: [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107) (one careful-citation profile and browser DOM fix), [#109](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/109) (global frozen split-manifest identity), and [#110] (source/benchmark records). PR [#108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/108) independently contains the same stale `source-result` DOM deletion as #107; if #107 is merged first, #108 is redundant. Do not merge both fix PRs blindly.
+- The main branch still has the stale `source-result` DOM write; the browser fix is not production until a fix-bearing PR is merged and deployed.
+- Newly verified source: Kirby (2015) DataShare audio, DOI 10.7488/ds/321, and supplementary data, DOI 10.7488/ds/319. Both item records declare CC BY 4.0; the audio item describes 16 Phnom Penh speakers and Praat TextGrids. These support targeted acoustic study of reading/colloquial /CrV/ variation, not lexical-wide IPA gold. See the updated source registry, references, playbook and corpus triage.
+- Academic Writing Toolkit checks on the current bibliography/research documents: BibTeX structural check passed with 0 issues for six representative references; British-English checks passed with 0 issues on the playbook and bibliography. The citation-audit parser did not reliably reconcile this repository's JSON/CSV source registry; claims were checked directly against publisher/DataShare records instead.
+- Test-first evidence for the new source-registry contract: [RED 41627760373](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41627760373) failed only because the two expected Kirby source IDs were not yet registered (150 passed, 1 expected failure, 44 subtests). The follow-up source/data/documentation commit must turn this test green.
+- Research remains blocked: independent expert-adjudicated gold = 0, accuracy = null; no IPA labels or audio were imported. The next human dependency remains two qualified Khmer phoneticians, a separate adjudicator, and a curator-controlled blind intake.
+
+
 ## Bibliography and source-registry checkpoint — 2026-11-03
 
 - Dedicated documentation branch: `docs/source-citation-audit-20261103`; source-backed benchmark citation and registry corrections are recorded in the completion register.

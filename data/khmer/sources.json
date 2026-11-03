@@ -123,5 +123,33 @@
     "scope": "prose reports 1,350 training pairs and 350 test pairs, but Table 10 test-corpus bins sum to 356 (112+97+98+49); abstract baseline WER 69.6% conflicts with Table 10/conclusion 69.9%; preserve discrepancies pending author clarification; dataset/normalization/profile need recovery before comparison",
     "article_license": "CC BY-NC-ND 4.0 (article only; not a statement of source-dictionary or derived-data rights)",
     "status": "EXTERNAL_G2P_COMPARATOR"
+  },
+  {
+    "id": "kirby2015-audio",
+    "type": "phonetic_audio_dataset",
+    "title": "Incipient tonogenesis in Phnom Penh Khmer: audio recordings, 2011",
+    "author": "James Kirby",
+    "year": 2015,
+    "doi": "10.7488/ds/321",
+    "url": "https://datashare.ed.ac.uk/items/fe218489-ad49-4986-b175-721cb9959500",
+    "scope": "24-bit, 44.1 kHz audio of 16 Phnom Penh Khmer speakers recorded in July 2011, with segmented Praat TextGrids; the associated study contrasts reading and colloquial /CrV/ productions",
+    "status": "SUPPORTING_AUDIO_SOURCE",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "limitations": "Not a lexical-wide IPA gold corpus; TextGrids provide segmentation rather than independent IPA labels; the study targets /CrV/ contexts and a historical speaker sample, not the complete contemporary citation-form lexicon. Keep reading and colloquial conditions separate."
+  },
+  {
+    "id": "kirby2015-supplementary",
+    "type": "phonetic_study_supplementary_data",
+    "title": "Incipient tonogenesis in Phnom Penh Khmer: supplementary materials, 2011",
+    "author": "James Kirby",
+    "year": 2015,
+    "doi": "10.7488/ds/319",
+    "url": "https://datashare.ed.ac.uk/items/9a9fa51d-ce4f-4685-9e39-af3fd0a436d3",
+    "scope": "Anonymised production and perception CSVs, KlattGrid stimulus files, Praat-related measurements and R analysis code accompanying the Phnom Penh /r/-loss study",
+    "status": "SUPPORTING_RESEARCH_DATA",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "limitations": "Not a lexical IPA gold corpus and not a complete phonetic transcription dataset; CSVs are study measurements/response data, not independently double-annotated IPA. Interpret only within the source study's task and speaker scope."
   }
 ]

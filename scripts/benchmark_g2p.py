@@ -13,6 +13,7 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
+import os
 import platform
 import sys
 import time
@@ -55,6 +56,36 @@ def package_version(name: str) -> str | None:
         return importlib.metadata.version(name)
     except importlib.metadata.PackageNotFoundError:
         return None
+
+
+def build_provenance(
+    corpus_path: str, corpus_sha256: str, engine: str, engine_version: str | None
+) -> dict[str, Any]:
+    """Bind a diagnostic report to its exact inputs, harness and runtime."""
+    return {
+        "harness_path": "scripts/benchmark_g2p.py",
+        "harness_sha256": sha256_file(Path(__file__).resolve()),
+        "corpus_path": corpus_path,
+        "corpus_sha256": corpus_sha256,
+        "engine": engine,
+        "engine_version": engine_version,
+        "python_version": platform.python_version(),
+        "python_implementation": platform.python_implementation(),
+        "platform": platform.platform(),
+        "github_event_sha": os.environ.get("GITHUB_SHA"),
+        "github_ref": os.environ.get("GITHUB_REF"),
+        "github_head_ref": os.environ.get("GITHUB_HEAD_REF"),
+    }
+
+
+def write_report(path: Path, report: dict[str, Any]) -> str:
+    """Write stable JSON plus an adjacent SHA-256 integrity sidecar."""
+    rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(rendered, encoding="utf-8")
+    digest = sha256_file(path)
+    path.with_suffix(path.suffix + ".sha256").write_text(digest + "\n", encoding="ascii")
+    return digest
 
 
 def unwrap_source_ipa(value: str) -> str:
@@ -141,6 +172,7 @@ def build_report(
         "engine": package,
         "engine_version": version,
         "python_version": platform.python_version(),
+        "provenance": build_provenance(corpus_path, corpus_sha256, package, version),
         "corpus_path": corpus_path,
         "corpus_sha256": corpus_sha256,
         "input_count": len(corpus),
@@ -207,9 +239,7 @@ def main() -> int:
         corpus_path=(str(args.corpus.resolve().relative_to(ROOT.resolve())) if args.corpus.resolve().is_relative_to(ROOT.resolve()) else str(args.corpus)),
         corpus_sha256=sha256_file(args.corpus),
     )
-    rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(rendered, encoding="utf-8")
+    report_sha256 = write_report(args.output, report)
     print(json.dumps({
         **{key: report[key] for key in (
             "engine", "engine_version", "input_count", "successful_outputs",
@@ -218,6 +248,7 @@ def main() -> int:
         "source_attested_diagnostic": report["source_attested_diagnostic"],
     }, ensure_ascii=False, indent=2))
     print(f"Raw-output report: {args.output}")
+    print(f"Report SHA-256: {report_sha256}")
     return 0 if report["successful_outputs"] > 0 else 2
 
 

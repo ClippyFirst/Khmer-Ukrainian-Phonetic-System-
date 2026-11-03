@@ -51,7 +51,7 @@ Methodological references only; do not add them as runtime dependencies or copy 
 
 When these references conflict with the existing project contract or the user's explicit requirements, follow the project contract and user requirements.
 
-**Reviewed 2026-11-02:** Superpowers 7.0.1 (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`), mattpocock/skills release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`); current main snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`), and Ponytail 5.3.3 (`7801d061243d7b753bad0e0b3c057cd250b11755`) were checked against upstream. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
+**Reviewed 2026-11-03:** Superpowers v7.0.1/current main (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`); mattpocock/skills release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`) and current main snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`); Ponytail v5.3.3 release (`7801d061243d7b753bad0e0b3c057cd250b11755`) and current main snapshot (`96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`) were checked against upstream. The Ponytail post-release change inspected is a README/product-list addition, not a change to the adopted audit methodology. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
 
 
 

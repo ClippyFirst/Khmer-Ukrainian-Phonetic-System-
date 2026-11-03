@@ -211,3 +211,13 @@ The independent IPA gold-corpus implementation and Khmer evidence matrix are in 
 ## CI action runtime audit — 2026-11-01
 
 All five workflows now use current Node.js 24-compatible action majors. Exact-head checks passed: [Quality checks 41339636053](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636053), [Goruut 41339636042](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636042), and [G2P smoke 41339636117](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41339636117). CI maintenance does not establish phonological accuracy or expert gold.
+
+
+## PR integration reconciliation — 2026-11-03
+
+- PR #108 merged the browser result-rendering hotfix; exact-main Quality, Chromium and Pages/deployed-site smoke passed.
+- PR #112 merged the manifest-wide split identity invariant and separate-manifest acceptance; exact PR-head Quality/browser checks passed, followed by exact-main Quality, browser and Pages/deployed-site smoke.
+- PR #113 merged source registry, external corpus triage, bibliography and provenance-test updates; exact PR-head Quality and browser checks passed.
+- PR #115 merged the single careful-citation profile and removed deterministic colloquial /r/-loss rewriting; exact PR-head Quality and browser checks passed, followed by main Quality, Chromium and Pages/deployed-site smoke.
+- PR #116 merged the glossary, codebase map and agent guidance. PRs #107 and #114 were superseded by these scoped integrations; neither broad profile branch was merged wholesale.
+- Independent adjudicated IPA gold remains 0 and empirical accuracy remains null. CI verifies engineering and deployed assets, not pronunciation accuracy or manual accessibility.

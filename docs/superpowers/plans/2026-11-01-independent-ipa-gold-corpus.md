@@ -35,3 +35,4 @@
 - Release gate cannot pass without minimum adjudicated train/dev/test coverage, two annotators, separate adjudicator, source rights and frozen splits.
 - All existing repository tests/build checks remain green.
 - Every row in one split manifest shares exactly one `(seed, version)` pair, including across distinct lexeme groups; mixed identities fail validation and split assignment; extending an existing manifest inherits its frozen identity.
+- The automated gate validates numeric counts, rights and split mechanics only. Language-specific phonological contrast coverage requires a separately versioned expert-reviewed matrix and explicit human sign-off; do not claim that the CLI validates it.

@@ -120,7 +120,7 @@
     "doi": "10.1016/j.procs.2019.11.140",
     "url": "https://doi.org/10.1016/j.procs.2019.11.140",
     "journal": "Procedia Computer Science 161:415–423",
-    "scope": "1,350 training pairs and 350 test pairs; vowel tags and syllable-boundary information improve PER/WER in reported experiment; abstract WER baseline 69.6% conflicts with Table 10/conclusion 69.9%; dataset/normalization/profile need recovery before comparison",
+    "scope": "prose reports 1,350 training pairs and 350 test pairs, but Table 10 test-corpus bins sum to 356 (112+97+98+49); abstract baseline WER 69.6% conflicts with Table 10/conclusion 69.9%; preserve discrepancies pending author clarification; dataset/normalization/profile need recovery before comparison",
     "article_license": "CC BY-NC-ND 4.0 (article only; not a statement of source-dictionary or derived-data rights)",
     "status": "EXTERNAL_G2P_COMPARATOR"
   }

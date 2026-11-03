@@ -51,7 +51,7 @@ Methodological references only; do not add them as runtime dependencies or copy 
 
 When these references conflict with the existing project contract or the user's explicit requirements, follow the project contract and user requirements.
 
-**Reviewed 2026-11-02:** Superpowers 7.0.1 (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`), mattpocock/skills release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`); current main snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`), and Ponytail 5.3.3 (`7801d061243d7b753bad0e0b3c057cd250b11755`) were checked against upstream. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
+**Reviewed 2026-11-02:** Superpowers 7.0.1 (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`), mattpocock/skills release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`); current main snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`), and Ponytail 5.3.3 (current upstream main snapshot) (`7801d061243d7b753bad0e0b3c057cd250b11755`) were checked against upstream. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
 
 
 

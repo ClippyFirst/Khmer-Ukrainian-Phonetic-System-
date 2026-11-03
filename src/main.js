@@ -18,7 +18,7 @@ const ZWNJ = "\u200C";
 const ZWSP = "\u200B";
 const SHIFTERS = new Set(["៉", "៊"]);
 const SHIFTER_ELIGIBILITY = Object.fromEntries(Object.entries(registers.shifter_eligibility).map(([key, values]) => [key === "muusikatoan" ? "៉" : "៊", new Set(values)]));
-const PUNCTUATION = /^\s|^[។៕,!?;:()[\]{}"“”«»]$/u;
+const PUNCTUATION = /^\s|^\p{P}$/u;
 const PROFILES = new Set(["khmer-pph-careful-citation-v1"]);
 const SEGMENTS = Object.keys(practicalPolicy.segments).sort((a, b) => b.length - a.length);
 

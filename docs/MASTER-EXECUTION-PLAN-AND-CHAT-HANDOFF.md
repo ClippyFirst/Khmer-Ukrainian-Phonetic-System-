@@ -1395,3 +1395,7 @@ Conclusion: high-value candidate dictionary/acoustic comparator, but **not ready
 - Legacy PR #64 is closed without merge. Responsive work is already represented by merged PRs #105 and #106; the old stylesheet snapshot must not be revived.
 - The UI register is now `PARTIAL`: browser automation exists, but manual visual/keyboard/screen-reader/mobile and deployed-URL QA remain open. Independent expert-adjudicated IPA gold remains 0; accuracy remains null.
 
+
+## Automated IPA-gold gate limitation — 2026-11-03
+
+The CLI release gate enforces independent double annotation/adjudication, rights-cleared export, deterministic group splits and numeric 100/25/25 thresholds. It does not calculate language-specific phonological contrast coverage. A separate versioned coverage matrix and expert sign-off remain mandatory before any language benchmark release. A green numeric gate alone is not sufficient.

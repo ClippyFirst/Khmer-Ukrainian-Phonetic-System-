@@ -1278,3 +1278,14 @@ Independent expert-adjudicated gold remains 0; accuracy remains null. The source
 - Added the project glossary, current codebase/data-flow map and issue-tracker instructions, and updated `AGENTS.md` to route future work through the canonical handoff and verified maps.
 - The codebase map reflects the current main after the browser hotfix, manifest-wide split fix, source-evidence reconciliation and single careful-citation profile. It distinguishes parser structure, source-language phonology, typed IPA, Ukrainian adaptation, generated browser data and the separate romanization path.
 - These are navigation and process aids, not linguistic evidence or a replacement for expert review. No runtime rules or gold labels changed. Exact-head CI required.
+
+
+## Current repository continuation checkpoint — 2026-11-03
+
+- Verified default branch `main` at `d8419d3099a8047d819a5a71cb5c4ef927db435e`.
+- Latest exact-main CI for profile/runtime commit `1dc07f9c43972f547ac7a56adb9ed949155bacf1`: Quality 41646838970 SUCCESS; Chromium 41646838756 SUCCESS; Pages/deployed-site 41646838884 SUCCESS. The subsequent glossary/codebase-map documentation commit is d8419d3.
+- PR reconciliation: PRs #107 and #114 were closed without merge as superseded; their profile/runtime/test changes are already byte-identical to main. PRs #108 and #111 were merged earlier. The attempted documentation sync PR #117 was closed because main advanced while the docs-only branch was open; this branch is based on the latest main. No runtime changes are involved.
+- Current engineering state: main includes the single operational profile `khmer-pph-careful-citation-v1`, no deterministic colloquial /r/-loss rewrite, the manifest-wide split fix, source-evidence reconciliation, browser hotfix, and project glossary/codebase map. The profile remains a bounded project elicitation decision pending specialist approval and does not establish a complete phonological model.
+- Linguistic evidence boundary: independent adjudicated IPA gold remains 0; gold export remains header-only; empirical accuracy remains null. CI verifies engineering behavior only.
+- Human/research blockers remain: approve the versioned IPA convention; recruit two qualified independent annotators and a separate adjudicator; establish blinded intake; verify source-specific data rights; collect and adjudicate a profile-specific pilot; complete deployed-site manual keyboard, screen-reader, responsive and mobile QA.
+- No gold labels, source-derived IPA guesses, phonological rules, or benchmark scores were created in this checkpoint.

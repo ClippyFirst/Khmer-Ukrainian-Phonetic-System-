@@ -1,5 +1,12 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
+## Continuation update — strict benchmark TSV validation (2026-11-03)
+
+- **Implementation commit:** `46e7eda242f134a792060c3002992bdea42bdb6c` on `fix/heldout-ipa-benchmark-20261103` (PR #123; subsequent documentation commits follow it).
+- **DONE_VERIFIED (input integrity):** `read_tsv()` now rejects duplicate column names, blank header names, and nonblank rows with missing or extra fields. Physically blank lines remain ignored; values are not silently padded, truncated, or rewritten.
+- **Regression coverage:** duplicate gold and prediction headers, extra gold fields, and short prediction rows. Test-first RED: [41665735912](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41665735912); focused GREEN after implementation: [41665873021](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41665873021).
+- **Scope boundary:** this is TSV/input-integrity hardening only. It does not add IPA labels, change linguistic rules, or establish empirical accuracy. Independent adjudicated gold remains 0 and accuracy remains null.
+
 ## Current repository state — 2026-11-03
 
 - **Default branch:** [`main`](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/tree/main); PR base snapshot: `3809f0de9b77253a08985bb90e18e7308bdda412` (the live branch may advance independently).

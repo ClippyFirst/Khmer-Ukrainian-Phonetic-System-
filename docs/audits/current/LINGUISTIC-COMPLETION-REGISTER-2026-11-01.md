@@ -1,3 +1,9 @@
+## External diagnostic report provenance — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-G2P-PROVENANCE-001 | DONE_VERIFIED (diagnostic reproducibility only) | PR [#129](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/129), current head 0607f7d2ad2ed481f0b75dcd486a2dcaefa31c6c; test-first RED [41725130084](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41725130084); exact-head Quality [41725569108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41725569108) SUCCESS (172 tests + 60 subtests), browser [41725569152](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41725569152) SUCCESS, optional G2P [41725569100](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41725569100) SUCCESS; artifact retained until 2027-02-01. | Report records harness SHA-256, corpus hash, engine/version, Python implementation/version, platform and CI source revision; JSON report has adjacent SHA-256 sidecar. This proves diagnostic provenance/integrity only, not language accuracy or gold agreement. Independent adjudicated gold remains 0; accuracy null. |
+
 # Khmer linguistic completion register — 2026-11-01
 
 **Benchmark implementation merge:** `0f73d006bfc05f6106a3b1e463c2cc7d6471ffae` (PR #123). **Handoff/register reconciliation merge:** `ebd8432b4abacecb50e30bae43ff64c42ac4063b` (PR #124).

@@ -115,3 +115,18 @@ assert.ok(greetingResult.units.length > 0);
 assert.equal(greetingResult.ipa, "⟦ВИМОВУ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
 assert.equal(greetingResult.ua, "⟦ТРАНСКРИПЦІЮ НЕ ВСТАНОВЛЕНО ДЛЯ ЧАСТИНИ ВВОДУ⟧");
 console.log("full Khmer sentence integrity: PASS");
+
+const unicodePunctuation = "ក。គ";
+assert.deepEqual(tokenize(unicodePunctuation), ["ក", "。", "គ"]);
+const unicodePunctuationResult = convert(unicodePunctuation, "khmer-pph-careful-citation-v1");
+assert.equal(unicodePunctuationResult.source, unicodePunctuation);
+assert.equal(unicodePunctuationResult.units.map((unit) => unit.source).join(""), unicodePunctuation);
+assert.deepEqual(
+  unicodePunctuationResult.units.map((unit) => unit.status),
+  ["PROPOSED", "PUNCTUATION", "PROPOSED"],
+  "Unicode punctuation must separate neighboring Khmer units without downgrading either one",
+);
+assert.equal(unicodePunctuationResult.ipa, "/kɑː/。/kɔː/");
+assert.equal(unicodePunctuationResult.ua, "ка。ко");
+console.log("Unicode punctuation boundary preservation: PASS");
+

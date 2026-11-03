@@ -12,6 +12,12 @@
 - **Evidence:** test-first RED [41665735912](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41665735912); focused implementation GREEN [41665873021](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41665873021); implementation commit `46e7eda242f134a792060c3002992bdea42bdb6c`.
 - **Acceptance boundary:** input shape is validated before scoring. This does not create adjudicated IPA data or alter language accuracy status (gold 0; accuracy null).
 
+## JSONL input integrity — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| JSONL-INPUT-001 | DONE_VERIFIED | Duplicate top-level and nested JSON object keys are rejected. RED 41687409282; exact implementation-head CI 41687730383 SUCCESS (167 Python tests + 54 subtests; 3 browser smoke tests). | Prevent silent last-key-wins corruption before corpus schema/provenance validation. No linguistic data or accuracy claims added. |
+
 ## Evidence-based task ledger
 
 | ID | Status | Work remaining | Acceptance |

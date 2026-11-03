@@ -100,3 +100,21 @@ def test_source_ipa_metadata_accepts_the_external_workflow_field():
     expected = "/pʰiə.saː/"
     assert module.source_ipa_from_metadata({"source_reported_ipa": expected}) == expected
     assert module.source_ipa_from_metadata({"ipa": expected}) == expected
+
+
+def test_report_provenance_and_checksum_sidecar_are_reproducible(tmp_path, monkeypatch):
+    import hashlib
+    import json
+    module = load_module()
+    monkeypatch.setenv("GITHUB_SHA", "a" * 40)
+    provenance = module.build_provenance("fixture.json", "b" * 64, "khmerphonemizer", "1.2.3")
+    assert provenance["harness_sha256"] == module.sha256_file(Path(module.__file__))
+    assert provenance["source_revision"] == "a" * 40
+    assert provenance["python_implementation"]
+    assert provenance["platform"]
+    report = {"provenance": provenance, "independent_gold_count": 0, "accuracy": None}
+    target = tmp_path / "report.json"
+    module.write_report(target, report)
+    expected = hashlib.sha256(target.read_bytes()).hexdigest()
+    assert target.with_suffix(".json.sha256").read_text(encoding="utf-8").strip() == expected
+    assert json.loads(target.read_text(encoding="utf-8"))["accuracy"] is None

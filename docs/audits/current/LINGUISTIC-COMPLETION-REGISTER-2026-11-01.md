@@ -16,7 +16,7 @@
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| JSONL-INPUT-002 | DONE_VERIFIED | Duplicate top-level and nested keys in `licenses.json` rejected. RED 41690144982; implementation CI 41690306190 SUCCESS (169 Python tests + 54 subtests; 3 browser smoke tests (run 41690316616)). | Rights registry cannot silently apply last-key-wins semantics; no license permission is inferred or broadened. |
+| JSONL-INPUT-002 | DONE_VERIFIED | Duplicate top-level and nested keys in `licenses.json` rejected. RED 41690144835; implementation CI 41690306190 SUCCESS (169 Python tests + 54 subtests; 3 browser smoke tests (run 41690316616)). | Rights registry cannot silently apply last-key-wins semantics; no license permission is inferred or broadened. |
 
 ## JSONL input integrity — 2026-11-03
 

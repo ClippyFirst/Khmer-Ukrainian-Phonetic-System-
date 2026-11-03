@@ -72,7 +72,9 @@ def build_provenance(
         "python_version": platform.python_version(),
         "python_implementation": platform.python_implementation(),
         "platform": platform.platform(),
-        "source_revision": os.environ.get("GITHUB_SHA"),
+        "github_event_sha": os.environ.get("GITHUB_SHA"),
+        "github_ref": os.environ.get("GITHUB_REF"),
+        "github_head_ref": os.environ.get("GITHUB_HEAD_REF"),
     }
 
 

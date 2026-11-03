@@ -6,17 +6,17 @@ This is a source-backed research audit, not a claim of accuracy for this reposit
 
 ## Relevant benchmark evidence
 
-### MekongPhon (LREC 2026)
+### MekongPhon (Shurtz et al., 2026)
 
-Shurtz, Richardson & Richardson, “MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer”, LREC 2026, pp. 1650–1658, DOI 10.63317/4bb9rvdshu4z.
+Shurtz, A., Richardson, C., & Richardson, S. D. (2026). “MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer.” *Proceedings of LREC 2026*, 1650–1658. https://doi.org/10.63317/4bb9rvdshu4z.
 
-The paper abstract reports 1.3 million Khmer orthographic–IPA pairs and a Transformer result below 2% character error rate on held-out test sets. It also reports linguistically informed Lao/Khmer tools outperforming Epitran by 6–71 CER points, trading some accuracy for speed. This is the strongest discovered external IPA-G2P benchmark for Khmer, but its variety, normalization, segmentation, and IPA conventions must be compared with the repository's Phnom Penh-oriented profile before transferring the score.
+The paper abstract reports 1.3 million Khmer orthographic–IPA pairs and a Transformer result below 2% character error rate on held-out test sets (Shurtz et al., 2026). It also reports linguistically informed Lao/Khmer tools outperforming Epitran by 6–71 CER points, trading some accuracy for speed. This is the strongest discovered external IPA-G2P benchmark for Khmer, but its variety, normalization, segmentation, and IPA conventions must be compared with the repository's Phnom Penh-oriented profile before transferring the score.
 
 Reference: https://aclanthology.org/2026.lrec-1.129/
 
 ### Khmer G2P research benchmark (2019)
 
-“Applying Linguistic G2P Knowledge on a Statistical Grapheme-to-phoneme Conversion in Khmer” (Procedia Computer Science, 2019, DOI 10.1016/j.procs.2019.11.140) reports that adding linguistic vowel tags reduced PER from 23.2% to 11.1% and WER from 69.6% to 51.4% in its experiment. This is a direct language-specific benchmark showing the value of explicit linguistic structure. Its dataset, normalization, split, phone inventory and dialect must be recovered before comparing those numbers with modern engines or this repository.
+Sar, V., & Tan, T.-P. (2019). “Applying Linguistic G2P Knowledge on a Statistical Grapheme-to-phoneme Conversion in Khmer.” *Procedia Computer Science, 161*, 415–423. https://doi.org/10.1016/j.procs.2019.11.140. The paper reports 1,350 training pairs and 350 test pairs. Its abstract reports PER improving from 23.2% to 11.1% and WER from 69.6% to 51.4%; however, Table 10 and the conclusion give baseline WER as 69.9%, not 69.6%. This internal discrepancy should be retained in any comparison rather than silently choosing one value. The article is published under CC BY-NC-ND 4.0; that licence statement applies to the article and does not establish redistribution rights for the source dictionaries or derived pronunciation data. The experiment is a useful language-specific G2P comparator, but its dataset, normalization, split, phone inventory and dialect must be recovered before comparing its scores with modern engines or this repository (Sar & Tan, 2019).
 
 Reference: https://www.sciencedirect.com/science/article/pii/S1877050919318502
 
@@ -83,7 +83,7 @@ The warning for `weights9.bin.zlib` was checked against the exact Goruut source 
 
 ### BYU MATRIX Lab Khmer-to-IPA checkpoint
 
-The [`byumatrixlab/khmer-ipa`](https://huggingface.co/byumatrixlab/khmer-ipa) model card describes a 33.6M-parameter BERT encoder–decoder with separate character-level Khmer and IPA tokenizers, maximum sequence length 128, and best evaluation loss 0.1736 at checkpoint 26000 (approximately 11 epochs). The model card links its training code/data pipeline to MekongPhon. It is a priority neural G2P baseline alongside the existing `khmerphonemizer` smoke comparator, not an adjudicated reference. The card does not establish that its output convention, variety, treatment of consonant series/register, vowel length, diphthongs, coda, stress, /r/-loss, or long-input behavior matches this project's target profile. Pin the model revision and checksum before a repeatable run; report raw output and feature-specific diagnostics, not only character error.
+The [`byumatrixlab/khmer-ipa`](https://huggingface.co/byumatrixlab/khmer-ipa) model card describes a 33.6M-parameter BERT encoder–decoder with separate character-level Khmer and IPA tokenizers, maximum sequence length 128, and best evaluation loss 0.1736 at checkpoint 26000 (approximately 11 epochs). The model card links its training code/data pipeline to MekongPhon. It is a priority neural G2P baseline alongside the existing `khmerphonemizer` smoke comparator, not an adjudicated reference. The card does not establish that its output convention, variety, treatment of consonant series/register, vowel length, diphthongs, coda, stress, /r/-loss, or long-input behaviour matches this project's target profile. Pin the model revision and checksum before a repeatable run; report raw output and feature-specific diagnostics, not only character error.
 
 ### Khmer acoustic-model pronunciation dictionary
 

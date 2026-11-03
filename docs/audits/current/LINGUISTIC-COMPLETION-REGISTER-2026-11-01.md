@@ -12,6 +12,12 @@
 - **Evidence:** test-first RED [41665735912](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41665735912); focused implementation GREEN [41665873021](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41665873021); implementation commit `46e7eda242f134a792060c3002992bdea42bdb6c`.
 - **Acceptance boundary:** input shape is validated before scoring. This does not create adjudicated IPA data or alter language accuracy status (gold 0; accuracy null).
 
+## License registry JSON integrity — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| JSONL-INPUT-002 | DONE_VERIFIED | Duplicate top-level and nested keys in `licenses.json` rejected. RED 41690144982; implementation CI 41690306190 SUCCESS (169 Python tests + 54 subtests; 3 browser smoke tests (run 41690316616)). | Rights registry cannot silently apply last-key-wins semantics; no license permission is inferred or broadened. |
+
 ## JSONL input integrity — 2026-11-03
 
 | ID | Status | Evidence | Acceptance boundary |

@@ -262,3 +262,11 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 
 - Original PR-head Quality workflow [41640011541](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41640011541) succeeded; this clean port needs fresh exact-head checks.
 - Dataset-item rights remain scoped only to those specific DataShare items. No IPA labels imported; independent gold remains 0 and accuracy remains `null`.
+
+
+## KHM-PROFILE-001 — rebased single careful-citation profile — 2026-11-03
+
+**Status: PARTIAL pending exact-head verification and specialist approval.** Reapplied the single-profile runtime/UI change to the latest main after source-citation integration. Only `khmer-pph-careful-citation-v1` is accepted; deterministic colloquial /r/-loss rewriting is removed.
+
+- The profile is a bounded project decision, not a universal standard. Chem (2020) supports the careful formal-reading elicitation style but not full lexical coverage.
+- Original #114 tests passed; the rebased branch needs fresh exact-head CI. Independent gold remains 0 and empirical accuracy remains `null`.

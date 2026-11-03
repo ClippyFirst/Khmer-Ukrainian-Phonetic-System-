@@ -250,3 +250,11 @@ The new source records and references distinguish the two dataset-item licences 
 ## Agreement metric implementation boundary — 2026-11-03
 
 The existing validator enforces exact equality of the full typed IPA object for `AGREEMENT`; it does not calculate a reliability coefficient or feature-weighted alignment distance. The 30-item pilot should report exact-object agreement and descriptive disagreement categories only. A future weighted metric is a separate PARTIAL task: feature definitions, alignment/cost model, tone/length/phonation/boundary treatment and uncertainty handling require expert pre-registration and empirical validation. The methodology sources are now included in `data/khmer/sources.json` and `docs/references.md`; no metric or gold labels were fabricated.
+
+
+## Academic writing quality checks — 2026-11-03
+
+- PR [#110](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/110) includes the current source/citation reconciliation.
+- Four supplied BibTeX records passed offline structural validation with 0 issues; the toolkit returned no online metadata checks, so metadata verification is recorded separately against primary sources.
+- British-English check: 0 issues. Citation-audit parser flags the two-author Sar & Tan form despite a matching source note; metadata and disputed benchmark figures were checked against the publisher page and article text.
+- No external pronunciation labels were added; gold remains 0 and empirical accuracy remains `null`.

@@ -12,8 +12,8 @@
 
 ## Comparative transcription sources
 
-8. UNGEGN. Transliteration of Khmer Writing — comparative geographic-name romanization reference.
-9. Khmer-Russian practical transcription — secondary web reproduction citing Gorgoniyev, Serdyuchenko and the 1967 Cambodian geographic-name instructions. It is retained as comparative evidence, not as a primary verified standard.
+9. UNGEGN. Transliteration of Khmer Writing — comparative geographic-name romanization reference.
+10. Khmer-Russian practical transcription — secondary web reproduction citing Gorgoniyev, Serdyuchenko and the 1967 Cambodian geographic-name instructions. It is retained as comparative evidence, not as a primary verified standard.
 
 ## Evidence discipline
 

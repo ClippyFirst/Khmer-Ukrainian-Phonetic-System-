@@ -242,6 +242,6 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 
 **Status: DONE_VERIFIED on the dedicated PR branch; merge to main remains pending.** Added an acceptance test proving a genuinely new seed/version can be used when the caller supplies a separate empty JSONL input via `--splits`, while the existing frozen manifest remains untouched. Corrected the operator instructions: changing only `--output` does not reset the input manifest; the new-manifest workflow must use a new empty `--splits` file and a distinct `--output` file.
 
-- PR [#109](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/109), exact head `1cf4909435a9eeface2fb96efa829b903461ed98`.
+- PR [#109](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/109), final documentation head `0e6755feb4a00911b140242f948e2039e923b333`; code/test checkpoint `1cf4909435a9eeface2fb96efa829b903461ed98` (the three subsequent commits are docs-only).
 - Exact-head CI [41638554878](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41638554878) SUCCESS — 156 pytest tests + 44 subtests; shared register-shifter browser contract passed.
 - No linguistic gold rows were added; independent gold remains 0 and empirical accuracy remains `null`.

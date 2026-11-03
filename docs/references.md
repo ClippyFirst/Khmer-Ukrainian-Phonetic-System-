@@ -10,7 +10,14 @@
 6. Kirby (2014). Incipient tonogenesis in Phnom Penh Khmer: Acoustic and perceptual studies. DOI: 10.1016/j.wocn.2014.02.001.
 7. Kirby, James (2014). “Incipient tonogenesis in Phnom Penh Khmer: Computational studies.” *Laboratory Phonology* 5(1): 195–230. [DOI: 10.1515/lp-2014-0008](https://doi.org/10.1515/lp-2014-0008).
 
-8. Shurtz, Ammon; Christian Richardson; Stephen D. Richardson. 2026. “MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer.” *Proceedings of the Fifteenth Language Resources and Evaluation Conference*, 1650–1658. [DOI: 10.63317/4bb9rvdshu4z](https://doi.org/10.63317/4bb9rvdshu4z). The paper's reported corpus size/CER are paper-reported results, not independent project validation; the corpus-specific license and provenance remain separate checks.\n11. Woźnica, Piotr. 2013. *Procesy fonetyczno-fonologiczne w nieregionalnej odmianie języka khmerskiego* [*Phonetic-phonological processes in non-regional Khmer*]. Doctoral thesis, Adam Mickiewicz University. [Repository record](http://hdl.handle.net/10593/8122). This is comparative dialect/acoustic evidence, not a Phnom Penh-specific lexical IPA gold set.\n\n## External technical resources\n\n- [chemvatho/Khmer-acoustic-model](https://github.com/chemvatho/Khmer-acoustic-model) — forced-alignment/acoustic resource and dictionary candidate, not a standalone text G2P paper. Its dictionary artifact/license claims are inconsistent in the repository and remain blocked pending maintainer clarification.\n\n## Comparative transcription sources
+8. Shurtz, Ammon; Christian Richardson; Stephen D. Richardson. 2026. “MekongPhon: A Large-Scale Parallel IPA Corpus for Lao and Khmer.” *Proceedings of the Fifteenth Language Resources and Evaluation Conference*, 1650–1658. [DOI: 10.63317/4bb9rvdshu4z](https://doi.org/10.63317/4bb9rvdshu4z). The paper's reported corpus size/CER are paper-reported results, not independent project validation; the corpus-specific license and provenance remain separate checks.
+11. Woźnica, Piotr. 2013. *Procesy fonetyczno-fonologiczne w nieregionalnej odmianie języka khmerskiego* [*Phonetic-phonological processes in non-regional Khmer*]. Doctoral thesis, Adam Mickiewicz University. [Repository record](http://hdl.handle.net/10593/8122). This is comparative dialect/acoustic evidence, not a Phnom Penh-specific lexical IPA gold set.
+
+## External technical resources
+
+- [chemvatho/Khmer-acoustic-model](https://github.com/chemvatho/Khmer-acoustic-model) — forced-alignment/acoustic resource and dictionary candidate, not a standalone text G2P paper. Its dictionary artifact/license claims are inconsistent in the repository and remain blocked pending maintainer clarification.
+
+## Comparative transcription sources
 
 9. UNGEGN. Transliteration of Khmer Writing — comparative geographic-name romanization reference.
 10. Khmer-Russian practical transcription — secondary web reproduction citing Gorgoniyev, Serdyuchenko and the 1967 Cambodian geographic-name instructions. It is retained as comparative evidence, not as a primary verified standard.

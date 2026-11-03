@@ -278,3 +278,11 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 
 - The map explicitly distinguishes the IPA-first phonetic path from the separate orthographic route and calls out high-risk seams, generated artifacts and fail-closed contracts.
 - Documentation/process change only; no linguistic labels or code behavior changed. Independent gold remains 0; accuracy remains `null`.
+
+
+## Continuation status sync — 2026-11-03
+
+- Current main: `d8419d3099a8047d819a5a71cb5c4ef927db435e`; profile/runtime exact-main Quality 41646838970, Chromium 41646838756 and Pages/deployed smoke 41646838884 all succeeded. The later commit adds agent glossary/map documentation.
+- PRs #107 and #114 were closed without merge because their profile/runtime/test changes are byte-identical to main; #108 and #111 were merged. Stale documentation PR #117 was closed after main advanced; this replacement branch is based on current main.
+- Engineering improvements are verified; manual accessibility QA remains partial.
+- IPA gold remains 0; empirical accuracy remains null. Annotation staffing, convention approval, rights clearance, blind intake and adjudication remain blocked on external human/evidence dependencies.

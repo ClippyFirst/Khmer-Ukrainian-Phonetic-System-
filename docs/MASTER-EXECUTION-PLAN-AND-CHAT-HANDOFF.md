@@ -29,20 +29,21 @@
 - **Regression coverage:** duplicate gold and prediction headers, extra gold fields, and short prediction rows. Test-first RED: [41665735912](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41665735912); focused GREEN after implementation: [41665873021](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41665873021).
 - **Scope boundary:** this is TSV/input-integrity hardening only. It does not add IPA labels, change linguistic rules, or establish empirical accuracy. Independent adjudicated gold remains 0 and accuracy remains null.
 
-## Current repository state — 2026-11-03
+## Current repository state — 2026-11-03 (post-merge)
 
-- **Default branch:** [`main`](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/tree/main); PR base snapshot: `3809f0de9b77253a08985bb90e18e7308bdda412` (the live branch may advance independently).
-- **Open pull requests at this checkpoint:** #123 (`fix/heldout-ipa-benchmark-20261103`) carries the benchmark integrity correction; documentation-only PR #122 was subsequently superseded by the handoff/register reconciliation on this branch.
-- **Integrated engineering and research changes:** browser result hotfix; manifest-wide split identity; MekongPhon/Kirby/Chem/Woźnica source audit; single careful citation profile with no inferred colloquial /r/-loss; glossary/codebase map and agent guidance.
-- **Exact-main verification:** Quality [41649424148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424148) SUCCESS; Chromium [41649424074](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424074) SUCCESS; Pages/deployed smoke [41649424091](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424091) SUCCESS.
-- **Research boundary:** independent expert-adjudicated IPA gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. Passing engineering/browser/deployment checks is not evidence of phonetic accuracy.
+- **Default branch:** `main` at `0f73d006bfc05f6106a3b1e463c2cc7d6471ffae`.
+- **Open pull requests:** none. Benchmark integrity PR [#123](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/123) was squash-merged into this exact main head.
+- **Held-out benchmark contract:** gold export preserves `split`, `split_seed`, and `split_version`; adjudicated records without a frozen split fail closed; the scorer defaults to `test`; train/dev/all require explicit diagnostic selection; mixed manifest identities and empty prediction files are rejected.
+- **Input integrity:** benchmark TSV headers/row widths, whitespace-only identifiers, duplicate JSON object keys, and non-standard JSON constants are rejected with regression coverage.
+- **Post-merge exact-main verification:** Post-merge Quality checks, built-site Chromium browser smoke, GitHub Pages deployment, and deployed-site/runtime-asset smoke all passed on the exact `main` head. [workflow](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503253); [browser smoke](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503102); [Pages deployment and deployed smoke](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503262)
+- **Research boundary:** Independent expert-adjudicated Khmer IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null. Engineering, browser and deployment checks do not establish pronunciation accuracy.
 
 ## Current task ledger and blockers
 
-- **DONE_VERIFIED:** manifest-wide split identity is enforced; the default branch has current CI evidence; source citations and evidence scope have been reconciled; project agent guidance is in place.
-- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by language-specific evidence and unresolved cases. Any external benchmark remains diagnostic until rights, profile and IPA conventions are independently validated.
-- **BLOCKED:** independent gold collection requires an approved profile and IPA convention, two qualified independent annotators, a separate adjudicator, blinded intake and source-specific rights clearance.
-- **TODO:** complete manual visual, keyboard, screen-reader, responsive and mobile QA on the deployed site; automated browser smoke is not a substitute.
+- **DONE_VERIFIED:** deterministic manifest-wide split identity; export/scorer held-out split integrity; strict TSV and JSON input validation; post-merge exact-main engineering verification.
+- **PARTIAL:** The consonant-series × dependent-vowel × coda × syllable-context matrix, automatic word segmentation, contextual /r/-loss profile, and Ukrainian correspondences remain incomplete or evidence-limited.
+- **BLOCKED:** Approve a profile-specific IPA convention; recruit two qualified independent Khmer phonetic annotators and a separate adjudicator; clear source/audio rights and establish blinded intake.
+- **TODO:** Manual visual, keyboard, screen-reader, responsive and mobile QA on the deployed site remains TODO.
 
 ## Historical checkpoints (retained for audit; superseded by the current state above)
 

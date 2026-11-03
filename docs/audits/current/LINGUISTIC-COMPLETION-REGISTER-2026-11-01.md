@@ -1,10 +1,17 @@
 # Khmer linguistic completion register — 2026-11-01
 
-**Baseline code commit:** `3809f0de9b77253a08985bb90e18e7308bdda412` (PR base snapshot; subsequent benchmark and handoff changes are on the review branch).
-**Latest exact-main evidence:** Quality [41649424148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424148) SUCCESS; Chromium [41649424074](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424074) SUCCESS; Pages/deployed smoke [41649424091](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424091) SUCCESS.
-**Open pull requests at this checkpoint:** implementation PR #123. Documentation-only PR #122 was subsequently closed as superseded after its equivalent handoff/register correction was ported into the implementation branch.
-**Latest exact-main engineering evidence:** Quality [41326462947](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462947) and Pages/deployed smoke [41326462993](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462993) succeeded.
+**Current main commit:** `0f73d006bfc05f6106a3b1e463c2cc7d6471ffae` (benchmark integrity PR #123 squash-merged).
+**Latest post-merge exact-main evidence:** [engineering verification](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503253) SUCCESS; [built-site Chromium smoke](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503102) SUCCESS; [Pages/deployed-site smoke](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503262) SUCCESS.
+**Open pull requests:** none at this checkpoint.
+**Research boundary:** Independent expert-adjudicated Khmer IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null.
 **Scope:** continue the existing master handoff; this register does not replace it.
+
+## Held-out IPA benchmark integrity — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| IPA-BENCH-HELDOUT-001 | DONE_VERIFIED | PR #123 merged as `0f73d006bfc05f6106a3b1e463c2cc7d6471ffae`; exact-main verification [workflow](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503253) SUCCESS; browser smoke [workflow](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503102) SUCCESS; Pages/deployed-site smoke [workflow](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503262) SUCCESS. Export preserves split bucket and frozen manifest seed/version; scoring defaults to held-out test; explicit all-split mode is marked diagnostic; malformed/mixed split metadata and empty predictions fail closed. | Engineering evaluation integrity only. Independent expert-adjudicated Khmer IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null. No gold rows, IPA labels or accuracy claims were fabricated. |
+
 
 ## Engineering integrity continuation — 2026-11-03
 

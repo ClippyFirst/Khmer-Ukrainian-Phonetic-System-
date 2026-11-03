@@ -1,3 +1,9 @@
+## Post-merge provenance checkpoint — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-G2P-PROVENANCE-001 | DONE_VERIFIED (PR-head verified; post-merge push CI not independently surfaced) | PR [#129](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/129) merged as 2138f6f10df875591e846c81fae69c7cfde69bb5. Exact PR-head Quality [41726874329](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41726874329), browser [41726874307](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41726874307), optional G2P [41726874306](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41726874306) all SUCCESS; artifact contents inspected. | Diagnostic report provenance and checksum integrity only; no language accuracy. Gold remains 0; accuracy null. |
+
 ## External diagnostic report provenance — 2026-11-03
 
 | ID | Status | Evidence | Acceptance boundary |

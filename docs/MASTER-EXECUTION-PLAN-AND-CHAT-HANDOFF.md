@@ -1399,3 +1399,11 @@ Conclusion: high-value candidate dictionary/acoustic comparator, but **not ready
 ## Automated IPA-gold gate limitation — 2026-11-03
 
 The CLI release gate enforces independent double annotation/adjudication, rights-cleared export, deterministic group splits and numeric 100/25/25 thresholds. It does not calculate language-specific phonological contrast coverage. A separate versioned coverage matrix and expert sign-off remain mandatory before any language benchmark release. A green numeric gate alone is not sufficient.
+## Final continuation closeout — 2026-11-03
+
+- Final pre-closeout branch head: `05cba7f94eccb621734263ebaa2e3b548eca13f9`; PR #107 remains open, mergeable, 75 ahead / 0 behind `main` (`7b0a8f8c8661707afd9f0c58a94e2678789adf86`).
+- Exact-head Quality [41604945992](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41604945992) and browser [41604945979](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41604945979) both succeeded; browser job log confirms 5/5 production-build Chromium tests.
+- Separate PR #108 hotfix head `e8ef5ea727758c3339d016fb2636c1108e1549f4` remains open and mergeable, 10 ahead / 0 behind main; exact-head Quality [41536753767](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41536753767) and browser [41536753931](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41536753931) succeeded, with 3/3 browser tests. Main still contains the stale `source-result` DOM write until #108 is merged and deployed.
+- Completion register now records UI as PARTIAL (automated browser coverage exists; manual visual/keyboard/screen-reader/mobile and public Pages QA remain open). Legacy PR #64 is closed without merge; its responsive work is represented by merged #105/#106.
+- Woźnica profile evidence, MekongPhon rights/split limitations, Khmer Acoustic Model dictionary-license contradiction and complete Sakamoto/Wayland bibliography are recorded. Gold files remain empty: 0 records, 0 annotations, 0 adjudications, 0 splits; accuracy remains null.
+- The automated numeric gold gate does not calculate contrast coverage; separate versioned feature-coverage matrix and expert sign-off remain mandatory. Changes in this continuation are documentation/evidence only; no runtime phonology or IPA labels changed.

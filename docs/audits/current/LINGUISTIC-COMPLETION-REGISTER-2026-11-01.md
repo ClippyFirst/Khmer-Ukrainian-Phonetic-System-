@@ -234,3 +234,5 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - Exact-head CI: [41613364915](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41613364915) SUCCESS — 153 Python tests + 44 subtests; the full repository workflow also completed successfully.
 - New invariant: a single manifest has one `(seed, version)` pair globally; existing manifests retain that identity when extended; explicit conflicting overrides fail closed. A new corpus split design requires a separate versioned manifest.
 - This is an engineering reproducibility fix only. It creates no linguistic labels and does not change gold count (0) or accuracy (`null`).
+
+- Follow-up strictness regression: explicit empty `--seed` and `--version` must fail instead of falling through to defaults. Tests-only CI failed on both behaviours (41615406281); the corrected conditional default resolution passed exact-head CI 41615593646.

@@ -245,3 +245,12 @@ The automated regression verifies: (1) `ក` visibly renders IPA `/kɑː/` and U
 | KHM-GOLD-PILOT-001 | BLOCKED | No gold labels or adjudications created by this source audit. | Requires profile-specific lexical sampling, frozen IPA convention, two independent qualified annotators, separate adjudicator, source locators and rights-cleared packets. Gold remains 0; accuracy null. |
 
 No source in this audit licenses deterministic colloquial /r/-loss for the careful-citation profile. No IPA values or production phonology changed.
+
+
+## Manifest-wide split identity — rebased integration — 2026-11-03
+
+**Status: PARTIAL pending exact-head verification of the rebased port.** Ported PR #109's runtime validator/generator invariant and regression tests onto current `main` after the Khmer browser fix and handoff merges. The implementation must be verified on this clean branch before being marked DONE_VERIFIED.
+
+- One frozen `(seed, version)` pair is enforced across the entire manifest; new groups inherit it; explicit conflicting/empty overrides fail; a new identity requires a separate empty input manifest.
+- Original PR-head CI [41639679611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41639679611) succeeded, but does not verify this rebased branch.
+- No IPA gold rows were added; adjudicated gold remains 0 and empirical accuracy remains `null`.

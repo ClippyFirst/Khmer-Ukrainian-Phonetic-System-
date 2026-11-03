@@ -3,7 +3,7 @@
 ## Bibliography and source-registry checkpoint — 2026-11-03
 
 - Dedicated documentation branch: `docs/source-citation-audit-20261103`; source-backed benchmark citation and registry corrections are recorded in the completion register.
-- Added MekongPhon and Sar & Tan (2019) to the Khmer source registry. Corrected authors, volume/pages, dataset size (1,350 train / 350 test), and preserved the paper's internal baseline WER discrepancy (abstract 69.6% vs Table 10/conclusion 69.9%). CC BY-NC-ND 4.0 is stated only for the article, not its source dictionaries or derived data. Corrected US 'behavior' to British 'behaviour'.
+- Added MekongPhon and Sar & Tan (2019) to the Khmer source registry. Corrected authors and volume/pages. A full-text recheck found two internal Sar & Tan (2019) discrepancies: prose says 1,350 train / 350 test, while Table 10 test bins sum to 356; abstract baseline WER is 69.6%, while Table 10/conclusion give 69.9%. Both are now recorded without silently choosing a value. CC BY-NC-ND 4.0 is stated only for the article, not its source dictionaries or derived data. Corrected US 'behavior' to British 'behaviour'.
 - Academic Writing Toolkit: four BibTeX records structurally validated with 0 issues; British-English check returned 0 issues for all three benchmark audit documents after the Khmer spelling correction. Its citation-audit parser did not reliably parse the repositories' CSV/JSON source registries, so no false 'citation clean' claim is made; citations and metadata were checked directly against the primary ACL Anthology/LREC records and full text where available.
 - No external pronunciation labels or data imported; independent gold remains 0, accuracy remains `null`; no license permission inferred from article/model licenses.
 

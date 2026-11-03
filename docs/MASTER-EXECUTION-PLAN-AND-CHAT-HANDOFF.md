@@ -1,3 +1,10 @@
+## Post-merge reconciliation — Khmer G2P diagnostic provenance (2026-11-03)
+
+- PR [#129](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/129) is merged into main as **2138f6f10df875591e846c81fae69c7cfde69bb5**; this is the current mainline checkpoint for this change.
+- Exact final PR-head checks on c4741aa4a70e228ea8a5b2af42a5657da0ed4629: Quality [41726874329](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41726874329) SUCCESS (172 tests + 60 subtests), browser [41726874307](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41726874307) SUCCESS, optional G2P [41726874306](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41726874306) SUCCESS. The downloaded artifact contains the JSON report, .json.sha256 sidecar, and separate source diagnostic file; 90-day retention.
+- The post-merge push-run result was not available through the connected workflow-run query at this checkpoint; no post-merge CI result is claimed. PR-head verification is the available evidence.
+- Research boundary unchanged: independent adjudicated Khmer IPA gold remains 0; empirical accuracy remains null.
+
 ## Continuation update — external Khmer G2P report provenance and integrity (2026-11-03)
 
 - **KHMER-G2P-PROVENANCE-001 — DONE_VERIFIED (diagnostic reproducibility only):** scripts/benchmark_g2p.py now embeds an inspectable provenance block with exact harness SHA-256, corpus path/hash, engine name/version, Python version/implementation, platform, and clearly named GitHub event SHA/ref/head-ref fields. It writes an adjacent .json.sha256 sidecar and creates parent directories.

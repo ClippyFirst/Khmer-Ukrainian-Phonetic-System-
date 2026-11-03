@@ -231,3 +231,7 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 
 - Four benchmark BibTeX records (MekongPhon 2026, Myanmar dictionary G2P 2016, Burmese LREC 2020, Khmer G2P 2019) passed the Academic Writing Toolkit's structural BibTeX check with 0 issues. Primary metadata was checked against ACL Anthology / LREC Proceedings; the Khmer 2019 paper's title/authors/volume/pages/DOI and conflicting WER values were cross-checked against the available full text.
 - No external corpus, dictionary, pronunciation label or model was imported. Rights clearance remains source-specific; independent gold remains 0 and empirical accuracy remains `null`.
+
+## Full-text G2P benchmark discrepancy follow-up — 2026-11-03
+
+**Status: DONE_VERIFIED (source audit only).** Rechecked Sar & Tan (2019) against the available full text. It contains two internal discrepancies: prose states 1,350 training / 350 test pairs, while Table 10's test-corpus bins sum to 356 (112 + 97 + 98 + 49); the abstract gives baseline WER 69.6%, while Table 10 and the conclusion give 69.9%. The research audit, source registry and handoff now preserve both discrepancies without selecting a preferred value. This does not affect the project's gold count (0) or accuracy (null).

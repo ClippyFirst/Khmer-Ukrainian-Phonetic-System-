@@ -1376,3 +1376,14 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Final exact-code-head verification: [workflow run 41662242906](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41662242906) SUCCESS; 164 Python tests + 50 subtests; 3 browser smoke tests passed; browser smoke [41662242611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41662242611) SUCCESS.
 - Verified implementation commit: `02807605a78fee4c7ab25cd51315e4343940a3c1`; exact-code-head CI [workflow run 41662242906](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41662242906) SUCCESS.
 - **IPA-BENCH-IDENTIFIERS-001 — DONE_VERIFIED (engineering input-integrity guard).** No linguistic labels, gold records or accuracy claims were added.
+
+## Verified continuation checkpoint — 2026-11-03 (late session)
+
+- Default branch base: `dcaad206805abaacb2079f60e892e37af2477aac`; continuation branch: `docs/current-state-checkpoint-20261103`.
+- Latest mainline work retained: Unicode punctuation token-boundary fix (#126; merged as 2a2f1c55282e076d6c4e0640d80af1053783bd6b) and subsequent docs/audit checkpoint.
+- Exact-main CI on the recorded default-branch head: Quality 41710756134; browser smoke 41710756111; Pages deploy 41710756094; all listed runs completed with SUCCESS. These are CI checks for the current implementation and deployment, not phonetic validation.
+- Open pull requests: none at checkpoint time. No upstream methodology repository was modified; Superpowers, Matt Pocock Skills and Ponytail remain process references only.
+- Engineering task ledger: benchmark split provenance, empty-prediction rejection and whitespace-only identifier validation remain **DONE_VERIFIED** as input-integrity safeguards. The recently merged runtime fix is verified by its own regression/CI; no new linguistic rule is inferred from it.
+- Linguistic task ledger: independent adjudicated IPA gold remains **0**; gold export remains header-only and empirical accuracy remains `null`. The profile-specific IPA convention, two independent annotators, separate adjudicator, curator/blind intake and item-level rights review remain **BLOCKED** on external human decisions/resources. No labels or source-derived pronunciations were fabricated.
+- Manual deployed-site keyboard, screen-reader, responsive and mobile QA remains **TODO**; automated browser checks do not satisfy these acceptance criteria.
+- Local test execution was not available in this connector-only session. Verification evidence is the linked GitHub Actions CI on the exact recorded main SHA; do not report local tests as run.

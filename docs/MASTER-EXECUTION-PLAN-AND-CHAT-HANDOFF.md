@@ -1256,3 +1256,10 @@ Independent expert-adjudicated gold remains 0; accuracy remains null. The source
 - Enforces one manifest-wide `(seed, version)` identity across all lexeme groups, preserves the identity when extending an existing manifest, rejects conflicting and empty explicit CLI overrides, and adds an acceptance test for creating a new versioned manifest from a separate empty `--splits` input.
 - Prior exact-head CI [41639679611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41639679611) succeeded on the original PR head, but this rebased port requires its own exact-head tests before merge.
 - No linguistic gold rows or phonological labels are added. Independent adjudicated gold remains 0; accuracy remains `null`.
+
+
+## Khmer source evidence and benchmark reconciliation — 2026-11-03
+
+- Ported the source registry, references, external-corpus triage, controlled collection playbook, benchmark audit and provenance tests from prior PR [#110](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/110) onto current `main` after PR #112 merged. The IPA corpus protocol was merged carefully: the existing manifest-wide split instructions are preserved and the agreement-metric boundary is added separately.
+- The MekongPhon record is an external benchmark lead, not project gold. Kirby's 2015 DataShare items are scoped to the specific audio/supplementary resources and their item-level CC BY 4.0 declarations; Praat TextGrids and measurements are not independent lexical IPA gold. Cucchiarini and Oller/Ramsdell are methodological sources, not Khmer-specific scoring algorithms. Woźnica's multi-region thesis is not treated as Phnom Penh-only evidence.
+- Original PR-head Quality workflow [41640011541](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41640011541) succeeded; this clean port requires its own exact-head CI. No external IPA labels imported; independent adjudicated gold remains 0 and accuracy remains `null`.

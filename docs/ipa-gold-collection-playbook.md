@@ -48,6 +48,14 @@ MekongPhon (LREC 2026) reports 1.3 million Khmer and 367,000 Lao orthography–I
 
 https://github.com/chemvatho/Khmer-acoustic-model reports a 29,204-entry IPA dictionary and native-linguist validation; its README states that dictionary data are CC BY-SA 4.0, distinct from the MIT code/model license. This is promising for external comparison and source discovery, not automatically our gold. Inspect actual dictionary, metadata, exact commit, per-entry provenance, variety/profile, transcription consistency, and rights before using any entry. Do not copy entries just because the repository is public.
 
+## Agreement and reliability reporting
+
+The validator's `AGREEMENT` decision means exact equality of the complete typed IPA object under the corpus's canonical NFC representation, including IPA kind and any supplied syllable-boundary, tone, vowel-length and phonation metadata. It is a strict record-level gate, **not** an inter-annotator reliability coefficient. The current implementation does not calculate an alignment-aware or feature-weighted agreement score.
+
+For the 30-lexeme process pilot, report the exact-object agreement numerator/denominator, counts of `RESOLVED` and `UNRESOLVED` decisions, and a descriptive breakdown of disagreements (segment identity, feature/series, vowel quality/length, coda, syllable boundary, tone, phonation and profile/style). Do not present this small process sample as a stable population reliability estimate.
+
+Cucchiarini (1996) explains why raw percentage agreement is limited for phonetic transcription: it treats symbol matches as all-or-none, is affected by chance agreement, and does not itself specify transcription alignment. Oller and Ramsdell (2006) describe a weighted reliability measure intended to distinguish degrees of phonetic difference. These works motivate careful alignment and feature-sensitive reporting, but the repository does **not** implement either published algorithm. A future project-defined weighted metric remains PARTIAL until experts pre-register the segment/feature inventory, alignment procedure, substitution/deletion/insertion costs, suprasegmental weights (tone, length, phonation), syllable-boundary treatment, uncertainty/alternative policy, and validation against independently adjudicated data. Do not call a future score the Cucchiarini or Oller–Ramsdell measure unless their exact method is reproduced.
+
 ## Controlled workflow
 
 1. Curator freezes the pilot list and records source provenance and rights before annotation.
@@ -82,7 +90,7 @@ Existing numeric thresholds (100 train / 25 dev / 25 test) are minimum engineeri
 ## References
 
 - Shurtz, Richardson & Richardson (2026), MekongPhon, LREC 2026: https://lrec.elra.info/lrec2026-main-129
-- Chem et al. (2026), Khmer Acoustic Model and dictionary: https://github.com/chemvatho/Khmer-acoustic-model
+- Khmer Acoustic Model upstream technical repository (not a scholarly 2026 article): https://github.com/chemvatho/Khmer-acoustic-model
 - Chem (2020), The Standard Khmer vowel system: https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36
 - Kirby (2014), Incipient tonogenesis in Phnom Penh Khmer: https://www.sciencedirect.com/science/article/pii/S0095447014000163
 
@@ -118,9 +126,17 @@ These are **audio/transcript candidates**, not IPA gold. Sentence-level recordin
 - At the inspected default-branch tree, `dictionary/khmer_ipa.dict` returned 404; only `dictionary/khmer_ipa_sample.dict` was retrievable, containing six entries. Therefore the full 29,204-entry artifact is **not reproducibly available at the documented path in the inspected branch**.
 - The six-row sample uses space-separated symbol sequences (for example, `p r a p`), not the project's current typed IPA object contract. The README does not establish the target variety, per-entry source locators, or a complete phonemic/broad/narrow convention. Treat it as a methodology/comparison lead only, not gold.
 
+### Kirby 2015 — Phnom Penh acoustic recordings and supplementary data
+
+- Audio item: https://datashare.ed.ac.uk/items/fe218489-ad49-4986-b175-721cb9959500 (DOI 10.7488/ds/321). DataShare item metadata declares **CC BY 4.0**. The archive is 461.93 MB and contains 24-bit, 44.1 kHz recordings of 16 Phnom Penh Khmer speakers from July 2011, with segmented Praat TextGrids; the provider lists MD5 `8688e68e76e8269b8bbf5d19020a230b`.
+- Supplementary item: https://datashare.ed.ac.uk/items/9a9fa51d-ce4f-4685-9e39-af3fd0a436d3 (DOI 10.7488/ds/319), also declared CC BY 4.0. It contains anonymised production/perception CSVs, KlattGrid stimulus files, Praat-related measurements and R analysis code.
+- Research fit: this is a valuable acoustic source for the Phnom Penh /CrV/ reading-versus-colloquial contrast and speaker-level variability. For a careful-citation pilot, isolate the reading condition and preserve the original task/style metadata; keep colloquial productions in a separate contextual dataset.
+- Limits: this is not a lexical-wide IPA corpus. Praat TextGrids are segmentation, not IPA labels; the CSVs are study measurements/response data, not independent double-annotated IPA. The study's /CrV/ focus does not establish the complete vowel × series × coda × profile matrix or the pronunciation of the full lexicon. Do not convert acoustic measurements or model output into gold without two independent IPA transcriptions and adjudication.
+- Rights are item-specific: the DataShare records declare CC BY 4.0 for these two dataset items. Attribute Kirby and the University of Edinburgh; do not infer rights for any other source cited by the article or for third-party material not covered by the item licence.
+
 ### Collection decision
 
-For a Phnom Penh lexical G2P benchmark, prioritize controlled citation-form recordings from confirmed Phnom Penh speakers and two blind expert transcriptions. Common Voice and OpenSLR42 can supply supplementary contextual speech and candidate words, but do not combine their contextual realizations with citation-form labels. The Khmer Acoustic Model dictionary remains a comparator candidate until the full artifact, source provenance and IPA convention can be inspected.
+For a Phnom Penh lexical G2P benchmark, prioritize controlled citation-form recordings from confirmed Phnom Penh speakers and two blind expert transcriptions. Kirby's DataShare recordings are the strongest located acoustic lead for Phnom Penh /CrV/ style comparison; Common Voice and OpenSLR42 can supply supplementary contextual speech and candidate words. Do not combine reading and colloquial realizations or contextual speech with citation-form labels. The Khmer Acoustic Model dictionary remains a comparator candidate until the full artifact, source provenance and IPA convention can be inspected.
 
 
 ### Exact v27.0 manifest audit

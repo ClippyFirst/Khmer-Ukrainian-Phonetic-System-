@@ -254,3 +254,11 @@ No source in this audit licenses deterministic colloquial /r/-loss for the caref
 - One frozen `(seed, version)` pair is enforced across the entire manifest; new groups inherit it; explicit conflicting/empty overrides fail; a new identity requires a separate empty input manifest.
 - Original PR-head CI [41639679611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41639679611) succeeded, but does not verify this rebased branch.
 - No IPA gold rows were added; adjudicated gold remains 0 and empirical accuracy remains `null`.
+
+
+## Khmer source evidence and benchmark reconciliation — 2026-11-03
+
+**Status: PARTIAL pending exact-head verification of the clean port.** Ported the source-registry, references, research audit, collection playbook and provenance-test changes from PR #110 onto latest main, preserving PR #112's manifest-wide split protocol while adding the distinct agreement-metric boundary.
+
+- Original PR-head Quality workflow [41640011541](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41640011541) succeeded; this clean port needs fresh exact-head checks.
+- Dataset-item rights remain scoped only to those specific DataShare items. No IPA labels imported; independent gold remains 0 and accuracy remains `null`.

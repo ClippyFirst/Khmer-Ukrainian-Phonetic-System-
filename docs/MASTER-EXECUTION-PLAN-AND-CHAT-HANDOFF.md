@@ -31,8 +31,7 @@
 
 ## Current repository state — 2026-11-03 (post-merge)
 
-- **Default branch:** `main` at `0f73d006bfc05f6106a3b1e463c2cc7d6471ffae`.
-- **Open pull requests:** none. Benchmark integrity PR [#123](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/123) was squash-merged into this exact main head.
+- **Mainline integration:** benchmark implementation PR #123 was squash-merged as `0f73d006bfc05f6106a3b1e463c2cc7d6471ffae`; the handoff/register reconciliation PR #124 was squash-merged as `ebd8432b4abacecb50e30bae43ff64c42ac4063b`. No open PRs remained at this checkpoint.
 - **Held-out benchmark contract:** gold export preserves `split`, `split_seed`, and `split_version`; adjudicated records without a frozen split fail closed; the scorer defaults to `test`; train/dev/all require explicit diagnostic selection; mixed manifest identities and empty prediction files are rejected.
 - **Input integrity:** benchmark TSV headers/row widths, whitespace-only identifiers, duplicate JSON object keys, and non-standard JSON constants are rejected with regression coverage.
 - **Post-merge exact-main verification:** Post-merge Quality checks, built-site Chromium browser smoke, GitHub Pages deployment, and deployed-site/runtime-asset smoke all passed on the exact `main` head. [workflow](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503253); [browser smoke](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503102); [Pages deployment and deployed smoke](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503262)

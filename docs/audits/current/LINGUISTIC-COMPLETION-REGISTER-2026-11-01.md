@@ -1,6 +1,6 @@
 # Khmer linguistic completion register — 2026-11-01
 
-**Current main commit:** `0f73d006bfc05f6106a3b1e463c2cc7d6471ffae` (benchmark integrity PR #123 squash-merged).
+**Benchmark implementation merge:** `0f73d006bfc05f6106a3b1e463c2cc7d6471ffae` (PR #123). **Handoff/register reconciliation merge:** `ebd8432b4abacecb50e30bae43ff64c42ac4063b` (PR #124).
 **Latest post-merge exact-main evidence:** [engineering verification](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503253) SUCCESS; [built-site Chromium smoke](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503102) SUCCESS; [Pages/deployed-site smoke](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41707503262) SUCCESS.
 **Open pull requests:** none at this checkpoint.
 **Research boundary:** Independent expert-adjudicated Khmer IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null.

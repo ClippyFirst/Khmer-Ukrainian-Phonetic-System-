@@ -335,3 +335,12 @@ No dictionary rows or IPA labels imported. Independent expert gold remains 0; ac
 - `KHM-UI-001` is `PARTIAL` rather than `TODO`: exact PR #107 merge-head browser workflow [41540157395](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41540157395) passed 5/5 Chromium tests against the production build. The job log explicitly shows all five test names and zero failures.
 - PR #108 remains separate because the main-branch `source-result` DOM exception blocks non-empty rendering until the hotfix is merged and deployed. The PR #107 browser suite validates its merge context, not the published main site.
 - Manual visual, keyboard, screen-reader, mobile/touch and deployed Pages URL interaction checks remain unverified. CI does not close those acceptance criteria.
+
+
+## Citation and PR-overlap reconciliation — 2026-11-03
+
+| ID | Status | Work remaining | Acceptance |
+|---|---|---|---|
+| KHM-CITE-001 | PARTIAL | Added complete Shurtz et al. (2026) and Woźnica (2013) records, corrected Chem (2020) author attribution, and reclassified the Khmer Acoustic Model as a technical repository. Full claim-to-source audit remains open. | Every in-text citation maps to a verified record; paper, repository, dataset and model licenses are kept distinct; no source is promoted beyond its evidence scope. |
+
+PR #107 includes the same `source-result` runtime deletion as PR #108, plus the selected profile and broader browser coverage. Both remain open; merge one fix-bearing branch only after owner review, then verify deployment. Exact code-head Quality [41605489135](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41605489135) and Chromium [41605489128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41605489128) passed on `87ffc67d4f4f182aab26ac384e17e7a038e3294e`; later documentation commits did not change code. Independent gold remains 0; accuracy null.

@@ -1263,3 +1263,11 @@ Independent expert-adjudicated gold remains 0; accuracy remains null. The source
 - Ported the source registry, references, external-corpus triage, controlled collection playbook, benchmark audit and provenance tests from prior PR [#110](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/110) onto current `main` after PR #112 merged. The IPA corpus protocol was merged carefully: the existing manifest-wide split instructions are preserved and the agreement-metric boundary is added separately.
 - The MekongPhon record is an external benchmark lead, not project gold. Kirby's 2015 DataShare items are scoped to the specific audio/supplementary resources and their item-level CC BY 4.0 declarations; Praat TextGrids and measurements are not independent lexical IPA gold. Cucchiarini and Oller/Ramsdell are methodological sources, not Khmer-specific scoring algorithms. Woźnica's multi-region thesis is not treated as Phnom Penh-only evidence.
 - Original PR-head Quality workflow [41640011541](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41640011541) succeeded; this clean port requires its own exact-head CI. No external IPA labels imported; independent adjudicated gold remains 0 and accuracy remains `null`.
+
+
+## Single careful-citation profile integration — rebased 2026-11-03
+
+- Rebased the narrow profile/runtime change onto the latest main after Khmer source-evidence PR #113 merged. This branch excludes the already-merged browser hotfix and all unrelated broad PR #107 changes.
+- The service exposes only `khmer-pph-careful-citation-v1`, a bounded project profile for contemporary Phnom Penh careful citation-form speech. The adapter preserves supplied IPA; it does not synthesize colloquial /r/-loss or rewrite /Cr/ clusters.
+- The project profile decision is supported as an elicitation target by Chem (2020)'s small formal-reading sample, but it is not a national standard or a claim of full lexical coverage. Independent adjudicated gold remains 0 and accuracy remains `null`.
+- Original #114 exact-head Quality and Chromium workflows succeeded, but this rebase requires fresh exact-head checks.

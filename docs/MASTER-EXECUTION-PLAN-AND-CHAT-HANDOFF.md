@@ -1248,3 +1248,11 @@ Independent expert-adjudicated gold remains 0; accuracy remains null. The source
 - The browser regression covers visible IPA/Ukrainian output for `ក`, withholding mixed unsupported input, and clear/reset. This is UI behavior only; no phonology rule, IPA label, or gold row was introduced.
 - PR [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107) is now 95 commits ahead / 1 behind and reports non-mergeable after the isolated hotfix landed. It contains the same one-line DOM correction plus a broad profile change; do not merge wholesale. Reconcile against new `main`, retain the already-merged hotfix, and re-run all relevant checks.
 - Independent adjudicated IPA gold remains 0; empirical accuracy remains `null`. The repository remains a research prototype, not a linguistically validated release.
+
+
+## Rebased Khmer split-manifest correction — 2026-11-03
+
+- Rebased the substantive changes from prior PR [#109](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/109) onto current `main` after PRs #108 and #111; this branch deliberately excludes the already-merged browser hotfix and does not reintroduce its obsolete DOM write.
+- Enforces one manifest-wide `(seed, version)` identity across all lexeme groups, preserves the identity when extending an existing manifest, rejects conflicting and empty explicit CLI overrides, and adds an acceptance test for creating a new versioned manifest from a separate empty `--splits` input.
+- Prior exact-head CI [41639679611](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41639679611) succeeded on the original PR head, but this rebased port requires its own exact-head tests before merge.
+- No linguistic gold rows or phonological labels are added. Independent adjudicated gold remains 0; accuracy remains `null`.

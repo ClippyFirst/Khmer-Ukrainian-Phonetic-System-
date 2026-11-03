@@ -1,7 +1,9 @@
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
-**Current checkpoint:** 2026-11-02 (reconciled after latest main publication)  
+**Current checkpoint:** 2026-11-03 (profile, browser-hotfix overlap and citation reconciliation)  
 **Default branch:** `main` at `7b0a8f8c8661707afd9f0c58a94e2678789adf86`  
+**Current review PR:** [#107](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/107), branch `research/khmer-profile-decision-20261102`; documentation checkpoint based on `806d1f5b6b4d97d7a6617b069f128f6617662be5`.  
+**Latest exact code-head verification:** [Quality 41605489135](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41605489135) and [browser 41605489128](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41605489128) SUCCESS on code head `87ffc67d4f4f182aab26ac384e17e7a038e3294e`; later commits in this documentation checkpoint change no runtime code.  
 **Current main verification:** [Quality checks 41424887161](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41424887161) SUCCESS; Pages deployment [41424887132](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41424887132) SUCCESS.  
 **Previous checkpoint:** `c0a2b33c86791b6546e1158c62043fd23acc1f60` and branch/PR details below are historical and superseded by the merged main state.
 
@@ -1407,3 +1409,11 @@ The CLI release gate enforces independent double annotation/adjudication, rights
 - Completion register now records UI as PARTIAL (automated browser coverage exists; manual visual/keyboard/screen-reader/mobile and public Pages QA remain open). Legacy PR #64 is closed without merge; its responsive work is represented by merged #105/#106.
 - Woźnica profile evidence, MekongPhon rights/split limitations, Khmer Acoustic Model dictionary-license contradiction and complete Sakamoto/Wayland bibliography are recorded. Gold files remain empty: 0 records, 0 annotations, 0 adjudications, 0 splits; accuracy remains null.
 - The automated numeric gold gate does not calculate contrast coverage; separate versioned feature-coverage matrix and expert sign-off remain mandatory. Changes in this continuation are documentation/evidence only; no runtime phonology or IPA labels changed.
+
+
+## Profile, browser-fix overlap and citation reconciliation — 2026-11-03
+
+- PR #107 now carries the single profile key `khmer-pph-careful-citation-v1`, removes the deterministic colloquial /r/-loss rewrite in both Python and browser adapters, rejects unselected profile keys, and removes the stale `source-result` DOM write. The Python/JS adapters preserve supplied IPA; they do not generate a complete Khmer pronunciation model. The exact code head passed Quality and Chromium browser workflows.
+- **PR overlap:** open PR [#108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/108) independently removes the same `source-result` DOM write and adds a separate browser-smoke workflow. PR #107 contains that same runtime deletion plus the profile work and a production Chromium workflow. If #107 is merged first, #108's runtime fix is redundant. Both remain open pending owner review; do not merge both blindly. Main remains affected until one fix-bearing PR is merged and Pages deployment/live interaction is verified.
+- Citation cleanup: MekongPhon is cited as Shurtz et al. (2026) with DOI; Chem's 2020 article is attributed to Vatho Chem (the publisher record duplicates the same author for two affiliations, not two distinct authors); Woźnica's 2013 doctoral thesis now has its exact Polish title, English title alternative, author and repository handle. The Khmer Acoustic Model is described as an upstream technical repository, not a 2026 scholarly article.
+- No corpus data were imported. Independent expert-adjudicated gold remains 0; accuracy remains null. Full repository-wide citation completeness and manual accessibility QA remain open.

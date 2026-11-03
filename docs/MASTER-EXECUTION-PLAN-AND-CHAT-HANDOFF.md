@@ -1271,3 +1271,14 @@ Independent expert-adjudicated gold remains 0; accuracy remains null. The source
 - The service exposes only `khmer-pph-careful-citation-v1`, a bounded project profile for contemporary Phnom Penh careful citation-form speech. The adapter preserves supplied IPA; it does not synthesize colloquial /r/-loss or rewrite /Cr/ clusters.
 - The project profile decision is supported as an elicitation target by Chem (2020)'s small formal-reading sample, but it is not a national standard or a claim of full lexical coverage. Independent adjudicated gold remains 0 and accuracy remains `null`.
 - Original #114 exact-head Quality and Chromium workflows succeeded, but this rebase requires fresh exact-head checks.
+
+
+## Current repository continuation checkpoint — 2026-11-03
+
+- Verified default branch `main` at `1dc07f9c43972f547ac7a56adb9ed949155bacf1`.
+- Latest exact-main CI: Quality 41646838970 SUCCESS; Chromium 41646838756 SUCCESS; Pages/deployed-site 41646838884 SUCCESS.
+- PR reconciliation: PRs #107 and #114 are closed without merge as superseded; the careful-citation profile is present on main. PRs #108 and #111 were merged earlier. No open PRs were returned by the current open-PR query.
+- Current engineering state: main includes the single operational profile `khmer-pph-careful-citation-v1`, no deterministic colloquial /r/-loss rewrite, the manifest-wide split fix, source-evidence reconciliation and the browser hotfix. The profile remains a bounded project elicitation decision pending specialist approval and does not establish a complete phonological model.
+- Linguistic evidence boundary: independent adjudicated IPA gold remains 0; gold export remains header-only; empirical accuracy remains null. CI verifies engineering behavior only.
+- Human/research blockers remain: approve the versioned IPA convention; recruit two qualified independent annotators and a separate adjudicator; establish blinded intake; verify source-specific data rights; collect and adjudicate a profile-specific pilot; complete deployed-site manual keyboard, screen-reader, responsive and mobile QA.
+- No gold labels, source-derived IPA guesses, phonological rules, or benchmark scores were created in this checkpoint.

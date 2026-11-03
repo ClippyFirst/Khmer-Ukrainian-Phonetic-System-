@@ -72,3 +72,18 @@ def test_kirby_2015_phnom_penh_audio_resources_have_scoped_rights_and_limits():
     assert supplementary["license"] == "CC BY 4.0"
     assert "anonymised" in supplementary["scope"].lower()
     assert "ipa gold" in supplementary["limitations"].lower() and "not" in supplementary["limitations"].lower()
+
+
+def test_transcription_agreement_method_sources_are_not_misrepresented_as_khmer_gold():
+    sources = json.loads((DATA / "sources.json").read_text(encoding="utf-8"))
+    by_id = {source["id"]: source for source in sources}
+
+    cucchiarini = by_id["cucchiarini1996-agreement"]
+    assert cucchiarini["doi"] == "10.3109/02699209608985167"
+    assert "percentage agreement" in cucchiarini["scope"].lower()
+    assert "not a Khmer-specific" in cucchiarini["limitations"]
+
+    oller = by_id["oller-ramsdell2006-weighted-reliability"]
+    assert oller["doi"] == "10.1044/1092-4388(2006/100)"
+    assert "eight coders" in oller["scope"].lower()
+    assert "not the project's implemented metric" in oller["limitations"].lower()

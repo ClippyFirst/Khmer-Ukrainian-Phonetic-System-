@@ -1267,3 +1267,7 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - British-English check: 0 issues. Citation audit has one parser limitation on the two-author Sar & Tan citation; the primary publisher record and article full text were checked directly.
 - Primary bibliographic metadata was separately checked against the ACL Anthology/LREC proceedings and publisher or institutional records. Tool citation parsing is not treated as an authority over compound surnames, two-letter surnames, or full reference-list entries; no unsupported citation-clean claim is made.
 - No pronunciation labels, external corpus rows, or model artifacts were imported as gold.
+
+### CJBAR 2020 author metadata reconciliation — 2026-11-03
+
+The publisher landing page duplicates CHEM Vatho in the author list because it displays two affiliations and auto-generates “Chem, V. & Chem, V.”; the article PDF identifies one author and its own suggested citation is singular (“Chem, V. (2020)”). The references file now records the singular author while documenting both primary-source representations. No second person has been inferred. The Khmer references bibliography still passes the Academic Writing Toolkit British-English check (0 issues).

@@ -12,13 +12,13 @@
 
 ## Audio and supplementary research data
 
-10. Kirby, James. (2015). *Incipient tonogenesis in Phnom Penh Khmer: audio recordings, 2011* [sound]. University of Edinburgh, School of Philosophy, Psychology and Language Sciences, Linguistics and English Language. DOI: 10.7488/ds/321. DataShare item metadata declares CC BY 4.0; the archive contains 24-bit, 44.1 kHz recordings of 16 Phnom Penh speakers and Praat TextGrids.
-11. Kirby, James. (2015). *Incipient tonogenesis in Phnom Penh Khmer: supplementary materials, 2011* [dataset]. University of Edinburgh, School of Philosophy, Psychology and Linguistics and English Language. DOI: 10.7488/ds/319. DataShare item metadata declares CC BY 4.0; includes anonymised production/perception data and analysis materials.
+8. Kirby, James. (2015). *Incipient tonogenesis in Phnom Penh Khmer: audio recordings, 2011* [sound]. University of Edinburgh, School of Philosophy, Psychology and Language Sciences, Linguistics and English Language. DOI: 10.7488/ds/321. DataShare item metadata declares CC BY 4.0; the archive contains 24-bit, 44.1 kHz recordings of 16 Phnom Penh speakers and Praat TextGrids.
+9. Kirby, James. (2015). *Incipient tonogenesis in Phnom Penh Khmer: supplementary materials, 2011* [dataset]. University of Edinburgh, School of Philosophy, Psychology and Language Sciences, Linguistics and English Language. DOI: 10.7488/ds/319. DataShare item metadata declares CC BY 4.0; includes anonymised production/perception data and analysis materials.
 
 ## Comparative transcription sources
 
-8. UNGEGN. Transliteration of Khmer Writing — comparative geographic-name romanization reference.
-9. Khmer-Russian practical transcription — secondary web reproduction citing Gorgoniyev, Serdyuchenko and the 1967 Cambodian geographic-name instructions. It is retained as comparative evidence, not as a primary verified standard.
+10. UNGEGN. Transliteration of Khmer Writing — comparative geographic-name romanization reference.
+11. Khmer-Russian practical transcription — secondary web reproduction citing Gorgoniyev, Serdyuchenko and the 1967 Cambodian geographic-name instructions. It is retained as comparative evidence, not as a primary verified standard.
 
 ## Evidence discipline
 

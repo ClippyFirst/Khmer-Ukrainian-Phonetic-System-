@@ -42,7 +42,7 @@ Chem (2020) provides acoustic evidence on Phnom Penh vowels, duration, and coda 
 
 ### MekongPhon
 
-MekongPhon (LREC 2026) reports 1.3 million Khmer and 367,000 Lao orthography–IPA pairs: https://lrec.elra.info/lrec2026-main-129. It is a candidate external reference, not admitted gold. Verify dataset version/checksum, dataset-specific license, variety, IPA convention, source provenance, verification method, duplicates/variants, and overlap with development sources. The proceedings' CC BY-NC-4.0 license does not establish the dataset's own license.
+Shurtz et al. (2026), MekongPhon reports 1.3 million Khmer and 367,000 Lao orthography–IPA pairs: https://lrec.elra.info/lrec2026-main-129. It is a candidate external reference, not admitted gold. Verify dataset version/checksum, dataset-specific license, variety, IPA convention, source provenance, verification method, duplicates/variants, and overlap with development sources. The proceedings' CC BY-NC-4.0 license does not establish the dataset's own license.
 
 ### Khmer Acoustic Model dictionary
 

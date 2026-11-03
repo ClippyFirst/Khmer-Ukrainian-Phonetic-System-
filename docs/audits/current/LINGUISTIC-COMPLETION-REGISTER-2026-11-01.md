@@ -1,6 +1,6 @@
 # Khmer linguistic completion register — 2026-11-01
 
-**Baseline:** `main` `1a2df2fd7fe512b327a5293165e0ff4052d7f954`.
+**Baseline code commit:** `1a2df2fd7fe512b327a5293165e0ff4052d7f954` (implementation state underlying the recorded exact-main evidence; subsequent changes in this handoff series are documentation-only).
 **Latest exact-main evidence:** Quality [41649424148](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424148) SUCCESS; Chromium [41649424074](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424074) SUCCESS; Pages/deployed smoke [41649424091](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41649424091) SUCCESS.
 **Open pull requests:** none at this checkpoint.
 **Latest exact-main engineering evidence:** Quality [41326462947](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462947) and Pages/deployed smoke [41326462993](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41326462993) succeeded.

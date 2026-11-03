@@ -14,7 +14,7 @@ The paper abstract reports 1.3 million Khmer orthographic–IPA pairs and a Tran
 
 Reference: https://aclanthology.org/2026.lrec-1.129/
 
-### Khmer G2P research benchmark (2019)
+### Khmer G2P research benchmark — 2019
 
 Sar, V., & Tan, T.-P. (2019). “Applying Linguistic G2P Knowledge on a Statistical Grapheme-to-phoneme Conversion in Khmer.” *Procedia Computer Science, 161*, 415–423. https://doi.org/10.1016/j.procs.2019.11.140. The paper reports 1,350 training pairs and 350 test pairs. Its abstract reports PER improving from 23.2% to 11.1% and WER from 69.6% to 51.4%; however, Table 10 and the conclusion give baseline WER as 69.9%, not 69.6%. This internal discrepancy should be retained in any comparison rather than silently choosing one value. The article is published under CC BY-NC-ND 4.0; that licence statement applies to the article and does not establish redistribution rights for the source dictionaries or derived pronunciation data. The experiment is a useful language-specific G2P comparator, but its dataset, normalization, split, phone inventory and dialect must be recovered before comparing its scores with modern engines or this repository (Sar & Tan, 2019).
 

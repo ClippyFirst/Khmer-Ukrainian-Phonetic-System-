@@ -1,3 +1,11 @@
+## Continuation update — Unicode punctuation token boundaries (2026-11-03)
+
+- **UNICODE-TOKEN-BOUNDARY-001 — DONE_VERIFIED:** browser tokenization now recognizes the Unicode general category `Punctuation`, matching Python's `unicodedata.category(...).startswith("P")` separator contract. Previously, the browser used a hand-maintained punctuation allowlist; punctuation outside it (for example U+3002 IDEOGRAPHIC FULL STOP) could be absorbed into a neighboring Khmer token and incorrectly mark that unit unsupported.
+- **Regression:** `tests/web-runtime.test.mjs` exercises `ក។គ`; it checks exact source reconstruction, three distinct units, punctuation status, and that both Khmer neighbors retain their existing IPA/Ukrainian results.
+- **PR:** [#126](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/126), squash-merged as `2a2f1c55282e076d6c4e0640d80af1053783bd6b`.
+- **Verification on exact PR head `ec38f92efa0a59dd0d887e436a7194ded23c4e23`:** Quality checks [41710399396](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41710399396) SUCCESS; browser smoke [41710399684](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41710399684) SUCCESS. Deterministic web checks and production build also passed in the browser workflow.
+- **Scope boundary:** this is a tokenizer parity/source-boundary fix, not a Khmer phonology rule, IPA convention decision, gold-corpus addition, or accuracy result. Independent adjudicated Khmer IPA gold remains 0; empirical accuracy remains null.
+
 # Master execution plan and chat handoff — Khmer → Ukrainian
 
 ## Continuation update — strict JSON constants (2026-11-03)

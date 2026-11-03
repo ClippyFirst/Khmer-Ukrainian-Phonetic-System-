@@ -81,12 +81,12 @@ def test_transcription_agreement_method_sources_are_not_misrepresented_as_khmer_
     cucchiarini = by_id["cucchiarini1996-agreement"]
     assert cucchiarini["doi"] == "10.3109/02699209608985167"
     assert "percentage agreement" in cucchiarini["scope"].lower()
-    assert "not a Khmer-specific" in cucchiarini["limitations"]
+    assert "not a khmer-specific" in cucchiarini["limitations"].lower()
 
     oller = by_id["oller-ramsdell2006-weighted-reliability"]
     assert oller["doi"] == "10.1044/1092-4388(2006/100)"
     assert "eight coders" in oller["scope"].lower()
-    assert "not the project's implemented metric" in oller["limitations"].lower()
+    assert "does not implement" in oller["limitations"].lower() and "exact algorithm" in oller["limitations"].lower()
 
 
 def test_woznica_thesis_is_scoped_as_multi_region_evidence_not_phnom_penh_gold():

@@ -465,3 +465,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | KHMER-ACOUSTIC-DICT-RECHECK-001 | PARTIAL / BLOCKED | Upstream main commit `2714994b41ccf875c5b6f6182b48a72f13632dbf`: README claims 29,204 IPA entries and CC BY-SA 4.0; visible tree has only six sample lines; separate dictionary README says CC BY 4.0 for a 33,091-entry mapping. Registered as `chemvatho-khmer-acoustic-model-2026`. | Obtain full versioned dictionary + digest, reconcile artifact counts and licenses, confirm profile, provenance and annotation/adjudication method. No import. |
 
 **Evidence boundary:** no external data were copied. These source-triage tasks are complete as research records, not as phonological gold. Independent expert-adjudicated Khmer IPA gold remains 0; empirical accuracy remains null.
+
+
+## IPA gold release-gate profile consistency — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| IPA-GOLD-RELEASE-PROFILE-001 | DONE_VERIFIED (engineering guard) | Shared `scripts/ipa_gold_corpus.py` now rejects adjudicated corpora that mix target-profile identity (`id`, `variety`, `region`, `register`) or IPA kinds. New regression tests cover both failures. Hosted CI runs are recorded in the continuation handoff. | Does not prove profile approval, annotator qualifications, blindness, linguistic contrast coverage, or IPA accuracy. A specialist-reviewed language-specific coverage report remains required before benchmark readiness. |

@@ -95,3 +95,12 @@ The upstream repository was rechecked directly at its current public default bra
 **Disposition remains BLOCKED for import or training.** Do not download/import the sample as a gold set, infer that MIT code licensing covers dictionary data, or select one of the two data licenses by assumption. Request from the authors: (1) the exact versioned full dictionary and SHA-256; (2) a single explicit license statement covering each artifact (dictionary, mapping, acoustic model, audio); (3) provenance and dialect/profile/convention; (4) annotation and adjudication protocol and the meaning of “validated by native linguists”; (5) a stable release or archival DOI. Until then this remains a high-value lead, not an approved corpus.
 
 Evidence checked: upstream root README, `dictionary/README.md`, current Git tree and releases endpoint on 2026-11-04. This check does not establish that no private or externally hosted copy exists.
+
+
+## Candidate audio source — Digital Divide Data Khmer ASR Cultural Dataset (2026-11-04)
+
+The Mozilla Data Collective's Version 3 Part 1 listing reports **134.60 hours**, WAV audio, orthographic transcripts, **8 Cambodia-based native speakers (4 female, 4 male)**, 13 topics and 401 subtopics, with speaker origin-city metadata. It declares **CC BY-SA 4.0**, requires attribution to Digital Divide Data, and forbids attempts to identify speakers: https://mozilladatacollective.com/datasets/cmpdy0si400ldnu07rs6zwql4.
+
+**Disposition: promising audio-backed annotation source, not IPA gold.** It can support a carefully profiled human pilot if speaker origin and actual pronunciation variety are checked; city metadata alone does not prove Phnom Penh speech. The recordings contain prompted cultural-topic sentences, not citation-form lexical items. Curators must select attested words, preserve exact utterance/audio/time-span locators and orthographic context, and keep word-span selection separate from IPA annotation. The CC BY-SA 4.0 share-alike implications for publishing derived IPA must be reviewed before release. Do not attempt speaker identification; do not mirror or redistribute audio outside the provider's terms.
+
+The Part 1 listing's 134.60 hours and eight speakers must not be silently conflated with the broader Hugging Face dataset card's 727.94-hour / 12-speaker aggregate. Treat them as version-specific scopes until the provider's file manifests reconcile them. The corpus contains transcripts, not IPA, so it does not change independent gold=0 or accuracy=null.

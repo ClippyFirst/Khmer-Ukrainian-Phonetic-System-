@@ -1567,3 +1567,11 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Candidate fit is limited to the evidence actually published: no availability, willingness, native target-variety competence, role independence or consent is inferred. No one was contacted. Public institutional emails are included only where published by the institution/research journal.
 - The pilot remains blocked on actual recruitment, versioned convention approval, two independent target-variety annotators, separate adjudicator, non-annotating curator, source/item rights and secure blind intake. No IPA labels or gold data were added.
 - Hosted CI pending for this branch; no local checkout/tests were available in this connector session.
+
+
+## Final expert-lead research PR verification — 2026-11-04
+
+- Exact PR head: `f60e682bb423d951cd4c5b5649ecedbe490dbb10`; Quality [41872769175](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41872769175) **SUCCESS** and browser smoke [41872769410](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41872769410) **SUCCESS**. Inspected steps: independent corpus validation, Python suite, deterministic web checks, production build, Chromium install and visible-results smoke all passed.
+- The update only improves recruitment evidence. Chem's relationship to his acoustic-model resource is explicitly recorded as a potential conflict; no recruitment, IPA labels, gold data or production phonology changed.
+- No local checkout or local tests were available; these results refer only to the hosted GitHub Actions runs linked above.
+- The human pilot remains blocked on actual invitations/consent, approved versioned IPA convention, two qualified independent target-variety annotators, separate adjudicator, curator, item-level rights and secure blind intake.

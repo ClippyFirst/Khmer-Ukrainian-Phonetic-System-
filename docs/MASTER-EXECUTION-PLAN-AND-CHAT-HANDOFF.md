@@ -1,13 +1,12 @@
-## Engineering gate terminology correction — 2026-11-04
+## Engineering gate and corpus-coverage corrections — 2026-11-04
 
 - The shared IPA corpus CLI previously emitted `release_ready: true` after checking only machine-verifiable corpus engineering conditions (adjudicated rows, frozen split minimums, one target-profile signature, one IPA kind and recorded redistributable source rights). It did not evaluate expert approval of the IPA convention, annotator/adjudicator qualifications, blind intake or expert-approved phonological contrast coverage.
-- The success payload now reports `engineering_gate_passed: true` and `linguistic_release_readiness: "NOT_ASSESSED_BY_THIS_COMMAND"`. It enumerates five external acceptance gates this command does not evaluate: expert-approved versioned IPA convention; qualified independent annotators and separate adjudicator; controlled blind annotation/adjudication; expert-approved contrast coverage; and independent source-rights/license verification. It no longer emits `release_ready`.
+- The success payload now reports `engineering_gate_passed: true` and `linguistic_release_readiness: "NOT_ASSESSED_BY_THIS_COMMAND"`. It lists six external acceptance gates not evaluated by this command: versioned expert-approved IPA convention; qualified independent annotators and separate adjudicator; controlled blind annotation/adjudication; expert-approved contrast coverage; independent corpus curator; and independent source-rights/license verification. It no longer emits `release_ready`.
+- The engineering gate now separately requires at least **30 distinct adjudicated lexeme groups** by default, in addition to train/dev/test record minima. It reports both the number of distinct adjudicated groups and the configured minimum; repeated records within a single group cannot inflate the group-coverage count. Tests may lower the minimum explicitly for small synthetic fixtures.
 - The tag/manual workflow is now named `IPA gold engineering-data gate`, and its minimum-count step explicitly says it is not linguistic release approval.
-- Test-first evidence: regression-only commits produced expected Python-test failures on the old implementation (RED runs 41885520797 and 41886236752). The new implementation then passed the hosted test workflow on code-bearing commit `1a7474b287a9aa77b1d3ccbfd368d5afac1da15f` (GREEN run 41886369598; additional exact-head workflow evidence 41886369582 + 41886357522). Quality checks and browser smoke passed, including Python tests, web checks, production build, and Chromium visible-results smoke.
-- Updated `tests/test_ipa_gold_corpus.py` to assert the exact status, all five unevaluated gates, and absence of the old `release_ready` key. No IPA labels, phonological rules, corpus rows, source permissions, or generated pronunciation data changed.
-- No local checkout or local test execution was available in this connector session; the listed evidence is from hosted GitHub Actions only.
-
----
+- Test-first evidence: regression-only commits produced expected Python-test failures on the old implementation (RED runs 41885520797, 41886236752, 41887115621). The final implementation on code-bearing commit `ea5b19cc50dc875c1ca7fdbef334a0ecd88f30f0` has exact-head hosted evidence: 41887446163 + 41887446069; additional push workflow: 41887436748. Exact-head Quality checks and browser smoke passed: Python tests, web checks, production build, and Chromium visible-results smoke.
+- Updated `tests/test_ipa_gold_corpus.py` to assert the exact status, six unevaluated gates, absence of the old `release_ready` key, distinct lexeme-group minimums, and positive group minimum validation. No IPA labels, phonological rules, corpus rows, source permissions or generated pronunciation data changed.
+- No local checkout or local test execution was available in this connector session; all verification evidence listed here is from hosted GitHub Actions.
 
 ## Post-merge handoff audit — 2026-11-04
 

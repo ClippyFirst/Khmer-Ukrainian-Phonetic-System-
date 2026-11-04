@@ -1517,3 +1517,13 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - No external source data were copied; no license was inferred; no IPA or Ukrainian output was fabricated. The IPA-Dict resource is non-commercial/share-alike, PhonSobon resources remain rights-limited/unresolved and Khmer-script respelling, and the acoustic-model dictionary remains blocked pending a full artifact and clarified terms.
 - Acceptance boundary: this closes source discovery/triage documentation only. It does not close `KHM-GOLD-001`; independent expert-adjudicated Khmer IPA gold remains 0 and empirical accuracy remains null.
 - Validation: pending hosted CI for this branch/PR. No local checkout or local test execution was available through the connector session.
+
+
+## Final Khmer external-source PR verification — 2026-11-04
+
+- PR #140 head after the regression assertion correction: `3fd741b420eb217f2fe0d24087642dbbf866c687`.
+- The first Quality run [41849845861](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41849845861) exposed one test-only case-sensitive assertion mismatch (`NOT project gold` vs the source note's `Not project gold`); 173 tests and 60 subtests passed, one new assertion failed. The assertion was corrected to compare case-insensitively; no source classification or production behavior was changed.
+- Corrected-head Quality [41850630303](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41850630303) **SUCCESS**; corrected-head browser smoke [41850630166](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41850630166) **SUCCESS**. The Python suite, web checks, production build and Chromium browser smoke completed successfully.
+- Source records continue to distinguish IPA-Dict's non-commercial/share-alike Khmer IPA, PhonSobon's Khmer-script respelling (not IPA), and the incomplete/licensing-conflicted Khmer Acoustic Model dictionary. No third-party data were copied.
+- This verifies source-registry and rights-boundary engineering only. Independent expert-adjudicated Khmer IPA gold remains 0; empirical accuracy remains null.
+- No local tests were run; hosted CI logs were inspected.

@@ -39,7 +39,15 @@
 - **Verification on exact PR head `ec38f92efa0a59dd0d887e436a7194ded23c4e23`:** Quality checks [41710399396](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41710399396) SUCCESS; browser smoke [41710399684](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41710399684) SUCCESS. Deterministic web checks and production build also passed in the browser workflow.
 - **Scope boundary:** this is a tokenizer parity/source-boundary fix, not a Khmer phonology rule, IPA convention decision, gold-corpus addition, or accuracy result. Independent adjudicated Khmer IPA gold remains 0; empirical accuracy remains null.
 
-# Master execution plan and chat handoff — Khmer → Ukrainian
+# Master execution plan and chat handoff
+
+## Khmer external dictionary evidence checkpoint — 2026-11-04
+
+- Rechecked `chemvatho/Khmer-acoustic-model` directly. Root README claims 29,204 IPA dictionary entries under CC BY-SA 4.0; `dictionary/README.md` describes a 33,091-entry G2P mapping under CC BY 4.0. The public Git tree currently contains only a six-line sample dictionary and no release asset with the complete data.
+- **KHMER-ACOUSTIC-DICT-001 — PARTIAL / BLOCKED for reuse.** The counts and artifact-specific licenses are unreconciled; a full inspectable dictionary and per-entry provenance are unavailable in the public tree. Do not infer data rights from the MIT code license, and do not treat alignment metrics as IPA accuracy.
+- Acceptance: obtain a versioned full dictionary and digest, explicit license for each artifact, target dialect and IPA convention, source provenance, and documented annotator/adjudication protocol. Until then, this remains a research lead only; no IPA gold or accuracy claim is added.
+
+ — Khmer → Ukrainian
 
 ## Continuation update — strict JSON constants (2026-11-03)
 

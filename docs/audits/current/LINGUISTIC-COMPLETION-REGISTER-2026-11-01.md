@@ -404,3 +404,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 - These are leads only: no one has been contacted or recruited; no IPA convention has been approved; no rights have been granted; no IPA labels were generated.
 - The 30-item pilot remains BLOCKED until the acceptance conditions in the playbook are met. Candidate lexicon entries, phonetic respellings, model outputs, orthographic transcripts and source descriptions are not gold IPA.
 - The next external action is to contact a qualified prospective reviewer and request nominations for two independent annotators plus a separate adjudicator; separately complete item-level rights review and blind-intake dry run.
+
+
+## Khmer acoustic-model dictionary follow-up — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-ACOUSTIC-DICT-001 | PARTIAL / BLOCKED for reuse | Current upstream root README says 29,204 dictionary entries and CC BY-SA 4.0; `dictionary/README.md` says 33,091 entries and CC BY 4.0 for its G2P mapping. Current public tree contains only a six-line sample dictionary and no full dictionary or release asset. | Request full versioned dictionary + SHA-256, artifact-specific license clarification, dialect/IPA convention, source provenance and independent annotation/adjudication details. No import, training, gold promotion or license inference until resolved. |

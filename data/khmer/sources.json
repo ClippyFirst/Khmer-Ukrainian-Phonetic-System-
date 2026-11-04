@@ -204,5 +204,16 @@
     "scope": "134.60 hours of manually curated Khmer speech-text recordings; Part 1 metadata reports 8 Cambodia-based native speakers (4 female, 4 male), 13 topics and 401 subtopics; speaker origin-city metadata is provided. WAV audio and orthographic transcripts; CC BY-SA 4.0; attribution to Digital Divide Data required.",
     "status": "CANDIDATE_AUDIO_RESOURCE_NOT_IPA_GOLD",
     "limitations": "No IPA labels or phonetic adjudication are supplied. Speaker origin city does not by itself establish a Phnom Penh phonological profile. Use only after selecting profile and filtering speaker/recording metadata; preserve utterance and word-span locators; do not attempt speaker identification. Share-alike obligations and redistribution of any derived IPA must be reviewed before publication."
+  },
+  {
+    "id": "mozilla-common-voice-khmer-27-2026",
+    "type": "speech_corpus",
+    "title": "Common Voice Scripted Speech 27.0 — Khmer",
+    "author": "Mozilla Common Voice",
+    "year": 2026,
+    "url": "https://mozilladatacollective.com/datasets/cmu5olr5u00xzmh07pfgl3kuw",
+    "scope": "CC0-1.0 read-speech audio; 739 clips / 0.98h total, 213 validated clips / 0.28h validated, 15 speakers, 4,971 text sentences; only 364 sentences validated. Accent values absent for the reported subset; gender unreported for all speakers. Provider forbids speaker identification and re-hosting/re-sharing.",
+    "status": "CANDIDATE_AUDIO_RESOURCE_NOT_IPA_GOLD",
+    "limitations": "No IPA labels. Accent/variety is not established, so the data cannot be assumed to represent Phnom Penh or Standard Khmer. Most clips are unresolved/invalidated (483 unresolved, 43 invalidated); only 213 are validated. Use provider-hosted audio and opaque clip/time locators only; do not identify speakers or mirror/re-share files. Specialist profile screening and blind double annotation/adjudication remain required."
   }
 ]

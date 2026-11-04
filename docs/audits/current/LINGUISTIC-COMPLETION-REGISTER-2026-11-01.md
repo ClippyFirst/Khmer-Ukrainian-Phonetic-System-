@@ -431,3 +431,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-ACOUSTIC-DICT-001 | DONE_VERIFIED (discrepancy documented); reuse remains BLOCKED | PR #134 merged as `09640f83141127eeb5c9d201d96671d243d03019`; exact-head Quality [41799402432](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799402432) SUCCESS; post-merge main Quality [41799595059](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595059), browser [41799595047](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595047), Pages [41799595094](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595094) SUCCESS. | The conflicting 29,204/33,091 counts and CC BY-SA 4.0/CC BY 4.0 claims are recorded; full dictionary and author clarification still required. |
+
+
+## Common Voice 27.0 Khmer audio source — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-CV27-AUDIO-001 | PARTIAL (secondary audio lead; profile screening required) | Mozilla provider record: CC0-1.0; 739 clips/0.98h total, 213 validated/0.28h, 15 speakers, 4,971 sentences (364 validated); 483 unresolved, 43 invalidated; accent values blank, gender unreported; no speaker identification or re-hosting/re-sharing. | Use provider-hosted validated clips only; approve target variety, select exact word-span/time locators, then double IPA annotate and adjudicate. No audio mirror or gold import. |

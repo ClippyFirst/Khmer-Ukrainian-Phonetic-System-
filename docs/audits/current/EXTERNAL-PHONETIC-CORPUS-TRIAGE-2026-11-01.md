@@ -104,3 +104,12 @@ The Mozilla Data Collective's Version 3 Part 1 listing reports **134.60 hours**,
 **Disposition: promising audio-backed annotation source, not IPA gold.** It can support a carefully profiled human pilot if speaker origin and actual pronunciation variety are checked; city metadata alone does not prove Phnom Penh speech. The recordings contain prompted cultural-topic sentences, not citation-form lexical items. Curators must select attested words, preserve exact utterance/audio/time-span locators and orthographic context, and keep word-span selection separate from IPA annotation. The CC BY-SA 4.0 share-alike implications for publishing derived IPA must be reviewed before release. Do not attempt speaker identification; do not mirror or redistribute audio outside the provider's terms.
 
 The Part 1 listing's 134.60 hours and eight speakers must not be silently conflated with the broader Hugging Face dataset card's 727.94-hour / 12-speaker aggregate. Treat them as version-specific scopes until the provider's file manifests reconcile them. The corpus contains transcripts, not IPA, so it does not change independent gold=0 or accuracy=null.
+
+
+## Candidate audio source — Common Voice 27.0 Khmer (2026-11-04)
+
+The exact Mozilla Data Collective record is https://mozilladatacollective.com/datasets/cmu5olr5u00xzmh07pfgl3kuw. It declares **CC0-1.0**, while expressly prohibiting speaker identification and re-hosting/re-sharing. Its 2026-09-11 release has **739 clips / 0.98h total**, of which **213 clips / 0.28h are validated**, from 15 speakers; the text corpus has 4,971 sentences but only 364 validated sentences. 483 clips remain unresolved and 43 are invalidated. Accent is blank for the small reported subset; gender is unreported for all 15 speakers.
+
+**Disposition: small secondary audio lead, not IPA gold.** It is not safe to assume Phnom Penh or Standard Khmer variety from the locale tag. Use only provider-hosted audio and opaque clip/time locators; do not mirror, re-share or attempt speaker identification. Curators must screen only validated clips, determine whether the speaker profile fits the selected project variety, and select attested word spans with exact time ranges. Because the validated audio totals only 0.28h and demographic/variety metadata is sparse, this is not a stand-alone benchmark source.
+
+This is separate from DDD's larger CC BY-SA 4.0 corpus and its own share-alike requirements. The two datasets must not be conflated. Neither source supplies IPA labels; independent gold remains 0.

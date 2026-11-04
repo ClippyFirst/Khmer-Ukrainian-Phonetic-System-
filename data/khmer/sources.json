@@ -193,5 +193,16 @@
     "scope": "Acoustic study of 80 native Khmer speakers from multiple Cambodian regions; examines regional phonetic/phonological variation and argues for a country-wide standard variety",
     "status": "ACADEMIC_THESIS_SOURCE",
     "limitations": "The thesis warns that the sample is not statistically representative; regional coverage is uneven and the materials are selective/read-text based. It is not a Phnom Penh-only sample or a lexical IPA gold corpus."
+  },
+  {
+    "id": "ddd-khmer-asr-cultural-v3-part1-2026",
+    "type": "speech_corpus",
+    "title": "Khmer ASR Cultural Dataset, Version 3 Part 1",
+    "author": "Digital Divide Data (DDD-Cambodia)",
+    "year": 2026,
+    "url": "https://mozilladatacollective.com/datasets/cmpdy0si400ldnu07rs6zwql4",
+    "scope": "134.60 hours of manually curated Khmer speech-text recordings; Part 1 metadata reports 8 Cambodia-based native speakers (4 female, 4 male), 13 topics and 401 subtopics; speaker origin-city metadata is provided. WAV audio and orthographic transcripts; CC BY-SA 4.0; attribution to Digital Divide Data required.",
+    "status": "CANDIDATE_AUDIO_RESOURCE_NOT_IPA_GOLD",
+    "limitations": "No IPA labels or phonetic adjudication are supplied. Speaker origin city does not by itself establish a Phnom Penh phonological profile. Use only after selecting profile and filtering speaker/recording metadata; preserve utterance and word-span locators; do not attempt speaker identification. Share-alike obligations and redistribution of any derived IPA must be reviewed before publication."
   }
 ]

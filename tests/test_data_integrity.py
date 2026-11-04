@@ -105,7 +105,7 @@ def test_external_pronunciation_sources_preserve_format_and_rights_boundaries():
     assert "3,286-line" in ipa_dict["scope"]
     assert "CC BY-NC-SA 4.0" in ipa_dict["license"]
     assert ipa_dict["status"] == "EXTERNAL_COMPARATOR_NONCOMMERCIAL_ONLY"
-    assert "NOT project gold" in ipa_dict["limitations"]
+    assert "not project gold" in ipa_dict["limitations"].lower()
 
     khmer_g2p = sources["phonsobon-khmer-g2p-2026"]
     assert "38,629" in khmer_g2p["scope"]

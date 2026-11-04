@@ -182,3 +182,15 @@ Kirby's Edinburgh DataShare items (DOIs 10.7488/ds/321 and 10.7488/ds/319) remai
 5. Test private blind intake before annotation begins.
 
 Status remains BLOCKED for pilot execution: the leads improve recruitment and source discovery but do not constitute recruitment, NCKL permission, adjudicated IPA, or a gold corpus.
+
+
+## Expert-lead revalidation — 2026-11-04
+
+Two stronger current prospective reviewer leads are now documented. They are not automatically approved as annotators or adjudicators:
+
+- **Nielson Sophann Hul (University of Washington):** the official UW profile describes him as a Khmer linguist specializing in phonetics, heritage language acquisition and Southeast Asian linguistics, with research on implosive consonants, voice quality and sociophonetic variation. Public institutional contact: `nhul@uw.edu`. This is a strong candidate to review the Khmer phonetic convention and advise on reviewer recruitment. The profile does not establish current Phnom Penh target-variety competence, availability, independence or willingness to annotate. https://asian.washington.edu/people/nielson-hul
+- **Dr Vatho Chem:** the 2026 University of Cologne project profile identifies him as a phonetician and computational linguist, with a 2025 PhD in Phonetics focused on phonetic reduction in Central Khmer; it also describes extensive Khmer dialect fieldwork and a large speech corpus. His 2020 acoustic study specifically examines the Standard/Phnom Penh Khmer vowel system. Public research contact in that article: `chemvatho@gmail.com`. He is a strong prospective convention reviewer and source expert. Because he maintains a Khmer acoustic-model resource already under source audit, do not use him as the sole adjudicator of any data derived from that resource; declare the relationship and keep annotation/adjudication roles independent. https://cif.uni-koeln.de/projects/revitalizing-and-documenting-koelsch-from-archival-materials-to-an-ai-ready-speech-recognition-and-synthesis-system-chat-like-for-the-endangered-koelsch-dialect ; https://www.cjbar.rupp.edu.kh/index.php/cjbar/article/view/36
+
+The Royal University of Phnom Penh Department of Linguistics is also a credible institutional referral route: its official programme describes postgraduate work in phonetics, phonology, Khmer language and dialect documentation. This is an institutional route, not evidence that any specific faculty member has accepted the project. https://www.rupp.edu.kh/academics/faculties_and_institutes/faculty_of_social_science_and_humanities/department_of_linguistics/ma-Lgs
+
+**Recruitment status:** no one has been contacted, recruited or approved. Obtain explicit confirmation of target-profile competence, IPA expertise, role independence, availability and terms. Two independent annotators, a separate adjudicator and a non-annotating curator remain necessary.

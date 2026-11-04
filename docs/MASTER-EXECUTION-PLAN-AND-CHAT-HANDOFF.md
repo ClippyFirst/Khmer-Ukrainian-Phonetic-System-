@@ -1558,3 +1558,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Exact PR-head browser smoke: [41870121371](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41870121371) **SUCCESS**. Post-merge Quality [41870545200](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41870545200) **SUCCESS** and Pages [41870545069](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41870545069) **SUCCESS**. A duplicate post-merge browser workflow [41870545028](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41870545028) was still installing Chromium at this checkpoint; the exact merged tree had already passed the PR-head browser smoke.
 - The branch was based on latest main with zero commits behind at merge; no conflicting PRs were present. The exact diff was reviewed and merged with an expected-head SHA guard.
 - The release guard is now on main. Independent expert-adjudicated gold remains 0; this work does not establish phonetic accuracy or benchmark readiness.
+
+
+## Expert recruitment lead revalidation — 2026-11-04
+
+- Branch: `research/expert-recruitment-leads-20261104`, based on main immediately before this research pass.
+- Rechecked official institutional and publication sources for prospective expert reviewers/referral routes; appended a dated, qualification-limited section to `docs/ipa-gold-collection-playbook.md` and added `KHMER-IPA-GOLD-RECRUITMENT-LEADS-001` to the existing completion register.
+- Candidate fit is limited to the evidence actually published: no availability, willingness, native target-variety competence, role independence or consent is inferred. No one was contacted. Public institutional emails are included only where published by the institution/research journal.
+- The pilot remains blocked on actual recruitment, versioned convention approval, two independent target-variety annotators, separate adjudicator, non-annotating curator, source/item rights and secure blind intake. No IPA labels or gold data were added.
+- Hosted CI pending for this branch; no local checkout/tests were available in this connector session.

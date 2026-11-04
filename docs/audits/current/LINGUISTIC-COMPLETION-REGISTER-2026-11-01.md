@@ -454,3 +454,14 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-IPA-GOLD-FIXTURE-001 | DONE_VERIFIED | PR [#139](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/139) merged as `ed42f9ebfe617d1278949532ecd3d81fad652f7e`; exact-main Quality [41847860271](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41847860271), browser [41847860415](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41847860415), Pages/deployed-site smoke [41847860699](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41847860699) SUCCESS. | Test fixture now uses Khmer script and neutral test profile; regression asserts Khmer Unicode-block and matching profile metadata. This validates test-fixture integrity only, not phonological rules or IPA accuracy. Gold remains 0; accuracy null. |
+
+
+## External Khmer pronunciation-source triage — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-EXT-IPA-DICT-001 | DONE_VERIFIED (source located and scoped; no import) | Pinned `open-dict-data/ipa-dict` commit `972cd67dd5f96bc5660e28070cde26e3928abcd7`; Khmer file `data/km.txt` (3,286 lines); upstream README attributes Khmer data to aakanee.com Khmer-English Dictionary and CC BY-NC-SA 4.0. Registered as `open-dict-ipa-km-2026`. | External comparator only. Profile, IPA convention and per-entry annotation provenance not established; non-commercial/share-alike restrictions must be reviewed. Not project gold. |
+| KHMER-EXT-RESP-001 | DONE_VERIFIED (source located and classified; no import) | PhonSobon Khmer G2P: 38,629 word–pronunciation pairs / 37,755 unique words, split by word; pronunciation is Khmer-script respelling, not IPA. Combined pronunciation dictionary: 39,110 rows and 689 disputed items, including 39 LLM-assisted decisions that require native confirmation. Registered as `phonsobon-khmer-g2p-2026` and `phonsobon-khmer-pronunciation-2026`. | Candidate orthographic/syllabification comparator only; NCKL source rights and commercial/redistribution terms unresolved. No conversion to IPA by assumption. |
+| KHMER-ACOUSTIC-DICT-RECHECK-001 | PARTIAL / BLOCKED | Upstream main commit `2714994b41ccf875c5b6f6182b48a72f13632dbf`: README claims 29,204 IPA entries and CC BY-SA 4.0; visible tree has only six sample lines; separate dictionary README says CC BY 4.0 for a 33,091-entry mapping. Registered as `chemvatho-khmer-acoustic-model-2026`. | Obtain full versioned dictionary + digest, reconcile artifact counts and licenses, confirm profile, provenance and annotation/adjudication method. No import. |
+
+**Evidence boundary:** no external data were copied. These source-triage tasks are complete as research records, not as phonological gold. Independent expert-adjudicated Khmer IPA gold remains 0; empirical accuracy remains null.

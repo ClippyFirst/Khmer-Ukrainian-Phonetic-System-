@@ -41,6 +41,15 @@
 
 # Master execution plan and chat handoff
 
+## Verified mainline checkpoint — Khmer external audio and dictionary research (2026-11-04)
+
+- Current main before this documentation checkpoint: `98e66afecbce5528850e3a6906a8d9522385d3ed`. No open PRs; open human research issue #104 remains.
+- PR #134 documented the Khmer Acoustic Model's unreconciled 29,204 vs 33,091 dictionary counts, CC BY-SA 4.0 vs CC BY 4.0 data-license statements, and missing full dictionary in the public tree. Exact-head and post-merge Quality, browser and Pages checks all SUCCESS (runs 41799402432, 41799595059, 41799595047, 41799595094).
+- PR #135 registered DDD Khmer ASR Cultural Dataset v3 Part 1: 134.60h, 8 speakers, 13 topics/401 subtopics, CC BY-SA 4.0. PR-head Quality and post-merge Quality/browser/Pages all SUCCESS (41799786264, 41799802512, 41799887156, 41799887167, 41799887180). Use only after profile and share-alike review; city metadata does not establish Phnom Penh.
+- PR #137 registered Common Voice 27.0 Khmer: 739 clips/0.98h, 213 validated/0.28h, 15 speakers, 364 validated sentences, accent/gender unreported. CC0-1.0 but no speaker identification or re-hosting/re-sharing. PR-head Quality [41800443113](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41800443113), browser [41800443035](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41800443035), post-merge Quality [41800575946](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41800575946), browser [41800575935](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41800575935), Pages [41800575937](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41800575937) SUCCESS.
+- Neither audio corpus supplies IPA. Use provider-hosted clips only, no speaker identification/re-hosting, exact word-span/time locators, profile screening, two blind annotations and third-person adjudication. Independent gold remains 0; accuracy remains null. Issue #104 remains blocked on human convention/recruitment/intake and item-level rights/profile review.
+
+
 ## Khmer Common Voice 27 audio checkpoint — 2026-11-04
 
 - Added source `mozilla-common-voice-khmer-27-2026` to `data/khmer/sources.json`: https://mozilladatacollective.com/datasets/cmu5olr5u00xzmh07pfgl3kuw.

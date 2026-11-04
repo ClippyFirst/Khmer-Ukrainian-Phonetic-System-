@@ -418,3 +418,16 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-DDD-AUDIO-001 | PARTIAL (candidate audio source; pilot intake not yet approved) | Mozilla Data Collective Version 3 Part 1 reports 134.60h WAV + transcripts, 8 Cambodia-based native speakers (4F/4M), 13 topics/401 subtopics, origin-city metadata, CC BY-SA 4.0 and no-speaker-identification restriction. Source registered as `ddd-khmer-asr-cultural-v3-part1-2026`. | Verify exact speaker/profile/utterance metadata, select attested word spans with time locators, approve the target profile, review share-alike implications, then commission two blind IPA annotations plus separate adjudication. No IPA labels supplied; no gold import. |
+
+
+## Post-merge checkpoint — DDD Khmer audio source (2026-11-04)
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-DDD-AUDIO-001 | DONE_VERIFIED (source registry and evidence boundary); pilot use remains PARTIAL/BLOCKED | PR #135 merged as `ccd24f1f53dda8ccf19dbdbac0766ed4509f99e4`. PR-head Quality [41799786264](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799786264) and [41799802512](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799802512) SUCCESS; post-merge main Quality [41799887156](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799887156), browser [41799887167](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799887167), Pages [41799887180](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799887180) SUCCESS. | Source record and restrictions verified. Still require profile review, word-span/time locators, CC BY-SA compatibility decision, two blind IPA annotators and adjudicator. No IPA gold added. |
+
+## Post-merge checkpoint — Khmer acoustic dictionary discrepancy (2026-11-04)
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-ACOUSTIC-DICT-001 | DONE_VERIFIED (discrepancy documented); reuse remains BLOCKED | PR #134 merged as `09640f83141127eeb5c9d201d96671d243d03019`; exact-head Quality [41799402432](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799402432) SUCCESS; post-merge main Quality [41799595059](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595059), browser [41799595047](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595047), Pages [41799595094](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595094) SUCCESS. | The conflicting 29,204/33,091 counts and CC BY-SA 4.0/CC BY 4.0 claims are recorded; full dictionary and author clarification still required. |

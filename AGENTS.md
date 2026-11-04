@@ -1,4 +1,14 @@
+## Methodology source refresh — 2026-11-04
+
+- Rechecked the four upstream methodology repositories. Unlazy remains at `16671491f6679ad9378f52604d3bc2415b4120c7`; mattpocock/skills remains at `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; Ponytail remains at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`.
+- Superpowers advanced from v7.0.1 to v7.0.2 at `22f0b463e7a5e579904dd6211a520321035526f7`. Reviewed the one-commit release delta. Adopted only the directly relevant process improvements: full-suite verification at GREEN and intent-first design with fewer, outcome-changing questions. Did not import harness plugins, helper scripts, SDD runtime, or platform integrations.
+- The upstream brainstorming skill also requires explicit design approval before implementation in its default path; that approval ceremony is not adopted when a user has already explicitly authorized autonomous execution. Project-specific linguistic, provenance, rights and fail-closed rules remain controlling.
+
 # Agent instructions — Khmer → Ukrainian research system
+
+
+- For new or ambiguous work, establish the intended outcome, audience, why and observable success criteria before designing; inspect existing project context first. Ask only questions whose answers would materially change the deliverable. Do not add process or intermediate-approval gates when the user has explicitly authorized autonomous one-pass execution.
+- At GREEN, run the repository's full project test command even if the task named only a focused test file. Report every failure observed; a focused passing test is not a green project suite.
 
 ## Read before changing code
 
@@ -45,7 +55,7 @@ Inspect generated artifacts and built relative asset paths when changing data or
 
 Methodological references only; do not add them as runtime dependencies or copy their repositories wholesale:
 
-- [obra/superpowers](https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b) — test-first work, explicit plans, root-cause debugging, review and evidence before completion.
+- [obra/superpowers](https://github.com/obra/superpowers/tree/22f0b463e7a5e579904dd6211a520321035526f7) — test-first work, explicit plans, root-cause debugging, review and evidence before completion.
 - [mattpocock/skills](https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d) — behavior-focused tests, clear interfaces, test seams and source-backed research.
 - [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846) — Ponytail current main: trace the real code path and data flow, map entry points and expected load before repository-level audit, review beyond the diff, preserve trust-boundary validation/data-loss handling/accessibility, test branching/parser/security logic, and report skipped checks and residual risk.
 

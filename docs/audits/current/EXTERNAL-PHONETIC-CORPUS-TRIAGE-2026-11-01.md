@@ -81,3 +81,17 @@ Cross-engine check: khmerphonemizer 0.0.3 returned 6/6 source-attested probes; 2
 4. Obtain two blind IPA annotations from qualified Khmer phoneticians and adjudicate disagreements independently. Preserve uncertainty and acoustic cues rather than inferring a single deterministic /r/-loss rewrite.
 5. Keep this targeted /CrV/ acoustic subset separate from the full lexical G2P benchmark and from project gold until the normal rights/provenance gates pass.
 
+
+
+## Follow-up verification — Khmer Acoustic Model dictionary claims (2026-11-04)
+
+The upstream repository was rechecked directly at its current public default branch: https://github.com/chemvatho/Khmer-acoustic-model.
+
+- The root README reports **29,204 dictionary entries** and says the pronunciation dictionary is **CC BY-SA 4.0**.
+- The separately maintained `dictionary/README.md` describes a Khmer G2P mapping derived from a dictionary of **33,091 entries** and declares **CC BY 4.0** for that mapping.
+- The current Git tree's `dictionary/` directory contains only `README.md` and a six-line `khmer_ipa_sample.dict`; there is no complete 29,204- or 33,091-entry dictionary in the visible tree, and the repository has no releases carrying one.
+- The two README counts and the two data-license declarations are not reconciled by the visible repository. The dictionary README's aggregate grapheme counts also cannot be treated as validated per-entry IPA evidence. Alignment-boundary metrics are not pronunciation accuracy.
+
+**Disposition remains BLOCKED for import or training.** Do not download/import the sample as a gold set, infer that MIT code licensing covers dictionary data, or select one of the two data licenses by assumption. Request from the authors: (1) the exact versioned full dictionary and SHA-256; (2) a single explicit license statement covering each artifact (dictionary, mapping, acoustic model, audio); (3) provenance and dialect/profile/convention; (4) annotation and adjudication protocol and the meaning of “validated by native linguists”; (5) a stable release or archival DOI. Until then this remains a high-value lead, not an approved corpus.
+
+Evidence checked: upstream root README, `dictionary/README.md`, current Git tree and releases endpoint on 2026-11-04. This check does not establish that no private or externally hosted copy exists.

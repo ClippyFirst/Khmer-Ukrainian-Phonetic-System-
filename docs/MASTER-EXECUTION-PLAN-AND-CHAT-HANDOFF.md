@@ -1483,3 +1483,10 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Khmer Acoustic Model dictionary remains blocked pending author clarification and an inspectable versioned full corpus; conflicting dictionary counts and CC BY/CC BY-SA statements must not be treated as cleared.
 - No runtime phonology or Ukrainian mapping changes were made in the latest source-evidence merges. No orthographic transcript or G2P respelling is promoted to IPA.
 - This checkpoint is documentation-only; local tests were not run in this connector session. Hosted CI evidence above is tied to the exact PR head, not a claim of fresh local verification.
+
+
+## Hosted verification update — 2026-11-04
+
+- Draft PR #139 exact head `3889739aecf0221c7cf1e26be59f025838a914ed`: Quality checks [41844573271](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41844573271) **SUCCESS** and browser smoke [41844573296](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41844573296) **SUCCESS**.
+- Quality job completed IPA gold corpus structure validation, Python tests, web checks and site build. Browser smoke completed successfully.
+- This verifies the docs-only PR head and the repository's current CI contract. It does not establish phonological accuracy or clear the Khmer Acoustic Model / MekongPhon rights questions; the evidence and expert-review blockers above remain unchanged.

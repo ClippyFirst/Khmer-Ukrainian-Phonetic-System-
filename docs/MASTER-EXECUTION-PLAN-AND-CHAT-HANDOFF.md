@@ -41,6 +41,14 @@
 
 # Master execution plan and chat handoff
 
+## Verified mainline checkpoint — Khmer external-source research (2026-11-04)
+
+- Current main: `ccd24f1f53dda8ccf19dbdbac0766ed4509f99e4` (PR #135). No open PRs at checkpoint.
+- PR #134 merged as `09640f83141127eeb5c9d201d96671d243d03019`: recorded the Khmer acoustic-model dictionary's conflicting counts (29,204 vs 33,091), conflicting data-license declarations (CC BY-SA 4.0 vs CC BY 4.0), and absence of a full dictionary/release asset in the visible upstream tree. Exact-head Quality [41799402432](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799402432) and post-merge Quality [41799595059](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595059), browser [41799595047](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595047), Pages [41799595094](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799595094) SUCCESS.
+- PR #135 merged as `ccd24f1f53dda8ccf19dbdbac0766ed4509f99e4`: registered DDD Khmer ASR Cultural Dataset v3 Part 1 as a candidate audio source, explicitly not IPA gold. PR-head Quality [41799786264](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799786264) and [41799802512](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799802512) SUCCESS; post-merge Quality [41799887156](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799887156), browser [41799887167](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799887167), Pages [41799887180](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41799887180) SUCCESS.
+- Research boundary: DDD provides audio + orthographic transcripts; the 8 speakers and city metadata do not independently establish Phnom Penh phonology. CC BY-SA obligations and exact word-span/time locators remain to be reviewed before pilot use. The Khmer acoustic dictionary remains blocked for reuse. Independent adjudicated IPA gold remains 0; accuracy remains null.
+
+
 ## Khmer audio-backed pilot lead — 2026-11-04
 
 - Added source `ddd-khmer-asr-cultural-v3-part1-2026` to `data/khmer/sources.json`. The provider listing for Version 3 Part 1 reports 134.60 hours, 8 Cambodia-based native speakers (4F/4M), 13 topics, 401 subtopics, origin-city metadata, CC BY-SA 4.0, attribution requirement and a prohibition on speaker identification.

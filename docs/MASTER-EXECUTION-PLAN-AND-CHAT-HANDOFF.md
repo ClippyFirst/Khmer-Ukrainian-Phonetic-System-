@@ -41,6 +41,15 @@
 
 # Master execution plan and chat handoff
 
+## Khmer Common Voice 27 audio checkpoint — 2026-11-04
+
+- Added source `mozilla-common-voice-khmer-27-2026` to `data/khmer/sources.json`: https://mozilladatacollective.com/datasets/cmu5olr5u00xzmh07pfgl3kuw.
+- The provider declares CC0-1.0 but prohibits speaker identification and re-hosting/re-sharing. The release contains 739 clips / 0.98h total, 213 validated / 0.28h, 15 speakers and 4,971 sentences (364 validated); 483 unresolved and 43 invalidated. Accent is blank for the disclosed subset; gender is unreported.
+- **KHMER-CV27-AUDIO-001 — PARTIAL.** Candidate secondary audio only. Do not infer Phnom Penh/Standard Khmer from locale; use only validated provider-hosted clips, no mirroring, and retain exact word-span/time locators. Blind IPA double annotation and adjudication remain mandatory.
+- Keep this separate from DDD's CC BY-SA 4.0 corpus. Neither dataset supplies IPA. Gold remains 0; accuracy remains null.
+
+
+
 ## Verified mainline checkpoint — Khmer external-source research (2026-11-04)
 
 - Current main: `ccd24f1f53dda8ccf19dbdbac0766ed4509f99e4` (PR #135). No open PRs at checkpoint.

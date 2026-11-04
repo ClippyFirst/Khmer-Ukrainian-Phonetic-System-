@@ -113,3 +113,49 @@ The exact Mozilla Data Collective record is https://mozilladatacollective.com/da
 **Disposition: small secondary audio lead, not IPA gold.** It is not safe to assume Phnom Penh or Standard Khmer variety from the locale tag. Use only provider-hosted audio and opaque clip/time locators; do not mirror, re-share or attempt speaker identification. Curators must screen only validated clips, determine whether the speaker profile fits the selected project variety, and select attested word spans with exact time ranges. Because the validated audio totals only 0.28h and demographic/variety metadata is sparse, this is not a stand-alone benchmark source.
 
 This is separate from DDD's larger CC BY-SA 4.0 corpus and its own share-alike requirements. The two datasets must not be conflated. Neither source supplies IPA labels; independent gold remains 0.
+
+
+## Additional Khmer pronunciation resources discovered — 2026-11-04
+
+### Candidate: open-dict-data/ipa-dict Khmer lexicon
+
+**Disposition: useful external phonemic comparator; non-commercial rights; NOT project gold and NOT approved for import.**
+
+- Repository: https://github.com/open-dict-data/ipa-dict
+- Pinned upstream revision inspected: `972cd67dd5f96bc5660e28070cde26e3928abcd7` (2026-10-22).
+- Khmer file: https://github.com/open-dict-data/ipa-dict/blob/972cd67dd5f96bc5660e28070cde26e3928abcd7/data/km.txt
+- The file has 3,286 lines of Khmer orthography-to-IPA entries. The upstream README explicitly says the Khmer data were extracted from the Khmer-English Dictionary at aakanee.com and assigns that third-party data **CC BY-NC-SA 4.0**. The repository's general MIT license does not supersede the source-specific license.
+- This is the most directly relevant new lexical IPA comparator found in this pass. It is still not an independent project gold set: the upstream README does not provide per-entry source locators, dialect metadata, annotator identities, adjudication records or an IPA convention profile for Khmer.
+- Some entries have multiple slash-delimited alternatives and repeated orthographies; the project must preserve alternatives and inspect normalization/duplicates rather than collapse them silently.
+
+**Acceptance before any use:** review whether non-commercial/share-alike terms are compatible with the intended research and eventual distribution; preserve upstream commit and file hash; inspect IPA symbols and profile; map entries to stable source locators; select a small stratified pilot for two blind Khmer-phonetician annotations and independent adjudication. Do not add its IPA to `gold.tsv` or use it for commercial release without permission/legal review.
+
+### Candidate: PhonSobon Khmer G2P / Khmer pronunciation dictionary
+
+- G2P dataset: https://huggingface.co/datasets/phonsobon/khmer-G2P
+- Combined dictionary: https://huggingface.co/datasets/phonsobon/khmer-pronunciation-dictionary
+- The G2P card reports **38,629 word–pronunciation pairs / 37,755 unique words**, split by word into 34,770 train, 1,939 validation and 1,920 test rows. The pronunciation field is Khmer-script respelling with syllable separators, **not IPA**. The source is the 2022 Khmer Dictionary of the National Council of Khmer Language (NCKL), Royal Academy of Cambodia.
+- The combined dictionary reports 39,110 rows and describes 689 disputed words: 650 judge decisions and 39 Claude-assisted confirmations that the dataset author says should be confirmed by a native speaker.
+- These are valuable orthographic/syllabification comparators and possible sources for word-list discovery. They do not close the IPA evidence gap. The dataset cards say NCKL retains rights and direct users to check terms, including before commercial use; no blanket redistribution permission for this project is established.
+
+**Disposition:** no import into the IPA gold corpus. Consider only a separate, rights-cleared orthographic-respelling benchmark or candidate-list generator. Keep the original spelling, respelling, alternatives, split provenance and cleaning history distinct from IPA.
+
+### Recheck: Chem Vatho et al. Khmer Acoustic Model
+
+- Current public upstream main inspected at commit `2714994b41ccf875c5b6f6182b48a72f13632dbf`.
+- Root README claims 29,204 IPA dictionary entries validated by native Khmer linguists and declares the pronunciation dictionary CC BY-SA 4.0.
+- The visible repository tree contains only `dictionary/khmer_ipa_sample.dict` (six lines), not the claimed complete dictionary. The separate `dictionary/README.md` describes a 33,091-entry G2P mapping and declares CC BY 4.0. The artifact count and data-license statements remain inconsistent.
+- The repository's MIT code license does not resolve the separate data terms. A README assertion is not a substitute for access to the actual versioned dictionary, digest, provenance and artifact-specific license.
+
+**Disposition remains BLOCKED for import.** Request the full dictionary, SHA-256, artifact-specific rights statement, provenance, dialect/IPA convention, and details of the claimed native-speaker validation and adjudication.
+
+### Current evidence decision
+
+| Resource | Useful as | Rights / format | Gold status |
+|---|---|---|---|
+| ipa-dict Khmer | External lexical IPA comparator | CC BY-NC-SA 4.0 source data; exact profile and annotation protocol not established | NOT GOLD |
+| PhonSobon Khmer G2P | Orthographic respelling / syllabification comparator | NCKL source rights; Khmer-script respelling, not IPA | NOT IPA GOLD |
+| PhonSobon combined dictionary | Candidate lexical list and alternate-reading discovery | Research/non-commercial source constraints; some decisions need native confirmation | NOT GOLD |
+| Khmer Acoustic Model | Potential IPA dictionary and audio-model lead | Full dictionary unavailable in visible tree; CC BY 4.0 vs CC BY-SA 4.0 conflict | BLOCKED |
+
+The four records are now in `data/khmer/sources.json` with explicit scope, source revision where available, format and rights status. No external rows were copied into project data. Independent expert-adjudicated Khmer IPA gold remains **0**; empirical accuracy remains **null**.

@@ -1504,3 +1504,26 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Test and handoff changes were present at head `ff656632cb3323612f5c7f647a069c821aceaa48` when the following hosted checks completed: Quality checks [41847143845](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41847143845) **SUCCESS**; browser smoke [41847143819](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41847143819) **SUCCESS**.
 - The successful checks include the language-specific IPA-corpus fixture regression, repository data validation, language-specific Python test suite, web build/reproducibility checks and Chromium browser checks where configured.
 - Exact job steps were inspected; every reported step completed with `success`. These are engineering/structural checks, not a linguistic accuracy benchmark. No local tests were run in this connector session.
+
+
+## External Khmer pronunciation-source research continuation — 2026-11-04
+
+- Created dedicated branch `research/khmer-external-pronunciation-audit-20261104` from main `09f439dc12e078c72a00038c0583b03803ee054a`.
+- Added four external resource records to `data/khmer/sources.json`: pinned IPA-Dict Khmer, PhonSobon Khmer G2P, PhonSobon combined pronunciation dictionary, and Chem Vatho's Khmer Acoustic Model. Each record distinguishes source format, scope, provenance, rights and whether it is eligible for gold.
+- Extended `docs/audits/current/EXTERNAL-PHONETIC-CORPUS-TRIAGE-2026-11-01.md` with source-level findings and explicit no-import decisions.
+- Extended the existing linguistic completion register with `KHMER-EXT-IPA-DICT-001`, `KHMER-EXT-RESP-001`, and `KHMER-ACOUSTIC-DICT-RECHECK-001`.
+- Added `test_external_pronunciation_sources_preserve_format_and_rights_boundaries` to `tests/test_data_integrity.py`. It guards against silently reclassifying Khmer-script respelling as IPA, treating non-commercial sources as unrestricted, or treating a missing/contradictory external dictionary as an approved source.
+- External research evidence: IPA-Dict's pinned revision `972cd67dd5f96bc5660e28070cde26e3928abcd7` has 3,286 lines in `data/km.txt`; its README attributes Khmer data to aakanee.com and CC BY-NC-SA 4.0. PhonSobon Khmer G2P reports 38,629 pairs / 37,755 unique words and explicitly says the pronunciation field is Khmer-script respelling, not IPA; source content remains NCKL-owned and commercial terms must be checked. The combined dictionary reports 39,110 rows and flags 39 LLM-assisted decisions for native-speaker confirmation. Chem Vatho's current main `2714994b41ccf875c5b6f6182b48a72f13632dbf` claims 29,204 IPA entries but exposes only a six-line sample; root README and dictionary README disagree on CC BY-SA 4.0 vs CC BY 4.0 and on dictionary/mapping counts.
+- No external source data were copied; no license was inferred; no IPA or Ukrainian output was fabricated. The IPA-Dict resource is non-commercial/share-alike, PhonSobon resources remain rights-limited/unresolved and Khmer-script respelling, and the acoustic-model dictionary remains blocked pending a full artifact and clarified terms.
+- Acceptance boundary: this closes source discovery/triage documentation only. It does not close `KHM-GOLD-001`; independent expert-adjudicated Khmer IPA gold remains 0 and empirical accuracy remains null.
+- Validation: pending hosted CI for this branch/PR. No local checkout or local test execution was available through the connector session.
+
+
+## Final Khmer external-source PR verification — 2026-11-04
+
+- PR #140 head after the regression assertion correction: `3fd741b420eb217f2fe0d24087642dbbf866c687`.
+- The first Quality run [41849845861](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41849845861) exposed one test-only case-sensitive assertion mismatch (`NOT project gold` vs the source note's `Not project gold`); 173 tests and 60 subtests passed, one new assertion failed. The assertion was corrected to compare case-insensitively; no source classification or production behavior was changed.
+- Corrected-head Quality [41850630303](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41850630303) **SUCCESS**; corrected-head browser smoke [41850630166](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41850630166) **SUCCESS**. The Python suite, web checks, production build and Chromium browser smoke completed successfully.
+- Source records continue to distinguish IPA-Dict's non-commercial/share-alike Khmer IPA, PhonSobon's Khmer-script respelling (not IPA), and the incomplete/licensing-conflicted Khmer Acoustic Model dictionary. No third-party data were copied.
+- This verifies source-registry and rights-boundary engineering only. Independent expert-adjudicated Khmer IPA gold remains 0; empirical accuracy remains null.
+- No local tests were run; hosted CI logs were inspected.

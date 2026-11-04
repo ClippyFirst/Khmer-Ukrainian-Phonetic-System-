@@ -93,3 +93,33 @@ def test_rule_registry_has_unique_ids_and_source_locators():
         assert rule["source"] in source_ids, rule["rule_id"]
         assert rule.get("source_locator", "").strip(), rule["rule_id"]
         assert "pending" not in rule["source_locator"].lower(), rule["rule_id"]
+
+
+def test_external_pronunciation_sources_preserve_format_and_rights_boundaries():
+    sources = {
+        row["id"]: row
+        for row in json.loads((ROOT / "data" / "khmer" / "sources.json").read_text(encoding="utf-8"))
+    }
+
+    ipa_dict = sources["open-dict-ipa-km-2026"]
+    assert "3,286-line" in ipa_dict["scope"]
+    assert "CC BY-NC-SA 4.0" in ipa_dict["license"]
+    assert ipa_dict["status"] == "EXTERNAL_COMPARATOR_NONCOMMERCIAL_ONLY"
+    assert "not project gold" in ipa_dict["limitations"].lower()
+
+    khmer_g2p = sources["phonsobon-khmer-g2p-2026"]
+    assert "38,629" in khmer_g2p["scope"]
+    assert "not IPA" in khmer_g2p["scope"]
+    assert khmer_g2p["status"] == "SOURCE_LOCATED_RIGHTS_UNRESOLVED_NOT_IPA"
+
+    combined = sources["phonsobon-khmer-pronunciation-2026"]
+    assert "39,110" in combined["scope"]
+    assert "native-speaker confirmation" in combined["limitations"]
+    assert combined["status"] == "RESEARCH_ONLY_RIGHTS_UNRESOLVED_NOT_IPA"
+
+    acoustic = sources["chemvatho-khmer-acoustic-model-2026"]
+    assert "29,204" in acoustic["scope"]
+    assert "six-line" in acoustic["scope"]
+    assert "CC BY-SA 4.0" in acoustic["scope"]
+    assert "CC BY 4.0" in acoustic["scope"]
+    assert acoustic["status"] == "BLOCKED_SOURCE_INCOMPLETE_RIGHTS_CONFLICT"

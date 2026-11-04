@@ -411,3 +411,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-ACOUSTIC-DICT-001 | PARTIAL / BLOCKED for reuse | Current upstream root README says 29,204 dictionary entries and CC BY-SA 4.0; `dictionary/README.md` says 33,091 entries and CC BY 4.0 for its G2P mapping. Current public tree contains only a six-line sample dictionary and no full dictionary or release asset. | Request full versioned dictionary + SHA-256, artifact-specific license clarification, dialect/IPA convention, source provenance and independent annotation/adjudication details. No import, training, gold promotion or license inference until resolved. |
+
+
+## Khmer audio-backed IPA pilot source — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-DDD-AUDIO-001 | PARTIAL (candidate audio source; pilot intake not yet approved) | Mozilla Data Collective Version 3 Part 1 reports 134.60h WAV + transcripts, 8 Cambodia-based native speakers (4F/4M), 13 topics/401 subtopics, origin-city metadata, CC BY-SA 4.0 and no-speaker-identification restriction. Source registered as `ddd-khmer-asr-cultural-v3-part1-2026`. | Verify exact speaker/profile/utterance metadata, select attested word spans with time locators, approve the target profile, review share-alike implications, then commission two blind IPA annotations plus separate adjudication. No IPA labels supplied; no gold import. |

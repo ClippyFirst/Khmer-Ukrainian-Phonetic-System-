@@ -1,5 +1,6 @@
 # Agent instructions — Khmer → Ukrainian research system
 
+
 ## Read before changing code
 
 - Treat [docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md](docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md) as the canonical task ledger and continuation record.
@@ -23,6 +24,9 @@ The phonetic route is:
 
 Use `DONE_VERIFIED`, `PARTIAL`, `TODO`, `BLOCKED`, and `DEFERRED` consistently with the master handoff. A test file is not evidence until the relevant test passes on the exact final commit.
 
+- For new or ambiguous work, establish the intended outcome, audience, why and observable success criteria before designing; inspect existing project context first. Ask only questions whose answers would materially change the deliverable. Do not add process or intermediate-approval gates when the user has explicitly authorized autonomous one-pass execution.
+- At GREEN, run the repository's full project test command even if the task named only a focused test file. Report every failure observed; a focused passing test is not a green project suite.
+
 Relevant commands (run those configured by the repository):
 
 ```bash
@@ -45,15 +49,20 @@ Inspect generated artifacts and built relative asset paths when changing data or
 
 Methodological references only; do not add them as runtime dependencies or copy their repositories wholesale:
 
-- [obra/superpowers](https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b) — test-first work, explicit plans, root-cause debugging, review and evidence before completion.
+- [obra/superpowers](https://github.com/obra/superpowers/tree/22f0b463e7a5e579904dd6211a520321035526f7) — test-first work, explicit plans, root-cause debugging, review and evidence before completion.
 - [mattpocock/skills](https://github.com/mattpocock/skills/tree/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d) — behavior-focused tests, clear interfaces, test seams and source-backed research.
 - [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846) — Ponytail current main: trace the real code path and data flow, map entry points and expected load before repository-level audit, review beyond the diff, preserve trust-boundary validation/data-loss handling/accessibility, test branching/parser/security logic, and report skipped checks and residual risk.
 
 When these references conflict with the existing project contract or the user's explicit requirements, follow the project contract and user requirements.
 
-**Reviewed 2026-11-03:** Superpowers v7.0.1/current main (`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`); mattpocock/skills release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`) and current main snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`); Ponytail v5.3.3 release (`7801d061243d7b753bad0e0b3c057cd250b11755`) and current main snapshot (`96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`) were checked against upstream. The Ponytail post-release change inspected is a README/product-list addition, not a change to the adopted audit methodology. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
+**Reviewed 2026-11-04:** Superpowers v7.0.2/current main (`22f0b463e7a5e579904dd6211a520321035526f7`); mattpocock/skills release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`) and current main snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`); Ponytail v5.3.3 release (`7801d061243d7b753bad0e0b3c057cd250b11755`) and current main snapshot (`96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`) were checked against upstream. The Ponytail post-release change inspected is a README/product-list addition, not a change to the adopted audit methodology. Adopt explicit plans, true RED/GREEN TDD and full-suite verification; composable skills and two-axis standards/spec review; code-flow mapping and minimal complete diffs that preserve security, data integrity and accessibility. These are methodology references only, not runtime dependencies.
 
 
+
+## Methodology source refresh — 2026-11-04
+
+- Rechecked all four upstream references. Unlazy remains at `16671491f6679ad9378f52604d3bc2415b4120c7`; mattpocock/skills at `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; Ponytail at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`.
+- Superpowers v7.0.2 was reviewed against v7.0.1. Adopted full-suite verification at GREEN and intent-first design with fewer, outcome-changing questions. Did not import harness plugins, helper scripts or the SDD runtime. The default explicit design-approval ceremony is not imposed when a user has already authorized autonomous one-pass execution.
 
 ## Whole-message adversarial benchmark requirements
 

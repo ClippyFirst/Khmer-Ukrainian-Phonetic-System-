@@ -1471,3 +1471,36 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - These are leads only: no one has been contacted or recruited; no IPA convention has been approved; no rights have been granted; no IPA labels were generated.
 - The 30-item pilot remains BLOCKED until the acceptance conditions in the playbook are met. Candidate lexicon entries, phonetic respellings, model outputs, orthographic transcripts and source descriptions are not gold IPA.
 - The next external action is to contact a qualified prospective reviewer and request nominations for two independent annotators plus a separate adjudicator; separately complete item-level rights review and blind-intake dry run.
+
+
+## One-pass continuation checkpoint — 2026-11-04
+
+- Current default branch: `main`; verified head `9e688e0118382f8e990e8758c53a5c7ec8877a78` (latest commit after PR #138).
+- Open PR query on 2026-11-04 returned none. Latest relevant merges: #131–#138. #131–#133 reconcile MekongPhon provenance, scale and dictionary-seeded evaluation limits; #134 records unresolved Khmer Acoustic Model dictionary count/license discrepancies; #135 registers DDD audio candidate constraints; #137 registers Common Voice 27 Khmer audio limits; #136/#138 reconcile merges and verification.
+- Exact-head hosted verification for PR #137: Quality checks 41800443113 SUCCESS and Khmer browser smoke 41800443035 SUCCESS. PR #138 is a documentation-only post-merge checkpoint. The current main combined-status endpoint returned no status entries; this is not evidence of a failed or successful main push run.
+- Preserved evidence boundary: DDD Part 1 lists 134.60h and 8 speakers under CC BY-SA 4.0 with attribution and no-speaker-identification restrictions; Common Voice 27 reports 739 clips (213 validated; 0.28 validated hours; 15 speakers) but no IPA or reliable accent identification. Neither source is IPA gold. MekongPhon remains dictionary-seeded and dataset rights are unresolved.
+- Task ledger: source registrations and provenance reconciliation **DONE_VERIFIED**; independent adjudicated Khmer IPA gold **BLOCKED** (0 records; gold export header-only; accuracy null); expert approval of target variety/profile and IPA convention, two independent annotators, separate adjudicator, item-level rights and blind intake **BLOCKED**; manual keyboard/screen-reader/mobile QA **TODO**.
+- Khmer Acoustic Model dictionary remains blocked pending author clarification and an inspectable versioned full corpus; conflicting dictionary counts and CC BY/CC BY-SA statements must not be treated as cleared.
+- No runtime phonology or Ukrainian mapping changes were made in the latest source-evidence merges. No orthographic transcript or G2P respelling is promoted to IPA.
+- The initial checkpoint commit was documentation-only; a subsequent test-only change now uses Khmer script and a neutral test profile in the IPA-corpus fixtures. Hosted CI results for the final head are recorded separately; local tests were not run in this connector session. Hosted CI evidence above is tied to the exact PR head, not a claim of fresh local verification.
+
+
+## Hosted verification update — 2026-11-04
+
+- Draft PR #139 exact head `3889739aecf0221c7cf1e26be59f025838a914ed`: Quality checks [41844573271](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41844573271) **SUCCESS** and browser smoke [41844573296](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41844573296) **SUCCESS**.
+- Quality job completed IPA gold corpus structure validation, Python tests, web checks and site build. Browser smoke completed successfully.
+- This verifies the docs-only PR head and the repository's current CI contract. It does not establish phonological accuracy or clear the Khmer Acoustic Model / MekongPhon rights questions; the evidence and expert-review blockers above remain unchanged.
+
+
+## Test-fixture correction — 2026-11-04
+
+- Review found that the shared IPA-corpus validator test file used Lao orthography and a Lao-specific profile description even in the Khmer and Burmese repositories. This did not affect production validation, but made the fixtures misleading and weakened language-specific test coverage.
+- The test fixtures now use the repository's script (Lao / Khmer / Myanmar), neutral `test-<language>` profile identifiers and `Test fixture (<language>)` variety labels. A regression test asserts the fixture characters fall within the corresponding Unicode block and that profile metadata matches the repository language.
+- This is a test-harness correction only. It does not validate language phonology, IPA correctness, or script-specific parser behavior; the production validator still intentionally validates corpus structure rather than imposing a single script restriction on all orthographic records.
+
+
+## Final test-fixture PR verification — 2026-11-04
+
+- Test and handoff changes were present at head `ff656632cb3323612f5c7f647a069c821aceaa48` when the following hosted checks completed: Quality checks [41847143845](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41847143845) **SUCCESS**; browser smoke [41847143819](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41847143819) **SUCCESS**.
+- The successful checks include the language-specific IPA-corpus fixture regression, repository data validation, language-specific Python test suite, web build/reproducibility checks and Chromium browser checks where configured.
+- Exact job steps were inspected; every reported step completed with `success`. These are engineering/structural checks, not a linguistic accuracy benchmark. No local tests were run in this connector session.

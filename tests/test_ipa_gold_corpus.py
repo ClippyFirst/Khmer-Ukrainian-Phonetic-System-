@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO_NAME = ROOT.name.lower()
 LANGUAGE = "khmer" if "khmer" in REPO_NAME else "burmese" if "burmese" in REPO_NAME else "lao"
 SCRIPT = ROOT / "scripts" / "ipa_gold_corpus.py"
+SCRIPT_RANGES = {"lao": (0x0E80, 0x0EFF), "khmer": (0x1780, 0x17FF), "burmese": (0x1000, 0x109F)}
 
 def ipa(value="ka", kind="PHONEMIC"):
     return {"value": value, "kind": kind, "syllable_boundaries": [value],
@@ -23,9 +24,9 @@ class IpaGoldCorpusTests(unittest.TestCase):
                       ("records", "annotations", "adjudications", "splits")}
         self.records = [{
             "record_id": "r1", "language": LANGUAGE,
-            "orthography": {"text": "ກາ", "normalized": "ກາ"},
+            "orthography": {"text": "កា", "normalized": "កា"},
             "lexeme_group_id": "lemma-1",
-            "profile": {"id": "standard-lao", "variety": "Vientiane-oriented Standard Lao"},
+            "profile": {"id": "test-khmer", "variety": "Test fixture (khmer)"},
             "source": {"source_id": "src-1", "citation": "Test source", "locator": "p. 1",
                        "rights_status": "OPEN", "redistributable": True, "license_id": "CC-BY-4.0",
                        "rights_evidence": {"basis": "LICENSE", "locator": "https://creativecommons.org/licenses/by/4.0/",
@@ -45,6 +46,13 @@ class IpaGoldCorpusTests(unittest.TestCase):
         self.splits = [{"record_id": "r1", "group_id": "lemma-1", "split": "train",
                         "seed": "test-seed", "version": "v1"}]
         self.write_all()
+
+    def test_fixture_uses_the_repository_language_script(self):
+        start, end = SCRIPT_RANGES[LANGUAGE]
+        sample = self.records[0]["orthography"]["text"]
+        self.assertTrue(all(start <= ord(char) <= end for char in sample))
+        self.assertEqual(self.records[0]["profile"]["id"], f"test-{LANGUAGE}")
+        self.assertEqual(self.records[0]["profile"]["variety"], f"Test fixture ({LANGUAGE})")
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -128,7 +136,7 @@ class IpaGoldCorpusTests(unittest.TestCase):
         self.assertIn("does not match deterministic hash", run.stderr)
 
     def test_rejects_split_leakage_for_same_lexeme_group(self):
-        self.records.append(dict(self.records[0], record_id="r2", orthography={"text": "ກາໆ", "normalized": "ກາໆ"}))
+        self.records.append(dict(self.records[0], record_id="r2", orthography={"text": "កាកា", "normalized": "កាកា"}))
         self.splits.append({"record_id": "r2", "group_id": "lemma-1", "split": "test", "seed": "test-seed", "version": "v1"})
         self.write_all()
         run = self.run_cli("validate", expected=1)
@@ -224,7 +232,7 @@ class IpaGoldCorpusTests(unittest.TestCase):
         self.assertEqual(condition["then"]["properties"]["redistributable"]["const"], True)
 
     def test_split_assignment_is_deterministic_and_group_safe(self):
-        self.records.append(dict(self.records[0], record_id="r2", orthography={"text": "ກາໆ", "normalized": "ກາໆ"}))
+        self.records.append(dict(self.records[0], record_id="r2", orthography={"text": "កាកា", "normalized": "កាកា"}))
         self.splits = []
         self.write_all()
         self.run_cli("assign-splits", "--seed", "fixed-seed", "--output", self.root / "generated.jsonl")
@@ -244,7 +252,7 @@ class IpaGoldCorpusTests(unittest.TestCase):
         frozen_rows = [json.loads(line) for line in frozen.read_text(encoding="utf-8").splitlines()]
         self.write_jsonl("splits", frozen_rows)
         self.records.append(dict(self.records[0], record_id="r2",
-                                 orthography={"text": "ກາໆ", "normalized": "ກາໆ"}))
+                                 orthography={"text": "កាកា", "normalized": "កាកា"}))
         self.write_jsonl("records", self.records)
         extended = self.root / "extended.jsonl"
         self.run_cli("assign-splits", "--output", extended)

@@ -41,6 +41,15 @@
 
 # Master execution plan and chat handoff
 
+## Khmer audio-backed pilot lead — 2026-11-04
+
+- Added source `ddd-khmer-asr-cultural-v3-part1-2026` to `data/khmer/sources.json`. The provider listing for Version 3 Part 1 reports 134.60 hours, 8 Cambodia-based native speakers (4F/4M), 13 topics, 401 subtopics, origin-city metadata, CC BY-SA 4.0, attribution requirement and a prohibition on speaker identification.
+- **KHMER-DDD-AUDIO-001 — PARTIAL.** This is a useful audio+orthographic-transcript candidate for a specialist-run pilot, not IPA gold. City metadata alone does not prove Phnom Penh speech; sentence recordings require explicit word-span/time locators; share-alike obligations need review before publishing derived IPA.
+- Keep Version 3 Part 1's 134.60h/8-speaker figures separate from the broader HF card's 727.94h/12-speaker aggregate until provider manifests reconcile them. No speaker identification, audio mirroring or IPA labels are added.
+- Acceptance: approve profile and licensing path, curate exact word spans, complete blind double annotation and third-person adjudication. Gold remains 0; accuracy remains null.
+
+
+
 ## Khmer external dictionary evidence checkpoint — 2026-11-04
 
 - Rechecked `chemvatho/Khmer-acoustic-model` directly. Root README claims 29,204 IPA dictionary entries under CC BY-SA 4.0; `dictionary/README.md` describes a 33,091-entry G2P mapping under CC BY 4.0. The public Git tree currently contains only a six-line sample dictionary and no release asset with the complete data.

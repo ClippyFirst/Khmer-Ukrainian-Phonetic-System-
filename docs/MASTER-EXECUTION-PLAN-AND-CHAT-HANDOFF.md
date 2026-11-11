@@ -1685,3 +1685,13 @@ Create the independent text-only Khmer IPA/Ukrainian adjudication set. Do not pr
 
 - Added `docs/provisional-grapheme-ipa-fallback.md` defining the Lao-style `PROVISIONAL` grapheme → IPA → existing Ukrainian adapter contract, visible `?` uncertainty, Python/browser parity and benchmark separation.
 - This is a design/acceptance document only, not an implementation claim. Current Khmer parser/practical adapter still withholds unsupported constructions. Implementation is BLOCKED pending a source-backed, positional Khmer grapheme-to-IPA inventory; no context-free letter readings or vowel/tone guesses may be fabricated.
+
+
+## Provisional onset fallback implementation — 2026-11-11
+
+- Python and browser now expose a separate PROVISIONAL onset-only IPA preview for unresolved units when the existing parser has a registered base-consonant onset IPA.
+- The same IPA → Ukrainian adapter is used; the affected Ukrainian unit receives ?. Canonical ipa/ukrainian remain withheld.
+- No vowel, coda, subscript/coeng realization or tone is inferred.
+- Python regression and browser source-contract regression were added.
+- Status: PARTIAL. Dedicated per-grapheme positional source registry, executed browser parity fixtures, exact-head CI and Chromium verification remain outstanding.
+- Exact head at this update: 660915e4ed1f44eab04258957eee39537883aadd. Quality and browser workflows 43099931373 / 43099931284 were queued, not passed.

@@ -1704,3 +1704,8 @@ Create the independent text-only Khmer IPA/Ukrainian adjudication set. Do not pr
 - Exact-head CI is NOT verified. Earlier quality/browser runs 43100166075 and 43100166123 were queued on head 30f2dc5ee6be90cd75205c742d73f3af41f1523b; the subsequent status-priority correction is at ffeb3ee3a46898f1fdf6ab5ac455972bb59f327a and no workflow run was returned for that exact head.
 - Local test execution was unavailable: public GitHub clone attempt failed because the execution environment could not resolve github.com. No tests are claimed passed on the new fallback.
 - Remaining: execute Python/Node/Chromium tests on the exact head; add functional shared Python/browser fixtures; register source-backed positional fallback evidence; expand only where vowel/subscript/coeng evidence is explicit. Keep the independent text-only adjudicated gold set BLOCKED and audio DEFERRED.
+
+
+## Fallback scope clarification — 2026-11-11
+
+The browser preview is separate from canonical output. The onset-only test fixture is ក្ក (known base plus unresolved coeng/subscript), not កា, which is handled by the existing inherent-vowel rule. Exact-head tests after this correction still need completion.

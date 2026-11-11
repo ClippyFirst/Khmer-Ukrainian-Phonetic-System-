@@ -1,260 +1,86 @@
 {
-  "version": "2026-10-30.1",
+  "version": "2026-11-11.2",
   "status": "PROPOSED",
   "scope": "Project-specific Ukrainian practical target policy; not an official Ukrainian standard.",
-  "evidence_note": "The consonant layer follows the documented Khmer phonetic inventory and uses the existing Khmer-Russian practical transcription as a comparator where useful. Ukrainian choices are independent project decisions.",
+  "evidence_note": "Khmer phonetic values are sourced separately from Ukrainian target choices. The Ukrainian layer follows the 2026 state standard where applicable; /h/ maps to г, /x/ to х, and /ɡ/ to ґ as an explicit contrast-preserving project choice. The 2026 standard generally adapts foreign [g] with г, while permitting ґ as an imitation choice in personal names.",
   "segments": {
-    "p": {
-      "default": "п",
-      "compatibility_ru": "п"
-    },
-    "pʰ": {
-      "default": "п\u0027",
-      "compatibility_ru": "пх"
-    },
-    "b": {
-      "default": "б",
-      "compatibility_ru": "б"
-    },
-    "ɓ": {
-      "default": "б",
-      "compatibility_ru": "б"
-    },
-    "t": {
-      "default": "т",
-      "compatibility_ru": "т"
-    },
-    "tʰ": {
-      "default": "т\u0027",
-      "compatibility_ru": "тх"
-    },
-    "d": {
-      "default": "д",
-      "compatibility_ru": "д"
-    },
-    "ɗ": {
-      "default": "д",
-      "compatibility_ru": "д"
-    },
-    "k": {
-      "default": "к",
-      "compatibility_ru": "к"
-    },
-    "kʰ": {
-      "default": "к\u0027",
-      "compatibility_ru": "кх"
-    },
-    "c": {
-      "default": "ть",
-      "compatibility_ru": "ть"
-    },
-    "cʰ": {
-      "default": "ть\u0027",
-      "compatibility_ru": "ч"
-    },
-    "ɲ": {
-      "default": "нь",
-      "compatibility_ru": "нь"
-    },
-    "ŋ": {
-      "default": "нг",
-      "compatibility_ru": "нг"
-    },
-    "r": {
-      "default": "р",
-      "compatibility_ru": "р"
-    },
-    "l": {
-      "default": "л",
-      "compatibility_ru": "л"
-    },
-    "ʋ": {
-      "default": "в",
-      "compatibility_ru": "в"
-    },
-    "w": {
-      "default": "у",
-      "compatibility_ru": "у"
-    },
-    "j": {
-      "default": "й",
-      "compatibility_ru": "й"
-    },
-    "s": {
-      "default": "с",
-      "compatibility_ru": "с"
-    },
-    "h": {
-      "default": "г",
-      "compatibility_ru": "х"
-    },
-    "ʔ": {
-      "default": "",
-      "compatibility_ru": ""
-    },
-    "m": {
-      "default": "м",
-      "compatibility_ru": "м"
-    },
-    "n": {
-      "default": "н",
-      "compatibility_ru": "н"
-    },
-    "ɡ": {
-      "default": "ґ"
-    },
-    "g": {
-      "default": "ґ"
-    },
-    "x": {
-      "default": "х"
-    },
-    "ɦ": {
-      "default": "г"
-    },
-    "t͡s": {
-      "default": "ц"
-    },
-    "d͡z": {
-      "default": "дз"
-    },
-    "d͡zʲ": {
-      "default": "дзь"
-    },
-    "tɕ": {
-      "default": "ч"
-    },
-    "dʑ": {
-      "default": "дж"
-    },
-    "t͡ʃ": {
-      "default": "ч"
-    },
-    "d͡ʒ": {
-      "default": "дж"
-    },
-    "ʃ": {
-      "default": "ш"
-    },
-    "ʒ": {
-      "default": "ж"
-    },
-    "tʲ": {
-      "default": "ть"
-    },
-    "dʲ": {
-      "default": "дь"
-    },
-    "nʲ": {
-      "default": "нь"
-    },
-    "lʲ": {
-      "default": "ль"
-    },
-    "rʲ": {
-      "default": "рь"
-    },
-    "i": {
-      "default": "і"
-    },
-    "iː": {
-      "default": "і"
-    },
-    "e": {
-      "default": "е"
-    },
-    "eː": {
-      "default": "е"
-    },
-    "ɛ": {
-      "default": "е"
-    },
-    "ɛː": {
-      "default": "е"
-    },
-    "ɨ": {
-      "default": "и"
-    },
-    "ɨː": {
-      "default": "и"
-    },
-    "a": {
-      "default": "а"
-    },
-    "aː": {
-      "default": "а"
-    },
-    "ɑ": {
-      "default": "а"
-    },
-    "ɑː": {
-      "default": "а"
-    },
-    "o": {
-      "default": "о"
-    },
-    "oː": {
-      "default": "о"
-    },
-    "ɔ": {
-      "default": "о"
-    },
-    "ɔː": {
-      "default": "о"
-    },
-    "u": {
-      "default": "у"
-    },
-    "uː": {
-      "default": "у"
-    },
-    "ə": {
-      "default": "е"
-    },
-    "əː": {
-      "default": "е"
-    },
-    "ɤ": {
-      "default": "е"
-    },
-    "ae": {
-      "default": "ае"
-    },
-    "ae̯": {
-      "default": "ае"
-    },
-    "əj": {
-      "default": "ей"
-    },
-    "iə": {
-      "default": "іє"
-    },
-    "uə": {
-      "default": "уо"
-    },
-    "ɨə": {
-      "default": "ие"
-    },
-    "ɛə": {
-      "default": "еа"
-    },
-    "ɔə": {
-      "default": "оа"
-    },
-    "ao": {
-      "default": "ау"
-    },
-    "aw": {
-      "default": "ау"
-    },
-    "ei": {
-      "default": "ей"
-    },
-    "əu": {
-      "default": "еу"
-    },
-    "aeː": {
-      "default": "ае"
-    }
+    "p": {"default": "п", "compatibility_ru": "п"},
+    "pʰ": {"default": "п'", "compatibility_ru": "пх"},
+    "b": {"default": "б", "compatibility_ru": "б"},
+    "ɓ": {"default": "б", "compatibility_ru": "б"},
+    "t": {"default": "т", "compatibility_ru": "т"},
+    "tʰ": {"default": "т'", "compatibility_ru": "тх"},
+    "d": {"default": "д", "compatibility_ru": "д"},
+    "ɗ": {"default": "д", "compatibility_ru": "д"},
+    "k": {"default": "к", "compatibility_ru": "к"},
+    "kʰ": {"default": "к'", "compatibility_ru": "кх"},
+    "c": {"default": "ть", "compatibility_ru": "ть"},
+    "cʰ": {"default": "ть'", "compatibility_ru": "ч"},
+    "ɲ": {"default": "нь", "compatibility_ru": "нь"},
+    "ŋ": {"default": "нг", "compatibility_ru": "нг"},
+    "r": {"default": "р", "compatibility_ru": "р"},
+    "l": {"default": "л", "compatibility_ru": "л"},
+    "ʋ": {"default": "в", "compatibility_ru": "в"},
+    "w": {"default": "у", "compatibility_ru": "у"},
+    "j": {"default": "й", "compatibility_ru": "й"},
+    "s": {"default": "с", "compatibility_ru": "с"},
+    "h": {"default": "г", "compatibility_ru": "х"},
+    "ʔ": {"default": "", "compatibility_ru": ""},
+    "m": {"default": "м", "compatibility_ru": "м"},
+    "n": {"default": "н", "compatibility_ru": "н"},
+    "ɡ": {"default": "ґ"},
+    "g": {"default": "ґ"},
+    "x": {"default": "х"},
+    "ɦ": {"default": "г"},
+    "t͡s": {"default": "ц"},
+    "d͡z": {"default": "дз"},
+    "d͡zʲ": {"default": "дзь"},
+    "tɕ": {"default": "ч"},
+    "t͡ɕ": {"default": "ч"},
+    "dʑ": {"default": "дж"},
+    "d͡ʑ": {"default": "дж"},
+    "t͡ʃ": {"default": "ч"},
+    "d͡ʒ": {"default": "дж"},
+    "ʃ": {"default": "ш"},
+    "ʒ": {"default": "ж"},
+    "tʲ": {"default": "ть"},
+    "dʲ": {"default": "дь"},
+    "nʲ": {"default": "нь"},
+    "lʲ": {"default": "ль"},
+    "rʲ": {"default": "рь"},
+    "i": {"default": "і"},
+    "iː": {"default": "і"},
+    "e": {"default": "е"},
+    "eː": {"default": "е"},
+    "ɛ": {"default": "е"},
+    "ɛː": {"default": "е"},
+    "ɨ": {"default": "и"},
+    "ɨː": {"default": "и"},
+    "a": {"default": "а"},
+    "aː": {"default": "а"},
+    "ɑ": {"default": "а"},
+    "ɑː": {"default": "а"},
+    "o": {"default": "о"},
+    "oː": {"default": "о"},
+    "ɔ": {"default": "о"},
+    "ɔː": {"default": "о"},
+    "u": {"default": "у"},
+    "uː": {"default": "у"},
+    "ə": {"default": "е"},
+    "əː": {"default": "е"},
+    "ɤ": {"default": "е"},
+    "ae": {"default": "ае"},
+    "ae̯": {"default": "ае"},
+    "əj": {"default": "ей"},
+    "iə": {"default": "іє"},
+    "uə": {"default": "уо"},
+    "ɨə": {"default": "ие"},
+    "ɛə": {"default": "еа"},
+    "ɔə": {"default": "оа"},
+    "ao": {"default": "ау"},
+    "aw": {"default": "ау"},
+    "ei": {"default": "ей"},
+    "əu": {"default": "еу"},
+    "aeː": {"default": "ае"}
   }
 }

@@ -18,10 +18,10 @@ def test_known_negative_fixture_withholds_ipa():
 
 def test_rule_fallback_is_repeatable_and_explicitly_proposed():
     engine = RuleBasedKhmerEngine()
-    first = engine.analyze("ក")
+    first = engine.analyze("ឈ")
     second = engine.analyze("ក")
     assert first == second
-    assert first["ipa"] == "kɑː"
+    assert first["ipa"] == "cʰɑː"
     assert first["status"] == "PROPOSED"
     assert "KHMER_REGISTER_SERIES_INHERENT_VOWEL" in first["rule_ids"]
 

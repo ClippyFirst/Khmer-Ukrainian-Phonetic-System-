@@ -141,7 +141,7 @@ def make_command_backend(command: list[str], *, engine_id: str) -> Provider:
     import subprocess
 
     def run(text: str) -> dict[str, Any]:
-        completed = subprocess.run(command, input=text + "\\n", text=True, capture_output=True, check=True)
+        completed = subprocess.run(command, input=text + "\n", text=True, capture_output=True, check=True)
         ipa = completed.stdout.strip()
         return {"ipa": ipa, "status": "candidate" if ipa else "unsupported",
                 "provenance": {"engine": engine_id, "command": command, "stderr": completed.stderr}}

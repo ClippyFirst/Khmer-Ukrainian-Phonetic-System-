@@ -81,8 +81,10 @@ Examples of the proposed practical target layer:
 | /ŋ/ | нг | нг |
 | /r/ | р | — |
 | /ʋ/ | в | — |
-| /w/ | у | — |
+| /w/ | в | у |
 | /h/ | г | х |
+| /ɡ/ (ASCII /g/) | ґ | г |
+| /x/ | х | х |
 | /ʔ/ | ∅ | context-dependent |
 | /t͡s, d͡z, t͡ʃ, d͡ʒ/ | ц, дз, ч, дж | comparator-only where documented |
 

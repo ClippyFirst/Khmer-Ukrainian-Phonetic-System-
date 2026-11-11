@@ -34,8 +34,8 @@ A separately versioned lexicon may override the generic algorithm for convention
 | /ɲ/ | нь | Palatal nasal |
 | /ŋ/ | нг | Keep the velar nasal visible |
 | /ʋ/ | в | Labiodental approximant |
-| /w/ | у | Khmer glide policy; do not conflate with /ʋ/ |
-| /j/ | й | Contextual yotation is a later orthographic decision |
+| /w, ʋ/ | в | Ukrainian target merges both approximants in practical spelling; IPA preserves the source distinction |
+| /j/ | я, є, ї, ю, йо at syllable onset; й elsewhere | Contextual Ukrainian yotation is applied by the IPA adapter |
 | /h, ɦ/ | г | Ukrainian target approximation |
 | /ɡ/ (ASCII alias /g/) | ґ | Explicit contrast-preserving project choice |
 | /x/ | х | Genuine velar fricative; not merged with /h/ |
@@ -64,7 +64,7 @@ The 2026 Ukrainian Orthography is the current state standard (effective 2026-03-
 
 The practical apostrophe after aspirated consonants is a project notation for a source-language feature. It is not the Ukrainian orthographic apostrophe rule and does not replace IPA metadata. A glottal stop /ʔ/ never triggers it.
 
-The 2026 standard's treatment of [h], [g], [θ] and [ð] is target-language guidance, not evidence about Khmer source phonology. See §122 and §124 of the official standard.
+The 2026 standard's treatment of [h], [g], [w], [θ] and [ð] is target-language guidance, not evidence about Khmer source phonology. See §§122, 124 and 126 of the official standard.
 
 ## Vowels
 
@@ -83,7 +83,7 @@ Length and source vowel quality remain available in IPA and the trace; ordinary 
 
 ## Executable adapter
 
-`map_ipa_string()` is the single longest-match IPA-string adapter used by the deterministic Khmer engine. It:
+map_ipa_string() is the single longest-match IPA-string adapter used by the deterministic Khmer engine. It applies Ukrainian yotation to syllable-initial /j/ plus a following vowel and maps /w/ to в (the Russian comparator's у is not copied). It:
 
 - maps multi-codepoint IPA segments before their component characters;
 - preserves spaces between IPA chunks;

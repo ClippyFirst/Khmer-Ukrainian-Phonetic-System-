@@ -128,3 +128,5 @@ The same CI run executed Khmer Phonemizer 0.0.3 on the same source split: 100/10
 - No source labels were promoted to independent gold; no accuracy is claimed.
 - `pron_no_tones` does not test tone/phonation; a target-variety gold set and expert review are still required.
 - PhonSobon dataset data are not copied or used in CI because commercial/redistribution rights are unresolved.
+
+MekongPhon provenance qualifier: the paper reports 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS from an 8,026-entry seed lexicon; a 500-entry sample was reviewed by two proficient L2 speakers, not native target-variety annotators. Its under-2% CER is therefore a source-reported dictionary-seeded result, not independent sentence-level adjudication or this project's gold accuracy.

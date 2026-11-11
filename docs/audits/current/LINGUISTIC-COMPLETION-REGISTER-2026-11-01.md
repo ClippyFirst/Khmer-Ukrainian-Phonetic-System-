@@ -504,3 +504,14 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | Linguistic accuracy of the proposed practical correspondences | PARTIAL | No independent adjudicated text gold set yet |
 | Independent text-only Khmer IPA/Ukrainian gold set | BLOCKED | Requires sourced IPA entries, dialect/profile scope, independent annotation/adjudication and held-out evaluation |
 | Audio corpus | DEFERRED | Not required for the current text-only scope |
+
+
+## Practical adapter verification refresh — 2026-11-11
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| IPA → Ukrainian Python/browser mapping contract | DONE_VERIFIED (implementation) | Canonical policy v2026-11-11.3; whole-string longest-match adapter; fail-closed unknown IPA; h/g/x, affricates, aspiration, yotation and /w/ target distinctions |
+| Expanded browser policy regression coverage | PARTIAL pending exact-head CI | `tests/web-engine.test.mjs` now exercises spaced IPA, h/g/x, affricates, untied consonant sequences, cʰ, yotation and unknown-segment withholding; exact-head Quality [43095329118](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329118) and browser [43095329245](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329245) are queued |
+| Documentation consistency | DONE_VERIFIED | README, system page, implementation, validation and practical transcription specification aligned; /w/ → в corrected in summary table; sole active profile documented |
+| Independent text-only Phnom Penh IPA/Ukrainian gold | BLOCKED | No independently sourced/adjudicated text labels available; acceptance requires a rights-cleared held-out text lexicon with dialect/profile scope, independent IPA annotation/adjudication and error/abstention report |
+| Audio validation | DEFERRED | Not required for this text-only task |

@@ -29,3 +29,16 @@ def test_command_backend_preserves_candidate_and_revision(monkeypatch):
     candidate = make_command_backend(["goruut"], engine_id="goruut", revision="PINNED")("ខ្មែរ")
     assert candidate["ipa"] == "kʰmae"
     assert candidate["provenance"]["revision"] == "PINNED"
+
+def test_provider_priority_orders_candidates_without_promoting_them():
+    calls = []
+    engine = HybridKhmerEngine({
+        "goruut": lambda _: calls.append("goruut") or "kʰmae",
+        "khmer-phonemizer": lambda _: calls.append("khmer-phonemizer") or "kʰmae",
+        "mekongphon": lambda _: calls.append("mekongphon") or "kʰmae",
+    })
+    result = engine.analyze("ខ្មែរ")
+    assert calls == ["mekongphon", "khmer-phonemizer", "goruut"]
+    assert [x["provider"] for x in result["external_candidates"]] == calls
+    assert [x["priority"] for x in result["external_candidates"]] == [10, 20, 90]
+    assert all(x["promotion"].startswith("WITHHELD") for x in result["external_candidates"])

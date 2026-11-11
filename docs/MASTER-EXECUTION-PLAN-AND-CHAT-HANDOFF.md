@@ -1679,3 +1679,9 @@ Create the independent text-only Khmer IPA/Ukrainian adjudication set. Do not pr
 - Expanded adapter checks cover /h, ɦ, ɡ, g, x; explicit affricates; plain consonant sequences; /cʰ/ → ть'; /j/ yotation; whitespace and unsupported IPA. No audio was used or required.
 - Exact-head quality run [43095329118](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329118) and browser smoke [43095329245](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329245) are queued with no jobs started at this refresh. Do not report these final runs as passed.
 - The independent text-only Phnom Penh IPA/Ukrainian gold set remains BLOCKED by missing independently sourced and adjudicated text labels. This blocks empirical accuracy claims, not deterministic adapter implementation. Audio annotation is DEFERRED by scope.
+
+
+## Provisional grapheme IPA fallback — continuation 2026-11-11
+
+- Added `docs/provisional-grapheme-ipa-fallback.md` defining the Lao-style `PROVISIONAL` grapheme → IPA → existing Ukrainian adapter contract, visible `?` uncertainty, Python/browser parity and benchmark separation.
+- This is a design/acceptance document only, not an implementation claim. Current Khmer parser/practical adapter still withholds unsupported constructions. Implementation is BLOCKED pending a source-backed, positional Khmer grapheme-to-IPA inventory; no context-free letter readings or vowel/tone guesses may be fabricated.

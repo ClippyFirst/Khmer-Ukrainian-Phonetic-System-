@@ -1624,7 +1624,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 - Base branch: `main`, starting commit `f2671ad31e37103c8ad356666575444ead1d466f`.
 - Working branch: `research/khmer-engine-benchmark-expansion-2026-11-11`.
-- Final implementation snapshot before this handoff-only annotation: `8d34e6178e8dbe57df93435efc4011623a6340de` (all implementation, benchmark and verification changes are included; this commit adds only this SHA reference).
+- Final implementation snapshot before the final documentation-only annotations: `021fbfe9b1dac957cc459cf3c9ee1519fce625e5` (all implementation, benchmark and verification changes are included; this commit adds only this SHA reference).
 - Changes are isolated from `main`; no existing branch or PR was merged or rewritten.
 
 ### Work completed

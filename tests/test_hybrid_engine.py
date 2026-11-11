@@ -25,7 +25,7 @@ def test_command_backend_preserves_candidate_and_revision(monkeypatch):
     import subprocess
     from types import SimpleNamespace
     from khmer_ua.hybrid import make_command_backend
-    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: SimpleNamespace(stdout="kʰmae\\n", stderr=""))
+    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: SimpleNamespace(stdout="kʰmae\n", stderr=""))
     candidate = make_command_backend(["goruut"], engine_id="goruut", revision="PINNED")("ខ្មែរ")
     assert candidate["ipa"] == "kʰmae"
     assert candidate["provenance"]["revision"] == "PINNED"

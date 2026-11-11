@@ -1643,3 +1643,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Khmer Acoustic Model dictionary remains blocked: full artifact absent and upstream entry-count/license declarations conflict.
 - HybridKhmerEngine runs RuleBasedKhmerEngine as final-output authority and records external candidates only; no voting/promotion. CLI adapter can host pinned Goruut, Khmer Phonemizer and Epitran wrappers; MekongPhon has a pinned lazy CPU adapter.
 - Acceptance remains PARTIAL until independent profile-matched Phnom Penh IPA gold, train/test disjointness, tone/length/coda adjudication and source-rights checks are complete. No default-branch output changed.
+
+
+### Exact-head engineering verification
+
+- PR #153 head 17e256332c66c4a562743efd20314a1c0e2bdded.
+- Quality checks [43077659052](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659052) SUCCESS: 192 Python tests + 70 subtests, gold-corpus structure validation, web checks and production build.
+- Browser smoke [43077659090](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659090) SUCCESS.
+- Initial red CI exposed stale alias-contract tests and a test fixture containing a literal backslash-n; both were corrected and the exact-head rerun passed.
+- Engineering integration is DONE_VERIFIED. Linguistic selection/production promotion remains PARTIAL pending independent gold and profile adjudication.

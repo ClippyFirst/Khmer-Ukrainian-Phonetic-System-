@@ -1617,3 +1617,38 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Also retained the existing Superpowers, Matt Pocock and Ponytail methodology references. Their use is constrained by project-specific IPA, source-rights, privacy and fail-closed requirements.
 - Documentation PR: #143. Exact-head CI evidence: 41876110596 (Quality SUCCESS), 41876110636 (browser smoke SUCCESS). The PR has been merged to main; post-merge workflow/deployment checks are still being observed where applicable.
 - This is an engineering-process improvement only. It does not resolve the external blockers: expert recruitment and approved IPA conventions, independent adjudicated gold, item-level redistribution rights, and controlled blind annotation intake. No people were contacted and no IPA labels or corpus data were added.
+
+## External Khmer G2P and benchmark expansion — 2026-11-11
+
+### Branch and base
+
+- Base branch: `main`, starting commit `f2671ad31e37103c8ad356666575444ead1d466f`.
+- Working branch: `research/khmer-engine-benchmark-expansion-2026-11-11`.
+- Changes are isolated from `main`; no existing branch or PR was merged or rewritten.
+
+### Work completed
+
+- Registered the BYU MATRIX / MekongPhon neural Khmer→IPA model, the separate upstream rule-based baseline, and the PhonSobon NCKL Khmer-script respeller/dataset in the external engine/source registries.
+- Added an optional, pinned CPU benchmark job and a standard-library report builder. The job checks out the MekongPhon corpus at `f80f6c1840c4818b51e05f2e00cded4701a5b662` and the model at `20e069d384b240da76320e1569958568c12a54bc`.
+- The benchmark artifact excludes the upstream source/reference strings; it records raw predictions, reference hashes, model/runtime provenance and aggregate source-attested metrics.
+- The PhonSobon model/dataset are explicitly classified as non-IPA auxiliary resources and are not copied into the repository or integrated.
+
+### Verification
+
+- Full repository CI test/build/browser run: [42996817294](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817294) — SUCCESS.
+- Existing Khmer Phonemizer diagnostic: same 100-row split, 100/100 outputs, 18 strict matches, 19 limited-normalized matches; independent gold 0, accuracy null.
+- MekongPhon neural diagnostic: [42996817456](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456) — SUCCESS; 100/100 outputs, 64 strict source-attested matches, 80 edits / 638 reference code points (12.539% CER); independent gold 0, accuracy null.
+- The published under-2% CER claim is not reproduced by this run. Its test split/checkpoint/normalization must be reconciled before comparing the numbers.
+- The current model run evaluates `pron_no_tones`; tone/phonation remains untested.
+
+### Remaining blockers
+
+- Independent, expert-adjudicated Standard Khmer IPA gold with source locators and rights-cleared items.
+- Reconcile the paper's published CER setup against the pinned 100-row `pron_no_tones` evaluation.
+- Confirm MekongPhon corpus licensing before any data redistribution; model Apache-2.0 does not clear corpus rights.
+- Confirm NCKL dataset permissions before any commercial use or redistribution.
+- Inspect/validate the rule-based MekongPhon baseline and its license before considering execution.
+
+### Current disposition
+
+The neural model is a verified optional comparator, not a production runtime dependency. The repository remains a partial prototype pending independent phonetic gold, target-variety expert review and licensing clearance.

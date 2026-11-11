@@ -41,6 +41,20 @@ const unknownIpa = mapIpa("kʰɥ", policy);
 if (unknownIpa.value !== null || unknownIpa.unsupported !== "ɥ") throw new Error("browser adapter must withhold unsupported IPA");
 if (!systemHtml.includes("контекстна українська йотація") || !systemHtml.includes("/w/ → в")) throw new Error("public system page lacks Ukrainian glide adaptation policy");
 for (const [ipa, expected] of [["t͡s","ц"],["d͡z","дз"],["t͡ʃ","ч"],["d͡ʒ","дж"]]) if (policy.segments[ipa]?.default !== expected) throw new Error("Ukrainian affricate target is missing: " + ipa);
+for (const [ipa, expected] of [
+  ["h ɦ ɡ g x", "г г ґ ґ х"],
+  ["t͡s d͡z t͡ʃ d͡ʒ", "ц дз ч дж"],
+  ["tɕ dʑ", "ч дж"],
+  ["cʰ", "ть'"],
+  ["ja je ji jo ju", "я є ї йо ю"],
+  ["a.ja", "ая"],
+  ["ts", "тс"],
+]) {
+  const mapped = mapIpa(ipa, policy);
+  if (mapped.value !== expected || mapped.unsupported !== null) {
+    throw new Error("Ukrainian practical adapter mismatch for " + ipa + ": " + JSON.stringify(mapped));
+  }
+}
 if (!systemHtml.includes("правопис 2026 §122")) throw new Error("Ukrainian 2026 normative caveat for /ɡ/ → ґ is missing");
 if (fixtures["ខ្មែរ"].ua !== "к\u0027мае") throw new Error("lexical /kʰmae/ fixture contradicts canonical /kʰ/ policy");
 if (!js.includes("fixture.ua") || !js.includes("mapping_check")) throw new Error("lexical practical-form handling missing");

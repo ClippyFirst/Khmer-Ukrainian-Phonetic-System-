@@ -23,7 +23,7 @@ def test_rule_fallback_is_repeatable_and_explicitly_proposed():
     assert first == second
     assert first["ipa"] == "cʰɑː"
     assert first["status"] == "PROPOSED"
-    assert "KHMER_REGISTER_SERIES_INHERENT_VOWEL" in first["rule_ids"]
+    assert "KHMER_REGISTER_SERIES_INHERENT_VOWEL" in first["rule_trace"]
 
 
 def test_unknown_mixed_material_is_not_guessed():

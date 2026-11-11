@@ -35,3 +35,11 @@ def test_unknown_mixed_material_is_not_guessed():
 def test_legacy_hybrid_name_is_rule_engine_not_ensemble():
     assert HybridKhmerEngine is RuleBasedKhmerEngine
     assert HybridKhmerEngine().analyze("ខ្មែរ")["engine"] == "khmer-deterministic-rules-v1"
+
+
+def test_legacy_factory_rejects_external_backend_injection():
+    import pytest
+    from khmer_ua import create_hybrid_engine
+
+    with pytest.raises(TypeError):
+        create_hybrid_engine({"external-model": lambda _: "kʰmae"})

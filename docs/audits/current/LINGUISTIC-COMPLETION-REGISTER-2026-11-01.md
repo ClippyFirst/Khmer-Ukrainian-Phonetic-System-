@@ -527,3 +527,14 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | Dedicated grapheme-position evidence registry | TODO | Register primary-source locator, profile, exact position, rule ID, scope and reviewer status for each provisional mapping |
 | Exact-head CI and Chromium verification | BLOCKED pending run | Runs 43099931373 and 43099931284 were queued; neither is verified as passed |
 | Full provisional vowel/subscript/coeng fallback | TODO | Only consonant onset hints are implemented; require independently sourced positional evidence before extending |
+
+
+## Verification result — provisional onset preview, 2026-11-11
+
+| Work item | Status | Evidence |
+|---|---|---|
+| Python fallback implementation and regression | DONE_VERIFIED (engineering behavior) | Exact code/test head dbdb8beafc3454e6bb0be848011f90fb0dea190b; Quality run 43101322383 PASS: 189 tests + 62 subtests |
+| Browser preview wiring and source-contract checks | DONE_VERIFIED (engineering behavior) | Quality run 43101322383 web checks PASS; production build PASS |
+| Browser visible-result smoke | DONE_VERIFIED | Chromium run 43101322537 PASS |
+| Full positional evidence registry and language-wide fallback | TODO / PARTIAL | Current implementation is onset-only and keeps canonical output fail-closed; exact source locators and position-specific inventory still required |
+| Functional Python/browser parity fixture | TODO | Current browser assertions are source-contract checks, not shared structured fixture parity |

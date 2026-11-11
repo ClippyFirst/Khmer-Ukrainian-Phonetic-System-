@@ -19,7 +19,7 @@ def test_known_negative_fixture_withholds_ipa():
 def test_rule_fallback_is_repeatable_and_explicitly_proposed():
     engine = RuleBasedKhmerEngine()
     first = engine.analyze("ឈ")
-    second = engine.analyze("ក")
+    second = engine.analyze("ឈ")
     assert first == second
     assert first["ipa"] == "cʰɑː"
     assert first["status"] == "PROPOSED"

@@ -13,6 +13,14 @@ def test_velar_nasal_is_preserved():
     assert map_sequence(['ŋ', 'a']) == 'нга'
 
 
+def test_ukrainian_w_and_glide_yotation():
+    assert map_segment('w') == 'в'
+    assert map_segment('w', mode='compatibility_ru') == 'у'
+    assert map_ipa_string('ja je ji jo ju') == ('я є ї йо ю', None)
+    assert map_ipa_string('jaː') == ('я', None)
+    assert map_ipa_string('a.ja') == ('ая', None)
+
+
 def test_glottal_stop_is_not_aspiration():
     assert map_sequence(['ʔ', 'a']) == 'а'
 

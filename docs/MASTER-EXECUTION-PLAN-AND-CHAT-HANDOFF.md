@@ -1629,7 +1629,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 ### Work completed
 
 - Registered the BYU MATRIX / MekongPhon neural Khmer→IPA model, the separate upstream rule-based baseline, and the PhonSobon NCKL Khmer-script respeller/dataset in the external engine/source registries.
-- Added an optional, pinned CPU benchmark job and a standard-library report builder. The job checks out the MekongPhon corpus at `f80f6c1840c4818b51e05f2e00cded4701a5b662` and the model at `20e069d384b240da76320e1569958568c12a54bc`.
+- Added a pinned CPU benchmark job and standard-library report builder. Both MekongPhon corpus jobs are now manual-dispatch only because the corpus repository snapshot has no declared root license; the one-time run is retained as historical diagnostic evidence. The job checks out the MekongPhon corpus at `f80f6c1840c4818b51e05f2e00cded4701a5b662` and the model at `20e069d384b240da76320e1569958568c12a54bc`.
 - The benchmark artifact excludes the upstream source/reference strings; it records raw predictions, reference hashes, model/runtime provenance and aggregate source-attested metrics.
 - The PhonSobon model/dataset are explicitly classified as non-IPA auxiliary resources and are not copied into the repository or integrated.
 

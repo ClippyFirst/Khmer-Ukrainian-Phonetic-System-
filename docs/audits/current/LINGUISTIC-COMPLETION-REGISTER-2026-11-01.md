@@ -503,3 +503,10 @@ The [Khmer-acoustic-model repository](https://github.com/chemvatho/Khmer-acousti
 The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`. Do not copy, benchmark, or redistribute it until the full file, entry count, provenance and authoritative data license are supplied.
 
 The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded checkpoint's training split has not been independently verified; this is an additional reason not to treat the run as an independent held-out accuracy estimate.
+
+
+## Hybrid candidate integration — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| KHM-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | Added HybridKhmerEngine wrapper, pinned MekongPhon lazy backend and generic CLI adapter; exports, tests and docs. Deterministic internal rules remain final-output authority; external outputs are retained only as candidates and never voted/promoted. | Exact-head CI must pass; independent Phnom Penh-profile IPA gold, verified training/test disjointness, tone/length/coda evaluation and source rights are required before any external candidate can be promoted. |

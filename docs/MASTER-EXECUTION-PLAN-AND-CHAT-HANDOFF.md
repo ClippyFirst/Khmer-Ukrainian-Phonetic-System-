@@ -1666,3 +1666,10 @@ The [Khmer-acoustic-model repository](https://github.com/chemvatho/Khmer-acousti
 - The paper/model's MAE and F1 results evaluate forced alignment, not grapheme-to-phoneme conversion.
 
 The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`. Do not copy, benchmark, or redistribute it until the full file, entry count, provenance and authoritative data license are supplied.
+
+### PR and branch reconciliation
+
+- No open PRs were present at final inspection.
+- Closed, unmerged PR #149 was inspected. Its fixture/handoff changes are already represented on current `main` (verified in `tests/test_ipa_gold_corpus.py`); nothing needed porting.
+- Older branches `ci/khmer-g2p-smoke-2026-10-24`, `feat/khmer-external-g2p-harness-2026-10-24`, `fix/khmer-benchmark-reproducibility-2026-10-24` and `research/external-ipa-renderers-2026-10-24` were compared with current `main`. Their harness/workflow/registry content is superseded by the current main versions; no duplicate implementation was reused.
+- Merged PRs #129, #131 and #133 were reviewed and their evidence-gating/provenance work was preserved.

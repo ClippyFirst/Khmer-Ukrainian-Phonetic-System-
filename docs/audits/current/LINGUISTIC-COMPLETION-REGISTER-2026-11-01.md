@@ -501,3 +501,8 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | KHM-PHONEMIZER-GORUUT-COMPARISON-001 | PARTIAL | Khmer Phonemizer 18/100 strict concordance; Goruut 6/100 strict concordance and 27 partial fragments on prior 100-row diagnostic. | Re-run same frozen, rights-cleared independent gold split and audit IPA profile, asset completeness and feature-specific errors. |
 | KHM-ACOUSTIC-DICTIONARY-001 | BLOCKED | Full dictionary artifact absent; upstream entry counts and data licenses conflict. | Obtain full file, provenance, reconciled count and authoritative data license. |
 | KHM-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | HybridKhmerEngine exports deterministic rules as final-output authority and exposes pinned MekongPhon / command-wrapped candidates with provenance. Regression tests added. | Exact-head CI and independent adjudicated profile-matched gold before external candidate promotion. |
+
+
+### Verification checkpoint — KHM-HYBRID-CANDIDATE-ENGINE-001
+
+Engineering implementation is DONE_VERIFIED on code-bearing head 17e256332c66c4a562743efd20314a1c0e2bdded: Quality checks [43077659052](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659052) SUCCESS (192 Python tests + 70 subtests, web checks, production build); browser smoke [43077659090](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659090) SUCCESS. Linguistic promotion remains PARTIAL; no independent profile-matched IPA gold exists.

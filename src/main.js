@@ -276,15 +276,17 @@ function renderUnknownUnit(unit, profile) {
     if (onsetMapping.value !== null) {
       return {
         source: unit,
-        ipa: "/" + onsetIpa + "/ [PROVISIONAL]",
-        ua: onsetMapping.value + "?",
-        status: "PROVISIONAL",
-        note: "Низька достовірність: показано лише зареєстровану IPA-підказку початкового приголосного. Голосну, підрядкові приголосні, фіналь і тон не виведено; ? позначає невстановлену частину.",
+        ipa: "⟦NOT_ESTABLISHED⟧",
+        ua: "⟦НЕВСТАНОВЛЕНО⟧",
+        status: "NOT_ESTABLISHED",
+        note: "Канонічну вимову не встановлено. Окрема низькодостовірна підказка містить лише IPA початкового приголосного; голосну, підрядкові приголосні, фіналь і тон не виведено.",
         analysis,
         profile,
         provisional_ipa: onsetIpa,
+        provisional_ukrainian: onsetMapping.value + "?",
         unresolved_graphemes: [...unit].slice(1),
-        fallback_trace: [{ source: unit, position: "onset", ipa: onsetIpa, rule_id: "KHMER-PREVIEW-ONSET-IPA-V1", certainty: "PROVISIONAL" }],
+        fallback_status: "PROVISIONAL",
+        fallback_trace: [{ source: unit, position: "onset", ipa: onsetIpa, ukrainian: onsetMapping.value + "?", rule_id: "KHMER-PREVIEW-ONSET-IPA-V1", certainty: "PROVISIONAL" }],
       };
     }
   }
@@ -433,7 +435,8 @@ if (typeof document !== "undefined") {
       heading.append(sourceLabel, statusLabel);
       const values = document.createElement("p");
       values.className = "unit-values";
-      values.textContent = "IPA: " + unit.ipa + " · Українська: " + unit.ua;
+      values.textContent = "IPA: " + unit.ipa + " · Українська: " + unit.ua
+        + (unit.provisional_ipa ? " · Попередня підказка: " + unit.provisional_ipa + " → " + unit.provisional_ukrainian + " [PROVISIONAL]" : "");
       const note = document.createElement("p");
       note.className = "unit-note";
       note.textContent = unit.note || "Окремого пояснення для цієї одиниці немає.";

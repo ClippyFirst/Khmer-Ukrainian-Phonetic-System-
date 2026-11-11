@@ -246,3 +246,17 @@ The benchmark rejects a prediction TSV with a header but no data rows. Without t
 ### Identifier input validation
 
 Gold IDs and prediction IDs, as well as prediction engine names, must contain at least one non-whitespace character. Whitespace-only values are rejected before scoring so they cannot create blank-looking keys or engine entries. The check does not rewrite non-empty identifiers; matching remains exact and provenance-preserving. Regression coverage exercises whitespace-only gold IDs, prediction IDs and engine names.
+
+## MekongPhon neural IPA model — 2026-11-11
+
+A separate optional CI job now checks out MekongPhon at commit `f80f6c1840c4818b51e05f2e00cded4701a5b662`, downloads the model at pinned revision `20e069d384b240da76320e1569958568c12a54bc`, and runs the upstream model-card inference recipe with CPU PyTorch 2.5.1, Transformers 4.46.3, batch size 8 and beam size 4.
+
+- [GitHub Actions run](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456) · [raw-output artifact](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456/artifacts/13843728855)
+- Corpus: `data/splits/khmer_eval.csv`, 100 rows, reference field `pron_no_tones` (source-reported IPA without tone); corpus SHA-256 `3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49`.
+- Execution: 100/100 outputs, 0 runtime errors; 64/100 strict source-attested matches; 80 edit operations over 638 reference code points, codepoint CER 12.539%.
+- Independent gold: 0. Accuracy: `null`. These figures are source-label concordance only, not phonological accuracy. The input/reference strings are not included in the neural-run artifact; row order, reference hashes, raw predictions and provenance are retained.
+- The same workflow's Khmer Phonemizer 0.0.3 run on the same 100-row source split returned 100/100 outputs, 18 strict string matches and 19 matches after its limited notation normalization; independent gold remains 0 and accuracy remains `null`.
+
+The neural model's 12.539% source-attested CER does **not** reproduce the MekongPhon paper's abstract-level claim of under 2% CER. These are not assumed to be directly comparable: the exact paper test split, model checkpoint, and scoring normalization must be reconciled before interpreting the gap. The present run uses the repository's 100-row `pron_no_tones` split and therefore does not evaluate tone or phonation recovery.
+
+This job is a reproducible external-model diagnostic, not a production dependency. It does not add MekongPhon data to the repository, promote its labels to independent gold, or feed model output directly to the Ukrainian adapter.

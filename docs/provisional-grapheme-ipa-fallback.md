@@ -42,3 +42,18 @@ Provisional values must not be promoted to canonical `ipa`, and must be excluded
 ## Current evidence boundary
 
 The existing engine's partial Khmer parser and the practical IPA adapter are not themselves a source-backed grapheme fallback inventory. Do not manufacture IPA hints from the Ukrainian practical table. Until positional Khmer rules are registered and sourced, unsupported constructions remain `UNKNOWN`.
+
+
+## Implementation checkpoint — 2026-11-11
+
+A minimal onset-only fallback is now implemented in the Python rule engine and browser engine.
+
+- Reuses the parser's registered base-consonant onset IPA and the existing IPA → Ukrainian adapter.
+- Keeps canonical ipa and ukrainian fields withheld when the full unit is unresolved.
+- Exposes provisional_ipa, provisional_ukrainian, fallback_status and fallback_trace in Python; browser units carry PROVISIONAL, an onset-only IPA display and a visible ?.
+- Does not infer vowel, coda, subscripts, coeng realization or tone.
+- Added Python regression for កា and browser source-contract assertions.
+
+Status: PARTIAL, not DONE_VERIFIED. The current hint is an onset-position consonant only, not a full grapheme inventory. The parser's current evidence IDs are reused; a dedicated rule registry with per-entry primary-source locators, explicit positional scope and reviewer status is still required. Browser tests currently assert the fallback contract in source; they do not yet execute a Python/JavaScript parity fixture against identical structured results.
+
+Implementation commits: 61e0246cf34e0319f72c9b04c5926b6e3b3ad1f5 (Python engine), 352c22a55f526877dd136a982b2aa5ac03ff3838 (Python regression), 862aa061726b2bae6296199e4b655334bb6f609a (browser), 660915e4ed1f44eab04258957eee39537883aadd (browser regression). Exact-head CI runs 43099931373 and 43099931284 were queued at the last check; neither is recorded as passed.

@@ -1633,3 +1633,13 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser smoke [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), and Pages deployment + asset smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) all SUCCESS.
 - Live service: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/. The Python rule engine and published browser runtime are deterministic and do not use model consensus.
 - Remaining linguistic acceptance: independent adjudicated Phnom Penh IPA gold and expanded contextual vowel/coda coverage; no blanket accuracy claim.
+
+
+## External G2P benchmark and hybrid integration — 2026-11-11
+
+- Benchmark branch research was ported to a branch based on current main, preserving the merged deterministic rule engine.
+- MekongPhon model diagnostic: 100/100 outputs, 64/100 strict source-attested matches, CER 12.539% against pron_no_tones; independent gold 0, accuracy null, training/evaluation split independence not established, tone/phonation not evaluated.
+- Khmer Phonemizer: 100/100 outputs and 18/100 strict source-attested matches; Goruut: prior 100-row probe yielded 97 outputs, 6 strict matches, 27 partial fragments and a missing weights9.bin.zlib asset. These are diagnostics, not accuracy.
+- Khmer Acoustic Model dictionary remains blocked: full artifact absent and upstream entry-count/license declarations conflict.
+- HybridKhmerEngine runs RuleBasedKhmerEngine as final-output authority and records external candidates only; no voting/promotion. CLI adapter can host pinned Goruut, Khmer Phonemizer and Epitran wrappers; MekongPhon has a pinned lazy CPU adapter.
+- Acceptance remains PARTIAL until independent profile-matched Phnom Penh IPA gold, train/test disjointness, tone/length/coda adjudication and source-rights checks are complete. No default-branch output changed.

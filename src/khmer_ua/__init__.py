@@ -5,7 +5,8 @@ DATA_VERSION = "2026-10-05-research-finalization"
 from .parser import analyze, normalize_khmer
 from .ipa import render_ipa_profile
 from .practical import map_segment, map_sequence, explain_segment
-from .rule_engine import RuleBasedKhmerEngine, HybridKhmerEngine, create_hybrid_engine
+from .rule_engine import RuleBasedKhmerEngine
+from .hybrid import HybridKhmerEngine, create_hybrid_engine, make_mekongphon_backend, make_command_backend
 
 __all__ = [
     "analyze",
@@ -14,7 +15,7 @@ __all__ = [
     "map_segment",
     "map_sequence",
     "explain_segment",
-    "RuleBasedKhmerEngine",
+    "RuleBasedKhmerEngine", "HybridKhmerEngine", "create_hybrid_engine", "make_mekongphon_backend", "make_command_backend",
     "HybridKhmerEngine",
     "create_hybrid_engine",
 ]

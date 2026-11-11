@@ -1655,3 +1655,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 
 Latest-head verification on PR #153 head 5f6587a2dc885ed89cb3d3a947b31cf44f54fdcc: Quality checks [43078302826](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302826) SUCCESS (192 Python tests + 70 subtests, web checks and production build); browser smoke [43078302840](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302840) SUCCESS.
+
+
+## Hybrid provider-priority verification — 2026-11-11
+
+- PR #153 branch `research/khmer-hybrid-benchmarks-reconciled-2026-11-11`, exact code/test head `894e0775db347ab7fd990c72b844c5ca3177ecfe`; branch comparison against current main `2fe36aa1eb64cc47fb60ab1b37561f40d57202a7`: 26 commits ahead, 0 behind. PR remains open and unmerged.
+- Deterministic diagnostic execution/display order: MekongPhon (10), Khmer Phonemizer (20), Epitran (30), Goruut (90); unknown providers default to 50. Lower values run/display first. This is not a measured accuracy ranking, confidence score, voting rule, or promotion permission.
+- Exact-head required Quality CI [43080496196](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496196) SUCCESS: 193 Python tests + 70 subtests, corpus validation, web checks and production build. Browser workflow [43080496133](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496133) SUCCESS: web runtime checks and 3/3 built-site Chromium tests.
+- Optional Khmer G2P smoke run [43080496123](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496123) was SKIPPED by design: its jobs run only for `workflow_dispatch`. The connected GitHub actions surface currently provides GET/read and rerun operations but no workflow-dispatch operation, so no claim of a fresh neural-model benchmark is made here.
+- Internal `RuleBasedKhmerEngine` remains the only final-output authority; external providers are diagnostic only. Independent Phnom Penh-profile adjudicated IPA gold remains 0; accuracy remains null. No phonological rule or gold label was added by the priority change.

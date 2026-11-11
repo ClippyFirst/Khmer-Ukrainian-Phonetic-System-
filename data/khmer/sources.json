@@ -260,5 +260,53 @@
     "status": "BLOCKED_SOURCE_INCOMPLETE_RIGHTS_CONFLICT",
     "license": "Unresolved: root README says CC BY-SA 4.0 for pronunciation dictionary; dictionary README says CC BY 4.0 for a G2P mapping; code LICENSE is MIT but does not resolve third-party data terms.",
     "limitations": "Do not import sample or claim full dictionary access. Request versioned full artifact and SHA-256, artifact-specific licenses, provenance, dialect/IPA convention, annotation/adjudication details, and release/DOI. Alignment boundary metrics are not phonetic accuracy."
+  },
+  {
+    "id": "byumatrixlab-khmer-ipa-model",
+    "type": "external_g2p_model",
+    "title": "BYU MATRIX Lab Khmer IPA model",
+    "year": 2026,
+    "url": "https://huggingface.co/byumatrixlab/khmer-ipa",
+    "scope": "33.6M-parameter BERT encoder-decoder with separate Khmer and IPA tokenizers; model card reports best evaluation loss 0.1736 at checkpoint 26000; the model card's example output is IPA-like. The LREC 2026 MekongPhon paper reports under 2% CER on its own held-out evaluation setup. The associated MekongPhon paper reports 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS from an 8,026-entry seed lexicon; 500 seed entries were reviewed by two proficient L2 speakers, not native annotators.",
+    "license": "Apache-2.0 as declared by the model card",
+    "status": "OPTIONAL_EXTERNAL_MODEL_CANDIDATE",
+    "limitations": "The model card license does not resolve rights in the training corpus; MekongPhon repository snapshot has no declared root LICENSE. Source-attested diagnostic results are not independent project gold; model evaluation uses pron_no_tones and does not establish tone/phonation recovery. Published under-2% CER is dictionary-seeded and not independent sentence transcription; reviewer qualifications are L2, not native target-variety adjudicators. The optional benchmark workflow is manual-dispatch only until the MekongPhon corpus license is clarified; the one-time run is retained as historical diagnostic evidence.",
+    "model_revision": "20e069d384b240da76320e1569958568c12a54bc",
+    "evaluation_corpus_revision": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
+    "project_run_id": 42997945391,
+    "automation_status": "MANUAL_WORKFLOW_DISPATCH_ONLY_PENDING_CORPUS_RIGHTS"
+  },
+  {
+    "id": "phonsobon-khmer-g2p-model",
+    "type": "external_pronunciation_respelling_model",
+    "title": "PhonSobon Khmer G2P (NCKL respelling)",
+    "year": 2026,
+    "url": "https://huggingface.co/phonsobon/khmer-g2p",
+    "scope": "7.46M-parameter character-level Transformer predicts NCKL Khmer-script respelling with hyphenated syllable boundaries; model card reports 83.37% validation word accuracy at epoch 150.",
+    "license": "MIT as declared by model card",
+    "status": "AUXILIARY_RESPelling_MODEL_NOT_IPA",
+    "limitations": "Output is Khmer-script respelling, not IPA; no test score is reported in the model card. The separate training dataset derives from the NCKL Khmer Dictionary 2022 and its dataset card asks users to check NCKL terms before commercial use."
+  },
+  {
+    "id": "phonsobon-khmer-g2p-dataset",
+    "type": "pronunciation_respelling_benchmark",
+    "title": "PhonSobon Khmer G2P dataset (derived from NCKL Khmer Dictionary 2022)",
+    "year": 2026,
+    "url": "https://huggingface.co/datasets/phonsobon/khmer-G2P",
+    "scope": "38,629 word-to-pronunciation pairs and 37,755 unique words; train 34,770, validation 1,939, test 1,920; word-level split keeps all readings of a word together. Labels are Khmer-script respellings with hyphenated syllable boundaries, not IPA.",
+    "status": "AUXILIARY_SYLLABIFICATION_BENCHMARK_NOT_IPA",
+    "limitations": "Standard NCKL/Phnom Penh prescribed word pronunciations; not regional/colloquial variants and not running-speech sandhi. Dataset card attributes content to NCKL and explicitly advises checking NCKL terms before commercial use; do not redistribute/use commercially without rights clarification."
+  },
+  {
+    "id": "chemvatho-khmer-pronunciation-dictionary",
+    "type": "external_ipa_lexicon_benchmark_candidate",
+    "title": "Khmer Pronunciation Dictionary / Khmer acoustic model",
+    "year": 2025,
+    "url": "https://github.com/chemvatho/Khmer-acoustic-model/tree/2714994b41ccf875c5b6f6182b48a72f13632dbf/dictionary",
+    "source_revision": "2714994b41ccf875c5b6f6182b48a72f13632dbf",
+    "scope": "Root README advertises a 29,204-entry IPA dictionary; dictionary/README.md instead states 33,091 entries. The inspected main-branch tree contains only dictionary/khmer_ipa_sample.dict (144 bytes), not the advertised full dictionary. Published MAE/F1 values are for forced alignment, not G2P.",
+    "license": "CONFLICTING_UPSTREAM_DECLARATIONS: root README says CC BY-SA 4.0; dictionary/README.md says CC BY 4.0. No authoritative data license resolved.",
+    "status": "BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT",
+    "limitations": "No full dictionary artifact or release asset found at inspected revision. Do not copy, benchmark or redistribute until full file, entry count, provenance and data license are clarified."
   }
 ]

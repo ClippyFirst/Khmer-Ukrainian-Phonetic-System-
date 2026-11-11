@@ -1675,3 +1675,9 @@ The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`
 - Merged PRs #129, #131 and #133 were reviewed and their evidence-gating/provenance work was preserved.
 
 The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded checkpoint's training split has not been independently verified; this is an additional reason not to treat the run as an independent held-out accuracy estimate.
+
+### Pull request opened
+
+- Draft PR #150: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/150
+- Head at PR creation: `e15eef5605c0ebf2184d70e799aa9e515ac6b55a`; base `main` at `f2671ad31e37103c8ad356666575444ead1d466f`.
+- The PR is intentionally draft: independent Khmer IPA gold and upstream corpus rights are unresolved. Do not merge as a claim of production accuracy.

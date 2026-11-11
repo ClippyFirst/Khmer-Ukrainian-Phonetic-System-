@@ -178,6 +178,50 @@
       "verified_in_repo": false,
       "enabled_by_default": false,
       "execution_status": "UPSTREAM_RESOURCE_CLAIM_LICENSE_REVIEW_REQUIRED"
+    },
+    {
+      "id": "mekongphon-khmer-ipa",
+      "name": "BYU MATRIX MekongPhon Khmer IPA model",
+      "url": "https://huggingface.co/byumatrixlab/khmer-ipa",
+      "kind": "neural Khmer-to-IPA G2P model",
+      "status": "candidate",
+      "output": "33.6M-parameter BERT encoder-decoder; model card's examples output IPA-like strings; pinned HF revision 20e069d384b240da76320e1569958568c12a54bc. Paper reports under 2% CER on its own held-out test setup. Added as optional benchmark target; project run pending; MekongPhon corpus-data rights remain unresolved.",
+      "license": "Model card declares Apache-2.0; training corpus license is not declared in the MekongPhon repository snapshot; do not redistribute corpus data or assume the model license clears source data.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
+      "id": "mekongphon-rule-based-baseline",
+      "name": "MekongPhon rule-based Khmer→IPA baseline",
+      "url": "https://github.com/byu-matrix-lab/MekongPhon/blob/f80f6c1840c4818b51e05f2e00cded4701a5b662/training/baselines/rb_khm_to_ipa.py",
+      "kind": "experimental rule-based G2P baseline",
+      "status": "candidate",
+      "output": "Separate experimental baseline with consonant/register and vowel assignment tables plus khmer-nltk tokenization; not the published neural model. Not executed in this pass; inspect conventions and exact dependency/license before use.",
+      "license": "MekongPhon snapshot has no declared root LICENSE; do not copy or redistribute code/data pending clarification.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
+      "id": "phonsobon-khmer-g2p",
+      "name": "PhonSobon Khmer G2P (NCKL respelling)",
+      "url": "https://huggingface.co/phonsobon/khmer-g2p",
+      "kind": "character-level Khmer pronunciation respeller and syllabifier (not IPA)",
+      "status": "candidate",
+      "output": "7.46M-parameter character Transformer maps Khmer words to NCKL Khmer-script respelling with hyphenated syllable boundaries. Model card reports 83.37% validation word accuracy at epoch 150; no test score reported there. Output is not IPA and must never enter the IPA→Ukrainian adapter.",
+      "license": "Model card declares MIT. Separate dataset phonsobon/khmer-G2P derives from the NCKL Khmer Dictionary 2022; dataset card says check NCKL terms before commercial use; dataset rights are unresolved.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
+      "id": "phonsobon-nckl-g2p-dataset",
+      "name": "PhonSobon NCKL Khmer G2P dataset",
+      "url": "https://huggingface.co/datasets/phonsobon/khmer-G2P",
+      "kind": "Khmer-script pronunciation and syllabification benchmark resource (not IPA)",
+      "status": "benchmark-resource",
+      "output": "38,629 word→Khmer-script respelling pairs, 37,755 unique words; train 34,770, validation 1,939, test 1,920 with all readings of a word kept in one split. Standard NCKL/Phnom Penh prescribed word pronunciations; no IPA, no sentence-level sandhi. Useful for orthography-to-respelling and syllable-boundary evaluation only.",
+      "license": "Dataset card attributes content to NCKL Khmer Dictionary 2022 and explicitly asks users to check NCKL terms before commercial use; do not redistribute or use commercially without rights clarification.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
     }
   ],
   "benchmark_protocol": {
@@ -195,7 +239,7 @@
     "external_engines_enabled_by_default": false,
     "notes": "Registry membership does not establish language support, IPA output semantics, reproducibility, accuracy, or license compatibility. Preserve raw output and record exact versions and model/data licenses."
   },
-  "last_reviewed": "2026-10-25",
+  "last_reviewed": "2026-11-11",
   "observed_experiments": [
     {
       "engine": "khmerphonemizer",
@@ -282,6 +326,27 @@
       "fact": "README lists Khmer Central among supported languages and claims IPA phone set.",
       "status": "UPSTREAM_CLAIM_ONLY_NOT_EXECUTED",
       "caveat": "Khmer Central may not match project's exact target profile; validate dialect and IPA conventions."
+    },
+    {
+      "engine": "BYU MATRIX MekongPhon Khmer IPA model",
+      "url": "https://huggingface.co/byumatrixlab/khmer-ipa",
+      "fact": "Model card declares Apache-2.0, 33.6M-parameter BERT encoder-decoder, separate Khmer/IPA tokenizers and a pinned usable API; paper is LREC 2026 and reports under 2% CER in its own held-out setup.",
+      "status": "OPTIONAL_BENCHMARK_ADDED_RUN_PENDING",
+      "caveat": "The MekongPhon data repository snapshot has no declared root license; the model card's Apache-2.0 tag does not resolve source corpus rights. Its evaluation references are source-reported and not this project's independent gold."
+    },
+    {
+      "engine": "MekongPhon rule-based Khmer baseline",
+      "url": "https://github.com/byu-matrix-lab/MekongPhon/blob/f80f6c1840c4818b51e05f2e00cded4701a5b662/training/baselines/rb_khm_to_ipa.py",
+      "fact": "Upstream contains an experimental rule-based baseline with consonant/vowel assignments and Khmer tokenization.",
+      "status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "caveat": "No root LICENSE is declared in the inspected snapshot; output convention and coverage have not been validated."
+    },
+    {
+      "engine": "PhonSobon Khmer G2P",
+      "url": "https://huggingface.co/phonsobon/khmer-g2p",
+      "fact": "Model card declares MIT and describes a 7.46M-parameter Transformer that predicts NCKL Khmer-script respelling with syllable separators; reports 83.37% validation word accuracy.",
+      "status": "AUXILIARY_RESPelling_MODEL_NOT_IPA",
+      "caveat": "Not IPA; dataset is derived from NCKL Khmer Dictionary 2022 and its card asks users to check NCKL terms before commercial use. Validation score is self-reported, not a project benchmark."
     }
   ],
   "scope_note": "Historical filename: this registry catalogs both external G2P/IPA comparison systems and display fonts. Fonts are rendering assets, not pronunciation engines.",

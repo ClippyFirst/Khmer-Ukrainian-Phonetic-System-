@@ -525,3 +525,10 @@ The upstream Khmer acoustic-model dictionary blocker was rechecked at commit `27
 | Task | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHM-GOOGLE-KM-LEXICON-001 | P2 | DEFERRED | The pinned 70,671-entry TTS lexicon's inspected TSV sample has Latin-only spelling keys and custom phonemic strings, not Khmer-script orthography and standard IPA; no Khmer Unicode keys were found in the inspected subset, but the full file was truncated during extraction. The OpenSLR42 audio has a separate male-only current archive vs female-speaker paper discrepancy. | Reconsider only if Latin-script foreign-name pronunciation becomes an explicit project scope and the full file, phone mapping, rights and archive metadata are audited. Do not use as Khmer-script G2P, IPA gold or runtime fallback. |
+
+
+## Final Khmer branch verification — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-FINAL-PR-HEAD-001 | DONE_VERIFIED (repository/CI snapshot) | PR #153 head `b610adf2192c018f6bbbb02b96cb303d1de5a9f8`, open draft, 33 ahead / 0 behind current main, no reviews/comments. Quality [43084273524](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273524) SUCCESS (193 tests + 70 subtests, corpus validation/build); Browser [43084273505](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273505) SUCCESS (3 Chromium tests). Optional G2P [43084273544](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273544) SKIPPED by workflow condition. | Not merged/published. Accuracy remains unmeasured (gold=0). Provider order is diagnostic only; no output promotion. |

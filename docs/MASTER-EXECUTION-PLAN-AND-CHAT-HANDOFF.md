@@ -1677,3 +1677,12 @@ Latest-head verification on PR #153 head 5f6587a2dc885ed89cb3d3a947b31cf44f54fdc
 ## Correction to Google Khmer lexicon classification — 2026-11-11
 
 Targeted extraction of the pinned `km/data/lexicon.tsv` shows the header `Spelling / Phonemic transcription / Optional disambiguating label`; the inspected sample contains Latin-only spellings (`aamir`, `aaron`, `abbas`, `abbott`, `abdullah`) and custom phoneme strings (`ʔ aa . m iə`) rather than Khmer-script input and standard IPA. The extractor found no Khmer Unicode keys in the inspected subset, but the full 2.8 MB file was truncated, so do not claim exhaustive absence. The 70,671 count is not evidence of 70,671 Khmer-script IPA entries. Reclassify as OUT_OF_SCOPE_FOR_KHMER_SCRIPT_G2P; reconsider only if Latin-script foreign-name support becomes an explicit requirement.
+
+
+## Final Khmer PR snapshot — 2026-11-11
+
+- Current code/source head at handoff `b610adf2192c018f6bbbb02b96cb303d1de5a9f8`; PR #153 remains OPEN/DRAFT, based on current main `2fe36aa1eb64cc47fb60ab1b37561f40d57202a7`, 33 commits ahead / 0 behind, no reviews or comments, not merged.
+- Exact-head required Quality [43084273524](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273524) SUCCESS: 193 Python tests + 70 subtests, corpus/data validation, web checks and production build. Browser [43084273505](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273505) SUCCESS: 3/3 built-site Chromium tests.
+- Optional Khmer G2P smoke [43084273544](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273544) SKIPPED: it requires workflow_dispatch; the connected GitHub actions surface does not expose a dispatch action.
+- Provider priorities: MekongPhon 10, Khmer Phonemizer 20, Epitran 30, Goruut 90; diagnostic execution/display order only. External providers are opt-in and are not auto-downloaded or auto-run. Internal rule engine remains final authority.
+- Google TTS lexicon is now DEFERRED for Khmer-script G2P after format inspection (Latin spelling keys/custom phonemes in inspected subset); Khmer acoustic-model full dictionary remains BLOCKED by missing full file and conflicting data-license/count declarations. Independent Phnom Penh-profile IPA gold remains 0; accuracy remains null.

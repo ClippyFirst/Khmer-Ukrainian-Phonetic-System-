@@ -274,7 +274,7 @@ The previous TODO wording suggesting that this repository can simply recover or 
 | ID | Priority | Status | Evidence / acceptance |
 |---|---|---|---|
 | KHM-MEKONGPHON-TRANSFORMER-001 | P1 | TODO | [`byumatrixlab/khmer-ipa`](https://huggingface.co/byumatrixlab/khmer-ipa) is a 33.6M-parameter BERT encoder–decoder trained from MekongPhon, with 128-token maximum input. Pin immutable revision/checksum, verify variety and IPA conventions, and compare on identical held-out lexical groups with series/register, vowel, length, coda, stress, /r/-loss and boundary diagnostics. Model output is not gold. |
-| KHM-ACOUSTIC-LEXICON-001 | P2 | BLOCKED | README reports 29,204 IPA entries, but `dictionary/khmer_ipa.dict` returned GitHub API 404; only the six-entry `dictionary/khmer_ipa_sample.dict` was retrievable. No full lexicon coverage/notation audit can be performed from the sample. Acceptance: publish or expose the full dictionary at a stable inspectable path; then audit notation and orthographic coverage. This is a lexical/forced-alignment resource, not a G2P engine; alignment F1 is not IPA-generation accuracy. |
+| KHM-ACOUSTIC-LEXICON-001 | P2 | BLOCKED | Rechecked upstream `chemvatho/Khmer-acoustic-model@2714994b41ccf875c5b6f6182b48a72f13632dbf` on 2026-11-11. GitHub `dictionary/` contains only `README.md` and the six-entry `khmer_ipa_sample.dict`; the claimed full `khmer_ipa.dict` is absent. The root README reports 29,204 entries and CC BY-SA 4.0 for the dictionary, while `dictionary/README.md` reports 33,091 entries and declares CC BY 4.0. Root LICENSE is MIT for code. The count and data-license declarations conflict, and the full lexicon is not inspectable. | Do not import or redistribute. Acceptance: full dictionary exposed at a stable revision; rights holder clarifies one authoritative dataset license and entry count; then inspect profile, IPA conventions, provenance and coverage. This is a lexical/forced-alignment resource, not a G2P engine; alignment F1 is not IPA-generation accuracy. |
 
 
 ## Main publication reconciliation — 2026-11-02
@@ -509,3 +509,12 @@ Engineering implementation is DONE_VERIFIED on code-bearing head 17e256332c66c4a
 
 
 Latest-head verification on PR #153 head 5f6587a2dc885ed89cb3d3a947b31cf44f54fdcc: Quality checks [43078302826](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302826) SUCCESS (192 Python tests + 70 subtests, web checks and production build); browser smoke [43078302840](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302840) SUCCESS.
+
+
+## Hybrid provider-priority verification — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-HYBRID-PROVIDER-PRIORITY-001 | DONE_VERIFIED (deterministic ordering only) | PR #153 exact head `894e0775db347ab7fd990c72b844c5ca3177ecfe`; test `test_hybrid_provider_priority_order_is_deterministic_and_diagnostic_only`; Quality [43080496196](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496196) SUCCESS (193 tests + 70 subtests); Browser [43080496133](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496133) SUCCESS (3/3 Chromium tests). | Priority controls execution/display order only. It does not rank accuracy, promote candidates, or alter final IPA. Independent gold and profile/convention validation remain required. |
+
+The upstream Khmer acoustic-model dictionary blocker was rechecked at commit `2714994b41ccf875c5b6f6182b48a72f13632dbf`: only a six-entry sample file is present; README entry counts and data-license declarations conflict (29,204 / CC BY-SA 4.0 vs 33,091 / CC BY 4.0). Keep `KHM-ACOUSTIC-LEXICON-001` BLOCKED and do not import the sample or infer permission from the repository's MIT code license.

@@ -80,3 +80,21 @@ These resources are relevant to the UI's display of the source writing system; t
 Two smoke runs completed successfully. The first and the reproducible rerun both used `khmerphonemizer==0.0.3` and produced **6/6** raw outputs with **0 runtime errors**. The rerun records a repository-relative corpus path. Its report explicitly recorded `independent_gold_count: 0` and `accuracy: null`; this verifies API execution only, not phonetic accuracy. [First run](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40091599475) · [Pinned reproducible rerun and artifact](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/40091745346).
 
 A manual inspection of raw output highlights follow-up questions rather than scored errors: for `ខ្ញុំ`, the engine returned `k ɲ o m` while the corpus source reports `/kʰɲom/`; for `ភ្នំពេញ`, the source-reported form includes stress and a syllable boundary (`/pʰnum ˈpɨɲ/`) that are not encoded in the engine's phone-token list. Since the corpus is not independently adjudicated and output conventions differ, these are **unresolved diagnostic differences**, not accuracy labels.
+
+## Additional Khmer G2P candidates — 2026-11-11
+
+### BYU MATRIX / MekongPhon neural IPA model
+
+- Model: [byumatrixlab/khmer-ipa](https://huggingface.co/byumatrixlab/khmer-ipa), a 33.6M-parameter BERT encoder–decoder with separate Khmer-input and IPA-output tokenizers.
+- Model revision pinned in the optional CI workflow: `20e069d384b240da76320e1569958568c12a54bc`.
+- The model card declares Apache-2.0. This does **not** settle the license of the MekongPhon training/evaluation corpus; the inspected corpus repository snapshot has no declared root license.
+- The upstream MekongPhon repository also contains an experimental rule-based baseline at [training/baselines/rb_khm_to_ipa.py](https://github.com/byu-matrix-lab/MekongPhon/blob/f80f6c1840c4818b51e05f2e00cded4701a5b662/training/baselines/rb_khm_to_ipa.py). It is a separate experimental implementation, not the neural model; its root license and phonetic conventions require clarification before reuse.
+
+### PhonSobon / NCKL pronunciation respeller
+
+- [PhonSobon Khmer G2P](https://huggingface.co/phonsobon/khmer-g2p) is a 7.46M-parameter character Transformer. Its output is a **Khmer-script pronunciation respelling with syllable separators**, not IPA. The model card reports 83.37% validation word accuracy at epoch 150; no test result is reported there.
+- The related [dataset](https://huggingface.co/datasets/phonsobon/khmer-G2P) contains 38,629 word-to-respelling pairs (37,755 unique words): 34,770 train, 1,939 validation and 1,920 test. All readings of a word are kept in one split.
+- The labels are NCKL/Phnom Penh prescribed word pronunciations, not running-speech IPA and not a source for tone/phonation validation.
+- The model card declares MIT, but the dataset card attributes its source to the NCKL Khmer Dictionary 2022 and asks users to check NCKL terms before commercial use. The dataset is therefore recorded as a research lead only; no data are copied into this repository and no production/commercial use is authorized by this audit.
+
+Neither the PhonSobon respeller nor the MekongPhon rule-based baseline is enabled in the runtime. The neural IPA model is an optional comparator only; it does not replace the project's phonological analysis or IPA adapter.

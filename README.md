@@ -244,3 +244,9 @@ These files separate source romanization from Ukrainian target proposals and pre
 ## Independent IPA gold corpus
 
 The project uses a provenance-backed, double-annotated IPA gold workflow. See [the corpus protocol](docs/ipa-gold-corpus.md) and [the language-specific phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md). The corpus is currently empty by design; no phonetic accuracy claim is available until expert adjudication is complete.
+
+## Deterministic rule engine
+
+The phonetic web path and Python API are deterministic and local: versioned lexical IPA fixtures plus conservative Khmer register/structure rules feed the explicit IPA → Ukrainian policy. No neural inference, external G2P process, network request, or model-voting step participates in phonetic output. Unsupported combinations are withheld. See [the deterministic engine contract](docs/DETERMINISTIC-RULE-ENGINE.md). This guarantees repeatability, not universal linguistic correctness; PROPOSED results remain proposals pending independent adjudication.
+
+Python entry point: `from khmer_ua import RuleBasedKhmerEngine`.

@@ -385,7 +385,7 @@ if (typeof document !== "undefined") {
     modeRomanization.classList.toggle("is-active", mode === "romanization");
     modeRomanization.setAttribute("aria-pressed", String(mode === "romanization"));
     outputMethodNote.textContent = mode === "phonetic"
-      ? "Фонетичний режим: IPA → українська практична адаптація."
+      ? "Фонетичний режим: детерміновані правила орфографія → IPA → українська адаптація; непідтверджені форми не вгадуються."
       : "Романізаційний режим: Khmer → BGN/PCGN-похідний латинський запис → окрема українська матриця. Український результат PARTIAL; фонетичний результат не використовується як fallback.";
   }
 

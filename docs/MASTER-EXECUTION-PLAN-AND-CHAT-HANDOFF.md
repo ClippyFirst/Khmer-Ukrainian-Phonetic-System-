@@ -1617,3 +1617,11 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Also retained the existing Superpowers, Matt Pocock and Ponytail methodology references. Their use is constrained by project-specific IPA, source-rights, privacy and fail-closed requirements.
 - Documentation PR: #143. Exact-head CI evidence: 41876110596 (Quality SUCCESS), 41876110636 (browser smoke SUCCESS). The PR has been merged to main; post-merge workflow/deployment checks are still being observed where applicable.
 - This is an engineering-process improvement only. It does not resolve the external blockers: expert recruitment and approved IPA conventions, independent adjudicated gold, item-level redistribution rights, and controlled blind annotation intake. No people were contacted and no IPA labels or corpus data were added.
+
+## Deterministic rule-engine replacement — 2026-11-11
+
+- Replaced the model-consensus design with RuleBasedKhmerEngine in src/khmer_ua/rule_engine.py; the legacy HybridKhmerEngine name is only a compatibility alias. There is no provider injection, model vote, network call or external runtime in the active engine.
+- Runtime path: NFC normalization → Khmer structure/register analysis → exact versioned lexical IPA fixtures or narrowly scoped inherent-vowel rule → longest-match IPA → Ukrainian policy. Unsupported structures are withheld.
+- Website copy now explicitly identifies the deterministic local rule path and links to docs/DETERMINISTIC-RULE-ENGINE.md.
+- PR [#152](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/152), branch release/deterministic-rule-engine-2026-11-11; initial CI exposed test-fixture assumptions and was corrected. Final exact-head CI is pending.
+- Linguistic status remains PARTIAL/PROPOSED: deterministic output does not certify phonetic correctness; expert-adjudicated profile-matched gold remains required. Publication follows exact-head CI and Pages deployment.

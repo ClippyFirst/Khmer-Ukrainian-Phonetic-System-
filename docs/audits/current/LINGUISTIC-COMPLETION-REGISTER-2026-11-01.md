@@ -479,3 +479,9 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-IPA-GOLD-RECRUITMENT-LEADS-001 | PARTIAL | The current UW profile verifies Nielson Hul's Khmer phonetics/voice-quality/sociophonetic research and public institutional email; University of Cologne 2026 profile verifies Vatho Chem's 2025 PhD in Phonetics focused on Central Khmer reduction and dialect fieldwork. Both are prospective reviewer leads only; Chem's relationship to his own acoustic-model resource must be disclosed and he must not be sole adjudicator of its data. | No candidate has been contacted, consented, recruited or approved. Close only after two independent qualified target-variety annotators, separate adjudicator, non-annotating curator, conflict checks, secure blind intake and written role/terms confirmation are documented. |
+
+## Deterministic rule engine — 2026-11-11
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-DETERMINISTIC-RULE-ENGINE-001 | PARTIAL | PR [#152](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/152) adds RuleBasedKhmerEngine, exact fixture IPA lookup, conservative register-series rule, fail-closed unsupported handling, and compatibility alias without provider voting. Browser method note and methodology page now identify local deterministic processing. | Exact-head CI and Pages deployment must pass. PROPOSED remains a proposal; independent adjudicated Phnom Penh IPA gold is still required for correctness/accuracy claims. |

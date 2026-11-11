@@ -72,3 +72,14 @@ def test_mekongphon_rule_adapter_loads_external_pinned_module(tmp_path):
     assert result["ipa"] == "kʰmae"
     assert result["provenance"]["source_commit"] == "f80f6c1840c4818b51e05f2e00cded4701a5b662"
     assert len(result["provenance"]["source_sha256"]) == 64
+
+
+def test_backends_receive_normalized_khmer_text():
+    import unicodedata
+    from khmer_ua.normalize import normalize_khmer
+
+    received = []
+    source = unicodedata.normalize("NFD", "ខ្មែរ")
+    engine = HybridKhmerEngine({"backend-a": lambda value: received.append(value) or "kʰmae"})
+    engine.analyze(source)
+    assert received == [normalize_khmer(source)]

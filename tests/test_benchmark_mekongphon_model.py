@@ -1,4 +1,10 @@
-from scripts.benchmark_mekongphon_model import build_report, codepoint_levenshtein
+import runpy
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+MODULE = runpy.run_path(str(ROOT / "scripts" / "benchmark_mekongphon_model.py"))
+build_report = MODULE["build_report"]
+codepoint_levenshtein = MODULE["codepoint_levenshtein"]
 
 
 def test_mekongphon_report_is_source_attested_not_accuracy():

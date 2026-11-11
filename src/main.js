@@ -5,6 +5,7 @@ import vowels from "../data/khmer/vowels.json" with { type: "json" };
 import practicalPolicy from "../data/ukrainian/practical-policy.json" with { type: "json" };
 import fixtures from "../data/tests/web-fixtures.json" with { type: "json" };
 import { khmerToLatin } from "@gmana/km-translit";
+import { mapIpa } from "./ukrainian-practical.js";
 
 const CONSONANTS = Object.fromEntries(consonants.map((item) => [item.char, item]));
 const SIGN_BY_CHAR = Object.fromEntries(signs.map((item) => [item.char, item]));
@@ -20,7 +21,6 @@ const SHIFTERS = new Set(["៉", "៊"]);
 const SHIFTER_ELIGIBILITY = Object.fromEntries(Object.entries(registers.shifter_eligibility).map(([key, values]) => [key === "muusikatoan" ? "៉" : "៊", new Set(values)]));
 const PUNCTUATION = /^\s|^\p{P}$/u;
 const PROFILES = new Set(["khmer-pph-careful-citation-v1"]);
-const SEGMENTS = Object.keys(practicalPolicy.segments).sort((a, b) => b.length - a.length);
 
 const normalize = (text) => text.normalize("NFC");
 const isKhmerConsonant = (char) => Object.hasOwn(CONSONANTS, char);
@@ -174,16 +174,7 @@ function parseSyllable(raw) {
   };
 }
 
-const JOTATED_VOWELS = {
-  a: "я", "aː": "я", ɑ: "я", "ɑː": "я",
-  e: "є", "eː": "є", ɛ: "є", "ɛː": "є",
-  i: "ї", "iː": "ї",
-  o: "йо", "oː": "йо", ɔ: "йо", "ɔː": "йо",
-  u: "ю", "uː": "ю",
-  ɨ: "йи", "ɨː": "йи",
-};
-
-function mapIpa(ipa) {
+function mapIpa(ipa, practicalPolicy) {
   let rest = ipa.replace(/[ˈˌ]/gu, "");
   let value = "";
   let syllableStart = true;
@@ -242,7 +233,7 @@ function renderFixture(fixture, profile) {
 
   const sourceIpa = fixture.ipa.replace(/^\//, "").replace(/\/$/, "");
   const ipa = renderIpaProfile(sourceIpa, profile);
-  const mapped = mapIpa(ipa);
+  const mapped = mapIpa(ipa, practicalPolicy);
   const agrees = mapped.value !== null && mapped.value === fixture.ua;
 
   if (!agrees) {
@@ -297,7 +288,7 @@ function renderUnknownUnit(unit, profile) {
   const derivedIpa = deriveDeterministicIpa(analysis);
   if (derivedIpa) {
     const profiledIpa = renderIpaProfile(derivedIpa, profile);
-    const mapped = mapIpa(profiledIpa);
+    const mapped = mapIpa(profiledIpa, practicalPolicy);
     if (mapped.value !== null) {
       return {
         source: unit,

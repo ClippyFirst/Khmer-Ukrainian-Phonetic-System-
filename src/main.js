@@ -268,6 +268,26 @@ function renderUnknownUnit(unit, profile) {
     }
   }
 
+  // Last-resort onset-only IPA: the source grapheme is never mapped
+  // directly to Ukrainian and no vowel/coda/tone is inferred.
+  if (analysis.onset_ipa && analysis.status !== "INVALID_OR_UNSUPPORTED" && !analysis.unknown?.length) {
+    const onsetIpa = renderIpaProfile(analysis.onset_ipa, profile);
+    const onsetMapping = mapIpa(onsetIpa, practicalPolicy);
+    if (onsetMapping.value !== null) {
+      return {
+        source: unit,
+        ipa: "/" + onsetIpa + "/ [PROVISIONAL]",
+        ua: onsetMapping.value + "?",
+        status: "PROVISIONAL",
+        note: "Низька достовірність: показано лише зареєстровану IPA-підказку початкового приголосного. Голосну, підрядкові приголосні, фіналь і тон не виведено; ? позначає невстановлену частину.",
+        analysis,
+        profile,
+        provisional_ipa: onsetIpa,
+        unresolved_graphemes: [...unit].slice(1),
+      };
+    }
+  }
+
   return {
     source: unit,
     ipa: "⟦NOT_ESTABLISHED⟧",
@@ -286,11 +306,15 @@ function combineStatus(items) {
   if (invalidCount > 0 || statuses.has("EVIDENCE_LIMITED")) return "EVIDENCE_LIMITED";
   if (statuses.has("NOT_ESTABLISHED")) return "NOT_ESTABLISHED";
   if (statuses.has("PROPOSED")) return "PROPOSED";
+  if (statuses.has("PROVISIONAL")) return "PROVISIONAL";
   return "ESTABLISHED_STRUCTURE";
 }
 
 function getStatusNotice(data) {
   if (!data) return "";
+  if (data.status === "PROVISIONAL") {
+    return "Показано лише низькодостовірні IPA-підказки відомих початкових приголосних. Знак ? позначає невстановлену частину; голосні, фіналі й тон не вгадуються.";
+  }
   if (data.status === "PROPOSED") {
     return "Результат має статус PROPOSED: IPA та українське читання є дослідницькими пропозиціями для цих записів, а не підтвердженою універсальною моделлю. Перевіряйте джерела й лексичний контекст перед використанням.";
   }
@@ -327,7 +351,7 @@ function convert(text, profile) {
   // with partial candidates in a way that resembles a complete transcription.
   // Per-unit diagnostics remain available for research and inspection.
   const aggregateUnresolved = linguistic.some((item) =>
-    !["PROPOSED", "ESTABLISHED_STRUCTURE"].includes(item.status)
+    !["PROPOSED", "PROVISIONAL", "ESTABLISHED_STRUCTURE"].includes(item.status)
     || /⟦/.test(item.ipa)
     || /⟦/.test(item.ua)
   );

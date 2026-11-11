@@ -11,7 +11,6 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
-import importlib.metadata
 import json
 import os
 import platform
@@ -23,6 +22,7 @@ from typing import Any
 
 MODEL_ID = "byumatrixlab/khmer-ipa"
 MODEL_REVISION = "20e069d384b240da76320e1569958568c12a54bc"
+CORPUS_SOURCE_COMMIT = "f80f6c1840c4818b51e05f2e00cded4701a5b662"
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CORPUS = ROOT / "mekongphon" / "data" / "splits" / "khmer_eval.csv"
 
@@ -198,6 +198,7 @@ def build_report(
         "engine_revision": model_revision,
         "engine_license": "Apache-2.0 as declared by the model card",
         "corpus": "MekongPhon data/splits/khmer_eval.csv",
+        "corpus_source_commit": CORPUS_SOURCE_COMMIT,
         "reference_field": "pron_no_tones (source-reported IPA without tone)",
         "corpus_sha256": corpus_sha256,
         "input_count": len(rows),

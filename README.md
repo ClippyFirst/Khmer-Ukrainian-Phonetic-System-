@@ -76,7 +76,7 @@ Examples of the proposed practical target layer:
 | /k/ | к | — |
 | /kʰ/ | к' | кх |
 | /c/ | ть | ть |
-| /cʰ/ | ч' | ч / тьх |
+| /cʰ/ | ть' | ч / тьх |
 | /ɲ/ | нь | нь |
 | /ŋ/ | нг | нг |
 | /r/ | р | — |
@@ -84,6 +84,7 @@ Examples of the proposed practical target layer:
 | /w/ | у | — |
 | /h/ | г | х |
 | /ʔ/ | ∅ | context-dependent |
+| /t͡s, d͡z, t͡ʃ, d͡ʒ/ | ц, дз, ч, дж | comparator-only where documented |
 
 These are **project decisions**, not claims of official Ukrainian usage. Aspiration is retained in the research/IPA layer and marked in practical Ukrainian output with an apostrophe (e.g. к', т', п').
 
@@ -139,6 +140,7 @@ The public API exposes:
 - `render_ipa_profile()`
 - `map_segment()`
 - `map_sequence()`
+- `map_ipa_string()` — whole-IPA longest-match adapter used by the deterministic engine
 - `explain_segment()`
 
 The current research parser intentionally returns an explicit NOT ESTABLISHED state instead of inventing IPA where the complete source-language analysis is not implemented.
@@ -195,9 +197,9 @@ When evidence is insufficient, the system records **EVIDENCE LIMITED**, **ANALYS
 
 ## Latest transcription-audit status — 2026-10-06
 
-The current implementation includes explicit handling for Khmer register shifters (៉ / ៊), the exceptional ប៉ construction, coeng-based clusters and adversarial regression fixtures. The canonical Ukrainian policy currently proposes /c/ → **ть**, /cʰ/ → **ч'**, /h/ → **г**, /ɡ/ → **ґ**, /x/ → **х**, /ʋ/ → **в** and /w/ → **у**. Aspiration is marked with an apostrophe; /ʔ/ does not trigger this marker. These remain project-specific decisions, not an official Ukrainian standard.
+The current implementation includes explicit handling for Khmer register shifters (៉ / ៊), the exceptional ប៉ construction, coeng-based clusters and adversarial regression fixtures. The canonical Ukrainian policy currently proposes /c/ → **ть**, /cʰ/ → **ть'** (palatal stop + aspiration, not an affricate), /h/ → **г**, /ɡ/ (ASCII alias /g/) → **ґ**, /x/ → **х**, /ʋ/ → **в** and /w/ → **у**. Explicit affricates map /t͡s/ → **ц**, /d͡z/ → **дз**, /t͡ʃ/ → **ч** and /d͡ʒ/ → **дж**; /tɕ/ and /dʑ/ use ч and дж as practical approximations. Aspiration is marked with an apostrophe; /ʔ/ does not trigger this marker. These remain project-specific decisions, not an official Ukrainian standard.
 
-The web explanation and browser adapter have been synchronized with that policy. The browser does not silently invent Phnom Penh /r/-loss phonetics or complete vowel IPA where the research engine has not established them.
+The whole-IPA longest-match adapter is now the single implementation used by the deterministic engine. It preserves IPA as the boundary, maps affricates before their component symbols, and withholds unsupported sequences. The web explanation and browser adapter have been synchronized with the policy. The browser does not silently invent Phnom Penh /r/-loss phonetics or complete vowel IPA where the research engine has not established them.
 
 Quality checks and static deployment are continuously checked by GitHub Actions; consult the latest run for the exact revision before relying on pipeline status. A green build does not constitute linguistic accuracy evidence. No empirical accuracy percentage is claimed.
 

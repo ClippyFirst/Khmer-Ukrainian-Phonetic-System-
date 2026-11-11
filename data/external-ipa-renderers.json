@@ -205,7 +205,7 @@
         "corpus_sha256": "3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49",
         "report_sha256": "afdf28b9fddb9afc706fe22edd8d3f116d1cf0369dcdb23dc4453b209f34ac03",
         "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456/artifacts/13843728855",
-        "artifact_zip_sha256": "39facd40e3b34fa4caa6b9b1c1ef8cde8c3b9c7b20d4c4f2b8e63c1e2b7a3a7e"
+        "artifact_zip_sha256": "39facdb8bdbbb9d8163583e7dfc65c4e6a1e7c9f130664d074782c971ba08a39"
       }
     },
     {
@@ -328,7 +328,7 @@
       "run_id": 42996817456,
       "run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456",
       "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456/artifacts/13843728855",
-      "artifact_zip_sha256": "39facd40e3b34fa4caa6b9b1c1ef8cde8c3b9c7b20d4c4f2b8e63c1e2b7a3a7e",
+      "artifact_zip_sha256": "39facdb8bdbbb9d8163583e7dfc65c4e6a1e7c9f130664d074782c971ba08a39",
       "report_sha256": "afdf28b9fddb9afc706fe22edd8d3f116d1cf0369dcdb23dc4453b209f34ac03",
       "corpus_path": "MekongPhon data/splits/khmer_eval.csv",
       "corpus_revision": "f80f6c1840c4818b51e05f2e00cded4701a5b662",

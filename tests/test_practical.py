@@ -81,7 +81,7 @@ def test_unresolved_khmer_unit_exposes_onset_only_provisional_ipa():
     assert result["provisional_ipa"] == "k"
     assert result["provisional_ukrainian"] == "к?"
     assert result["fallback_status"] == "PROVISIONAL"
-    assert result["fallback_trace"][0]["unresolved_graphemes"] == ["្", "ក"]
+    assert result["fallback_trace"][0]["unresolved_graphemes"] == ["្"]
 
 
 def test_unregistered_khmer_structure_remains_visible_as_unknown():

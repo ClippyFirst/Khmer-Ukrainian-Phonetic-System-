@@ -1,4 +1,5 @@
 from khmer_ua.hybrid import HybridKhmerEngine, normalize_ipa_transport
+from khmer_ua.rule_engine import RuleBasedKhmerEngine
 
 def test_external_candidate_is_preserved_but_not_promoted():
     result = HybridKhmerEngine({"mekongphon": lambda _: {"ipa": "kʰmae"}}).analyze("ខ្មែរ")

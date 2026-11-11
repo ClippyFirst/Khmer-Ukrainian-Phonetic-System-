@@ -150,5 +150,41 @@ def make_command_backend(command: list[str], *, engine_id: str) -> Provider:
     return run
 
 
+
+def make_mekongphon_rule_backend(source_path: str) -> Provider:
+    """Load the pinned upstream rule baseline without copying its source into this repo."""
+    import hashlib
+    import importlib.util
+    from pathlib import Path
+
+    path = Path(source_path).resolve()
+    if not path.is_file():
+        raise FileNotFoundError(path)
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    spec = importlib.util.spec_from_file_location("mekongphon_khmer_rule_baseline", path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot load MekongPhon rule baseline: {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    khmer2ipa = getattr(module, "khmer2ipa", None)
+    if not callable(khmer2ipa):
+        raise AttributeError("pinned MekongPhon rule baseline has no callable khmer2ipa")
+
+    def run(text: str) -> dict[str, Any]:
+        ipa = khmer2ipa(text, output="ipa")
+        return {
+            "ipa": ipa,
+            "status": "candidate" if isinstance(ipa, str) and ipa.strip() else "unsupported",
+            "provenance": {
+                "engine": "MekongPhon rule-based Khmer→IPA baseline",
+                "source_commit": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
+                "source_path": str(path),
+                "source_sha256": digest,
+                "output_mode": "ipa",
+            },
+        }
+
+    return run
+
 def create_hybrid_engine(providers: dict[str, Provider] | None = None) -> HybridKhmerEngine:
     return HybridKhmerEngine(providers)

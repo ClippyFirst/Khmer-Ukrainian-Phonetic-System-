@@ -249,7 +249,7 @@ Gold IDs and prediction IDs, as well as prediction engine names, must contain at
 
 ## MekongPhon neural IPA model — 2026-11-11
 
-A separate optional CI job now checks out MekongPhon at commit `f80f6c1840c4818b51e05f2e00cded4701a5b662`, downloads the model at pinned revision `20e069d384b240da76320e1569958568c12a54bc`, and runs the upstream model-card inference recipe with CPU PyTorch 2.5.1, Transformers 4.46.3, batch size 8 and beam size 4.
+A manual-dispatch-only optional workflow checks out MekongPhon at commit `f80f6c1840c4818b51e05f2e00cded4701a5b662`, downloads the model at pinned revision `20e069d384b240da76320e1569958568c12a54bc`, and runs the upstream model-card inference recipe with CPU PyTorch 2.5.1, Transformers 4.46.3, batch size 8 and beam size 4.
 
 - [GitHub Actions run](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391) · [raw-output artifact](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674)
 - Corpus: `data/splits/khmer_eval.csv`, 100 rows, reference field `pron_no_tones` (source-reported IPA without tone); corpus SHA-256 `3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49`.
@@ -273,3 +273,6 @@ The [Khmer-acoustic-model repository](https://github.com/chemvatho/Khmer-acousti
 - The paper/model's MAE and F1 results evaluate forced alignment, not grapheme-to-phoneme conversion.
 
 The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`. Do not copy, benchmark, or redistribute it until the full file, entry count, provenance and authoritative data license are supplied.
+
+
+The MekongPhon corpus repository snapshot has no declared root license. Both corpus-dependent jobs in this optional workflow are therefore manual-dispatch only; the 2026-11-11 run is retained as historical diagnostic evidence. Do not enable automatic reruns or redistribute the source corpus until rights are clarified.

@@ -1709,3 +1709,12 @@ Create the independent text-only Khmer IPA/Ukrainian adjudication set. Do not pr
 ## Fallback scope clarification — 2026-11-11
 
 The browser preview is separate from canonical output. The onset-only test fixture is ក្ក (known base plus unresolved coeng/subscript), not កា, which is handled by the existing inherent-vowel rule. Exact-head tests after this correction still need completion.
+
+
+## Verified implementation result — 2026-11-11
+
+- Code/test head dbdb8beafc3454e6bb0be848011f90fb0dea190b.
+- Quality workflow 43101322383 PASS: 189 Python tests, 62 subtests, web checks and production build.
+- Browser smoke 43101322537 PASS: deterministic web checks, production build and Chromium visible-result check.
+- Browser keeps canonical IPA/Ukrainian withholding intact and shows a separate onset-only preview in per-unit details.
+- Linguistic feature remains PARTIAL: positional primary-source registry and functional shared Python/browser parity fixtures remain TODO. Independent adjudicated gold remains BLOCKED; audio DEFERRED.

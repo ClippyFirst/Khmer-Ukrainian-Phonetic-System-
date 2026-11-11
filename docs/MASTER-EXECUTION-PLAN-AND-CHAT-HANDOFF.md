@@ -1695,3 +1695,12 @@ Create the independent text-only Khmer IPA/Ukrainian adjudication set. Do not pr
 - Python regression and browser source-contract regression were added.
 - Status: PARTIAL. Dedicated per-grapheme positional source registry, executed browser parity fixtures, exact-head CI and Chromium verification remain outstanding.
 - Exact head at this update: 660915e4ed1f44eab04258957eee39537883aadd. Quality and browser workflows 43099931373 / 43099931284 were queued, not passed.
+
+
+## Final continuation snapshot — 2026-11-11 23:00 +02:00
+
+- Current PR #156 head: ffeb3ee3a46898f1fdf6ab5ac455972bb59f327a. Draft, open, unmerged. Main baseline remains 2fe36aa1eb64cc47fb60ab1b37561f40d57202a7.
+- Implemented Python and browser onset-only PROVISIONAL fallback. It uses registered consonant onset IPA → existing IPA adapter → Ukrainian text plus ?. Canonical fields remain withheld.
+- Exact-head CI is NOT verified. Earlier quality/browser runs 43100166075 and 43100166123 were queued on head 30f2dc5ee6be90cd75205c742d73f3af41f1523b; the subsequent status-priority correction is at ffeb3ee3a46898f1fdf6ab5ac455972bb59f327a and no workflow run was returned for that exact head.
+- Local test execution was unavailable: public GitHub clone attempt failed because the execution environment could not resolve github.com. No tests are claimed passed on the new fallback.
+- Remaining: execute Python/Node/Chromium tests on the exact head; add functional shared Python/browser fixtures; register source-backed positional fallback evidence; expand only where vowel/subscript/coeng evidence is explicit. Keep the independent text-only adjudicated gold set BLOCKED and audio DEFERRED.

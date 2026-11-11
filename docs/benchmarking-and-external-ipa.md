@@ -260,3 +260,5 @@ A separate optional CI job now checks out MekongPhon at commit `f80f6c1840c4818b
 The neural model's 12.539% source-attested CER does **not** reproduce the MekongPhon paper's abstract-level claim of under 2% CER. These are not assumed to be directly comparable: the exact paper test split, model checkpoint, and scoring normalization must be reconciled before interpreting the gap. The present run uses the repository's 100-row `pron_no_tones` split and therefore does not evaluate tone or phonation recovery.
 
 This job is a reproducible external-model diagnostic, not a production dependency. It does not add MekongPhon data to the repository, promote its labels to independent gold, or feed model output directly to the Ukrainian adapter.
+
+MekongPhon provenance qualifier: the paper reports 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS from an 8,026-entry seed lexicon; a 500-entry sample was reviewed by two proficient L2 speakers, not native target-variety annotators. Its under-2% CER is therefore a source-reported dictionary-seeded result, not independent sentence-level adjudication or this project's gold accuracy.

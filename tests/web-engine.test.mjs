@@ -1,8 +1,10 @@
 import fs from "node:fs";
+import { mapIpa } from "../src/ukrainian-practical.js";
 
 const html = fs.readFileSync("index.html", "utf8");
 const systemHtml = fs.readFileSync("system.html", "utf8");
 const js = fs.readFileSync("src/main.js", "utf8");
+const adapterSource = fs.readFileSync("src/ukrainian-practical.js", "utf8");
 const policy = JSON.parse(fs.readFileSync("data/ukrainian/practical-policy.json", "utf8"));
 const fixtures = JSON.parse(fs.readFileSync("data/tests/web-fixtures.json", "utf8"));
 const adversarial = JSON.parse(fs.readFileSync("data/tests/adversarial-cases.json", "utf8"));
@@ -28,6 +30,32 @@ if (!fixtures["ភាសាខ្មែរ"] || fixtures["ភាសាខ្ម�
 }
 if (!Object.hasOwn(policy.segments, "ae")) throw new Error("Khmer /ae/ target mapping missing");
 if (policy.segments["kʰ"].default !== "к\u0027") throw new Error("canonical /kʰ/ target must be к apostrophe");
+if (policy.segments["h"].default !== "г" || policy.segments["ɡ"].default !== "ґ" || policy.segments["x"].default !== "х") throw new Error("Ukrainian h/g/x target distinctions are missing");
+if (policy.segments["w"].default !== "в" || policy.segments["w"].compatibility_ru !== "у") throw new Error("Ukrainian /w/ target must differ from Russian comparator");
+if (!adapterSource.includes("const JOTATED_VOWELS") || !adapterSource.includes("syllableStart")) throw new Error("contextual Ukrainian /j/ yotation is missing");
+for (const [ipa, expected] of [["ja je ji jo ju","я є ї йо ю"],["jaː","я"],["a.ja","ая"],["w","в"],["t͡s","ц"]]) {
+  const mapped = mapIpa(ipa, policy);
+  if (mapped.value !== expected || mapped.unsupported !== null) throw new Error("browser adapter mismatch for " + ipa + ": " + JSON.stringify(mapped));
+}
+const unknownIpa = mapIpa("kʰɥ", policy);
+if (unknownIpa.value !== null || unknownIpa.unsupported !== "ɥ") throw new Error("browser adapter must withhold unsupported IPA");
+if (!systemHtml.includes("контекстна українська йотація") || !systemHtml.includes("/w/ → в")) throw new Error("public system page lacks Ukrainian glide adaptation policy");
+for (const [ipa, expected] of [["t͡s","ц"],["d͡z","дз"],["t͡ʃ","ч"],["d͡ʒ","дж"]]) if (policy.segments[ipa]?.default !== expected) throw new Error("Ukrainian affricate target is missing: " + ipa);
+for (const [ipa, expected] of [
+  ["h ɦ ɡ g x", "г г ґ ґ х"],
+  ["t͡s d͡z t͡ʃ d͡ʒ", "ц дз ч дж"],
+  ["tɕ dʑ", "ч дж"],
+  ["cʰ", "ть'"],
+  ["ja je ji jo ju", "я є ї йо ю"],
+  ["a.ja", "ая"],
+  ["ts", "тс"],
+]) {
+  const mapped = mapIpa(ipa, policy);
+  if (mapped.value !== expected || mapped.unsupported !== null) {
+    throw new Error("Ukrainian practical adapter mismatch for " + ipa + ": " + JSON.stringify(mapped));
+  }
+}
+if (!systemHtml.includes("правопис 2026 §122")) throw new Error("Ukrainian 2026 normative caveat for /ɡ/ → ґ is missing");
 if (fixtures["ខ្មែរ"].ua !== "к\u0027мае") throw new Error("lexical /kʰmae/ fixture contradicts canonical /kʰ/ policy");
 if (!js.includes("fixture.ua") || !js.includes("mapping_check")) throw new Error("lexical practical-form handling missing");
 if (!js.includes("rendered.map") || !js.includes("renderUnknownUnit")) throw new Error("per-unit rendering is missing");
@@ -49,6 +77,11 @@ console.log("web-engine structural tests: PASS");
 const sourceGuard = fs.readFileSync("src/main.js", "utf8");
 if (/const\s+shifter\s*=\s*shifters\[0\]/u.test(sourceGuard)) throw new Error("register-shifter resolver uses an undefined shifters variable");
 if (!sourceGuard.includes("const shifter = structural[positions[0]]")) throw new Error("register-shifter resolver is not reading the structurally detected shifter");
+if (!sourceGuard.includes('fallback_status: "PROVISIONAL"')) throw new Error("provisional Khmer onset fallback is missing");
+if (!sourceGuard.includes('provisional_ipa: onsetIpa')) throw new Error("provisional Khmer IPA preview is missing");
+if (!sourceGuard.includes('provisional_ukrainian: onsetMapping.value + "?"')) throw new Error("provisional Khmer Ukrainian preview must retain an uncertainty marker");
+if (!sourceGuard.includes('unit.provisional_ipa ? " · Попередня підказка: "')) throw new Error("Khmer provisional preview is not shown separately from canonical output");
+if (!sourceGuard.includes("PROVISIONAL")) throw new Error("Khmer aggregate status must preserve provisional confidence");
 if (!sourceGuard.includes("Khmer combining structure cannot begin a standalone orthographic unit.")) throw new Error("malformed leading Khmer combining marks are not rejected");
 if (sourceGuard.includes("if (!raw || !isKhmerConsonant(raw[0])) return { status: \"NOT_ESTABLISHED\", raw };")) throw new Error("malformed-leading-unit guard is too permissive");
 console.log("adversarial source guards: PASS");
@@ -58,8 +91,8 @@ if (!sourceGuard.includes("return next === undefined || isSeparator(next)")) thr
 if (!sourceGuard.includes("units.push(fixtureKey)")) throw new Error("fixture span is not preserved as a unit");
 console.log("lexical-span tokenization guards: PASS");
 
-if (!sourceGuard.includes('if (/\\s/u.test(rest[0]))')) throw new Error("IPA mapper drops word boundaries");
-if (!sourceGuard.includes('value += rest[0]')) throw new Error("IPA mapper does not preserve whitespace");
+if (!adapterSource.includes('if (/\\s/u.test(rest[0]))')) throw new Error("IPA mapper drops word boundaries");
+if (!adapterSource.includes('value += rest[0]')) throw new Error("IPA mapper does not preserve whitespace");
 if (fixtures["ភាសាខ្មែរ"].ua !== "п\u0027ієса к\u0027мае") throw new Error("phrase fixture must use canonical aspirated policy");
 console.log("IPA boundary and phrase guards: PASS");
 

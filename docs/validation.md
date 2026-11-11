@@ -24,3 +24,18 @@ The source-IPA reconciliation is merged at `35ce7142bf71f7e4cdb1acbb44d94d45ef71
 ## Whole-message source-integrity regression — 2026-11-01
 
 PR [#97](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/97) adds a canonical adversarial fixture containing Khmer, Latin, ASCII and Khmer numerals, punctuation, tab, CRLF, U+200B and an unsupported symbol. The parser segmentation test requires exact reconstruction of the complete source and local unsupported status for the unknown symbol. Exact-head Quality checks [41289845696](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41289845696) passed Python tests, web checks and production build. The fixture has no IPA label and is not phonological gold.
+
+
+## Ukrainian practical IPA adapter — 2026-11-11
+
+The Python and browser adapters now share the canonical data/ukrainian/practical-policy.json correspondences. The whole-string adapter uses longest-match tokenization, preserves IPA word spaces, strips syllable dots only from practical spelling, applies contextual Ukrainian yotation to syllable-initial /j/, and fails closed when any IPA segment is unsupported.
+
+Regression coverage includes:
+- /h, ɦ/ → г; /ɡ/ (ASCII /g/) → ґ as a project-specific contrast-preserving choice; /x/ → х;
+- /w, ʋ/ → в, keeping Russian /w/ → у separate;
+- explicit /t͡s, d͡z, t͡ʃ, d͡ʒ/ → ц, дз, ч, дж and alveolo-palatal approximations;
+- /cʰ/ → ть' (palatal stop plus aspiration, not an affricate);
+- /ja je ji jo ju/ → я є ї йо ю;
+- /t s/ remains т с; unsupported IPA withholds the complete result.
+
+PR #156 Quality CI run [43095083754](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095083754) completed the Python tests, web checks and production build successfully; browser smoke run [43095083768](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095083768) was queued at the time of this update. These checks establish implementation consistency only. The independent adjudicated Khmer IPA/Ukrainian gold corpus remains empty; no empirical accuracy percentage is available.

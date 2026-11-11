@@ -5,6 +5,7 @@ import vowels from "../data/khmer/vowels.json" with { type: "json" };
 import practicalPolicy from "../data/ukrainian/practical-policy.json" with { type: "json" };
 import fixtures from "../data/tests/web-fixtures.json" with { type: "json" };
 import { khmerToLatin } from "@gmana/km-translit";
+import { mapIpa } from "./ukrainian-practical.js";
 
 const CONSONANTS = Object.fromEntries(consonants.map((item) => [item.char, item]));
 const SIGN_BY_CHAR = Object.fromEntries(signs.map((item) => [item.char, item]));
@@ -20,7 +21,6 @@ const SHIFTERS = new Set(["៉", "៊"]);
 const SHIFTER_ELIGIBILITY = Object.fromEntries(Object.entries(registers.shifter_eligibility).map(([key, values]) => [key === "muusikatoan" ? "៉" : "៊", new Set(values)]));
 const PUNCTUATION = /^\s|^\p{P}$/u;
 const PROFILES = new Set(["khmer-pph-careful-citation-v1"]);
-const SEGMENTS = Object.keys(practicalPolicy.segments).sort((a, b) => b.length - a.length);
 
 const normalize = (text) => text.normalize("NFC");
 const isKhmerConsonant = (char) => Object.hasOwn(CONSONANTS, char);
@@ -174,23 +174,6 @@ function parseSyllable(raw) {
   };
 }
 
-function mapIpa(ipa) {
-  let rest = ipa.replace(/[ˈˌ.]/gu, "");
-  let value = "";
-  while (rest) {
-    if (/\s/u.test(rest[0])) {
-      value += rest[0];
-      rest = rest.slice(1);
-      continue;
-    }
-    const segment = SEGMENTS.find((candidate) => rest.startsWith(candidate));
-    if (!segment) return { value: null, unsupported: rest };
-    value += practicalPolicy.segments[segment].default;
-    rest = rest.slice(segment.length);
-  }
-  return { value, unsupported: null };
-}
-
 function renderIpaProfile(ipa, profile) {
   if (!PROFILES.has(profile)) throw new Error("Unsupported pronunciation profile: " + profile);
   // The selected profile is contemporary Phnom Penh careful citation speech.
@@ -215,7 +198,7 @@ function renderFixture(fixture, profile) {
 
   const sourceIpa = fixture.ipa.replace(/^\//, "").replace(/\/$/, "");
   const ipa = renderIpaProfile(sourceIpa, profile);
-  const mapped = mapIpa(ipa);
+  const mapped = mapIpa(ipa, practicalPolicy);
   const agrees = mapped.value !== null && mapped.value === fixture.ua;
 
   if (!agrees) {
@@ -270,7 +253,7 @@ function renderUnknownUnit(unit, profile) {
   const derivedIpa = deriveDeterministicIpa(analysis);
   if (derivedIpa) {
     const profiledIpa = renderIpaProfile(derivedIpa, profile);
-    const mapped = mapIpa(profiledIpa);
+    const mapped = mapIpa(profiledIpa, practicalPolicy);
     if (mapped.value !== null) {
       return {
         source: unit,
@@ -281,6 +264,29 @@ function renderUnknownUnit(unit, profile) {
         analysis,
         profile,
         mapping_check: { policy_render: mapped.value, lexical_render: null, agrees: true },
+      };
+    }
+  }
+
+  // Last-resort onset-only IPA: the source grapheme is never mapped
+  // directly to Ukrainian and no vowel/coda/tone is inferred.
+  if (analysis.onset_ipa && analysis.status !== "INVALID_OR_UNSUPPORTED" && !analysis.unknown?.length) {
+    const onsetIpa = renderIpaProfile(analysis.onset_ipa, profile);
+    const onsetMapping = mapIpa(onsetIpa, practicalPolicy);
+    if (onsetMapping.value !== null) {
+      return {
+        source: unit,
+        ipa: "⟦NOT_ESTABLISHED⟧",
+        ua: "⟦НЕВСТАНОВЛЕНО⟧",
+        status: "NOT_ESTABLISHED",
+        note: "Канонічну вимову не встановлено. Окрема низькодостовірна підказка містить лише IPA початкового приголосного; голосну, підрядкові приголосні, фіналь і тон не виведено.",
+        analysis,
+        profile,
+        provisional_ipa: onsetIpa,
+        provisional_ukrainian: onsetMapping.value + "?",
+        unresolved_graphemes: [...unit].slice(1),
+        fallback_status: "PROVISIONAL",
+        fallback_trace: [{ source: unit, position: "onset", ipa: onsetIpa, ukrainian: onsetMapping.value + "?", rule_id: "KHMER-PREVIEW-ONSET-IPA-V1", certainty: "PROVISIONAL" }],
       };
     }
   }
@@ -302,12 +308,16 @@ function combineStatus(items) {
   if (invalidCount > 0 && invalidCount === items.length) return "INVALID_OR_UNSUPPORTED";
   if (invalidCount > 0 || statuses.has("EVIDENCE_LIMITED")) return "EVIDENCE_LIMITED";
   if (statuses.has("NOT_ESTABLISHED")) return "NOT_ESTABLISHED";
+  if (statuses.has("PROVISIONAL")) return "PROVISIONAL";
   if (statuses.has("PROPOSED")) return "PROPOSED";
   return "ESTABLISHED_STRUCTURE";
 }
 
 function getStatusNotice(data) {
   if (!data) return "";
+  if (data.status === "PROVISIONAL") {
+    return "Показано лише низькодостовірні IPA-підказки відомих початкових приголосних. Знак ? позначає невстановлену частину; голосні, фіналі й тон не вгадуються.";
+  }
   if (data.status === "PROPOSED") {
     return "Результат має статус PROPOSED: IPA та українське читання є дослідницькими пропозиціями для цих записів, а не підтвердженою універсальною моделлю. Перевіряйте джерела й лексичний контекст перед використанням.";
   }
@@ -344,7 +354,7 @@ function convert(text, profile) {
   // with partial candidates in a way that resembles a complete transcription.
   // Per-unit diagnostics remain available for research and inspection.
   const aggregateUnresolved = linguistic.some((item) =>
-    !["PROPOSED", "ESTABLISHED_STRUCTURE"].includes(item.status)
+    !["PROPOSED", "PROVISIONAL", "ESTABLISHED_STRUCTURE"].includes(item.status)
     || /⟦/.test(item.ipa)
     || /⟦/.test(item.ua)
   );
@@ -425,7 +435,8 @@ if (typeof document !== "undefined") {
       heading.append(sourceLabel, statusLabel);
       const values = document.createElement("p");
       values.className = "unit-values";
-      values.textContent = "IPA: " + unit.ipa + " · Українська: " + unit.ua;
+      values.textContent = "IPA: " + unit.ipa + " · Українська: " + unit.ua
+        + (unit.provisional_ipa ? " · Попередня підказка: " + unit.provisional_ipa + " → " + unit.provisional_ukrainian + " [PROVISIONAL]" : "");
       const note = document.createElement("p");
       note.className = "unit-note";
       note.textContent = unit.note || "Окремого пояснення для цієї одиниці немає.";

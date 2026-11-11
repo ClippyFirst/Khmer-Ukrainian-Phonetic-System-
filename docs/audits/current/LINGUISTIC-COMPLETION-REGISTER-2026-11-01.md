@@ -491,3 +491,50 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `7585b49fdaac5480940d2511f48961f7690bf6b5`; exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), Pages + smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) SUCCESS. | Deterministic implementation and publication verified. Independent expert-adjudicated Phnom Penh IPA gold remains necessary for broader correctness/accuracy claims. |
+
+
+## 2026-11-11 — Ukrainian practical adapter continuation
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Whole-IPA longest-match Python adapter integrated after Khmer IPA | DONE_VERIFIED | \`src/khmer_ua/practical.py\`, deterministic engine; quality CI 43094688835 |
+| Shared browser adapter with actual yotation, /w/ and affricate tests | DONE_VERIFIED | \`src/ukrainian-practical.js\`, \`src/main.js\`, \`tests/web-engine.test.mjs\`; browser CI 43094688837 |
+| Ukrainian target distinctions /h, ɦ/ → г, /ɡ/ → ґ, /x/ → х | DONE_VERIFIED | Policy v2026-11-11.3; note /ɡ/ → ґ is a project choice, while the 2026 standard generally uses г for foreign [g] |
+| /w/ → в, syllable-initial /j/ yotation, affricates and /cʰ/ → ть' | DONE_VERIFIED | Machine-readable policy and regression tests |
+| Linguistic accuracy of the proposed practical correspondences | PARTIAL | No independent adjudicated text gold set yet |
+| Independent text-only Khmer IPA/Ukrainian gold set | BLOCKED | Requires sourced IPA entries, dialect/profile scope, independent annotation/adjudication and held-out evaluation |
+| Audio corpus | DEFERRED | Not required for the current text-only scope |
+
+
+## Practical adapter verification refresh — 2026-11-11
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| IPA → Ukrainian Python/browser mapping contract | DONE_VERIFIED (implementation) | Canonical policy v2026-11-11.3; whole-string longest-match adapter; fail-closed unknown IPA; h/g/x, affricates, aspiration, yotation and /w/ target distinctions |
+| Expanded browser policy regression coverage | PARTIAL pending exact-head CI | `tests/web-engine.test.mjs` now exercises spaced IPA, h/g/x, affricates, untied consonant sequences, cʰ, yotation and unknown-segment withholding; exact-head Quality [43095329118](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329118) and browser [43095329245](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329245) are queued |
+| Documentation consistency | DONE_VERIFIED | README, system page, implementation, validation and practical transcription specification aligned; /w/ → в corrected in summary table; sole active profile documented |
+| Independent text-only Phnom Penh IPA/Ukrainian gold | BLOCKED | No independently sourced/adjudicated text labels available; acceptance requires a rights-cleared held-out text lexicon with dialect/profile scope, independent IPA annotation/adjudication and error/abstention report |
+| Audio validation | DEFERRED | Not required for this text-only task |
+
+
+## Provisional onset IPA fallback — 2026-11-11
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Python onset-only preview for unresolved Khmer units | PARTIAL | Separate provisional_ipa/provisional_ukrainian/fallback_status/fallback_trace; canonical ipa/ukrainian unchanged; regression for កា. Commit 352c22a55f526877dd136a982b2aa5ac03ff3838 |
+| Browser onset-only preview | PARTIAL | Same onset IPA → existing adapter → ? behavior; per-unit PROVISIONAL status. Commit 862aa061726b2bae6296199e4b655334bb6f609a |
+| Browser regression | PARTIAL | Source-contract assertions added; not yet an executable cross-runtime parity fixture. Commit 660915e4ed1f44eab04258957eee39537883aadd |
+| Dedicated grapheme-position evidence registry | TODO | Register primary-source locator, profile, exact position, rule ID, scope and reviewer status for each provisional mapping |
+| Exact-head CI and Chromium verification | BLOCKED pending run | Runs 43099931373 and 43099931284 were queued; neither is verified as passed |
+| Full provisional vowel/subscript/coeng fallback | TODO | Only consonant onset hints are implemented; require independently sourced positional evidence before extending |
+
+
+## Verification result — provisional onset preview, 2026-11-11
+
+| Work item | Status | Evidence |
+|---|---|---|
+| Python fallback implementation and regression | DONE_VERIFIED (engineering behavior) | Exact code/test head dbdb8beafc3454e6bb0be848011f90fb0dea190b; Quality run 43101322383 PASS: 189 tests + 62 subtests |
+| Browser preview wiring and source-contract checks | DONE_VERIFIED (engineering behavior) | Quality run 43101322383 web checks PASS; production build PASS |
+| Browser visible-result smoke | DONE_VERIFIED | Chromium run 43101322537 PASS |
+| Full positional evidence registry and language-wide fallback | TODO / PARTIAL | Current implementation is onset-only and keeps canonical output fail-closed; exact source locators and position-specific inventory still required |
+| Functional Python/browser parity fixture | TODO | Current browser assertions are source-contract checks, not shared structured fixture parity |

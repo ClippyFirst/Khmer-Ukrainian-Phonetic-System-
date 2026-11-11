@@ -1,9 +1,8 @@
 """Deterministic, rule-based Khmer → IPA → Ukrainian research engine.
 
 No neural inference, remote service, external G2P process, voting, or runtime
-model selection is performed. The engine uses the repository's attested
-lexical fixtures and conservative orthographic rules. Unsupported patterns
-are withheld instead of guessed.
+model selection is performed. Unsupported structures remain visible through
+a separate low-confidence grapheme preview; canonical IPA is never overwritten.
 """
 from __future__ import annotations
 
@@ -13,37 +12,69 @@ from typing import Any
 
 from .normalize import normalize_khmer
 from .parser import analyze as analyze_structure
+from .practical import map_ipa_string
 
 ROOT = Path(__file__).resolve().parents[2]
 _FIXTURE_PATH = ROOT / "data" / "tests" / "web-fixtures.json"
 with _FIXTURE_PATH.open(encoding="utf-8") as _handle:
     _LEXICON: dict[str, dict[str, Any]] = json.load(_handle)
 
-with (ROOT / "data" / "ukrainian" / "practical-policy.json").open(encoding="utf-8") as _handle:
-    _POLICY = json.load(_handle)
-_SEGMENTS = _POLICY["segments"]
-_SEGMENT_KEYS = tuple(sorted(
-    (key for key, value in _SEGMENTS.items() if value.get("default") is not None),
-    key=len,
-    reverse=True,
-))
-
 
 def _map_ipa(ipa: str) -> tuple[str | None, str | None]:
-    """Apply the canonical longest-match IPA → Ukrainian segment policy."""
-    rest = ipa.replace("ˈ", "").replace("ˌ", "").replace(".", "")
-    output: list[str] = []
-    while rest:
-        if rest[0].isspace():
-            output.append(rest[0])
-            rest = rest[1:]
+    """Backward-compatible wrapper around the sole practical IPA adapter."""
+    return map_ipa_string(ipa)
+
+
+def _provisional_preview(structure: Any) -> dict[str, Any] | None:
+    """Expose only registered onset IPA; never infer a vowel from an incomplete unit."""
+    syllables = structure.phonological_representation.get("syllables", [])
+    if not syllables:
+        return None
+    previews = []
+    for unit in syllables:
+        base = unit.get("base_consonant")
+        onset = unit.get("phonology", {}).get("onset_ipa")
+        if not base or not onset:
+            previews.append({
+                "source": unit.get("raw_text", ""),
+                "ipa": None,
+                "ukrainian": "?",
+                "status": "UNKNOWN",
+                "position": None,
+                "rule_id": None,
+                "unresolved_graphemes": list(unit.get("raw_text", "")),
+            })
             continue
-        segment = next((key for key in _SEGMENT_KEYS if rest.startswith(key)), None)
-        if segment is None:
-            return None, rest
-        output.append(_SEGMENTS[segment]["default"])
-        rest = rest[len(segment):]
-    return "".join(output), None
+        # A bare consonant with established register has an existing normal
+        # inherent-vowel rule. This preview is only for units rejected by that
+        # normal path because of subscripts, vowel signs or uncertain structure.
+        mapped, unsupported = map_ipa_string(onset)
+        rendered = mapped if unsupported is None and mapped is not None else ""
+        unresolved = [
+            ch for ch in unit.get("raw_text", "")
+            if ch != base and ch not in {"\u200c"}
+        ]
+        previews.append({
+            "source": unit.get("raw_text", ""),
+            "ipa": onset,
+            "ukrainian": rendered + ("?" if unresolved or not rendered else ""),
+            "status": "PROVISIONAL" if rendered else "UNKNOWN",
+            "position": "onset",
+            "rule_id": "KHMER-PREVIEW-ONSET-IPA-V1",
+            "unresolved_graphemes": unresolved or ([] if rendered else [base]),
+            "warnings": ["CONSONANT_POSITION_OR_RIME_NOT_ESTABLISHED"],
+            "evidence": ["unicode17-ch16", "r12a-orthography"],
+        })
+    if not previews:
+        return None
+    has_hint = any(item.get("ipa") for item in previews)
+    return {
+        "status": "PROVISIONAL" if has_hint else "UNKNOWN",
+        "ipa_preview": " ".join(item["ipa"] or "?" for item in previews) if has_hint else None,
+        "ukrainian_preview": " ".join(item["ukrainian"] for item in previews),
+        "syllables": previews,
+        "warnings": ["LOW_CONFIDENCE", "TONE_NOT_INFERRED"],
+    }
 
 
 class RuleBasedKhmerEngine:
@@ -67,7 +98,7 @@ class RuleBasedKhmerEngine:
                     "evidence": fixture.get("evidence", []),
                 }
             ipa = raw_ipa.strip().strip("/")
-            ukrainian, unsupported = _map_ipa(ipa)
+            ukrainian, unsupported = map_ipa_string(ipa)
             return {
                 "input": text, "normalized": normalized, "profile": self.profile,
                 "engine": self.engine_id, "deterministic": True,
@@ -95,7 +126,7 @@ class RuleBasedKhmerEngine:
                 if onset and register in {"first", "second"}:
                     vowel = "ɑː" if register == "first" else "ɔː"
                     ipa = onset + vowel
-                    ukrainian, unsupported = _map_ipa(ipa)
+                    ukrainian, unsupported = map_ipa_string(ipa)
                     return {
                         "input": text, "normalized": normalized, "profile": self.profile,
                         "engine": self.engine_id, "deterministic": True,
@@ -107,12 +138,17 @@ class RuleBasedKhmerEngine:
                         "evidence": ["unicode17-ch16", "r12a-orthography"],
                     }
 
+        preview = _provisional_preview(structure)
         return {
             "input": text, "normalized": normalized, "profile": self.profile,
             "engine": self.engine_id, "deterministic": True,
             "ipa": None, "ukrainian": None, "status": "NOT_ESTABLISHED",
-            "rule_trace": ["KHMER_UNSUPPORTED_PATTERN_WITHHELD"],
-            "reason": "The recognized orthographic structure has no sufficiently established deterministic orthography-to-IPA rule in this profile.",
+            "provisional_ipa": preview["ipa_preview"] if preview else None,
+            "provisional_ukrainian": preview["ukrainian_preview"] if preview else None,
+            "fallback_status": preview["status"] if preview else "UNKNOWN",
+            "fallback_trace": preview["syllables"] if preview else [],
+            "rule_trace": ["KHMER_UNSUPPORTED_PATTERN_WITHHELD", "PROVISIONAL_ONSET_IPA_PREVIEW"],
+            "reason": "Canonical IPA remains withheld. A separate low-confidence onset-only preview is offered where a registered consonant IPA is available; no vowel, coda or tone is inferred.",
             "structure": structure.phonological_representation,
         }
 

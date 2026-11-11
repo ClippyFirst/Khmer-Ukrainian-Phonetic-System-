@@ -1,75 +1,66 @@
-# Proposed Ukrainian practical transcription layer
+# Khmer → Ukrainian practical transcription
 
-## Pipeline
+## Purpose and pipeline
 
-Khmer orthography → grapheme/orthographic syllable analysis → Khmer phonology → conservative IPA → Ukrainian feature candidates → Ukrainian orthography.
+The practical layer is applied only after source-language analysis:
 
-The output is not produced by Khmer-character substitution.
+**Khmer orthography → graphemic/orthographic syllable analysis → Khmer phonology → IPA → Ukrainian target-language adaptation → Ukrainian practical orthography**
+
+This is not character-by-character transliteration. The Ukrainian rendering is a project-specific research proposal, not an officially approved Ukrainian transcription standard.
 
 ## Profiles
 
-### careful_standard
-Default for academic, editorial and reference use.
+### `khmer-pph-careful-citation-v1`
 
-### phnom_penh_colloquial
-Optional pronunciation profile. It may model documented /r/-loss and its associated aspiration, pitch and vowel effects. When its actual IPA result contains /cʰ/, Ukrainian output marks that aspiration as ч'. It must never overwrite the careful analysis or infer aspiration for every /Cr/ cluster.
+The sole active runtime profile: contemporary Phnom Penh-oriented careful citation speech. The identifier is a project key, not an external standard. Colloquial Phnom Penh /r/-loss and related aspiration, pitch and voice-quality processes remain research-only; the runtime does not synthesize them from spelling. Conventional Ukrainian exonyms may be added only as separately sourced, versioned lexical fixtures; there is no independent runtime profile for them.
 
-### established_form
-A separately versioned lexicon can override the generic algorithm for conventional Ukrainian exonyms and historically established names.
+## Ukrainian target correspondences
 
-## Candidate ranking
+| IPA | Ukrainian practical form | Notes |
+|---|---|---|
+| /p, b/ | п, б | Direct practical targets |
+| /pʰ, tʰ, kʰ/ | п', т', к' | Aspiration is marked with the project apostrophe |
+| /t, d/ | т, д | Direct practical targets |
+| /c/ | ть | Preserve the palatal stop rather than converting it to an affricate |
+| /cʰ/ | ть' | Palatal stop plus aspiration; do not automatically write ч' |
+| /ɲ/ | нь | Palatal nasal |
+| /ŋ/ | нг | Keep the velar nasal visible |
+| /ʋ/ | в | Labiodental approximant |
+| /w, ʋ/ | в | Ukrainian target merges both approximants in practical spelling; IPA preserves the source distinction |
+| /j/ | я, є, ї, ю, йо at syllable onset; й elsewhere | Contextual Ukrainian yotation is applied by the IPA adapter |
+| /h, ɦ/ | г | Ukrainian target approximation |
+| /ɡ/ (ASCII alias /g/) | ґ | Explicit contrast-preserving project choice |
+| /x/ | х | Genuine velar fricative; not merged with /h/ |
+| /ʔ/ | ∅ | Preserved in IPA/trace, omitted in practical output; not aspiration |
 
-1. IPA feature distance to the canonical Ukrainian inventory.
-2. Ukrainian phonotactic legality.
-3. Ukrainian orthographic legality.
-4. Preservation of source onset/coda role.
-5. Preservation of source contrasts where Ukrainian can represent them.
-6. Independently documented Ukrainian usage.
-7. Readability.
+### Affricates and fricatives
 
-No probability is assigned without a calibrated corpus.
+| IPA | Ukrainian | Distinction |
+|---|---|---|
+| /t͡s/ | ц | Explicit affricate |
+| /d͡z/ | дз | Explicit voiced affricate |
+| /t͡ʃ/ | ч | Postalveolar affricate |
+| /d͡ʒ/ | дж | Voiced postalveolar affricate |
+| /tɕ, t͡ɕ/ | ч | Alveolo-palatal practical approximation |
+| /dʑ, d͡ʑ/ | дж | Voiced alveolo-palatal practical approximation |
+| /ʃ/ | ш | Postalveolar fricative |
+| /ʒ/ | ж | Voiced postalveolar fricative |
 
-## Core correspondences
+An adjacent /t/ + /s/ sequence is not rewritten as ц unless the source IPA explicitly identifies an affricate /t͡s/. The same rule applies to /d/ + /z/ versus /d͡z/.
 
-| Khmer | Ukrainian |
-|---|---|
-| /p/ | п |
-| /pʰ/ | п' |
-| /b, ɓ/ | б |
-| /t/ | т |
-| /tʰ/ | т' |
-| /d, ɗ/ | д |
-| /k/ | к |
-| /kʰ/ | к' |
-| /c/ | ть |
-| /cʰ/ | ть' |
-| /ɲ/ | нь |
-| /ŋ/ | нг |
-| /r/ | р |
-| /l/ | л |
-| /ʋ/ | в |
-| /w/ | у |
-| /j/ | й |
-| /s/ | с |
-| /h/ | г |
-| /ʔ/ | ∅ (not aspiration) |
+The IPA symbols /t͡s/, /d͡z/, /t͡ʃ/ and /d͡ʒ/ are general target-adapter coverage. Their presence in this table does not claim that all are native Khmer phonemes.
 
-## Shared Ukrainian consonant conventions
+## Ukrainian-specific conventions and normative status
 
-- foreign /h/ → г (target approximation, not phonetic identity);
-- hard /ɡ/ → ґ;
-- genuine /x/ → х;
-- /t͡s/ → ц, /d͡z/ → дз, /t͡ʃ/ → ч, /d͡ʒ/ → дж;
-- alveolo-palatal /tɕ/ (also /t͡ɕ/) → ч and voiced /dʑ/ (also /d͡ʑ/) → дж as explicit Ukrainian approximations;
-- /ʃ/ → ш and /ʒ/ → ж;
-- preserve contrastive palatalization with Ukrainian soft-sign sequences only when supported by the source analysis;
-- do not collapse adjacent consonants into an affricate unless the source phonology identifies an affricate.
+The 2026 Ukrainian Orthography is the current state standard (effective 2026-03-28). §122 says foreign [g] is usually adapted with г; it also allows ґ as an imitation of foreign [g] in personal names. This project deliberately selects ґ for IPA /ɡ/ to preserve the distinction requested for this adapter, while /h/ maps to г and /x/ to х. This is a project policy, not a claim that ґ is the only normatively valid rendering of every foreign /g/.
 
-The canonical shared policy is maintained in [Ukrainian Phonetic Inventory](https://github.com/ClippyFirst/Ukrainian-Phonetic-Inventory/blob/main/docs/foreign-target-adaptation.md).
+The practical apostrophe after aspirated consonants is a project notation for a source-language feature. It is not the Ukrainian orthographic apostrophe rule and does not replace IPA metadata. A glottal stop /ʔ/ never triggers it.
 
-## Vowel reduction
+The 2026 standard's treatment of [h], [g], [w], [θ] and [ð] is target-language guidance, not evidence about Khmer source phonology. See §§122, 124 and 126 of the official standard.
 
-| Khmer | Ukrainian |
+## Vowels
+
+| Khmer IPA | Ukrainian practical form |
 |---|---|
 | /i, iː/ | і |
 | /e, ɛ, ɛː/ | е |
@@ -77,52 +68,44 @@ The canonical shared policy is maintained in [Ukrainian Phonetic Inventory](http
 | /a, ɑ, ɑː/ | а |
 | /o, ɔ, ɔː/ | о |
 | /u, uː/ | у |
-| /ə, ɤ/ | е/и by context |
-| complex vowels | Ukrainian vowel sequences when supported |
+| /ə, ɤ/ | е |
+| attested complex vowels | Ukrainian vowel sequences only where the IPA policy has an explicit entry |
 
-Length remains available in the research layer and is not normally doubled in practical Ukrainian spelling. Aspiration remains explicit in IPA and is marked with an ASCII apostrophe after the Ukrainian consonant.
+Length and source vowel quality remain available in IPA and the trace; ordinary Ukrainian practical spelling does not double vowels automatically.
 
-## Research versus practical output
+## Executable adapter
 
-Example:
+map_ipa_string() is the single longest-match IPA-string adapter used by the deterministic Khmer engine. It applies Ukrainian yotation to syllable-initial /j/ plus a following vowel and maps /w/ to в (the Russian comparator's у is not copied). It:
 
-Khmer /kʰaː/
+- maps multi-codepoint IPA segments before their component characters;
+- preserves spaces between IPA chunks;
+- removes stress marks and syllable dots from practical spelling while leaving source IPA intact;
+- withholds the whole practical result if an IPA segment is unsupported;
+- does not fall back to Russian mappings or character-by-character guesses.
 
-research IPA: /kʰaː/
-UA phonological target: /kʰaː/
-practical: к'а
-Russian compatibility candidate: кха
+Example segment sequences (illustrative adapter tests, not lexical gold labels):
 
-The Russian candidate is not silently promoted to the Ukrainian default.
+| IPA input | Ukrainian output |
+|---|---|
+| /kʰaː/ | к'а |
+| /cʰa/ | ть'а |
+| /ha/ | га |
+| /ɡa/ | ґа |
+| /xa/ | ха |
+| /t͡sa/ | ца |
+| /d͡za/ | дза |
+| /t͡ʃa/ | ча |
+| /d͡ʒa/ | джа |
+| /tɕa/ | ча |
 
-Example:
+## Russian comparison
 
-Khmer /ŋaː/
+The Russian practical tables supplied for comparison are useful historical/documentary controls, not the target specification. In particular, Russian /h/ → х is not copied into Ukrainian; the Ukrainian project distinguishes /h/ → г from genuine /x/ → х. Russian spellings such as кх/тх/пх are also not copied; aspiration is represented with the project's apostrophe marker while remaining fully inspectable in IPA.
 
-research IPA: /ŋaː/
-UA target: /ŋaː/
-practical: нга
-
-Example:
-
-Khmer /ʔa/
-
-research IPA: /ʔa/
-UA target: /a/
-practical: а
-
-The glottal stop remains inspectable even though it is not printed; it does not trigger the aspiration apostrophe.
-
-## Established forms
-
-Conventional names such as Камбоджа must be stored as provenance-bearing lexical overrides. They are not evidence for a generic Khmer orthography-to-Ukrainian rule.
+Reference comparison pages:
+- [Khmer–Russian practical transcription](https://ru.wikipedia.org/wiki/Кхмерско-русская_практическая_транскрипция)
+- [Official Ukrainian Orthography, 2026 PDF](https://mon.gov.ua/static-objects/mon/sites/1/zagalna%20serednya/Pravopys.2019/ukrayinskii-pravopis-oficiine-vidannia-2026.pdf)
 
 ## Validation gate
 
-Before describing the system as an empirically validated Ukrainian standard, the repository must contain:
-- versioned Khmer lexical/proper-name corpus;
-- source pronunciation or authoritative IPA;
-- independently adjudicated Ukrainian outputs;
-- Russian comparison outputs;
-- error analysis by construction class;
-- separate evaluation of careful versus Phnom Penh colloquial profiles.
+The system is not an empirically validated Ukrainian standard until the repository contains a sufficiently broad, provenance-bearing Khmer lexical/proper-name corpus with authoritative source IPA, independently adjudicated Ukrainian outputs, Russian comparison outputs, and error analysis by construction class. The current segment-level adapter tests verify deterministic mapping behavior, not real-world phonetic accuracy.

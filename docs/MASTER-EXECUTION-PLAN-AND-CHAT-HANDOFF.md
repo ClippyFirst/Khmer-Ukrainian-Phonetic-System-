@@ -1633,3 +1633,88 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser smoke [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), and Pages deployment + asset smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) all SUCCESS.
 - Live service: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/. The Python rule engine and published browser runtime are deterministic and do not use model consensus.
 - Remaining linguistic acceptance: independent adjudicated Phnom Penh IPA gold and expanded contextual vowel/coda coverage; no blanket accuracy claim.
+
+
+## 2026-11-11 continuation — Ukrainian practical transcription
+
+### Repository state
+- Starting default-branch SHA: \`2fe36aa1eb64cc47fb60ab1b37561f40d57202a7\`.
+- Verified implementation SHA: \`e7b52ae3921b17fb9d0c400eaad913c8c78d2b50\`.
+- Final verification branch: \`feat/khmer-ukrainian-practical-adapter-final-2026-11-11\`.
+- Draft PR: [#156](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/156), open, not merged.
+- Earlier drafts #154 and #155 were closed as superseded; their branches were retained.
+- No main-branch modification and no Pages deployment/publication.
+
+### Implemented
+- \`src/khmer_ua/practical.py\` now provides the whole-IPA longest-match adapter \`map_ipa_string()\`; \`RuleBasedKhmerEngine\` calls it after IPA derivation. Unknown IPA withholds the complete practical result.
+- \`src/ukrainian-practical.js\` is the shared browser adapter imported by \`src/main.js\`; browser and Python adapter behavior is tested against the same machine-readable policy.
+- Policy version: \`2026-11-11.3\`.
+- Ukrainian-specific choices: /h, ɦ/ → г; /ɡ/ (ASCII /g/) → ґ as a contrast-preserving project choice; /x/ → х; /w, ʋ/ → в; explicit /t͡s, d͡z, t͡ʃ, d͡ʒ/ → ц, дз, ч, дж; /tɕ, dʑ/ → ч, дж as practical approximations; /cʰ/ → ть'.
+- Syllable-initial /j/ + transparent vowel uses Ukrainian я/є/ї/ю/йо; /j/ elsewhere remains й. Russian comparator /w/ → у is not copied into Ukrainian.
+- The 2026 Ukrainian Orthography is target-language guidance, not evidence about Khmer phonology. It generally uses г for foreign [g] and permits ґ as imitation in personal names; /ɡ/ → ґ remains an explicit project policy.
+- Public system page, README, policy documentation, fixture audit and regression tests were updated. Work was text-only; no audio was used.
+
+### Verification evidence
+- Quality workflow [43094688835](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43094688835): SUCCESS; 187 Python tests + 62 subtests; deterministic web checks, policy/data validation and production build passed.
+- Browser workflow [43094688837](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43094688837): SUCCESS; Chromium 3/3.
+- The browser adapter runtime tests exercise yotation, /w/, affricates, whitespace, and fail-closed unknown IPA.
+
+### Task ledger
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Whole-IPA Python adapter integrated after deterministic IPA | DONE_VERIFIED | \`src/khmer_ua/practical.py\`, \`src/khmer_ua/rule_engine.py\`, quality CI |
+| Browser adapter shares the canonical policy and passes runtime mapping tests | DONE_VERIFIED | \`src/ukrainian-practical.js\`, \`src/main.js\`, \`tests/web-engine.test.mjs\`, browser/build CI |
+| Ukrainian h/g/x, affricates, /w/ and /j/ target conventions documented | DONE_VERIFIED | \`data/ukrainian/practical-policy.json\`, public \`system.html\`, regression tests |
+| Empirical correctness of Khmer IPA → Ukrainian target correspondences | PARTIAL | Rules are explicit and deterministic; independent adjudicated gold is still absent |
+| Independent text-only Khmer IPA/Ukrainian gold set | BLOCKED | Requires rights-cleared text lexical sources with provenance plus independent native/expert adjudication; acceptance: non-overlapping held-out set, per-phenomenon labels, adjudication record, CER/PER and coverage/abstention report |
+| Audio validation | DEFERRED | Explicitly outside this text-only task |
+
+### Next genuine blocker
+Create the independent text-only Khmer IPA/Ukrainian adjudication set. Do not promote the proposed correspondences to validated accuracy claims until that evidence exists.
+
+## Verification refresh — Ukrainian practical transcription, 2026-11-11
+
+- Latest implementation branch: `feat/khmer-ukrainian-practical-adapter-final-2026-11-11`; current PR #156 remains open/draft and unmerged. Main remains unchanged at `2fe36aa1eb64cc47fb60ab1b37561f40d57202a7`.
+- The canonical Python adapter, browser adapter and target policy are unchanged at the verified implementation baseline; subsequent changes expanded tests and synchronized README, system/implementation/validation documentation and completion records.
+- Expanded adapter checks cover /h, ɦ, ɡ, g, x; explicit affricates; plain consonant sequences; /cʰ/ → ть'; /j/ yotation; whitespace and unsupported IPA. No audio was used or required.
+- Exact-head quality run [43095329118](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329118) and browser smoke [43095329245](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329245) are queued with no jobs started at this refresh. Do not report these final runs as passed.
+- The independent text-only Phnom Penh IPA/Ukrainian gold set remains BLOCKED by missing independently sourced and adjudicated text labels. This blocks empirical accuracy claims, not deterministic adapter implementation. Audio annotation is DEFERRED by scope.
+
+
+## Provisional grapheme IPA fallback — continuation 2026-11-11
+
+- Added `docs/provisional-grapheme-ipa-fallback.md` defining the Lao-style `PROVISIONAL` grapheme → IPA → existing Ukrainian adapter contract, visible `?` uncertainty, Python/browser parity and benchmark separation.
+- This is a design/acceptance document only, not an implementation claim. Current Khmer parser/practical adapter still withholds unsupported constructions. Implementation is BLOCKED pending a source-backed, positional Khmer grapheme-to-IPA inventory; no context-free letter readings or vowel/tone guesses may be fabricated.
+
+
+## Provisional onset fallback implementation — 2026-11-11
+
+- Python and browser now expose a separate PROVISIONAL onset-only IPA preview for unresolved units when the existing parser has a registered base-consonant onset IPA.
+- The same IPA → Ukrainian adapter is used; the affected Ukrainian unit receives ?. Canonical ipa/ukrainian remain withheld.
+- No vowel, coda, subscript/coeng realization or tone is inferred.
+- Python regression and browser source-contract regression were added.
+- Status: PARTIAL. Dedicated per-grapheme positional source registry, executed browser parity fixtures, exact-head CI and Chromium verification remain outstanding.
+- Exact head at this update: 660915e4ed1f44eab04258957eee39537883aadd. Quality and browser workflows 43099931373 / 43099931284 were queued, not passed.
+
+
+## Final continuation snapshot — 2026-11-11 23:00 +02:00
+
+- Current PR #156 head: ffeb3ee3a46898f1fdf6ab5ac455972bb59f327a. Draft, open, unmerged. Main baseline remains 2fe36aa1eb64cc47fb60ab1b37561f40d57202a7.
+- Implemented Python and browser onset-only PROVISIONAL fallback. It uses registered consonant onset IPA → existing IPA adapter → Ukrainian text plus ?. Canonical fields remain withheld.
+- Exact-head CI is NOT verified. Earlier quality/browser runs 43100166075 and 43100166123 were queued on head 30f2dc5ee6be90cd75205c742d73f3af41f1523b; the subsequent status-priority correction is at ffeb3ee3a46898f1fdf6ab5ac455972bb59f327a and no workflow run was returned for that exact head.
+- Local test execution was unavailable: public GitHub clone attempt failed because the execution environment could not resolve github.com. No tests are claimed passed on the new fallback.
+- Remaining: execute Python/Node/Chromium tests on the exact head; add functional shared Python/browser fixtures; register source-backed positional fallback evidence; expand only where vowel/subscript/coeng evidence is explicit. Keep the independent text-only adjudicated gold set BLOCKED and audio DEFERRED.
+
+
+## Fallback scope clarification — 2026-11-11
+
+The browser preview is separate from canonical output. The onset-only test fixture is ក្ក (known base plus unresolved coeng/subscript), not កា, which is handled by the existing inherent-vowel rule. Exact-head tests after this correction still need completion.
+
+
+## Verified implementation result — 2026-11-11
+
+- Code/test head dbdb8beafc3454e6bb0be848011f90fb0dea190b.
+- Quality workflow 43101322383 PASS: 189 Python tests, 62 subtests, web checks and production build.
+- Browser smoke 43101322537 PASS: deterministic web checks, production build and Chromium visible-result check.
+- Browser keeps canonical IPA/Ukrainian withholding intact and shows a separate onset-only preview in per-unit details.
+- Linguistic feature remains PARTIAL: positional primary-source registry and functional shared Python/browser parity fixtures remain TODO. Independent adjudicated gold remains BLOCKED; audio DEFERRED.

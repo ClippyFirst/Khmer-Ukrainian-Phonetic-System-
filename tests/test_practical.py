@@ -1,4 +1,5 @@
-from khmer_ua.practical import explain_segment, map_sequence, map_segment
+from khmer_ua.practical import explain_segment, map_ipa_string, map_sequence, map_segment
+from khmer_ua.rule_engine import RuleBasedKhmerEngine
 
 
 def test_aspiration_is_marked_and_russian_comparator_stays_separate():
@@ -11,6 +12,14 @@ def test_aspiration_is_marked_and_russian_comparator_stays_separate():
 
 def test_velar_nasal_is_preserved():
     assert map_sequence(['ŋ', 'a']) == 'нга'
+
+
+def test_ukrainian_w_and_glide_yotation():
+    assert map_segment('w') == 'в'
+    assert map_segment('w', mode='compatibility_ru') == 'у'
+    assert map_ipa_string('ja je ji jo ju') == ('я є ї йо ю', None)
+    assert map_ipa_string('jaː') == ('я', None)
+    assert map_ipa_string('a.ja') == ('ая', None)
 
 
 def test_glottal_stop_is_not_aspiration():
@@ -28,8 +37,10 @@ def test_affricates_and_fricatives_use_ukrainian_sequences():
     assert map_sequence(['d͡z', 'a']) == 'дза'
     assert map_sequence(['t͡ʃ', 'a']) == 'ча'
     assert map_sequence(['tɕ', 'a']) == 'ча'
+    assert map_sequence(['t͡ɕ', 'a']) == 'ча'
     assert map_sequence(['d͡ʒ', 'a']) == 'джа'
     assert map_sequence(['dʑ', 'a']) == 'джа'
+    assert map_sequence(['d͡ʑ', 'a']) == 'джа'
     assert map_sequence(['ʃ', 'a']) == 'ша'
     assert map_sequence(['ʒ', 'a']) == 'жа'
 
@@ -49,3 +60,34 @@ def test_missing_russian_comparator_does_not_fall_back_to_ukrainian():
     assert explanation["ua_practical"] == "і"
     assert explanation["ru_compatibility"] is None
     assert explanation["ru_compatibility_status"] == "NOT_ESTABLISHED"
+
+
+def test_ipa_string_adapter_uses_longest_match_and_keeps_syllable_spaces():
+    assert map_ipa_string("kʰaː t͡sa d͡ʒa") == ("к'а ца джа", None)
+    assert map_ipa_string("ha ɡa xa") == ("га ґа ха", None)
+
+
+def test_ipa_string_adapter_does_not_invent_affricates_or_guess_unknown_segments():
+    assert map_ipa_string("t s") == ("т с", None)
+    rendered, unsupported = map_ipa_string("kʰɥ")
+    assert rendered is None
+    assert unsupported == "ɥ"
+
+
+def test_unresolved_khmer_unit_exposes_onset_only_provisional_ipa():
+    result = RuleBasedKhmerEngine().analyze("ក្ក")
+    assert result["ipa"] is None
+    assert result["ukrainian"] is None
+    assert result["provisional_ipa"] == "k"
+    assert result["provisional_ukrainian"] == "к?"
+    assert result["fallback_status"] == "PROVISIONAL"
+    assert result["fallback_trace"][0]["unresolved_graphemes"] == ["្"]
+
+
+def test_unregistered_khmer_structure_remains_visible_as_unknown():
+    result = RuleBasedKhmerEngine().analyze("្")
+    assert result["ipa"] is None
+    assert result["provisional_ipa"] is None
+    assert result["provisional_ukrainian"] == "?"
+    assert result["fallback_status"] == "UNKNOWN"
+    assert result["fallback_trace"][0]["source"] == "្"

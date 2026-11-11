@@ -295,5 +295,17 @@
     "scope": "38,629 word-to-pronunciation pairs and 37,755 unique words; train 34,770, validation 1,939, test 1,920; word-level split keeps all readings of a word together. Labels are Khmer-script respellings with hyphenated syllable boundaries, not IPA.",
     "status": "AUXILIARY_SYLLABIFICATION_BENCHMARK_NOT_IPA",
     "limitations": "Standard NCKL/Phnom Penh prescribed word pronunciations; not regional/colloquial variants and not running-speech sandhi. Dataset card attributes content to NCKL and explicitly advises checking NCKL terms before commercial use; do not redistribute/use commercially without rights clarification."
+  },
+  {
+    "id": "chemvatho-khmer-pronunciation-dictionary",
+    "type": "external_ipa_lexicon_benchmark_candidate",
+    "title": "Khmer Pronunciation Dictionary / Khmer acoustic model",
+    "year": 2025,
+    "url": "https://github.com/chemvatho/Khmer-acoustic-model/tree/2714994b41ccf875c5b6f6182b48a72f13632dbf/dictionary",
+    "source_revision": "2714994b41ccf875c5b6f6182b48a72f13632dbf",
+    "scope": "Root README advertises a 29,204-entry IPA dictionary; dictionary/README.md instead states 33,091 entries. The inspected main-branch tree contains only dictionary/khmer_ipa_sample.dict (144 bytes), not the advertised full dictionary. Published MAE/F1 values are for forced alignment, not G2P.",
+    "license": "CONFLICTING_UPSTREAM_DECLARATIONS: root README says CC BY-SA 4.0; dictionary/README.md says CC BY 4.0. No authoritative data license resolved.",
+    "status": "BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT",
+    "limitations": "No full dictionary artifact or release asset found at inspected revision. Do not copy, benchmark or redistribute until full file, entry count, provenance and data license are clarified."
   }
 ]

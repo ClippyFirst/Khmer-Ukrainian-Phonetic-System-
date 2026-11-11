@@ -28,6 +28,9 @@ if (!fixtures["ភាសាខ្មែរ"] || fixtures["ភាសាខ្ម�
 }
 if (!Object.hasOwn(policy.segments, "ae")) throw new Error("Khmer /ae/ target mapping missing");
 if (policy.segments["kʰ"].default !== "к\u0027") throw new Error("canonical /kʰ/ target must be к apostrophe");
+if (policy.segments["h"].default !== "г" || policy.segments["ɡ"].default !== "ґ" || policy.segments["x"].default !== "х") throw new Error("Ukrainian h/g/x target distinctions are missing");
+for (const [ipa, expected] of [["t͡s","ц"],["d͡z","дз"],["t͡ʃ","ч"],["d͡ʒ","дж"]]) if (policy.segments[ipa]?.default !== expected) throw new Error("Ukrainian affricate target is missing: " + ipa);
+if (!systemHtml.includes("правопис 2026 §122")) throw new Error("Ukrainian 2026 normative caveat for /ɡ/ → ґ is missing");
 if (fixtures["ខ្មែរ"].ua !== "к\u0027мае") throw new Error("lexical /kʰmae/ fixture contradicts canonical /kʰ/ policy");
 if (!js.includes("fixture.ua") || !js.includes("mapping_check")) throw new Error("lexical practical-form handling missing");
 if (!js.includes("rendered.map") || !js.includes("renderUnknownUnit")) throw new Error("per-unit rendering is missing");

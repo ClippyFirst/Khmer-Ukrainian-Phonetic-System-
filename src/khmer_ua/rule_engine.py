@@ -62,7 +62,7 @@ class RuleBasedKhmerEngine:
                     "input": text, "normalized": normalized, "profile": self.profile,
                     "engine": self.engine_id, "deterministic": True,
                     "ipa": None, "ukrainian": None, "status": fixture.get("status", "EVIDENCE_LIMITED"),
-                    "rule_ids": ["KHMER_LEXICAL_FIXTURE_WITHHELD"],
+                    "rule_trace": ["KHMER_LEXICAL_FIXTURE_WITHHELD"],
                     "reason": fixture.get("note", "The lexical fixture has no established IPA value."),
                     "evidence": fixture.get("evidence", []),
                 }

@@ -164,7 +164,7 @@ The four records are now in `data/khmer/sources.json` with explicit scope, sourc
 
 ### Source and pinned artifacts
 
-Sodimana et al. (2018), “A Step-by-Step Process for Building TTS Voices Using Open Source Data and Framework for Bangla, Javanese, Khmer, Nepali, Sinhala, and Sundanese” ([DOI 10.21437/SLTU-2018-14](https://doi.org/10.21437/SLTU.2018-14)), report a Khmer lexicon of **70,671 entries** and an audio corpus of **2,906 files / 3:58:00**. The paper describes the lexicon as a word-to-pronunciation mapping and a JSON phonology inventory; it says the phonemic transcription convention is “e.g. IPA” but does not specify a Khmer-specific IPA convention or dialect.
+Sodimana et al. (2018), “A Step-by-Step Process for Building TTS Voices Using Open Source Data and Framework for Bangla, Javanese, Khmer, Nepali, Sinhala, and Sundanese” ([DOI 10.21437/SLTU.2018-14](https://doi.org/10.21437/SLTU.2018-14)), report a Khmer lexicon of **70,671 entries** and an audio corpus of **2,906 files / 3:58:00**. The paper describes the lexicon as a word-to-pronunciation mapping and a JSON phonology inventory; it says the phonemic transcription convention is “e.g. IPA” but does not specify a Khmer-specific IPA convention or dialect.
 
 The archived upstream repository is [`google/language-resources`](https://github.com/google/language-resources), pinned at `a90601024f07ab7e96c911243324e0adeb16da96` (2021-09-10). The Khmer artifacts are:
 

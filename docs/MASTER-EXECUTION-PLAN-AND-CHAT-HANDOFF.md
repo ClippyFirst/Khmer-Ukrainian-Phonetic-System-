@@ -1681,3 +1681,12 @@ The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded 
 - Draft PR #150: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/150
 - Head at PR creation: `e15eef5605c0ebf2184d70e799aa9e515ac6b55a`; base `main` at `f2671ad31e37103c8ad356666575444ead1d466f`.
 - The PR is intentionally draft: independent Khmer IPA gold and upstream corpus rights are unresolved. Do not merge as a claim of production accuracy.
+
+
+## Evidence-gated hybrid candidate integration — 2026-11-11
+
+- Added src/khmer_ua/hybrid.py and exported HybridKhmerEngine, create_hybrid_engine, make_mekongphon_backend and make_command_backend.
+- The hybrid wraps RuleBasedKhmerEngine as the sole current final-IPA authority; external model/CLI outputs are typed, provenance-bearing candidates only. No voting or promotion occurs without independent profile-matched adjudicated gold.
+- Added regression tests for candidate preservation, partial-output rejection, backend failure isolation and feature-preserving transport normalization.
+- Benchmark decision and evidence are in docs/hybrid-engines.md. Current source-concordance diagnostics: MekongPhon 64/100, Khmer Phonemizer 18/100, Goruut 6/100 strict matches; independent gold 0. Acoustic dictionary blocked by missing full artifact and conflicting license/count declarations.
+- Status PARTIAL: adapters are integrated into the research hybrid API; they are not enabled in the published runtime. Acceptance requires independent Phnom Penh-profile IPA gold, train/test disjointness, tone/length/coda evaluation and rights clearance.

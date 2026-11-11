@@ -305,8 +305,8 @@ function combineStatus(items) {
   if (invalidCount > 0 && invalidCount === items.length) return "INVALID_OR_UNSUPPORTED";
   if (invalidCount > 0 || statuses.has("EVIDENCE_LIMITED")) return "EVIDENCE_LIMITED";
   if (statuses.has("NOT_ESTABLISHED")) return "NOT_ESTABLISHED";
-  if (statuses.has("PROPOSED")) return "PROPOSED";
   if (statuses.has("PROVISIONAL")) return "PROVISIONAL";
+  if (statuses.has("PROPOSED")) return "PROPOSED";
   return "ESTABLISHED_STRUCTURE";
 }
 

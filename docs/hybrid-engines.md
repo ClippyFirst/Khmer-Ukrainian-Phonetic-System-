@@ -20,8 +20,11 @@ def my_backend(text: str) -> dict:
 Підключення:
 
 ```python
-from khmer_ua import create_hybrid_engine
-engine = create_hybrid_engine({"mekongphon": neural_backend, "rule-baseline": rules_backend})
+from khmer_ua import create_hybrid_engine, make_mekongphon_backend, make_command_backend
+engine = create_hybrid_engine({
+    "mekongphon": make_mekongphon_backend(),
+    "rule-baseline": make_command_backend(["./khmer-rule-g2p"], engine_id="pinned-rule-baseline"),
+})
 result = engine.analyze("ខ្មែរ")
 ```
 

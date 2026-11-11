@@ -57,3 +57,8 @@ A minimal onset-only fallback is now implemented in the Python rule engine and b
 Status: PARTIAL, not DONE_VERIFIED. The current hint is an onset-position consonant only, not a full grapheme inventory. The parser's current evidence IDs are reused; a dedicated rule registry with per-entry primary-source locators, explicit positional scope and reviewer status is still required. Browser tests currently assert the fallback contract in source; they do not yet execute a Python/JavaScript parity fixture against identical structured results.
 
 Implementation commits: 61e0246cf34e0319f72c9b04c5926b6e3b3ad1f5 (Python engine), 352c22a55f526877dd136a982b2aa5ac03ff3838 (Python regression), 862aa061726b2bae6296199e4b655334bb6f609a (browser), 660915e4ed1f44eab04258957eee39537883aadd (browser regression). Exact-head CI runs 43099931373 and 43099931284 were queued at the last check; neither is recorded as passed.
+
+
+## Scope correction — 2026-11-11
+
+The fallback is a separate diagnostic preview, not a replacement for canonical IPA or Ukrainian output. The browser keeps the canonical unresolved marker in the main result and shows the onset-only preview in per-unit analysis details. The regression fixture is a consonant with an unresolved coeng/subscript structure (ក្ក), not ကា: the latter already follows the existing inherent-vowel rule and must not be treated as unresolved.

@@ -100,5 +100,54 @@ class HybridKhmerEngine:
         }
 
 
+def make_mekongphon_backend(
+    model_id: str = "byumatrixlab/khmer-ipa",
+    revision: str = "20e069d384b240da76320e1569958568c12a54bc",
+    *,
+    num_beams: int = 4,
+) -> Provider:
+    """Create a lazy, cached CPU backend for the pinned MekongPhon model."""
+    state: dict[str, Any] = {}
+
+    def predict_one(text: str) -> dict[str, Any]:
+        if not state:
+            try:
+                import torch
+                from transformers import AutoTokenizer, EncoderDecoderModel
+            except ImportError as exc:
+                raise RuntimeError("Install optional torch and transformers to use MekongPhon") from exc
+            torch.set_num_threads(1)
+            model = EncoderDecoderModel.from_pretrained(model_id, revision=revision).to("cpu")
+            encoder = AutoTokenizer.from_pretrained(model_id, subfolder="encoder_tokenizer", revision=revision)
+            decoder = AutoTokenizer.from_pretrained(model_id, subfolder="decoder_tokenizer", revision=revision)
+            model.eval()
+            state.update(torch=torch, model=model, encoder=encoder, decoder=decoder)
+        torch = state["torch"]
+        encoded = state["encoder"]([text], return_tensors="pt", padding=True, truncation=True, max_length=128)
+        with torch.inference_mode():
+            generated = state["model"].generate(**encoded, max_length=128, num_beams=num_beams, early_stopping=True)
+        ipa = state["decoder"].decode(generated[0], skip_special_tokens=True)
+        return {
+            "ipa": ipa,
+            "status": "candidate" if ipa.strip() else "unsupported",
+            "provenance": {"engine": "byumatrixlab/khmer-ipa", "revision": revision, "num_beams": num_beams, "device": "cpu"},
+        }
+
+    return predict_one
+
+
+def make_command_backend(command: list[str], *, engine_id: str) -> Provider:
+    """Wrap a one-line command-line G2P that reads orthography on stdin and emits IPA on stdout."""
+    import subprocess
+
+    def run(text: str) -> dict[str, Any]:
+        completed = subprocess.run(command, input=text + "\\n", text=True, capture_output=True, check=True)
+        ipa = completed.stdout.strip()
+        return {"ipa": ipa, "status": "candidate" if ipa else "unsupported",
+                "provenance": {"engine": engine_id, "command": command, "stderr": completed.stderr}}
+
+    return run
+
+
 def create_hybrid_engine(providers: dict[str, Provider] | None = None) -> HybridKhmerEngine:
     return HybridKhmerEngine(providers)

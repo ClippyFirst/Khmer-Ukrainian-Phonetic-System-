@@ -1,4 +1,5 @@
 from khmer_ua.practical import explain_segment, map_ipa_string, map_sequence, map_segment
+from khmer_ua.rule_engine import RuleBasedKhmerEngine
 
 
 def test_aspiration_is_marked_and_russian_comparator_stays_separate():
@@ -71,3 +72,13 @@ def test_ipa_string_adapter_does_not_invent_affricates_or_guess_unknown_segments
     rendered, unsupported = map_ipa_string("kʰɥ")
     assert rendered is None
     assert unsupported == "ɥ"
+
+
+def test_unresolved_khmer_unit_exposes_onset_only_provisional_ipa():
+    result = RuleBasedKhmerEngine().analyze("កា")
+    assert result["ipa"] is None
+    assert result["ukrainian"] is None
+    assert result["provisional_ipa"] == "k"
+    assert result["provisional_ukrainian"] == "к?"
+    assert result["fallback_status"] == "PROVISIONAL"
+    assert result["fallback_trace"][0]["unresolved_graphemes"] == ["ា"]

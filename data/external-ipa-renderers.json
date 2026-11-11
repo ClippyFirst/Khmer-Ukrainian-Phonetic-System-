@@ -208,7 +208,8 @@
         "report_sha256": "0df96422a0f7276c75f79333072c0fc50892e4c0195fe1137b0f60e90369b7bb",
         "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674",
         "artifact_zip_sha256": "d027ea394e12271af65a177bf721d6c5dceac85362ed997905c9e94241fecf31",
-        "corpus_source_commit": "f80f6c1840c4818b51e05f2e00cded4701a5b662"
+        "corpus_source_commit": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
+        "training_split_relationship": "NOT_INDEPENDENTLY_VERIFIED"
       },
       "future_runs": "MANUAL_WORKFLOW_DISPATCH_ONLY_PENDING_CORPUS_RIGHTS"
     },
@@ -384,7 +385,7 @@
         "num_beams": 4,
         "inference_seconds": 3.292331
       },
-      "interpretation": "Pinned rerun after adding corpus revision to report. 100/100 outputs; 64 strict matches and 12.539% codepoint CER against MekongPhon pron_no_tones only. No independent gold; accuracy null; no tone/phonation evaluation."
+      "interpretation": "Pinned rerun after adding corpus revision to report. 100/100 outputs; 64 strict matches and 12.539% codepoint CER against MekongPhon pron_no_tones only. No independent gold; accuracy null; no tone/phonation evaluation. The 100-row evaluation file's exact membership relative to the downloaded checkpoint's training split has not been independently verified."
     }
   ],
   "upstream_evidence": [
@@ -414,7 +415,7 @@
       "url": "https://huggingface.co/byumatrixlab/khmer-ipa",
       "fact": "Model card declares Apache-2.0, 33.6M-parameter BERT encoder-decoder, separate Khmer/IPA tokenizers and a pinned usable API; paper is LREC 2026 and reports under 2% CER in its own held-out setup. The paper reports 1,314,779 sentence pairs expanded from an 8,026-entry seed lexicon by longest-match lookup over OPUS; a 500-entry sample was reviewed by two proficient L2 speakers.",
       "status": "CI_EXECUTED_SOURCE_ATTESTED_DIAGNOSTIC_NOT_ACCURACY",
-      "caveat": "The MekongPhon data repository snapshot has no declared root license; the model card's Apache-2.0 tag does not resolve source corpus rights. Its evaluation references are source-reported and not this project's independent gold. This project's 100-row run measured 64/100 strict source-attested matches and 12.539% codepoint CER on the pinned pron_no_tones split; this does not reproduce the paper's under-2% claim and the evaluation setups must not be conflated. The reported under-2% CER is dictionary-seeded, not independent sentence transcription; the reviewers were proficient L2 speakers, not native annotators."
+      "caveat": "The MekongPhon data repository snapshot has no declared root license; the model card's Apache-2.0 tag does not resolve source corpus rights. Its evaluation references are source-reported and not this project's independent gold. This project's 100-row run measured 64/100 strict source-attested matches and 12.539% codepoint CER on the pinned pron_no_tones split; this does not reproduce the paper's under-2% claim and the evaluation setups must not be conflated. The reported under-2% CER is dictionary-seeded, not independent sentence transcription; the reviewers were proficient L2 speakers, not native annotators. The relationship between this project's 100-row eval file and the downloaded checkpoint's training split is not independently established."
     },
     {
       "engine": "MekongPhon rule-based Khmer baseline",

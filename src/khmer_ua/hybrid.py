@@ -117,6 +117,7 @@ def make_mekongphon_backend(
             except ImportError as exc:
                 raise RuntimeError("Install optional torch and transformers to use MekongPhon") from exc
             torch.set_num_threads(1)
+            torch.manual_seed(0)
             model = EncoderDecoderModel.from_pretrained(model_id, revision=revision).to("cpu")
             encoder = AutoTokenizer.from_pretrained(model_id, subfolder="encoder_tokenizer", revision=revision)
             decoder = AutoTokenizer.from_pretrained(model_id, subfolder="decoder_tokenizer", revision=revision)

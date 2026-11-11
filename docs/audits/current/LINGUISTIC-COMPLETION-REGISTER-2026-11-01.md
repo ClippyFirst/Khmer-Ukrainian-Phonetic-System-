@@ -518,3 +518,10 @@ Latest-head verification on PR #153 head 5f6587a2dc885ed89cb3d3a947b31cf44f54fdc
 | KHM-HYBRID-PROVIDER-PRIORITY-001 | DONE_VERIFIED (deterministic ordering only) | PR #153 exact head `894e0775db347ab7fd990c72b844c5ca3177ecfe`; test `test_hybrid_provider_priority_order_is_deterministic_and_diagnostic_only`; Quality [43080496196](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496196) SUCCESS (193 tests + 70 subtests); Browser [43080496133](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496133) SUCCESS (3/3 Chromium tests). | Priority controls execution/display order only. It does not rank accuracy, promote candidates, or alter final IPA. Independent gold and profile/convention validation remain required. |
 
 The upstream Khmer acoustic-model dictionary blocker was rechecked at commit `2714994b41ccf875c5b6f6182b48a72f13632dbf`: only a six-entry sample file is present; README entry counts and data-license declarations conflict (29,204 / CC BY-SA 4.0 vs 33,091 / CC BY 4.0). Keep `KHM-ACOUSTIC-LEXICON-001` BLOCKED and do not import the sample or infer permission from the repository's MIT code license.
+
+
+## New external source lead — Google Khmer lexicon / OpenSLR42 (2026-11-11)
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-GOOGLE-KM-LEXICON-001 | BLOCKED (source-format/profile verification) | Sodimana et al. (2018), DOI `10.21437/SLTU.2018-14`; pinned Google repo `a90601024f07ab7e96c911243324e0adeb16da96`; 70,671 lexicon entries reported; `phonology.json` has 56 custom phone labels (30 vowels, 24 consonants, 2 silence), no tone/register field. OpenSLR42 current listing offers only male ZIP CC BY-SA 4.0, while the 2018 paper reports 17 female speakers. Full lexicon and archive manifest not yet inspected. | Verify full lexicon serialization, dialect, Khmer-specific IPA convention and artifact license; reconcile OpenSLR archive version, speaker metadata and checksum. Only then consider as external phonemic comparator or audio annotation source. It is not IPA gold and must not be integrated as final IPA fallback. |

@@ -1,0 +1,131 @@
+name: Current Khmer rule engine benchmark
+on:
+  push:
+    branches:
+      - "benchmark/**"
+    paths:
+      - ".github/workflows/benchmark-current-engine.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: byu-matrix-lab/MekongPhon
+          ref: f80f6c1840c4818b51e05f2e00cded4701a5b662
+          path: mekongphon
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: neurlang/dataset
+          ref: 3bd40eeb2f9149a91393fcbaf5e5d8980e794397
+          path: neurlang
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install repository engine
+        run: python -m pip install -e .
+      - name: Run current deterministic Khmer engine on published text IPA lexicons
+        run: |
+          mkdir -p artifacts/current-engine
+          python - <<'PY'
+          import csv, hashlib, json, os
+          from pathlib import Path
+          from khmer_ua.rule_engine import RuleBasedKhmerEngine
+
+          def sha(path):
+              return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+          def edit_distance(a, b):
+              prev = list(range(len(b) + 1))
+              for i, ca in enumerate(a, 1):
+                  cur = [i]
+                  for j, cb in enumerate(b, 1):
+                      cur.append(min(cur[-1] + 1, prev[j] + 1, prev[j-1] + (ca != cb)))
+                  prev = cur
+              return prev[-1]
+
+          engine = RuleBasedKhmerEngine()
+          cohorts = []
+          mekong_path = Path("mekongphon/data/splits/khmer_eval.csv")
+          with mekong_path.open(encoding="utf-8", newline="") as f:
+              rows = list(csv.DictReader(f))
+          if len(rows) != 100 or not {"orth", "pron_no_tones"}.issubset(rows[0]):
+              raise SystemExit("Unexpected pinned MekongPhon eval schema or row count")
+          cohorts.append(("mekongphon_eval_100", rows, "orth", "pron_no_tones", str(mekong_path)))
+
+          neurlang_path = Path("neurlang/khmer/central/lexicon.tsv")
+          nrows = []
+          with neurlang_path.open(encoding="utf-8") as f:
+              for line in f:
+                  parts = line.rstrip("\n").split("\t")
+                  if len(parts) == 2 and all(parts):
+                      nrows.append({"orth": parts[0], "ipa": parts[1]})
+          cohorts.append(("neurlang_khmer_central", nrows, "orth", "ipa", str(neurlang_path)))
+
+          reports = []
+          for cohort, rows, orth_key, ipa_key, source_path in cohorts:
+              records = []
+              covered = exact = 0
+              total_edits = total_ref_chars = 0
+              statuses = {}
+              for row in rows:
+                  word, reference = row[orth_key], row[ipa_key]
+                  try:
+                      result = engine.analyze(word)
+                      predicted = result.get("ipa")
+                      ua = result.get("ukrainian")
+                      status = result.get("status", "UNKNOWN")
+                  except Exception as exc:
+                      predicted, ua, status = None, None, "ERROR"
+                      error = f"{type(exc).__name__}: {exc}"
+                  else:
+                      error = None
+                  statuses[status] = statuses.get(status, 0) + 1
+                  if isinstance(predicted, str) and predicted:
+                      covered += 1
+                      exact += int(predicted == reference)
+                      total_edits += edit_distance(predicted, reference)
+                      total_ref_chars += len(reference)
+                  records.append({
+                      "orthography": word, "source_reported_ipa": reference,
+                      "engine_ipa": predicted, "ukrainian": ua,
+                      "engine_status": status, "error": error,
+                      "comparison": "SOURCE_ATTESTED_CONCORDANCE_NOT_GOLD"
+                  })
+              reports.append({
+                  "cohort": cohort, "source_path": source_path,
+                  "source_sha256": sha(source_path), "rows": len(rows),
+                  "ipa_coverage_count": covered,
+                  "ipa_coverage_rate": covered / len(rows) if rows else None,
+                  "strict_exact_matches": exact,
+                  "strict_exact_match_rate_over_all": exact / len(rows) if rows else None,
+                  "strict_exact_match_rate_over_covered": exact / covered if covered else None,
+                  "codepoint_cer": total_edits / total_ref_chars if total_ref_chars else None,
+                  "codepoint_cer_note": "Unicode codepoint CER only; not phoneme error rate.",
+                  "status_counts": statuses, "records": records
+              })
+          report = {
+              "schema_version": 1, "engine": "khmer-deterministic-rules-v1",
+              "profile": engine.profile, "repository_commit": os.environ.get("GITHUB_SHA"),
+              "evidence_status": "EXTERNAL_SOURCE_ATTESTED_NOT_INDEPENDENT_GOLD",
+              "accuracy_claim": None,
+              "interpretation": "Concordance against published source-reported pronunciations only. No independently adjudicated gold labels; do not interpret as accuracy.",
+              "cohorts": reports
+          }
+          out = Path("artifacts/current-engine/khmer-current-engine.json")
+          out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps([{k:v for k,v in r.items() if k not in ("records","source_path","source_sha256")} for r in reports], ensure_ascii=False, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: khmer-current-engine-benchmark
+          path: artifacts/current-engine/
+          if-no-files-found: error
+          retention-days: 90

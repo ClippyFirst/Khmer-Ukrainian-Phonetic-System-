@@ -251,7 +251,7 @@ Gold IDs and prediction IDs, as well as prediction engine names, must contain at
 
 A separate optional CI job now checks out MekongPhon at commit `f80f6c1840c4818b51e05f2e00cded4701a5b662`, downloads the model at pinned revision `20e069d384b240da76320e1569958568c12a54bc`, and runs the upstream model-card inference recipe with CPU PyTorch 2.5.1, Transformers 4.46.3, batch size 8 and beam size 4.
 
-- [GitHub Actions run](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456) · [raw-output artifact](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456/artifacts/13843728855)
+- [GitHub Actions run](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391) · [raw-output artifact](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674)
 - Corpus: `data/splits/khmer_eval.csv`, 100 rows, reference field `pron_no_tones` (source-reported IPA without tone); corpus SHA-256 `3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49`.
 - Execution: 100/100 outputs, 0 runtime errors; 64/100 strict source-attested matches; 80 edit operations over 638 reference code points, codepoint CER 12.539%.
 - Independent gold: 0. Accuracy: `null`. These figures are source-label concordance only, not phonological accuracy. The input/reference strings are not included in the neural-run artifact; row order, reference hashes, raw predictions and provenance are retained.

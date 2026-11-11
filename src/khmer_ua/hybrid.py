@@ -7,7 +7,8 @@ produces a consensus IPA value.
 """
 from __future__ import annotations
 
-from collections import defaultdict\nfrom dataclasses import asdict
+from collections import defaultdict
+from dataclasses import asdict
 from typing import Any, Callable, Iterable
 
 from .parser import analyze

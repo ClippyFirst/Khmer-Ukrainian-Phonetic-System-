@@ -15,7 +15,8 @@ def test_canonical_ukrainian_policy_is_complete():
     assert policy["segments"]["h"]["default"] == "г"
     assert policy["segments"]["ɡ"]["default"] == "ґ"
     assert policy["segments"]["x"]["default"] == "х"
-    assert policy["segments"]["w"]["default"] == "у"
+    assert policy["segments"]["w"]["default"] == "в"
+    assert policy["segments"]["w"]["compatibility_ru"] == "у"
     assert all("compatibility_ru" in policy["segments"][segment] for segment in ("pʰ", "tʰ", "kʰ", "ɲ", "ŋ", "h", "c", "cʰ"))
 
 
@@ -36,19 +37,11 @@ def test_web_fixtures_have_explicit_status_and_provenance_note():
 def test_fully_supported_fixture_outputs_match_canonical_policy():
     policy = json.loads((ROOT / "data/ukrainian/practical-policy.json").read_text(encoding="utf-8"))
     fixtures = json.loads((ROOT / "data/tests/web-fixtures.json").read_text(encoding="utf-8"))
-    segments = sorted(policy["segments"], key=len, reverse=True)
+    from khmer_ua.practical import map_ipa_string
 
     def render_ipa(ipa):
-        text = ipa.strip("/").replace("ˈ", "").replace("ˌ", "").replace(".", "")
-        out = []
-        i = 0
-        while i < len(text):
-            if text[i].isspace():
-                out.append(text[i]); i += 1; continue
-            segment = next((candidate for candidate in segments if text.startswith(candidate, i)), None)
-            if segment is None: return None
-            out.append(policy["segments"][segment]["default"]); i += len(segment)
-        return "".join(out)
+        rendered, unsupported = map_ipa_string(ipa)
+        return rendered if unsupported is None else None
 
     checked = 0
     for fixture in fixtures.values():

@@ -187,7 +187,7 @@
       "status": "candidate",
       "output": "33.6M-parameter BERT encoder-decoder; model card's examples output IPA-like strings; pinned HF revision 20e069d384b240da76320e1569958568c12a54bc. Paper reports under 2% CER on its own held-out test setup. Added as optional benchmark target; project run pending; MekongPhon corpus-data rights remain unresolved.",
       "license": "Model card declares Apache-2.0; training corpus license is not declared in the MekongPhon repository snapshot; do not redistribute corpus data or assume the model license clears source data.",
-      "verified_in_repo": true,
+      "verified_in_repo": false,
       "enabled_by_default": false,
       "latest_run_id": 42996817456,
       "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456",

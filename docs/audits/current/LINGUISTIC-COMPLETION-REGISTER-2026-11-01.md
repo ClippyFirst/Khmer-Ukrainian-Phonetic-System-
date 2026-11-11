@@ -503,3 +503,9 @@ The [Khmer-acoustic-model repository](https://github.com/chemvatho/Khmer-acousti
 The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`. Do not copy, benchmark, or redistribute it until the full file, entry count, provenance and authoritative data license are supplied.
 
 The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded checkpoint's training split has not been independently verified; this is an additional reason not to treat the run as an independent held-out accuracy estimate.
+
+## Hybrid engine engineering — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| KHM-HYBRID-IPA-ENGINE-001 | PARTIAL | `src/khmer_ua/hybrid.py` adds the evidence-aware ensemble, `make_mekongphon_backend()` (pinned model revision) and `make_command_backend()`; package exports, unit tests and [engine contract](../../hybrid-engines.md). Exact-head Quality CI [43011364771](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43011364771) SUCCESS. | Wire a rights-cleared pinned Khmer rule backend into the command adapter; run both backends on a profile-matched independent adjudicated IPA set; assess shared training/data overlap and segment-level/prosodic error before promoting output. Consensus is not gold. |

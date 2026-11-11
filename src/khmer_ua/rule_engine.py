@@ -121,6 +121,6 @@ class RuleBasedKhmerEngine:
 HybridKhmerEngine = RuleBasedKhmerEngine
 
 
-def create_hybrid_engine(*_args: Any, **_kwargs: Any) -> RuleBasedKhmerEngine:
+def create_hybrid_engine() -> RuleBasedKhmerEngine:
     """Compatibility factory returning the deterministic rule engine only."""
     return RuleBasedKhmerEngine()

@@ -11,20 +11,19 @@ import json
 from pathlib import Path
 from typing import Any
 
-from .data import CONSONANTS
 from .normalize import normalize_khmer
 from .parser import analyze as analyze_structure
-from .practical import map_segment
 
 ROOT = Path(__file__).resolve().parents[2]
 _FIXTURE_PATH = ROOT / "data" / "tests" / "web-fixtures.json"
 with _FIXTURE_PATH.open(encoding="utf-8") as _handle:
     _LEXICON: dict[str, dict[str, Any]] = json.load(_handle)
 
+with (ROOT / "data" / "ukrainian" / "practical-policy.json").open(encoding="utf-8") as _handle:
+    _POLICY = json.load(_handle)
+_SEGMENTS = _POLICY["segments"]
 _SEGMENT_KEYS = tuple(sorted(
-    (key for key, value in __import__("json").loads(
-        (ROOT / "data" / "ukrainian" / "practical-policy.json").read_text(encoding="utf-8")
-    )["segments"].items() if value.get("default") is not None),
+    (key for key, value in _SEGMENTS.items() if value.get("default") is not None),
     key=len,
     reverse=True,
 ))
@@ -32,7 +31,6 @@ _SEGMENT_KEYS = tuple(sorted(
 
 def _map_ipa(ipa: str) -> tuple[str | None, str | None]:
     """Apply the canonical longest-match IPA → Ukrainian segment policy."""
-    policy = json.loads((ROOT / "data" / "ukrainian" / "practical-policy.json").read_text(encoding="utf-8"))
     rest = ipa.replace("ˈ", "").replace("ˌ", "").replace(".", "")
     output: list[str] = []
     while rest:
@@ -43,7 +41,7 @@ def _map_ipa(ipa: str) -> tuple[str | None, str | None]:
         segment = next((key for key in _SEGMENT_KEYS if rest.startswith(key)), None)
         if segment is None:
             return None, rest
-        output.append(policy["segments"][segment]["default"])
+        output.append(_SEGMENTS[segment]["default"])
         rest = rest[len(segment):]
     return "".join(output), None
 

@@ -60,6 +60,6 @@ def test_ipa_string_adapter_uses_longest_match_and_keeps_syllable_spaces():
 
 def test_ipa_string_adapter_does_not_invent_affricates_or_guess_unknown_segments():
     assert map_ipa_string("t s") == ("т с", None)
-    rendered, unsupported = map_ipa_string("kʰɤ")
+    rendered, unsupported = map_ipa_string("kʰɥ")
     assert rendered is None
-    assert unsupported == "ɤ"
+    assert unsupported == "ɥ"

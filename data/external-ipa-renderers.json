@@ -189,8 +189,8 @@
       "license": "Model card declares Apache-2.0; training corpus license is not declared in the MekongPhon repository snapshot; do not redistribute corpus data or assume the model license clears source data.",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 42996817456,
-      "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456",
+      "latest_run_id": 42997945391,
+      "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391",
       "execution_status": "SMOKE_VERIFIED_SOURCE_ATTESTED_DIAGNOSTIC_NOT_ACCURACY",
       "last_run_summary": {
         "input_count": 100,
@@ -203,9 +203,10 @@
         "model_revision": "20e069d384b240da76320e1569958568c12a54bc",
         "mekongphon_source_commit": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
         "corpus_sha256": "3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49",
-        "report_sha256": "afdf28b9fddb9afc706fe22edd8d3f116d1cf0369dcdb23dc4453b209f34ac03",
-        "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456/artifacts/13843728855",
-        "artifact_zip_sha256": "39facdb8bdbbb9d8163583e7dfc65c4e6a1e7c9f130664d074782c971ba08a39"
+        "report_sha256": "0df96422a0f7276c75f79333072c0fc50892e4c0195fe1137b0f60e90369b7bb",
+        "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674",
+        "artifact_zip_sha256": "d027ea394e12271af65a177bf721d6c5dceac85362ed997905c9e94241fecf31",
+        "corpus_source_commit": "f80f6c1840c4818b51e05f2e00cded4701a5b662"
       }
     },
     {
@@ -351,6 +352,36 @@
         "inference_seconds": 3.171016
       },
       "interpretation": "100/100 outputs. 64 strict matches and codepoint CER 12.539% against MekongPhon pron_no_tones only. No independent gold and accuracy remains null; the field omits tone, so this does not test tone/phonation. The paper's under-2% CER is not reproduced by this run; test-split/normalization/checkpoint comparability requires follow-up."
+    },
+    {
+      "engine": "byumatrixlab/khmer-ipa",
+      "version": "20e069d384b240da76320e1569958568c12a54bc",
+      "run_id": 42997945391,
+      "run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391",
+      "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674",
+      "artifact_zip_sha256": "d027ea394e12271af65a177bf721d6c5dceac85362ed997905c9e94241fecf31",
+      "report_sha256": "0df96422a0f7276c75f79333072c0fc50892e4c0195fe1137b0f60e90369b7bb",
+      "corpus_path": "MekongPhon data/splits/khmer_eval.csv",
+      "corpus_revision": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
+      "corpus_sha256": "3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49",
+      "input_count": 100,
+      "successful_outputs": 100,
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "strict_source_attested_matches": 64,
+      "source_attested_codepoint_cer": 0.12539184952978055,
+      "source_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
+      "runtime": {
+        "python": "3.12.16",
+        "torch": "2.5.1+cpu",
+        "transformers": "4.46.3",
+        "device": "cpu",
+        "batch_size": 8,
+        "num_beams": 4,
+        "inference_seconds": 3.292331
+      },
+      "interpretation": "Pinned rerun after adding corpus revision to report. 100/100 outputs; 64 strict matches and 12.539% codepoint CER against MekongPhon pron_no_tones only. No independent gold; accuracy null; no tone/phonation evaluation."
     }
   ],
   "upstream_evidence": [

@@ -244,3 +244,8 @@ These files separate source romanization from Ukrainian target proposals and pre
 ## Independent IPA gold corpus
 
 The project uses a provenance-backed, double-annotated IPA gold workflow. See [the corpus protocol](docs/ipa-gold-corpus.md) and [the language-specific phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md). The corpus is currently empty by design; no phonetic accuracy claim is available until expert adjudication is complete.
+
+
+## Evidence-gated hybrid IPA candidates
+
+The Python API exports HybridKhmerEngine. It runs the deterministic rule engine and can collect pinned external IPA candidates (MekongPhon and command-wrapped Goruut / Khmer Phonemizer / Epitran). External candidates are preserved with provenance and are not voted into the published IPA result. See [hybrid engine contract and benchmark decision](docs/hybrid-engines.md).

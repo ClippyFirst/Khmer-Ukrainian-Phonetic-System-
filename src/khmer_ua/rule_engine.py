@@ -73,7 +73,7 @@ class RuleBasedKhmerEngine:
                 "engine": self.engine_id, "deterministic": True,
                 "ipa": ipa, "ukrainian": ukrainian,
                 "status": fixture.get("status", "PROPOSED") if unsupported is None else "NOT_ESTABLISHED",
-                "rule_ids": ["KHMER_LEXICAL_FIXTURE", "IPA_TO_UKRAINIAN_LONGEST_MATCH"],
+                "rule_trace": ["KHMER_LEXICAL_FIXTURE", "IPA_TO_UKRAINIAN_LONGEST_MATCH"],
                 "reason": fixture.get("note", "") if unsupported is None else f"Unsupported IPA sequence: {unsupported}",
                 "evidence": fixture.get("evidence", []),
                 "lexical_ua_reference": fixture.get("ua"),
@@ -102,7 +102,7 @@ class RuleBasedKhmerEngine:
                         "ipa": ipa if unsupported is None else None,
                         "ukrainian": ukrainian,
                         "status": "PROPOSED" if unsupported is None else "NOT_ESTABLISHED",
-                        "rule_ids": ["KHMER_REGISTER_SERIES_INHERENT_VOWEL", "IPA_TO_UKRAINIAN_LONGEST_MATCH"],
+                        "rule_trace": ["KHMER_REGISTER_SERIES_INHERENT_VOWEL", "IPA_TO_UKRAINIAN_LONGEST_MATCH"],
                         "reason": "Conservative series-based inherent-vowel rule; status remains proposed pending profile-matched adjudication.",
                         "evidence": ["unicode17-ch16", "r12a-orthography"],
                     }
@@ -111,7 +111,7 @@ class RuleBasedKhmerEngine:
             "input": text, "normalized": normalized, "profile": self.profile,
             "engine": self.engine_id, "deterministic": True,
             "ipa": None, "ukrainian": None, "status": "NOT_ESTABLISHED",
-            "rule_ids": ["KHMER_UNSUPPORTED_PATTERN_WITHHELD"],
+            "rule_trace": ["KHMER_UNSUPPORTED_PATTERN_WITHHELD"],
             "reason": "The recognized orthographic structure has no sufficiently established deterministic orthography-to-IPA rule in this profile.",
             "structure": structure.phonological_representation,
         }

@@ -56,7 +56,7 @@ def test_command_backend_preserves_ipa_stdout_and_provenance(monkeypatch):
     from types import SimpleNamespace
     from khmer_ua.hybrid import make_command_backend
 
-    monkeypatch.setattr(subprocess, "run", lambda command, input, **kwargs: SimpleNamespace(stdout="kʰmae\\n", stderr="diagnostic"))
+    monkeypatch.setattr(subprocess, "run", lambda command, input, **kwargs: SimpleNamespace(stdout="kʰmae\n", stderr="diagnostic"))
     result = make_command_backend(["khmer-rule"], engine_id="rule-baseline")("ខ្មែរ")
     assert result["ipa"] == "kʰmae"
     assert result["provenance"]["engine"] == "rule-baseline"

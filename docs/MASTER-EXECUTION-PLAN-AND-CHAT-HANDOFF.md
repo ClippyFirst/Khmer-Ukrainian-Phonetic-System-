@@ -1671,3 +1671,11 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 ### Next genuine blocker
 Create the independent text-only Khmer IPA/Ukrainian adjudication set. Do not promote the proposed correspondences to validated accuracy claims until that evidence exists.
+
+## Verification refresh — Ukrainian practical transcription, 2026-11-11
+
+- Latest implementation branch: `feat/khmer-ukrainian-practical-adapter-final-2026-11-11`; current PR #156 remains open/draft and unmerged. Main remains unchanged at `2fe36aa1eb64cc47fb60ab1b37561f40d57202a7`.
+- The canonical Python adapter, browser adapter and target policy are unchanged at the verified implementation baseline; subsequent changes expanded tests and synchronized README, system/implementation/validation documentation and completion records.
+- Expanded adapter checks cover /h, ɦ, ɡ, g, x; explicit affricates; plain consonant sequences; /cʰ/ → ть'; /j/ yotation; whitespace and unsupported IPA. No audio was used or required.
+- Exact-head quality run [43095329118](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329118) and browser smoke [43095329245](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43095329245) are queued with no jobs started at this refresh. Do not report these final runs as passed.
+- The independent text-only Phnom Penh IPA/Ukrainian gold set remains BLOCKED by missing independently sourced and adjudicated text labels. This blocks empirical accuracy claims, not deterministic adapter implementation. Audio annotation is DEFERRED by scope.

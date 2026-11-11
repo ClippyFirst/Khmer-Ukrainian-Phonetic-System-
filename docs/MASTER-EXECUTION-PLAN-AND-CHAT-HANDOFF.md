@@ -1691,3 +1691,11 @@ The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded 
 - Exact-head CI: Quality run [43011364771](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43011364771) SUCCESS; Python tests, web checks і production build пройшли. Локального checkout не було.
 - Реальний прогін neural+rule ансамблю на незалежно перевірених IPA-лейблах ще не виконано; до нього рушій є реалізованим orchestration/API з конкретним neural adapter, але не оціненим за фонетичною точністю.
 - Branch: `research/khmer-hybrid-engine-2026-11-11`, створена від попереднього research PR #150 head `536700eee37dcda052da532237ece179d076b83d`; зміни призначені як stacked follow-up до гілки PR #150.
+
+
+## Hybrid engine final checkpoint — 2026-11-11
+
+- Branch `research/khmer-hybrid-engine-2026-11-11`; code-bearing head `90b688c69a16786c0f300bb1f4706ce8a954dc79` (later documentation/register commits follow); stacked draft PR [#151](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/151) targets the research branch for PR #150. PR #151 is open and mergeable; PR #150 is its prerequisite.
+- Added concrete adapters: pinned MekongPhon neural model `20e069d384b240da76320e1569958568c12a54bc`, upstream MekongPhon rule baseline at source commit `f80f6c1840c4818b51e05f2e00cded4701a5b662` (loaded from local checkout, SHA-256 recorded), and generic one-line CLI adapter. Optional dependencies are imported only when the backend is invoked.
+- Exact-head code Quality CI [43012037957](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43012037957) SUCCESS: Python tests, web checks and production build.
+- Status: `PARTIAL` as a research hybrid. Both model and rule backend adapters exist, but no independent expert IPA gold evaluation or hybrid accuracy score has been run. The rule baseline is explicitly heuristic and cannot be treated as expert gold.

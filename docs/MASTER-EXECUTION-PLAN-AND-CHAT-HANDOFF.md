@@ -1633,3 +1633,41 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser smoke [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), and Pages deployment + asset smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) all SUCCESS.
 - Live service: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/. The Python rule engine and published browser runtime are deterministic and do not use model consensus.
 - Remaining linguistic acceptance: independent adjudicated Phnom Penh IPA gold and expanded contextual vowel/coda coverage; no blanket accuracy claim.
+
+
+## 2026-11-11 continuation — Ukrainian practical transcription
+
+### Repository state
+- Starting default-branch SHA: \`2fe36aa1eb64cc47fb60ab1b37561f40d57202a7\`.
+- Verified implementation SHA: \`e7b52ae3921b17fb9d0c400eaad913c8c78d2b50\`.
+- Final verification branch: \`feat/khmer-ukrainian-practical-adapter-final-2026-11-11\`.
+- Draft PR: [#156](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/156), open, not merged.
+- Earlier drafts #154 and #155 were closed as superseded; their branches were retained.
+- No main-branch modification and no Pages deployment/publication.
+
+### Implemented
+- \`src/khmer_ua/practical.py\` now provides the whole-IPA longest-match adapter \`map_ipa_string()\`; \`RuleBasedKhmerEngine\` calls it after IPA derivation. Unknown IPA withholds the complete practical result.
+- \`src/ukrainian-practical.js\` is the shared browser adapter imported by \`src/main.js\`; browser and Python adapter behavior is tested against the same machine-readable policy.
+- Policy version: \`2026-11-11.3\`.
+- Ukrainian-specific choices: /h, ɦ/ → г; /ɡ/ (ASCII /g/) → ґ as a contrast-preserving project choice; /x/ → х; /w, ʋ/ → в; explicit /t͡s, d͡z, t͡ʃ, d͡ʒ/ → ц, дз, ч, дж; /tɕ, dʑ/ → ч, дж as practical approximations; /cʰ/ → ть'.
+- Syllable-initial /j/ + transparent vowel uses Ukrainian я/є/ї/ю/йо; /j/ elsewhere remains й. Russian comparator /w/ → у is not copied into Ukrainian.
+- The 2026 Ukrainian Orthography is target-language guidance, not evidence about Khmer phonology. It generally uses г for foreign [g] and permits ґ as imitation in personal names; /ɡ/ → ґ remains an explicit project policy.
+- Public system page, README, policy documentation, fixture audit and regression tests were updated. Work was text-only; no audio was used.
+
+### Verification evidence
+- Quality workflow [43094688835](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43094688835): SUCCESS; 187 Python tests + 62 subtests; deterministic web checks, policy/data validation and production build passed.
+- Browser workflow [43094688837](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43094688837): SUCCESS; Chromium 3/3.
+- The browser adapter runtime tests exercise yotation, /w/, affricates, whitespace, and fail-closed unknown IPA.
+
+### Task ledger
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Whole-IPA Python adapter integrated after deterministic IPA | DONE_VERIFIED | \`src/khmer_ua/practical.py\`, \`src/khmer_ua/rule_engine.py\`, quality CI |
+| Browser adapter shares the canonical policy and passes runtime mapping tests | DONE_VERIFIED | \`src/ukrainian-practical.js\`, \`src/main.js\`, \`tests/web-engine.test.mjs\`, browser/build CI |
+| Ukrainian h/g/x, affricates, /w/ and /j/ target conventions documented | DONE_VERIFIED | \`data/ukrainian/practical-policy.json\`, public \`system.html\`, regression tests |
+| Empirical correctness of Khmer IPA → Ukrainian target correspondences | PARTIAL | Rules are explicit and deterministic; independent adjudicated gold is still absent |
+| Independent text-only Khmer IPA/Ukrainian gold set | BLOCKED | Requires rights-cleared text lexical sources with provenance plus independent native/expert adjudication; acceptance: non-overlapping held-out set, per-phenomenon labels, adjudication record, CER/PER and coverage/abstention report |
+| Audio validation | DEFERRED | Explicitly outside this text-only task |
+
+### Next genuine blocker
+Create the independent text-only Khmer IPA/Ukrainian adjudication set. Do not promote the proposed correspondences to validated accuracy claims until that evidence exists.

@@ -95,3 +95,51 @@ The [`byumatrixlab/khmer-ipa`](https://huggingface.co/byumatrixlab/khmer-ipa) mo
 ### Full Khmer dictionary availability check — 2026-11-02
 
 The README points to `dictionary/khmer_ipa.dict` and reports 29,204 entries, but fetching that exact path from the repository's `main` branch returned GitHub API 404. The only dictionary file successfully retrieved for inspection was `dictionary/khmer_ipa_sample.dict`, which contains six entries. Therefore the claimed 29,204-entry inventory remains an upstream README claim, not an independently inspected corpus in this audit. No lexicon coverage percentage can be calculated from the six-entry sample. **BLOCKED:** repeat the coverage/notation audit when the full dictionary is accessible at a stable repository path or another inspectable source.
+
+## Follow-up research and execution — 2026-11-11
+
+### Additional engine/resource findings
+
+1. **BYU MATRIX MekongPhon Khmer IPA model** — [model card](https://huggingface.co/byumatrixlab/khmer-ipa). A 33.6M-parameter BERT encoder–decoder with separate character-level Khmer and IPA tokenizers. Model card license: Apache-2.0. The MekongPhon corpus repository snapshot has no declared root license, so the model license is not treated as permission to redistribute the corpus.
+2. **MekongPhon rule-based baseline** — [rb_khm_to_ipa.py](https://github.com/byu-matrix-lab/MekongPhon/blob/f80f6c1840c4818b51e05f2e00cded4701a5b662/training/baselines/rb_khm_to_ipa.py). A separate experimental rule-based IPA baseline with consonant/register and vowel assignment logic. Not executed in this pass; upstream root license and convention scope need clarification.
+3. **PhonSobon Khmer G2P** — [model](https://huggingface.co/phonsobon/khmer-g2p) and [dataset](https://huggingface.co/datasets/phonsobon/khmer-G2P). The 7.46M character Transformer produces NCKL Khmer-script respelling with syllable separators, not IPA. The model card reports 83.37% validation word accuracy at epoch 150; no test result is reported. The dataset has 38,629 pairs / 37,755 unique words, split 34,770 / 1,939 / 1,920. Dataset terms point back to NCKL Khmer Dictionary 2022 and require rights clarification before commercial use. It is an auxiliary respelling/syllabification resource, not an IPA benchmark.
+
+### MekongPhon model execution
+
+Historical one-time CI diagnostic [42997945391](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391), artifact [13844243674](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674), pinned model revision `20e069d384b240da76320e1569958568c12a54bc`, corpus commit `f80f6c1840c4818b51e05f2e00cded4701a5b662`.
+
+| Measurement | Result |
+|---|---:|
+| Evaluation rows | 100 |
+| Successful model outputs | 100 |
+| Strict matches against `pron_no_tones` | 64 |
+| Character edits | 80 |
+| Reference code points | 638 |
+| Source-attested codepoint CER | 12.539% |
+| Independent project gold | 0 |
+| Accuracy | null |
+
+The same CI run executed Khmer Phonemizer 0.0.3 on the same source split: 100/100 outputs, 18 strict matches and 19 after limited notation normalization. Both are source-attested diagnostics only. The neural model's result does not reproduce the paper's abstract-level under-2% CER; the model checkpoint, test split and normalization used in the publication have not yet been reconciled with this 100-row `pron_no_tones` run. Do not compare the numbers as if they were the same benchmark.
+
+### Evidence and acceptance boundary
+
+- The model is **SMOKE_VERIFIED** in optional CI, not production-integrated.
+- The artifact omits raw source rows/reference strings; it records the corpus hash, per-row reference hashes, raw predictions and runtime/model provenance.
+- No source labels were promoted to independent gold; no accuracy is claimed.
+- `pron_no_tones` does not test tone/phonation; a target-variety gold set and expert review are still required.
+- PhonSobon dataset data are not copied or used in CI because commercial/redistribution rights are unresolved.
+
+MekongPhon provenance qualifier: the paper reports 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS from an 8,026-entry seed lexicon; a 500-entry sample was reviewed by two proficient L2 speakers, not native target-variety annotators. Its under-2% CER is therefore a source-reported dictionary-seeded result, not independent sentence-level adjudication or this project's gold accuracy.
+
+## Khmer acoustic-model lexicon: evidence blocker — 2026-11-11
+
+The [Khmer-acoustic-model repository](https://github.com/chemvatho/Khmer-acoustic-model/tree/2714994b41ccf875c5b6f6182b48a72f13632dbf/dictionary) remains a potential IPA lexicon source, but it is **not currently an ingestible benchmark**:
+
+- Root README advertises 29,204 IPA entries and says dictionary data are CC BY-SA 4.0.
+- `dictionary/README.md` instead states 33,091 entries and CC BY 4.0.
+- The inspected main-branch tree at commit `2714994b41ccf875c5b6f6182b48a72f13632dbf` contains only `dictionary/khmer_ipa_sample.dict` (144 bytes), not the advertised full dictionary. No release asset was found.
+- The paper/model's MAE and F1 results evaluate forced alignment, not grapheme-to-phoneme conversion.
+
+The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`. Do not copy, benchmark, or redistribute it until the full file, entry count, provenance and authoritative data license are supplied.
+
+The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded checkpoint's training split has not been independently verified; this is an additional reason not to treat the run as an independent held-out accuracy estimate.

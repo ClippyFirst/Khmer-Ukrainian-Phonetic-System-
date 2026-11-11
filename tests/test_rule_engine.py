@@ -32,14 +32,18 @@ def test_unknown_mixed_material_is_not_guessed():
     assert result["status"] == "NOT_ESTABLISHED"
 
 
-def test_legacy_hybrid_name_is_rule_engine_not_ensemble():
-    assert HybridKhmerEngine is RuleBasedKhmerEngine
-    assert HybridKhmerEngine().analyze("ខ្មែរ")["engine"] == "khmer-deterministic-rules-v1"
+def test_hybrid_wraps_rule_engine_without_changing_final_ipa():
+    baseline = RuleBasedKhmerEngine().analyze("ខ្មែរ")
+    result = HybridKhmerEngine().analyze("ខ្មែរ")
+    assert result["ipa"] == baseline["ipa"]
+    assert result["ukrainian"] == baseline["ukrainian"]
+    assert result["external_candidates"] == []
 
 
-def test_legacy_factory_rejects_external_backend_injection():
-    import pytest
+def test_hybrid_factory_accepts_candidates_but_does_not_promote_them():
     from khmer_ua import create_hybrid_engine
-
-    with pytest.raises(TypeError):
-        create_hybrid_engine({"external-model": lambda _: "kʰmae"})
+    baseline = RuleBasedKhmerEngine().analyze("ខ្មែរ")
+    result = create_hybrid_engine({"external-model": lambda _: "kʰmae"}).analyze("ខ្មែរ")
+    assert result["ipa"] == baseline["ipa"]
+    assert result["external_candidates"][0]["provider"] == "external-model"
+    assert result["external_candidates"][0]["promotion"].startswith("WITHHELD")

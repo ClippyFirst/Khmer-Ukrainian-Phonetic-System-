@@ -173,11 +173,13 @@
       "url": "https://github.com/chemvatho/Khmer-acoustic-model",
       "kind": "word-level IPA reference resource",
       "status": "benchmark-resource",
-      "output": "Upstream advertises 29,204 IPA entries validated by native linguists. README states dictionary data CC BY-SA 4.0 separately from MIT code/model.",
-      "license": "Dictionary CC BY-SA 4.0 as stated upstream; verify exact files/revision and attribution before use",
+      "output": "Potential Khmer IPA lexicon resource, but current upstream metadata is contradictory: root README advertises 29,204 entries and CC BY-SA 4.0, while dictionary/README.md says 33,091 entries and CC BY 4.0. The inspected main-branch tree contains only dictionary/khmer_ipa_sample.dict (144 bytes), not the advertised full dictionary. Published MAE/F1 values are forced-alignment results, not G2P metrics. Blocked pending full file and license resolution.",
+      "license": "CONFLICTING_UPSTREAM_DECLARATIONS: root README says CC BY-SA 4.0; dictionary/README.md says CC BY 4.0. Full dictionary absent from inspected main tree; no reuse/redistribution until clarified.",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "execution_status": "UPSTREAM_RESOURCE_CLAIM_LICENSE_REVIEW_REQUIRED"
+      "execution_status": "BLOCKED_METADATA_CONFLICT_AND_FULL_DICTIONARY_ABSENT",
+      "latest_checked_revision": "2714994b41ccf875c5b6f6182b48a72f13632dbf",
+      "latest_checked_at": "2026-11-11"
     },
     {
       "id": "mekongphon-khmer-ipa",
@@ -426,6 +428,13 @@
       "fact": "Model card declares MIT and describes a 7.46M-parameter Transformer that predicts NCKL Khmer-script respelling with syllable separators; reports 83.37% validation word accuracy.",
       "status": "AUXILIARY_RESPelling_MODEL_NOT_IPA",
       "caveat": "Not IPA; dataset is derived from NCKL Khmer Dictionary 2022 and its card asks users to check NCKL terms before commercial use. Validation score is self-reported, not a project benchmark."
+    },
+    {
+      "engine": "Khmer acoustic model pronunciation dictionary",
+      "url": "https://github.com/chemvatho/Khmer-acoustic-model/tree/2714994b41ccf875c5b6f6182b48a72f13632dbf/dictionary",
+      "fact": "Root README advertises 29,204 IPA entries and says dictionary data are CC BY-SA 4.0; dictionary/README.md instead says 33,091 entries and CC BY 4.0. The inspected main tree contains only dictionary/khmer_ipa_sample.dict (144 bytes); no full dictionary file or release asset was found.",
+      "status": "BLOCKED_METADATA_AND_ARTIFACT_MISMATCH",
+      "caveat": "Do not treat as a usable benchmark until the full data artifact, entry count, provenance and one authoritative data license are supplied. The paper/model's MAE and F1 are forced-alignment metrics, not G2P scores."
     }
   ],
   "scope_note": "Historical filename: this registry catalogs both external G2P/IPA comparison systems and display fonts. Fonts are rendering assets, not pronunciation engines.",

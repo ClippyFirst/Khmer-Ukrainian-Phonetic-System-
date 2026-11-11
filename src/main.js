@@ -284,6 +284,7 @@ function renderUnknownUnit(unit, profile) {
         profile,
         provisional_ipa: onsetIpa,
         unresolved_graphemes: [...unit].slice(1),
+        fallback_trace: [{ source: unit, position: "onset", ipa: onsetIpa, rule_id: "KHMER-PREVIEW-ONSET-IPA-V1", certainty: "PROVISIONAL" }],
       };
     }
   }

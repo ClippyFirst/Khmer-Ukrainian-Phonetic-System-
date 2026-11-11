@@ -100,3 +100,14 @@ A manual inspection of raw output highlights follow-up questions rather than sco
 Neither the PhonSobon respeller nor the MekongPhon rule-based baseline is enabled in the runtime. The neural IPA model is an optional comparator only; it does not replace the project's phonological analysis or IPA adapter.
 
 MekongPhon provenance qualifier: the paper reports 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS from an 8,026-entry seed lexicon; a 500-entry sample was reviewed by two proficient L2 speakers, not native target-variety annotators. Its under-2% CER is therefore a source-reported dictionary-seeded result, not independent sentence-level adjudication or this project's gold accuracy.
+
+## Khmer acoustic-model lexicon: evidence blocker — 2026-11-11
+
+The [Khmer-acoustic-model repository](https://github.com/chemvatho/Khmer-acoustic-model/tree/2714994b41ccf875c5b6f6182b48a72f13632dbf/dictionary) remains a potential IPA lexicon source, but it is **not currently an ingestible benchmark**:
+
+- Root README advertises 29,204 IPA entries and says dictionary data are CC BY-SA 4.0.
+- `dictionary/README.md` instead states 33,091 entries and CC BY 4.0.
+- The inspected main-branch tree at commit `2714994b41ccf875c5b6f6182b48a72f13632dbf` contains only `dictionary/khmer_ipa_sample.dict` (144 bytes), not the advertised full dictionary. No release asset was found.
+- The paper/model's MAE and F1 results evaluate forced alignment, not grapheme-to-phoneme conversion.
+
+The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`. Do not copy, benchmark, or redistribute it until the full file, entry count, provenance and authoritative data license are supplied.

@@ -40,6 +40,8 @@ def _provisional_preview(structure: Any) -> dict[str, Any] | None:
                 "ipa": None,
                 "ukrainian": "?",
                 "status": "UNKNOWN",
+                "position": None,
+                "rule_id": None,
                 "unresolved_graphemes": list(unit.get("raw_text", "")),
             })
             continue
@@ -57,15 +59,18 @@ def _provisional_preview(structure: Any) -> dict[str, Any] | None:
             "ipa": onset,
             "ukrainian": rendered + ("?" if unresolved or not rendered else ""),
             "status": "PROVISIONAL" if rendered else "UNKNOWN",
+            "position": "onset",
+            "rule_id": "KHMER-PREVIEW-ONSET-IPA-V1",
             "unresolved_graphemes": unresolved or ([] if rendered else [base]),
             "warnings": ["CONSONANT_POSITION_OR_RIME_NOT_ESTABLISHED"],
             "evidence": ["unicode17-ch16", "r12a-orthography"],
         })
-    if not any(item.get("ipa") for item in previews):
+    if not previews:
         return None
+    has_hint = any(item.get("ipa") for item in previews)
     return {
-        "status": "PROVISIONAL",
-        "ipa_preview": " ".join(item["ipa"] or "?" for item in previews),
+        "status": "PROVISIONAL" if has_hint else "UNKNOWN",
+        "ipa_preview": " ".join(item["ipa"] or "?" for item in previews) if has_hint else None,
         "ukrainian_preview": " ".join(item["ukrainian"] for item in previews),
         "syllables": previews,
         "warnings": ["LOW_CONFIDENCE", "TONE_NOT_INFERRED"],

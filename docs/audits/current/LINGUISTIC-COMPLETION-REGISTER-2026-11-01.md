@@ -506,3 +506,6 @@ The export and benchmark now preserve and validate the complete frozen split ide
 ### Verification checkpoint — KHM-HYBRID-CANDIDATE-ENGINE-001
 
 Engineering implementation is DONE_VERIFIED on code-bearing head 17e256332c66c4a562743efd20314a1c0e2bdded: Quality checks [43077659052](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659052) SUCCESS (192 Python tests + 70 subtests, web checks, production build); browser smoke [43077659090](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659090) SUCCESS. Linguistic promotion remains PARTIAL; no independent profile-matched IPA gold exists.
+
+
+Latest-head verification on PR #153 head 5f6587a2dc885ed89cb3d3a947b31cf44f54fdcc: Quality checks [43078302826](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302826) SUCCESS (192 Python tests + 70 subtests, web checks and production build); browser smoke [43078302840](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302840) SUCCESS.

@@ -515,3 +515,15 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | Documentation consistency | DONE_VERIFIED | README, system page, implementation, validation and practical transcription specification aligned; /w/ → в corrected in summary table; sole active profile documented |
 | Independent text-only Phnom Penh IPA/Ukrainian gold | BLOCKED | No independently sourced/adjudicated text labels available; acceptance requires a rights-cleared held-out text lexicon with dialect/profile scope, independent IPA annotation/adjudication and error/abstention report |
 | Audio validation | DEFERRED | Not required for this text-only task |
+
+
+## Provisional onset IPA fallback — 2026-11-11
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Python onset-only preview for unresolved Khmer units | PARTIAL | Separate provisional_ipa/provisional_ukrainian/fallback_status/fallback_trace; canonical ipa/ukrainian unchanged; regression for កា. Commit 352c22a55f526877dd136a982b2aa5ac03ff3838 |
+| Browser onset-only preview | PARTIAL | Same onset IPA → existing adapter → ? behavior; per-unit PROVISIONAL status. Commit 862aa061726b2bae6296199e4b655334bb6f609a |
+| Browser regression | PARTIAL | Source-contract assertions added; not yet an executable cross-runtime parity fixture. Commit 660915e4ed1f44eab04258957eee39537883aadd |
+| Dedicated grapheme-position evidence registry | TODO | Register primary-source locator, profile, exact position, rule ID, scope and reviewer status for each provisional mapping |
+| Exact-head CI and Chromium verification | BLOCKED pending run | Runs 43099931373 and 43099931284 were queued; neither is verified as passed |
+| Full provisional vowel/subscript/coeng fallback | TODO | Only consonant onset hints are implemented; require independently sourced positional evidence before extending |

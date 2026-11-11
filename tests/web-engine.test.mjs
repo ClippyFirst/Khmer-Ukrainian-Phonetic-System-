@@ -30,7 +30,13 @@ if (!Object.hasOwn(policy.segments, "ae")) throw new Error("Khmer /ae/ target ma
 if (policy.segments["kʰ"].default !== "к\u0027") throw new Error("canonical /kʰ/ target must be к apostrophe");
 if (policy.segments["h"].default !== "г" || policy.segments["ɡ"].default !== "ґ" || policy.segments["x"].default !== "х") throw new Error("Ukrainian h/g/x target distinctions are missing");
 if (policy.segments["w"].default !== "в" || policy.segments["w"].compatibility_ru !== "у") throw new Error("Ukrainian /w/ target must differ from Russian comparator");
-if (!js.includes("const JOTATED_VOWELS") || !js.includes("syllableStart")) throw new Error("contextual Ukrainian /j/ yotation is missing");
+if (!adapterSource.includes("const JOTATED_VOWELS") || !adapterSource.includes("syllableStart")) throw new Error("contextual Ukrainian /j/ yotation is missing");
+for (const [ipa, expected] of [["ja je ji jo ju","я є ї йо ю"],["jaː","я"],["a.ja","ая"],["w","в"],["t͡s","ц"]]) {
+  const mapped = mapIpa(ipa, policy);
+  if (mapped.value !== expected || mapped.unsupported !== null) throw new Error("browser adapter mismatch for " + ipa + ": " + JSON.stringify(mapped));
+}
+const unknownIpa = mapIpa("kʰɥ", policy);
+if (unknownIpa.value !== null || unknownIpa.unsupported !== "ɥ") throw new Error("browser adapter must withhold unsupported IPA");
 if (!systemHtml.includes("контекстна українська йотація") || !systemHtml.includes("/w/ → в")) throw new Error("public system page lacks Ukrainian glide adaptation policy");
 for (const [ipa, expected] of [["t͡s","ц"],["d͡z","дз"],["t͡ʃ","ч"],["d͡ʒ","дж"]]) if (policy.segments[ipa]?.default !== expected) throw new Error("Ukrainian affricate target is missing: " + ipa);
 if (!systemHtml.includes("правопис 2026 §122")) throw new Error("Ukrainian 2026 normative caveat for /ɡ/ → ґ is missing");

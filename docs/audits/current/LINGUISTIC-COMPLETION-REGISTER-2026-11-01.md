@@ -479,3 +479,11 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-IPA-GOLD-RECRUITMENT-LEADS-001 | PARTIAL | The current UW profile verifies Nielson Hul's Khmer phonetics/voice-quality/sociophonetic research and public institutional email; University of Cologne 2026 profile verifies Vatho Chem's 2025 PhD in Phonetics focused on Central Khmer reduction and dialect fieldwork. Both are prospective reviewer leads only; Chem's relationship to his own acoustic-model resource must be disclosed and he must not be sole adjudicator of its data. | No candidate has been contacted, consented, recruited or approved. Close only after two independent qualified target-variety annotators, separate adjudicator, non-annotating curator, conflict checks, secure blind intake and written role/terms confirmation are documented. |
+
+# External G2P expansion — 2026-11-11
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-MEKONGPHON-IPA-MODEL-001 | PARTIAL | Optional CI run [42996817456](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456): pinned model/corpus revisions, 100/100 outputs, 64 strict source-attested matches, 12.539% codepoint CER on `pron_no_tones`; independent gold 0, accuracy null. | Keep optional. Reconcile the under-2% paper result with this run's 12.539% CER; validate tone/phonation and the approved Khmer profile against independently adjudicated gold before any integration. |
+| KHMER-MEKONGPHON-RULE-BASELINE-001 | PARTIAL | Upstream experimental rule-based baseline identified at pinned MekongPhon source path; not executed and upstream root license is absent in inspected snapshot. | Inspect dependency behavior, output conventions, and exact license/attribution before running or reusing. |
+| KHMER-PHONSOBON-NCKL-RESPelling-001 | PARTIAL | 38,629 NCKL-derived Khmer-script respelling pairs; model card reports 83.37% validation word accuracy. Output is not IPA; dataset commercial/redistribution terms require NCKL clarification. | Keep outside IPA runtime. Do not copy or use commercially until dataset rights are established; test-set evaluation and dialect/profile scope remain unverified. |

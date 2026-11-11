@@ -10,17 +10,9 @@ This is not character-by-character transliteration. The Ukrainian rendering is a
 
 ## Profiles
 
-### `careful_standard`
+### `khmer-pph-careful-citation-v1`
 
-Default for academic, editorial and reference use.
-
-### `phnom_penh_colloquial`
-
-Optional pronunciation profile. It may model documented /r/-loss and associated aspiration, pitch, voice-quality and vowel effects. It must not overwrite the careful analysis or infer aspiration for every /Cr/ cluster.
-
-### `established_form`
-
-A separately versioned lexicon may override the generic algorithm for conventional Ukrainian exonyms and historically established names. Every override needs provenance and a source; a familiar Ukrainian name is not evidence for a general Khmer rule.
+The sole active runtime profile: contemporary Phnom Penh-oriented careful citation speech. The identifier is a project key, not an external standard. Colloquial Phnom Penh /r/-loss and related aspiration, pitch and voice-quality processes remain research-only; the runtime does not synthesize them from spelling. Conventional Ukrainian exonyms may be added only as separately sourced, versioned lexical fixtures; there is no independent runtime profile for them.
 
 ## Ukrainian target correspondences
 

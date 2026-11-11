@@ -260,5 +260,37 @@
     "status": "BLOCKED_SOURCE_INCOMPLETE_RIGHTS_CONFLICT",
     "license": "Unresolved: root README says CC BY-SA 4.0 for pronunciation dictionary; dictionary README says CC BY 4.0 for a G2P mapping; code LICENSE is MIT but does not resolve third-party data terms.",
     "limitations": "Do not import sample or claim full dictionary access. Request versioned full artifact and SHA-256, artifact-specific licenses, provenance, dialect/IPA convention, annotation/adjudication details, and release/DOI. Alignment boundary metrics are not phonetic accuracy."
+  },
+  {
+    "id": "byumatrixlab-khmer-ipa-model",
+    "type": "external_g2p_model",
+    "title": "BYU MATRIX Lab Khmer IPA model",
+    "year": 2026,
+    "url": "https://huggingface.co/byumatrixlab/khmer-ipa",
+    "scope": "33.6M-parameter BERT encoder-decoder with separate Khmer and IPA tokenizers; model card reports best evaluation loss 0.1736 at checkpoint 26000; the model card's example output is IPA-like. The LREC 2026 MekongPhon paper reports under 2% CER on its own held-out evaluation setup.",
+    "license": "Apache-2.0 as declared by the model card",
+    "status": "OPTIONAL_EXTERNAL_MODEL_CANDIDATE",
+    "limitations": "The model card license does not resolve rights in the training corpus; MekongPhon repository snapshot has no declared root LICENSE. Source-attested diagnostic results are not independent project gold; model evaluation uses pron_no_tones and does not establish tone/phonation recovery."
+  },
+  {
+    "id": "phonsobon-khmer-g2p-model",
+    "type": "external_pronunciation_respelling_model",
+    "title": "PhonSobon Khmer G2P (NCKL respelling)",
+    "year": 2026,
+    "url": "https://huggingface.co/phonsobon/khmer-g2p",
+    "scope": "7.46M-parameter character-level Transformer predicts NCKL Khmer-script respelling with hyphenated syllable boundaries; model card reports 83.37% validation word accuracy at epoch 150.",
+    "license": "MIT as declared by model card",
+    "status": "AUXILIARY_RESPelling_MODEL_NOT_IPA",
+    "limitations": "Output is Khmer-script respelling, not IPA; no test score is reported in the model card. The separate training dataset derives from the NCKL Khmer Dictionary 2022 and its dataset card asks users to check NCKL terms before commercial use."
+  },
+  {
+    "id": "phonsobon-khmer-g2p-dataset",
+    "type": "pronunciation_respelling_benchmark",
+    "title": "PhonSobon Khmer G2P dataset (derived from NCKL Khmer Dictionary 2022)",
+    "year": 2026,
+    "url": "https://huggingface.co/datasets/phonsobon/khmer-G2P",
+    "scope": "38,629 word-to-pronunciation pairs and 37,755 unique words; train 34,770, validation 1,939, test 1,920; word-level split keeps all readings of a word together. Labels are Khmer-script respellings with hyphenated syllable boundaries, not IPA.",
+    "status": "AUXILIARY_SYLLABIFICATION_BENCHMARK_NOT_IPA",
+    "limitations": "Standard NCKL/Phnom Penh prescribed word pronunciations; not regional/colloquial variants and not running-speech sandhi. Dataset card attributes content to NCKL and explicitly advises checking NCKL terms before commercial use; do not redistribute/use commercially without rights clarification."
   }
 ]

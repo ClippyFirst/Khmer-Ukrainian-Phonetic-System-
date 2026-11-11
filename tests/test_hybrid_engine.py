@@ -60,3 +60,15 @@ def test_command_backend_preserves_ipa_stdout_and_provenance(monkeypatch):
     result = make_command_backend(["khmer-rule"], engine_id="rule-baseline")("ខ្មែរ")
     assert result["ipa"] == "kʰmae"
     assert result["provenance"]["engine"] == "rule-baseline"
+
+
+def test_mekongphon_rule_adapter_loads_external_pinned_module(tmp_path):
+    from khmer_ua.hybrid import make_mekongphon_rule_backend
+
+    source = tmp_path / "rb_khm_to_ipa.py"
+    source.write_text("def khmer2ipa(text, output='ipa'):\n    assert output == 'ipa'\n    return 'kʰmae'\n", encoding="utf-8")
+    backend = make_mekongphon_rule_backend(str(source))
+    result = backend("ខ្មែរ")
+    assert result["ipa"] == "kʰmae"
+    assert result["provenance"]["source_commit"] == "f80f6c1840c4818b51e05f2e00cded4701a5b662"
+    assert len(result["provenance"]["source_sha256"]) == 64

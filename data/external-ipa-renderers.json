@@ -188,7 +188,7 @@
       "kind": "neural Khmer-to-IPA G2P model",
       "status": "candidate",
       "output": "33.6M-parameter BERT encoder-decoder; model card's examples output IPA-like strings; pinned HF revision 20e069d384b240da76320e1569958568c12a54bc. Paper reports under 2% CER on its own held-out test setup. Added as optional benchmark target; project run pending; MekongPhon corpus-data rights remain unresolved. The paper's corpus contains 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS; the seed lexicon has 8,026 entries and a 500-entry review by two proficient L2 speakers (not native annotators).",
-      "license": "Model card declares Apache-2.0; training corpus license is not declared in the MekongPhon repository snapshot; do not redistribute corpus data or assume the model license clears source data.",
+      "license": "Model card declares Apache-2.0; training corpus license is not declared in the MekongPhon repository snapshot; do not redistribute corpus data or assume the model license clears source data. Future CI runs are manual-dispatch only pending rights clarification.",
       "verified_in_repo": false,
       "enabled_by_default": false,
       "latest_run_id": 42997945391,
@@ -209,7 +209,8 @@
         "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674",
         "artifact_zip_sha256": "d027ea394e12271af65a177bf721d6c5dceac85362ed997905c9e94241fecf31",
         "corpus_source_commit": "f80f6c1840c4818b51e05f2e00cded4701a5b662"
-      }
+      },
+      "future_runs": "MANUAL_WORKFLOW_DISPATCH_ONLY_PENDING_CORPUS_RIGHTS"
     },
     {
       "id": "mekongphon-rule-based-baseline",

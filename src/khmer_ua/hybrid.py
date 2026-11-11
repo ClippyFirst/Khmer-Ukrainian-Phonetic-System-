@@ -7,7 +7,7 @@ produces a consensus IPA value.
 """
 from __future__ import annotations
 
-from collections import defaultdict
+from collections import defaultdict\nfrom dataclasses import asdict
 from typing import Any, Callable, Iterable
 
 from .parser import analyze
@@ -89,7 +89,7 @@ class HybridKhmerEngine:
         return {
             "input": text,
             "profile": "khmer-pph-careful-citation-v1",
-            "structure": structure.to_dict() if hasattr(structure, "to_dict") else structure,
+            "structure": asdict(structure),
             "ipa": decision["ipa"],
             "ipa_status": decision["status"],
             "agreement": decision["agreement"],

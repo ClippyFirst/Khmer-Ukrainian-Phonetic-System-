@@ -1626,3 +1626,10 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - PR [#152](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/152) merged to main as `913e1b2a117022eb3350c3d1957680f0b5db0661` from branch release/deterministic-rule-engine-2026-11-11. Exact main Quality [43018004334](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43018004334), browser smoke [43018004167](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43018004167), and Pages deployment + post-deploy asset smoke [43018004186](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43018004186) all SUCCESS.
 - Published service: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/
 - Engineering task DONE_VERIFIED; linguistic coverage remains PARTIAL/PROPOSED. Determinism is verified; phonetic correctness beyond the covered rules/lexical fixtures still requires expert-adjudicated Phnom Penh gold.
+
+## Final deterministic-engine verification — 2026-11-11
+
+- Post-merge hardening on main head `7585b49fdaac5480940d2511f48961f7690bf6b5`: legacy factory now rejects external provider injection; execution trace is named `rule_trace`, not a fabricated evidence-rule identifier.
+- Exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser smoke [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), and Pages deployment + asset smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) all SUCCESS.
+- Live service: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/. The Python rule engine and published browser runtime are deterministic and do not use model consensus.
+- Remaining linguistic acceptance: independent adjudicated Phnom Penh IPA gold and expanded contextual vowel/coda coverage; no blanket accuracy claim.

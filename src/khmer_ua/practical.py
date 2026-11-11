@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import unicodedata
+import re
 from pathlib import Path
 
 _POLICY_PATH = Path(__file__).resolve().parents[2] / "data" / "ukrainian" / "practical-policy.json"
@@ -20,6 +21,15 @@ _SEGMENT_KEYS = tuple(sorted(
     key=len,
     reverse=True,
 ))
+
+_JOTATED_VOWELS = {
+    "a": "я", "aː": "я", "ɑ": "я", "ɑː": "я",
+    "e": "є", "eː": "є", "ɛ": "є", "ɛː": "є",
+    "i": "ї", "iː": "ї",
+    "o": "йо", "oː": "йо", "ɔ": "йо", "ɔː": "йо",
+    "u": "ю", "uː": "ю",
+    "ɨ": "йи", "ɨː": "йи",
+}
 
 
 def map_segment(ipa: str, mode: str = "default") -> str:
@@ -37,37 +47,55 @@ def map_sequence(segments, mode: str = "default") -> str:
     return "".join(map_segment(segment, mode=mode) for segment in segments)
 
 
+def _map_syllable(syllable: str, mode: str) -> tuple[str | None, str | None]:
+    rest = syllable
+    tokens: list[str] = []
+    while rest:
+        segment = next((key for key in _SEGMENT_KEYS if rest.startswith(key)), None)
+        if segment is None:
+            return None, rest
+        tokens.append(segment)
+        rest = rest[len(segment):]
+
+    output: list[str] = []
+    index = 0
+    if mode == "default" and len(tokens) > 1 and tokens[0] == "j" and tokens[1] in _JOTATED_VOWELS:
+        output.append(_JOTATED_VOWELS[tokens[1]])
+        index = 2
+    while index < len(tokens):
+        output.append(map_segment(tokens[index], mode=mode))
+        index += 1
+    return "".join(output), None
+
+
 def map_ipa_string(ipa: str, mode: str = "default") -> tuple[str | None, str | None]:
     """Render a complete IPA string with longest-match segment recognition.
 
-    IPA length is retained through explicit long-vowel keys in the policy.
-    Primary/secondary stress marks and syllable dots are analytical separators
-    and are not printed in practical Ukrainian spelling. Spaces are preserved.
-    Unknown material withholds the entire result; no character-level fallback
-    or Russian-to-Ukrainian conversion is attempted.
+    Spaces are preserved. Stress marks and syllable dots are not printed.
+    Syllable-initial /j/ + vowel uses Ukrainian yotated orthography in default
+    mode; the Russian comparator mode stays segmental. Unknown material
+    withholds the entire practical result.
     """
     if mode not in {"default", "compatibility_ru"}:
         raise ValueError(f"unsupported mapping mode: {mode}")
     rest = unicodedata.normalize("NFC", ipa.strip())
     if len(rest) > 1 and ((rest[0], rest[-1]) in {("/", "/"), ("[", "]")}):
         rest = rest[1:-1]
+    rest = rest.replace("ˈ", "").replace("ˌ", "")
 
-    rest = rest.replace("ˈ", "").replace("ˌ", "").replace(".", "")
     output: list[str] = []
-    while rest:
-        if rest[0].isspace():
-            output.append(rest[0])
-            rest = rest[1:]
+    for part in re.split(r"(\s+|[.·])", rest):
+        if not part:
             continue
-        segment = next((key for key in _SEGMENT_KEYS if rest.startswith(key)), None)
-        if segment is None:
-            return None, rest
-        entry = SEGMENTS[segment]
-        value = entry.get("compatibility_ru") if mode == "compatibility_ru" else entry.get("default")
-        if value is None:
-            return None, rest
-        output.append(value)
-        rest = rest[len(segment):]
+        if part.isspace():
+            output.append(part)
+            continue
+        if part in {".", "·"}:
+            continue
+        mapped, unsupported = _map_syllable(part, mode)
+        if unsupported is not None:
+            return None, unsupported
+        output.append(mapped or "")
     return "".join(output), None
 
 

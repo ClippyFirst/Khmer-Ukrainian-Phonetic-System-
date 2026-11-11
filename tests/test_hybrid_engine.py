@@ -41,3 +41,11 @@ def test_disagreement_withholds_ipa_and_preserves_candidates():
 def test_transport_normalization_does_not_remove_phone_diacritics():
     assert normalize_ipa(" /kʰmae/ ") == "kʰmae"
     assert normalize_ipa("kʰmae") != normalize_ipa("kmae")
+
+
+def test_mekongphon_backend_is_lazy_and_pinned():
+    from khmer_ua.hybrid import make_mekongphon_backend
+
+    backend = make_mekongphon_backend()
+    assert callable(backend)
+    assert backend.__name__ == "predict_one"

@@ -1,4 +1,4 @@
-from khmer_ua.practical import explain_segment, map_sequence, map_segment
+from khmer_ua.practical import explain_segment, map_ipa_string, map_sequence, map_segment
 
 
 def test_aspiration_is_marked_and_russian_comparator_stays_separate():
@@ -49,3 +49,16 @@ def test_missing_russian_comparator_does_not_fall_back_to_ukrainian():
     assert explanation["ua_practical"] == "і"
     assert explanation["ru_compatibility"] is None
     assert explanation["ru_compatibility_status"] == "NOT_ESTABLISHED"
+
+
+def test_ipa_string_adapter_uses_longest_match_and_keeps_syllable_spaces():
+    assert map_ipa_string("kʰaː t͡sa d͡ʒa") == ("к'а ца джа", None)
+    assert map_ipa_string("ha ɡa xa") == ("га ґа ха", None)
+
+
+def test_ipa_string_adapter_does_not_invent_affricates_or_guess_unknown_segments():
+    import pytest
+    assert map_ipa_string("t s") == ("т с", None)
+    rendered, unsupported = map_ipa_string("kʰɤ")
+    assert rendered is None
+    assert unsupported == "ɤ"

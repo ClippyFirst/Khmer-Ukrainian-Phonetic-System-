@@ -491,3 +491,16 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `7585b49fdaac5480940d2511f48961f7690bf6b5`; exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), Pages + smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) SUCCESS. | Deterministic implementation and publication verified. Independent expert-adjudicated Phnom Penh IPA gold remains necessary for broader correctness/accuracy claims. |
+
+
+## 2026-11-11 — Ukrainian practical adapter continuation
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Whole-IPA longest-match Python adapter integrated after Khmer IPA | DONE_VERIFIED | \`src/khmer_ua/practical.py\`, deterministic engine; quality CI 43094688835 |
+| Shared browser adapter with actual yotation, /w/ and affricate tests | DONE_VERIFIED | \`src/ukrainian-practical.js\`, \`src/main.js\`, \`tests/web-engine.test.mjs\`; browser CI 43094688837 |
+| Ukrainian target distinctions /h, ɦ/ → г, /ɡ/ → ґ, /x/ → х | DONE_VERIFIED | Policy v2026-11-11.3; note /ɡ/ → ґ is a project choice, while the 2026 standard generally uses г for foreign [g] |
+| /w/ → в, syllable-initial /j/ yotation, affricates and /cʰ/ → ть' | DONE_VERIFIED | Machine-readable policy and regression tests |
+| Linguistic accuracy of the proposed practical correspondences | PARTIAL | No independent adjudicated text gold set yet |
+| Independent text-only Khmer IPA/Ukrainian gold set | BLOCKED | Requires sourced IPA entries, dialect/profile scope, independent annotation/adjudication and held-out evaluation |
+| Audio corpus | DEFERRED | Not required for the current text-only scope |

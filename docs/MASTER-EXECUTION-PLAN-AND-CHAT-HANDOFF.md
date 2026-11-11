@@ -1681,3 +1681,12 @@ The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded 
 - Draft PR #150: https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/150
 - Head at PR creation: `e15eef5605c0ebf2184d70e799aa9e515ac6b55a`; base `main` at `f2671ad31e37103c8ad356666575444ead1d466f`.
 - The PR is intentionally draft: independent Khmer IPA gold and upstream corpus rights are unresolved. Do not merge as a claim of production accuracy.
+
+## Гібридний IPA-рушій — continuation 2026-11-11
+
+- Додано `src/khmer_ua/hybrid.py`: ансамбль структурного аналізу та підключених Khmer→IPA backend-ів; експортовано `HybridKhmerEngine` і `create_hybrid_engine` з пакета.
+- Додано `tests/test_hybrid_engine.py`: голосування лише між різними backend ID, single-backend non-promotion, duplicate-vote guard, disagreement handling та збереження IPA-діакритиків під час транспортної нормалізації.
+- Додано `docs/hybrid-engines.md` і посилання з README.
+- Важлива межа: engine orchestration і evidence-gated consensus реалізовані; автоматичне завантаження/виконання зовнішніх моделей не вбудоване в core package. Їхні адаптери передаються через backend-функції, тому базовий пакет лишається без сторонніх runtime-залежностей. Реальні neural/rule backend-функції та їхні pinned revisions треба під'єднати в дослідницькому runner перед повним end-to-end прогоном.
+- Перевірка в цій сесії: код записаний у GitHub; локального checkout/pytest тут немає. CI exact-head ще очікується; не вважати тести пройденими до завершення workflow.
+- Branch: `research/khmer-hybrid-engine-2026-11-11`, створена від попереднього research PR #150 head `536700eee37dcda052da532237ece179d076b83d`; зміни призначені як stacked follow-up до гілки PR #150.

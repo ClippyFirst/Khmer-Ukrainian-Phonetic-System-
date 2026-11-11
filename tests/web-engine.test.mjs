@@ -29,6 +29,9 @@ if (!fixtures["ភាសាខ្មែរ"] || fixtures["ភាសាខ្ម�
 if (!Object.hasOwn(policy.segments, "ae")) throw new Error("Khmer /ae/ target mapping missing");
 if (policy.segments["kʰ"].default !== "к\u0027") throw new Error("canonical /kʰ/ target must be к apostrophe");
 if (policy.segments["h"].default !== "г" || policy.segments["ɡ"].default !== "ґ" || policy.segments["x"].default !== "х") throw new Error("Ukrainian h/g/x target distinctions are missing");
+if (policy.segments["w"].default !== "в" || policy.segments["w"].compatibility_ru !== "у") throw new Error("Ukrainian /w/ target must differ from Russian comparator");
+if (!js.includes("const JOTATED_VOWELS") || !js.includes("syllableStart")) throw new Error("contextual Ukrainian /j/ yotation is missing");
+if (!systemHtml.includes("контекстна українська йотація") || !systemHtml.includes("/w/ → в")) throw new Error("public system page lacks Ukrainian glide adaptation policy");
 for (const [ipa, expected] of [["t͡s","ц"],["d͡z","дз"],["t͡ʃ","ч"],["d͡ʒ","дж"]]) if (policy.segments[ipa]?.default !== expected) throw new Error("Ukrainian affricate target is missing: " + ipa);
 if (!systemHtml.includes("правопис 2026 §122")) throw new Error("Ukrainian 2026 normative caveat for /ɡ/ → ґ is missing");
 if (fixtures["ខ្មែរ"].ua !== "к\u0027мае") throw new Error("lexical /kʰmae/ fixture contradicts canonical /kʰ/ policy");

@@ -501,3 +501,5 @@ The [Khmer-acoustic-model repository](https://github.com/chemvatho/Khmer-acousti
 - The paper/model's MAE and F1 results evaluate forced alignment, not grapheme-to-phoneme conversion.
 
 The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`. Do not copy, benchmark, or redistribute it until the full file, entry count, provenance and authoritative data license are supplied.
+
+The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded checkpoint's training split has not been independently verified; this is an additional reason not to treat the run as an independent held-out accuracy estimate.

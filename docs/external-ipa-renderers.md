@@ -111,3 +111,5 @@ The [Khmer-acoustic-model repository](https://github.com/chemvatho/Khmer-acousti
 - The paper/model's MAE and F1 results evaluate forced alignment, not grapheme-to-phoneme conversion.
 
 The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`. Do not copy, benchmark, or redistribute it until the full file, entry count, provenance and authoritative data license are supplied.
+
+Future MekongPhon corpus-dependent CI runs are manual-dispatch only pending rights clarification; the 2026-11-11 execution is retained as a historical diagnostic, not authorization for recurring data use.

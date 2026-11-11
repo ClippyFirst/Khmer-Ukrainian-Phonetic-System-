@@ -7,6 +7,8 @@ on:
       - "tests/fixtures/goruut-source-attested.csv"
       - "tests/fixtures/goruut-probes.txt"
       - "scripts/benchmark_g2p.py"
+      - "scripts/benchmark_mekongphon_model.py"
+      - "tests/test_benchmark_mekongphon_model.py"
       - "data/tests/verified-lexical-corpus.json"
       - ".github/workflows/optional-khmer-g2p-benchmark.yml"
   workflow_dispatch:
@@ -73,3 +75,37 @@ jobs:
           name: khmer-phonemizer-raw-output
           path: artifacts/external-g2p/
           if-no-files-found: error
+
+  mekongphon-neural-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: byu-matrix-lab/MekongPhon
+          ref: f80f6c1840c4818b51e05f2e00cded4701a5b662
+          path: mekongphon
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install pinned CPU inference runtime
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.5.1"
+          python -m pip install "transformers==4.46.3" "tokenizers==0.20.3" "huggingface-hub==0.26.2" "safetensors==0.4.5"
+      - name: Run the pinned MekongPhon Khmer IPA model
+        run: |
+          mkdir -p artifacts
+          python scripts/benchmark_mekongphon_model.py \
+            --corpus mekongphon/data/splits/khmer_eval.csv \
+            --output artifacts/khmer-mekongphon-neural-raw-output.json
+      - name: Upload model diagnostic (no source corpus rows)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: khmer-mekongphon-neural-raw-output
+          path: artifacts/khmer-mekongphon-neural-raw-output.json*
+          if-no-files-found: warn
+          retention-days: 90

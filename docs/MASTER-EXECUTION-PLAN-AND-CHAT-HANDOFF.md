@@ -1673,3 +1673,5 @@ The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`
 - Closed, unmerged PR #149 was inspected. Its fixture/handoff changes are already represented on current `main` (verified in `tests/test_ipa_gold_corpus.py`); nothing needed porting.
 - Older branches `ci/khmer-g2p-smoke-2026-10-24`, `feat/khmer-external-g2p-harness-2026-10-24`, `fix/khmer-benchmark-reproducibility-2026-10-24` and `research/external-ipa-renderers-2026-10-24` were compared with current `main`. Their harness/workflow/registry content is superseded by the current main versions; no duplicate implementation was reused.
 - Merged PRs #129, #131 and #133 were reviewed and their evidence-gating/provenance work was preserved.
+
+The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded checkpoint's training split has not been independently verified; this is an additional reason not to treat the run as an independent held-out accuracy estimate.

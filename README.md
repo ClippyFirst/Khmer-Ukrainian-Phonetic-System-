@@ -244,3 +244,7 @@ These files separate source romanization from Ukrainian target proposals and pre
 ## Independent IPA gold corpus
 
 The project uses a provenance-backed, double-annotated IPA gold workflow. See [the corpus protocol](docs/ipa-gold-corpus.md) and [the language-specific phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md). The corpus is currently empty by design; no phonetic accuracy claim is available until expert adjudication is complete.
+
+## Гібридний IPA-рушій
+
+Дослідницький ансамбль `khmer_ua.HybridKhmerEngine` об'єднує внутрішній структурний аналіз і підключені Khmer→IPA backend-и. Він зберігає кожен кандидат та provenance; `ipa` заповнюється лише за збігу щонайменше двох backend-ів. Див. [контракт, склад і межі гібридного рушія](docs/hybrid-engines.md). Сам по собі консенсус моделей не є експертним gold.

@@ -204,7 +204,7 @@ The updated harness completed on PR branch commit `b9f706473e4e03c6e446254703b7e
 - The eight engineering probes that were previously described as 8/8 successful responses are now correctly classified as **3 complete and 5 partial**. All eight had non-empty phonetic output, but five did not preserve the full source word through CleanWord/PrePunct/PostPunct.
 - The six-row source-attested sample is 3 complete / 3 partial; its strict 1/6 and notation-only 3/6 matches are not accuracy.
 
-This confirms the coverage gate is functioning on a real 100-row run. The current PR head adds an additional empty-phonetic-token guard and associated tests; final exact-head CI remains pending.
+This confirms the coverage gate is functioning on a real 100-row run. PR #129, which added the empty-phonetic-token guard and associated tests, was merged as `2138f6f10df875591e846c81fae69c7cfde69bb5`; exact-head Quality [41409583877](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41409583877) passed. This verifies report integrity, not pronunciation accuracy.
 
 
 ## Independent IPA gold workflow — 2026-11-01

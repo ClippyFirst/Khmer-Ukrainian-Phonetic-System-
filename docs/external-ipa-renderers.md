@@ -98,3 +98,5 @@ A manual inspection of raw output highlights follow-up questions rather than sco
 - The model card declares MIT, but the dataset card attributes its source to the NCKL Khmer Dictionary 2022 and asks users to check NCKL terms before commercial use. The dataset is therefore recorded as a research lead only; no data are copied into this repository and no production/commercial use is authorized by this audit.
 
 Neither the PhonSobon respeller nor the MekongPhon rule-based baseline is enabled in the runtime. The neural IPA model is an optional comparator only; it does not replace the project's phonological analysis or IPA adapter.
+
+MekongPhon provenance qualifier: the paper reports 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS from an 8,026-entry seed lexicon; a 500-entry sample was reviewed by two proficient L2 speakers, not native target-variety annotators. Its under-2% CER is therefore a source-reported dictionary-seeded result, not independent sentence-level adjudication or this project's gold accuracy.

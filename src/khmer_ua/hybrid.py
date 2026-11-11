@@ -10,6 +10,16 @@ from .rule_engine import RuleBasedKhmerEngine
 
 Provider = Callable[[str], str | dict[str, Any]]
 
+PROVIDER_PRIORITY = {
+    "mekongphon": 10,
+    "khmer-phonemizer": 20,
+    "khmer_phonemizer": 20,
+    "epitran": 30,
+    "goruut": 90,
+}
+DEFAULT_PROVIDER_PRIORITY = 50
+
+
 def normalize_ipa_transport(value: str) -> str:
     value = value.strip()
     if value.startswith("/") and value.endswith("/") and len(value) > 1:
@@ -30,7 +40,7 @@ def _candidate(provider_id: str, raw: Any) -> dict[str, Any] | None:
     if not isinstance(ipa, str) or not normalize_ipa_transport(ipa) or "?" in ipa:
         return None
     return {
-        "provider": provider_id, "ipa_raw": ipa,
+        "provider": provider_id, "priority": PROVIDER_PRIORITY.get(provider_id, DEFAULT_PROVIDER_PRIORITY), "ipa_raw": ipa,
         "ipa_transport_normalized": normalize_ipa_transport(ipa),
         "status": status, "provenance": provenance if isinstance(provenance, dict) else {},
         "promotion": "WITHHELD_PENDING_INDEPENDENT_PROFILE_MATCHED_ADJUDICATION",
@@ -47,7 +57,7 @@ class HybridKhmerEngine:
         result = dict(self.rule_engine.analyze(text))
         candidates, failures = [], []
         normalized = result.get("normalized", text)
-        for provider_id, provider in self.providers.items():
+        for provider_id, provider in sorted(self.providers.items(), key=lambda item: (PROVIDER_PRIORITY.get(item[0], DEFAULT_PROVIDER_PRIORITY), item[0])):
             try:
                 item = _candidate(provider_id, provider(normalized))
                 if item is None:
@@ -60,6 +70,7 @@ class HybridKhmerEngine:
             "hybrid_engine": "khmer-evidence-gated-hybrid-v1",
             "external_candidates": candidates, "backend_failures": failures,
             "external_candidate_count": len(candidates),
+            "provider_priority_policy": "lower_number_runs_first_and_orders_candidates; priorities_are_research_triage_only_not_accuracy_or_promotion; unknown_providers_use_default_priority_50",
             "selection_policy": "internal_deterministic_rule_output_is_preserved; external_candidates_are_diagnostic_only; no_voting_or_promotion_without_independent_profile_matched_gold",
         })
         return result

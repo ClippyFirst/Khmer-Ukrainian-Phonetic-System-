@@ -13,37 +13,17 @@ from typing import Any
 
 from .normalize import normalize_khmer
 from .parser import analyze as analyze_structure
+from .practical import map_ipa_string
 
 ROOT = Path(__file__).resolve().parents[2]
 _FIXTURE_PATH = ROOT / "data" / "tests" / "web-fixtures.json"
 with _FIXTURE_PATH.open(encoding="utf-8") as _handle:
     _LEXICON: dict[str, dict[str, Any]] = json.load(_handle)
 
-with (ROOT / "data" / "ukrainian" / "practical-policy.json").open(encoding="utf-8") as _handle:
-    _POLICY = json.load(_handle)
-_SEGMENTS = _POLICY["segments"]
-_SEGMENT_KEYS = tuple(sorted(
-    (key for key, value in _SEGMENTS.items() if value.get("default") is not None),
-    key=len,
-    reverse=True,
-))
-
 
 def _map_ipa(ipa: str) -> tuple[str | None, str | None]:
-    """Apply the canonical longest-match IPA → Ukrainian segment policy."""
-    rest = ipa.replace("ˈ", "").replace("ˌ", "").replace(".", "")
-    output: list[str] = []
-    while rest:
-        if rest[0].isspace():
-            output.append(rest[0])
-            rest = rest[1:]
-            continue
-        segment = next((key for key in _SEGMENT_KEYS if rest.startswith(key)), None)
-        if segment is None:
-            return None, rest
-        output.append(_SEGMENTS[segment]["default"])
-        rest = rest[len(segment):]
-    return "".join(output), None
+    """Backward-compatible wrapper around the sole practical IPA adapter."""
+    return map_ipa_string(ipa)
 
 
 class RuleBasedKhmerEngine:
@@ -67,7 +47,7 @@ class RuleBasedKhmerEngine:
                     "evidence": fixture.get("evidence", []),
                 }
             ipa = raw_ipa.strip().strip("/")
-            ukrainian, unsupported = _map_ipa(ipa)
+            ukrainian, unsupported = map_ipa_string(ipa)
             return {
                 "input": text, "normalized": normalized, "profile": self.profile,
                 "engine": self.engine_id, "deterministic": True,
@@ -95,7 +75,7 @@ class RuleBasedKhmerEngine:
                 if onset and register in {"first", "second"}:
                     vowel = "ɑː" if register == "first" else "ɔː"
                     ipa = onset + vowel
-                    ukrainian, unsupported = _map_ipa(ipa)
+                    ukrainian, unsupported = map_ipa_string(ipa)
                     return {
                         "input": text, "normalized": normalized, "profile": self.profile,
                         "engine": self.engine_id, "deterministic": True,

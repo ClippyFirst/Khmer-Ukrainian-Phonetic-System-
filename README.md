@@ -195,7 +195,7 @@ No accuracy percentage is reported without an adjudicated gold-standard corpus.
 When evidence is insufficient, the system records **EVIDENCE LIMITED**, **ANALYSIS DEPENDENT**, **DIALECT DEPENDENT**, or **NOT ESTABLISHED** rather than fabricating a result.
 
 
-## Latest transcription-audit status — 2026-10-06
+## Latest transcription-audit status — 2026-11-11
 
 The current implementation includes explicit handling for Khmer register shifters (៉ / ៊), the exceptional ប៉ construction, coeng-based clusters and adversarial regression fixtures. The canonical Ukrainian policy currently proposes /c/ → **ть**, /cʰ/ → **ть'** (palatal stop + aspiration, not an affricate), /h/ → **г**, /ɡ/ (ASCII alias /g/) → **ґ**, /x/ → **х**, /ʋ/ → **в** and /w/ → **у**. Explicit affricates map /t͡s/ → **ц**, /d͡z/ → **дз**, /t͡ʃ/ → **ч** and /d͡ʒ/ → **дж**; /tɕ/ and /dʑ/ use ч and дж as practical approximations. Aspiration is marked with an apostrophe; /ʔ/ does not trigger this marker. These remain project-specific decisions, not an official Ukrainian standard.
 

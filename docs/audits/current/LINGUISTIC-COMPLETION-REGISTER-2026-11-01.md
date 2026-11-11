@@ -274,7 +274,7 @@ The previous TODO wording suggesting that this repository can simply recover or 
 | ID | Priority | Status | Evidence / acceptance |
 |---|---|---|---|
 | KHM-MEKONGPHON-TRANSFORMER-001 | P1 | TODO | [`byumatrixlab/khmer-ipa`](https://huggingface.co/byumatrixlab/khmer-ipa) is a 33.6M-parameter BERT encoder–decoder trained from MekongPhon, with 128-token maximum input. Pin immutable revision/checksum, verify variety and IPA conventions, and compare on identical held-out lexical groups with series/register, vowel, length, coda, stress, /r/-loss and boundary diagnostics. Model output is not gold. |
-| KHM-ACOUSTIC-LEXICON-001 | P2 | BLOCKED | README reports 29,204 IPA entries, but `dictionary/khmer_ipa.dict` returned GitHub API 404; only the six-entry `dictionary/khmer_ipa_sample.dict` was retrievable. No full lexicon coverage/notation audit can be performed from the sample. Acceptance: publish or expose the full dictionary at a stable inspectable path; then audit notation and orthographic coverage. This is a lexical/forced-alignment resource, not a G2P engine; alignment F1 is not IPA-generation accuracy. |
+| KHM-ACOUSTIC-LEXICON-001 | P2 | BLOCKED | Rechecked upstream `chemvatho/Khmer-acoustic-model@2714994b41ccf875c5b6f6182b48a72f13632dbf` on 2026-11-11. GitHub `dictionary/` contains only `README.md` and the six-entry `khmer_ipa_sample.dict`; the claimed full `khmer_ipa.dict` is absent. The root README reports 29,204 entries and CC BY-SA 4.0 for the dictionary, while `dictionary/README.md` reports 33,091 entries and declares CC BY 4.0. Root LICENSE is MIT for code. The count and data-license declarations conflict, and the full lexicon is not inspectable. | Do not import or redistribute. Acceptance: full dictionary exposed at a stable revision; rights holder clarifies one authoritative dataset license and entry count; then inspect profile, IPA conventions, provenance and coverage. This is a lexical/forced-alignment resource, not a G2P engine; alignment F1 is not IPA-generation accuracy. |
 
 
 ## Main publication reconciliation — 2026-11-02
@@ -491,3 +491,44 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `7585b49fdaac5480940d2511f48961f7690bf6b5`; exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), Pages + smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) SUCCESS. | Deterministic implementation and publication verified. Independent expert-adjudicated Phnom Penh IPA gold remains necessary for broader correctness/accuracy claims. |
+
+
+## External G2P and hybrid candidate integration — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| KHM-MEKONGPHON-CANDIDATE-001 | PARTIAL | Pinned neural model ran on 100 source-attested examples: 100 outputs, 64 strict matches, CER 12.539%; independent gold 0, accuracy null. | Verify exact train/test split independence; build independent Phnom Penh-profile IPA gold; evaluate tone, length, coda and segmentation. |
+| KHM-PHONEMIZER-GORUUT-COMPARISON-001 | PARTIAL | Khmer Phonemizer 18/100 strict concordance; Goruut 6/100 strict concordance and 27 partial fragments on prior 100-row diagnostic. | Re-run same frozen, rights-cleared independent gold split and audit IPA profile, asset completeness and feature-specific errors. |
+| KHM-ACOUSTIC-DICTIONARY-001 | BLOCKED | Full dictionary artifact absent; upstream entry counts and data licenses conflict. | Obtain full file, provenance, reconciled count and authoritative data license. |
+| KHM-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | HybridKhmerEngine exports deterministic rules as final-output authority and exposes pinned MekongPhon / command-wrapped candidates with provenance. Regression tests added. | Exact-head CI and independent adjudicated profile-matched gold before external candidate promotion. |
+
+
+### Verification checkpoint — KHM-HYBRID-CANDIDATE-ENGINE-001
+
+Engineering implementation is DONE_VERIFIED on code-bearing head 17e256332c66c4a562743efd20314a1c0e2bdded: Quality checks [43077659052](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659052) SUCCESS (192 Python tests + 70 subtests, web checks, production build); browser smoke [43077659090](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659090) SUCCESS. Linguistic promotion remains PARTIAL; no independent profile-matched IPA gold exists.
+
+
+Latest-head verification on PR #153 head 5f6587a2dc885ed89cb3d3a947b31cf44f54fdcc: Quality checks [43078302826](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302826) SUCCESS (192 Python tests + 70 subtests, web checks and production build); browser smoke [43078302840](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302840) SUCCESS.
+
+
+## Hybrid provider-priority verification — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-HYBRID-PROVIDER-PRIORITY-001 | DONE_VERIFIED (deterministic ordering only) | PR #153 exact head `894e0775db347ab7fd990c72b844c5ca3177ecfe`; test `test_hybrid_provider_priority_order_is_deterministic_and_diagnostic_only`; Quality [43080496196](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496196) SUCCESS (193 tests + 70 subtests); Browser [43080496133](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496133) SUCCESS (3/3 Chromium tests). | Priority controls execution/display order only. It does not rank accuracy, promote candidates, or alter final IPA. Independent gold and profile/convention validation remain required. |
+
+The upstream Khmer acoustic-model dictionary blocker was rechecked at commit `2714994b41ccf875c5b6f6182b48a72f13632dbf`: only a six-entry sample file is present; README entry counts and data-license declarations conflict (29,204 / CC BY-SA 4.0 vs 33,091 / CC BY 4.0). Keep `KHM-ACOUSTIC-LEXICON-001` BLOCKED and do not import the sample or infer permission from the repository's MIT code license.
+
+
+## New external source lead — Google Khmer lexicon / OpenSLR42 (2026-11-11)
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-GOOGLE-KM-LEXICON-001 | P2 | DEFERRED | The pinned 70,671-entry TTS lexicon's inspected TSV sample has Latin-only spelling keys and custom phonemic strings, not Khmer-script orthography and standard IPA; no Khmer Unicode keys were found in the inspected subset, but the full file was truncated during extraction. The OpenSLR42 audio has a separate male-only current archive vs female-speaker paper discrepancy. | Reconsider only if Latin-script foreign-name pronunciation becomes an explicit project scope and the full file, phone mapping, rights and archive metadata are audited. Do not use as Khmer-script G2P, IPA gold or runtime fallback. |
+
+
+## Final Khmer branch verification — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-FINAL-PR-HEAD-001 | DONE_VERIFIED (repository/CI snapshot) | PR #153 head `b610adf2192c018f6bbbb02b96cb303d1de5a9f8`, open draft, 33 ahead / 0 behind current main, no reviews/comments. Quality [43084273524](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273524) SUCCESS (193 tests + 70 subtests, corpus validation/build); Browser [43084273505](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273505) SUCCESS (3 Chromium tests). Optional G2P [43084273544](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273544) SKIPPED by workflow condition. | Not merged/published. Accuracy remains unmeasured (gold=0). Provider order is diagnostic only; no output promotion. |

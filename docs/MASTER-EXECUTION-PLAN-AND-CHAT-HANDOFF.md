@@ -1633,3 +1633,56 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser smoke [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), and Pages deployment + asset smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) all SUCCESS.
 - Live service: https://clippyfirst.github.io/Khmer-Ukrainian-Phonetic-System-/. The Python rule engine and published browser runtime are deterministic and do not use model consensus.
 - Remaining linguistic acceptance: independent adjudicated Phnom Penh IPA gold and expanded contextual vowel/coda coverage; no blanket accuracy claim.
+
+
+## External G2P benchmark and hybrid integration — 2026-11-11
+
+- Benchmark branch research was ported to a branch based on current main, preserving the merged deterministic rule engine.
+- MekongPhon model diagnostic: 100/100 outputs, 64/100 strict source-attested matches, CER 12.539% against pron_no_tones; independent gold 0, accuracy null, training/evaluation split independence not established, tone/phonation not evaluated.
+- Khmer Phonemizer: 100/100 outputs and 18/100 strict source-attested matches; Goruut: prior 100-row probe yielded 97 outputs, 6 strict matches, 27 partial fragments and a missing weights9.bin.zlib asset. These are diagnostics, not accuracy.
+- Khmer Acoustic Model dictionary remains blocked: full artifact absent and upstream entry-count/license declarations conflict.
+- HybridKhmerEngine runs RuleBasedKhmerEngine as final-output authority and records external candidates only; no voting/promotion. CLI adapter can host pinned Goruut, Khmer Phonemizer and Epitran wrappers; MekongPhon has a pinned lazy CPU adapter.
+- Acceptance remains PARTIAL until independent profile-matched Phnom Penh IPA gold, train/test disjointness, tone/length/coda adjudication and source-rights checks are complete. No default-branch output changed.
+
+
+### Exact-head engineering verification
+
+- PR #153 head 17e256332c66c4a562743efd20314a1c0e2bdded.
+- Quality checks [43077659052](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659052) SUCCESS: 192 Python tests + 70 subtests, gold-corpus structure validation, web checks and production build.
+- Browser smoke [43077659090](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43077659090) SUCCESS.
+- Initial red CI exposed stale alias-contract tests and a test fixture containing a literal backslash-n; both were corrected and the exact-head rerun passed.
+- Engineering integration is DONE_VERIFIED. Linguistic selection/production promotion remains PARTIAL pending independent gold and profile adjudication.
+
+
+Latest-head verification on PR #153 head 5f6587a2dc885ed89cb3d3a947b31cf44f54fdcc: Quality checks [43078302826](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302826) SUCCESS (192 Python tests + 70 subtests, web checks and production build); browser smoke [43078302840](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43078302840) SUCCESS.
+
+
+## Hybrid provider-priority verification — 2026-11-11
+
+- PR #153 branch `research/khmer-hybrid-benchmarks-reconciled-2026-11-11`, exact code/test head `894e0775db347ab7fd990c72b844c5ca3177ecfe`; branch comparison against current main `2fe36aa1eb64cc47fb60ab1b37561f40d57202a7`: 26 commits ahead, 0 behind. PR remains open and unmerged.
+- Deterministic diagnostic execution/display order: MekongPhon (10), Khmer Phonemizer (20), Epitran (30), Goruut (90); unknown providers default to 50. Lower values run/display first. This is not a measured accuracy ranking, confidence score, voting rule, or promotion permission.
+- Exact-head required Quality CI [43080496196](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496196) SUCCESS: 193 Python tests + 70 subtests, corpus validation, web checks and production build. Browser workflow [43080496133](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496133) SUCCESS: web runtime checks and 3/3 built-site Chromium tests.
+- Optional Khmer G2P smoke run [43080496123](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43080496123) was SKIPPED by design: its jobs run only for `workflow_dispatch`. The connected GitHub actions surface currently provides GET/read and rerun operations but no workflow-dispatch operation, so no claim of a fresh neural-model benchmark is made here.
+- Internal `RuleBasedKhmerEngine` remains the only final-output authority; external providers are diagnostic only. Independent Phnom Penh-profile adjudicated IPA gold remains 0; accuracy remains null. No phonological rule or gold label was added by the priority change.
+
+
+## Google Khmer phonemic lexicon / OpenSLR42 source triage — 2026-11-11
+
+- Added `google-km-tts-2018` to `data/khmer/sources.json` and the external corpus triage. Upstream `google/language-resources` is pinned at `a90601024f07ab7e96c911243324e0adeb16da96`; paper reports 70,671 Khmer lexicon entries. The inspectable `phonology.json` has 56 labels (30 vowels, 24 consonants, 2 silence), custom doubled-length symbols and no tone/register field. The full 2.8 MB lexicon was not readable through the connector; no entries were copied.
+- Sodimana et al. (2018) report 17 female speakers, 2,906 files and 3:58:00; current OpenSLR42 lists only `km_kh_male.zip` (866 MB), CC BY-SA 4.0. This is a version/metadata mismatch, not a resolved speaker profile. The paper's general CC BY 4.0 statement for language resources and the repository's Apache-2.0 code license are not interchangeable with the audio license.
+- Disposition: external phonemic-lexicon/audio candidate only; not confirmed IPA, not Phnom Penh profile evidence, not gold and not a runtime fallback. Acceptance requires full lexicon inspection, exact Khmer phone convention/dialect, artifact-specific rights and audio manifest/checksum reconciliation, then blind IPA annotation/adjudication.
+- Exact source commit before this handoff update `710f374beda1990cc12d53a29d5cdd91ff4b6b77`: Quality [43083676026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43083676026) SUCCESS (193 tests + 70 subtests, build/data validation); browser [43083676096](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43083676096) SUCCESS (3/3 Chromium tests). Optional G2P smoke [43083676282](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43083676282) SKIPPED because workflow_dispatch was not available through the connected GitHub actions surface.
+
+
+## Correction to Google Khmer lexicon classification — 2026-11-11
+
+Targeted extraction of the pinned `km/data/lexicon.tsv` shows the header `Spelling / Phonemic transcription / Optional disambiguating label`; the inspected sample contains Latin-only spellings (`aamir`, `aaron`, `abbas`, `abbott`, `abdullah`) and custom phoneme strings (`ʔ aa . m iə`) rather than Khmer-script input and standard IPA. The extractor found no Khmer Unicode keys in the inspected subset, but the full 2.8 MB file was truncated, so do not claim exhaustive absence. The 70,671 count is not evidence of 70,671 Khmer-script IPA entries. Reclassify as OUT_OF_SCOPE_FOR_KHMER_SCRIPT_G2P; reconsider only if Latin-script foreign-name support becomes an explicit requirement.
+
+
+## Final Khmer PR snapshot — 2026-11-11
+
+- Current code/source head at handoff `b610adf2192c018f6bbbb02b96cb303d1de5a9f8`; PR #153 remains OPEN/DRAFT, based on current main `2fe36aa1eb64cc47fb60ab1b37561f40d57202a7`, 33 commits ahead / 0 behind, no reviews or comments, not merged.
+- Exact-head required Quality [43084273524](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273524) SUCCESS: 193 Python tests + 70 subtests, corpus/data validation, web checks and production build. Browser [43084273505](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273505) SUCCESS: 3/3 built-site Chromium tests.
+- Optional Khmer G2P smoke [43084273544](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43084273544) SKIPPED: it requires workflow_dispatch; the connected GitHub actions surface does not expose a dispatch action.
+- Provider priorities: MekongPhon 10, Khmer Phonemizer 20, Epitran 30, Goruut 90; diagnostic execution/display order only. External providers are opt-in and are not auto-downloaded or auto-run. Internal rule engine remains final authority.
+- Google TTS lexicon is now DEFERRED for Khmer-script G2P after format inspection (Latin spelling keys/custom phonemes in inspected subset); Khmer acoustic-model full dictionary remains BLOCKED by missing full file and conflicting data-license/count declarations. Independent Phnom Penh-profile IPA gold remains 0; accuracy remains null.

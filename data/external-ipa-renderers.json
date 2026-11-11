@@ -173,11 +173,78 @@
       "url": "https://github.com/chemvatho/Khmer-acoustic-model",
       "kind": "word-level IPA reference resource",
       "status": "benchmark-resource",
-      "output": "Upstream advertises 29,204 IPA entries validated by native linguists. README states dictionary data CC BY-SA 4.0 separately from MIT code/model.",
-      "license": "Dictionary CC BY-SA 4.0 as stated upstream; verify exact files/revision and attribution before use",
+      "output": "Potential Khmer IPA lexicon resource, but current upstream metadata is contradictory: root README advertises 29,204 entries and CC BY-SA 4.0, while dictionary/README.md says 33,091 entries and CC BY 4.0. The inspected main-branch tree contains only dictionary/khmer_ipa_sample.dict (144 bytes), not the advertised full dictionary. Published MAE/F1 values are forced-alignment results, not G2P metrics. Blocked pending full file and license resolution.",
+      "license": "CONFLICTING_UPSTREAM_DECLARATIONS: root README says CC BY-SA 4.0; dictionary/README.md says CC BY 4.0. Full dictionary absent from inspected main tree; no reuse/redistribution until clarified.",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "execution_status": "UPSTREAM_RESOURCE_CLAIM_LICENSE_REVIEW_REQUIRED"
+      "execution_status": "BLOCKED_METADATA_CONFLICT_AND_FULL_DICTIONARY_ABSENT",
+      "latest_checked_revision": "2714994b41ccf875c5b6f6182b48a72f13632dbf",
+      "latest_checked_at": "2026-11-11"
+    },
+    {
+      "id": "mekongphon-khmer-ipa",
+      "name": "BYU MATRIX MekongPhon Khmer IPA model",
+      "url": "https://huggingface.co/byumatrixlab/khmer-ipa",
+      "kind": "neural Khmer-to-IPA G2P model",
+      "status": "candidate",
+      "output": "33.6M-parameter BERT encoder-decoder; model card's examples output IPA-like strings; pinned HF revision 20e069d384b240da76320e1569958568c12a54bc. Paper reports under 2% CER on its own held-out test setup. Added as optional benchmark target; project run pending; MekongPhon corpus-data rights remain unresolved. The paper's corpus contains 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS; the seed lexicon has 8,026 entries and a 500-entry review by two proficient L2 speakers (not native annotators).",
+      "license": "Model card declares Apache-2.0; training corpus license is not declared in the MekongPhon repository snapshot; do not redistribute corpus data or assume the model license clears source data. Future CI runs are manual-dispatch only pending rights clarification.",
+      "verified_in_repo": false,
+      "enabled_by_default": false,
+      "latest_run_id": 42997945391,
+      "latest_run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391",
+      "execution_status": "SMOKE_VERIFIED_SOURCE_ATTESTED_DIAGNOSTIC_NOT_ACCURACY",
+      "last_run_summary": {
+        "input_count": 100,
+        "successful_outputs": 100,
+        "failed_outputs": 0,
+        "source_attested_strict_matches": 64,
+        "source_attested_codepoint_cer": 0.12539184952978055,
+        "independent_gold_count": 0,
+        "accuracy": null,
+        "model_revision": "20e069d384b240da76320e1569958568c12a54bc",
+        "mekongphon_source_commit": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
+        "corpus_sha256": "3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49",
+        "report_sha256": "0df96422a0f7276c75f79333072c0fc50892e4c0195fe1137b0f60e90369b7bb",
+        "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674",
+        "artifact_zip_sha256": "d027ea394e12271af65a177bf721d6c5dceac85362ed997905c9e94241fecf31",
+        "corpus_source_commit": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
+        "training_split_relationship": "NOT_INDEPENDENTLY_VERIFIED"
+      },
+      "future_runs": "MANUAL_WORKFLOW_DISPATCH_ONLY_PENDING_CORPUS_RIGHTS"
+    },
+    {
+      "id": "mekongphon-rule-based-baseline",
+      "name": "MekongPhon rule-based Khmer→IPA baseline",
+      "url": "https://github.com/byu-matrix-lab/MekongPhon/blob/f80f6c1840c4818b51e05f2e00cded4701a5b662/training/baselines/rb_khm_to_ipa.py",
+      "kind": "experimental rule-based G2P baseline",
+      "status": "candidate",
+      "output": "Separate experimental baseline with consonant/register and vowel assignment tables plus khmer-nltk tokenization; not the published neural model. Not executed in this pass; inspect conventions and exact dependency/license before use.",
+      "license": "MekongPhon snapshot has no declared root LICENSE; do not copy or redistribute code/data pending clarification.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
+      "id": "phonsobon-khmer-g2p",
+      "name": "PhonSobon Khmer G2P (NCKL respelling)",
+      "url": "https://huggingface.co/phonsobon/khmer-g2p",
+      "kind": "character-level Khmer pronunciation respeller and syllabifier (not IPA)",
+      "status": "candidate",
+      "output": "7.46M-parameter character Transformer maps Khmer words to NCKL Khmer-script respelling with hyphenated syllable boundaries. Model card reports 83.37% validation word accuracy at epoch 150; no test score reported there. Output is not IPA and must never enter the IPA→Ukrainian adapter.",
+      "license": "Model card declares MIT. Separate dataset phonsobon/khmer-G2P derives from the NCKL Khmer Dictionary 2022; dataset card says check NCKL terms before commercial use; dataset rights are unresolved.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
+      "id": "phonsobon-nckl-g2p-dataset",
+      "name": "PhonSobon NCKL Khmer G2P dataset",
+      "url": "https://huggingface.co/datasets/phonsobon/khmer-G2P",
+      "kind": "Khmer-script pronunciation and syllabification benchmark resource (not IPA)",
+      "status": "benchmark-resource",
+      "output": "38,629 word→Khmer-script respelling pairs, 37,755 unique words; train 34,770, validation 1,939, test 1,920 with all readings of a word kept in one split. Standard NCKL/Phnom Penh prescribed word pronunciations; no IPA, no sentence-level sandhi. Useful for orthography-to-respelling and syllable-boundary evaluation only.",
+      "license": "Dataset card attributes content to NCKL Khmer Dictionary 2022 and explicitly asks users to check NCKL terms before commercial use; do not redistribute or use commercially without rights clarification.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
     }
   ],
   "benchmark_protocol": {
@@ -195,7 +262,7 @@
     "external_engines_enabled_by_default": false,
     "notes": "Registry membership does not establish language support, IPA output semantics, reproducibility, accuracy, or license compatibility. Preserve raw output and record exact versions and model/data licenses."
   },
-  "last_reviewed": "2026-10-25",
+  "last_reviewed": "2026-11-11",
   "observed_experiments": [
     {
       "engine": "khmerphonemizer",
@@ -259,6 +326,66 @@
       "limited_notation_normalized_matches": 6,
       "source_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
       "interpretation": "Raw output only. Six source-attested comparisons; 2 strict string matches and 6 matches after limited removal of slash wrappers, whitespace, syllable dots and stress marks. Not accuracy: no independently adjudicated gold. Phone symbols, aspiration, length, diacritics and tie bars remain significant."
+    },
+    {
+      "engine": "byumatrixlab/khmer-ipa",
+      "version": "20e069d384b240da76320e1569958568c12a54bc",
+      "run_id": 42996817456,
+      "run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456",
+      "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42996817456/artifacts/13843728855",
+      "artifact_zip_sha256": "39facdb8bdbbb9d8163583e7dfc65c4e6a1e7c9f130664d074782c971ba08a39",
+      "report_sha256": "afdf28b9fddb9afc706fe22edd8d3f116d1cf0369dcdb23dc4453b209f34ac03",
+      "corpus_path": "MekongPhon data/splits/khmer_eval.csv",
+      "corpus_revision": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
+      "corpus_sha256": "3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49",
+      "input_count": 100,
+      "successful_outputs": 100,
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "strict_source_attested_matches": 64,
+      "source_attested_codepoint_cer": 0.12539184952978055,
+      "source_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
+      "runtime": {
+        "python": "3.12.16",
+        "torch": "2.5.1+cpu",
+        "transformers": "4.46.3",
+        "device": "cpu",
+        "batch_size": 8,
+        "num_beams": 4,
+        "inference_seconds": 3.171016
+      },
+      "interpretation": "100/100 outputs. 64 strict matches and codepoint CER 12.539% against MekongPhon pron_no_tones only. No independent gold and accuracy remains null; the field omits tone, so this does not test tone/phonation. The paper's under-2% CER is not reproduced by this run; test-split/normalization/checkpoint comparability requires follow-up."
+    },
+    {
+      "engine": "byumatrixlab/khmer-ipa",
+      "version": "20e069d384b240da76320e1569958568c12a54bc",
+      "run_id": 42997945391,
+      "run_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391",
+      "artifact_url": "https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674",
+      "artifact_zip_sha256": "d027ea394e12271af65a177bf721d6c5dceac85362ed997905c9e94241fecf31",
+      "report_sha256": "0df96422a0f7276c75f79333072c0fc50892e4c0195fe1137b0f60e90369b7bb",
+      "corpus_path": "MekongPhon data/splits/khmer_eval.csv",
+      "corpus_revision": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
+      "corpus_sha256": "3d93a49c0162b5de4374c51d742fab0d2f5f975251c09664faefc9870535df49",
+      "input_count": 100,
+      "successful_outputs": 100,
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "strict_source_attested_matches": 64,
+      "source_attested_codepoint_cer": 0.12539184952978055,
+      "source_status": "SOURCE_ATTESTED_NOT_INDEPENDENTLY_ADJUDICATED",
+      "runtime": {
+        "python": "3.12.16",
+        "torch": "2.5.1+cpu",
+        "transformers": "4.46.3",
+        "device": "cpu",
+        "batch_size": 8,
+        "num_beams": 4,
+        "inference_seconds": 3.292331
+      },
+      "interpretation": "Pinned rerun after adding corpus revision to report. 100/100 outputs; 64 strict matches and 12.539% codepoint CER against MekongPhon pron_no_tones only. No independent gold; accuracy null; no tone/phonation evaluation. The 100-row evaluation file's exact membership relative to the downloaded checkpoint's training split has not been independently verified."
     }
   ],
   "upstream_evidence": [
@@ -282,6 +409,34 @@
       "fact": "README lists Khmer Central among supported languages and claims IPA phone set.",
       "status": "UPSTREAM_CLAIM_ONLY_NOT_EXECUTED",
       "caveat": "Khmer Central may not match project's exact target profile; validate dialect and IPA conventions."
+    },
+    {
+      "engine": "BYU MATRIX MekongPhon Khmer IPA model",
+      "url": "https://huggingface.co/byumatrixlab/khmer-ipa",
+      "fact": "Model card declares Apache-2.0, 33.6M-parameter BERT encoder-decoder, separate Khmer/IPA tokenizers and a pinned usable API; paper is LREC 2026 and reports under 2% CER in its own held-out setup. The paper reports 1,314,779 sentence pairs expanded from an 8,026-entry seed lexicon by longest-match lookup over OPUS; a 500-entry sample was reviewed by two proficient L2 speakers.",
+      "status": "CI_EXECUTED_SOURCE_ATTESTED_DIAGNOSTIC_NOT_ACCURACY",
+      "caveat": "The MekongPhon data repository snapshot has no declared root license; the model card's Apache-2.0 tag does not resolve source corpus rights. Its evaluation references are source-reported and not this project's independent gold. This project's 100-row run measured 64/100 strict source-attested matches and 12.539% codepoint CER on the pinned pron_no_tones split; this does not reproduce the paper's under-2% claim and the evaluation setups must not be conflated. The reported under-2% CER is dictionary-seeded, not independent sentence transcription; the reviewers were proficient L2 speakers, not native annotators. The relationship between this project's 100-row eval file and the downloaded checkpoint's training split is not independently established."
+    },
+    {
+      "engine": "MekongPhon rule-based Khmer baseline",
+      "url": "https://github.com/byu-matrix-lab/MekongPhon/blob/f80f6c1840c4818b51e05f2e00cded4701a5b662/training/baselines/rb_khm_to_ipa.py",
+      "fact": "Upstream contains an experimental rule-based baseline with consonant/vowel assignments and Khmer tokenization.",
+      "status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "caveat": "No root LICENSE is declared in the inspected snapshot; output convention and coverage have not been validated."
+    },
+    {
+      "engine": "PhonSobon Khmer G2P",
+      "url": "https://huggingface.co/phonsobon/khmer-g2p",
+      "fact": "Model card declares MIT and describes a 7.46M-parameter Transformer that predicts NCKL Khmer-script respelling with syllable separators; reports 83.37% validation word accuracy.",
+      "status": "AUXILIARY_RESPelling_MODEL_NOT_IPA",
+      "caveat": "Not IPA; dataset is derived from NCKL Khmer Dictionary 2022 and its card asks users to check NCKL terms before commercial use. Validation score is self-reported, not a project benchmark."
+    },
+    {
+      "engine": "Khmer acoustic model pronunciation dictionary",
+      "url": "https://github.com/chemvatho/Khmer-acoustic-model/tree/2714994b41ccf875c5b6f6182b48a72f13632dbf/dictionary",
+      "fact": "Root README advertises 29,204 IPA entries and says dictionary data are CC BY-SA 4.0; dictionary/README.md instead says 33,091 entries and CC BY 4.0. The inspected main tree contains only dictionary/khmer_ipa_sample.dict (144 bytes); no full dictionary file or release asset was found.",
+      "status": "BLOCKED_METADATA_AND_ARTIFACT_MISMATCH",
+      "caveat": "Do not treat as a usable benchmark until the full data artifact, entry count, provenance and one authoritative data license are supplied. The paper/model's MAE and F1 are forced-alignment metrics, not G2P scores."
     }
   ],
   "scope_note": "Historical filename: this registry catalogs both external G2P/IPA comparison systems and display fonts. Fonts are rendering assets, not pronunciation engines.",

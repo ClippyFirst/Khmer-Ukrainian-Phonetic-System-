@@ -1,8 +1,10 @@
 import fs from "node:fs";
+import { mapIpa } from "../src/ukrainian-practical.js";
 
 const html = fs.readFileSync("index.html", "utf8");
 const systemHtml = fs.readFileSync("system.html", "utf8");
 const js = fs.readFileSync("src/main.js", "utf8");
+const adapterSource = fs.readFileSync("src/ukrainian-practical.js", "utf8");
 const policy = JSON.parse(fs.readFileSync("data/ukrainian/practical-policy.json", "utf8"));
 const fixtures = JSON.parse(fs.readFileSync("data/tests/web-fixtures.json", "utf8"));
 const adversarial = JSON.parse(fs.readFileSync("data/tests/adversarial-cases.json", "utf8"));
@@ -70,8 +72,8 @@ if (!sourceGuard.includes("return next === undefined || isSeparator(next)")) thr
 if (!sourceGuard.includes("units.push(fixtureKey)")) throw new Error("fixture span is not preserved as a unit");
 console.log("lexical-span tokenization guards: PASS");
 
-if (!sourceGuard.includes('if (/\\s/u.test(rest[0]))')) throw new Error("IPA mapper drops word boundaries");
-if (!sourceGuard.includes('value += rest[0]')) throw new Error("IPA mapper does not preserve whitespace");
+if (!adapterSource.includes('if (/\\s/u.test(rest[0]))')) throw new Error("IPA mapper drops word boundaries");
+if (!adapterSource.includes('value += rest[0]')) throw new Error("IPA mapper does not preserve whitespace");
 if (fixtures["ភាសាខ្មែរ"].ua !== "п\u0027ієса к\u0027мае") throw new Error("phrase fixture must use canonical aspirated policy");
 console.log("IPA boundary and phrase guards: PASS");
 

@@ -106,7 +106,7 @@ The README points to `dictionary/khmer_ipa.dict` and reports 29,204 entries, but
 
 ### MekongPhon model execution
 
-Optional CI run [42997945391](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391), artifact [13844243674](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674), pinned model revision `20e069d384b240da76320e1569958568c12a54bc`, corpus commit `f80f6c1840c4818b51e05f2e00cded4701a5b662`.
+Historical one-time CI diagnostic [42997945391](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391), artifact [13844243674](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391/artifacts/13844243674), pinned model revision `20e069d384b240da76320e1569958568c12a54bc`, corpus commit `f80f6c1840c4818b51e05f2e00cded4701a5b662`.
 
 | Measurement | Result |
 |---|---:|

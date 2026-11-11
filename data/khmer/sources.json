@@ -308,5 +308,27 @@
     "license": "CONFLICTING_UPSTREAM_DECLARATIONS: root README says CC BY-SA 4.0; dictionary/README.md says CC BY 4.0. No authoritative data license resolved.",
     "status": "BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT",
     "limitations": "No full dictionary artifact or release asset found at inspected revision. Do not copy, benchmark or redistribute until full file, entry count, provenance and data license are clarified."
+  },
+  {
+    "id": "google-km-tts-2018",
+    "type": "external_phonemic_lexicon_and_audio_candidate",
+    "title": "A Step-by-Step Process for Building TTS Voices Using Open Source Data and Framework for Bangla, Javanese, Khmer, Nepali, Sinhala, and Sundanese",
+    "authors": [
+      "Keshan Sodimana",
+      "Knot Pipatsrisawat",
+      "Linne Ha",
+      "Martin Jansche",
+      "Oddur Kjartansson",
+      "Pasindu De Silva",
+      "Supheakmungkol Sarin"
+    ],
+    "year": 2018,
+    "doi": "10.21437/SLTU.2018-14",
+    "url": "https://www.isca-archive.org/sltu_2018/sodimana18_sltu.pdf",
+    "scope": "Google language-resources Khmer (km-KH) lexical/phonology resources and OpenSLR SLR42 audio. Paper reports 70,671 Khmer lexicon entries; pinned repository google/language-resources@a90601024f07ab7e96c911243324e0adeb16da96 contains km/data/lexicon.tsv (2,845,315 bytes; blob d399efeca642b1185786b2982374488c525e37c4) and km/festvox/phonology.json (6,707 bytes; blob 8fb697ff66b09ef0c2a17f17b35600af410a92a9). The phonology file defines 56 symbols (30 vowels, 24 consonants, 2 silence); long vowels use doubled labels such as ii/ɑɑ, and no explicit tone/register feature is defined. OpenSLR42 provides transcribed audio and line_index.tsv.",
+    "status": "EXTERNAL_PHONEMIC_LEXICON_AND_AUDIO_CANDIDATE",
+    "paper_license_statement": "Sodimana et al. state that, unless otherwise noted, their language resources are CC BY 4.0. The Google repository's code LICENSE is Apache-2.0; do not treat it as a replacement for artifact-specific data terms. OpenSLR SLR42 audio is separately declared CC BY-SA 4.0.",
+    "limitations": "The paper describes phonemic transcription and says conventions are e.g. IPA, but does not specify a Khmer-specific IPA convention or regional dialect. The pinned phonology.json uses a custom phone-label representation and does not encode tone/register. The paper's Table 1 reports 17 female speakers, 2,906 files and 3:58:00; the current OpenSLR42 page lists only km_kh_male.zip (866 MB), so current archive/speaker metadata do not reconcile. Audio transcripts are sentence-level, not adjudicated word-level IPA. Lexicon content was not fully inspected through the available connector because the 2.8 MB file could not be read; do not treat it as gold or final IPA.",
+    "acceptance": "Verify current OpenSLR archive manifest, checksum, speaker metadata and artifact-specific license; inspect a reproducible sample of lexicon.tsv against phonology.json and the published phonemic convention; obtain two blind Phnom Penh-profile IPA annotations and independent adjudication before any row can enter project gold or the authoritative engine."
   }
 ]

@@ -276,3 +276,5 @@ The registry now marks this source `BLOCKED_METADATA_AND_FULL_DICTIONARY_ABSENT`
 
 
 The MekongPhon corpus repository snapshot has no declared root license. Both corpus-dependent jobs in this optional workflow are therefore manual-dispatch only; the 2026-11-11 run is retained as historical diagnostic evidence. Do not enable automatic reruns or redistribute the source corpus until rights are clarified.
+
+The 100-row `khmer_eval.csv` file's exact membership relative to the downloaded checkpoint's training split has not been independently verified; this is an additional reason not to treat the run as an independent held-out accuracy estimate.

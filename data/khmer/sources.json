@@ -267,10 +267,10 @@
     "title": "BYU MATRIX Lab Khmer IPA model",
     "year": 2026,
     "url": "https://huggingface.co/byumatrixlab/khmer-ipa",
-    "scope": "33.6M-parameter BERT encoder-decoder with separate Khmer and IPA tokenizers; model card reports best evaluation loss 0.1736 at checkpoint 26000; the model card's example output is IPA-like. The LREC 2026 MekongPhon paper reports under 2% CER on its own held-out evaluation setup.",
+    "scope": "33.6M-parameter BERT encoder-decoder with separate Khmer and IPA tokenizers; model card reports best evaluation loss 0.1736 at checkpoint 26000; the model card's example output is IPA-like. The LREC 2026 MekongPhon paper reports under 2% CER on its own held-out evaluation setup. The associated MekongPhon paper reports 1,314,779 sentence pairs expanded by longest-match lexicon lookup over OPUS from an 8,026-entry seed lexicon; 500 seed entries were reviewed by two proficient L2 speakers, not native annotators.",
     "license": "Apache-2.0 as declared by the model card",
     "status": "OPTIONAL_EXTERNAL_MODEL_CANDIDATE",
-    "limitations": "The model card license does not resolve rights in the training corpus; MekongPhon repository snapshot has no declared root LICENSE. Source-attested diagnostic results are not independent project gold; model evaluation uses pron_no_tones and does not establish tone/phonation recovery.",
+    "limitations": "The model card license does not resolve rights in the training corpus; MekongPhon repository snapshot has no declared root LICENSE. Source-attested diagnostic results are not independent project gold; model evaluation uses pron_no_tones and does not establish tone/phonation recovery. Published under-2% CER is dictionary-seeded and not independent sentence transcription; reviewer qualifications are L2, not native target-variety adjudicators.",
     "model_revision": "20e069d384b240da76320e1569958568c12a54bc",
     "evaluation_corpus_revision": "f80f6c1840c4818b51e05f2e00cded4701a5b662",
     "project_run_id": 42997945391

@@ -1635,7 +1635,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 ### Verification
 
-- Full repository CI test/build/browser run on the final registry state: [42999608863](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42999608863) — SUCCESS.
+- Full repository CI test/build/browser run on the final registry state: [43000069014](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43000069014) — SUCCESS.
 - Existing Khmer Phonemizer diagnostic: same 100-row split, 100/100 outputs, 18 strict matches, 19 limited-normalized matches; independent gold 0, accuracy null.
 - MekongPhon neural diagnostic: [42997945391](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/42997945391) — SUCCESS; 100/100 outputs, 64 strict source-attested matches, 80 edits / 638 reference code points (12.539% CER); independent gold 0, accuracy null.
 - The published under-2% CER claim is not reproduced by this run. Its test split/checkpoint/normalization must be reconciled before comparing the numbers.

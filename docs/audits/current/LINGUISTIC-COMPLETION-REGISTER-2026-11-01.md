@@ -491,3 +491,13 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHMER-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `7585b49fdaac5480940d2511f48961f7690bf6b5`; exact-head Quality [43019207054](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207054), browser [43019207032](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207032), Pages + smoke [43019207026](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43019207026) SUCCESS. | Deterministic implementation and publication verified. Independent expert-adjudicated Phnom Penh IPA gold remains necessary for broader correctness/accuracy claims. |
+
+
+## External G2P and hybrid candidate integration — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| KHM-MEKONGPHON-CANDIDATE-001 | PARTIAL | Pinned neural model ran on 100 source-attested examples: 100 outputs, 64 strict matches, CER 12.539%; independent gold 0, accuracy null. | Verify exact train/test split independence; build independent Phnom Penh-profile IPA gold; evaluate tone, length, coda and segmentation. |
+| KHM-PHONEMIZER-GORUUT-COMPARISON-001 | PARTIAL | Khmer Phonemizer 18/100 strict concordance; Goruut 6/100 strict concordance and 27 partial fragments on prior 100-row diagnostic. | Re-run same frozen, rights-cleared independent gold split and audit IPA profile, asset completeness and feature-specific errors. |
+| KHM-ACOUSTIC-DICTIONARY-001 | BLOCKED | Full dictionary artifact absent; upstream entry counts and data licenses conflict. | Obtain full file, provenance, reconciled count and authoritative data license. |
+| KHM-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | HybridKhmerEngine exports deterministic rules as final-output authority and exposes pinned MekongPhon / command-wrapped candidates with provenance. Regression tests added. | Exact-head CI and independent adjudicated profile-matched gold before external candidate promotion. |

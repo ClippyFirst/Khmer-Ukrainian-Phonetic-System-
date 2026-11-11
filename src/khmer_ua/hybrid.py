@@ -11,7 +11,7 @@ from collections import defaultdict
 from dataclasses import asdict
 from typing import Any, Callable, Iterable
 
-from .parser import analyze
+from .parser import analyze, normalize_khmer
 
 Provider = Callable[[str], str | dict[str, Any]]
 
@@ -77,9 +77,10 @@ class HybridKhmerEngine:
         structure = analyze(text)
         candidates = []
         failures = []
+        backend_text = normalize_khmer(text)
         for provider_id, provider in self.providers.items():
             try:
-                item = _candidate(provider_id, provider(text))
+                item = _candidate(provider_id, provider(backend_text))
                 if item is not None:
                     candidates.append(item)
                 else:

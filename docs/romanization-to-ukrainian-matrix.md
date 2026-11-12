@@ -32,11 +32,11 @@ The machine-readable consonant matrix is [data/khmer/romanization_ukrainian.csv]
 | 5 | ឆ / ឈ; corresponding feet | chh | ч' | PROPOSED |
 | 6 | ញ; corresponding foot | nh | нь | PROPOSED |
 | 7 | ដ / ឌ; corresponding feet | d | д | PROPOSED |
-| 8 | ឋ / ឍ; corresponding feet | th | — | ANALYSIS_DEPENDENT |
-| 9 | ថ / ធ; corresponding feet | th | — | ANALYSIS_DEPENDENT |
+| 8 | ឋ / ឍ; corresponding feet | th | т' | PROPOSED |
+| 9 | ថ / ធ; corresponding feet | th | т' | PROPOSED |
 | 10 | ណ / ន; corresponding feet | n | н | PROPOSED |
 | 11 | ត / ទ; corresponding feet | t | т | PROPOSED |
-| 12 | ប; corresponding foot | b, p (contextual) | — | ANALYSIS_DEPENDENT |
+| 12 | ប; corresponding foot | b, p (contextual) | б / п | PROPOSED; map the actual selected Latin output |
 | 13 | ព; corresponding foot | p | п | PROPOSED |
 | 14 | ផ / ភ; corresponding feet | ph | п' | PROPOSED |
 | 15 | ម; corresponding foot | m | м | PROPOSED |
@@ -46,7 +46,7 @@ The machine-readable consonant matrix is [data/khmer/romanization_ukrainian.csv]
 | 19 | វ; corresponding foot | v | в | PROPOSED |
 | 20 | ស; corresponding foot | s | с | PROPOSED |
 | 21 | ហ; corresponding foot | h | г | PROPOSED |
-| 22 | អ; corresponding foot | ’ | — | EVIDENCE_LIMITED |
+| 22 | អ; corresponding foot | ’ | ʼ | PROPOSED; retain the glottal-onset marker |
 
 The machine-readable matrix [data/khmer/romanization_ukrainian.csv](../data/khmer/romanization_ukrainian.csv) preserves the exact source sequences, the 22 PCGN table row IDs, the Ukrainian candidate/status, the official URL and row-level locator. The target column now explicitly maps the actual romanized outputs: th → т', contextual b / p → б / п, and the glottal marker ’ → ʼ. These are project orthographic conventions, not IPA claims. PCGN explicitly states that there is no subscript form for ឡ; the row-18 record captures this.
 

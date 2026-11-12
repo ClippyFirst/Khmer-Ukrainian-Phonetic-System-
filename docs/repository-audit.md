@@ -221,3 +221,17 @@ All five workflows now use current Node.js 24-compatible action majors. Exact-he
 - PR #115 merged the single careful-citation profile and removed deterministic colloquial /r/-loss rewriting; exact PR-head Quality and browser checks passed, followed by main Quality, Chromium and Pages/deployed-site smoke.
 - PR #116 merged the glossary, codebase map and agent guidance. PRs #107 and #114 were superseded by these scoped integrations; neither broad profile branch was merged wholesale.
 - Independent adjudicated IPA gold remains 0 and empirical accuracy remains null. CI verifies engineering and deployed assets, not pronunciation accuracy or manual accessibility.
+
+
+## Romanization implementation audit — mainline 2026-11-12
+
+### Standard-scope correction: Cambodian national 1997 profile
+
+The Cambodian national report to UNGEGN (GEGN.2/2023/104/CRP.104) says the national romanized writing system is based on the 1997 transcription system instead of the 1972 transliteration system; the UNGEGN Working Group's status report (GEGN.2/2023/11/CRP.11) corroborates that replacement. The project BGN/PCGN 1972 matrix is still a valid, fully source-backed research crosswalk, but it must not be represented as the current national Cambodian system. The primary 1997 national specification is not yet available in the inspected sources. The similarly dated ALA-LC Khmer 1997 table is a distinct library-cataloguing profile, not a substitute. Track this as EVIDENCE_LIMITED pending primary-source retrieval and a profile decision.
+
+
+The current orthographic romanization path is integrated end to end for the available source output: BGN/PCGN-derived ASCII Latin → separate Ukrainian orthographic adapter. The 22-row consonant target matrix and 37-row vowel/rime target matrix are populated and tested. PR #164 added the adapter; PR #165 records post-merge evidence. Current main is `a86a59cf082d547563b45374ced9dfb45c5cd8db`; exact-head Quality [43228414756](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414756), browser [43228414938](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414938), and Pages [43228414646](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414646) passed.
+
+Acceptance remains PARTIAL: the current `@gmana/km-translit` ASCII profile drops BGN/PCGN diacritics, so the Ukrainian adapter cannot reconstruct contextual distinctions already lost upstream. The output is correctly marked PROVISIONAL. This orthographic route does not use IPA. Draft G2P PR #153 remains open and untouched; it is not a dependency of this work. No pronunciation accuracy, IPA gold, or official Ukrainian-standard claim is made.
+
+The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) confirms the October 2023 Cambodian national gazetteer uses the 1997 transcription system: https://unstats.un.org/unsd/ungegn/sessions/4th_session_2025/documents/GEGN.2_2025_73_CRP73_item4a.pdf

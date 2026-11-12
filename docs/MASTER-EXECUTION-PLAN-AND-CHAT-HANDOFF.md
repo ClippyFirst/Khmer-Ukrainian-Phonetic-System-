@@ -1779,3 +1779,20 @@ Exact-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukrainian-
 - PR [#164](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/164) merged as `0ba6107a7e5cb09cca44021669a7401fc125eac4`.
 - Mainline Quality [43227360792](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360792), browser smoke [43227360789](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360789), and Pages deployment [43227360801](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360801) all SUCCESS.
 - The merged implementation remains deliberately PARTIAL/PROVISIONAL: the upstream ASCII romanizer omits PCGN diacritics; this adapter cannot reconstruct lost contextual vowel distinctions. The IPA route remains separate.
+
+
+## Romanization mainline reconciliation — 2026-11-12
+
+### New research blocker: Cambodian national 1997 profile
+
+The national report submitted by Cambodia to UNGEGN (GEGN.2/2023/104/CRP.104) says the romanized writing system used in Cambodia is based on the 1997 transcription system rather than the 1972 transliteration system; it also reports the 2019 gazetteer used the 1997 system. The UNGEGN Working Group status report (GEGN.2/2023/11/CRP.11) independently records that the 1997 system replaced the 1972 system. Therefore BGN/PCGN 1972 remains a source-backed project research profile only, not a claim about the current national Cambodian profile. The complete primary 1997 specification remains unlocated. Do not substitute the Library of Congress ALA-LC Khmer 1997 table; it is a different cataloguing profile. Acceptance: obtain the national 1997 table, source-locate its rows, compare against the existing BGN/PCGN matrix, and decide whether a second profile is required.
+
+
+- Current `main`: `a86a59cf082d547563b45374ced9dfb45c5cd8db`.
+- Preserved merged sequence: target-matrix completion PR #161 (`6b0d0e75d794165e5eb935192fab0926e1efca39`); matrix synchronization PR #163 (`3930c8055bcbd6f6747336ad7dce09c9f695f31e`); provisional runtime PR #164 (`0ba6107a7e5cb09cca44021669a7401fc125eac4`); post-merge evidence PR #165 (current mainline checkpoint).
+- Current-head CI: Quality [43228414756](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414756), browser [43228414938](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414938), Pages [43228414646](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414646): all SUCCESS.
+- Current ledger: target matrix DONE_VERIFIED (22 consonant + 37 vowel/rime rows); runtime PARTIAL (independent adapter integrated, provisional); source romanizer PARTIAL (ASCII profile loses PCGN diacritics and contextual vowel distinctions); contextual whole-standard BGN/PCGN implementation remains open.
+- Open draft research PR #153 remains untouched. It is a separate G2P/provider integration, not a dependency of the romanization adapter.
+- No local checkout was available in this connector-only session; verification cited here is hosted GitHub Actions on exact current `main`. No local pytest/npm/Playwright execution is claimed.
+
+The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) confirms the October 2023 national gazetteer also uses the 1997 transcription system: https://unstats.un.org/unsd/ungegn/sessions/4th_session_2025/documents/GEGN.2_2025_73_CRP73_item4a.pdf

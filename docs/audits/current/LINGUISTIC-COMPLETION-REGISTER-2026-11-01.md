@@ -76,7 +76,7 @@
 | KHM-GOLD-001 | BLOCKED | No independent expert-adjudicated lexical IPA gold exists; `data/benchmark/gold.tsv` contains only its header. | At least two independent qualified Khmer phonetic annotators, adjudication, dialect/profile and IPA convention fixed, stable source/audio locators; frozen held-out split. |
 | KHM-PHON-001 | PARTIAL | Complete context-dependent consonant-series × vowel × coda × syllable analysis and word segmentation. | Every supported combination backed by primary sources or adjudication, with shared Python/browser tests and explicit unsupported states. |
 | KHM-RLOSS-001 | PARTIAL | Phnom Penh /r/-loss transformation remains profile-dependent and incompletely validated. | Define exact environment/dialect, test positive and negative minimal pairs against source-located expert labels; otherwise withhold. |
-| KHM-ROM-001 | PARTIAL | The Ukrainian target crosswalk now has candidates for all 22 consonant and 37 PCGN vowel/rime rows; the @gmana ASCII simplifier remains non-conformant and the runtime syllable adapter is absent. | Exact-head tests for the full target matrix; separately, full contextual PCGN engine and independent syllable-level adapter. |
+| KHM-ROM-001 | PARTIAL | All 22 consonant and 37 PCGN vowel/rime target rows are populated; PR #164 integrates a separate provisional Latin-to-Ukrainian runtime adapter. The upstream ASCII profile drops PCGN diacritics. | Retain provisional label until a diacritic-preserving/context-aware BGN/PCGN engine covers series, vowel, shortening, coda and shifter environments; keep pronunciation claims separate. |
 | KHM-G2P-001 | DONE_VERIFIED (diagnostic harness only) | Goruut has substantial partial coverage; Khmerphonemizer source concordance is not independent accuracy. | No production promotion absent gold and full source coverage; preserve raw outputs and comparator provenance. |
 | KHM-UI-001 | PARTIAL | PR #108 is merged; exact-main Chromium coverage, Pages deployment and deployed-site smoke all pass. Manual visual, keyboard, assistive-technology and mobile QA remain open. | Record human keyboard, screen-reader, responsive/mobile and visual results on the deployed site. |
 | KHM-WEB-RESULT-RENDER-001 | DONE_VERIFIED | Removed the invalid `#source-result` dereference in PR #108; exact-main Quality [41641496598](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496598), Chromium [41641496582](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496582), and Pages/deployed smoke [41641496680](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41641496680) all succeeded. | Keep regression tests and Pages browser gate; manual accessibility QA remains tracked under KHM-UI-001. |
@@ -588,3 +588,25 @@ The adapter is intentionally labelled `PROVISIONAL`. It is orthographic Latin-to
 - PR [#164](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/164) merged as `0ba6107a7e5cb09cca44021669a7401fc125eac4`.
 - Mainline Quality [43227360792](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360792), browser smoke [43227360789](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360789), and Pages deployment [43227360801](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360801) all SUCCESS.
 - The merged implementation remains deliberately PARTIAL/PROVISIONAL: the upstream ASCII romanizer omits PCGN diacritics; this adapter cannot reconstruct lost contextual vowel distinctions. The IPA route remains separate.
+
+
+## Romanization runtime mainline reconciliation — 2026-11-12
+
+### Cambodian national romanization profile evidence — 2026-11-12
+
+Cambodia's national report to UNGEGN states that the national romanized writing system is based on the 1997 transcription system instead of the 1972 transliteration system, and that its 2019 gazetteer used the 1997 system. The UNGEGN Working Group's 2023 status report independently records this replacement. BGN/PCGN 1972 therefore remains a documented project research profile, not the current national Cambodian profile. The primary 1997 national specification has not yet been located; the similarly dated ALA-LC Khmer table is a distinct cataloguing system and is not treated as equivalent.
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-ROM-NATIONAL-1997-001 | EVIDENCE_LIMITED | Cambodia national report GEGN.2/2023/104/CRP.104 and UNGEGN status report GEGN.2/2023/11/CRP.11 identify 1997 as replacing 1972 in national use. | Locate and verify the complete primary 1997 specification, then compare it against BGN/PCGN and decide whether to add a separate profile. Do not relabel existing 1972 rows. |
+
+
+| ID | Status | Current evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | 22 consonant + 37 vowel/rime rows have Ukrainian target candidates; PR #161 merged; exact mainline Quality/browser/Pages checks on `a86a59cf082d547563b45374ced9dfb45c5cd8db` passed: [43228414756](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414756), [43228414938](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414938), [43228414646](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414646). | Table coverage only; all Ukrainian candidates remain project proposals. |
+| KHM-ROM-UA-001 | PARTIAL | PR #164 merged as `0ba6107a7e5cb09cca44021669a7401fc125eac4`; separate runtime adapter and UI are live; unknown fragments are visibly withheld and IPA route is separate. | Replace the lossy ASCII romanizer or implement a contextual BGN/PCGN source-syllable path. |
+| KHM-ROM-ENGINE-001 | PARTIAL | `@gmana/km-translit` 0.1.2 is documented as BGN/PCGN-derived ASCII and drops diacritics. | Demonstrate full standard-conformant contextual romanization, including series, vowel, shortening, coda and diacritic behavior. |
+
+The phonetic route and its IPA boundary are unchanged. No new IPA labels, gold entries, or accuracy claims were added. Independent expert-adjudicated IPA gold remains 0.
+
+The 2025 UNGEGN Asia South-East Division report further confirms that the October 2023 national gazetteer published by Cambodia's General Department of Cadastre and Geography uses the 1997 transcription system (GEGN.2/2025/73/CRP.73, p. 3). This is later corroboration, not a copy of the primary 1997 specification.

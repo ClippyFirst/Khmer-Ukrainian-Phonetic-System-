@@ -538,3 +538,11 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | Browser visible-result smoke | DONE_VERIFIED | Chromium run 43101322537 PASS |
 | Full positional evidence registry and language-wide fallback | TODO / PARTIAL | Current implementation is onset-only and keeps canonical output fail-closed; exact source locators and position-specific inventory still required |
 | Functional Python/browser parity fixture | TODO | Current browser assertions are source-contract checks, not shared structured fixture parity |
+
+
+## Unicode grapheme accounting sweep — 2026-11-12
+
+| Work item | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-UNICODE-ACCOUNTING-001 | DONE_VERIFIED (structural/input accounting) | PR #157 merged as `e9c9d997e6de1029fd0b8fef9e7b6a9cb0020a4f`; exact-head Quality [43184648039](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43184648039) and browser smoke [43184647978](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43184647978) SUCCESS. Exhaustive sweep covers assigned Unicode L/M code points in U+1780–17FF and U+19E0–19FF. | Every tested code point is losslessly retained and traced. Malformed COENG remains visible as invalid structure. Does not imply phonological/IPA coverage or correctness. |
+| KHMER-PHONOLOGY-100-001 | PARTIAL / BLOCKED by evidence | Existing vowel × series report remains first-order only; positional coda/profile cells and independent gold remain incomplete. | Requires source-located vowel × series × length × coda × profile evidence, independent expert adjudication, and held-out gold before expanding canonical IPA rules. |

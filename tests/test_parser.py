@@ -36,3 +36,37 @@ def test_unknown_non_khmer_material_does_not_pass_as_established_structure():
     assert r.syllables[0]["status"] == "INVALID_OR_UNSUPPORTED"
     assert r.status == "INVALID_OR_UNSUPPORTED"
     assert r.confidence == 0.0
+
+
+def test_every_assigned_khmer_letter_and_mark_has_a_lossless_parser_record():
+    import unicodedata
+
+    from khmer_ua.parser import decompose_khmer_syllable, segment_syllables
+
+    ranges = ((0x1780, 0x17FF), (0x19E0, 0x19FF))
+    tested = 0
+    for start, end in ranges:
+        for codepoint in range(start, end + 1):
+            char = chr(codepoint)
+            if unicodedata.category(char)[0] not in {"L", "M"}:
+                continue
+            units = segment_syllables(char)
+            assert "".join(units) == char, f"source lost for U+{codepoint:04X}"
+            assert len(units) == 1
+            parsed = decompose_khmer_syllable(units[0])
+            assert "".join(item.text for item in parsed.graphemes) == char
+            assert [cp for item in parsed.graphemes for cp in item.codepoints] == [
+                f"U+{codepoint:04X}"
+            ]
+            tested += 1
+    assert tested > 0
+
+
+def test_unmodelled_khmer_letter_is_traced_as_unknown_not_as_ipa():
+    from khmer_ua.parser import decompose_khmer_syllable
+
+    # U+17F9 is a Khmer symbol rather than a consonant or vowel phoneme.
+    parsed = decompose_khmer_syllable("\\u17F9")
+    assert parsed.graphemes
+    assert parsed.graphemes[0].codepoints == ("U+17F9",)
+    assert parsed.status == "INVALID_OR_UNSUPPORTED"

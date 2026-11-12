@@ -143,7 +143,7 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 | KHM-ROM-VOWEL-INVENTORY-001 | PARTIAL | 37 source rows now match the PCGN glyphs/romanization values; exact-head workflow 41233203184 passed; all 37 source-glyph/romanization assertions are verified |
 | KHM-ROM-MARKS-NUMERALS-001 | PARTIAL | Six exact PCGN diacritic glyphs and ten numeral glyphs are inventoried; exact-glyph tests passed in workflow 41233203184 |
 | KHM-ROM-MATRIX-001 | PARTIAL | The target column is complete for the inventoried rows; PCGN consonant-series × vowel × shortening × coda resolution and contextual romanization generation remain incomplete |
-| KHM-ROM-TEST-001 | PARTIAL | Exact source-glyph and romanization assertions passed in workflow 41233203184; full mixed-script, punctuation, malformed-unit and ambiguity coverage remains TODO |
+| KHM-ROM-TEST-001 | PARTIAL | PR #167 merged as `f0485892f5d4b16e5fbe0ded6f8e083d8b044f4b` wires `tests/romanization-ukrainian.test.mjs` into both `npm test` and `npm run check`. The unit suite asserts all 22 distinct PCGN consonant romanization tokens and 33 ASCII vowel candidates; current-main Quality [43250158336](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158336) and browser smoke [43250158628](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158628) passed. | Remaining: full source-matrix→runtime parity for every vowel row, Khmer marks/numerals, broad real-package corpus, and contextual diacritic-preserving BGN/PCGN handling. National 1997 profile remains a separate evidence-limited research task. |
 | KHM-IPA-001 | PARTIAL | Existing contextual vowel/register/coda IPA model and independent gold remain incomplete |
 
 
@@ -208,3 +208,8 @@ Exact PR-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukraini
 - Exact mainline verification on current head: Quality [43228414756](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414756), browser smoke [43228414938](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414938), and Pages deployment [43228414646](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414646) all SUCCESS.
 - `KHM-ROM-ENGINE-001`: PARTIAL — the selected package emits BGN/PCGN-derived ASCII and drops diacritics. Acceptance requires a validated diacritic-preserving, context-aware BGN/PCGN 1972 romanizer and tests for series, vowel, shortening, coda and shifter environments.
 - Historical TODO entries above describe earlier checkpoints; this section records current mainline state. Ukrainian candidates remain project orthographic proposals, not IPA or an expert-approved Ukrainian standard.
+
+
+## Adapter test execution closeout — 2026-11-12
+
+The adapter unit test file was present before this checkpoint but was not referenced by the Khmer `npm test` / `npm run check` scripts, so CI did not execute it. PR #167 corrected test discovery and added explicit assertions for all 22 distinct consonant romanization tokens. It merged as `f0485892f5d4b16e5fbe0ded6f8e083d8b044f4b`. Exact-main Quality [43250158336](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158336) and browser smoke [43250158628](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158628) passed. The full acceptance remains PARTIAL as stated in KHM-ROM-TEST-001.

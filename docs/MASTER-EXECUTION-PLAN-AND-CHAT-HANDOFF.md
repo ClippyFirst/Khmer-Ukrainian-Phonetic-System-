@@ -1813,3 +1813,13 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 - Existing ASCII vowel candidates remain separately tested; this does not validate the upstream package's lost diacritics, contextual vowel choices, or full BGN/PCGN conformance. Ukrainian values remain project proposals.
 - Implementation commit: `68721f396ebfd6817737ea2d0fcd549a5ab8b94d`. Exact-head CI and full suite are pending; do not mark this item DONE_VERIFIED until they pass.
 - Status: PARTIAL pending hosted Quality/browser/Pages checks on the exact final PR head.
+
+
+## Post-merge closeout — canonical Khmer romanization matrix/runtime parity — 2026-11-12
+
+- PR [#170](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/170) merged as `c5c26082abff87ce6224e00a68047620f9d9975f`.
+- Exact PR-head Quality workflow [43266798081](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43266798081) **SUCCESS**: gold-corpus structure validation, Python tests, Node web checks and Vite production build.
+- Exact PR-head browser smoke [43266797880](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43266797880) **SUCCESS**: deterministic web checks, production build and Chromium visible-results smoke.
+- `KHM-ROM-TEST-MATRIX-PARITY-001`: **DONE_VERIFIED** for the bounded 22-row consonant CSV → runtime mapping contract. This does not close `KHM-ROM-ENGINE-001` or the contextual vowel/marks/numerals/real-package whole-message acceptance work.
+- Mainline Quality, browser smoke and Pages deployment were queued after merge at runs `43267004981`, `43267004560`, and `43267004404`; their final outcomes must be checked before claiming deployment success.
+- No local checkout or local test command was available in this connector-only run. All pass evidence above is from hosted GitHub Actions on the exact PR head.

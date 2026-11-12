@@ -255,3 +255,8 @@ The Ministry's *Gazetteer of Cambodia* (October 2023), pp. vii–viii, contains 
 ## Khmer romanization matrix/runtime parity — 2026-11-12
 
 A second test-discovery gap was identified after the adapter suite was wired into `npm test`: the consonant test still duplicated all 22 source rows as a hard-coded array. That could pass while the canonical CSV changed independently. The test now parses `data/khmer/romanization_ukrainian.csv` and exercises each row's romanization/target pair, including both contextual `b,p` alternatives and the U+2019 marker. This is a source-of-truth parity safeguard, not linguistic adjudication. Vowel coverage remains limited to the 33 ASCII candidates that the current upstream package can emit; diacritic/contextual PCGN output is still lost upstream.
+
+
+## Post-merge Khmer romanization matrix/runtime parity verification — 2026-11-12
+
+PR #170 merged as `c5c26082abff87ce6224e00a68047620f9d9975f`. Exact-head Quality workflow [43266798081](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43266798081) passed the Python suite, Node web checks and Vite build; exact-head browser workflow [43266797880](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43266797880) passed Chromium visible-results smoke. The bounded canonical 22-row consonant matrix/runtime parity test is now DONE_VERIFIED. This does not resolve upstream PCGN diacritic loss, contextual vowel/rime coverage, Ukrainian expert adjudication or IPA gold. Mainline Quality/browser/Pages checks were queued after merge and remain separately tracked until completed.

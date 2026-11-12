@@ -100,9 +100,10 @@ def test_pcgn_vowel_and_diacritic_crosswalk_is_complete_for_documented_tables():
         assert (row["source_units"], row["bgn_pcgn_romanization"]) == expected_romanization[key]
 
 
-def test_unadjudicated_rows_never_claim_a_ukrainian_candidate():
+def test_every_pcgn_vowel_rime_has_an_explicit_ukrainian_orthographic_candidate():
     with CSV_PATH.open(encoding="utf-8-sig", newline="") as stream:
         rows = list(csv.DictReader(stream))
     for row in rows:
-        if row["ukrainian_status"] == "EVIDENCE_LIMITED":
-            assert not row["ukrainian_candidate"]
+        assert row["ukrainian_candidate"].strip()
+        assert row["ukrainian_status"] in {"PROPOSED", "ANALYSIS_DEPENDENT"}
+        assert "not IPA" in row["note"]

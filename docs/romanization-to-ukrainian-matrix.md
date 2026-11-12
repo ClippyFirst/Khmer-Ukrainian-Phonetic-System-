@@ -215,3 +215,8 @@ Exact PR-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukraini
 ## Adapter test execution closeout — 2026-11-12
 
 The adapter unit test file was present before this checkpoint but was not referenced by the Khmer `npm test` / `npm run check` scripts, so CI did not execute it. PR #167 corrected test discovery and added explicit assertions for all 22 distinct consonant romanization tokens. It merged as `f0485892f5d4b16e5fbe0ded6f8e083d8b044f4b`. Exact-main Quality [43250158336](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158336) and browser smoke [43250158628](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158628) passed. The full acceptance remains PARTIAL as stated in KHM-ROM-TEST-001.
+
+
+## Canonical matrix → runtime parity — 2026-11-12
+
+The Node adapter test now reads the canonical `data/khmer/romanization_ukrainian.csv` directly and executes every one of its 22 rows against `renderLatinWord`. Contextual `b,p` alternatives are checked as two explicit Latin/target pairs; the PCGN glottal marker is checked as U+2019. This prevents the test's hand-maintained consonant list from drifting independently of the source matrix. The existing 33 ASCII vowel candidate checks remain a separate bounded test because the upstream romanizer strips PCGN diacritics; this parity check does not establish contextual BGN/PCGN vowel conformance or validate the linguistic correctness of Ukrainian proposals.

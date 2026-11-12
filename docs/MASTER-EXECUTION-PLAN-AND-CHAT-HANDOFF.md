@@ -1804,3 +1804,12 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 - Corrected a real test-discovery gap: `tests/romanization-ukrainian.test.mjs` is now run by both `npm test` and `npm run check`. Added coverage for all 22 distinct PCGN consonant romanization tokens; the existing suite covers the 33 ASCII vowel candidates, unsupported units, passthrough and status behavior.
 - Exact-main Quality [43250158336](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158336) and browser smoke [43250158628](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158628) passed on the implementation commit. Pages deployment was checked separately in run [43250158415](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158415).
 - Remaining acceptance: source-matrix→runtime parity for every row, marks/numerals, real-package corpus tests, diacritic-preserving BGN/PCGN, and a separate evidence-gated decision on Cambodia's national 1997 system. Do not promote PROPOSED mappings or provisional output.
+
+
+## Canonical Khmer romanization matrix → adapter parity — 2026-11-12
+
+- Started from current `main` `c3a4370bb87b7d116b7ca032520cbc0047e6ff33` on branch `test/khmer-romanization-canonical-matrix-parity-2026-11-12`.
+- Closed a remaining test drift gap: the consonant adapter test had a hand-maintained 22-row list even though `data/khmer/romanization_ukrainian.csv` is canonical. The test now parses that CSV and executes every row's Latin/target pair, including contextual `b,p` alternatives and the PCGN U+2019 onset marker.
+- Existing ASCII vowel candidates remain separately tested; this does not validate the upstream package's lost diacritics, contextual vowel choices, or full BGN/PCGN conformance. Ukrainian values remain project proposals.
+- Implementation commit: `68721f396ebfd6817737ea2d0fcd549a5ab8b94d`. Exact-head CI and full suite are pending; do not mark this item DONE_VERIFIED until they pass.
+- Status: PARTIAL pending hosted Quality/browser/Pages checks on the exact final PR head.

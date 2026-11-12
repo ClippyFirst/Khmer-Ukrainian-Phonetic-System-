@@ -128,7 +128,7 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 |---|---|---|
 | KHM-ROM-STD-001 | DONE_VERIFIED (source review) | BGN/PCGN 1972 selected; UNGEGN approval and PCGN table cited |
 | KHM-ROM-ENGINE-001 | PARTIAL | Replace/verify the ASCII simplifier against the full BGN/PCGN table, including diacritics and context |
-| KHM-ROM-UA-TARGET-001 | PARTIAL (CI pending) | Every one of 22 consonant rows and 37 PCGN vowel/rime rows has a non-empty Ukrainian target candidate; exact table/provenance and coverage assertions added. Promote after exact-head CI. This is a project orthographic proposal, not expert-approved standardization. |
+| KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | Every one of 22 consonant rows and 37 PCGN vowel/rime rows has a non-empty Ukrainian target candidate; exact table/provenance and coverage assertions added. Promote after exact-head CI. This is a project orthographic proposal, not expert-approved standardization. |
 | KHM-ROM-UA-001 | TODO | Implement an independent syllable-level romanization → Ukrainian adapter; execute the matrix in the browser without IPA fallback |
 | KHM-ROM-ONSET-001 | DONE_VERIFIED | All 22 PCGN consonant rows plus special ឝ are in data/khmer/romanization_ukrainian.csv; exact row and provenance tests passed in workflow 41229431196 |
 | KHM-ROM-VOWEL-INVENTORY-001 | PARTIAL | 37 source rows now match the PCGN glyphs/romanization values; exact-head workflow 41233203184 passed; all 37 source-glyph/romanization assertions are verified |

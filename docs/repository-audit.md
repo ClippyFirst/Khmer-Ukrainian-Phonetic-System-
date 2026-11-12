@@ -240,3 +240,13 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 ## Test-discovery audit — 2026-11-12
 
 The Khmer orthographic adapter's unit test file existed but was omitted from both `npm test` and `npm run check`; browser smoke covered only a single example. PR #167 fixed this by wiring the unit suite into both commands and asserting every distinct PCGN consonant romanization token. It merged as `f0485892f5d4b16e5fbe0ded6f8e083d8b044f4b`. Exact-main Quality [43250158336](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158336) and browser [43250158628](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158628) passed. Remaining coverage limitations are recorded in KHM-ROM-TEST-001.
+
+
+## Evidence conflict update — Cambodian 1997 transcription system — 2026-11-12
+
+The Cambodia national report (GEGN.2/2023/104/CRP.104) and UNGEGN 2025 regional report (GEGN.2/2025/73/CRP.73) say national gazetteers used the 1997 transcription system. The UK PCGN's May 2026 *Cambodia Toponymic Factfile* (pp. 1–2) says the system has not yet been implemented consistently and awaits evidence of consistent official use. The 2023 Gazetteer primary table is now located (pp. vii–viii); its foreword states departmental use but provisional status pending formal National Commission approval. The statements are compatible as provisional use versus consistent national implementation. Keep KHM-ROM-NATIONAL-1997-001 EVIDENCE_LIMITED until formal adoption evidence and source reuse rights are resolved. BGN/PCGN 1972 remains the project's current source-located research profile; ALA-LC 1997 remains a distinct cataloguing profile.
+
+
+## Primary Khmer 1995/1997 table located — 2026-11-12
+
+The Ministry's *Gazetteer of Cambodia* (October 2023), pp. vii–viii, contains the “Romanized System for Khmer” table labelled “Prepared by Geography Department, 1995. Last modification 1997”. The foreword states that the system had been used by the Geography Department, would be submitted to the National Committee for consideration/adoption, and that this Gazetteer is a provisional release pending National Commission approval. This reconciles the Cambodia/UNGEGN gazetteer-use reports with PCGN's May 2026 statement that the system is not yet implemented consistently: provisional departmental use is documented, but formal adoption/consistent nationwide implementation remains unproven. Original PDF copyright © 2023 by the Geography Department; ODC's record says no license is given for the PDF. Keep KHM-ROM-NATIONAL-1997-001 EVIDENCE_LIMITED until adoption evidence and reuse rights are resolved. Do not relabel BGN/PCGN 1972 rows.

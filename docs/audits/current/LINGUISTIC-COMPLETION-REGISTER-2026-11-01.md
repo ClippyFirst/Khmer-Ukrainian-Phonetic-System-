@@ -610,3 +610,12 @@ Cambodia's national report to UNGEGN states that the national romanized writing 
 The phonetic route and its IPA boundary are unchanged. No new IPA labels, gold entries, or accuracy claims were added. Independent expert-adjudicated IPA gold remains 0.
 
 The 2025 UNGEGN Asia South-East Division report further confirms that the October 2023 national gazetteer published by Cambodia's General Department of Cadastre and Geography uses the 1997 transcription system (GEGN.2/2025/73/CRP.73, p. 3). This is later corroboration, not a copy of the primary 1997 specification.
+
+
+## Khmer romanization adapter test discovery — 2026-11-12
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-ROM-TEST-001 | PARTIAL | PR #167 merged as `f0485892f5d4b16e5fbe0ded6f8e083d8b044f4b`; the adapter unit suite is now included in `npm test` and `npm run check`. It asserts all 22 distinct consonant romanization tokens and the 33 ASCII vowel candidates. Exact-main Quality [43250158336](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158336) and browser smoke [43250158628](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158628) passed. | Add complete source-matrix→runtime parity, real upstream romanizer corpus tests, marks/numerals and contextual diacritic-preserving profile coverage. |
+
+The unit-test discovery gap is closed. This does not resolve the lossy ASCII romanizer, the national 1997 profile blocker, or the proposed status of Ukrainian mappings.

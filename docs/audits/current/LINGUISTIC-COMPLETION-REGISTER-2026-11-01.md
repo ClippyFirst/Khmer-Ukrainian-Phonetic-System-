@@ -594,11 +594,11 @@ The adapter is intentionally labelled `PROVISIONAL`. It is orthographic Latin-to
 
 ### Cambodian national romanization profile evidence — 2026-11-12
 
-Cambodia's national report to UNGEGN states that the national romanized writing system is based on the 1997 transcription system instead of the 1972 transliteration system, and that its 2019 gazetteer used the 1997 system. The UNGEGN Working Group's 2023 status report independently records this replacement. BGN/PCGN 1972 therefore remains a documented project research profile, not the current national Cambodian profile. The primary 1997 national specification has not yet been located; the similarly dated ALA-LC Khmer table is a distinct cataloguing system and is not treated as equivalent.
+Cambodia's national report to UNGEGN and the 2025 UNGEGN regional report say that national gazetteers used the 1997 transcription system. The UK PCGN's May 2026 *Cambodia Toponymic Factfile* says the system developed in 1995 and modified in 1997 has not yet been implemented consistently in Cambodia. This is a genuine evidence conflict, potentially reflecting the difference between a gazetteer dataset using a scheme and a consistently implemented national standard. BGN/PCGN 1972 remains the project's source-located research profile; the 1997 system remains EVIDENCE_LIMITED. The similarly dated ALA-LC Khmer table is a distinct cataloguing system and is not treated as equivalent.
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| KHM-ROM-NATIONAL-1997-001 | EVIDENCE_LIMITED | Cambodia national report GEGN.2/2023/104/CRP.104 and UNGEGN status report GEGN.2/2023/11/CRP.11 identify 1997 as replacing 1972 in national use. | Locate and verify the complete primary 1997 specification, then compare it against BGN/PCGN and decide whether to add a separate profile. Do not relabel existing 1972 rows. |
+| KHM-ROM-NATIONAL-1997-001 | EVIDENCE_LIMITED | Cambodia report GEGN.2/2023/104/CRP.104 and UNGEGN 2025 report GEGN.2/2025/73/CRP.73 report 1997 use in gazetteers; PCGN May 2026 Factfile pp. 1–2 says the system is not yet implemented consistently. | Obtain the primary 1997 specification and 2025 gazetteer dataset; reconcile the contradictory implementation claims and decide whether to add a distinct profile. Do not relabel existing 1972 rows. |
 
 
 | ID | Status | Current evidence | Acceptance boundary |

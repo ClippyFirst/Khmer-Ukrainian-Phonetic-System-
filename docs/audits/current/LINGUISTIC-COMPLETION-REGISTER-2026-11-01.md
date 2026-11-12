@@ -569,3 +569,15 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | Merged PR [#161](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/161), merge `6b0d0e75d794165e5eb935192fab0926e1efca39`; mainline Quality [43221967799](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221967799), browser [43221968144](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221968144), Pages [43221967939](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221967939) all SUCCESS. | 22 consonant + 37 vowel/rime target rows are covered. Runtime adapter and full contextual BGN/PCGN engine remain separate open tasks. |
+
+
+## Khmer romanization Ukrainian runtime adapter — 2026-11-12
+
+| ID | Status | Evidence | Remaining acceptance |
+|---|---|---|---|
+| KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | 22 consonant + 37 vowel/rime target rows; merged PR #161; prior exact-head matrix CI passed. | No remaining table-row blanks in the inventoried target matrix. |
+| KHM-ROM-UA-001 | PARTIAL | PR #164 adds `src/khmer-romanization-ukrainian.js`, app integration, and browser regression `សុខា → Sokha → Сок'а`. Exact-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337969), browser [43226337956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337956), push Quality [43226325685](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226325685) SUCCESS. | The current upstream ASCII romanizer drops BGN/PCGN diacritics; contextual vowel variants cannot be reconstructed. Need diacritic-preserving source output or a context-aware source-syllable romanizer before full-standard acceptance. |
+| KHM-ROM-ENGINE-001 | PARTIAL | Upstream package documents its ASCII profile as BGN/PCGN-derived, with diacritics dropped and non-conformance. | Implement or adopt a validated, diacritic-preserving BGN/PCGN 1972 engine; test all contextual vowel, coda and shifter cases. |
+
+The adapter is intentionally labelled `PROVISIONAL`. It is orthographic Latin-to-Ukrainian rendering, not IPA or pronunciation transcription.
+

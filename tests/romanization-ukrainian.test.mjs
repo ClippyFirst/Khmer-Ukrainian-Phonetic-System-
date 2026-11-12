@@ -126,9 +126,17 @@ test("every Khmer numeral row in the canonical matrix has its Arabic-digit targe
 });
 
 
-test("ASCII vowel aliases preserve the distinct eă and oă PCGN candidates", () => {
-  assert.equal(renderLatinWord("ea").text, "еа");
-  assert.equal(renderLatinWord("oa").text, "оа");
-  assert.equal(renderLatinWord("eah").text, "еаг");
-  assert.equal(renderLatinWord("oah").text, "оаг");
+test("shortened eă and oă romanization sequences retain their Ukrainian candidates", () => {
+  const ea = renderLatinWord("ea");
+  const oa = renderLatinWord("oa");
+  const eah = renderLatinWord("eah");
+  const oah = renderLatinWord("oah");
+  assert.equal(ea.text, "еа");
+  assert.equal(ea.mapped, 2, "ea is rendered as the two explicit vowel units e + a");
+  assert.equal(oa.text, "оа");
+  assert.equal(oa.mapped, 2, "oa is rendered as the two explicit vowel units o + a");
+  assert.equal(eah.text, "еаг");
+  assert.equal(eah.mapped, 1, "eah is one matrix-listed vowel/coda sequence");
+  assert.equal(oah.text, "оаг");
+  assert.equal(oah.mapped, 1, "oah is one matrix-listed vowel/coda sequence");
 });

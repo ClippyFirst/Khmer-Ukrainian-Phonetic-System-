@@ -104,7 +104,7 @@ test("every canonical PCGN consonant row is executable by the Ukrainian adapter"
 test("real package and Ukrainian adapter preserve a mixed whole message", () => {
   const source = "២០២៦ ABC-42,\tសួស្តី។\r\n";
   const result = renderKhmerRomanizationText(source, khmerToLatin);
-  assert.ok(result.text.includes("២០២៦") || result.text.includes("2026"), "native or Arabic numerals must remain visible");
+  assert.ok(result.text.includes("2026"), "Khmer numerals must follow the canonical Arabic-digit target crosswalk");
   assert.ok(result.text.includes("ABC-42"), "mixed Latin identifiers and ASCII digits must survive");
   assert.ok(result.text.includes(","), "ASCII punctuation must survive");
   assert.ok(result.text.includes("\t"), "tabs must survive");

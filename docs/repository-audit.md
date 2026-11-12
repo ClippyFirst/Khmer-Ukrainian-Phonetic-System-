@@ -260,3 +260,8 @@ A second test-discovery gap was identified after the adapter suite was wired int
 ## Post-merge Khmer romanization matrix/runtime parity verification — 2026-11-12
 
 PR #170 merged as `c5c26082abff87ce6224e00a68047620f9d9975f`. Exact-head Quality workflow [43266798081](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43266798081) passed the Python suite, Node web checks and Vite build; exact-head browser workflow [43266797880](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43266797880) passed Chromium visible-results smoke. The bounded canonical 22-row consonant matrix/runtime parity test is now DONE_VERIFIED. This does not resolve upstream PCGN diacritic loss, contextual vowel/rime coverage, Ukrainian expert adjudication or IPA gold. Mainline Quality/browser/Pages checks were queued after merge and remain separately tracked until completed.
+
+
+## Khmer real-package whole-message adapter coverage — 2026-11-12
+
+The test suite now includes a regression that exercises the actual `@gmana/km-translit` package through the Ukrainian orthographic adapter on a mixed whole message. It checks visible native/Arabic numerals, mixed Latin identifier, ASCII punctuation, tab, CRLF and Khmer sentence-stop preservation, while ensuring Khmer letters do not leak into the Latin-output route. This is a bounded software integration probe, not evidence of complete PCGN marks/numerals coverage or Ukrainian linguistic accuracy. Exact-head CI remains pending.

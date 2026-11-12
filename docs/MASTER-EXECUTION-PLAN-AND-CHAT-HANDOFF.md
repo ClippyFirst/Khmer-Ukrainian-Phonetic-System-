@@ -1823,3 +1823,11 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 - `KHM-ROM-TEST-MATRIX-PARITY-001`: **DONE_VERIFIED** for the bounded 22-row consonant CSV → runtime mapping contract. This does not close `KHM-ROM-ENGINE-001` or the contextual vowel/marks/numerals/real-package whole-message acceptance work.
 - Mainline Quality, browser smoke and Pages deployment were queued after merge at runs `43267004981`, `43267004560`, and `43267004404`; their final outcomes must be checked before claiming deployment success.
 - No local checkout or local test command was available in this connector-only run. All pass evidence above is from hosted GitHub Actions on the exact PR head.
+
+
+## Real-package Khmer whole-message → Ukrainian adapter regression — 2026-11-12
+
+- Started from current main `60caa3903c546e6cd8a79a644161c4fe450fd703` on `test/khmer-romanization-whole-message-adapter-2026-11-12`.
+- Added a whole-message test using the actual `@gmana/km-translit` dependency and `renderKhmerRomanizationText`, rather than a stub romanizer. The mixed probe covers Khmer numerals, Latin identifier, ASCII digits/punctuation, tab, CRLF and Khmer sentence-stop punctuation; it requires Khmer letters to be converted.
+- This is an engineering/source-preservation regression only. It does not adjudicate the romanization or target Ukrainian output and does not resolve missing diacritics, contextual PCGN vowels, marks/numeral rules, or full-standard conformance.
+- Code commit: `d1b41a8ada377af413f2dd1c079feb7dbcfaddfa`. Exact-head Quality/browser CI pending; status PARTIAL until those checks pass.

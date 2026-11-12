@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { test } from "node:test";
+import { khmerToLatin } from "@gmana/km-translit";
 import { renderKhmerRomanizationText, renderLatinWord } from "../src/khmer-romanization-ukrainian.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -97,4 +98,19 @@ test("every canonical PCGN consonant row is executable by the Ukrainian adapter"
       assert.equal(result.unsupported, 0, `PCGN row ${row.table_row}: ${latinForms[i]} must not be unsupported`);
     }
   }
+});
+
+
+test("real package and Ukrainian adapter preserve a mixed whole message", () => {
+  const source = "២០២៦ ABC-42,\tសួស្តី។\r\n";
+  const result = renderKhmerRomanizationText(source, khmerToLatin);
+  assert.ok(result.text.includes("២០២៦") || result.text.includes("2026"), "native or Arabic numerals must remain visible");
+  assert.ok(result.text.includes("ABC-42"), "mixed Latin identifiers and ASCII digits must survive");
+  assert.ok(result.text.includes(","), "ASCII punctuation must survive");
+  assert.ok(result.text.includes("\t"), "tabs must survive");
+  assert.ok(result.text.includes("\r\n"), "CRLF must survive");
+  assert.ok(result.text.includes("។"), "Khmer sentence-stop punctuation must survive");
+  assert.doesNotMatch(result.text, /[ក-៓]/u, "Khmer letters must be romanized");
+  assert.equal(result.status, "PROVISIONAL");
+  assert.ok(result.mapped > 0);
 });

@@ -1718,3 +1718,13 @@ The browser preview is separate from canonical output. The onset-only test fixtu
 - Browser smoke 43101322537 PASS: deterministic web checks, production build and Chromium visible-result check.
 - Browser keeps canonical IPA/Ukrainian withholding intact and shows a separate onset-only preview in per-unit details.
 - Linguistic feature remains PARTIAL: positional primary-source registry and functional shared Python/browser parity fixtures remain TODO. Independent adjudicated gold remains BLOCKED; audio DEFERRED.
+
+
+## Complete Unicode grapheme-accounting sweep — 2026-11-12
+
+- PR [#157](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/157) merged as `e9c9d997e6de1029fd0b8fef9e7b6a9cb0020a4f`.
+- Added an exhaustive runtime sweep over every assigned Unicode letter and combining mark (general categories L/M) in Khmer U+1780–17FF and Khmer Symbols U+19E0–19FF. Each tested code point must survive segmentation and appear in the parser's grapheme trace with its exact U+ identifier.
+- The sweep exposed an early-return trace-loss defect for malformed U+17D2 COENG. The parser now retains the malformed coeng and all remaining code points as `invalid_sequence_component`; it does not invent a pronunciation.
+- Added a negative control for U+17F9, which remains explicitly unsupported rather than receiving synthetic IPA.
+- Exact PR-head verification: Quality [43184648039](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43184648039) SUCCESS; browser smoke [43184647978](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43184647978) SUCCESS. These runs cover the exact tested branch head `fcae948d8ae30bc0ad606ef4ae4071fffb68be08`.
+- **Status:** structural/input accounting for the tested Unicode L/M set is DONE_VERIFIED. This is not 100% Khmer phonological coverage, 100% IPA coverage, or pronunciation accuracy. Vowel × series × length × coda × profile evidence and independent adjudicated gold remain PARTIAL/BLOCKED. Post-merge main workflows were still running at this documentation checkpoint; no post-merge result is claimed.

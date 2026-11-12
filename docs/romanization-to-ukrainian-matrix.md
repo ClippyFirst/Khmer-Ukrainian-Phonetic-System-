@@ -17,7 +17,7 @@ UNGEGN notes that Khmer is an alphasyllabic script, that the romanization requir
 
 The current @gmana/km-translit 0.1.2 integration is documented as **BGN/PCGN-derived ASCII**, drops diacritics and is not a fully conformant BGN/PCGN implementation. It is useful as an existing romanization candidate but cannot be called the selected standard implementation or the final complete orthographic mode. It must remain separately labelled until replaced or proven equivalent against the official table.
 
-The current romanization card remains independent from IPA → Ukrainian conversion. The machine-readable target matrix now covers every inventoried consonant and vowel/rime row, but the browser card does not yet execute the target mapping. Matrix completeness is not runtime integration, BGN/PCGN conformance, reversibility, or pronunciation evidence.
+The current romanization card remains independent from IPA → Ukrainian conversion. Its Ukrainian target mapping is now executed by a separate runtime adapter for the current BGN/PCGN-derived ASCII output. Matrix completeness and runtime integration do not establish full BGN/PCGN conformance, reversibility, or pronunciation evidence.
 
 ## Consonant and subscript crosswalk (source-backed romanization; Ukrainian target is a project proposal)
 
@@ -129,7 +129,7 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 | KHM-ROM-STD-001 | DONE_VERIFIED (source review) | BGN/PCGN 1972 selected; UNGEGN approval and PCGN table cited |
 | KHM-ROM-ENGINE-001 | PARTIAL | Replace/verify the ASCII simplifier against the full BGN/PCGN table, including diacritics and context |
 | KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | Every one of 22 consonant rows and 37 PCGN vowel/rime rows has a non-empty Ukrainian target candidate; exact table/provenance and coverage assertions added. Promote after exact-head CI. This is a project orthographic proposal, not expert-approved standardization. |
-| KHM-ROM-UA-001 | TODO | Implement an independent syllable-level romanization → Ukrainian adapter; execute the matrix in the browser without IPA fallback |
+| KHM-ROM-UA-001 | PARTIAL | Separate runtime adapter is integrated and tested; current upstream ASCII romanizer drops BGN/PCGN diacritics, so lost contextual vowel distinctions cannot be recovered. Full acceptance requires a diacritic-preserving/context-aware BGN/PCGN source path. |
 | KHM-ROM-ONSET-001 | DONE_VERIFIED | All 22 PCGN consonant rows plus special ឝ are in data/khmer/romanization_ukrainian.csv; exact row and provenance tests passed in workflow 41229431196 |
 | KHM-ROM-VOWEL-INVENTORY-001 | PARTIAL | 37 source rows now match the PCGN glyphs/romanization values; exact-head workflow 41233203184 passed; all 37 source-glyph/romanization assertions are verified |
 | KHM-ROM-MARKS-NUMERALS-001 | PARTIAL | Six exact PCGN diacritic glyphs and ten numeral glyphs are inventoried; exact-glyph tests passed in workflow 41233203184 |
@@ -189,3 +189,13 @@ Exact PR-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukraini
 - PR [#164](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/164) merged as `0ba6107a7e5cb09cca44021669a7401fc125eac4`.
 - Mainline Quality [43227360792](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360792), browser smoke [43227360789](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360789), and Pages deployment [43227360801](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43227360801) all SUCCESS.
 - The merged implementation remains deliberately PARTIAL/PROVISIONAL: the upstream ASCII romanizer omits PCGN diacritics; this adapter cannot reconstruct lost contextual vowel distinctions. The IPA route remains separate.
+
+
+## Mainline ledger reconciliation — 2026-11-12
+
+- Verified current `main`: `a86a59cf082d547563b45374ced9dfb45c5cd8db`.
+- `KHM-ROM-UA-TARGET-001`: DONE_VERIFIED — 22 consonant rows and 37 vowel/rime rows have non-empty Ukrainian project candidates; matrix tests passed and changes are merged (PR #161; synchronization PR #163).
+- `KHM-ROM-UA-001`: PARTIAL — PR #164 integrates `src/khmer-romanization-ukrainian.js` into the separate romanization panel. Foreign text and punctuation are preserved, unknown Latin fragments remain visible, and no IPA fallback is used. The UI labels output PROVISIONAL.
+- Exact mainline verification on current head: Quality [43228414756](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414756), browser smoke [43228414938](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414938), and Pages deployment [43228414646](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414646) all SUCCESS.
+- `KHM-ROM-ENGINE-001`: PARTIAL — the selected package emits BGN/PCGN-derived ASCII and drops diacritics. Acceptance requires a validated diacritic-preserving, context-aware BGN/PCGN 1972 romanizer and tests for series, vowel, shortening, coda and shifter environments.
+- Historical TODO entries above describe earlier checkpoints; this section records current mainline state. Ukrainian candidates remain project orthographic proposals, not IPA or an expert-approved Ukrainian standard.

@@ -70,3 +70,31 @@ def test_unmodelled_khmer_letter_is_traced_as_unknown_not_as_ipa():
     assert parsed.graphemes
     assert parsed.graphemes[0].codepoints == ("U+17F9",)
     assert parsed.status == "INVALID_OR_UNSUPPORTED"
+
+
+def test_unmodelled_khmer_letters_are_explicitly_classified_without_ipa():
+    from khmer_ua.parser import decompose_khmer_syllable
+
+    expected = {
+        chr(0x17A3): "U+17A3",
+        chr(0x17A4): "U+17A4",
+        chr(0x179D): "U+179D",
+        chr(0x179E): "U+179E",
+    }
+    for char, codepoint in expected.items():
+        parsed = decompose_khmer_syllable(char)
+        assert parsed.status == "INVALID_OR_UNSUPPORTED"
+        assert parsed.graphemes[0].kind == "unmodeled_letter"
+        assert parsed.graphemes[0].codepoints == (codepoint,)
+
+
+def test_unknown_khmer_material_does_not_drop_following_graphemes():
+    from khmer_ua.parser import decompose_khmer_syllable
+
+    source = "កxយ"
+    parsed = decompose_khmer_syllable(source)
+    assert parsed.status == "INVALID_OR_UNSUPPORTED"
+    assert "".join(item.text for item in parsed.graphemes) == source
+    assert [cp for item in parsed.graphemes for cp in item.codepoints] == [
+        "U+1780", "U+0078", "U+1799"
+    ]

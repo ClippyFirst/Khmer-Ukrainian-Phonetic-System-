@@ -67,6 +67,12 @@ def decompose_khmer_syllable(raw: str) -> KhmerSyllable:
             continue
         if ch==COENG:
             if i+1>=len(chars) or not _lookup(chars[i+1]):
+                # Preserve malformed coeng and every following code point in
+                # the trace. Structural failure must never erase source text.
+                for remaining in chars[i:]:
+                    s.graphemes.append(
+                        KhmerGrapheme(remaining,"invalid_sequence_component",(f"U+{ord(remaining):04X}",))
+                    )
                 s.status="INVALID_OR_UNSUPPORTED"
                 s.confidence=0.0
                 s.sources=["unicode17-ch16"]

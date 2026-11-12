@@ -562,3 +562,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 |---|---|---|---|
 | KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | Branch `feat/khmer-romanization-ukrainian-matrix-completion-2026-11-12`; exact-head Quality [43221517618](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221517618) and browser smoke [43221517788](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221517788) both SUCCESS; push Quality [43221506380](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221506380) SUCCESS. The final Python suite reported 194 passed + 62 subtests. All 22 consonant and 37 vowel/rime target rows are populated and covered by tests. | Table coverage verified; project orthographic rendering only, not IPA or expert-approved national standard. Runtime adapter and contextual BGN/PCGN engine remain open. |
 | KHM-ROM-UA-001 | TODO | No runtime Latin → Ukrainian adapter integrated. | Separate adapter consumes BGN/PCGN string, preserves source/Latin/UA trace and uncertainty, and does not call IPA adapter. |
+
+
+## Khmer Ukrainian target matrix — post-merge evidence — 2026-11-12
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | Merged PR [#161](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/161), merge `6b0d0e75d794165e5eb935192fab0926e1efca39`; mainline Quality [43221967799](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221967799), browser [43221968144](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221968144), Pages [43221967939](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221967939) all SUCCESS. | 22 consonant + 37 vowel/rime target rows are covered. Runtime adapter and full contextual BGN/PCGN engine remain separate open tasks. |

@@ -5,11 +5,11 @@ const MAP = Object.freeze({
   chh:"ч'", kh:"к'", th:"т'", ph:"п'", nh:"нь", ng:"нг", ch:"ч",
   aoh:"аог", oah:"оаг", eah:"еаг", ah:"аг", oh:"ог", uh:"уг", eh:"ег",
   eang:"еанг", ang:"анг", aeu:"аеу", eu:"еу", ao:"ао", ou:"оу", au:"ау",
-  ae:"ае", ai:"ай", ey:"ей", ie:"іє", oe:"и", uo:"уо", om:"ом", um:"ум", am:"ам",
-  "œ":"и", "’":"ʼ", "'":"ʼ",
-  a:"а", e:"е", i:"і", o:"о", u:"у",
-  b:"б", c:"к", d:"д", f:"ф", g:"ґ", h:"г", j:"дж", k:"к", l:"л",
-  m:"м", n:"н", p:"п", q:null, r:"р", s:"с", t:"т", v:"в", w:"в", y:"й", z:null,
+  ae:"ае", ai:"ай", ey:"ей", ie:"іє", oea:"иа", roe:"ри", loe:"ли", oe:"и",
+  uo:"уо", om:"ом", oam:"оам", um:"ум", am:"ам", ei:"ей", a:"а", e:"е", i:"і", o:"о", u:"у",
+  b:"б", d:"д", k:"к", l:"л", m:"м", n:"н", p:"п", r:"р", s:"с", t:"т", v:"в", y:"й", h:"г",
+  "’":"ʼ", "'":"ʼ",
+  c:null, f:null, g:null, j:null, q:null, w:null, x:null, z:null,
 });
 const KEYS=Object.keys(MAP).sort((a,b)=>b.length-a.length);
 const isKhmer=char=>{const cp=char.codePointAt(0);return (cp>=0x1780&&cp<=0x17ff)||(cp>=0x19e0&&cp<=0x19ff);};

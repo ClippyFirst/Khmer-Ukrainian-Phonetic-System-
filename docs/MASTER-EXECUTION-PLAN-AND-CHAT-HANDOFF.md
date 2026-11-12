@@ -1728,3 +1728,13 @@ The browser preview is separate from canonical output. The onset-only test fixtu
 - Added a negative control for U+17F9, which remains explicitly unsupported rather than receiving synthetic IPA.
 - Exact PR-head verification: Quality [43184648039](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43184648039) SUCCESS; browser smoke [43184647978](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43184647978) SUCCESS. These runs cover the exact tested branch head `fcae948d8ae30bc0ad606ef4ae4071fffb68be08`.
 - **Status:** structural/input accounting for the tested Unicode L/M set is DONE_VERIFIED. This is not 100% Khmer phonological coverage, 100% IPA coverage, or pronunciation accuracy. Vowel × series × length × coda × profile evidence and independent adjudicated gold remain PARTIAL/BLOCKED. Post-merge main workflows were still running at this documentation checkpoint; no post-merge result is claimed.
+
+
+## Explicitly unmodelled Khmer letters and lossless trace tail — 2026-11-12
+
+- PR [#159](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/159) merged as `d1d184334c806cd21cf2eb875a9c5151ab9e61b3`.
+- Added explicit `unmodeled_letter` inventory records, with no IPA, for U+17A3 KHMER INDEPENDENT VOWEL QAQ, U+17A4 QAA, U+179D SHA and U+179E SSO. They remain unsupported by the selected modern Khmer phonology profile until appropriate evidence exists.
+- Fixed a second parser trace-loss path: encountering an unknown or explicitly unmodelled code point now preserves the entire remaining source tail as trace components rather than returning after the first unknown code point.
+- Regression coverage includes all four unmodelled letters and a mixed sequence `កxយ`, ensuring later graphemes remain present after the unknown `x`.
+- Exact PR-head Quality [43186170402](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43186170402) SUCCESS and browser smoke [43186170525](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43186170525) SUCCESS on `b62b9beef65ccfd546c39b05578d0a9f80f48083`.
+- **Status:** explicit inventory classification and lossless tail trace are DONE_VERIFIED. The four letters remain phonologically NOT_ESTABLISHED; no pronunciation has been fabricated. Complete positional Khmer IPA and independent gold remain PARTIAL/BLOCKED.

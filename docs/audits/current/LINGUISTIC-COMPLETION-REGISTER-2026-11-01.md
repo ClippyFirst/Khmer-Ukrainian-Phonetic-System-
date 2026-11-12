@@ -608,3 +608,5 @@ Cambodia's national report to UNGEGN states that the national romanized writing 
 | KHM-ROM-ENGINE-001 | PARTIAL | `@gmana/km-translit` 0.1.2 is documented as BGN/PCGN-derived ASCII and drops diacritics. | Demonstrate full standard-conformant contextual romanization, including series, vowel, shortening, coda and diacritic behavior. |
 
 The phonetic route and its IPA boundary are unchanged. No new IPA labels, gold entries, or accuracy claims were added. Independent expert-adjudicated IPA gold remains 0.
+
+The 2025 UNGEGN Asia South-East Division report further confirms that the October 2023 national gazetteer published by Cambodia's General Department of Cadastre and Geography uses the 1997 transcription system (GEGN.2/2025/73/CRP.73, p. 3). This is later corroboration, not a copy of the primary 1997 specification.

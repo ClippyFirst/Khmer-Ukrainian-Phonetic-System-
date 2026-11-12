@@ -107,3 +107,36 @@ def test_every_pcgn_vowel_rime_has_an_explicit_ukrainian_orthographic_candidate(
         assert row["ukrainian_candidate"].strip()
         assert row["ukrainian_status"] in {"PROPOSED", "ANALYSIS_DEPENDENT"}
         assert "not IPA" in row["note"]
+
+
+
+def test_pcgn_vowel_target_candidates_match_the_reviewed_project_mapping():
+    with CSV_PATH.open(encoding="utf-8-sig", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    expected = {
+        ("independent_vowel", "3"): "е", ("independent_vowel", "4"): "ей",
+        ("independent_vowel", "7"): "о / у", ("independent_vowel", "14"): "е",
+        ("independent_vowel", "15"): "ай", ("independent_vowel", "16"): "ао",
+        ("independent_vowel", "17"): "ау", ("independent_vowel", "18"): "ау",
+        ("independent_vowel", "19"): "ри", ("independent_vowel", "20"): "ри",
+        ("independent_vowel", "21"): "ли", ("independent_vowel", "22"): "ли",
+        ("dependent_vowel", "1"): "а / о", ("dependent_vowel", "2"): "а / еа; shortened а / еа or оа",
+        ("dependent_vowel", "3"): "е / і", ("dependent_vowel", "4"): "ей / і",
+        ("dependent_vowel", "5"): "и", ("dependent_vowel", "6"): "и",
+        ("dependent_vowel", "7"): "о / у", ("dependent_vowel", "8"): "о / у",
+        ("dependent_vowel", "9"): "уо", ("dependent_vowel", "10"): "аеу / еу",
+        ("dependent_vowel", "11"): "иа", ("dependent_vowel", "12"): "іє",
+        ("dependent_vowel", "13"): "е", ("dependent_vowel", "14"): "е",
+        ("dependent_vowel", "15"): "ай / ей", ("dependent_vowel", "16"): "ао / оу",
+        ("dependent_vowel", "17"): "ау / оу",
+        ("vowel_diacritic_combination", "1"): "ом / ум",
+        ("vowel_diacritic_combination", "2"): "ам / ум",
+        ("vowel_diacritic_combination", "3"): "ам / оам",
+        ("vowel_diacritic_combination", "4"): "аг / еаг",
+        ("vowel_diacritic_combination", "5"): "ог / уг",
+        ("vowel_diacritic_combination", "6"): "ег",
+        ("vowel_diacritic_combination", "7"): "аог / оаг",
+        ("vowel_diacritic_combination", "8"): "анг / еанг",
+    }
+    actual = {(row["table_section"], row["table_row"]): row["ukrainian_candidate"] for row in rows}
+    assert actual == expected

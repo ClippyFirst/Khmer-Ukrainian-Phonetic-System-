@@ -270,7 +270,7 @@
     "url": "https://digitallibrary.un.org/record/4017595/files/GEGN.2_2023_104_CRP.104-EN.pdf",
     "scope": "Cambodia reports that the national romanized writing system is based on the 1997 transcription system instead of the 1972 transliteration system; the 2019 national gazetteer used the 1997 system.",
     "status": "PRIMARY_POLICY_EVIDENCE",
-    "limitations": "This report identifies the system and its use but does not reproduce the complete primary 1997 specification."
+    "limitations": "This report identifies the system and its 2019 gazetteer use but does not reproduce the full table; the primary 1995/1997 table was later located in the 2023 provisional Gazetteer (pp. vii–viii)."
   },
   {
     "id": "ungegn-khmer-1997-status-2023",
@@ -292,7 +292,7 @@
     "url": "https://unstats.un.org/unsd/ungegn/sessions/4th_session_2025/documents/GEGN.2_2025_73_CRP73_item4a.pdf",
     "scope": "Confirms that the October 2023 Cambodian General Department of Cadastre and Geography gazetteer lists Khmer and Latin geographical names using Transcription system 1997.",
     "status": "PRIMARY_STATUS_CORROBORATION",
-    "limitations": "Corroborates the gazetteer's system designation; does not reproduce the complete transcription table."
+    "limitations": "Corroborates the 2023 Gazetteer's use of Transcription system 1997; the primary table is in the Gazetteer itself. PCGN May 2026 describes the scheme as not yet consistently implemented, so formal adoption remains unverified."
   },
   {
     "id": "mlmupc-gazetteer-2023",
@@ -323,7 +323,7 @@
     "year": 2026,
     "url": "https://assets.publishing.service.gov.uk/media/6a19aa44b95db968c8f3bc6f/Cambodia_Toponymic_Factfile.pdf",
     "scope": "PCGN geographical names policy and status of Cambodia's 1995/1997 Khmer romanization system; describes the 1997 modification as not yet consistently implemented and records the 2025 gazetteer dataset.",
-    "status": "CONFLICTING_STATUS_EVIDENCE",
-    "limitations": "UK PCGN policy perspective; its implementation assessment conflicts with Cambodia's 2023 national report and UNGEGN 2025 report about gazetteer usage. Requires reconciliation against the primary 1997 specification and 2025 dataset."
+    "status": "IMPLEMENTATION_SCOPE_DIFFERENCE_EVIDENCE",
+    "limitations": "PCGN assesses consistent implementation/adoption; Cambodia's reports and the provisional 2023 Gazetteer document departmental/gazetteer use. These claims may be compatible as different implementation scopes. Formal National Commission approval and reuse rights remain unverified."
   }
 ]

@@ -1769,3 +1769,6 @@ The browser preview is separate from canonical output. The onset-only test fixtu
 - Exact-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337969), browser [43226337956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337956), and push Quality [43226325685](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226325685) SUCCESS on `1fa869c524bac5effc98411b71e47e458ad584ae`.
 - `KHM-ROM-UA-001`: PARTIAL (runtime display adapter works for current ASCII profile; full diacritic/context coverage is blocked by upstream romanizer output loss). `KHM-ROM-UA-TARGET-001`: DONE_VERIFIED. `KHM-ROM-ENGINE-001`: PARTIAL. No IPA or pronunciation claim is made.
 
+
+
+Exact-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337969), browser [43226337956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337956), and push Quality [43226325685](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226325685) SUCCESS on code head `1fa869c524bac5effc98411b71e47e458ad584ae`. Quality: 194 Python tests + 62 subtests; web checks and production build passed; Chromium visible-results smoke passed.

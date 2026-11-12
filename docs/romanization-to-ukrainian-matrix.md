@@ -220,3 +220,8 @@ The adapter unit test file was present before this checkpoint but was not refere
 ## Canonical matrix → runtime parity — 2026-11-12
 
 The Node adapter test now reads the canonical `data/khmer/romanization_ukrainian.csv` directly and executes every one of its 22 rows against `renderLatinWord`. Contextual `b,p` alternatives are checked as two explicit Latin/target pairs; the PCGN glottal marker is checked as U+2019. This prevents the test's hand-maintained consonant list from drifting independently of the source matrix. The existing 33 ASCII vowel candidate checks remain a separate bounded test because the upstream romanizer strips PCGN diacritics; this parity check does not establish contextual BGN/PCGN vowel conformance or validate the linguistic correctness of Ukrainian proposals.
+
+
+## Real-package whole-message adapter probe — 2026-11-12
+
+A new end-to-end regression sends a mixed whole message through the actual `@gmana/km-translit` package and then through the Ukrainian adapter. It checks native-or-Arabic numerals, mixed Latin identifiers, ASCII punctuation, tab, CRLF, and Khmer sentence-stop preservation while requiring Khmer letters to be romanized. This closes one bounded integration-test gap only; it does not establish full marks/numerals standard coverage, contextual PCGN conformance, or lexical correctness. Exact-head CI is pending.

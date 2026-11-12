@@ -594,11 +594,11 @@ The adapter is intentionally labelled `PROVISIONAL`. It is orthographic Latin-to
 
 ### Cambodian national romanization profile evidence — 2026-11-12
 
-Cambodia's national report to UNGEGN and the 2025 UNGEGN regional report say that national gazetteers used the 1997 transcription system. The UK PCGN's May 2026 *Cambodia Toponymic Factfile* says the system developed in 1995 and modified in 1997 has not yet been implemented consistently in Cambodia. This is a genuine evidence conflict, potentially reflecting the difference between a gazetteer dataset using a scheme and a consistently implemented national standard. BGN/PCGN 1972 remains the project's source-located research profile; the 1997 system remains EVIDENCE_LIMITED. The similarly dated ALA-LC Khmer table is a distinct cataloguing system and is not treated as equivalent.
+The primary 1995/1997 system table is now located in the Ministry's 2023 provisional Gazetteer (pp. vii–viii). The foreword says the Geography Department used the system and would submit it for consideration and adoption; the edition remained provisional pending National Commission approval. Cambodia's national report and UNGEGN 2025 report confirm gazetteer use, while the UK PCGN May 2026 Factfile says the system is not yet consistently implemented. Treat this as provisional use with formal-adoption/implementation status still EVIDENCE_LIMITED, not as a missing primary table. The PDF is copyright © 2023 by the Geography Department; the ODC mirror record states no license for the PDF. The similarly dated ALA-LC Khmer table is a separate cataloguing system.
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| KHM-ROM-NATIONAL-1997-001 | EVIDENCE_LIMITED | Cambodia report GEGN.2/2023/104/CRP.104 and UNGEGN 2025 report GEGN.2/2025/73/CRP.73 report 1997 use in gazetteers; PCGN May 2026 Factfile pp. 1–2 says the system is not yet implemented consistently. | Obtain the primary 1997 specification and 2025 gazetteer dataset; reconcile the contradictory implementation claims and decide whether to add a distinct profile. Do not relabel existing 1972 rows. |
+| KHM-ROM-NATIONAL-1997-001 | EVIDENCE_LIMITED | Primary table located in the 2023 provisional Gazetteer pp. vii–viii; foreword states use by the Geography Department and pending submission/adoption. Cambodia/UNGEGN reports confirm gazetteer use; PCGN 2026 says not consistently implemented. | Confirm formal adoption/consistent implementation and resolve reuse rights; transcribe and independently verify the primary table, then decide whether to add a separate profile. Do not relabel BGN/PCGN 1972 rows. |
 
 
 | ID | Status | Current evidence | Acceptance boundary |

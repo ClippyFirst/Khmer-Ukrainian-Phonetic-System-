@@ -300,9 +300,11 @@
     "title": "Gazetteer of Cambodia, Ministry of Land Management, Urban Planning and Construction",
     "year": 2023,
     "url": "https://mlmupc.gov.kh/2023/10/26/gazetteer-cambodia/",
-    "scope": "Official Ministry page for the Khmer/Latin national gazetteer dated 26 October 2023; UNGEGN 2025 report identifies the Latin column as Transcription system 1997.",
-    "status": "OFFICIAL_PRIMARY_LOCATOR",
-    "limitations": "The page's linked PDF returned HTTP 404 during this review; full table could not be retrieved or audited."
+    "scope": "Official Ministry Gazetteer, Khmer/Latin geographical names; contains the primary 1995/1997 Khmer romanization table and foreword on provisional use.",
+    "status": "PRIMARY_SPECIFICATION_LOCATED_PROVISIONAL_RELEASE",
+    "limitations": "Original PDF copyright © 2023 by Geography Department. Open Development Cambodia mirror record states no license is given for the PDF. Foreword says the system is used by the Geography Department and is to be submitted for consideration/adoption; edition is provisional pending National Commission approval.",
+    "primary_pdf_url": "https://data.opendevelopmentcambodia.net/en/dataset/569795eb-1691-4d63-9af3-919dec269472/resource/4097e4be-ccd6-4081-b139-ebcb42a38fa1/download/gazetteer_of_cambodia_25.10.2023.pdf",
+    "source_locator": "2023 edition, pp. vii–viii: Romanized System for Khmer; foreword pp. iv–v states departmental use and provisional status"
   },
   {
     "id": "alalc-khmer-1997",

@@ -140,3 +140,37 @@ test("shortened eă and oă romanization sequences retain their Ukrainian candid
   assert.equal(oah.text, "оаг");
   assert.equal(oah.mapped, 1, "oah is one matrix-listed vowel/coda sequence");
 });
+
+
+function normalizePcgnAscii(value) {
+  return value.toLowerCase()
+    .replace(/shortened/giu, "")
+    .replace(/[ĕêé]/gu, "e")
+    .replace(/[ŏôó]/gu, "o")
+    .replace(/[ŭû]/gu, "u")
+    .replace(/[âáă]/gu, "a")
+    .replace(/ĭ/gu, "i")
+    .replace(/œ/gu, "oe")
+    .replace(/\u0306/gu, "")
+    .replace(/\s+/gu, "");
+}
+
+function splitPcgnAlternatives(value) {
+  return value.split(/[\/;]| or /u).map(normalizePcgnAscii).filter(Boolean);
+}
+
+test("all 37 canonical PCGN vowel and vowel-coda rows have executable ASCII crosswalk candidates", () => {
+  const rows = parseCsv(readFileSync(path.join(root, "data/khmer/romanization_vowels_ukrainian.csv"), "utf8"));
+  assert.equal(rows.length, 37, "independent, dependent, and vowel-coda matrix rows must all be present");
+  for (const row of rows) {
+    const romanizationForms = splitPcgnAlternatives(row.bgn_pcgn_romanization);
+    const ukrainianCandidates = row.ukrainian_candidate.split(/[\/;]| or /u).map(value => value.replace(/\s+/gu, "")).filter(Boolean);
+    assert.ok(romanizationForms.length > 0, `PCGN romanization forms for row ${row.table_row}`);
+    assert.ok(ukrainianCandidates.length > 0, `Ukrainian candidates for row ${row.table_row}`);
+    for (const form of romanizationForms) {
+      const result = renderLatinWord(form);
+      assert.equal(result.unsupported, 0, `row ${row.table_row}: ${form} must be supported`);
+      assert.ok(ukrainianCandidates.includes(result.text), `row ${row.table_row}: ${form} → ${result.text} must be one of ${ukrainianCandidates.join("/")}`);
+    }
+  }
+});

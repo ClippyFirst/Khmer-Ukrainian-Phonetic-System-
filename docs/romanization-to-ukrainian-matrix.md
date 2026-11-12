@@ -1,6 +1,6 @@
 # Khmer romanization → Ukrainian orthographic matrix
 
-**Status:** PARTIAL — a Latin-output package is integrated, but it is not a complete implementation of the selected romanization standard and does not yet produce a Ukrainian result from a canonical syllable crosswalk.
+**Status:** PARTIAL — the Ukrainian target crosswalk is now populated for all 22 consonant rows and all 37 PCGN vowel/rime rows. The upstream Latin-output package remains BGN/PCGN-derived ASCII rather than fully conformant, and no runtime syllable adapter is integrated yet.
 **Primary variety:** contemporary Standard Khmer, Phnom Penh-oriented only where supported.
 
 ## Standard selection
@@ -17,7 +17,7 @@ UNGEGN notes that Khmer is an alphasyllabic script, that the romanization requir
 
 The current @gmana/km-translit 0.1.2 integration is documented as **BGN/PCGN-derived ASCII**, drops diacritics and is not a fully conformant BGN/PCGN implementation. It is useful as an existing romanization candidate but cannot be called the selected standard implementation or the final complete orthographic mode. It must remain separately labelled until replaced or proven equivalent against the official table.
 
-The current romanization card is independent from IPA → Ukrainian conversion. It does not yet expose a complete romanization → Ukrainian syllable adapter. The current one-row smoke test only proves that a sample produces Latin letters; it does not prove table coverage, reversibility, standard conformance or Ukrainian conversion.
+The current romanization card remains independent from IPA → Ukrainian conversion. The machine-readable target matrix now covers every inventoried consonant and vowel/rime row, but the browser card does not yet execute the target mapping. Matrix completeness is not runtime integration, BGN/PCGN conformance, reversibility, or pronunciation evidence.
 
 ## Consonant and subscript crosswalk (source-backed romanization; Ukrainian target is a project proposal)
 
@@ -48,12 +48,12 @@ The machine-readable consonant matrix is [data/khmer/romanization_ukrainian.csv]
 | 21 | ហ; corresponding foot | h | г | PROPOSED |
 | 22 | អ; corresponding foot | ’ | — | EVIDENCE_LIMITED |
 
-The machine-readable matrix [data/khmer/romanization_ukrainian.csv](../data/khmer/romanization_ukrainian.csv) preserves the exact source sequences, the 22 PCGN table row IDs, the Ukrainian candidate/status, the official URL and row-level locator. It intentionally does not invent a Ukrainian output for the contextual b/p row, the th rows or the glottal-onset marker. PCGN explicitly states that there is no subscript form for ឡ; the row-18 record captures this.
+The machine-readable matrix [data/khmer/romanization_ukrainian.csv](../data/khmer/romanization_ukrainian.csv) preserves the exact source sequences, the 22 PCGN table row IDs, the Ukrainian candidate/status, the official URL and row-level locator. The target column now explicitly maps the actual romanized outputs: th → т', contextual b / p → б / п, and the glottal marker ’ → ʼ. These are project orthographic conventions, not IPA claims. PCGN explicitly states that there is no subscript form for ឡ; the row-18 record captures this.
 
 
 ## Vowel matrix: contextual source table, not a one-sign substitution table
 
-The official PCGN guide has separate tables for independent vowels, dependent vowel signs (with â-/ô-series and normal/shortened columns), and vowels with anusvara or visarga. The following source inventory reproduces the romanization values and deliberately leaves target values unassigned where a direct Ukrainian orthographic decision has not been reviewed.
+The official PCGN guide has separate tables for independent vowels, dependent vowel signs (with â-/ô-series and normal/shortened columns), and vowels with anusvara or visarga. The source inventory reproduces the romanization values and now supplies an explicit project Ukrainian rendering for all 37 rows. Alternative source forms remain alternative target forms; this does not resolve which source variant applies in a particular syllable.
 
 **Independent vowel characters**
 
@@ -128,18 +128,19 @@ Every supported Khmer grapheme/orthographic syllable must either have a complete
 |---|---|---|
 | KHM-ROM-STD-001 | DONE_VERIFIED (source review) | BGN/PCGN 1972 selected; UNGEGN approval and PCGN table cited |
 | KHM-ROM-ENGINE-001 | PARTIAL | Replace/verify the ASCII simplifier against the full BGN/PCGN table, including diacritics and context |
-| KHM-ROM-UA-001 | TODO | Implement an independent syllable-level romanization → Ukrainian adapter |
+| KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | Every one of 22 consonant rows and 37 PCGN vowel/rime rows has a non-empty Ukrainian target candidate; exact table/provenance and coverage assertions added. Promote after exact-head CI. This is a project orthographic proposal, not expert-approved standardization. |
+| KHM-ROM-UA-001 | TODO | Implement an independent syllable-level romanization → Ukrainian adapter; execute the matrix in the browser without IPA fallback |
 | KHM-ROM-ONSET-001 | DONE_VERIFIED | All 22 PCGN consonant rows plus special ឝ are in data/khmer/romanization_ukrainian.csv; exact row and provenance tests passed in workflow 41229431196 |
 | KHM-ROM-VOWEL-INVENTORY-001 | PARTIAL | 37 source rows now match the PCGN glyphs/romanization values; exact-head workflow 41233203184 passed; all 37 source-glyph/romanization assertions are verified |
 | KHM-ROM-MARKS-NUMERALS-001 | PARTIAL | Six exact PCGN diacritic glyphs and ten numeral glyphs are inventoried; exact-glyph tests passed in workflow 41233203184 |
-| KHM-ROM-MATRIX-001 | PARTIAL | Source tables are inventoried; full context-dependent vowel × series × shortening × coda rules and Ukrainian target adjudication remain incomplete |
+| KHM-ROM-MATRIX-001 | PARTIAL | The target column is complete for the inventoried rows; PCGN consonant-series × vowel × shortening × coda resolution and contextual romanization generation remain incomplete |
 | KHM-ROM-TEST-001 | PARTIAL | Exact source-glyph and romanization assertions passed in workflow 41233203184; full mixed-script, punctuation, malformed-unit and ambiguity coverage remains TODO |
 | KHM-IPA-001 | PARTIAL | Existing contextual vowel/register/coda IPA model and independent gold remain incomplete |
 
 
 ## Machine-readable vowel inventory
 
-[data/khmer/romanization_vowels_ukrainian.csv](../data/khmer/romanization_vowels_ukrainian.csv) contains **37 source-located PCGN table entries**: 12 independent-character entries, 17 dependent-vowel entries, and 8 vowel-plus-anusvara/visarga entries. The shared PCGN table has 22 row numbers, with a sparse independent-character column; the independent and dependent columns are recorded separately without inventing extra row numbers. It preserves the standard's alternatives and contextual conditions; `EVIDENCE_LIMITED` rows intentionally have no Ukrainian candidate. This is a source-table inventory, not a claim that the contextual vowel matrix or runtime adapter is complete.
+[data/khmer/romanization_vowels_ukrainian.csv](../data/khmer/romanization_vowels_ukrainian.csv) contains **37 source-located PCGN table entries**: 12 independent-character entries, 17 dependent-vowel entries, and 8 vowel-plus-anusvara/visarga entries. The shared PCGN table has 22 row numbers, with a sparse independent-character column; the independent and dependent columns are recorded separately without inventing extra row numbers. Every row now has a Ukrainian candidate. `PROPOSED` marks a single project rendering; `ANALYSIS_DEPENDENT` preserves PCGN alternatives that require source-context resolution. The table remains an inventory of PCGN row forms, not a complete contextual syllable engine.
 
 
 ## Whole-text regression and remaining adapter gap — 2026-10-31
@@ -150,3 +151,17 @@ The current main head `1a6921fc75dd011bc8097f6636b8077fc7c59cff` passed Quality 
 ## Post-merge whole-text verification — 2026-10-31
 
 Current main `28a9bbb909ca57735ceca92f262c2de9eeb43396` passed Quality [41246343908](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41246343908) and Pages [41246343845](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/41246343845). The tests confirm the selected romanization library receives the complete input and preserves supported mixed-text boundaries; they do not establish PCGN 1972 conformance or an implemented Ukrainian syllable adapter. The adapter remains TODO.
+
+## Ukrainian target convention for Latin BGN/PCGN input — 2026-11-12
+
+The target column is a **project orthographic adaptation of the Latin romanization string**, not a second pronunciation analysis. It does not use the IPA adapter and must not be described as phonetic Ukrainian transcription. The original BGN/PCGN string remains the source-of-truth display and should be retained alongside the Ukrainian candidate.
+
+- Consonant units: `k → к`, `kh → к'`, `ng → нг`, `ch → ч`, `chh → ч'`, `nh → нь`, `th → т'`, `b → б`, `p → п`, `ph → п'`, `h → г`, `y → й`, `r → р`, `l → л`, `v → в`, `s → с`, `’ → ʼ`.
+- Vowels: Latin vowel bases are rendered with the closest stable Ukrainian letter sequence in the matrix (`a → а`, `e/ê/é/ĕ → е`, `i/ĭ → і`, `o/ŏ → о`, `u/ŭ → у`, `œ/œ̆ → и`); diphthong and coda combinations are rendered as explicit sequences in the 37-row CSV.
+- PCGN alternatives remain separated by `/` or explanatory context in the candidate field. `ANALYSIS_DEPENDENT` means the source syllable still determines which listed form applies; it does not mean the target cell is blank.
+- Diacritical series shifters and shortening marks are contextual source instructions, not independent Latin output letters. They are not emitted as standalone Ukrainian letters. PCGN's silent mark remains omitted. Numerals remain numeric.
+- This convention is intentionally **non-reversible** and does not establish Khmer phoneme values. It maps the selected Latin spelling into a stable Ukrainian rendering only.
+
+## Updated acceptance boundary
+
+`KHM-ROM-UA-TARGET-001` is complete as a table-coverage task. `KHM-ROM-UA-001` remains open until an independent runtime adapter consumes BGN/PCGN Latin output, preserves source text and uncertainty, and passes whole-message tests. `KHM-ROM-ENGINE-001` remains partial because the current package is not fully conformant with BGN/PCGN 1972. No pronunciation or lexical accuracy claim follows from these matrix changes.

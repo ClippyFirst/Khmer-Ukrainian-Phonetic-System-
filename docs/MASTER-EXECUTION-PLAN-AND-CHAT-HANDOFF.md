@@ -1738,3 +1738,15 @@ The browser preview is separate from canonical output. The onset-only test fixtu
 - Regression coverage includes all four unmodelled letters and a mixed sequence `កxយ`, ensuring later graphemes remain present after the unknown `x`.
 - Exact PR-head Quality [43186170402](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43186170402) SUCCESS and browser smoke [43186170525](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43186170525) SUCCESS on `b62b9beef65ccfd546c39b05578d0a9f80f48083`.
 - **Status:** explicit inventory classification and lossless tail trace are DONE_VERIFIED. The four letters remain phonologically NOT_ESTABLISHED; no pronunciation has been fabricated. Complete positional Khmer IPA and independent gold remain PARTIAL/BLOCKED.
+
+
+
+## Ukrainian romanization-target matrix completion — 2026-11-12
+
+- Base `main` at start: `e249adb736c57501300cb27322eed7ea27ab901a`; task branch: `feat/khmer-romanization-ukrainian-matrix-completion-2026-11-12`.
+- Updated `data/khmer/romanization_ukrainian.csv`: all 22 PCGN consonant rows now have an explicit Ukrainian target, including `th → т'`, the contextual romanized outputs `b → б` / `p → п`, and the PCGN glottal marker `’ → ʼ`.
+- Updated `data/khmer/romanization_vowels_ukrainian.csv`: all 37 official PCGN vowel/rime rows now have a non-empty target rendering. Contextual alternatives remain visible as alternatives and carry `ANALYSIS_DEPENDENT`; no IPA or pronunciation value was inferred.
+- Expanded `tests/test_romanization_matrix.py` and `tests/test_romanization_vowel_matrix.py` to require complete target-column coverage and the project orthographic status/notes.
+- Updated `docs/romanization-to-ukrainian-matrix.md` with the target convention and a separate acceptance gate. `KHM-ROM-UA-TARGET-001` is DONE_VERIFIED: exact-head Quality [43221517618](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221517618) and browser smoke [43221517788](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221517788) both SUCCESS; push Quality [43221506380](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221506380) SUCCESS. The final Python suite reported 194 passed + 62 subtests. Runtime adapter `KHM-ROM-UA-001` remains TODO, BGN/PCGN engine `KHM-ROM-ENGINE-001` remains PARTIAL, and contextual syllable resolution remains PARTIAL.
+- This is a letter-level rendering of Latin BGN/PCGN strings into Ukrainian, not phonetic transcription. The upstream `@gmana/km-translit` output remains a BGN/PCGN-derived ASCII simplifier and does not yet implement the full contextual standard. No IPA labels, source phonology, gold data, or pronunciation accuracy claims changed.
+- No local checkout/runtime was available through this connector session. Exact-head GitHub Actions Quality and browser smoke workflows passed on commit `91736b45c32ad5a812f71b97e7594a2f7a8da1bc`; Quality: 194 Python tests + 62 subtests, Node checks and build; browser smoke also passed. The latest follow-up commits are documentation-only.

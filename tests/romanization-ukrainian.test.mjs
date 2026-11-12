@@ -114,3 +114,13 @@ test("real package and Ukrainian adapter preserve a mixed whole message", () => 
   assert.equal(result.status, "PROVISIONAL");
   assert.ok(result.mapped > 0);
 });
+
+
+test("every Khmer numeral row in the canonical matrix has its Arabic-digit target", () => {
+  const rows = parseCsv(readFileSync(path.join(root, "data/khmer/romanization_marks_numerals.csv"), "utf8"))
+    .filter(row => row.unit_type === "numeral");
+  assert.equal(rows.length, 10);
+  for (const row of rows) {
+    assert.equal(renderLatinWord(row.source_units).text, row.ukrainian_candidate, `Khmer numeral row ${row.table_row}`);
+  }
+});

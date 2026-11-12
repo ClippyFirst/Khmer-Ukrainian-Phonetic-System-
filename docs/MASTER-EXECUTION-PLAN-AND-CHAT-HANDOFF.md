@@ -1863,3 +1863,13 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 - `KHM-ROM-NUMERALS-001`: **DONE_VERIFIED** for the ten numeral rows. `KHM-ROM-TEST-001` remains PARTIAL due unresolved diacritical marks, broader context-sensitive PCGN coverage and full real-package corpus acceptance.
 - `KHM-ROM-ENGINE-001` remains PARTIAL: the upstream ASCII romanizer drops BGN/PCGN diacritics and contextual vowel distinctions. Ukrainian candidates remain project proposals, not expert-adjudicated mappings.
 - Mainline at this closeout: `ae890fdd436aed9c0fab077401e7612153ce2e6a`. Hosted GitHub Actions evidence only; no local checkout or local test execution is claimed.
+
+
+## Post-merge closeout — Khmer shortened-vowel sequence tests — 2026-11-12
+
+- PR [#176](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/176) merged as `d4ac59a78447ba84c84e72457d10277706168434`.
+- Added tests for shortened `eă` / `oă` and combined `eăh` / `oăh` ASCII sequences. The former must map as two supported units (`e`+`a`, `o`+`a`); the latter must map as one matrix-listed token. Tests assert both output and mapped counts.
+- No runtime defect was found and no adapter mapping changed. This is a test-coverage improvement only.
+- Exact PR-head Quality [43275112413](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43275112413) and Chromium browser smoke [43275112515](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43275112515): **SUCCESS**.
+- Post-merge mainline Quality [43275258617](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43275258617), browser smoke [43275258586](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43275258586), and Pages/deployed-site smoke [43275258614](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43275258614) were queued at documentation time; do not mark as passed until their exact results are observed.
+- Vowel inventory remains context-dependent. The upstream romanizer's loss of diacritics prevents faithful reconstruction of PCGN alternatives; no pronunciation or expert-approved Ukrainian correspondence is claimed.

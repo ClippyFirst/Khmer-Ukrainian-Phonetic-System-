@@ -179,3 +179,6 @@ The romanization panel now sends the existing `@gmana/km-translit` Latin output 
 
 `KHM-ROM-UA-001` is now PARTIAL: the current ASCII output has a usable Ukrainian display adapter, but full acceptance requires a diacritic-preserving BGN/PCGN source romanizer or a separate contextual syllable adapter consuming the full PCGN representation. `KHM-ROM-ENGINE-001` remains PARTIAL. See the package's own scope statement: https://www.npmjs.com/package/%40gmana/km-translit.
 
+
+
+Exact PR-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337969), browser smoke [43226337956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337956), and push Quality [43226325685](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226325685) passed on code head `1fa869c524bac5effc98411b71e47e458ad584ae`. Quality reports 194 Python tests + 62 subtests; browser Chromium smoke passed.

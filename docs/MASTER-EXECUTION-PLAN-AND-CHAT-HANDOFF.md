@@ -1794,3 +1794,5 @@ The national report submitted by Cambodia to UNGEGN (GEGN.2/2023/104/CRP.104) sa
 - Current ledger: target matrix DONE_VERIFIED (22 consonant + 37 vowel/rime rows); runtime PARTIAL (independent adapter integrated, provisional); source romanizer PARTIAL (ASCII profile loses PCGN diacritics and contextual vowel distinctions); contextual whole-standard BGN/PCGN implementation remains open.
 - Open draft research PR #153 remains untouched. It is a separate G2P/provider integration, not a dependency of the romanization adapter.
 - No local checkout was available in this connector-only session; verification cited here is hosted GitHub Actions on exact current `main`. No local pytest/npm/Playwright execution is claimed.
+
+The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) confirms the October 2023 national gazetteer also uses the 1997 transcription system: https://unstats.un.org/unsd/ungegn/sessions/4th_session_2025/documents/GEGN.2_2025_73_CRP73_item4a.pdf

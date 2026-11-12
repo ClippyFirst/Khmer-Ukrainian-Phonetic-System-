@@ -46,3 +46,17 @@ test("ASCII forms represented by the vowel matrix have explicit Ukrainian candid
   ];
   for(const [latin,ukrainian] of pairs) assert.equal(renderLatinWord(latin).text,ukrainian,latin);
 });
+
+test("every distinct PCGN consonant romanization unit has an explicit Ukrainian candidate",()=>{
+  const pairs=[
+    ["k","к"],["kh","к'"],["ng","нг"],["ch","ч"],["chh","ч'"],["nh","нь"],
+    ["d","д"],["th","т'"],["n","н"],["t","т"],["b","б"],["p","п"],
+    ["ph","п'"],["m","м"],["y","й"],["r","р"],["l","л"],["v","в"],
+    ["s","с"],["h","г"],["'","ʼ"],["’","ʼ"],
+  ];
+  for(const [latin,ukrainian] of pairs){
+    const result=renderLatinWord(latin);
+    assert.equal(result.text,ukrainian,latin);
+    assert.equal(result.unsupported,0,latin);
+  }
+});

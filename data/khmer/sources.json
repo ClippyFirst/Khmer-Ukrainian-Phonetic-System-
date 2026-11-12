@@ -313,5 +313,15 @@
     "scope": "ALA-LC Khmer cataloguing romanization table, included as a comparator only.",
     "status": "COMPARATIVE_REFERENCE",
     "limitations": "This is a distinct ALA-LC cataloguing profile and is not evidence of Cambodia's national 1997 transcription system; do not substitute or conflate the two."
+  },
+  {
+    "id": "pcgn-cambodia-toponymic-factfile-2026",
+    "type": "official_foreign_geographical_names_policy",
+    "title": "Cambodia Toponymic Factfile",
+    "year": 2026,
+    "url": "https://assets.publishing.service.gov.uk/media/6a19aa44b95db968c8f3bc6f/Cambodia_Toponymic_Factfile.pdf",
+    "scope": "PCGN geographical names policy and status of Cambodia's 1995/1997 Khmer romanization system; describes the 1997 modification as not yet consistently implemented and records the 2025 gazetteer dataset.",
+    "status": "CONFLICTING_STATUS_EVIDENCE",
+    "limitations": "UK PCGN policy perspective; its implementation assessment conflicts with Cambodia's 2023 national report and UNGEGN 2025 report about gazetteer usage. Requires reconciliation against the primary 1997 specification and 2025 dataset."
   }
 ]

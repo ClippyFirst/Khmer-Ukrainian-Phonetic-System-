@@ -124,3 +124,11 @@ test("every Khmer numeral row in the canonical matrix has its Arabic-digit targe
     assert.equal(renderLatinWord(row.source_units).text, row.ukrainian_candidate, `Khmer numeral row ${row.table_row}`);
   }
 });
+
+
+test("ASCII vowel aliases preserve the distinct eă and oă PCGN candidates", () => {
+  assert.equal(renderLatinWord("ea").text, "еа");
+  assert.equal(renderLatinWord("oa").text, "оа");
+  assert.equal(renderLatinWord("eah").text, "еаг");
+  assert.equal(renderLatinWord("oah").text, "оаг");
+});

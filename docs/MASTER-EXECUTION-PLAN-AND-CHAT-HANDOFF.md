@@ -1863,3 +1863,13 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 - `KHM-ROM-NUMERALS-001`: **DONE_VERIFIED** for the ten numeral rows. `KHM-ROM-TEST-001` remains PARTIAL due unresolved diacritical marks, broader context-sensitive PCGN coverage and full real-package corpus acceptance.
 - `KHM-ROM-ENGINE-001` remains PARTIAL: the upstream ASCII romanizer drops BGN/PCGN diacritics and contextual vowel distinctions. Ukrainian candidates remain project proposals, not expert-adjudicated mappings.
 - Mainline at this closeout: `ae890fdd436aed9c0fab077401e7612153ce2e6a`. Hosted GitHub Actions evidence only; no local checkout or local test execution is claimed.
+
+
+## Khmer vowel inventory crosswalk coverage — 2026-11-12
+
+- PR [#177](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/177) merged as `19a36f820625f53c6f50fbbe810bfbd074bb1ee7`.
+- Added data-driven test across all **37** canonical PCGN vowel and vowel-coda rows in `data/khmer/romanization_vowels_ukrainian.csv`. Source diacritics are normalized to the ASCII output conventions of the current upstream package; every form must map to one of the row's existing Ukrainian candidates with zero unsupported units.
+- Exact PR-head Quality [43275618264](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43275618264): **SUCCESS** (194 Python tests + 62 subtests; 12 Node adapter tests). Exact PR-head Chromium smoke [43275618099](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43275618099): **SUCCESS**.
+- This is not a runtime change and not linguistic validation. The test does not adjudicate context-dependent alternatives, reconstruct lost diacritics, establish phonetic accuracy, or promote Ukrainian proposals to approved mappings.
+- PR #176's shortened-vowel sequence coverage is also merged as `d4ac59a78447ba84c84e72457d10277706168434`; its exact PR-head Quality [43275112413], browser smoke [43275112515], and post-merge mainline Quality [43275258617], browser smoke [43275258586], and Pages/deployed-site smoke [43275258614] all passed.
+- Post-merge mainline runs for #177 — Quality [43275764929], browser [43275764932], Pages [43275764931] — were queued at this documentation checkpoint; do not claim these passed until observed.

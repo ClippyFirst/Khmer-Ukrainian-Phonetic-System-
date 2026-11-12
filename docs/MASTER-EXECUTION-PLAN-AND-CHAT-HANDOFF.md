@@ -1796,3 +1796,11 @@ The national report submitted by Cambodia to UNGEGN (GEGN.2/2023/104/CRP.104) sa
 - No local checkout was available in this connector-only session; verification cited here is hosted GitHub Actions on exact current `main`. No local pytest/npm/Playwright execution is claimed.
 
 The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) confirms the October 2023 national gazetteer also uses the 1997 transcription system: https://unstats.un.org/unsd/ungegn/sessions/4th_session_2025/documents/GEGN.2_2025_73_CRP73_item4a.pdf
+
+
+## Post-runtime test closeout — 2026-11-12
+
+- Latest implementation mainline commit: `f0485892f5d4b16e5fbe0ded6f8e083d8b044f4b` (PR #167, test execution coverage; merged).
+- Corrected a real test-discovery gap: `tests/romanization-ukrainian.test.mjs` is now run by both `npm test` and `npm run check`. Added coverage for all 22 distinct PCGN consonant romanization tokens; the existing suite covers the 33 ASCII vowel candidates, unsupported units, passthrough and status behavior.
+- Exact-main Quality [43250158336](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158336) and browser smoke [43250158628](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158628) passed on the implementation commit. Pages deployment was checked separately in run [43250158415](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158415).
+- Remaining acceptance: source-matrix→runtime parity for every row, marks/numerals, real-package corpus tests, diacritic-preserving BGN/PCGN, and a separate evidence-gated decision on Cambodia's national 1997 system. Do not promote PROPOSED mappings or provisional output.

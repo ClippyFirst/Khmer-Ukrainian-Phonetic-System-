@@ -34,3 +34,15 @@ test("text without Khmer is preserved as passthrough",()=>{
   assert.equal(result.text,"Latin 123!");
   assert.equal(result.status,"PASSTHROUGH");
 });
+
+test("ASCII forms represented by the vowel matrix have explicit Ukrainian candidates",()=>{
+  const pairs=[
+    ["a","а"],["e","е"],["i","і"],["o","о"],["u","у"],["ei","ей"],["ai","ай"],
+    ["ey","ей"],["ao","ао"],["au","ау"],["ou","оу"],["ae","ае"],["oe","и"],
+    ["roe","ри"],["loe","ли"],["uo","уо"],["aeu","аеу"],["eu","еу"],["oea","иа"],
+    ["ie","іє"],["om","ом"],["um","ум"],["am","ам"],["oam","оам"],["ah","аг"],
+    ["eah","еаг"],["oh","ог"],["uh","уг"],["eh","ег"],["aoh","аог"],["oah","оаг"],
+    ["ang","анг"],["eang","еанг"],
+  ];
+  for(const [latin,ukrainian] of pairs) assert.equal(renderLatinWord(latin).text,ukrainian,latin);
+});

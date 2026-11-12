@@ -1851,3 +1851,15 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 - Fix: `renderLatinWord` now converts U+17E0–U+17E9 to ASCII digits 0–9 and counts them as mapped units. The actual-package mixed whole-message test now requires `2026`, not merely either native or Arabic digits.
 - Implementation commit: `3244bd847c70daffe6549feca845300faa3e61d7`; tightened integration-test commit: `0ba14111793cf16460dc34c25ecf138e0ffcb007`. Exact-head Quality/browser GREEN and post-merge mainline evidence are pending.
 - This closes the bounded numeral target crosswalk only; Khmer diacritical mark behavior remains context-dependent and PCGN upstream romanization remains ASCII/diacritic-lossy.
+
+
+## Post-merge closeout — Khmer numeral crosswalk — 2026-11-12
+
+- PR [#174](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/174) merged as `ae890fdd436aed9c0fab077401e7612153ce2e6a`.
+- Test-first RED evidence: exact Quality run [43268170106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268170106) failed only the new canonical numeral assertion on row 0 (`'០' !== '0'`); all previous nine adapter tests passed.
+- Implementation: `renderLatinWord` maps U+17E0–U+17E9 to ASCII digits 0–9 and increments the mapped count. The actual-package whole-message regression now requires Arabic-digit output.
+- Exact PR-head Quality [43268412329](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268412329) and Chromium smoke [43268412356](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268412356): **SUCCESS**.
+- Exact mainline Quality [43268536002](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268536002), browser smoke [43268536046](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268536046), and Pages deployment/deployed-site runtime smoke [43268535985](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268535985): **SUCCESS**.
+- `KHM-ROM-NUMERALS-001`: **DONE_VERIFIED** for the ten numeral rows. `KHM-ROM-TEST-001` remains PARTIAL due unresolved diacritical marks, broader context-sensitive PCGN coverage and full real-package corpus acceptance.
+- `KHM-ROM-ENGINE-001` remains PARTIAL: the upstream ASCII romanizer drops BGN/PCGN diacritics and contextual vowel distinctions. Ukrainian candidates remain project proposals, not expert-adjudicated mappings.
+- Mainline at this closeout: `ae890fdd436aed9c0fab077401e7612153ce2e6a`. Hosted GitHub Actions evidence only; no local checkout or local test execution is claimed.

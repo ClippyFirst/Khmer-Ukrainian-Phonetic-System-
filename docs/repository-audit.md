@@ -275,3 +275,8 @@ PR #172 merged as `054bc8823ba1f109ee102eda5e966edade1c4886`. The new regression
 ## Khmer numeral matrix/runtime discrepancy — 2026-11-12
 
 A data-driven test against `data/khmer/romanization_marks_numerals.csv` exposed that the adapter passed native Khmer digits through unchanged although the canonical target matrix proposes Arabic digits. The RED run was exact and localized: Quality workflow [43268170106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268170106) failed only the new numeral assertion (`'០' !== '0'`); the preceding 9 adapter tests passed. The adapter now maps U+17E0–U+17E9 to 0–9 and increments the mapped count. The real-package mixed-message regression now requires `2026`. Exact GREEN CI remains pending.
+
+
+## Khmer numeral crosswalk implementation verification — 2026-11-12
+
+The adapter now maps all ten Khmer numeral code points U+17E0–U+17E9 to Arabic digits 0–9. The RED regression in [43268170106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268170106) failed on the expected native-versus-Arabic mismatch; after the implementation, exact PR-head Quality [43268412329] and browser smoke [43268412356] passed. PR #174 merged as `ae890fdd436aed9c0fab077401e7612153ce2e6a`. Exact mainline Quality [43268536002], browser smoke [43268536046], and Pages deployment/deployed-site smoke [43268535985] passed. The numeral slice is DONE_VERIFIED; contextual diacritical-mark handling and full BGN/PCGN conformance remain open.

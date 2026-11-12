@@ -592,6 +592,15 @@ The adapter is intentionally labelled `PROVISIONAL`. It is orthographic Latin-to
 
 ## Romanization runtime mainline reconciliation — 2026-11-12
 
+### Cambodian national romanization profile evidence — 2026-11-12
+
+Cambodia's national report to UNGEGN states that the national romanized writing system is based on the 1997 transcription system instead of the 1972 transliteration system, and that its 2019 gazetteer used the 1997 system. The UNGEGN Working Group's 2023 status report independently records this replacement. BGN/PCGN 1972 therefore remains a documented project research profile, not the current national Cambodian profile. The primary 1997 national specification has not yet been located; the similarly dated ALA-LC Khmer table is a distinct cataloguing system and is not treated as equivalent.
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHM-ROM-NATIONAL-1997-001 | EVIDENCE_LIMITED | Cambodia national report GEGN.2/2023/104/CRP.104 and UNGEGN status report GEGN.2/2023/11/CRP.11 identify 1997 as replacing 1972 in national use. | Locate and verify the complete primary 1997 specification, then compare it against BGN/PCGN and decide whether to add a separate profile. Do not relabel existing 1972 rows. |
+
+
 | ID | Status | Current evidence | Acceptance boundary |
 |---|---|---|---|
 | KHM-ROM-UA-TARGET-001 | DONE_VERIFIED | 22 consonant + 37 vowel/rime rows have Ukrainian target candidates; PR #161 merged; exact mainline Quality/browser/Pages checks on `a86a59cf082d547563b45374ced9dfb45c5cd8db` passed: [43228414756](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414756), [43228414938](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414938), [43228414646](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43228414646). | Table coverage only; all Ukrainian candidates remain project proposals. |

@@ -280,3 +280,8 @@ A data-driven test against `data/khmer/romanization_marks_numerals.csv` exposed 
 ## Khmer numeral crosswalk implementation verification — 2026-11-12
 
 The adapter now maps all ten Khmer numeral code points U+17E0–U+17E9 to Arabic digits 0–9. The RED regression in [43268170106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268170106) failed on the expected native-versus-Arabic mismatch; after the implementation, exact PR-head Quality [43268412329] and browser smoke [43268412356] passed. PR #174 merged as `ae890fdd436aed9c0fab077401e7612153ce2e6a`. Exact mainline Quality [43268536002], browser smoke [43268536046], and Pages deployment/deployed-site smoke [43268535985] passed. The numeral slice is DONE_VERIFIED; contextual diacritical-mark handling and full BGN/PCGN conformance remain open.
+
+
+## Khmer vowel matrix executable crosswalk coverage — 2026-11-12
+
+PR #177 (`19a36f820625f53c6f50fbbe810bfbd074bb1ee7`) adds a data-driven adapter test for all 37 independent-vowel, dependent-vowel and vowel/coda rows. The test converts PCGN diacritic forms to the ASCII aliases expected from the existing upstream dependency and verifies that each result belongs to the row's Ukrainian candidate set without unsupported fragments. Exact PR-head Quality [43275618264] passed (194 Python tests + 62 subtests and 12 Node adapter tests); browser smoke [43275618099] passed. This verifies inventory consistency only, not contextual vowel selection, phonetic correctness, or PCGN standard conformance. Upstream diacritic loss remains a runtime limitation.

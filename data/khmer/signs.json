@@ -43,5 +43,9 @@
 {"char":"ឰ","codepoint":"U+17B0","name":"QAI","kind":"independent_vowel","status":"RARE"},
 {"char":"ឱ","codepoint":"U+17B1","name":"QOO_TYPE_ONE","kind":"independent_vowel","status":"ESTABLISHED"},
 {"char":"ឲ","codepoint":"U+17B2","name":"QOO_TYPE_TWO","kind":"independent_vowel","status":"RARE_VARIANT"},
-{"char":"ឳ","codepoint":"U+17B3","name":"QAU","kind":"independent_vowel","status":"ESTABLISHED"}
+{"char":"ឳ","codepoint":"U+17B3","name":"QAU","kind":"independent_vowel","status":"ESTABLISHED"},
+{"char":"ឣ","codepoint":"U+17A3","name":"QAQ","kind":"unmodeled_letter","status":"NOT_ESTABLISHED"},
+{"char":"ឤ","codepoint":"U+17A4","name":"QAA","kind":"unmodeled_letter","status":"NOT_ESTABLISHED"},
+{"char":"ឝ","codepoint":"U+179D","name":"SHA","kind":"unmodeled_letter","status":"NOT_ESTABLISHED"},
+{"char":"ឞ","codepoint":"U+179E","name":"SSO","kind":"unmodeled_letter","status":"NOT_ESTABLISHED"}
 ]

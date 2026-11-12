@@ -104,7 +104,7 @@ test("every canonical PCGN consonant row is executable by the Ukrainian adapter"
 test("real package and Ukrainian adapter preserve a mixed whole message", () => {
   const source = "២០២៦ ABC-42,\tសួស្តី។\r\n";
   const result = renderKhmerRomanizationText(source, khmerToLatin);
-  assert.ok(result.text.includes("២០២៦") || result.text.includes("2026"), "native or Arabic numerals must remain visible");
+  assert.ok(result.text.includes("2026"), "Khmer numerals must follow the canonical Arabic-digit target crosswalk");
   assert.ok(result.text.includes("ABC-42"), "mixed Latin identifiers and ASCII digits must survive");
   assert.ok(result.text.includes(","), "ASCII punctuation must survive");
   assert.ok(result.text.includes("\t"), "tabs must survive");
@@ -113,4 +113,14 @@ test("real package and Ukrainian adapter preserve a mixed whole message", () => 
   assert.doesNotMatch(result.text, /[ក-៓]/u, "Khmer letters must be romanized");
   assert.equal(result.status, "PROVISIONAL");
   assert.ok(result.mapped > 0);
+});
+
+
+test("every Khmer numeral row in the canonical matrix has its Arabic-digit target", () => {
+  const rows = parseCsv(readFileSync(path.join(root, "data/khmer/romanization_marks_numerals.csv"), "utf8"))
+    .filter(row => row.unit_type === "numeral");
+  assert.equal(rows.length, 10);
+  for (const row of rows) {
+    assert.equal(renderLatinWord(row.source_units).text, row.ukrainian_candidate, `Khmer numeral row ${row.table_row}`);
+  }
 });

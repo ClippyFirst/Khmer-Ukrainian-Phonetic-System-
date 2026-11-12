@@ -1842,3 +1842,12 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 - `KHM-ROM-TEST-WHOLE-001`: **DONE_VERIFIED**. `KHM-ROM-TEST-001` remains PARTIAL because canonical marks/numerals runtime parity, full source-profile coverage, and diacritic/contextual tests are not yet complete.
 - `KHM-ROM-ENGINE-001` remains PARTIAL: upstream ASCII romanizer drops BGN/PCGN diacritics and contextual vowel distinctions. Ukrainian candidates remain project proposals; no linguistic accuracy or expert approval is claimed.
 - Mainline at this closeout: `054bc8823ba1f109ee102eda5e966edade1c4886`. No local checkout or local test execution is claimed; all verification above is from exact-head/mainline GitHub Actions.
+
+
+## Khmer numeral crosswalk runtime fix — test-first — 2026-11-12
+
+- PR [#174](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/174) began with a data-driven test for all ten numeral rows in `data/khmer/romanization_marks_numerals.csv`.
+- RED evidence: Quality workflow [43268170106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268170106) failed on the intended assertion, row 0: actual native Khmer `០`, expected Arabic `0`; the other nine adapter tests passed.
+- Fix: `renderLatinWord` now converts U+17E0–U+17E9 to ASCII digits 0–9 and counts them as mapped units. The actual-package mixed whole-message test now requires `2026`, not merely either native or Arabic digits.
+- Implementation commit: `3244bd847c70daffe6549feca845300faa3e61d7`; tightened integration-test commit: `0ba14111793cf16460dc34c25ecf138e0ffcb007`. Exact-head Quality/browser GREEN and post-merge mainline evidence are pending.
+- This closes the bounded numeral target crosswalk only; Khmer diacritical mark behavior remains context-dependent and PCGN upstream romanization remains ASCII/diacritic-lossy.

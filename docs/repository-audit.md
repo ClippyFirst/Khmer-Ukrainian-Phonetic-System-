@@ -270,3 +270,8 @@ The test suite now includes a regression that exercises the actual `@gmana/km-tr
 ## Khmer real-package whole-message adapter verification — 2026-11-12
 
 PR #172 merged as `054bc8823ba1f109ee102eda5e966edade1c4886`. The new regression exercises the actual `@gmana/km-translit` package through the Ukrainian adapter and verifies native-or-Arabic numerals, mixed Latin text, ASCII punctuation, tab, CRLF and Khmer sentence-stop preservation. Exact PR-head Quality [43267521108] and browser smoke [43267521498] passed. Mainline Quality [43267655512], browser smoke [43267655359], and Pages deployment/deployed-site smoke [43267655210] all passed on the merge commit. This closes only the bounded real-package whole-message engineering regression; full PCGN conformance and linguistic accuracy remain PARTIAL/EVIDENCE_LIMITED.
+
+
+## Khmer numeral matrix/runtime discrepancy — 2026-11-12
+
+A data-driven test against `data/khmer/romanization_marks_numerals.csv` exposed that the adapter passed native Khmer digits through unchanged although the canonical target matrix proposes Arabic digits. The RED run was exact and localized: Quality workflow [43268170106](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43268170106) failed only the new numeral assertion (`'០' !== '0'`); the preceding 9 adapter tests passed. The adapter now maps U+17E0–U+17E9 to 0–9 and increments the mapped count. The real-package mixed-message regression now requires `2026`. Exact GREEN CI remains pending.

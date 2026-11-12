@@ -21,7 +21,9 @@ function renderLatinWord(value){
     const key=KEYS.find(candidate=>rest.toLowerCase().startsWith(candidate));
     if(!key){
       const char=String.fromCodePoint(value.codePointAt(i));
-      if(/[A-Za-z]/u.test(char)){output+="⟦"+char+"⟧";unsupported+=1;}
+      const codePoint=char.codePointAt(0);
+      if(codePoint>=0x17e0&&codePoint<=0x17e9){output+=String(codePoint-0x17e0);mapped+=1;}
+      else if(/[A-Za-z]/u.test(char)){output+="⟦"+char+"⟧";unsupported+=1;}
       else output+=char;
       i+=char.length;continue;
     }

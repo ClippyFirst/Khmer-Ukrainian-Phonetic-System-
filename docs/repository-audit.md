@@ -265,3 +265,8 @@ PR #170 merged as `c5c26082abff87ce6224e00a68047620f9d9975f`. Exact-head Quality
 ## Khmer real-package whole-message adapter coverage — 2026-11-12
 
 The test suite now includes a regression that exercises the actual `@gmana/km-translit` package through the Ukrainian orthographic adapter on a mixed whole message. It checks visible native/Arabic numerals, mixed Latin identifier, ASCII punctuation, tab, CRLF and Khmer sentence-stop preservation, while ensuring Khmer letters do not leak into the Latin-output route. This is a bounded software integration probe, not evidence of complete PCGN marks/numerals coverage or Ukrainian linguistic accuracy. Exact-head CI remains pending.
+
+
+## Khmer real-package whole-message adapter verification — 2026-11-12
+
+PR #172 merged as `054bc8823ba1f109ee102eda5e966edade1c4886`. The new regression exercises the actual `@gmana/km-translit` package through the Ukrainian adapter and verifies native-or-Arabic numerals, mixed Latin text, ASCII punctuation, tab, CRLF and Khmer sentence-stop preservation. Exact PR-head Quality [43267521108] and browser smoke [43267521498] passed. Mainline Quality [43267655512], browser smoke [43267655359], and Pages deployment/deployed-site smoke [43267655210] all passed on the merge commit. This closes only the bounded real-package whole-message engineering regression; full PCGN conformance and linguistic accuracy remain PARTIAL/EVIDENCE_LIMITED.

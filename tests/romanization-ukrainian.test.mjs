@@ -124,3 +124,19 @@ test("every Khmer numeral row in the canonical matrix has its Arabic-digit targe
     assert.equal(renderLatinWord(row.source_units).text, row.ukrainian_candidate, `Khmer numeral row ${row.table_row}`);
   }
 });
+
+
+test("shortened eă and oă romanization sequences retain their Ukrainian candidates", () => {
+  const ea = renderLatinWord("ea");
+  const oa = renderLatinWord("oa");
+  const eah = renderLatinWord("eah");
+  const oah = renderLatinWord("oah");
+  assert.equal(ea.text, "еа");
+  assert.equal(ea.mapped, 2, "ea is rendered as the two explicit vowel units e + a");
+  assert.equal(oa.text, "оа");
+  assert.equal(oa.mapped, 2, "oa is rendered as the two explicit vowel units o + a");
+  assert.equal(eah.text, "еаг");
+  assert.equal(eah.mapped, 1, "eah is one matrix-listed vowel/coda sequence");
+  assert.equal(oah.text, "оаг");
+  assert.equal(oah.mapped, 1, "oah is one matrix-listed vowel/coda sequence");
+});

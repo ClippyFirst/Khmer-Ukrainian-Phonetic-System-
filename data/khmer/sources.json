@@ -260,5 +260,58 @@
     "status": "BLOCKED_SOURCE_INCOMPLETE_RIGHTS_CONFLICT",
     "license": "Unresolved: root README says CC BY-SA 4.0 for pronunciation dictionary; dictionary README says CC BY 4.0 for a G2P mapping; code LICENSE is MIT but does not resolve third-party data terms.",
     "limitations": "Do not import sample or claim full dictionary access. Request versioned full artifact and SHA-256, artifact-specific licenses, provenance, dialect/IPA convention, annotation/adjudication details, and release/DOI. Alignment boundary metrics are not phonetic accuracy."
+  },
+  {
+    "id": "cambodia-national-1997-transcription",
+    "type": "official_national_report",
+    "title": "Report on the activities of the standardization of geographical names for the period 2019–2022",
+    "year": 2023,
+    "document_id": "GEGN.2/2023/104/CRP.104",
+    "url": "https://digitallibrary.un.org/record/4017595/files/GEGN.2_2023_104_CRP.104-EN.pdf",
+    "scope": "Cambodia reports that the national romanized writing system is based on the 1997 transcription system instead of the 1972 transliteration system; the 2019 national gazetteer used the 1997 system.",
+    "status": "PRIMARY_POLICY_EVIDENCE",
+    "limitations": "This report identifies the system and its use but does not reproduce the complete primary 1997 specification."
+  },
+  {
+    "id": "ungegn-khmer-1997-status-2023",
+    "type": "official_working_group_status_report",
+    "title": "Current status of United Nations romanization systems for geographical names",
+    "year": 2023,
+    "document_id": "GEGN.2/2023/11/CRP.11",
+    "url": "https://digitallibrary.un.org/record/4018337/files/GEGN.2_2023_11_CRP.11-EN.pdf",
+    "scope": "UNGEGN Working Group records that Cambodia's national report confirms the 1997 Khmer transcription system replaced the 1972 system and says the group will discuss its presentation to UNGEGN.",
+    "status": "PRIMARY_STATUS_CORROBORATION",
+    "limitations": "The Working Group notes the system had not yet been presented for UNGEGN official consideration/adoption."
+  },
+  {
+    "id": "ungegn-ase-cambodia-2025",
+    "type": "official_regional_report",
+    "title": "Report of the Asia South-East Division",
+    "year": 2025,
+    "document_id": "GEGN.2/2025/73/CRP.73",
+    "url": "https://unstats.un.org/unsd/ungegn/sessions/4th_session_2025/documents/GEGN.2_2025_73_CRP73_item4a.pdf",
+    "scope": "Confirms that the October 2023 Cambodian General Department of Cadastre and Geography gazetteer lists Khmer and Latin geographical names using Transcription system 1997.",
+    "status": "PRIMARY_STATUS_CORROBORATION",
+    "limitations": "Corroborates the gazetteer's system designation; does not reproduce the complete transcription table."
+  },
+  {
+    "id": "mlmupc-gazetteer-2023",
+    "type": "official_national_gazetteer_locator",
+    "title": "Gazetteer of Cambodia, Ministry of Land Management, Urban Planning and Construction",
+    "year": 2023,
+    "url": "https://mlmupc.gov.kh/2023/10/26/gazetteer-cambodia/",
+    "scope": "Official Ministry page for the Khmer/Latin national gazetteer dated 26 October 2023; UNGEGN 2025 report identifies the Latin column as Transcription system 1997.",
+    "status": "OFFICIAL_PRIMARY_LOCATOR",
+    "limitations": "The page's linked PDF returned HTTP 404 during this review; full table could not be retrieved or audited."
+  },
+  {
+    "id": "alalc-khmer-1997",
+    "type": "library_cataloguing_romanization_reference",
+    "title": "Khmer Romanization Table, 1997 version (ALA-LC)",
+    "year": 1997,
+    "url": "https://www.loc.gov/catdir/cpso/romanization/khmer-1997.pdf",
+    "scope": "ALA-LC Khmer cataloguing romanization table, included as a comparator only.",
+    "status": "COMPARATIVE_REFERENCE",
+    "limitations": "This is a distinct ALA-LC cataloguing profile and is not evidence of Cambodia's national 1997 transcription system; do not substitute or conflate the two."
   }
 ]

@@ -7,6 +7,14 @@
 
 Select **BGN/PCGN 1972 Romanization of Khmer (Cambodian)** as the reference romanization profile. It is the strongest defensible choice for a source-backed research table: the UNGEGN Working Group report states that the UN-recommended system was approved in 1972 (Resolution II/10) and is based on the BGN/PCGN 1972 system. The official PCGN guide was checked for validity in October 2017 and contains consonant, subscript, vowel, diacritic and numeral tables.
 
+**National-system scope caveat (verified 2026-11-12):** BGN/PCGN 1972 remains the selected, fully source-located *research crosswalk profile* in this matrix; it must not be described as the current national Cambodian romanization. Cambodia's national report to UNGEGN states that the country's romanized writing system is based on the **1997 transcription system instead of the 1972 transliteration system**, and that the 2019 gazetteer used the 1997 system. The UNGEGN Working Group's 2023 status report independently repeats that the 1997 system replaced the 1972 system in Cambodia. The complete primary 1997 specification has not yet been located and verified, so the existing BGN/PCGN table must not be silently relabelled as that system. The Library of Congress **ALA-LC Khmer Romanization Table (1997 version)** is a separate cataloguing profile and is not evidence that it equals Cambodia's national 1997 system.
+
+Sources:
+- Government of Cambodia, *Report on the activities of the standardization of geographical names for the period 2019–2022*, GEGN.2/2023/104/CRP.104, pp. 1–2: https://digitallibrary.un.org/record/4017595/files/GEGN.2_2023_104_CRP.104-EN.pdf
+- UNGEGN Working Group on Romanization Systems, *Current status of United Nations romanization systems for geographical names*, GEGN.2/2023/11/CRP.11, p. 2: https://digitallibrary.un.org/record/4018337/files/GEGN.2_2023_11_CRP.11-EN.pdf
+- Library of Congress, *Khmer Romanization Table, 1997 version* (ALA-LC): https://www.loc.gov/catdir/cpso/romanization/khmer-1997.pdf
+
+
 Primary sources:
 - UNGEGN, Report on the Current Status of United Nations Romanization Systems for Geographical Names (2013), Khmer section: https://unstats.un.org/unsd/ungegn/working_groups/wg5/documents/wgrr4khmer.pdf
 - UK PCGN, Romanization of Khmer (Cambodian), BGN/PCGN 1972 Agreement (checked October 2017): https://assets.publishing.service.gov.uk/media/5ab4e25aed915d78bc23451e/ROMANIZATION_OF_KHMER.pdf

@@ -66,7 +66,7 @@ def test_unmodelled_khmer_letter_is_traced_as_unknown_not_as_ipa():
     from khmer_ua.parser import decompose_khmer_syllable
 
     # U+17F9 is a Khmer symbol rather than a consonant or vowel phoneme.
-    parsed = decompose_khmer_syllable("\\u17F9")
+    parsed = decompose_khmer_syllable(chr(0x17F9))
     assert parsed.graphemes
     assert parsed.graphemes[0].codepoints == ("U+17F9",)
     assert parsed.status == "INVALID_OR_UNSUPPORTED"

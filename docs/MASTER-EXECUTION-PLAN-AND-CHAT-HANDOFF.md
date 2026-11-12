@@ -1831,3 +1831,14 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 - Added a whole-message test using the actual `@gmana/km-translit` dependency and `renderKhmerRomanizationText`, rather than a stub romanizer. The mixed probe covers Khmer numerals, Latin identifier, ASCII digits/punctuation, tab, CRLF and Khmer sentence-stop punctuation; it requires Khmer letters to be converted.
 - This is an engineering/source-preservation regression only. It does not adjudicate the romanization or target Ukrainian output and does not resolve missing diacritics, contextual PCGN vowels, marks/numeral rules, or full-standard conformance.
 - Code commit: `d1b41a8ada377af413f2dd1c079feb7dbcfaddfa`. Exact-head Quality/browser CI pending; status PARTIAL until those checks pass.
+
+
+## Post-merge closeout — real-package Khmer whole-message adapter regression — 2026-11-12
+
+- PR [#172](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/172) merged as `054bc8823ba1f109ee102eda5e966edade1c4886`.
+- The actual `@gmana/km-translit` dependency is exercised through `renderKhmerRomanizationText` on a mixed whole message. Assertions cover native-or-Arabic numerals, Latin identifier and ASCII digits, comma, tab, CRLF, Khmer sentence-stop punctuation, and no Khmer-letter leakage.
+- Exact PR-head Quality [43267521108](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43267521108) and Chromium smoke [43267521498](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43267521498): **SUCCESS**.
+- Exact mainline Quality [43267655512](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43267655512), browser smoke [43267655359](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43267655359), and Pages deployment/deployed-site runtime smoke [43267655210](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43267655210): **SUCCESS** on the merged mainline commit.
+- `KHM-ROM-TEST-WHOLE-001`: **DONE_VERIFIED**. `KHM-ROM-TEST-001` remains PARTIAL because canonical marks/numerals runtime parity, full source-profile coverage, and diacritic/contextual tests are not yet complete.
+- `KHM-ROM-ENGINE-001` remains PARTIAL: upstream ASCII romanizer drops BGN/PCGN diacritics and contextual vowel distinctions. Ukrainian candidates remain project proposals; no linguistic accuracy or expert approval is claimed.
+- Mainline at this closeout: `054bc8823ba1f109ee102eda5e966edade1c4886`. No local checkout or local test execution is claimed; all verification above is from exact-head/mainline GitHub Actions.

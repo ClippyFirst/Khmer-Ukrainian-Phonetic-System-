@@ -6,6 +6,7 @@ import practicalPolicy from "../data/ukrainian/practical-policy.json" with { typ
 import fixtures from "../data/tests/web-fixtures.json" with { type: "json" };
 import { khmerToLatin } from "@gmana/km-translit";
 import { mapIpa } from "./ukrainian-practical.js";
+import { renderKhmerRomanizationText } from "./khmer-romanization-ukrainian.js";
 
 const CONSONANTS = Object.fromEntries(consonants.map((item) => [item.char, item]));
 const SIGN_BY_CHAR = Object.fromEntries(signs.map((item) => [item.char, item]));
@@ -396,7 +397,7 @@ if (typeof document !== "undefined") {
     modeRomanization.setAttribute("aria-pressed", String(mode === "romanization"));
     outputMethodNote.textContent = mode === "phonetic"
       ? "Фонетичний режим: детерміновані правила орфографія → IPA → українська адаптація; непідтверджені форми не вгадуються."
-      : "Романізаційний режим: Khmer → BGN/PCGN-похідний латинський запис → окрема українська матриця. Український результат PARTIAL; фонетичний результат не використовується як fallback.";
+       : "Романізаційний режим: Khmer → BGN/PCGN-похідний латинський запис → окрема українська орфографічна передача. ASCII-романізатор втрачає діакритики, тому результат PROVISIONAL; фонетичний fallback не використовується.";
   }
 
   function render() {
@@ -410,7 +411,15 @@ if (typeof document !== "undefined") {
     }
     empty.hidden = true;
     results.hidden = false;
-    romanizationResult.textContent = khmerToLatin(data.source);
+    const latinRomanization = khmerToLatin(data.source);
+    romanizationResult.textContent = latinRomanization;
+    const uaRomanized = renderKhmerRomanizationText(data.source, khmerToLatin);
+    $("ua-romanization-result").textContent = uaRomanized.text || "—";
+    $("ua-romanization-status").textContent = uaRomanized.status === "PROVISIONAL"
+      ? "PROVISIONAL · буквена передача з латинського результату; пакет відкидає BGN/PCGN діакритики, тому контекстні голосні не можна відновити однозначно."
+      : uaRomanized.status === "PARTIAL"
+        ? "PARTIAL · зіставлено " + uaRomanized.mapped + " фрагм.; " + uaRomanized.unsupported + " невідомих латинських фрагм. залишено в ⟦…⟧. Профіль романізатора не є повністю відповідним BGN/PCGN."
+        : "PASSTHROUGH · кмерського тексту для романізації немає; сторонній текст збережено.";
     $("ipa-result").textContent = data.ipa;
     $("ua-result").textContent = data.ua;
     $("status").textContent = data.status.replaceAll("_", " ");

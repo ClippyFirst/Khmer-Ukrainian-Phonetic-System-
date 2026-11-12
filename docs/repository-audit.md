@@ -240,3 +240,8 @@ The 2025 UNGEGN Asia South-East Division report (GEGN.2/2025/73/CRP.73, p. 3) co
 ## Test-discovery audit — 2026-11-12
 
 The Khmer orthographic adapter's unit test file existed but was omitted from both `npm test` and `npm run check`; browser smoke covered only a single example. PR #167 fixed this by wiring the unit suite into both commands and asserting every distinct PCGN consonant romanization token. It merged as `f0485892f5d4b16e5fbe0ded6f8e083d8b044f4b`. Exact-main Quality [43250158336](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158336) and browser [43250158628](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43250158628) passed. Remaining coverage limitations are recorded in KHM-ROM-TEST-001.
+
+
+## Evidence conflict update — Cambodian 1997 transcription system — 2026-11-12
+
+The Cambodia national report (GEGN.2/2023/104/CRP.104) and UNGEGN 2025 regional report (GEGN.2/2025/73/CRP.73) say the national gazetteers used the 1997 transcription system. The UK PCGN's May 2026 *Cambodia Toponymic Factfile* (pp. 1–2) says the system developed in 1995 and modified in 1997 has not yet been implemented consistently in Cambodia and that PCGN awaits evidence of consistent official use. Treat these as conflicting scope/implementation claims, not as evidence that one source can be silently discarded. Keep KHM-ROM-NATIONAL-1997-001 EVIDENCE_LIMITED until the primary 1997 specification and 2025 gazetteer dataset are inspected and the implementation question reconciled. BGN/PCGN 1972 remains the project's current source-located research profile; ALA-LC 1997 remains a distinct cataloguing profile.

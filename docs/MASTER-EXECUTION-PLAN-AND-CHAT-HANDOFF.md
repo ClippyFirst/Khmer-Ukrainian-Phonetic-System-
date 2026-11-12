@@ -1758,3 +1758,17 @@ The browser preview is separate from canonical output. The onset-only test fixtu
 - Mainline Quality [43221967799](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221967799), browser smoke [43221968144](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221968144), and Pages deployment [43221967939](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221967939) all SUCCESS on the merge commit.
 - Exact feature-head tests [43221517618](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221517618) and browser smoke [43221517788](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43221517788) also passed on `91736b45c32ad5a812f71b97e7594a2f7a8da1bc`: 194 Python tests + 62 subtests, Node checks, build and Chromium smoke.
 - `KHM-ROM-UA-TARGET-001` is DONE_VERIFIED. `KHM-ROM-UA-001` remains TODO (runtime Latin-to-Ukrainian adapter); `KHM-ROM-ENGINE-001` remains PARTIAL (the upstream ASCII romanizer is not fully conformant with contextual BGN/PCGN 1972). No IPA or pronunciation claim is implied.
+
+
+## Khmer romanization → Ukrainian runtime adapter — 2026-11-12
+
+- Started from `main` `3930c8055bcbd6f6747336ad7dce09c9f695f31e`; implementation branch `feat/romanization-to-ukrainian-runtime-2026-11-12`; PR [#164](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/pull/164).
+- Added `src/khmer-romanization-ukrainian.js` and wired it to the existing `khmerToLatin` output and the separate “За романізацією” panel. It maps the current Latin result to Ukrainian, preserves non-Khmer text and punctuation, and marks unknown Latin fragments `⟦…⟧`.
+- Browser regression: `សុខា → Sokha → Сок'а`; phonetic IPA output remains hidden in romanization mode. Matrix token coverage is tested for consonants and vowel forms.
+- **Evidence boundary:** npm package `@gmana/km-translit` documents that its ASCII BGN/PCGN-derived profile drops the standard diacritics and is not fully conformant. The adapter therefore reports `PROVISIONAL`; it cannot recover contextual PCGN vowel distinctions lost upstream. This is not a complete PCGN runtime.
+- Exact-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337969), browser [43226337956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337956), and push Quality [43226325685](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226325685) SUCCESS on `1fa869c524bac5effc98411b71e47e458ad584ae`.
+- `KHM-ROM-UA-001`: PARTIAL (runtime display adapter works for current ASCII profile; full diacritic/context coverage is blocked by upstream romanizer output loss). `KHM-ROM-UA-TARGET-001`: DONE_VERIFIED. `KHM-ROM-ENGINE-001`: PARTIAL. No IPA or pronunciation claim is made.
+
+
+
+Exact-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337969), browser [43226337956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337956), and push Quality [43226325685](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226325685) SUCCESS on code head `1fa869c524bac5effc98411b71e47e458ad584ae`. Quality: 194 Python tests + 62 subtests; web checks and production build passed; Chromium visible-results smoke passed.

@@ -27,3 +27,13 @@ test("clear control restores the empty state", async ({ page }) => {
   await expect(page.locator("#results")).toBeHidden();
   await expect(page.locator("#empty")).toBeVisible();
 });
+
+test("romanization mode renders a separate provisional Ukrainian form", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#source").fill("សុខា");
+  await page.locator("#mode-romanization").click();
+  await expect(page.locator("#romanization-result")).toHaveText("Sokha");
+  await expect(page.locator("#ua-romanization-result")).toHaveText("Сок'а");
+  await expect(page.locator("#ua-romanization-status")).toContainText("PROVISIONAL");
+  await expect(page.locator("#ipa-result")).toBeHidden();
+});

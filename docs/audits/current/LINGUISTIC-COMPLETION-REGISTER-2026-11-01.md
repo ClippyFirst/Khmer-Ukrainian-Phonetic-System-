@@ -546,3 +546,11 @@ The export and benchmark now preserve and validate the complete frozen split ide
 |---|---|---|---|
 | KHMER-UNICODE-ACCOUNTING-001 | DONE_VERIFIED (structural/input accounting) | PR #157 merged as `e9c9d997e6de1029fd0b8fef9e7b6a9cb0020a4f`; exact-head Quality [43184648039](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43184648039) and browser smoke [43184647978](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43184647978) SUCCESS. Exhaustive sweep covers assigned Unicode L/M code points in U+1780–17FF and U+19E0–19FF. | Every tested code point is losslessly retained and traced. Malformed COENG remains visible as invalid structure. Does not imply phonological/IPA coverage or correctness. |
 | KHMER-PHONOLOGY-100-001 | PARTIAL / BLOCKED by evidence | Existing vowel × series report remains first-order only; positional coda/profile cells and independent gold remain incomplete. | Requires source-located vowel × series × length × coda × profile evidence, independent expert adjudication, and held-out gold before expanding canonical IPA rules. |
+
+
+## Khmer unmodelled-letter inventory and trace preservation — 2026-11-12
+
+| Work item | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| KHMER-UNMODELLED-LETTERS-001 | DONE_VERIFIED (inventory classification only) | PR #159 merged as `d1d184334c806cd21cf2eb875a9c5151ab9e61b3`; exact-head Quality [43186170402](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43186170402) and browser smoke [43186170525](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43186170525) SUCCESS. U+17A3, U+17A4, U+179D, U+179E are explicitly registered as `unmodeled_letter`. | Explicitly accounted for, not pronounced. No IPA or Ukrainian value is assigned. |
+| KHMER-TRACE-TAIL-001 | DONE_VERIFIED (source integrity) | Same PR and exact-head CI; regression `កxយ` preserves all graphemes after the unsupported `x`. | Unknown material no longer truncates the detailed parser trace. |

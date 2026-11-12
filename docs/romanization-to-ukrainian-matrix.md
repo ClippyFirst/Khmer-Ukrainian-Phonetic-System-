@@ -1,6 +1,6 @@
 # Khmer romanization → Ukrainian orthographic matrix
 
-**Status:** PARTIAL — the Ukrainian target crosswalk is now populated for all 22 consonant rows and all 37 PCGN vowel/rime rows. The upstream Latin-output package remains BGN/PCGN-derived ASCII rather than fully conformant, and no runtime syllable adapter is integrated yet.
+**Status:** PARTIAL — the Ukrainian target crosswalk is populated and a provisional runtime adapter is integrated. The upstream Latin-output package remains BGN/PCGN-derived ASCII rather than fully conformant; contextual vowel distinctions lost by that package cannot be reconstructed.
 **Primary variety:** contemporary Standard Khmer, Phnom Penh-oriented only where supported.
 
 ## Standard selection
@@ -165,3 +165,17 @@ The target column is a **project orthographic adaptation of the Latin romanizati
 ## Updated acceptance boundary
 
 `KHM-ROM-UA-TARGET-001` is complete as a table-coverage task. `KHM-ROM-UA-001` remains open until an independent runtime adapter consumes BGN/PCGN Latin output, preserves source text and uncertainty, and passes whole-message tests. `KHM-ROM-ENGINE-001` remains partial because the current package is not fully conformant with BGN/PCGN 1972. No pronunciation or lexical accuracy claim follows from these matrix changes.
+
+
+## Runtime adapter — 2026-11-12
+
+The romanization panel now sends the existing `@gmana/km-translit` Latin output through `src/khmer-romanization-ukrainian.js`. The adapter preserves non-Khmer runs and punctuation, uses longest-match Latin units, and leaves unknown Latin fragments visible as `⟦…⟧`. It does not call the IPA adapter.
+
+**Acceptance status: PARTIAL, not DONE_VERIFIED as a full BGN/PCGN implementation.** The npm package documents that its BGN/PCGN-derived ASCII profile drops the standard's diacritics; its output is explicitly non-conformant. Once those marks and contextual distinctions have been discarded, the Ukrainian adapter cannot reconstruct the exact PCGN vowel choice. Therefore its output is labelled `PROVISIONAL`, not a validated full-standard conversion. The 37-row matrix remains the reference for context-rich PCGN forms; no phonetic interpretation is implied.
+
+- Runtime module: `src/khmer-romanization-ukrainian.js`
+- Runtime tests: `tests/romanization-ukrainian.test.mjs` and the browser test in `tests/browser/site.spec.js`.
+- Exact PR-head Quality [43226337969](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337969), browser smoke [43226337956](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226337956), and push Quality [43226325685](https://github.com/ClippyFirst/Khmer-Ukrainian-Phonetic-System-/actions/runs/43226325685) passed on `1fa869c524bac5effc98411b71e47e458ad584ae`.
+
+`KHM-ROM-UA-001` is now PARTIAL: the current ASCII output has a usable Ukrainian display adapter, but full acceptance requires a diacritic-preserving BGN/PCGN source romanizer or a separate contextual syllable adapter consuming the full PCGN representation. `KHM-ROM-ENGINE-001` remains PARTIAL. See the package's own scope statement: https://www.npmjs.com/package/%40gmana/km-translit.
+
